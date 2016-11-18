@@ -1,0 +1,15 @@
+language: java
+
+notifications:
+  email: false
+
+install:
+- sudo apt-get update
+- sudo apt-get install --no-install-recommends texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
+
+script:
+- test `find . -not -type d -exec file "{}" ";" | grep CRLF | wc -l` -eq 0
+- cd src
+- mvn -U -B test
+- cd ../docs
+- pdflatex -interaction=batchmode Pflichtenheft
