@@ -25,7 +25,6 @@
 		<module>iMage.edge-detection-sobel-gui</module>
 		<module>iMage.hallo_plugin</module>
 		<module>iMage.bundle</module>
-		<module>iMage.stateMachine</module>
 		<module>iMage.edge-detection-sobel-parallel</module>
 	</modules>
 </project>
