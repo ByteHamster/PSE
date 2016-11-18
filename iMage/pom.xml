@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>edu.kit.ipd.swt1.ss2016</groupId>
+		<artifactId>uebungsparent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<groupId>swt1</groupId>
+	<artifactId>iMage</artifactId>
+	<packaging>pom</packaging>
+	<name>iMage</name>
+
+	<repositories>
+		<repository>
+			<id>ipdNexus</id>
+			<url>http://bob.ipd.kit.edu/nexus/content/repositories/swt1</url>
+		</repository>
+	</repositories>
+	<modules>
+		<module>jmjrst.main</module>
+		<module>jmjrst.complex.test</module>
+		<module>iMage.edge-detection-sobel</module>
+		<module>iMage.edge-detection-sobel-cli</module>
+		<module>iMage.edge-detection-sobel-gui</module>
+		<module>iMage.hallo_plugin</module>
+		<module>iMage.bundle</module>
+		<module>iMage.stateMachine</module>
+		<module>iMage.edge-detection-sobel-parallel</module>
+	</modules>
+</project>

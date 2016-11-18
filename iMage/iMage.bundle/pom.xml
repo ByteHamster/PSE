@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>swt1</groupId>
+		<artifactId>iMage</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>1928252</artifactId>
+	<groupId>swt1.ub3.a3</groupId>
+	<name>iMage.bundle</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<classpathLayoutType>repository</classpathLayoutType>
+							<addClasspath>true</addClasspath>
+							<mainClass>org.iMage.bundle.App</mainClass>
+							<!-- Workaround for Maven bug #MJAR-156 (https://jira.codehaus.org/browse/MJAR-156) -->
+							<useUniqueVersions>false</useUniqueVersions>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}</outputDirectory>
+							<useRepositoryLayout>true</useRepositoryLayout>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<!-- jmjrst.main -->
+			<groupId>swt1.ub3.a1</groupId>
+			<artifactId>1928252</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<!-- iMage.hallo_plugin -->
+			<groupId>swt1.ub3.a2</groupId>
+			<artifactId>1928252</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<!-- iMage.edge-detection-sobel-gui -->
+			<groupId>swt1.ub4.a3</groupId>
+			<artifactId>1928252</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+</project>

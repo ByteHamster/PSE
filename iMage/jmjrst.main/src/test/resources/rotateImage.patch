@@ -1,0 +1,47 @@
+From a03f1233e87f9a2e9659ec83eafa7e7681e420a3 Mon Sep 17 00:00:00 2001
+From: Hans-Peter Lehmann <info@hanspeter-lehmann.de>
+Date: Mon, 25 Apr 2016 21:55:51 +0200
+Subject: [PATCH] Throwing IllegalArgumentException when trying to rotate by
+ 360 degrees, even if the image is null
+
+---
+ iMage/jmjrst.main/src/main/java/org/jis/generator/Generator.java | 4 ++++
+ .../src/test/java/org/jis/generator/GeneratorTest.java           | 9 +++++++++
+ 2 files changed, 13 insertions(+)
+
+diff --git a/iMage/jmjrst.main/src/main/java/org/jis/generator/Generator.java b/iMage/jmjrst.main/src/main/java/org/jis/generator/Generator.java
+index ba1bf82..50ee536 100644
+--- a/iMage/jmjrst.main/src/main/java/org/jis/generator/Generator.java
++++ b/iMage/jmjrst.main/src/main/java/org/jis/generator/Generator.java
+@@ -720,6 +720,10 @@ public class Generator {
+   public BufferedImage rotateImage(BufferedImage image, double rotate)
+   {
+     if (rotate == 0) return image;
++    
++    if (rotate == 1) {
++    	throw new IllegalArgumentException("degree must not be 360 degrees!");
++    }
+ 
+     AffineTransform transform = new AffineTransform();
+ 
+diff --git a/iMage/jmjrst.main/src/test/java/org/jis/generator/GeneratorTest.java b/iMage/jmjrst.main/src/test/java/org/jis/generator/GeneratorTest.java
+index ed0b92d..9725b1e 100644
+--- a/iMage/jmjrst.main/src/test/java/org/jis/generator/GeneratorTest.java
++++ b/iMage/jmjrst.main/src/test/java/org/jis/generator/GeneratorTest.java
+@@ -71,4 +71,13 @@ public class GeneratorTest {
+ 	public void testRotate360Degrees() {
+ 		generator.rotateImage(testPicture, 1.0);
+ 	}
++
++	/**
++	 * Tests if rotateImage throws an Exception
++	 * when trying to rotate by 360 degrees, even if the image is null
++	 */
++	@Test(expected = IllegalArgumentException.class)
++	public void testRotate360DegreesWithNullImage() {
++		generator.rotateImage(null, 1.0);
++	}
+ }
+-- 
+1.9.5.msysgit.1
+
