@@ -1,3 +1,4 @@
+dist: trusty
 language: java
 
 notifications:
@@ -5,7 +6,7 @@ notifications:
 
 install:
 - sudo apt-get update
-- sudo apt-get install --no-install-recommends texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
+- sudo apt-get install --no-install-recommends texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-lang-german
 
 script:
 - test `find . -not -type d -exec file "{}" ";" | grep CRLF | wc -l` -eq 0
@@ -13,3 +14,4 @@ script:
 - mvn -U -B test
 - cd ../docs
 - pdflatex -interaction=batchmode Pflichtenheft
+- cat Pflichtenheft.log
