@@ -78,8 +78,7 @@ mindestens 2GHz getaktet sein.
 \begin{enumerate}
 \item[FA10] Die Zu- und Abflussmengen der oberen Flüssigkeitstanks können seperat eingestellt werden.
 \item[FA20] Die Abflussmenge des unteren Flüssigkeitstanks kann eingestellt werden. Die Zuflussmenge ergibt sich aus der Summe der Abflussmengen der oberen Tanks.
-\item[FA30] Der untere Tank enthält einen motorbetriebenen Mischer, dessen Drehzahl eingestellt werden kann. Dabei kann die Drehzahl in einem Bereich zwischen
-  0 und 300 Umdrehungen pro Minute gewählt werden.
+\item[FA30] Der untere Tank enthält einen motorbetriebenen Mischer, dessen Drehzahl eingestellt werden kann.
 \item[FA40] Jedem der oberen Tanks ist eine Flüssigkeitsfarbe zugeordnet. Die Farbe des unteren Tanks ergibt sich aus dem Mischungsverhältnis der oberen Tanks. Dabei wird
   angenommen, dass die Flüssigkeiten der oberen Tanks die selbe Deckkraft haben.
 \item[FA50] Es gibt eine .jar Datei, die bei Ausführung die Fertigungssimulation startet.
@@ -124,7 +123,7 @@ mindestens 2GHz getaktet sein.
 \begin{enumerate}
 \item[FA410] Die Überwachungskonsole enthält für die Einstellungen ein getrenntes Fenster.
 \item[FA420] Das Einstellungsfenster hat zwei Reiter: ``Allgemeines'' und ``Empfangene Daten''.
-\item[FA430] Im Reiter ``Allgemeines'' kann die Aktualisierungsfrequenz im Bereich zwischen 20 und 4000 Millisekunden gewählt werden.
+\item[FA430] Im Reiter ``Allgemeines'' kann die Aktualisierungsfrequenz eingestellt werden.
 \item[FA440] Im Reiter ``Empfangene Daten'' kann für jeden Tank die Anzeige des Füllstands und Temperaturverläufe mittels Checkboxen ein- und ausgeschaltet werden.
 \item[FA450] Im Reiter ``Alarme'' werden die aktuell registrierten Alarme aufgelistet.
 \item[FA460] Im Reiter ``Alarme'' wird durch einen Klick auf das Feld ``Alarm registrieren'' der Dialog zur Erstellung eines
@@ -141,7 +140,15 @@ mindestens 2GHz getaktet sein.
 \end{enumerate}
 
 \section{Nichtfunktionale Anforderungen}
-\Blindtext[1]
+\subsection{Fertigungssimulation}
+\begin{enumerate}
+ \item[NF10]  Die Drehzahl des Mischermotors kann in einem Bereich zwischen 0 und 300 Umdrehungen pro Minute gewählt werden.
+\end{enumerate}
+
+\subsection{Überwachungskonsole}
+\begin{enumerate}
+ \item[NF110] Die Aktualisierungsfrequenz kann im Bereich zwischen 20 und 4000 Millisekunden gewählt werden.
+\end{enumerate}
 
 \section{Produktdaten}
 \Blindtext[1]
