@@ -142,12 +142,17 @@ mindestens 2GHz getaktet sein.
 \section{Nichtfunktionale Anforderungen}
 \subsection{Fertigungssimulation}
 \begin{enumerate}
- \item[NF10]  Die Drehzahl des Mischermotors kann in einem Bereich zwischen 0 und 300 Umdrehungen pro Minute gewählt werden.
+ \item[NF10] Die Drehzahl des Mischermotors kann in einem Bereich zwischen 0 und 300 Umdrehungen pro Minute gewählt werden.
+ \item[NF20] Wenn Parameter verändert werden, sind sie nach spätestens einer halben Sekunde per OPC UA abrufbar.
+ \item[NF30] Wenn der Zufluss eines Tanks komplett geschlossen, und der Ablauf komplett geöffnet wird, ist der Tank in etwa 10 Sekunden leergelaufen.
+ \item[NF40] Wenn der Zufluss eines Tanks komplett geöffnet, und der Ablauf komplett geschlossen wird, ist der Tank in etwa 10 Sekunden übergelaufen.
 \end{enumerate}
 
 \subsection{Überwachungskonsole}
 \begin{enumerate}
  \item[NF110] Die Aktualisierungsfrequenz kann im Bereich zwischen 20 und 4000 Millisekunden gewählt werden.
+ \item[NF120] Wenn sich Werte in der Fertigungssimulation ändern, werden die Änderungen spätestens nach der Zeitspanne von
+   einer halben Sekunde plus dem Aktualisierungsintervall in der Überwachungskonsole angezeigt.
 \end{enumerate}
 
 \section{Produktdaten}
