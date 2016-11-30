@@ -6,6 +6,7 @@
 \usepackage[pangram]{blindtext}
 \usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage{enumitem}
 
 \hypersetup{
   colorlinks=false,
@@ -156,7 +157,14 @@ mindestens 2GHz getaktet sein.
 \end{enumerate}
 
 \section{Produktdaten}
-\Blindtext[1]
+\begin{enumerate}
+ \item[D10] Die Überwachungskonsole speichert die zuletzt eingestellte IP Adresse und den Port des Servers.
+ \item[D20] Die Überwachungskonsole speichert die zuletzt angezeigten Sensordaten.
+ \item[D30] Die Überwachungskonsole speichert die zuletzt aktivierten Alarme.
+ \item[D110] Die Fertigungssimulation speichert den zuletzt genutzten Port.
+ \item[D120] Die Fertigungssimulation speichert den zuletzt eingestellten Jitter.
+ \item[D130] Die Fertigungssimulation speichert \emph{eventuell (sofern implementiert)} aufgenommene Makros.
+\end{enumerate}
 
 \section{Globale Testfälle}
 \Blindtext[1]
@@ -202,7 +210,55 @@ beschlie{\ss}t, nicht zu handeln und der Tank l\"auft \"uber. Danach w\"ahlt Phi
 Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standardkonfiguration angezeigt wird.
 
 \subsection{Anwendungsfälle}
-\Blindtext[1]
+\subsubsection{Änderung der Zu-/Aflussgeschwindigkeit}
+\begin{description}
+ \item[Name] Erhöhen oder Verringern der Zu- oder Abflussgeschwindigkeit bei einem der Flüssigkeitstanks.
+ \item[Akteure] Manuel (Bediener der Software)
+ \item[Eingangsbedingung] Die Fertigungssimulation und die Überwachungskonsole sind in Betrieb und miteinander verbunden.
+ \item[Ereignisfluss]
+ \begin{itemize}[noitemsep]
+  \item Manuel öffnet in der Fertigungssimulation den Reiter ``Ansicht''.
+  \item Manuel klickt auf ``Steuerung anzeigen''.
+  \item Ein Fenster öffnet sich. Manuel wählt den Reiter des Tanks, den er verändern will.
+  \item Manuel verschiebt den Schieberegler des Zufluss- oder Abflussventils auf den gewünschten Wert.
+  \item Manuel klickt den ``OK'' Knopf.
+ \end{itemize}
+ \item[Ausgangssituation] Die Zu- oder Abflussrate im gewählten Tank ist nun höher bzw. niedriger. Dies ist am schnelleren oder langsameren Füllen oder Leeren des Tanks in der Visialisierung der Tanks sichtbar.
+ Außerdem zeigt die Überwachungskonsole höhere/niedrigere Durchflussraten an.
+ \item [Nichtfunktionale Anforderungen] Der geänderte Zu- oder Abflusswert wird mit der nächsten Aktualisierung auf der Überwachungskonsole angezeigt.
+\end{description}
+
+\subsubsection{Änderung der angezeigten Sensorwerte}
+\begin{description}
+ \item[Name] Hinzuwählen oder Abwählen von Sensordaten, die in der GUI angezeigt werden.
+ \item[Akteure] Manuel (Bediener der Software)
+ \item[Eingangsbedingung] Die Fertigungssimulation und die Überwachungskonsole sind in Betrieb und miteinander verbunden.
+ \item[Ereignisfluss]
+ \begin{itemize}[noitemsep]
+  \item Manuel öffnet in der Überwachungskonsole die Einstellungen.
+  \item Ein neues Fenster erscheint. Manuel navigiert in den Reiter ``Empfangene Daten''.
+  \item Manuel klickt auf die Haken in der Liste, um Sensorwerte hinzuzufügen oder auszublenden.
+  \item Manuel klickt den ``OK'' Knopf.
+ \end{itemize}
+ \item[Ausgangssituation] Die Sensordaten, deren Haken entfernt wurden, werden sofort ausgeblendet. Die Sensordaten, deren Haken hinzugefügt wurden, erscheinen sofort in der GUI.
+ \item [Nichtfunktionale Anforderungen] Die geänderten Einstellungen werden binnen einer halben Sekunde in der GUI dargestellt.
+\end{description}
+
+\subsubsection{Änderung der Aktualisierungsfrequenz}
+\begin{description}
+ \item[Name] Erhöhen oder verringern der Aktualisierungsfrequenz.
+ \item[Akteure] Manuel (Bediener der Software)
+ \item[Eingangsbedingung] Die Fertigungssimulation und die Überwachungskonsole sind in Betrieb und miteinander verbunden.
+ \item[Ereignisfluss]
+ \begin{itemize}[noitemsep]
+  \item Manuel öffnet in der Überwachungskonsole die Einstellungen.
+  \item Manuel navigiert in den Reiter ``Allgemeine Einstellungen''.
+  \item Manuel verschiebt den Schieberegler, der die Aktualisierungsfrequenz einstellt.
+  \item Manuel klickt den ``OK'' Knopf.
+ \end{itemize}
+ \item[Ausgangssituation] Die Sensorwerte in der Überwachungskonsole werden nun in Abständen der gewählten Aktualisierungsfrequenz aktualisiert.
+ \item [Nichtfunktionale Anforderungen] Die Frequenz ändert sich spätestens mit der nächsten Aktualisierung.
+\end{description}
 
 \subsection{Dynamische Modelle}
 \Blindtext[1]
