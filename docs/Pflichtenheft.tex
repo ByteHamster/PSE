@@ -87,16 +87,22 @@ mindestens 2GHz getaktet sein.
 \item[FA70] Kommt es in der Simulation zu einem \"Uberlauf so h\"alt die Simulation an und es wird der Text ``\"Uberlauf'' angezeigt.
 \item[FA80] Das System kann aus einem ``\"Uberlauf'' durch zur\"ucksetzen wieder in den Startzustand versetzt werden. Anschlie{\ss}end wird die Ausführung fortgesetzt.
 \item[FA90] Eine \"Uberwachungskonsole kann sich bei der Fertigungssimulation registrieren, um von dieser Daten zu erhalten.
+\item[FA100] Die Zuflusstemperaturen der oberen Tanks können seperat eingestellt werden.
+\item[FA110] Die Füllstände der Tanks werden gemessen.
+\item[FA120] Die Fertigungssimulation kommuniziert über OPC UA in einem TCP/IP Netzwerk mit Überwachungskonsolen.
+\item[FA130] Der Port \"uber den die Fertigungssimulation kommuniziert kann eingestellt werden.
 \end{enumerate}
 
 \subsubsection{GUI Darstellung}
 \begin{enumerate}
-\item[FA110] Der Mischer im unteren Flüssigkeitstank wird durch ein sich drehendes GUI Element dargestellt.
-  Die Umdrehungsgeschwindigkeit repräsentiert die Drehzahl des Mischermotors.
-\item[FA120] Der Füllstand der Flüssigkeitstanks wird durch das Füllen der Tanks in der Farbe ihrer Flüssigkeit dargestellt.
-\item[FA130] Die einstellbaren Parameter können in einem Unterfenster eingestellt werden. Darin existiert für jeden Tank ein eigener Reiter, der die 
-  tankspziefischen Einstellungen wie zum Beispiel Zu- und Abflussmengen, Zuflusstemperaturen oder Motordrehzahlen (siehe FA10 bis FA30) enthält.
-  Diese Parameter werden durch Schieberegler eingestellt.
+\item[FA110] Die GUI der Fertigungssimulation zeigt drei Tanks, die auf einer Höhe sind, und einen Tank unter den oberen drei.
+Es führen Leitungen von den drei oberen Tank zum unteren Tank.
+\item[FA120] Der Mischer im unteren Flüssigkeitstank wird durch ein sich drehendes GUI Element dargestellt.
+Die Umdrehungsgeschwindigkeit repräsentiert die Drehzahl des Mischermotors.
+\item[FA130] Der Füllstand der Flüssigkeitstanks wird durch das Füllen der Tanks in der Farbe ihrer Flüssigkeit dargestellt.
+\item[FA140] Die einstellbaren Parameter können in einem Unterfenster eingestellt werden. Darin existiert für jeden Tank ein eigener Reiter, der die 
+tankspziefischen Einstellungen wie zum Beispiel Zu- und Abflussmengen, Zuflusstemperaturen oder Motordrehzahlen (siehe FA10 bis FA30) enthält.
+Diese Parameter werden durch Schieberegler eingestellt.
 \end{enumerate}
 
 \subsubsection{Optionale Funktionalität}
@@ -119,6 +125,9 @@ mindestens 2GHz getaktet sein.
 \item[FA385] Bereits registrierte Alarme k\"onnen wieder gel\"oscht werden.
 \item[FA390] Die \"Uberwachungskonsole kann sich unter Angabe einer IP-Adresse bei einer Fertigungssimulation im Netzwerk
   registrieren, um von dieser Daten zu erhalten.
+\item[FA400] Die Überwachungskonsole kommuniziert über OPC UA in einem TCP/IP Netzwerk mit einer Fertigungssimulation. 
+\item[FA410] Die Überwachungskonsole verbindet sich mit der Fertigungssimulation über deren IP Adresse. 
+\item[FA420] Der Port Überwachungskonsole kann eingestellt werden.
 \end{enumerate}
 \subsubsection{GUI Darstellung}
 \begin{enumerate}
@@ -171,6 +180,25 @@ mindestens 2GHz getaktet sein.
 
 \section{Systemmodelle}
 \subsection{Szenarien}
+\subsubsection{Szenario 1: Unabhängige Installation}
+Manuel möchte Philipp, einem Kunden aus der Industrie, zeigen, was mit modernen Industrie 4.0 Techniken möglich ist.
+Da Philipp nur wenig Zeit hat, fährt Manuel mit dem Auto zu Philipp. Weil Manuel weder Platz, 
+noch Zeit für eine komplette Demonstrationsanlage hat, nimmt er einen Laptop mit Simulationssoftware mit.
+
+Vor Ort angekommen, startet er auf dem Laptop zwei virtuelle Maschinen auf denen je ein Programm installiert ist. 
+Einmal eine Fertigungssimulation und auf der anderen VM eine Überwachungskonsole, um die Fertigung zu überwachen.
+Nun weist Manuel den beiden virtuellen Maschinen je eine feste IP-Adresse zu.
+Anschliessend startet Manuel erst die Fertigungssimulation und dann die Überwachungskonsole.
+Beim Start der Überwachungskonsole wird er nach der IP-Adresse gefragt, unter der die Fertigungssimulation zu finden ist. 
+Er gibt die Adresse der anderen virtuellen Maschine an und auch der Überwachungskonsole startet erfolgreich. 
+Nun ist klar, dass die beiden Programme tatsächlich über das Netzwerk kommunizieren.
+
+In der Fertigungssimulation wird nun eine Produktionsanlage angezeigt, in der Flüssigkeiten aus drei Tanks
+in einem weiteren Tank vermischt werden; Farben des Inhalts der Ursprungs- und des Zieltanks visualisieren den Vorgang. 
+Im Zieltank dreht sich ein Motor, der für die Durchmischung sorgt.
+Es gibt Sensoren für Temperatur, Farbe, Füllstand und Durchfluss der Tanks sowie fuer die Drehzahl des Motors.
+In der Überwachungskonsole sieht man nun eine Reihe von Feldern mit sich aktualisierenden Daten,
+die Zu- und Abfluss, Farbe und Temperatur der verschiedenen Tanks zeigen.
 \subsubsection{Szenario 2: Konfigurierbarkeit}
 Als Philipp zu ihm kommt, will Manuel ihm die Funktion von OPC UA demonstrieren.
 Als erstes ändert er in der Fertigungssimulation den Zu- und Abfluss bei zwei der Tanks. Nun sehen die beiden, wie
