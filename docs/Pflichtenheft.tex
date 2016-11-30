@@ -79,45 +79,59 @@ mindestens 2GHz getaktet sein.
 \item[FA10] Die Zu- und Abflussmengen der oberen Flüssigkeitstanks können seperat eingestellt werden.
 \item[FA20] Die Abflussmenge des unteren Flüssigkeitstanks kann eingestellt werden. Die Zuflussmenge ergibt sich aus der Summe der Abflussmengen der oberen Tanks.
 \item[FA30] Der untere Tank enthält einen motorbetriebenen Mischer, dessen Drehzahl eingestellt werden kann. Dabei kann die Drehzahl in einem Bereich zwischen
-0 und 300 Umdrehungen pro Minute gewählt werden.
+  0 und 300 Umdrehungen pro Minute gewählt werden.
 \item[FA40] Jedem der oberen Tanks ist eine Flüssigkeitsfarbe zugeordnet. Die Farbe des unteren Tanks ergibt sich aus dem Mischungsverhältnis der oberen Tanks. Dabei wird
-angenommen, dass die Flüssigkeiten der oberen Tanks die selbe Deckkraft haben.
+  angenommen, dass die Flüssigkeiten der oberen Tanks die selbe Deckkraft haben.
 \item[FA50] Es gibt eine .jar Datei, die bei Ausführung die Fertigungssimulation startet.
+\item[FA60] Nach Anforderung durch die \"Uberwachungskonsole wird in bestimmten, in der Anfrage definierten, Zust\"anden ein Alarm an die \"Uberwachungskonsole gesendet.
+\item[FA70] Kommt es in der Simulation zu einem \"Uberlauf so h\"alt die Simulation an und es wird der Text ``\"Uberlauf'' angezeigt.
+\item[FA80] Das System kann aus einem ``\"Uberlauf'' durch zur\"ucksetzen wieder in den Startzustand versetzt werden. Anschlie{\ss}end wird die Ausführung fortgesetzt.
+\item[FA90] Eine \"Uberwachungskonsole kann sich bei der Fertigungssimulation registrieren, um von dieser Daten zu erhalten.
 \end{enumerate}
 
 \subsubsection{GUI Darstellung}
 \begin{enumerate}
 \item[FA110] Der Mischer im unteren Flüssigkeitstank wird durch ein sich drehendes GUI Element dargestellt.
-Die Umdrehungsgeschwindigkeit repräsentiert die Drehzahl des Mischermotors.
+  Die Umdrehungsgeschwindigkeit repräsentiert die Drehzahl des Mischermotors.
 \item[FA120] Der Füllstand der Flüssigkeitstanks wird durch das Füllen der Tanks in der Farbe ihrer Flüssigkeit dargestellt.
 \item[FA130] Die einstellbaren Parameter können in einem Unterfenster eingestellt werden. Darin existiert für jeden Tank ein eigener Reiter, der die 
-tankspziefischen Einstellungen wie zum Beispiel Zu- und Abflussmengen, Zuflusstemperaturen oder Motordrehzahlen (siehe FA10 bis FA30) enthält.
-Diese Parameter werden durch Schieberegler eingestellt.
+  tankspziefischen Einstellungen wie zum Beispiel Zu- und Abflussmengen, Zuflusstemperaturen oder Motordrehzahlen (siehe FA10 bis FA30) enthält.
+  Diese Parameter werden durch Schieberegler eingestellt.
 \end{enumerate}
 
 \subsubsection{Optionale Funktionalität}
 \label{fertigung-optional}
 \begin{enumerate}
-\item[FA240] Es gibt ein Dockerimage zur einfachen Verteilung und isolierten Ausführung der Fertigungssimulation
+\item[FA240] Es gibt ein Dockerimage zur einfachen Verteilung und isolierten Ausführung der Fertigungssimulation.
 \end{enumerate}
 
 \subsection{Überwachungskonsole}
 \subsubsection{Funktionalität}
 \begin{enumerate}
-\item[310] Die Überwachungskonsole zeigt die Farbe der Flüssigkeitstanks an.
-\item[320] Die Überwachungskonsole zeigt die Zu-, und Abflussmenge der oberen Flüssigkeitstanks an.
-\item[330] Die Überwachungskonsole zeigt die Abflussmenge des unteren Flüssigkeitstanks an.
-\item[340] Die Überwachungskonsole zeigt die Drehzahl des Mischermontors an.
-\item[350] Alle angezeigte Sensordaten werden mit der eingestellten Aktualisierungsfrequenz aktualisiert.
-\item[360] Der Benutzer kann die Anzeige der Füllstands- und Temperaturverläufe für jeden Tank ein- und ausschalten.
-\item[370] Es gibt eine .jar Datei, die bei Ausführung die Überwachungskonsole startet.
+\item[FA310] Die Überwachungskonsole zeigt die Farbe der Flüssigkeitstanks an.
+\item[FA320] Die Überwachungskonsole zeigt die Zu-, und Abflussmenge der oberen Flüssigkeitstanks an.
+\item[FA330] Die Überwachungskonsole zeigt die Abflussmenge des unteren Flüssigkeitstanks an.
+\item[FA340] Die Überwachungskonsole zeigt die Drehzahl des Mischermontors an.
+\item[FA350] Alle angezeigte Sensordaten werden mit der eingestellten Aktualisierungsfrequenz aktualisiert.
+\item[FA360] Der Benutzer kann die Anzeige der Füllstands- und Temperaturverläufe für jeden Tank ein- und ausschalten.
+\item[FA370] Es gibt eine .jar Datei, die bei Ausführung die Überwachungskonsole startet.
+\item[FA380] Es k\"onnen Alarme mit ihrem jeweiligen Ausl\"oser bei der Fertigungssimulation registriert werden.
+\item[FA385] Bereits registrierte Alarme k\"onnen wieder gel\"oscht werden.
+\item[FA390] Die \"Uberwachungskonsole kann sich unter Angabe einer IP-Adresse bei einer Fertigungssimulation im Netzwerk
+  registrieren, um von dieser Daten zu erhalten.
 \end{enumerate}
 \subsubsection{GUI Darstellung}
 \begin{enumerate}
-\item[410] Die Überwachungskonsole enthält für die Einstellungen ein getrenntes Fenster.
-\item[420] Das Einstellungsfenster hat zwei Reiter: ``Allgemeines'' und ``Empfangene Daten''.
-\item[430] Im Reiter ``Allgemeines'' kann die Aktualisierungsfrequenz im Bereich zwischen 20 und 4000 Millisekunden gewählt werden.
-\item[440] Im Reiter ``Empfangene Daten'' kann für jeden Tank die Anzeige des Füllstands und Temperaturverläufe mittels Checkboxen ein- und ausgeschaltet werden.
+\item[FA410] Die Überwachungskonsole enthält für die Einstellungen ein getrenntes Fenster.
+\item[FA420] Das Einstellungsfenster hat zwei Reiter: ``Allgemeines'' und ``Empfangene Daten''.
+\item[FA430] Im Reiter ``Allgemeines'' kann die Aktualisierungsfrequenz im Bereich zwischen 20 und 4000 Millisekunden gewählt werden.
+\item[FA440] Im Reiter ``Empfangene Daten'' kann für jeden Tank die Anzeige des Füllstands und Temperaturverläufe mittels Checkboxen ein- und ausgeschaltet werden.
+\item[FA450] Im Reiter ``Alarme'' werden die aktuell registrierten Alarme aufgelistet.
+\item[FA460] Im Reiter ``Alarme'' wird durch einen Klick auf das Feld ``Alarm registrieren'' der Dialog zur Erstellung eines
+  neuen Alarms ge\"offnet.
+\item[FA470] Im Reiter ``Alarme'' wird durch einen Klick auf den ``L\"oschen''-Button neben einem Alarm ein registrierter Alarm entfernt.
+\item[FA480] Alarme werden synchron zu den Aktualisierungen der Werte empfangen.
+\item[FA490] Empfangene Alarme werden im Logging-Fenster f\"ur Alarme angezeigt.
 \end{enumerate}
 
 \subsubsection{Optionale Funktionalität}
