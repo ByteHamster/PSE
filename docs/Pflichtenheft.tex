@@ -116,6 +116,25 @@ automatisch reagiert werden muss, etwa wenn Schwellenwerte überschritten werden
 Einstellungen das Aktualisierungsintervall von 1000ms auf 250ms. Anschließend sehen beide, wie sich die Werte in der
 Überwachungskonsole tatsächlich vier Mal pro Sekunde aktualisieren.
 
+\subsubsection{Szenario 3: Alarme}
+Philipp ist zunehmend an OPC UA interessiert, hat aber noch letzte Zweifel. Er merkt an, dass die Abfrage der Daten
+zwar gut funktioniert, eine wirkliche \"Uberwachung aber noch einen Wrapper f\"ur das Programm ben\"otigen w\"urde,
+um ungew\"ohnliche Zust\"ande in der Fertigung automatisch zu bemerken und darauf aufmerksam zu machen.
+Manuel merkt an, dass das ein guter Einwand ist und dass OPC UA auch daf\"ur eine passende Funktionalit\"at besitzt.
+
+Er \"offnet das Einstellungsmen\"u der \"Uberwachungskonsole und erstellt einen neuen Alarm. Um die Flexibilit\"at
+von OPC UA erneut zu demonstrieren fragt er Philipp, welchen Zustand er gerne abfangen w\"urde. Philipp w\"urde gerne
+abfangen, wenn ein Tank \"uberzulaufen droht. Er schl\"agt daf\"ur als Grenze einen F\"ullstand von 95\% vor.
+Manuel gibt also in der \"Uberwachungskonsole 95\% als Grenze an und w\"ahlt einen Tank, f\"ur den der Alarm stattfinden soll.
+Dann speichert er die neuen Einstellungen.
+
+Anschlie{\ss}end dreht er in der Fertigungssimulation den Zufluss des entsprechenden Tanks auf, woraufhin der F\"ullstand
+zu steigen beginnt. In der Fertigungssimulation ist der Steigende F\"ullstand zu sehen, in der \"Uberwachungskonsole werden
+steigende Werte angezeigt.
+Darauf wird der F\"ullstand von 95\% erreicht und in der \"Uberwachungskonsole der Alarm ausgel\"ost. Manuel
+beschlie{\ss}t, nicht zu handeln und der Tank l\"auft \"uber. Danach w\"ahlt Philipp in den Einstellungen der
+Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standardkonfiguration angezeigt wird.
+
 \subsection{Anwendungsfälle}
 \Blindtext[1]
 
