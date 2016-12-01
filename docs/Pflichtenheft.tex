@@ -83,6 +83,28 @@ bereitstellen, die über OPC UA Werte der Anlage abfragt.\\
 \item Die \gls{Uberwachungskonsole} hat keinen Einfluss auf den Prozessablauf.
 \end{itemize}
 
+\subsection{Musskriterien}
+\begin{itemize}
+  \item Die gesamte Kommunikation zwischen \"Uberwachungskonsole und Fertigungssimulation findet \"uber das OPC UA Protokoll statt.
+\end{itemize}
+
+\subsection{Kannkriterien}
+\begin{itemize}
+  \item 
+\end{itemize}
+
+
+\subsection{Abgrenzungskriterien}
+\begin{itemize}
+  \item Fertigungssimulation und \"Uberwachungskonsole dienen der Demonstration des OPC UA Protokolls. Dazu wird die Open Source
+    Implementierung Milo des OPC UA Protokolls verwendet. OPC UA wird nicht selbst implementiert.
+  \item Die \"Uberwachungskonsole ist auf die Fertigungssimulation abgestimmt. Es sollen damit nicht beliebige
+    Fertigungsprozesse \"uberwacht werden k\"onnen.
+  \item Die \"Uberwachungskonsole dient ausschlie{\ss}lich der \"Uberwachung der Daten, die von der Fertigungssimulation
+    stammen. Sie kann nicht steuernd in die Fertigungssimulation eingreifen.
+\end{itemize}
+
+
 \newpage
 \section{Produkteinsatz}
 \subsection{Anwendungsbereiche}
