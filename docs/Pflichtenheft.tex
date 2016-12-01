@@ -60,6 +60,27 @@ bereitstellen, die über OPC UA Werte der Anlage abfragt.\\
 \begin{center}
     \includegraphics[scale=0.5]{../system-sketch.png}
 \end{center}
+\subsection{Musskriterien}
+\subsubsection{Überwachungskonsole}
+\begin{itemize}
+\item Die \gls{Uberwachungskonsole} ruft alle Sensorwerte der Fertigungssimulation in einem festen Zeitintervall über einen OPC UA Client ab.
+\item Der OPC UA Client ist mit OPC UA Servern verbunden. Dazu ist die Einstellung der Verbindungsinformationen möglich.
+\item Die abgerufenen Werte und deren zeitlicher Verlauf werden graphisch dargestellt.
+\item Die Überwachungskonsole enthält Alarme, die beim Überschreiten von Schwellenwerten durch die Sensoren ausgelöst und dem Nutzer graphisch mitgeteilt werden.
+\end{itemize}
+\subsection{Kannkriterien}
+\subsubsection{Überwachungskonsole}
+\begin{itemize}
+\item Das Zeitintervall für den Empfang der Sensorwerte kann eingestellt werden.
+\item Die \gls{Uberwachungskonsole} erlaubt das Ein- und Ausschalten sowie Einstellen von Schwellenwerten von verschiedenen Alarmen.
+\item Die \gls{Uberwachungskonsole} verfügt über eine Logging-Funktion.
+\end{itemize}
+\subsection{Abgrenzungskriterien}
+\subsubsection{Überwachungskonsole}
+\begin{itemize}
+\item Die \gls{Uberwachungskonsole} zeigt alle Sensorwerte und deren zeitlichen Verlauf an, stellt allerdings den Prozess nicht dar.
+\item Die \gls{Uberwachungskonsole} hat keinen Einfluss auf den Prozessablauf.
+\end{itemize}
 
 \newpage
 \section{Produkteinsatz}
@@ -144,39 +165,59 @@ Diese Parameter werden durch Schieberegler eingestellt.
 \subsection{Überwachungskonsole}
 \subsubsection{Funktionalität}
 \begin{enumerate}
-\item[FA310] Die \gls{Uberwachungskonsole} zeigt die Farbe der Flüssigkeitstanks an.
-\item[FA320] Die \gls{Uberwachungskonsole} zeigt die Zu-, und Abflussmenge der oberen Flüssigkeitstanks an.
-\item[FA330] Die \gls{Uberwachungskonsole} zeigt die Abflussmenge des unteren Flüssigkeitstanks an.
-\item[FA340] Die \gls{Uberwachungskonsole} zeigt die Drehzahl des Mischermotors an.
-\item[FA350] Alle angezeigten \glspl{Sensordatum} werden mit der eingestellten Aktualisierungsfrequenz aktualisiert.
-\item[FA360] Der Benutzer kann die Anzeige der Füllstands- und Temperaturverläufe für jeden Tank ein- und ausschalten.
-\item[FA370] Es gibt eine .jar Datei, die bei Ausführung die \gls{Uberwachungskonsole} startet.
-\item[FA380] Es k\"onnen Alarme mit ihrem jeweiligen Ausl\"oser bei der Fertigungssimulation registriert werden.
-\item[FA385] Bereits registrierte Alarme k\"onnen wieder gel\"oscht werden.
-\item[FA390] Die \"Uberwachungskonsole kann sich unter Angabe einer IP-Adresse bei einer Fertigungssimulation im Netzwerk
-  registrieren, um von dieser Daten zu erhalten.
-\item[FA400] Die Überwachungskonsole kommuniziert über OPC UA in einem TCP/IP Netzwerk mit einer Fertigungssimulation. 
-\item[FA410] Die Überwachungskonsole verbindet sich mit der Fertigungssimulation über deren IP Adresse. 
-\item[FA420] Der Port der Überwachungskonsole kann eingestellt werden.
+\item[FA310] Es gibt eine .jar-Datei, die bei Ausführung die \gls{Uberwachungskonsole} startet.
+\item[FA320] Die \gls{Uberwachungskonsole} enthält einen OPC UA Client.
+\item[FA330] Der OPC UA Client erhält die IP-Adresse, die durch die \gls{Uberwachungskonsole} nicht geändert werden kann, des verwendeten Computers.
+\item[FA340] Der OPC UA Client verbindet sich mit den OPC UA Servern einer Fertigungssimulation und kommuniziert mit diesen über TCP/IP.
+\item[FA350] Beim Start versucht die \gls{Uberwachungskonsole}, eine Verbindung mit den OPC UA Servern herzustellen und sich dort zu registrieren.
+\item[FA360] Schlägt die Verbindung von [FA350] oder [FA600] fehl, wird der Benutzer über einen Dialog informiert.
+\item[FA370] Alle angezeigten \glspl{Sensordatum} werden mit einer eingestellten, festen Frequenz aktualisiert.
+\item[FA380] Alarme mit ihrem jeweiligen Auslöser können bei der Fertigungssimulation registriert werden.
+\item[FA390] Alarme werden mit den Aktualisierungen der Werte empfangen.
 \end{enumerate}
-\subsubsection{GUI Darstellung}
+
+\subsubsection{\gls{GUI} Darstellung}
 \begin{enumerate}
-\item[FA410] Die \gls{Uberwachungskonsole} enthält für die Einstellungen ein getrenntes Fenster.
-\item[FA420] Das Einstellungsfenster hat zwei Reiter: ``Allgemeines'' und ``Empfangene Daten''.
-\item[FA430] Im Reiter ``Allgemeines'' kann die Aktualisierungsfrequenz eingestellt werden.
-\item[FA440] Im Reiter ``Empfangene Daten'' kann für jeden Tank die Anzeige des Füllstands und des Temperaturverlaufs mittels Checkboxen ein- und ausgeschaltet werden.
-\item[FA450] Im Reiter ``Alarme'' werden die aktuell registrierten Alarme aufgelistet.
-\item[FA460] Im Reiter ``Alarme'' wird durch einen Klick auf das Feld ``Alarm registrieren'' der Dialog zur Erstellung eines
-  neuen Alarms ge\"offnet.
-\item[FA470] Im Reiter ``Alarme'' wird durch einen Klick auf den ``L\"oschen''-Button neben einem Alarm ein registrierter Alarm entfernt.
-\item[FA480] Alarme werden synchron zu den Aktualisierungen der Werte empfangen.
-\item[FA490] Empfangene Alarme werden im Logging-Fenster f\"ur Alarme angezeigt.
+\item[FA400] Die \gls{Uberwachungskonsole} stellt die Sensorwerte und Alarme jedes Flüssigkeitsanks in einem eigenen Bereich an.
+\item[FA410] Die \gls{Uberwachungskonsole} zeigt die Farbe der Tanks an.
+\item[FA420] Die \gls{Uberwachungskonsole} zeigt die Zuflussmenge der oberen Tanks auf jeweils einer Skala an.
+\item[FA430] Die \gls{Uberwachungskonsole} zeigt die Abflussmenge aller Tanks auf jeweils einer Skala an.
+\item[FA440] Die \gls{Uberwachungskonsole} zeigt den Füllstand aller Tanks auf jeweils einer Skala an.
+\item[FA450] Die \gls{Uberwachungskonsole} zeigt die Temperatur aller Tanks auf jeweils einer Skala an.
+\item[FA460] Die \gls{Uberwachungskonsole} zeigt die Drehzahl des Mischermotors im unteren Tank auf einer Skala an.
+\item[FA470] Der zeitliche Verlauf des Füllstandes wird jeweils für alle Tanks angezeigt.
+\item[FA480] Der zeitliche Verlauf der Temperatur wird jeweils für alle Tanks angezeigt.
+\item[FA490] Die \gls{Uberwachungskonsole} registriert für jeden Tank jeweils einen Alarm für einen Überlauf.
+\item[FA500] Die \gls{Uberwachungskonsole} registriert für jeden Tank jeweils einen Alarm für einen Unterlauf.
+\item[FA510] Ein Alarm wird durch einen Bezeichner und einen Kreis als Zustandssymbol dargestellt.
+\item[FA520] Ist der Kreis rot, wurde der Alarm ausgelöst. Ist der Kreis grün, ist der Alarm nicht ausgelöst.
+\item[FA530] Die \gls{Uberwachungskonsole} bietet eine Menübar mit den Punkten "`Datei"', das den Untermenüpunkt "`Einstellungen"' beinhaltet, und "`?"', das den Untermenüpunkt "`Über"' beinhaltet.
+\item[FA540] "`? $\rightarrow$ Über"' öffnet ein neues Fenster, in dem der Programmname, die Version, das Programmsymbol und die Lizenz angezeigt werden.
+\item[FA550] "`Datei $\rightarrow$ Einstellungen"' öffnet ein separates Fenster, in dem alle Einstellungen in einem Reiter "`Allgemeine Einstellungen"' vorgenommen werden können.
+\item[FA560] In den Einstellungen werden die IP-Adresse des OPC UA Clients und der OPC UA Server sowie deren Ports angezeigt.
+\end{enumerate}
+
+\subsubsection{Benutzerinteraktion}
+\begin{enumerate}
+\item[FA570] Der Benutzer kann in den Einstellungen den Port für den OPC UA Client bzw. die Ports und die IP-Adresse für die OPC UA Server einstellen.
+\item[FA580] Nach Drücken eines Speichern-Knopfes im Einstellungsfenster werden alle vorhandenen Einstellungen mit denen aus dem Fenster überschrieben.
+\item[FA590] Nach Drücken eines Abbruch-Knopfes im Einstellungsfenster bleiben die Einstellungen unverändert.
+\item[FA600] Werden Einstellungen für die OPC UA Server oder den OPC UA Client überschrieben, wird der OPC UA Client mit den neuen Einstellungen neu gestartet.
+\item[FA610] Die Eingaben in den Einstellungen sind direkt nach Eingabe auf richtige Formatierung und die Lage im definierten Intervall zu prüfen.
+\item[FA620] Der Benutzer wird über eine Fehleingabe und der Ursache dafür informiert.
 \end{enumerate}
 
 \subsubsection{Optionale Funktionalität}
 \label{konsole-optional}
 \begin{enumerate}
-\item[FA540] Es gibt ein \gls{Dockerimage} zur einfachen Verteilung und isolierten Ausführung der Überwachungskonsole
+\item[FA630] Es gibt ein \gls{Dockerimage} zur einfachen Verteilung und isolierten Ausführung der \gls{Uberwachungskonsole}.
+\item[FA640] Bereits registrierte Alarme können wieder gelöscht werden.
+\item[FA650] Das Einstellungsfenster wird um zwei Reiter, "`Verläufe"' und "`Alarme"' erweitert.
+\item[FA660] In den "`Allgemeinen Einstellungen"' ist es dem Nutzer möglich, das Zeitintervall für die Aktualisierung der Werte einzugeben.
+\item[FA670] Unter "`Verläufe"' ist es möglich, jede Aufnahme des zeitlichen Verlaufs eines Wertes ein und aus zu schalten.
+\item[FA680] In "`Alarme"' kann der Nutzer die verfügbaren Alarme ein- und ausschalten und deren Schwellenwerte festlegen.
+\item[FA690] Es gibt eine Loggingkonsole in Form einer mehrzeiligen Textausgabe.
+\item[FA700] Geloggt werden Fehler, Ausnahmen und Aktivitäten der \gls{Uberwachungskonsole} sowie alle eintreffenden Alarme.
 \end{enumerate}
 
 \section{Nichtfunktionale Anforderungen}
@@ -190,16 +231,21 @@ Diese Parameter werden durch Schieberegler eingestellt.
 
 \subsection{Überwachungskonsole}
 \begin{enumerate}
- \item[NF110] Die Aktualisierungsfrequenz kann im Bereich zwischen 20 und 4000 Millisekunden gewählt werden.
- \item[NF120] Wenn sich Werte in der Fertigungssimulation ändern, werden die Änderungen spätestens nach der Zeitspanne von
+ \item[NF110] IP-Adressen müssen dem Format "`YYY.YYY.YYY.YYY"' entsprechen oder gültige Hostnamen sein.
+ \item[NF120] Ports dürfen Werte im Bereich 1024 bis 61000 annehmen.
+ \item[NF130] Die Schwellenwerte für die Alarme dürfen zwischen 0 und 100 \% gewählt werden.
+ \item[NF140] Die Aktualisierungsfrequenz kann im Bereich zwischen 20 und 4000 Millisekunden gewählt werden.
+ \item[NF150] Wenn sich Werte in der Fertigungssimulation ändern, werden die Änderungen spätestens nach der Zeitspanne von
    einer halben Sekunde plus dem Aktualisierungsintervall in der Überwachungskonsole angezeigt.
 \end{enumerate}
 
 \section{Produktdaten}
 \begin{enumerate}
- \item[D10] Die Überwachungskonsole speichert die zuletzt eingestellte IP Adresse und den Port des Servers.
- \item[D20] Die Überwachungskonsole speichert die zuletzt angezeigten \glspl{Sensordatum}.
- \item[D30] Die Überwachungskonsole speichert die zuletzt aktivierten Alarme.
+ \item[D10] Die \gls{Uberwachungskonsole} speichert den zuletzt eingestellten Port des OPC UA Client.
+ \item[D20] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellte IP-Adresse und Ports der OPC UA Server.
+ \item[D30] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellte Aktualisierungsfrequenz für die Sensorwerte.
+ \item[D40] Die \gls{Uberwachungskonsole} speichert die zuletzt eingeschaltenen Alarme und alle Schwellenwerte.
+ \item[D50] Die \gls{Uberwachungskonsole} speichert, welche Verläufe zuletzt angezeigt wurden.
  \item[D110] Die Fertigungssimulation speichert den zuletzt genutzten Port.
  \item[D120] Die Fertigungssimulation speichert den zuletzt eingestellten \gls{Jitter}.
  \item[D130] Die Fertigungssimulation speichert \emph{eventuell (sofern implementiert)} aufgenommene \glspl{Makro}.
@@ -426,6 +472,8 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
 \section{Nutzerinterface-Skizzen}
 \subsection{Fertigungssimulation}
 \includegraphics[scale=0.5]{media/ui-sketch-server.png}
+\subsection{Überwachungskonsole}
+\includegraphics[scale=0.5]{media/ui-client.png}
 
 \pagebreak
 \printglossaries
