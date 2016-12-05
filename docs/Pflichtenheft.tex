@@ -332,6 +332,25 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
  \end{itemize}
  \item[Ausgangssituation] Die Fertigungssimulation und die Überwachungskonsole sind verbunden und laufen mit ihren Initialwerten.
  \item[Nichtfunktionale Anforderungen] Die Sensorwerte der Überwachungskonsole werden nach spätestens einer halben Sekunde aktualisiert.
+
+\subsubsection{Alarm erstellen}
+\begin{description}
+ \item[Name] Erstellen eines neuen Alarms in der \"Uberwachungskonsole
+ \item[Akteure] Manuel (Bediener der Software)
+ \item[Eingangsbedingung] Die Fertigungssimulation und die \"Uberwachungskonsole sind in Betrieb und miteinander verbunden.
+ \item[Ereignisfluss]
+ \begin{itemize}[noitemsep]
+  \item Manuel \"offnet in der \"Uberwachungskonsole die Einstellungen.
+  \item Manuel navigiert in den Reiter ``Alarme''.
+  \item Manuel klickt den Knopf ``Neuen Alarm erstellen''.
+  \item Manuel w\"ahlt den OPC UA Server zu dem der Alarm geh\"ort.
+  \item Manuel w\"ahlt den Sensor zu dem der Alarm geh\"ort.
+  \item Manuel erstellt eine Regel zum Ausl\"osen des Alarms.
+  \item Manuel klickt den ``\"Ubernehmen'' Knopf.
+ \end{itemize}
+ \item[Ausgangssituation] Wenn der Sensor die Alarmbedingung erf\"ullt wird an die \"Uberwachungskonsole ein Alarm gesendet.
+ \item [Nichtfunktionale Anforderungen] Sp\"atestens nach 10ms ist die Aktualisierung \"ubernommen und Alarme werden korrekt empfangen.
+>>>>>>> [doc] Add Use Case 'Alarm erstellen'.
 \end{description}
 
 \subsection{Dynamische Modelle}
