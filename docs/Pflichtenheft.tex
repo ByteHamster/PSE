@@ -114,7 +114,7 @@ mindestens 2GHz getaktet sein.
 \item[FA130] Der Port, \"uber den die Fertigungssimulation kommuniziert, kann eingestellt werden.
 \end{enumerate}
 
-\subsubsection{\gls{GUI} Darstellung}
+\subsubsection{GUI Darstellung}
 \begin{enumerate}
 \item[FA110] Die GUI der Fertigungssimulation zeigt drei Tanks, die auf einer Höhe sind, und einen Tank unter den oberen drei.
 Es führen Leitungen von den drei oberen Tanks zum unteren Tank.
@@ -124,6 +124,15 @@ Die Umdrehungsgeschwindigkeit repräsentiert die Drehzahl des Mischermotors.
 \item[FA140] Die einstellbaren Parameter können in einem Unterfenster eingestellt werden. Darin existiert für jeden Tank ein eigener Reiter, der die 
 tankspezifischen Einstellungen wie zum Beispiel Zu- und Abflussmengen, Zuflusstemperaturen oder Motordrehzahlen (siehe FA10 bis FA30) enthält.
 Diese Parameter werden durch Schieberegler eingestellt.
+\item[FA150] Jeder der dargestellten Tanks ist mit einer hellgrauen Box hinterlegt, welche den Zuständigkeitsbereich des jeweiligen OPC UA Servers repräsentiert.
+\item[FA160] Die Fertigungssimulation besitzt einen ``Über''-Dialog, welcher Lizenzinfos zu verwendeten Bibliotheken,
+  sowie eine kurze Information zu den Erstellern des Programms enthält.
+\item[FA170] Die Fertigungssimulation besitzt einen Einstellungsdialog, der im Menü über ``Datei $\rightarrow$ Einstellungen'' angezeigt werden kann.
+\item[FA180] Der Einstellungsdialog besitzt Buttons zum Verwerfen (``Abbrechen'') und Anwenden der Änderungen.
+\item[FA190] Der Einstellungsdialog besitzt einen ``OK''-Button, welcher die Änderungen anwendet und den Dialog schließt.
+\item[FA200] Der Einstellungsdialog besitzt einen Regler, welcher den \gls{Jitter} durch einen Schieberegler konfigurierbar macht.
+  Hierbei entspricht ein \gls{Jitter} von 0 der Deaktivierung der Funktion.
+\item[FA210] Der Einstellungsdialog besitzt eine Liste mit \glspl{Makro}. Daneben befinden sich Buttons zum Erstellen, Umbenennen und Löschen von \glspl{Makro}.
 \end{enumerate}
 
 \subsubsection{Optionale Funktionalität}
@@ -150,7 +159,7 @@ Diese Parameter werden durch Schieberegler eingestellt.
 \item[FA410] Die Überwachungskonsole verbindet sich mit der Fertigungssimulation über deren IP Adresse. 
 \item[FA420] Der Port der Überwachungskonsole kann eingestellt werden.
 \end{enumerate}
-\subsubsection{\gls{GUI} Darstellung}
+\subsubsection{GUI Darstellung}
 \begin{enumerate}
 \item[FA410] Die \gls{Uberwachungskonsole} enthält für die Einstellungen ein getrenntes Fenster.
 \item[FA420] Das Einstellungsfenster hat zwei Reiter: ``Allgemeines'' und ``Empfangene Daten''.
