@@ -392,6 +392,24 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
  \item [Nichtfunktionale Anforderungen] Die ge\"anderte Alarmbedingung ist nach sp\"atestens 10ms an die Fertigungssimulation \"ubermittelt.
 \end{description}
 
+\subsubsection{Alarm l\"oschen}
+\begin{description}
+ \item[Name] L\"oschen eines bereits erstellten Alarms.
+ \item[Akteure] Manuel (Bediener der Software)
+ \item[Eingangsbedingung] Die \"Uberwachungskonsole ist in Betrieb. Es ist mindestens ein Alarm bereits vorhanden.
+ \item[Ereignisfluss]
+ \begin{itemize}[noitemsep]
+  \item Manuel \"offnet in der \"Uberwachungskonsole die Einstellungen.
+  \item Manuel navigiert in den Reiter ``Alarme''.
+  \item Manuel klickt auf ``Alarme anzeigen''.
+  \item Manuel w\"ahlt alle gew\"unschten Alarme.
+  \item Manuel klickt auf ``Alarme l\"oschen''.
+  \item Manuel klickt im folgenden Dialog auf ``Best\"atigen''.
+ \end{itemize}
+ \item[Ausgangssituation] Die alten Alarmbedingungen l\"osen keine Alarme mehr aus.
+ \item [Nichtfunktionale Anforderungen] Die L\"oschung der Alarme ist nach sp\"atestens 10ms an die Fertigungssimulation \"ubermittelt.
+\end{description}
+
 \subsection{Dynamische Modelle}
 \Blindtext[1]
 
