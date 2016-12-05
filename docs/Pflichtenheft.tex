@@ -34,7 +34,23 @@
 \pagebreak
 
 \section{Einleitung}
-\Blindtext[1]
+In der heutigen Zeit dringt die Vernetzung in immer neue Bereiche vor. So auch in die Industrie und ihre Fertigungsprozesse.
+Dabei soll das Projekt Industrial Data Space helfen, einen Datenraum zu erzeugen, der Datensicherheit, Datensouveränität und
+Transparenz bietet. Auf diese Weise soll dazu beigetragen werden, Industrie 4.0 voranzutreiben und somit durch Vernetzung von
+Maschinen, Computern und Menschen die Leistungsfähigkeit der Industrie zu erhöhen und auf die Zukunft auszurichten.
+Dabei hilft das auf TCP/IP basierende Kommunikationsprotokoll OPC UA, Maschinen miteinander interagieren zu lassen.
+
+Die hier vorgestellte Simulation ermöglicht es, die Vorteile der Vernetzung von Maschinen mit OPC UA zu demonstrieren und zu verdeutlichen, um Industriekunden von den neuen Möglichkeiten zu überzeugen.
+Die Hauptkomponenten sind ein Server (Fertigungssimulation) und ein Client (Überwachungskonsole),
+die jeweils eine graphische Benutzeroberfläche (GUI) besitzen und auf getrennten Maschinen laufen können.
+Sie kommunizieren lediglich über OPC UA.
+In der GUI der Fertigungssimulation wird ein industrieller Prozess dargestellt.
+Drei Tanks werden mit je einer farbigen Flüssigkeit gefüllt und leiten diese in einen weiteren Tank,
+in dem die Flüssigkeiten durch einen Motor gemischt werden. Daten und Werte des Prozesses werden ebenfalls angezeigt. Dazu gibt es
+die Möglichkeit, die Produktion zu konfigurieren,  zum Beispiel indem man Zu- und Abflussmengen oder Grenzen für Füllstände einstellt. Die visuelle Darstellung passt sich an die Konfiguration an.
+Die Überwachungskonsole liest die Daten der Fertigungssimulation, stellt sie optisch ansprechend in einem Monitoring dar
+und kann Alarme anzeigen, falls Grenzwerte überschritten werden. Das Monitoring ist ebenfalls konfigurierbar. Es ist etwa möglich, Filter auf Variablen anzuwenden. Allerdings hat die Überwachungskonsole keinen Einfluss auf die Fertigungssimulation.
+
 
 \section{Zielbestimmung}
 Der \gls{Systemadapter} dient dem Ziel, die Funktion von \gls{OPC UA} zu demonstrieren, ohne eine konkrete \gls{Produktionsanlage}
@@ -301,6 +317,21 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
  \end{itemize}
  \item[Ausgangssituation] Die Sensorwerte in der Überwachungskonsole werden nun in Abständen der gewählten Aktualisierungsfrequenz aktualisiert.
  \item [Nichtfunktionale Anforderungen] Die Frequenz ändert sich spätestens mit der nächsten Aktualisierung.
+\end{description}
+
+\subsubsection{Erstes Starten der Simulation auf virtuellen Maschinen}
+\begin{description}
+ \item[Name] Einrichtung und Starten der Simulation auf virtuellen Maschinen
+ \item[Akteure] Manuel (Bediener der Software)
+ \item[Eingangsbedingung] Eine virtuelle Maschine, auf der die JAR der Überwachungskonsole gespeichert ist und eine virtuelle Maschine, auf der die JAR der Fertigungssimulation gespeichert ist, sind in Betrieb und haben feste IP Adressen zugewiesen bekommen.
+ \item[Ereignisfluss]
+ \begin{itemize}[noitemsep]
+  \item Manuel startet die JAR der Fertigungssimulation.
+  \item Manuel startet die JAR der Überwachungskonsole.
+  \item Manuel gibt die IP Adresse ein, unter der die Fertigungssimulation zu finden ist.
+ \end{itemize}
+ \item[Ausgangssituation] Die Fertigungssimulation und die Überwachungskonsole sind verbunden und laufen mit ihren Initialwerten.
+ \item[Nichtfunktionale Anforderungen] Die Sensorwerte der Überwachungskonsole werden nach spätestens einer halben Sekunde aktualisiert.
 \end{description}
 
 \subsection{Dynamische Modelle}
