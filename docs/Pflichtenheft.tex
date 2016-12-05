@@ -335,22 +335,41 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
 
 \subsubsection{Alarm erstellen}
 \begin{description}
- \item[Name] Erstellen eines neuen Alarms in der \"Uberwachungskonsole
+ \item[Name] Erstellen eines neuen Alarms in der \gls{Uberwachungskonsole}
  \item[Akteure] Manuel (Bediener der Software)
- \item[Eingangsbedingung] Die Fertigungssimulation und die \"Uberwachungskonsole sind in Betrieb und miteinander verbunden.
+ \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
  \item[Ereignisfluss]
  \begin{itemize}[noitemsep]
-  \item Manuel \"offnet in der \"Uberwachungskonsole die Einstellungen.
+  \item Manuel \"offnet in der \gls{Uberwachungskonsole} die Einstellungen.
   \item Manuel navigiert in den Reiter ``Alarme''.
   \item Manuel klickt den Knopf ``Neuen Alarm erstellen''.
-  \item Manuel w\"ahlt den OPC UA Server zu dem der Alarm geh\"ort.
+  \item Manuel w\"ahlt den \gls{OPC UA} Server zu dem der Alarm geh\"ort.
   \item Manuel w\"ahlt den Sensor zu dem der Alarm geh\"ort.
   \item Manuel erstellt eine Regel zum Ausl\"osen des Alarms.
   \item Manuel klickt den ``\"Ubernehmen'' Knopf.
  \end{itemize}
- \item[Ausgangssituation] Wenn der Sensor die Alarmbedingung erf\"ullt wird an die \"Uberwachungskonsole ein Alarm gesendet.
+ \item[Ausgangssituation] Wenn der Sensor die Alarmbedingung erf\"ullt wird an die \gls{Uberwachungskonsole} ein Alarm gesendet.
  \item [Nichtfunktionale Anforderungen] Sp\"atestens nach 10ms ist die Aktualisierung \"ubernommen und Alarme werden korrekt empfangen.
 >>>>>>> [doc] Add Use Case 'Alarm erstellen'.
+\end{description}
+
+\subsubsection{Alarm empfangen}
+\begin{description}
+ \item[Name] Empfangen eines Alarms in der \gls{Uberwachungskonsole}
+ \item[Akteure] \gls{Fertigungssimulation}
+ \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
+  Es ist mindestens ein Alarm eingerichtet.
+ \item[Ereignisfluss]
+ \begin{itemize}[noitemsep]
+  \item In der \gls{Fertigungssimulation} kommt es zu einem Alarmzustand.
+  \item Die \gls{Fertigungssimulation} sendet an die registrierte \gls{Uberwachungskonsole} den entsprechenden Alarm.
+  \item Die \gls{Uberwachungskonsole} empf\"angt den Alarm.
+  \item Die \gls{Uberwachungskonsole} zeigt in der \gls{GUI} den Alarm an.
+ \end{itemize}
+ \item[Ausgangssituation] \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} laufen normal weiter. In der \gls{GUI} der
+  \gls{Uberwachungskonsole} ist der Alarmeintrag zu sehen.
+ \item [Nichtfunktionale Anforderungen] Die \gls{GUI} der \gls{Uberwachungskonsole} muss einen empfangenen Alarm nach sp\"atestens
+  10ms anzeigen.
 \end{description}
 
 \subsection{Dynamische Modelle}
