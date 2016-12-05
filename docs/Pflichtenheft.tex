@@ -335,7 +335,7 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
 
 \subsubsection{Alarm erstellen}
 \begin{description}
- \item[Name] Erstellen eines neuen Alarms in der \gls{Uberwachungskonsole}
+ \item[Name] Erstellen eines neuen Alarms in der \gls{Uberwachungskonsole}.
  \item[Akteure] Manuel (Bediener der Software)
  \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
  \item[Ereignisfluss]
@@ -355,7 +355,7 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
 
 \subsubsection{Alarm empfangen}
 \begin{description}
- \item[Name] Empfangen eines Alarms in der \gls{Uberwachungskonsole}
+ \item[Name] Empfangen eines Alarms in der \gls{Uberwachungskonsole}.
  \item[Akteure] \gls{Fertigungssimulation}
  \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
   Es ist mindestens ein Alarm eingerichtet.
@@ -370,6 +370,26 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
   \gls{Uberwachungskonsole} ist der Alarmeintrag zu sehen.
  \item [Nichtfunktionale Anforderungen] Die \gls{GUI} der \gls{Uberwachungskonsole} muss einen empfangenen Alarm nach sp\"atestens
   10ms anzeigen.
+\end{description}
+
+\subsubsection{Alarm \"andern}
+\begin{description}
+ \item[Name] \"Andern eines bereits vorhandenen Alarms in der \gls{Uberwachungskonsole}.
+ \item[Akteure] Manuel (Bediener der Software)
+ \item[Eingangsbedingung] Die \gls{Uberwachungskonsole} ist in Betrieb. Es ist mindestens ein Alarm bereits vorhanden.
+ \item[Ereignisfluss]
+ \begin{itemize}[noitemsep]
+  \item Manuel \"offnet in der \gls{Uberwachungskonsole} die Einstellungen.
+  \item Manuel navigiert in den Reiter ``Alarme''.
+  \item Manuel klickt auf ``Alarme anzeigen''.
+  \item Manuel w\"ahlt den gew\"unschten Alarm an.
+  \item Der Button ``Alarm bearbeiten'' wird klickbar.
+  \item Manuel klickt auf ``Alarm bearbeiten''.
+  \item Manuel tr\"agt die gew\"unschten \"Anderungen ein.
+  \item Manuel klickt auf \"Ubernehmen.
+ \end{itemize}
+ \item[Ausgangssituation] Die alte Alarmbedingung l\"ost keine Alarme mehr aus. Die neue Alarmbedingung l\"ost Alarme aus.
+ \item [Nichtfunktionale Anforderungen] Die ge\"anderte Alarmbedingung ist nach sp\"atestens 10ms an die Fertigungssimulation \"ubermittelt.
 \end{description}
 
 \subsection{Dynamische Modelle}
