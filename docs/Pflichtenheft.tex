@@ -85,23 +85,31 @@ bereitstellen, die über OPC UA Werte der Anlage abfragt.\\
 
 \subsection{Musskriterien}
 \begin{itemize}
-  \item Die gesamte Kommunikation zwischen \"Uberwachungskonsole und Fertigungssimulation findet \"uber das OPC UA Protokoll statt.
+  \item Die gesamte Kommunikation zwischen \gls{Uberwachungskonsole} und \gls{Fertigungssimulation} findet \"uber das \gls{OPC UA} Protokoll statt.
+  \item \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} k\"onnen auf getrennten Rechnern laufen.
+  \item \gls{Jitter} in den Zuflussmengen der \gls{Fertigungssimulation} sorgt f\"ur Variation in den gemessenen Werten.
+  \item In der \gls{Uberwachungskonsole} sind Alarme vorgegeben, die der Benutzer an- und ausschalten kann.
+  \item In der \gls{Fertigungssimulation} kann der Benutzer die simulierte Fertigung steuern.
 \end{itemize}
 
 \subsection{Kannkriterien}
 \begin{itemize}
-  \item 
+  \item Die \gls{Fertigungssimulation} besitzt vorgegebene \glspl{Makro} zur Bef\"ullung und Entleerung der Tanks, um f\"ur Dynamik zu sorgen.
+  \item Es ist m\"oglich, in der \gls{Fertigungssimulation} eigene \glspl{Makro} aufzunehmen und wieder abzuspielen.
+  \item Die in der \gls{Uberwachungskonsole} eingestellten Alarme k\"onnen gespeichert und beim n\"achsten Programmstart automatisch
+    \"ubernommen werden.
+  \item In der \gls{Fertigungssimulation} stehen mehrere verschiedene Fertigungen als Auswahl zur Verf\"ugung.
+  \item Die Schwellen zur Ausl\"osung der Alarme k\"onnen vom Benutzer ge\"andert werden.
 \end{itemize}
-
 
 \subsection{Abgrenzungskriterien}
 \begin{itemize}
-  \item Fertigungssimulation und \"Uberwachungskonsole dienen der Demonstration des OPC UA Protokolls. Dazu wird die Open Source
-    Implementierung Milo des OPC UA Protokolls verwendet. OPC UA wird nicht selbst implementiert.
-  \item Die \"Uberwachungskonsole ist auf die Fertigungssimulation abgestimmt. Es sollen damit nicht beliebige
+  \item \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} dienen der Demonstration des \gls{OPC UA} Protokolls. Dazu wird die Open Source
+    Implementierung \gls{Milo} des \gls{OPC UA} Protokolls verwendet. \gls{OPC UA} wird nicht selbst implementiert.
+  \item Die \gls{Uberwachungskonsole} ist auf die \gls{Fertigungssimulation} abgestimmt. Es sollen damit nicht beliebige
     Fertigungsprozesse \"uberwacht werden k\"onnen.
-  \item Die \"Uberwachungskonsole dient ausschlie{\ss}lich der \"Uberwachung der Daten, die von der Fertigungssimulation
-    stammen. Sie kann nicht steuernd in die Fertigungssimulation eingreifen.
+  \item Die \gls{Uberwachungskonsole} dient ausschlie{\ss}lich der \"Uberwachung der Daten, die von der \gls{Fertigungssimulation}
+    stammen. Sie kann nicht steuernd in die \gls{Fertigungssimulation} eingreifen.
 \end{itemize}
 
 
