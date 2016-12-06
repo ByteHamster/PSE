@@ -30,6 +30,7 @@
 
 \begin{document}
 \maketitle
+\pagebreak
 \tableofcontents
 \pagebreak
 
@@ -38,24 +39,24 @@ In der heutigen Zeit dringt die Vernetzung in immer neue Bereiche vor. So auch i
 Dabei soll das Projekt Industrial Data Space helfen, einen Datenraum zu erzeugen, der Datensicherheit, Datensouveränität und
 Transparenz bietet. Auf diese Weise soll dazu beigetragen werden, Industrie 4.0 voranzutreiben und somit durch Vernetzung von
 Maschinen, Computern und Menschen die Leistungsfähigkeit der Industrie zu erhöhen und auf die Zukunft auszurichten.
-Dabei hilft das auf TCP/IP basierende Kommunikationsprotokoll OPC UA, Maschinen miteinander interagieren zu lassen.
+Dabei hilft das auf TCP/IP basierende Kommunikationsprotokoll OPC UA, Maschinen miteinander kommunizieren zu lassen.
 
-Die hier vorgestellte Simulation ermöglicht es, die Vorteile der Vernetzung von Maschinen mit OPC UA zu demonstrieren und zu verdeutlichen, um Industriekunden von den neuen Möglichkeiten zu überzeugen.
-Die Hauptkomponenten sind ein Server (Fertigungssimulation) und ein Client (Überwachungskonsole),
-die jeweils eine graphische Benutzeroberfläche (GUI) besitzen und auf getrennten Maschinen laufen können.
+Die hier vorgestellte Simulation ermöglicht es, die Vorteile der Vernetzung von Maschinen mit OPC UA interaktiv zu demonstrieren, um Industriekunden von den neuen Möglichkeiten zu überzeugen.
+Die Hauptkomponenten sind ein Fertigungssimulation (Server) und ein Überwachungskonsole (Client),
+die jeweils eine graphische Benutzeroberfläche (GUI) enthalten und auf getrennten Computern laufen können.
 Sie kommunizieren lediglich über OPC UA.
 In der GUI der Fertigungssimulation wird ein industrieller Prozess dargestellt.
 Drei Tanks werden mit je einer farbigen Flüssigkeit gefüllt und leiten diese in einen weiteren Tank,
 in dem die Flüssigkeiten durch einen Motor gemischt werden. Daten und Werte des Prozesses werden ebenfalls angezeigt. Dazu gibt es
-die Möglichkeit, die Produktion zu konfigurieren, zum Beispiel indem man Zu- und Abflussmengen oder Grenzen für Füllstände einstellt. Die visuelle Darstellung passt sich an die Konfiguration an.
+die Möglichkeit, die Parameter der Produktion zu konfigurieren,  zum Beispiel indem man Zu- und Abflussmengen oder Grenzen für Füllstände einstellt. Die visuelle Darstellung passt sich an die Konfiguration an.
 Die Überwachungskonsole liest die Daten der Fertigungssimulation, stellt sie optisch ansprechend in einem Monitoring dar
 und kann Alarme anzeigen, falls Grenzwerte überschritten werden. Das Monitoring ist ebenfalls konfigurierbar. Es ist etwa möglich, Filter auf Variablen anzuwenden. Allerdings hat die Überwachungskonsole keinen Einfluss auf die Fertigungssimulation.
 
-
+\pagebreak
 \section{Zielbestimmung}
 Der \gls{Systemadapter} dient dem Ziel, die Funktion von \gls{OPC UA} zu demonstrieren, ohne eine konkrete \gls{Produktionsanlage}
 benutzen zu müssen. Somit kann beim Kunden das Protokoll flexibler vorgestellt werden. Hierzu soll das Programm
-sowohl eine \gls{Produktionsanlage} simulieren und den Status grafisch darstellen, als auch auch eine Überwachungskonsole
+sowohl eine \gls{Produktionsanlage} simulieren und dessen Status grafisch darstellen, als auch auch eine Überwachungskonsole
 bereitstellen, die über OPC UA Werte der Anlage abfragt.\\
 \begin{center}
     \includegraphics[scale=0.5]{../system-sketch.png}
@@ -65,7 +66,7 @@ bereitstellen, die über OPC UA Werte der Anlage abfragt.\\
 \begin{itemize}
 \item Die \gls{Uberwachungskonsole} ruft alle Sensorwerte der Fertigungssimulation in einem festen Zeitintervall über einen OPC UA Client ab.
 \item Der OPC UA Client ist mit OPC UA Servern verbunden. Dazu ist die Einstellung der Verbindungsinformationen möglich.
-\item Die abgerufenen Werte und deren zeitlicher Verlauf werden graphisch dargestellt.
+\item Die abgerufenen Werte und deren zeitlicher Verlauf werden graphisch dargestellt. Die Werte sind Zu- und Abflussmengen, Temperaturen, Flüssigkeitsfarben sowie die Drehzahl eines Mischermotors.
 \item Die Überwachungskonsole enthält Alarme, die beim Überschreiten von Schwellenwerten durch die Sensoren ausgelöst und dem Nutzer graphisch mitgeteilt werden.
 \end{itemize}
 \subsection{Kannkriterien}
@@ -100,6 +101,7 @@ die von OPC UA profitieren würden.
 Das Produkt kann entweder auf Messen, in Büros oder in Fertigungshallen direkt bei Kunden verwendet werden,
 so lange die eingesetzte Hardware (siehe \ref{Hardware}) keine Probleme mit den Umgebungsbedingungen hat.
 
+\pagebreak
 \section{Produktumgebung}
 \subsection{Software}
 Das Produkt erfordert einen Computer, auf dem das Betriebssystem Microsoft Windows 7, 8.1 oder 10 installiert ist,
@@ -115,21 +117,22 @@ Es ist ein Laptop oder Desktopcomputer notwendig, der eines der oben genannten B
 Zudem sind mindestens 2GB Arbeitsspeicher notwendig. Die CPU muss die x86 Architektur unterstützen, zwei Kerne haben und mit
 mindestens 2GHz getaktet sein.
 
+\pagebreak
 \section{Funktionale Anforderungen}
 \subsection{Fertigungssimulation}
 \subsubsection{Funktionalität}
 \begin{enumerate}
-\item[FA10] Die Zu- und Abflussmengen der oberen Flüssigkeitstanks können seperat eingestellt werden.
-\item[FA20] Die Abflussmenge des unteren Flüssigkeitstanks kann eingestellt werden. Die Zuflussmenge ergibt sich aus der Summe der Abflussmengen der oberen Tanks.
+\item[FA10] Die Zu- und Abflussmengen der oberen (siehe FA110) Flüssigkeitstanks können seperat eingestellt werden.
+\item[FA20] Die Abflussmenge des unteren (siehe FA110) Flüssigkeitstanks kann eingestellt werden. Die Zuflussmenge ergibt sich aus der Summe der Abflussmengen der oberen Tanks.
 \item[FA30] Der untere Tank enthält einen motorbetriebenen Mischer, dessen Drehzahl eingestellt werden kann.
 \item[FA40] Jedem der oberen Tanks ist eine Flüssigkeitsfarbe zugeordnet. Die Farbe des unteren Tanks ergibt sich aus dem Mischungsverhältnis der oberen Tanks. Dabei wird
   angenommen, dass die Flüssigkeiten der oberen Tanks die selbe Deckkraft haben.
+\item[FA45] Die Zuflusstemperaturen der oberen Tanks können seperat eingestellt werden.
 \item[FA50] Es gibt eine .jar Datei, die bei Ausführung die Fertigungssimulation startet.
 \item[FA60] Nach Anforderung durch die \"Uberwachungskonsole wird in bestimmten, in der Anfrage definierten, Zust\"anden ein Alarm an die \"Uberwachungskonsole gesendet.
 \item[FA70] Kommt es in der Simulation zu einem \"Uberlauf so h\"alt die Simulation an und es wird der Text ``\"Uberlauf'' angezeigt.
-\item[FA80] Das System kann aus einem ``\"Uberlauf'' durch zur\"ucksetzen wieder in den Startzustand versetzt werden. Anschlie{\ss}end wird die Ausführung fortgesetzt.
+\item[FA80] Das System kann aus einem ``\"Uberlauf'' durch den Knopf ``zur\"ucksetzen'' in den Einstellungen wieder in den Startzustand versetzt werden. Anschlie{\ss}end wird die Ausführung fortgesetzt.
 \item[FA90] Eine \"Uberwachungskonsole kann sich bei der Fertigungssimulation registrieren, um von dieser Daten zu erhalten.
-\item[FA100] Die Zuflusstemperaturen der oberen Tanks können seperat eingestellt werden.
 \item[FA110] Die Füllstände der Tanks werden gemessen.
 \item[FA120] Die Fertigungssimulation kommuniziert über OPC UA in einem TCP/IP Netzwerk mit Überwachungskonsolen.
 \item[FA130] Die Ports, über welche die einzelnen OPC UA Server der Fertigungssimulation kommunizieren, können eingestellt werden.
@@ -149,11 +152,10 @@ Diese Parameter werden durch Schieberegler eingestellt.
 \item[FA160] Die Fertigungssimulation besitzt einen ``Über''-Dialog, welcher Lizenzinfos zu verwendeten Bibliotheken,
   sowie eine kurze Information zu den Erstellern des Programms enthält.
 \item[FA170] Die Fertigungssimulation besitzt einen Einstellungsdialog, der im Menü über ``Datei $\rightarrow$ Einstellungen'' angezeigt werden kann.
-\item[FA180] Der Einstellungsdialog besitzt Buttons zum Verwerfen (``Abbrechen'') und Anwenden der Änderungen.
-\item[FA190] Der Einstellungsdialog besitzt einen ``OK''-Button, welcher die Änderungen anwendet und den Dialog schließt.
+\item[FA180] Der Einstellungsdialog besitzt Buttons zum Verwerfen (``Abbrechen'') und Anwenden der Änderungen. Das Anwenden geschieht über einen ``OK''-Button, welcher zudem den Dialog schließt.
 \item[FA200] Der Einstellungsdialog besitzt einen Regler, welcher den \gls{Jitter} durch einen Schieberegler konfigurierbar macht.
   Hierbei entspricht ein \gls{Jitter} von 0 der Deaktivierung der Funktion.
-\item[FA210] Der Einstellungsdialog besitzt eine Liste mit \glspl{Makro}. Daneben befinden sich Buttons zum Erstellen, Umbenennen und Löschen von \glspl{Makro}.
+\item[FA210] Der Einstellungsdialog besitzt im Reiter ``Makros'' eine Liste mit \glspl{Makro}. Daneben befinden sich Buttons zum Erstellen, Umbenennen und Löschen von \glspl{Makro}.
 \end{enumerate}
 
 \subsubsection{Optionale Funktionalität}
@@ -166,7 +168,7 @@ Diese Parameter werden durch Schieberegler eingestellt.
 \subsubsection{Funktionalität}
 \begin{enumerate}
 \item[FA310] Es gibt eine .jar-Datei, die bei Ausführung die \gls{Uberwachungskonsole} startet.
-\item[FA320] Die \gls{Uberwachungskonsole} enthält einen OPC UA Client.
+\item[FA320] Die \gls{Uberwachungskonsole} ist ein OPC UA Client.
 \item[FA330] Der OPC UA Client erhält die IP-Adresse, die durch die \gls{Uberwachungskonsole} nicht geändert werden kann, des verwendeten Computers.
 \item[FA340] Der OPC UA Client verbindet sich mit den OPC UA Servern einer Fertigungssimulation und kommuniziert mit diesen über TCP/IP.
 \item[FA350] Beim Start versucht die \gls{Uberwachungskonsole}, eine Verbindung mit den OPC UA Servern herzustellen und sich dort zu registrieren.
@@ -178,7 +180,7 @@ Diese Parameter werden durch Schieberegler eingestellt.
 
 \subsubsection{GUI Darstellung}
 \begin{enumerate}
-\item[FA400] Die \gls{Uberwachungskonsole} stellt die Sensorwerte und Alarme jedes Flüssigkeitsanks in einem eigenen Bereich an.
+\item[FA400] Die \gls{Uberwachungskonsole} stellt die Sensorwerte und Alarme jedes Flüssigkeitsanks in einem eigenen Bereich dar.
 \item[FA410] Die \gls{Uberwachungskonsole} zeigt die Farbe der Tanks an.
 \item[FA420] Die \gls{Uberwachungskonsole} zeigt die Zuflussmenge der oberen Tanks auf jeweils einer Skala an.
 \item[FA430] Die \gls{Uberwachungskonsole} zeigt die Abflussmenge aller Tanks auf jeweils einer Skala an.
@@ -203,7 +205,7 @@ Diese Parameter werden durch Schieberegler eingestellt.
 \item[FA580] Nach Drücken eines Speichern-Knopfes im Einstellungsfenster werden alle vorhandenen Einstellungen mit denen aus dem Fenster überschrieben.
 \item[FA590] Nach Drücken eines Abbruch-Knopfes im Einstellungsfenster bleiben die Einstellungen unverändert.
 \item[FA600] Werden Einstellungen für die OPC UA Server oder den OPC UA Client überschrieben, wird der OPC UA Client mit den neuen Einstellungen neu gestartet.
-\item[FA610] Die Eingaben in den Einstellungen sind direkt nach Eingabe auf richtige Formatierung und die Lage im definierten Intervall zu prüfen.
+\item[FA610] Die Eingaben in den Einstellungen sind direkt nach Eingabe auf richtige Formatierung und Einhaltung des Wertebereichs zu prüfen.
 \item[FA620] Der Benutzer wird über eine Fehleingabe und der Ursache dafür informiert.
 \end{enumerate}
 
@@ -220,6 +222,7 @@ Diese Parameter werden durch Schieberegler eingestellt.
 \item[FA700] Geloggt werden Fehler, Ausnahmen und Aktivitäten der \gls{Uberwachungskonsole} sowie alle eintreffenden Alarme.
 \end{enumerate}
 
+\pagebreak
 \section{Nichtfunktionale Anforderungen}
 \subsection{Fertigungssimulation}
 \begin{enumerate}
@@ -231,7 +234,7 @@ Diese Parameter werden durch Schieberegler eingestellt.
 
 \subsection{Überwachungskonsole}
 \begin{enumerate}
- \item[NF110] IP-Adressen müssen dem Format "`YYY.YYY.YYY.YYY"' entsprechen oder gültige Hostnamen sein.
+ \item[NF110] IP-Adressen muss eine gültige IPv4 oder IPv6 Addresse oder gültige Hostnamen sein. % Abkürzungsverzeichnis für Dinge wie IPv4?
  \item[NF120] Ports dürfen Werte im Bereich 1024 bis 61000 annehmen.
  \item[NF130] Die Schwellenwerte für die Alarme dürfen zwischen 0 und 100 \% gewählt werden.
  \item[NF140] Die Aktualisierungsfrequenz kann im Bereich zwischen 20 und 4000 Millisekunden gewählt werden.
@@ -239,6 +242,7 @@ Diese Parameter werden durch Schieberegler eingestellt.
    einer halben Sekunde plus dem Aktualisierungsintervall in der Überwachungskonsole angezeigt.
 \end{enumerate}
 
+\pagebreak
 \section{Produktdaten}
 \begin{enumerate}
  \item[D10] Die \gls{Uberwachungskonsole} speichert den zuletzt eingestellten Port des OPC UA Client.
@@ -251,11 +255,19 @@ Diese Parameter werden durch Schieberegler eingestellt.
  \item[D130] Die Fertigungssimulation speichert \emph{eventuell (sofern implementiert)} aufgenommene \glspl{Makro}.
 \end{enumerate}
 
+\pagebreak
 \section{Globale Testfälle}
 \Blindtext[1]
 
+\pagebreak
 \section{Systemmodelle}
 \subsection{Szenarien}
+\subsubsection*{Akteure}
+\begin{itemize}
+ \item[Manuel] Der Benutzer des Programms, der OPC UA vermarkten will.
+ \item[Philipp] Ein potenzieller Anwender von OPC UA, der das Protokoll noch nicht kennt.
+\end{itemize}
+
 \subsubsection{Szenario 1: Unabhängige Installation}
 Manuel möchte Philipp, einem Kunden aus der Industrie, zeigen, was mit modernen Industrie 4.0 Techniken möglich ist.
 Da Philipp nur wenig Zeit hat, fährt Manuel mit dem Auto zu Philipp. Weil Manuel weder Platz 
@@ -297,7 +309,7 @@ Einstellungen das Aktualisierungsintervall von 1000ms auf 250ms. Anschließend s
 
 \subsubsection{Szenario 3: Alarme}
 Philipp ist zunehmend an OPC UA interessiert, hat aber noch letzte Zweifel. Er merkt an, dass die Abfrage der Daten
-zwar gut funktioniert, eine wirkliche \"Uberwachung aber noch einen Wrapper f\"ur das Programm ben\"otigen w\"urde,
+zwar gut funktioniert, eine wirkliche \"Uberwachung aber noch einen \gls{Wrapper} f\"ur das Programm ben\"otigen w\"urde,
 um ungew\"ohnliche Zust\"ande in der Fertigung automatisch zu bemerken und darauf aufmerksam zu machen.
 Manuel merkt an, dass das ein guter Einwand ist und dass OPC UA auch daf\"ur eine passende Funktionalit\"at besitzt.
 
@@ -369,7 +381,8 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
 \begin{description}
  \item[Name] Einrichtung und Starten der Simulation auf virtuellen Maschinen
  \item[Akteure] Manuel (Bediener der Software)
- \item[Eingangsbedingung] Eine virtuelle Maschine, auf der die JAR der Überwachungskonsole gespeichert ist und eine virtuelle Maschine, auf der die JAR der Fertigungssimulation gespeichert ist, sind in Betrieb und haben feste IP Adressen zugewiesen bekommen.
+ \item[Eingangsbedingung] Ein Computer (oder virtuelle Maschine), auf der die .jar Datei der Überwachungskonsole gespeichert ist und ein Computer (oder virtuelle Maschine), auf der die .jar
+ Datei der Fertigungssimulation gespeichert ist, sind in Betrieb und haben feste IP Adressen zugewiesen bekommen.
  \item[Ereignisfluss]~\\
  \begin{itemize}[noitemsep]
   \item Manuel startet die JAR der Fertigungssimulation.
@@ -416,7 +429,7 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
  \item[Ausgangssituation] \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} laufen normal weiter. In der \gls{GUI} der
   \gls{Uberwachungskonsole} ist der Alarmeintrag zu sehen.
  \item [Nichtfunktionale Anforderungen] Die \gls{GUI} der \gls{Uberwachungskonsole} muss einen empfangenen Alarm nach sp\"atestens
-  100ms anzeigen.
+  100ms plus der Aktualisierungsfrequenz anzeigen.
 \end{description}
 
 \subsubsection{Alarm \"andern}
@@ -436,7 +449,7 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
   \item Manuel klickt auf \"Ubernehmen.
  \end{itemize}
  \item[Ausgangssituation] Die alte Alarmbedingung l\"ost keine Alarme mehr aus. Die neue Alarmbedingung l\"ost Alarme aus.
- \item [Nichtfunktionale Anforderungen] Die ge\"anderte Alarmbedingung ist nach sp\"atestens 100ms \"ubernommen undan
+ \item [Nichtfunktionale Anforderungen] Die ge\"anderte Alarmbedingung ist nach sp\"atestens 500ms plus der Netzwerklatenz \"ubernommen undan
   wird an die Fertigungssimulation gesendet.
 \end{description}
 
@@ -455,7 +468,7 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
   \item Manuel klickt im folgenden Dialog auf ``Best\"atigen''.
  \end{itemize}
  \item[Ausgangssituation] Die alten Alarmbedingungen l\"osen keine Alarme mehr aus.
- \item [Nichtfunktionale Anforderungen] Die L\"oschung der Alarme wird nach sp\"atestens 100ms an die Fertigungssimulation \"ubermittelt.
+ \item [Nichtfunktionale Anforderungen] Die L\"oschung der Alarme wird nach sp\"atestens 100ms plus der Aktualisierungsfrequenz an die Fertigungssimulation \"ubermittelt.
 \end{description}
 
 \subsubsection{Anwendungsfalldiagramm}
