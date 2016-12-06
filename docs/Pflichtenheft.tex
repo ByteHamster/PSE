@@ -175,7 +175,7 @@ Diese Parameter werden durch Schieberegler eingestellt.
 \item[FA360] Schlägt die Verbindung von [FA350] oder [FA600] fehl, wird der Benutzer über einen Dialog informiert.
 \item[FA370] Alle angezeigten \glspl{Sensordatum} werden mit einer eingestellten, festen Frequenz aktualisiert.
 \item[FA380] Alarme mit ihrem jeweiligen Auslöser können bei der Fertigungssimulation registriert werden.
-\item[FA390] Alarme werden mit den Aktualisierungen der Werte empfangen.
+\item[FA390] Alarme werden asynchron zu den Sensorwerten empfangen und direkt angezeigt, sobald sie ausgelöst werden.
 \end{enumerate}
 
 \subsubsection{GUI Darstellung}
@@ -192,11 +192,16 @@ Diese Parameter werden durch Schieberegler eingestellt.
 \item[FA490] Die \gls{Uberwachungskonsole} registriert für jeden Tank jeweils einen Alarm für einen Überlauf.
 \item[FA500] Die \gls{Uberwachungskonsole} registriert für jeden Tank jeweils einen Alarm für einen Unterlauf.
 \item[FA510] Ein Alarm wird durch einen Bezeichner und einen Kreis als Zustandssymbol dargestellt.
-\item[FA520] Ist der Kreis rot, wurde der Alarm ausgelöst. Ist der Kreis grün, ist der Alarm nicht ausgelöst.
-\item[FA530] Die \gls{Uberwachungskonsole} bietet eine Menübar mit den Punkten "`Datei"', das den Untermenüpunkt "`Einstellungen"' beinhaltet, und "`?"', das den Untermenüpunkt "`Über"' beinhaltet.
-\item[FA540] "`? $\rightarrow$ Über"' öffnet ein neues Fenster, in dem der Programmname, die Version, das Programmsymbol und die Lizenz angezeigt werden.
-\item[FA550] "`Datei $\rightarrow$ Einstellungen"' öffnet ein separates Fenster, in dem alle Einstellungen in einem Reiter "`Allgemeine Einstellungen"' vorgenommen werden können.
-\item[FA560] In den Einstellungen werden die IP-Adresse des OPC UA Clients und der OPC UA Server sowie deren Ports angezeigt.
+\item[FA520] Ist der Kreis rot, wurde der Alarm ausgelöst.
+\item[FA530] Ist der Kreis grün, ist der Alarm nicht ausgelöst.
+\item[FA540] Ein Alarm wird als ausgelöst angezeigt, nachdem die \gls{Uberwachungskonsole} durch die \gls{Fertigungssimulation} darüber benachrichtigt wurde und bis der Alarm in der \gls{Fertigungssimulation} nicht mehr aktiv ist und die \gls{Uberwachungskonsole} darüber informiert wurde.
+\item[FA550] Es gibt eine zweistufige Ampel für den allgemeinen Zustand der \gls{Uberwachungskonsole}.
+\item[FA560] Ist die Ampel rot, wurde mindestens ein Alarm ausgelöst.
+\item[FA570] Ist die Ampel grün, wurde kein Alarm ausgelöst.
+\item[FA580] Die \gls{Uberwachungskonsole} bietet eine Menüleiste mit den Punkten "`Datei"', das den Untermenüpunkt "`Einstellungen"' beinhaltet, und "`?"', das den Untermenüpunkt "`Über"' beinhaltet.
+\item[FA590] "`? $\rightarrow$ Über"' öffnet ein neues Fenster, in dem der Programmname, die Version, das Programmsymbol und die Lizenz angezeigt werden.
+\item[FA600] "`Datei $\rightarrow$ Einstellungen"' öffnet ein separates Fenster, in dem alle Einstellungen in einem Reiter "`Allgemeine Einstellungen"' vorgenommen werden können.
+\item[FA610] In den Einstellungen werden die IP-Adresse des OPC UA Clients und der OPC UA Server sowie deren Ports angezeigt.
 \end{enumerate}
 
 \subsubsection{Benutzerinteraktion}
@@ -215,7 +220,7 @@ Diese Parameter werden durch Schieberegler eingestellt.
 \item[FA630] Es gibt ein \gls{Dockerimage} zur einfachen Verteilung und isolierten Ausführung der \gls{Uberwachungskonsole}.
 \item[FA640] Bereits registrierte Alarme können wieder gelöscht werden.
 \item[FA650] Das Einstellungsfenster wird um zwei Reiter, "`Verläufe"' und "`Alarme"' erweitert.
-\item[FA660] In den "`Allgemeinen Einstellungen"' ist es dem Nutzer möglich, das Zeitintervall für die Aktualisierung der Werte einzugeben.
+\item[FA660] In den "`Allgemeinen Einstellungen"' ist es dem Nutzer möglich, das Zeitintervall für die Aktualisierung der Werte über einen Schieberegler oder eine Textbox einzustellen.
 \item[FA670] Unter "`Verläufe"' ist es möglich, jede Aufnahme des zeitlichen Verlaufs eines Wertes ein und aus zu schalten.
 \item[FA680] In "`Alarme"' kann der Nutzer die verfügbaren Alarme ein- und ausschalten und deren Schwellenwerte festlegen.
 \item[FA690] Es gibt eine Loggingkonsole in Form einer mehrzeiligen Textausgabe.
@@ -295,11 +300,9 @@ sich die von der Überwachungskonsole angezeigten Werte für Zu- und Abfluss mit
 Farbe im Zielcontainer ändert sich langsam, während sich das Mischungsverhältnis der Flüssigkeiten ändert. Auch diese
 Werte werden in der Überwachungskonsole jeweils aktualisiert.
 
-Als nächstes navigiert Manuel in das Einstellungsmenü seines Clients. Dort geht er in den Punkt ``Empfangene Daten'' und
-wählt zusätzlich zu den bisher angezeigten Werten noch die Kategorien ``Füllstand'' und ``Motordrehzahl'' beim unteren Tank
-an. Nach einem Klick auf ``Übernehmen'' sehen die beiden, wie in der Überwachungskonsole neue Anzeigen aufgetaucht sind,
-die die neuen Werte darstellen. Außerdem entsteht ein neuer Reiter bei der Überwachungsanzeige des unteren Tanks,
-in dem Philipp den Füllstandsverlauf ansehen kann.
+Als nächstes betrachten die beiden, wie sich in der Überwachungskonsole die Anzeigen für den Füllstand und die Motorgeschwindigkeit des unteren Tankes ändern.
+Außerdem verweist Manuel auf Reiter unterhalb der Überwachungsanzeigen der Tanks,
+in denen Philipp die Füllstands- und Temperaturverläufe ansehen kann.
 
 Philipp merkt nun an, dass ihm die Flexibilität der empfangenen Daten sehr gefällt. Das Aktualisierungsintervall von
 einer Sekunde sei aber in manchen der Fertigungsprozesse zu lang, da in manchen kritischen Zuständen sehr schnell
@@ -313,9 +316,9 @@ zwar gut funktioniert, eine wirkliche \"Uberwachung aber noch einen \gls{Wrapper
 um ungew\"ohnliche Zust\"ande in der Fertigung automatisch zu bemerken und darauf aufmerksam zu machen.
 Manuel merkt an, dass das ein guter Einwand ist und dass OPC UA auch daf\"ur eine passende Funktionalit\"at besitzt.
 
-Er \"offnet das Einstellungsmen\"u der \"Uberwachungskonsole und erstellt einen neuen Alarm. Um die Flexibilit\"at
-von OPC UA erneut zu demonstrieren fragt er Philipp, welchen Zustand er gerne abfangen w\"urde. Philipp w\"urde gerne
-abfangen, wenn ein Tank \"uberzulaufen droht. Er schl\"agt daf\"ur als Grenze einen F\"ullstand von 95\% vor.
+Er \"offnet das Einstellungsmen\"u der \"Uberwachungskonsole und ruft den Reiter "`Alarme"'. Um die Flexibilit\"at
+von OPC UA erneut zu demonstrieren, fragt er Philipp, welchen vorhandenen Zustand er gerne abfangen w\"urde. Philipp möchte gerne
+wissen, wenn ein Tank \"uberzulaufen droht. Er schl\"agt daf\"ur als Grenze einen F\"ullstand von 95\% vor.
 Manuel gibt also in der \"Uberwachungskonsole 95\% als Grenze an und w\"ahlt einen Tank, f\"ur den der Alarm stattfinden soll.
 Dann speichert er die neuen Einstellungen.
 
@@ -323,8 +326,8 @@ Anschlie{\ss}end dreht er in der Fertigungssimulation den Zufluss des entspreche
 zu steigen beginnt. In der Fertigungssimulation ist der steigende F\"ullstand zu sehen, in der \"Uberwachungskonsole werden
 steigende Werte angezeigt.
 Darauf wird der F\"ullstand von 95\% erreicht und in der \"Uberwachungskonsole der Alarm ausgel\"ost. Manuel
-beschlie{\ss}t, nicht zu handeln und der Tank l\"auft \"uber. Danach w\"ahlt Philipp in den Einstellungen der
-Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standardkonfiguration angezeigt wird.
+beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Philipp in den Einstellungen der
+Fertigungssimulation die Option ``zur\"ucksetzen'', woraufhin wieder die Standardkonfiguration angezeigt wird.
 
 \subsection{Anwendungsfälle}
 \subsubsection{Änderung der Zu-/Abflussgeschwindigkeit}
@@ -345,21 +348,24 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
  \item [Nichtfunktionale Anforderungen] Der geänderte Zu- oder Abflusswert wird mit der nächsten Aktualisierung auf der Überwachungskonsole angezeigt.
 \end{description}
 
-\subsubsection{Änderung der angezeigten Sensorwerte}
-\begin{description}
- \item[Name] Hinzuwählen oder Abwählen von \glspl{Sensordatum}, die in der \gls{GUI} angezeigt werden.
- \item[Akteure] Manuel (Bediener der Software)
- \item[Eingangsbedingung] Die Fertigungssimulation und die Überwachungskonsole sind in Betrieb und miteinander verbunden.
- \item[Ereignisfluss]~\\
- \begin{itemize}[noitemsep]
-  \item Manuel öffnet in der Überwachungskonsole die Einstellungen.
-  \item Ein neues Fenster erscheint. Manuel navigiert in den Reiter ``Empfangene Daten''.
-  \item Manuel klickt auf die Haken in der Liste, um Sensorwerte hinzuzufügen oder auszublenden.
-  \item Manuel klickt den ``OK'' Knopf.
- \end{itemize}
- \item[Ausgangssituation] Die \glspl{Sensordatum}, deren Haken entfernt wurden, werden sofort ausgeblendet. Die \glspl{Sensordatum}, deren Haken hinzugefügt wurden, erscheinen sofort in der \gls{GUI}.
- \item [Nichtfunktionale Anforderungen] Die geänderten Einstellungen werden binnen einer halben Sekunde in der \gls{GUI} dargestellt.
-\end{description}
+%
+% Diese Funktionalität ist im Moment nicht vorgesehen.
+%
+%\subsubsection{Änderung der angezeigten Sensorwerte}
+%\begin{description}
+% \item[Name] Hinzuwählen oder Abwählen von \glspl{Sensordatum}, die in der \gls{GUI} angezeigt werden.
+% \item[Akteure] Manuel (Bediener der Software)
+% \item[Eingangsbedingung] Die Fertigungssimulation und die Überwachungskonsole sind in Betrieb und miteinander verbunden.
+% \item[Ereignisfluss]~\\
+% \begin{itemize}[noitemsep]
+%  \item Manuel öffnet in der Überwachungskonsole die Einstellungen.
+%  \item Ein neues Fenster erscheint. Manuel navigiert in den Reiter ``Empfangene Daten''.
+%  \item Manuel klickt auf die Haken in der Liste, um Sensorwerte hinzuzufügen oder auszublenden.
+%  \item Manuel klickt den ``OK'' Knopf.
+% \end{itemize}
+% \item[Ausgangssituation] Die \glspl{Sensordatum}, deren Haken entfernt wurden, werden sofort ausgeblendet. Die \glspl{Sensordatum}, deren Haken hinzugefügt wurden, erscheinen sofort in der \gls{GUI}.
+% \item [Nichtfunktionale Anforderungen] Die geänderten Einstellungen werden binnen einer halben Sekunde in der \gls{GUI} dargestellt.
+%\end{description}
 
 \subsubsection{Änderung der Aktualisierungsfrequenz}
 \begin{description}
@@ -371,7 +377,7 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
   \item Manuel öffnet in der Überwachungskonsole die Einstellungen.
   \item Manuel navigiert in den Reiter ``Allgemeine Einstellungen''.
   \item Manuel verschiebt den Schieberegler, der die Aktualisierungsfrequenz einstellt.
-  \item Manuel klickt den ``OK'' Knopf.
+  \item Manuel klickt den ``Speichern'' Knopf.
  \end{itemize}
  \item[Ausgangssituation] Die Sensorwerte in der Überwachungskonsole werden nun in Abständen der gewählten Aktualisierungsfrequenz aktualisiert.
  \item [Nichtfunktionale Anforderungen] Die Frequenz ändert sich spätestens mit der nächsten Aktualisierung.
@@ -393,20 +399,19 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
  \item[Nichtfunktionale Anforderungen] Die Sensorwerte der Überwachungskonsole werden nach spätestens einer halben Sekunde aktualisiert.
 \end{description}
  
-\subsubsection{Alarm erstellen}
+\subsubsection{Alarm einschalten}
 \begin{description}
- \item[Name] Erstellen eines neuen Alarms in der \gls{Uberwachungskonsole}.
+ \item[Name] Einschalten eines Alarms in der \gls{Uberwachungskonsole}.
  \item[Akteure] Manuel (Bediener der Software)
  \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
  \item[Ereignisfluss]~\\
  \begin{itemize}[noitemsep]
   \item Manuel \"offnet in der \gls{Uberwachungskonsole} die Einstellungen.
   \item Manuel navigiert in den Reiter ``Alarme''.
-  \item Manuel klickt den Knopf ``Neuen Alarm erstellen''.
-  \item Manuel w\"ahlt den \gls{OPC UA} Server, zu dem der Alarm geh\"ort.
-  \item Manuel w\"ahlt den Sensor, zu dem der Alarm geh\"ort.
-  \item Manuel erstellt eine Regel zum Ausl\"osen des Alarms.
-  \item Manuel klickt den ``\"Ubernehmen'' Knopf.
+  \item Manuel w\"ahlt den Alarm aus, der eingeschalten werden soll.
+  \item Manuel aktiviert die Checkbox, die zum Alarm gehört.
+  \item Manuel stellt zusätzlich einen Schwellenwert ein oder lässt den aktuell angezeigten.
+  \item Manuel klickt den ``Speichern'' Knopf.
  \end{itemize}
  \item[Ausgangssituation] Wenn der Sensor die Alarmbedingung erf\"ullt, wird an die \gls{Uberwachungskonsole} ein Alarm gesendet.
  \item [Nichtfunktionale Anforderungen] Sp\"atestens nach 100ms ist die Aktualisierung \"ubernommen und wird
@@ -436,39 +441,34 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
 \begin{description}
  \item[Name] \"Andern eines bereits vorhandenen Alarms in der \gls{Uberwachungskonsole}.
  \item[Akteure] Manuel (Bediener der Software)
- \item[Eingangsbedingung] Die \gls{Uberwachungskonsole} ist in Betrieb. Es ist mindestens ein Alarm bereits vorhanden.
+ \item[Eingangsbedingung] Die \gls{Uberwachungskonsole} ist in Betrieb. Es ist mindestens ein Alarm bereits eingeschalten.
  \item[Ereignisfluss]~\\
  \begin{itemize}[noitemsep]
   \item Manuel \"offnet in der \gls{Uberwachungskonsole} die Einstellungen.
   \item Manuel navigiert in den Reiter ``Alarme''.
-  \item Manuel klickt auf ``Alarme anzeigen''.
-  \item Manuel w\"ahlt den gew\"unschten Alarm an.
-  \item Der Button ``Alarm bearbeiten'' wird klickbar.
-  \item Manuel klickt auf ``Alarm bearbeiten''.
-  \item Manuel tr\"agt die gew\"unschten \"Anderungen ein.
-  \item Manuel klickt auf \"Ubernehmen.
+  \item Manuel w\"ahlt den gew\"unschten Alarm aus.
+  \item Manuel tr\"agt den gew\"unschten Schwellenwert ein.
+  \item Manuel klickt auf "`Speichern"'.
  \end{itemize}
  \item[Ausgangssituation] Die alte Alarmbedingung l\"ost keine Alarme mehr aus. Die neue Alarmbedingung l\"ost Alarme aus.
- \item [Nichtfunktionale Anforderungen] Die ge\"anderte Alarmbedingung ist nach sp\"atestens 500ms plus der Netzwerklatenz \"ubernommen undan
+ \item [Nichtfunktionale Anforderungen] Die ge\"anderte Alarmbedingung ist nach sp\"atestens 500ms plus der Netzwerklatenz \"ubernommen und
   wird an die Fertigungssimulation gesendet.
 \end{description}
 
-\subsubsection{Alarm l\"oschen}
+\subsubsection{Alarm ausschalten}
 \begin{description}
- \item[Name] L\"oschen eines bereits erstellten Alarms.
+ \item[Name] Ausschalten eines eingeschaltenen Alarms.
  \item[Akteure] Manuel (Bediener der Software)
- \item[Eingangsbedingung] Die \"Uberwachungskonsole ist in Betrieb. Es ist mindestens ein Alarm bereits vorhanden.
+ \item[Eingangsbedingung] Die \"Uberwachungskonsole ist in Betrieb. Es ist mindestens ein Alarm bereits eingeschalten.
  \item[Ereignisfluss]~\\
  \begin{itemize}[noitemsep]
   \item Manuel \"offnet in der \"Uberwachungskonsole die Einstellungen.
   \item Manuel navigiert in den Reiter ``Alarme''.
-  \item Manuel klickt auf ``Alarme anzeigen''.
-  \item Manuel w\"ahlt alle gew\"unschten Alarme.
-  \item Manuel klickt auf ``Alarme l\"oschen''.
-  \item Manuel klickt im folgenden Dialog auf ``Best\"atigen''.
+  \item Manuel deaktiviert die Checkbox aller gew\"unschten Alarme.
+  \item Manuel klickt auf ``Speichern''.
  \end{itemize}
  \item[Ausgangssituation] Die alten Alarmbedingungen l\"osen keine Alarme mehr aus.
- \item [Nichtfunktionale Anforderungen] Die L\"oschung der Alarme wird nach sp\"atestens 100ms plus der Aktualisierungsfrequenz an die Fertigungssimulation \"ubermittelt.
+ \item [Nichtfunktionale Anforderungen] Das Ausschalten der Alarme wird nach sp\"atestens 100ms an die Fertigungssimulation \"ubermittelt.
 \end{description}
 
 \subsubsection{Anwendungsfalldiagramm}
@@ -486,7 +486,7 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
 \subsection{Fertigungssimulation}
 \includegraphics[scale=0.5]{media/ui-sketch-server.png}
 \subsection{Überwachungskonsole}
-\includegraphics[scale=0.45]{media/ui-client.png}
+\includegraphics[scale=0.40]{media/ui-client.png}
 
 \section{Anhang}
 \subsection{3D-Darstellung der Fertigungssimulation}
