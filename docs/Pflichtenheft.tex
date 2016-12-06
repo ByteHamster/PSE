@@ -47,7 +47,7 @@ Sie kommunizieren lediglich über OPC UA.
 In der GUI der Fertigungssimulation wird ein industrieller Prozess dargestellt.
 Drei Tanks werden mit je einer farbigen Flüssigkeit gefüllt und leiten diese in einen weiteren Tank,
 in dem die Flüssigkeiten durch einen Motor gemischt werden. Daten und Werte des Prozesses werden ebenfalls angezeigt. Dazu gibt es
-die Möglichkeit, die Produktion zu konfigurieren,  zum Beispiel indem man Zu- und Abflussmengen oder Grenzen für Füllstände einstellt. Die visuelle Darstellung passt sich an die Konfiguration an.
+die Möglichkeit, die Produktion zu konfigurieren, zum Beispiel indem man Zu- und Abflussmengen oder Grenzen für Füllstände einstellt. Die visuelle Darstellung passt sich an die Konfiguration an.
 Die Überwachungskonsole liest die Daten der Fertigungssimulation, stellt sie optisch ansprechend in einem Monitoring dar
 und kann Alarme anzeigen, falls Grenzwerte überschritten werden. Das Monitoring ist ebenfalls konfigurierbar. Es ist etwa möglich, Filter auf Variablen anzuwenden. Allerdings hat die Überwachungskonsole keinen Einfluss auf die Fertigungssimulation.
 
@@ -176,7 +176,7 @@ Diese Parameter werden durch Schieberegler eingestellt.
 \item[FA390] Alarme werden mit den Aktualisierungen der Werte empfangen.
 \end{enumerate}
 
-\subsubsection{\gls{GUI} Darstellung}
+\subsubsection{GUI Darstellung}
 \begin{enumerate}
 \item[FA400] Die \gls{Uberwachungskonsole} stellt die Sensorwerte und Alarme jedes Flüssigkeitsanks in einem eigenen Bereich an.
 \item[FA410] Die \gls{Uberwachungskonsole} zeigt die Farbe der Tanks an.
@@ -320,7 +320,7 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
  \item[Name] Erhöhen oder Verringern der Zu- oder Abflussgeschwindigkeit bei einem der Flüssigkeitstanks.
  \item[Akteure] Manuel (Bediener der Software)
  \item[Eingangsbedingung] Die Fertigungssimulation und die Überwachungskonsole sind in Betrieb und miteinander verbunden.
- \item[Ereignisfluss]
+ \item[Ereignisfluss]~\\
  \begin{itemize}[noitemsep]
   \item Manuel öffnet in der Fertigungssimulation den Reiter ``Ansicht''.
   \item Manuel klickt auf ``Steuerung anzeigen''.
@@ -338,7 +338,7 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
  \item[Name] Hinzuwählen oder Abwählen von \glspl{Sensordatum}, die in der \gls{GUI} angezeigt werden.
  \item[Akteure] Manuel (Bediener der Software)
  \item[Eingangsbedingung] Die Fertigungssimulation und die Überwachungskonsole sind in Betrieb und miteinander verbunden.
- \item[Ereignisfluss]
+ \item[Ereignisfluss]~\\
  \begin{itemize}[noitemsep]
   \item Manuel öffnet in der Überwachungskonsole die Einstellungen.
   \item Ein neues Fenster erscheint. Manuel navigiert in den Reiter ``Empfangene Daten''.
@@ -354,7 +354,7 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
  \item[Name] Erhöhen oder Verringern der Aktualisierungsfrequenz.
  \item[Akteure] Manuel (Bediener der Software)
  \item[Eingangsbedingung] Die Fertigungssimulation und die Überwachungskonsole sind in Betrieb und miteinander verbunden.
- \item[Ereignisfluss]
+ \item[Ereignisfluss]~\\
  \begin{itemize}[noitemsep]
   \item Manuel öffnet in der Überwachungskonsole die Einstellungen.
   \item Manuel navigiert in den Reiter ``Allgemeine Einstellungen''.
@@ -370,7 +370,7 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
  \item[Name] Einrichtung und Starten der Simulation auf virtuellen Maschinen
  \item[Akteure] Manuel (Bediener der Software)
  \item[Eingangsbedingung] Eine virtuelle Maschine, auf der die JAR der Überwachungskonsole gespeichert ist und eine virtuelle Maschine, auf der die JAR der Fertigungssimulation gespeichert ist, sind in Betrieb und haben feste IP Adressen zugewiesen bekommen.
- \item[Ereignisfluss]
+ \item[Ereignisfluss]~\\
  \begin{itemize}[noitemsep]
   \item Manuel startet die JAR der Fertigungssimulation.
   \item Manuel startet die JAR der Überwachungskonsole.
@@ -385,7 +385,7 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
  \item[Name] Erstellen eines neuen Alarms in der \gls{Uberwachungskonsole}.
  \item[Akteure] Manuel (Bediener der Software)
  \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
- \item[Ereignisfluss]
+ \item[Ereignisfluss]~\\
  \begin{itemize}[noitemsep]
   \item Manuel \"offnet in der \gls{Uberwachungskonsole} die Einstellungen.
   \item Manuel navigiert in den Reiter ``Alarme''.
@@ -406,7 +406,7 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
  \item[Akteure] \gls{Fertigungssimulation}
  \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
   Es ist mindestens ein Alarm eingerichtet.
- \item[Ereignisfluss]
+ \item[Ereignisfluss]~\\
  \begin{itemize}[noitemsep]
   \item In der \gls{Fertigungssimulation} kommt es zu einem Alarmzustand.
   \item Die \gls{Fertigungssimulation} sendet den entsprechenden Alarm an die registrierte \gls{Uberwachungskonsole}.
@@ -424,7 +424,7 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
  \item[Name] \"Andern eines bereits vorhandenen Alarms in der \gls{Uberwachungskonsole}.
  \item[Akteure] Manuel (Bediener der Software)
  \item[Eingangsbedingung] Die \gls{Uberwachungskonsole} ist in Betrieb. Es ist mindestens ein Alarm bereits vorhanden.
- \item[Ereignisfluss]
+ \item[Ereignisfluss]~\\
  \begin{itemize}[noitemsep]
   \item Manuel \"offnet in der \gls{Uberwachungskonsole} die Einstellungen.
   \item Manuel navigiert in den Reiter ``Alarme''.
@@ -445,7 +445,7 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
  \item[Name] L\"oschen eines bereits erstellten Alarms.
  \item[Akteure] Manuel (Bediener der Software)
  \item[Eingangsbedingung] Die \"Uberwachungskonsole ist in Betrieb. Es ist mindestens ein Alarm bereits vorhanden.
- \item[Ereignisfluss]
+ \item[Ereignisfluss]~\\
  \begin{itemize}[noitemsep]
   \item Manuel \"offnet in der \"Uberwachungskonsole die Einstellungen.
   \item Manuel navigiert in den Reiter ``Alarme''.
@@ -473,7 +473,7 @@ Fertigungssimulation die Option ``zur\"ucksetzen'' woraufhin wieder die Standard
 \subsection{Fertigungssimulation}
 \includegraphics[scale=0.5]{media/ui-sketch-server.png}
 \subsection{Überwachungskonsole}
-\includegraphics[scale=0.5]{media/ui-client.png}
+\includegraphics[scale=0.45]{media/ui-client.png}
 
 \pagebreak
 \printglossaries
