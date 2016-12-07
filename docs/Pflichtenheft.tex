@@ -136,6 +136,8 @@ mindestens 2GHz getaktet sein.
 \item[FA110] Die Füllstände der Tanks werden gemessen.
 \item[FA120] Die Fertigungssimulation kommuniziert über OPC UA in einem TCP/IP Netzwerk mit Überwachungskonsolen.
 \item[FA130] Die Ports, über welche die einzelnen OPC UA Server der Fertigungssimulation kommunizieren, können eingestellt werden.
+\item[FA140] Die Fertigungssimulation besitzt vordefinierte \glspl{Simulations-Szenario}, die über das Menü gestartet werden können (Kann-Kriterium).
+\item[FA150] Ein \gls{Simulations-Szenario} ist ein fester, zeitlicher Ablauf, der komplexere Szenarien in der Fertigungssimulation darstellt. Somit kann ohne aktive Nutzerinteraktion eine sich aktiv im Betrieb befindliche Anlage simuliert werden.
 \end{enumerate}
 
 \subsubsection{GUI Darstellung}
@@ -155,7 +157,7 @@ Diese Parameter werden durch Schieberegler eingestellt.
 \item[FA180] Der Einstellungsdialog besitzt Buttons zum Verwerfen (``Abbrechen'') und Anwenden der Änderungen. Das Anwenden geschieht über einen ``OK''-Button, welcher zudem den Dialog schließt.
 \item[FA200] Der Einstellungsdialog besitzt einen Regler, welcher den \gls{Jitter} durch einen Schieberegler konfigurierbar macht.
   Hierbei entspricht ein \gls{Jitter} von 0 der Deaktivierung der Funktion.
-\item[FA210] Der Einstellungsdialog besitzt im Reiter ``Makros'' eine Liste mit \glspl{Makro}. Daneben befinden sich Buttons zum Erstellen, Umbenennen und Löschen von \glspl{Makro}.
+\item[FA210] Der Menüeintrag ``Szenarien'' zeigt eine Liste der \glspl{Simulations-Szenario}, die durch einen Klick gestartet werden können.
 \end{enumerate}
 
 \subsubsection{Optionale Funktionalität}
@@ -257,7 +259,7 @@ Diese Parameter werden durch Schieberegler eingestellt.
  \item[D50] Die \gls{Uberwachungskonsole} speichert, welche Verläufe zuletzt angezeigt wurden.
  \item[D110] Die Fertigungssimulation speichert die zuletzt genutzten Ports der OPC UA Server.
  \item[D120] Die Fertigungssimulation speichert den zuletzt eingestellten \gls{Jitter}.
- \item[D130] Die Fertigungssimulation speichert \emph{eventuell (sofern implementiert)} aufgenommene \glspl{Makro}.
+ \item[D130] Die Fertigungssimulation speichert \glspl{Simulations-Szenario} in einzelnen Dateien (sofern implementiert).
 \end{enumerate}
 
 \pagebreak
@@ -337,7 +339,7 @@ Fertigungssimulation die Option ``zur\"ucksetzen'', woraufhin wieder die Standar
  \item[Eingangsbedingung] Die Fertigungssimulation und die Überwachungskonsole sind in Betrieb und miteinander verbunden.
  \item[Ereignisfluss]~\\
  \begin{itemize}[noitemsep]
-  \item Manuel öffnet in der Fertigungssimulation den Reiter ``Ansicht''.
+  \item Manuel öffnet in der Fertigungssimulation den Menüeintrag ``Ansicht''.
   \item Manuel klickt auf ``Steuerung anzeigen''.
   \item Ein Fenster öffnet sich. Manuel wählt den Reiter des Tanks, den er verändern will.
   \item Manuel verschiebt den Schieberegler des Zufluss- oder Abflussventils auf den gewünschten Wert.
