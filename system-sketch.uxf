@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><diagram program="umlet" version="13.3">
-  <zoom_level>8</zoom_level>
+  <zoom_level>10</zoom_level>
   <element>
     <id>Text</id>
     <coordinates>
       <x>720</x>
-      <y>584</y>
-      <w>80</w>
-      <h>64</h>
+      <y>640</y>
+      <w>100</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>halign=center
 Client-
@@ -16,22 +16,22 @@ Anwendung</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>424</x>
-      <y>584</y>
-      <w>88</w>
-      <h>72</h>
+      <x>340</x>
+      <y>640</y>
+      <w>140</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>halign=center
-Pro logischer Komponente ein Server</panel_attributes>
+Pro simuliertem Tank ein Server</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>552</y>
-      <w>280</w>
-      <h>32</h>
+      <x>420</x>
+      <y>600</y>
+      <w>350</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-&gt;
 OPC UA</panel_attributes>
@@ -40,10 +40,10 @@ OPC UA</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>704</x>
-      <y>376</y>
-      <w>112</w>
-      <h>48</h>
+      <x>700</x>
+      <y>380</y>
+      <w>140</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>halign=left
 ~~~~~~
@@ -55,10 +55,10 @@ OPC UA</panel_attributes>
   <element>
     <id>PlotGrid</id>
     <coordinates>
-      <x>752</x>
-      <y>368</y>
-      <w>72</w>
-      <h>64</h>
+      <x>760</x>
+      <y>370</y>
+      <w>90</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>// single plots are easily created without using capabilities of a (plot)grid
 
@@ -72,10 +72,10 @@ plot type=pie</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>424</x>
-      <y>552</y>
-      <w>88</w>
-      <h>24</h>
+      <x>350</x>
+      <y>600</y>
+      <w>110</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>halign=center
 fontsize=18
@@ -86,9 +86,9 @@ fontsize=18
     <id>Text</id>
     <coordinates>
       <x>720</x>
-      <y>552</y>
-      <w>80</w>
-      <h>24</h>
+      <y>600</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>halign=center
 fontsize=18
@@ -98,10 +98,10 @@ fontsize=18
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>336</x>
-      <y>104</y>
-      <w>584</w>
-      <h>560</h>
+      <x>200</x>
+      <y>40</y>
+      <w>780</w>
+      <h>700</h>
     </coordinates>
     <panel_attributes>OPC UA Adapter
 halign=left</panel_attributes>
@@ -110,10 +110,10 @@ halign=left</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>424</x>
-      <y>304</y>
-      <w>128</w>
-      <h>192</h>
+      <x>350</x>
+      <y>290</y>
+      <w>160</w>
+      <h>240</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -121,10 +121,10 @@ halign=left</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>440</x>
-      <y>440</y>
-      <w>104</w>
-      <h>24</h>
+      <x>370</x>
+      <y>460</y>
+      <w>130</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;110.0;10.0</additional_attributes>
@@ -132,43 +132,43 @@ halign=left</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>440</x>
-      <y>424</y>
-      <w>24</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>480</x>
-      <y>424</y>
-      <w>24</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>520</x>
-      <y>424</y>
-      <w>24</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>480</x>
+      <x>370</x>
       <y>440</y>
-      <w>24</w>
-      <h>40</h>
+      <w>30</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>440</y>
+      <w>30</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>470</x>
+      <y>440</y>
+      <w>30</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>460</y>
+      <w>30</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
@@ -176,10 +176,10 @@ halign=left</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>456</x>
-      <y>464</y>
-      <w>64</w>
-      <h>16</h>
+      <x>390</x>
+      <y>490</y>
+      <w>80</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -187,10 +187,10 @@ halign=left</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>552</x>
-      <y>304</y>
-      <w>40</w>
-      <h>192</h>
+      <x>510</x>
+      <y>290</y>
+      <w>50</w>
+      <h>240</h>
     </coordinates>
     <panel_attributes>halign=right
 ~~~
@@ -206,34 +206,22 @@ halign=left</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>368</x>
-      <y>200</y>
-      <w>128</w>
-      <h>32</h>
+      <x>440</x>
+      <y>130</y>
+      <w>180</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>halign=center
-Prozess visualisieren und steuern</panel_attributes>
+Fertigungssimulation eines industriellen Prozesses</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>696</x>
-      <y>216</y>
-      <w>136</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>halign=center
-Monitoring, "Cockpit"</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>496</x>
-      <y>248</y>
-      <w>128</w>
-      <h>32</h>
+      <x>190</x>
+      <y>310</y>
+      <w>160</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>halign=center
 Farben mischen</panel_attributes>
@@ -242,10 +230,10 @@ Farben mischen</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>592</x>
-      <y>448</y>
-      <w>136</w>
-      <h>24</h>
+      <x>560</x>
+      <y>470</y>
+      <w>170</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>halign=center
 Temperatur</panel_attributes>
@@ -254,10 +242,10 @@ Temperatur</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>784</x>
-      <y>328</y>
-      <w>136</w>
-      <h>32</h>
+      <x>820</x>
+      <y>480</y>
+      <w>170</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>halign=center
 Ampel für Alarme</panel_attributes>
@@ -266,10 +254,10 @@ Ampel für Alarme</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>696</x>
-      <y>496</y>
-      <w>136</w>
-      <h>32</h>
+      <x>690</x>
+      <y>530</y>
+      <w>170</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>halign=center
 Alarme und Anzeige von Werten</panel_attributes>
@@ -278,34 +266,24 @@ Alarme und Anzeige von Werten</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>792</x>
-      <y>456</y>
-      <w>136</w>
-      <h>32</h>
+      <x>800</x>
+      <y>240</y>
+      <w>170</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>halign=center
-Anzeige, nicht Steuerung</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>616</x>
-      <y>304</y>
-      <w>136</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>halign=center
-Vielleicht Filter auf Variablen</panel_attributes>
+Reine Anzeige
+von Sensorwerten,
+keine Steuerung</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>416</x>
-      <y>232</y>
-      <w>48</w>
-      <h>80</h>
+      <x>340</x>
+      <y>200</y>
+      <w>60</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;40.0;80.0</additional_attributes>
@@ -313,21 +291,21 @@ Vielleicht Filter auf Variablen</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>496</x>
-      <y>264</y>
-      <w>72</w>
-      <h>48</h>
+      <x>260</x>
+      <y>330</y>
+      <w>100</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>70.0;10.0;10.0;40.0</additional_attributes>
+    <additional_attributes>10.0;10.0;80.0;90.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>752</x>
-      <y>232</y>
-      <w>24</w>
-      <h>152</h>
+      <x>760</x>
+      <y>200</y>
+      <w>30</w>
+      <h>190</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
@@ -335,21 +313,10 @@ Vielleicht Filter auf Variablen</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>680</x>
-      <y>336</y>
-      <w>56</w>
-      <h>48</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;50.0;40.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>648</x>
-      <y>408</y>
-      <w>64</w>
-      <h>56</h>
+      <x>630</x>
+      <y>420</y>
+      <w>80</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;50.0;60.0;10.0</additional_attributes>
@@ -357,10 +324,10 @@ Vielleicht Filter auf Variablen</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>752</x>
-      <y>424</y>
-      <w>24</w>
-      <h>88</h>
+      <x>760</x>
+      <y>440</y>
+      <w>30</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
@@ -368,10 +335,10 @@ Vielleicht Filter auf Variablen</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>792</x>
-      <y>424</y>
-      <w>72</w>
-      <h>40</h>
+      <x>810</x>
+      <y>440</y>
+      <w>90</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>70.0;30.0;10.0;10.0</additional_attributes>
@@ -379,21 +346,21 @@ Vielleicht Filter auf Variablen</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>816</x>
-      <y>344</y>
-      <w>56</w>
-      <h>64</h>
+      <x>830</x>
+      <y>290</y>
+      <w>70</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>50.0;10.0;10.0;60.0</additional_attributes>
+    <additional_attributes>50.0;10.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>440</x>
-      <y>320</y>
-      <w>24</w>
-      <h>56</h>
+      <x>370</x>
+      <y>310</y>
+      <w>30</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
@@ -401,10 +368,10 @@ Vielleicht Filter auf Variablen</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>320</y>
-      <w>24</w>
-      <h>56</h>
+      <x>420</x>
+      <y>310</y>
+      <w>30</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
@@ -412,10 +379,10 @@ Vielleicht Filter auf Variablen</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>520</x>
-      <y>320</y>
-      <w>24</w>
-      <h>56</h>
+      <x>470</x>
+      <y>310</y>
+      <w>30</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
@@ -423,10 +390,10 @@ Vielleicht Filter auf Variablen</panel_attributes>
   <element>
     <type>CustomElementImpl</type>
     <coordinates>
-      <x>432</x>
+      <x>360</x>
       <y>360</y>
-      <w>33</w>
-      <h>73</h>
+      <w>41</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>
 fg=green</panel_attributes>
@@ -446,10 +413,10 @@ for(String textline : textlines) {
   <element>
     <type>CustomElementImpl</type>
     <coordinates>
-      <x>472</x>
+      <x>410</x>
       <y>360</y>
-      <w>33</w>
-      <h>73</h>
+      <w>41</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>
 fg=blue</panel_attributes>
@@ -469,10 +436,10 @@ for(String textline : textlines) {
   <element>
     <type>CustomElementImpl</type>
     <coordinates>
-      <x>512</x>
+      <x>460</x>
       <y>360</y>
-      <w>33</w>
-      <h>73</h>
+      <w>41</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>
 fg=red</panel_attributes>
@@ -488,5 +455,87 @@ drawLine(1,height/3*2,width/2,height);
 for(String textline : textlines) {
 	y += printCenter(textline,y);
 }</custom_code>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>300</y>
+      <w>130</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>600</x>
+      <y>280</y>
+      <w>160</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>halign=center
+Prozess steuern</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>470</x>
+      <y>180</y>
+      <w>70</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>50.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>260</x>
+      <y>180</y>
+      <w>160</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>halign=center
+Prozess visualisieren</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>200</x>
+      <y>540</y>
+      <w>160</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>halign=center
+Simulation als Ersatz für große Maschinen</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>450</y>
+      <w>90</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>670</x>
+      <y>170</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>halign=center
+Überwachungskonsole:
+Monitoring, "Cockpit"</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
