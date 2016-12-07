@@ -61,51 +61,71 @@ bereitstellen, die über OPC UA Werte der Anlage abfragt.\\
 \begin{center}
     \includegraphics[scale=0.5]{../system-sketch.png}
 \end{center}
-\subsection{Musskriterien}
-\subsubsection{Überwachungskonsole}
-\begin{itemize}
-\item Die \gls{Uberwachungskonsole} ruft alle Sensorwerte der Fertigungssimulation in einem festen Zeitintervall über einen OPC UA Client ab.
-\item Der OPC UA Client ist mit OPC UA Servern verbunden. Dazu ist die Einstellung der Verbindungsinformationen möglich.
-\item Die abgerufenen Werte und deren zeitlicher Verlauf werden graphisch dargestellt. Die Werte sind Zu- und Abflussmengen, Temperaturen, Flüssigkeitsfarben sowie die Drehzahl eines Mischermotors.
-\item Die Überwachungskonsole enthält Alarme, die beim Überschreiten von Schwellenwerten durch die Sensoren ausgelöst und dem Nutzer graphisch mitgeteilt werden.
-\end{itemize}
-\subsection{Kannkriterien}
-\subsubsection{Überwachungskonsole}
-\begin{itemize}
-\item Das Zeitintervall für den Empfang der Sensorwerte kann eingestellt werden.
-\item Die \gls{Uberwachungskonsole} erlaubt das Ein- und Ausschalten sowie Einstellen von Schwellenwerten von verschiedenen Alarmen.
-\item Die \gls{Uberwachungskonsole} verfügt über eine Logging-Funktion.
-\end{itemize}
-\subsection{Abgrenzungskriterien}
-\subsubsection{Überwachungskonsole}
-\begin{itemize}
-\item Die \gls{Uberwachungskonsole} zeigt alle Sensorwerte und deren zeitlichen Verlauf an, stellt allerdings den Prozess nicht dar.
-\item Die \gls{Uberwachungskonsole} hat keinen Einfluss auf den Prozessablauf.
-\end{itemize}
 
 \subsection{Musskriterien}
+\subsubsection{Allgemein}
 \begin{itemize}
   \item Die gesamte Kommunikation zwischen \gls{Uberwachungskonsole} und \gls{Fertigungssimulation} findet \"uber das \gls{OPC UA} Protokoll statt.
   \item \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} k\"onnen auf getrennten Rechnern laufen.
-  \item \gls{Jitter} in den Zuflussmengen der \gls{Fertigungssimulation} sorgt f\"ur Variation in den gemessenen Werten.
+\end{itemize}
+
+
+\subsection{Kannkriterien}
+\subsubsection{Überwachungskonsole}
+\begin{itemize}
+  \item Die \gls{Uberwachungskonsole} ruft alle Sensorwerte der Fertigungssimulation in einem festen Zeitintervall über einen OPC UA Client ab.
+  \item Der OPC UA Client ist mit OPC UA Servern verbunden. Dazu ist die Einstellung der Verbindungsinformationen möglich.
+  \item Die abgerufenen Werte und deren zeitlicher Verlauf werden graphisch dargestellt. Die Werte sind Zu- und Abflussmengen, Temperaturen, Flüssigkeitsfarben sowie die Drehzahl eines Mischermotors.
+  \item Die Überwachungskonsole enthält Alarme, die beim Überschreiten von Schwellenwerten durch die Sensoren ausgelöst und dem Nutzer graphisch mitgeteilt werden.
+  \item Das Zeitintervall für den Empfang der Sensorwerte kann eingestellt werden.
+  \item Die \gls{Uberwachungskonsole} erlaubt das Ein- und Ausschalten sowie Einstellen von Schwellenwerten von verschiedenen Alarmen.
+  \item Die \gls{Uberwachungskonsole} verfügt über eine Logging-Funktion.
+\end{itemize}
+
+\subsubsection{Überwachungskonsole}
+\begin{itemize}
+  \item Die \gls{Uberwachungskonsole} ruft alle Sensorwerte der Fertigungssimulation in einem festen Zeitintervall über einen OPC UA Client ab.
+  \item Der OPC UA Client ist mit OPC UA Servern verbunden. Dazu ist die Einstellung der Verbindungsinformationen möglich.
+  \item Die abgerufenen Werte und deren zeitlicher Verlauf werden graphisch dargestellt.
+  \item Die Überwachungskonsole enthält Alarme, die beim Überschreiten von Schwellenwerten durch die Sensoren ausgelöst und dem Nutzer graphisch mitgeteilt werden.
   \item In der \gls{Uberwachungskonsole} sind Alarme vorgegeben, die der Benutzer an- und ausschalten kann.
+\end{itemize}
+
+\subsubsection{Fertigungssimulation}
+\begin{itemize}
   \item In der \gls{Fertigungssimulation} kann der Benutzer die simulierte Fertigung steuern.
 \end{itemize}
 
+
 \subsection{Kannkriterien}
+\subsubsection{Überwachungskonsole}
 \begin{itemize}
-  \item Die \gls{Fertigungssimulation} besitzt vorgegebene \glspl{Makro} zur Bef\"ullung und Entleerung der Tanks, um f\"ur Dynamik zu sorgen.
-  \item Es ist m\"oglich, in der \gls{Fertigungssimulation} eigene \glspl{Makro} aufzunehmen und wieder abzuspielen.
+  \item Das Zeitintervall für den Empfang der Sensorwerte kann eingestellt werden.
+  \item Die \gls{Uberwachungskonsole} erlaubt das Ein- und Ausschalten sowie Einstellen von Schwellenwerten von verschiedenen Alarmen.
+  \item Die \gls{Uberwachungskonsole} verfügt über eine Logging-Funktion.
   \item Die in der \gls{Uberwachungskonsole} eingestellten Alarme k\"onnen gespeichert und beim n\"achsten Programmstart automatisch
     \"ubernommen werden.
-  \item In der \gls{Fertigungssimulation} stehen mehrere verschiedene Fertigungen als Auswahl zur Verf\"ugung.
   \item Die Schwellen zur Ausl\"osung der Alarme k\"onnen vom Benutzer ge\"andert werden.
 \end{itemize}
 
+\subsubsection{Fertigungssimulation}
+\begin{itemize}
+  \item Die Fertigungssimulation besitzt vordefinierte \glspl{Simulations-Szenario}, die über das Menü gestartet werden können.
+  \item \gls{Jitter} in den Zuflussmengen der \gls{Fertigungssimulation} sorgt f\"ur Variation in den gemessenen Werten.
+  \item In der \gls{Fertigungssimulation} stehen mehrere verschiedene Fertigungen als Auswahl zur Verf\"ugung.
+\end{itemize}
+
 \subsection{Abgrenzungskriterien}
+\subsubsection{Allgemein}
 \begin{itemize}
   \item \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} dienen der Demonstration des \gls{OPC UA} Protokolls. Dazu wird die Open Source
     Implementierung \gls{Milo} des \gls{OPC UA} Protokolls verwendet. \gls{OPC UA} wird nicht selbst implementiert.
+\end{itemize}
+
+\subsubsection{Überwachungskonsole}
+\begin{itemize}
+  \item Die \gls{Uberwachungskonsole} zeigt alle Sensorwerte und deren zeitlichen Verlauf an, stellt allerdings den Prozess nicht dar.
+  \item Die \gls{Uberwachungskonsole} hat keinen Einfluss auf den Prozessablauf.
   \item Die \gls{Uberwachungskonsole} ist auf die \gls{Fertigungssimulation} abgestimmt. Es sollen damit nicht beliebige
     Fertigungsprozesse \"uberwacht werden k\"onnen.
   \item Die \gls{Uberwachungskonsole} dient ausschlie{\ss}lich der \"Uberwachung der Daten, die von der \gls{Fertigungssimulation}
