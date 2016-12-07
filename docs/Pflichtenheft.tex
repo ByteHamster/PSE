@@ -175,13 +175,14 @@ mindestens 2GHz getaktet sein.
 \item[FA10] Die Zu- und Abflussmengen der oberen (siehe FA110) Flüssigkeitstanks können seperat eingestellt werden.
 \item[FA20] Die Abflussmenge des unteren (siehe FA110) Flüssigkeitstanks kann eingestellt werden. Die Zuflussmenge ergibt sich aus der Summe der Abflussmengen der oberen Tanks.
 \item[FA30] Der untere Tank enthält einen motorbetriebenen Mischer, dessen Drehzahl eingestellt werden kann.
-\item[FA40] Jedem der oberen Tanks ist eine Flüssigkeitsfarbe zugeordnet. Die Farbe des unteren Tanks ergibt sich aus dem Mischungsverhältnis der oberen Tanks. Dabei wird
+\item[FA40] Jedem der oberen Tanks ist eine feste Flüssigkeitsfarbe zugeordnet. Die Farbe des unteren Tanks ergibt sich aus dem Mischungsverhältnis der oberen Tanks. Dabei wird
   angenommen, dass die Flüssigkeiten der oberen Tanks die selbe Deckkraft haben.
-\item[FA45] Die Zuflusstemperaturen der oberen Tanks können seperat eingestellt werden.
+\item[FA40] Der linke obere Tank wird mit roter, der mittlere mit grüner und der rechte mit blauer Flüssigkeit gefüllt.
+\item[FA45] Die Zuflusstemperaturen der oberen Tanks können seperat eingestellt werden (Kann-Kriterium).
 \item[FA50] Es gibt eine .jar Datei, die bei Ausführung die Fertigungssimulation startet.
 \item[FA60] Nach Anforderung durch die \"Uberwachungskonsole wird in bestimmten, in der Anfrage definierten, Zust\"anden ein Alarm an die \"Uberwachungskonsole gesendet.
 \item[FA70] Kommt es in der Simulation zu einem \"Uberlauf so h\"alt die Simulation an und es wird der Text ``\"Uberlauf'' angezeigt.
-\item[FA80] Das System kann aus einem ``\"Uberlauf'' durch den Knopf ``zur\"ucksetzen'' in den Einstellungen wieder in den Startzustand versetzt werden. Anschlie{\ss}end wird die Ausführung fortgesetzt.
+\item[FA80] Das System kann aus einem ``\"Uberlauf'' durch den Knopf ``zur\"ucksetzen'' im gezeigten Dialog wieder in den Startzustand versetzt werden. Anschlie{\ss}end wird die Ausführung fortgesetzt.
 \item[FA90] Eine \"Uberwachungskonsole kann sich bei der Fertigungssimulation registrieren, um von dieser Daten zu erhalten.
 \item[FA110] Die Füllstände der Tanks werden gemessen.
 \item[FA120] Die Fertigungssimulation kommuniziert über OPC UA in einem TCP/IP Netzwerk mit Überwachungskonsolen.
@@ -194,8 +195,10 @@ mindestens 2GHz getaktet sein.
 \begin{enumerate}
 \item[FA110] Die GUI der Fertigungssimulation zeigt drei Tanks, die auf einer Höhe sind, und einen Tank unter den oberen drei.
 Es führen Leitungen von den drei oberen Tanks zum unteren Tank.
+\item[FA150] An jeder Leitung befindet sich ein Ventil, sowie einen Durchflussmesser in Form eines sich drehenden Elements. Der Öffnungsgrad des Ventils wird prozentual auf dem Ventil angezeigt.
 \item[FA120] Der Mischer im unteren Flüssigkeitstank wird durch ein sich drehendes GUI Element dargestellt.
 Die Umdrehungsgeschwindigkeit repräsentiert die Drehzahl des Mischermotors.
+\item[FA150] An jedem Tank ist ein Temperatursensor angebracht (sofern implementiert).
 \item[FA130] Der Füllstand der Flüssigkeitstanks wird durch das Füllen der Tanks in der Farbe ihrer Flüssigkeit dargestellt.
 \item[FA140] Die einstellbaren Parameter können in einem Unterfenster eingestellt werden. Darin existiert für jeden Tank ein eigener Reiter, der die 
 tankspezifischen Einstellungen wie zum Beispiel Zu- und Abflussmengen, Zuflusstemperaturen oder Motordrehzahlen (siehe FA10 bis FA30) enthält.
@@ -237,7 +240,7 @@ Diese Parameter werden durch Schieberegler eingestellt.
 \item[FA420] Die \gls{Uberwachungskonsole} zeigt die Zuflussmenge der oberen Tanks auf jeweils einer Skala an.
 \item[FA430] Die \gls{Uberwachungskonsole} zeigt die Abflussmenge aller Tanks auf jeweils einer Skala an.
 \item[FA440] Die \gls{Uberwachungskonsole} zeigt den Füllstand aller Tanks auf jeweils einer Skala an.
-\item[FA450] Die \gls{Uberwachungskonsole} zeigt die Temperatur aller Tanks auf jeweils einer Skala an.
+\item[FA450] Die \gls{Uberwachungskonsole} zeigt die Temperatur aller Tanks auf jeweils einer Skala an (sofern implementiert).
 \item[FA460] Die \gls{Uberwachungskonsole} zeigt die Drehzahl des Mischermotors im unteren Tank auf einer Skala an.
 \item[FA470] Der zeitliche Verlauf des Füllstandes wird jeweils für alle Tanks angezeigt.
 \item[FA480] Der zeitliche Verlauf der Temperatur wird jeweils für alle Tanks angezeigt.
