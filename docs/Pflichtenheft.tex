@@ -74,8 +74,8 @@ bereitstellen, die über \gls{OPC UA} Werte der \gls{Produktionsanlage} abfragt.
   \item Die \gls{Uberwachungskonsole} ruft alle \glspl{Sensordatum} der \gls{Fertigungssimulation} in einem festen Zeitintervall über einen \gls{OPC UA} Client ab.
   \item Der \gls{OPC UA} Client ist mit \gls{OPC UA} Servern verbunden. Dazu ist die Einstellung der Verbindungsinformationen möglich.
   \item Die abgerufenen Werte und deren zeitlicher Verlauf werden graphisch dargestellt. Die Werte sind Zu- und Abflussmengen, Temperaturen, Flüssigkeitsfarben sowie die Drehzahl eines Mischermotors.
-  \item Die \gls{Uberwachungskonsole} enthält Alarme, die beim Überschreiten von Schwellenwerten durch die Sensoren ausgelöst und dem Nutzer graphisch mitgeteilt werden.
-  \item Das Zeitintervall für den Empfang der Sensorwerte kann eingestellt werden.
+  \item Die \gls{Uberwachungskonsole} enthält Alarme, die beim Überschreiten von Schwellenwerten in der \gls{Fertigungssimulation} durch den \gls{OPC UA} Server gesendet
+    und dem Nutzer graphisch mitgeteilt werden.
 \end{itemize}
 
 \subsubsection{Fertigungssimulation}
@@ -87,18 +87,18 @@ bereitstellen, die über \gls{OPC UA} Werte der \gls{Produktionsanlage} abfragt.
 \subsection{Kannkriterien}
 \subsubsection{Überwachungskonsole}
 \begin{itemize}
-  \item Das Zeitintervall für den Empfang der Sensorwerte kann eingestellt werden.
-  \item Die \gls{Uberwachungskonsole} erlaubt das Ein- und Ausschalten sowie Einstellen von Schwellenwerten von verschiedenen Alarmen.
-  \item Die \gls{Uberwachungskonsole} verfügt über eine Logging-Funktion.
-  \item Die in der \gls{Uberwachungskonsole} eingestellten Alarme k\"onnen gespeichert und beim n\"achsten Programmstart automatisch
-    \"ubernommen werden.
+  \item Das Zeitintervall für den Empfang der \glspl{Sensordatum} kann eingestellt werden.
+  \item Die Alarme k\"onnen ein- und ausgeschaltet werden.
   \item Die Schwellen zur Ausl\"osung der Alarme k\"onnen vom Benutzer ge\"andert werden.
+  \item Die \gls{Uberwachungskonsole} verfügt über eine Logging-Funktion.
+  \item Die eingestellten Alarme k\"onnen gespeichert und beim n\"achsten Programmstart automatisch
+    \"ubernommen werden.
 \end{itemize}
 
 \subsubsection{Fertigungssimulation}
 \begin{itemize}
-  \item Die Fertigungssimulation besitzt vordefinierte \glspl{Simulations-Szenario}, die über das Menü gestartet werden können.
-  \item \gls{Jitter} in den Zuflussmengen der \gls{Fertigungssimulation} sorgt f\"ur Variation in den gemessenen Werten.
+  \item Es gibt vordefinierte \glspl{Simulations-Szenario}, die über das Menü gestartet werden können.
+  \item \gls{Jitter} in den Zuflussmengen der Tanks sorgt f\"ur Variation in den gemessenen Werten.
 \end{itemize}
 
 
