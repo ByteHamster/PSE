@@ -181,8 +181,8 @@ mindestens 2GHz getaktet sein.
 \item[FA45] Die Zuflusstemperaturen der oberen Tanks können seperat eingestellt werden (Kann-Kriterium).
 \item[FA50] Es gibt eine .jar Datei, die bei Ausführung die Fertigungssimulation startet.
 \item[FA60] Nach Anforderung durch die \"Uberwachungskonsole wird in bestimmten, in der Anfrage definierten, Zust\"anden ein Alarm an die \"Uberwachungskonsole gesendet.
-\item[FA70] Kommt es in der Simulation zu einem \"Uberlauf so h\"alt die Simulation an und es wird der Text ``\"Uberlauf'' angezeigt.
-\item[FA80] Das System kann aus einem ``\"Uberlauf'' durch den Knopf ``zur\"ucksetzen'' im gezeigten Dialog wieder in den Startzustand versetzt werden. Anschlie{\ss}end wird die Ausführung fortgesetzt.
+\item[FA70] Kommt es in der Simulation zu einem \"Uberlauf so h\"alt die Simulation an und es wird der Text "`\"Uberlauf"' angezeigt.
+\item[FA80] Das System kann aus einem "`\"Uberlauf"' durch den Knopf "`zur\"ucksetzen"' im gezeigten Dialog wieder in den Startzustand versetzt werden. Anschlie{\ss}end wird die Ausführung fortgesetzt.
 \item[FA90] Eine \"Uberwachungskonsole kann sich bei der Fertigungssimulation registrieren, um von dieser Daten zu erhalten.
 \item[FA110] Die Füllstände der Tanks werden gemessen.
 \item[FA120] Die Fertigungssimulation kommuniziert über OPC UA in einem TCP/IP Netzwerk mit Überwachungskonsolen.
@@ -204,13 +204,13 @@ Die Umdrehungsgeschwindigkeit repräsentiert die Drehzahl des Mischermotors.
 tankspezifischen Einstellungen wie zum Beispiel Zu- und Abflussmengen, Zuflusstemperaturen oder Motordrehzahlen (siehe FA10 bis FA30) enthält.
 Diese Parameter werden durch Schieberegler eingestellt.
 \item[FA150] Jeder der dargestellten Tanks ist mit einer hellgrauen Box hinterlegt, welche den Zuständigkeitsbereich des jeweiligen OPC UA Servers repräsentiert.
-\item[FA160] Die Fertigungssimulation besitzt einen ``Über''-Dialog, welcher Lizenzinfos zu verwendeten Bibliotheken,
+\item[FA160] Die Fertigungssimulation besitzt einen "`Über"'-Dialog, welcher Lizenzinfos zu verwendeten Bibliotheken,
   sowie eine kurze Information zu den Erstellern des Programms enthält.
-\item[FA170] Die Fertigungssimulation besitzt einen Einstellungsdialog, der im Menü über ``Datei $\rightarrow$ Einstellungen'' angezeigt werden kann.
-\item[FA180] Der Einstellungsdialog besitzt Buttons zum Verwerfen (``Abbrechen'') und Anwenden der Änderungen. Das Anwenden geschieht über einen ``OK''-Button, welcher zudem den Dialog schließt.
+\item[FA170] Die Fertigungssimulation besitzt einen Einstellungsdialog, der im Menü über "`Datei $\rightarrow$ Einstellungen"' angezeigt werden kann.
+\item[FA180] Der Einstellungsdialog besitzt Buttons zum Verwerfen ("`Abbrechen"') und Anwenden der Änderungen. Das Anwenden geschieht über einen "`OK"'-Button, welcher zudem den Dialog schließt.
 \item[FA200] Der Einstellungsdialog besitzt einen Regler, welcher den \gls{Jitter} durch einen Schieberegler konfigurierbar macht.
   Hierbei entspricht ein \gls{Jitter} von 0 der Deaktivierung der Funktion.
-\item[FA210] Der Menüeintrag ``Szenarien'' zeigt eine Liste der \glspl{Simulations-Szenario}, die durch einen Klick gestartet werden können.
+\item[FA210] Der Menüeintrag "`Szenarien"' zeigt eine Liste der \glspl{Simulations-Szenario}, die durch einen Klick gestartet werden können.
 \end{enumerate}
 
 \subsubsection{Optionale Funktionalität}
@@ -382,7 +382,7 @@ zu steigen beginnt. In der Fertigungssimulation ist der steigende F\"ullstand zu
 steigende Werte angezeigt.
 Darauf wird der F\"ullstand von 95\% erreicht und in der \"Uberwachungskonsole der Alarm ausgel\"ost. Manuel
 beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Philipp in den Einstellungen der
-Fertigungssimulation die Option ``zur\"ucksetzen'', woraufhin wieder die Standardkonfiguration angezeigt wird.
+Fertigungssimulation die Option "`zur\"ucksetzen"', woraufhin wieder die Standardkonfiguration angezeigt wird.
 
 \subsection{Anwendungsfälle}
 \subsubsection{Änderung der Zu-/Abflussgeschwindigkeit}
@@ -392,11 +392,11 @@ Fertigungssimulation die Option ``zur\"ucksetzen'', woraufhin wieder die Standar
  \item[Eingangsbedingung] Die Fertigungssimulation und die Überwachungskonsole sind in Betrieb und miteinander verbunden.
  \item[Ereignisfluss]~\\
  \begin{itemize}[noitemsep]
-  \item Manuel öffnet in der Fertigungssimulation den Menüeintrag ``Ansicht''.
-  \item Manuel klickt auf ``Steuerung anzeigen''.
+  \item Manuel öffnet in der Fertigungssimulation den Menüeintrag "`Ansicht"'.
+  \item Manuel klickt auf "`Steuerung anzeigen"'.
   \item Ein Fenster öffnet sich. Manuel wählt den Reiter des Tanks, den er verändern will.
   \item Manuel verschiebt den Schieberegler des Zufluss- oder Abflussventils auf den gewünschten Wert.
-  \item Manuel klickt den ``OK'' Knopf.
+  \item Manuel klickt den "`OK"' Knopf.
  \end{itemize}
  \item[Ausgangssituation] Die Zu- oder Abflussrate im gewählten Tank ist nun höher bzw. niedriger. Dies ist am schnelleren oder langsameren Füllen oder Leeren des Tanks in der Visualisierung der Tanks sichtbar.
  Außerdem zeigt die Überwachungskonsole höhere/niedrigere Durchflussraten an.
@@ -414,9 +414,9 @@ Fertigungssimulation die Option ``zur\"ucksetzen'', woraufhin wieder die Standar
 % \item[Ereignisfluss]~\\
 % \begin{itemize}[noitemsep]
 %  \item Manuel öffnet in der Überwachungskonsole die Einstellungen.
-%  \item Ein neues Fenster erscheint. Manuel navigiert in den Reiter ``Empfangene Daten''.
+%  \item Ein neues Fenster erscheint. Manuel navigiert in den Reiter "`Empfangene Daten"'.
 %  \item Manuel klickt auf die Haken in der Liste, um Sensorwerte hinzuzufügen oder auszublenden.
-%  \item Manuel klickt den ``OK'' Knopf.
+%  \item Manuel klickt den "`OK"' Knopf.
 % \end{itemize}
 % \item[Ausgangssituation] Die \glspl{Sensordatum}, deren Haken entfernt wurden, werden sofort ausgeblendet. Die \glspl{Sensordatum}, deren Haken hinzugefügt wurden, erscheinen sofort in der \gls{GUI}.
 % \item [Nichtfunktionale Anforderungen] Die geänderten Einstellungen werden binnen einer halben Sekunde in der \gls{GUI} dargestellt.
@@ -430,9 +430,9 @@ Fertigungssimulation die Option ``zur\"ucksetzen'', woraufhin wieder die Standar
  \item[Ereignisfluss]~\\
  \begin{itemize}[noitemsep]
   \item Manuel öffnet in der Überwachungskonsole die Einstellungen.
-  \item Manuel navigiert in den Reiter ``Allgemeine Einstellungen''.
+  \item Manuel navigiert in den Reiter "`Allgemeine Einstellungen"'.
   \item Manuel verschiebt den Schieberegler, der die Aktualisierungsfrequenz einstellt.
-  \item Manuel klickt den ``Speichern'' Knopf.
+  \item Manuel klickt den "`Speichern"' Knopf.
  \end{itemize}
  \item[Ausgangssituation] Die Sensorwerte in der Überwachungskonsole werden nun in Abständen der gewählten Aktualisierungsfrequenz aktualisiert.
  \item [Nichtfunktionale Anforderungen] Die Frequenz ändert sich spätestens mit der nächsten Aktualisierung.
@@ -462,11 +462,11 @@ Fertigungssimulation die Option ``zur\"ucksetzen'', woraufhin wieder die Standar
  \item[Ereignisfluss]~\\
  \begin{itemize}[noitemsep]
   \item Manuel \"offnet in der \gls{Uberwachungskonsole} die Einstellungen.
-  \item Manuel navigiert in den Reiter ``Alarme''.
+  \item Manuel navigiert in den Reiter "`Alarme"'.
   \item Manuel w\"ahlt den Alarm aus, der eingeschalten werden soll.
   \item Manuel aktiviert die Checkbox, die zum Alarm gehört.
   \item Manuel stellt zusätzlich einen Schwellenwert ein oder lässt den aktuell angezeigten.
-  \item Manuel klickt den ``Speichern'' Knopf.
+  \item Manuel klickt den "`Speichern"' Knopf.
  \end{itemize}
  \item[Ausgangssituation] Wenn der Sensor die Alarmbedingung erf\"ullt, wird an die \gls{Uberwachungskonsole} ein Alarm gesendet.
  \item [Nichtfunktionale Anforderungen] Sp\"atestens nach 100ms ist die Aktualisierung \"ubernommen und wird
@@ -500,7 +500,7 @@ Fertigungssimulation die Option ``zur\"ucksetzen'', woraufhin wieder die Standar
  \item[Ereignisfluss]~\\
  \begin{itemize}[noitemsep]
   \item Manuel \"offnet in der \gls{Uberwachungskonsole} die Einstellungen.
-  \item Manuel navigiert in den Reiter ``Alarme''.
+  \item Manuel navigiert in den Reiter "`Alarme"'.
   \item Manuel w\"ahlt den gew\"unschten Alarm aus.
   \item Manuel tr\"agt den gew\"unschten Schwellenwert ein.
   \item Manuel klickt auf "`Speichern"'.
@@ -518,9 +518,9 @@ Fertigungssimulation die Option ``zur\"ucksetzen'', woraufhin wieder die Standar
  \item[Ereignisfluss]~\\
  \begin{itemize}[noitemsep]
   \item Manuel \"offnet in der \"Uberwachungskonsole die Einstellungen.
-  \item Manuel navigiert in den Reiter ``Alarme''.
+  \item Manuel navigiert in den Reiter "`Alarme"'.
   \item Manuel deaktiviert die Checkbox aller gew\"unschten Alarme.
-  \item Manuel klickt auf ``Speichern''.
+  \item Manuel klickt auf "`Speichern"'.
  \end{itemize}
  \item[Ausgangssituation] Die alten Alarmbedingungen l\"osen keine Alarme mehr aus.
  \item [Nichtfunktionale Anforderungen] Das Ausschalten der Alarme wird nach sp\"atestens 100ms an die Fertigungssimulation \"ubermittelt.
