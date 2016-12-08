@@ -48,7 +48,7 @@ Sie kommunizieren lediglich über OPC UA.
 In der GUI der Fertigungssimulation wird ein industrieller Prozess dargestellt.
 Drei Tanks werden mit je einer farbigen Flüssigkeit gefüllt und leiten diese in einen weiteren Tank,
 in dem die Flüssigkeiten durch einen Motor gemischt werden. Daten und Werte des Prozesses werden ebenfalls angezeigt. Dazu gibt es
-die Möglichkeit, die Parameter der Produktion zu konfigurieren,  zum Beispiel indem man Zu- und Abflussmengen oder Grenzen für Füllstände einstellt. Die visuelle Darstellung passt sich an die Konfiguration an.
+die Möglichkeit, die Parameter der Produktion zu konfigurieren, zum Beispiel indem man Zu- und Abflussmengen oder Grenzen für Füllstände einstellt. Die visuelle Darstellung passt sich an die Konfiguration an.
 Die Überwachungskonsole liest die Daten der Fertigungssimulation, stellt sie optisch ansprechend in einem Monitoring dar
 und kann Alarme anzeigen, falls Grenzwerte überschritten werden. Das Monitoring ist ebenfalls konfigurierbar. Es ist etwa möglich, Filter auf Variablen anzuwenden. Allerdings hat die Überwachungskonsole keinen Einfluss auf die Fertigungssimulation.
 
@@ -66,29 +66,16 @@ bereitstellen, die über OPC UA Werte der Anlage abfragt.\\
 \subsubsection{Allgemein}
 \begin{itemize}
   \item Die gesamte Kommunikation zwischen \gls{Uberwachungskonsole} und \gls{Fertigungssimulation} findet \"uber das \gls{OPC UA} Protokoll statt.
-  \item \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} k\"onnen auf getrennten Rechnern laufen.
+  \item \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} laufen auf getrennten Rechnern.
 \end{itemize}
 
-
-\subsection{Kannkriterien}
 \subsubsection{Überwachungskonsole}
 \begin{itemize}
-  \item Die \gls{Uberwachungskonsole} ruft alle Sensorwerte der Fertigungssimulation in einem festen Zeitintervall über einen OPC UA Client ab.
+  \item Die \gls{Uberwachungskonsole} ruft alle \glspl{Sensordatum} der Fertigungssimulation in einem festen Zeitintervall über einen OPC UA Client ab.
   \item Der OPC UA Client ist mit OPC UA Servern verbunden. Dazu ist die Einstellung der Verbindungsinformationen möglich.
   \item Die abgerufenen Werte und deren zeitlicher Verlauf werden graphisch dargestellt. Die Werte sind Zu- und Abflussmengen, Temperaturen, Flüssigkeitsfarben sowie die Drehzahl eines Mischermotors.
   \item Die Überwachungskonsole enthält Alarme, die beim Überschreiten von Schwellenwerten durch die Sensoren ausgelöst und dem Nutzer graphisch mitgeteilt werden.
-  \item Das Zeitintervall für den Empfang der Sensorwerte kann eingestellt werden.
-  \item Die \gls{Uberwachungskonsole} erlaubt das Ein- und Ausschalten sowie Einstellen von Schwellenwerten von verschiedenen Alarmen.
-  \item Die \gls{Uberwachungskonsole} verfügt über eine Logging-Funktion.
-\end{itemize}
-
-\subsubsection{Überwachungskonsole}
-\begin{itemize}
-  \item Die \gls{Uberwachungskonsole} ruft alle Sensorwerte der Fertigungssimulation in einem festen Zeitintervall über einen OPC UA Client ab.
-  \item Der OPC UA Client ist mit OPC UA Servern verbunden. Dazu ist die Einstellung der Verbindungsinformationen möglich.
-  \item Die abgerufenen Werte und deren zeitlicher Verlauf werden graphisch dargestellt.
-  \item Die Überwachungskonsole enthält Alarme, die beim Überschreiten von Schwellenwerten durch die Sensoren ausgelöst und dem Nutzer graphisch mitgeteilt werden.
-  \item In der \gls{Uberwachungskonsole} sind Alarme vorgegeben, die der Benutzer an- und ausschalten kann.
+  \item Das Zeitintervall für den Empfang der Sensorwerte kann eingestellt werden.\item Die \gls{Uberwachungskonsole} erlaubt das Ein- und Ausschalten verschiedener Alarme.
 \end{itemize}
 
 \subsubsection{Fertigungssimulation}
@@ -112,8 +99,8 @@ bereitstellen, die über OPC UA Werte der Anlage abfragt.\\
 \begin{itemize}
   \item Die Fertigungssimulation besitzt vordefinierte \glspl{Simulations-Szenario}, die über das Menü gestartet werden können.
   \item \gls{Jitter} in den Zuflussmengen der \gls{Fertigungssimulation} sorgt f\"ur Variation in den gemessenen Werten.
-  \item In der \gls{Fertigungssimulation} stehen mehrere verschiedene Fertigungen als Auswahl zur Verf\"ugung.
 \end{itemize}
+
 
 \subsection{Abgrenzungskriterien}
 \subsubsection{Allgemein}
@@ -131,6 +118,13 @@ bereitstellen, die über OPC UA Werte der Anlage abfragt.\\
   \item Die \gls{Uberwachungskonsole} dient ausschlie{\ss}lich der \"Uberwachung der Daten, die von der \gls{Fertigungssimulation}
     stammen. Sie kann nicht steuernd in die \gls{Fertigungssimulation} eingreifen.
 \end{itemize}
+
+\subsubsection{Fertigungssimulation}
+\begin{itemize}
+  \item Die \gls{Fertigungssimulation} stellt eine einzelne \gls{Produktionsanlage} schematisch dar. Die Darstellung verschiedener \glspl{Produktionsanlage}
+    ist nicht das Ziel. Eine realistisch-detaillierte Simulation ist nicht das Ziel.
+\end{itemize}
+
 
 
 \newpage
