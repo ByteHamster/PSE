@@ -294,8 +294,8 @@ Diese Parameter werden durch Schieberegler eingestellt.
  \item[NF120] Ports dürfen Werte im Bereich 1024 bis 61000 annehmen.
  \item[NF130] Die Schwellenwerte für die Alarme dürfen zwischen 0 und 100 \% gewählt werden.
  \item[NF140] Die Aktualisierungsfrequenz kann im Bereich zwischen 20 und 4000 Millisekunden gewählt werden.
- \item[NF150] Wenn sich Werte in der Fertigungssimulation ändern, werden die Änderungen spätestens nach der Zeitspanne von
-   einer halben Sekunde plus dem Aktualisierungsintervall in der Überwachungskonsole angezeigt.
+ \item[NF150] Wenn sich Werte in der \gls{Fertigungssimulation} ändern, werden die Änderungen spätestens nach der Zeitspanne von
+   einer halben Sekunde plus dem Aktualisierungsintervall in der \gls{Uberwachungskonsole} angezeigt.
 \end{enumerate}
 
 \pagebreak
@@ -319,7 +319,7 @@ Diese Parameter werden durch Schieberegler eingestellt.
 \section{Systemmodelle}
 \subsection{Szenarien}
 \subsubsection*{Akteure}
-\textbf{Manuel}: Der Benutzer des Programms, der OPC UA vermarkten will.\\
+\textbf{Manuel}: Der Benutzer des Programms, der \gls{OPC UA} vermarkten will.\\
 \textbf{Philipp}: Ein potenzieller Anwender von OPC UA, der das Protokoll noch nicht kennt.
 
 \subsubsection{Szenario 1: Unabhängige Installation}
@@ -328,28 +328,29 @@ Da Philipp nur wenig Zeit hat, fährt Manuel mit dem Auto zu Philipp. Weil Manue
 noch Zeit für eine komplette Demonstrationsanlage hat, nimmt er einen Laptop mit Simulationssoftware mit.
 
 Vor Ort angekommen, startet er auf dem Laptop zwei virtuelle Maschinen, auf denen je ein Programm installiert ist. 
-Einmal eine Fertigungssimulation und auf der anderen virtuellen Maschine eine Überwachungskonsole, um die Fertigung zu überwachen.
+Einmal eine \gls{Fertigungssimulation} und auf der anderen virtuellen Maschine eine \gls{Uberwachungskonsole}, um die Fertigung zu überwachen.
 Nun weist Manuel den beiden virtuellen Maschinen je eine feste IP-Adresse zu.
-Anschlie{\ss}end startet Manuel erst die Fertigungssimulation und dann die Überwachungskonsole.
-Beim Start der Überwachungskonsole wird er nach der IP-Adresse gefragt, unter der die Fertigungssimulation zu finden ist. 
-Er gibt die Adresse der anderen virtuellen Maschine an und auch die Überwachungskonsole startet erfolgreich. 
+Anschlie{\ss}end startet Manuel erst die \gls{Fertigungssimulation} und dann die \gls{Uberwachungskonsole}.
+Beim Start der \gls{Uberwachungskonsole} wird er nach der IP-Adresse gefragt, unter der die \gls{Fertigungssimulation} zu finden ist. 
+Er gibt die Adresse der anderen virtuellen Maschine an und auch die \gls{Uberwachungskonsole} startet erfolgreich. 
 Nun ist klar, dass die beiden Programme tatsächlich über das Netzwerk kommunizieren.
 
-In der Fertigungssimulation wird nun eine Produktionsanlage angezeigt, in der Flüssigkeiten aus drei Tanks
+In der \gls{Fertigungssimulation} wird nun eine \gls{Produktionsanlage} angezeigt, in der Flüssigkeiten aus drei Tanks
 in einem weiteren Tank vermischt werden; Farben des Inhalts der Ursprungs- und des Zieltanks visualisieren den Vorgang. 
 Im Zieltank dreht sich ein Motor, der für die Durchmischung sorgt.
 Es gibt Sensoren für Temperatur, Farbe, Füllstand und Durchfluss der Tanks sowie für die Drehzahl des Motors.
-In der Überwachungskonsole sieht man nun eine Reihe von Feldern mit sich aktualisierenden Daten,
+In der \gls{Uberwachungskonsole} sieht man nun eine Reihe von Feldern mit sich aktualisierenden Daten,
 die Zu- und Abfluss, Farbe und Temperatur der verschiedenen Tanks zeigen.
 
 \subsubsection{Szenario 2: Konfigurierbarkeit}
-Als Philipp zu ihm kommt, will Manuel ihm die Funktion von OPC UA demonstrieren.
-Als erstes ändert er in der Fertigungssimulation den Zu- und Abfluss bei zwei der Tanks. Nun sehen die beiden, wie
-sich die von der Überwachungskonsole angezeigten Werte für Zu- und Abfluss mit der nächsten Aktualisierung ändern. Die
+Als Philipp zu ihm kommt, will Manuel ihm die Funktion von \gls{OPC UA} demonstrieren.
+Als erstes ändert er in der \gls{Fertigungssimulation} den Zu- und Abfluss bei zwei der Tanks. Nun sehen die beiden, wie
+sich die von der \gls{Uberwachungskonsole} angezeigten Werte für Zu- und Abfluss mit der nächsten Aktualisierung ändern. Die
 Farbe im Zielcontainer ändert sich langsam, während sich das Mischungsverhältnis der Flüssigkeiten ändert. Auch diese
-Werte werden in der Überwachungskonsole jeweils aktualisiert.
+Werte werden in der \gls{Uberwachungskonsole} jeweils aktualisiert.
 
-Als nächstes betrachten die beiden, wie sich in der Überwachungskonsole die Anzeigen für den Füllstand und die Motorgeschwindigkeit des unteren Tankes ändern.
+Als nächstes betrachten die beiden, wie sich in der \gls{Uberwachungskonsole} die Anzeigen für den Füllstand und die
+Motorgeschwindigkeit des unteren Tankes ändern.
 Außerdem verweist Manuel auf Reiter unterhalb der Überwachungsanzeigen der Tanks,
 in denen Philipp die Füllstands- und Temperaturverläufe ansehen kann.
 
@@ -357,44 +358,45 @@ Philipp merkt nun an, dass ihm die Flexibilität der empfangenen Daten sehr gef�
 einer Sekunde sei aber in manchen der Fertigungsprozesse zu lang, da in manchen kritischen Zuständen sehr schnell
 automatisch reagiert werden muss, etwa wenn Schwellenwerte überschritten werden. Daraufhin ändert Manuel in den
 Einstellungen das Aktualisierungsintervall von 1000ms auf 250ms. Anschließend sehen beide, wie sich die Werte in der
-Überwachungskonsole tatsächlich vier Mal pro Sekunde aktualisieren.
+\gls{Uberwachungskonsole} tatsächlich vier Mal pro Sekunde aktualisieren.
 
 \subsubsection{Szenario 3: Alarme}
-Philipp ist zunehmend an OPC UA interessiert, hat aber noch letzte Zweifel. Er merkt an, dass die Abfrage der Daten
+Philipp ist zunehmend an \gls{OPC UA} interessiert, hat aber noch letzte Zweifel. Er merkt an, dass die Abfrage der Daten
 zwar gut funktioniert, eine wirkliche \"Uberwachung aber noch einen \gls{Wrapper} f\"ur das Programm ben\"otigen w\"urde,
 um ungew\"ohnliche Zust\"ande in der Fertigung automatisch zu bemerken und darauf aufmerksam zu machen.
-Manuel merkt an, dass das ein guter Einwand ist und dass OPC UA auch daf\"ur eine passende Funktionalit\"at besitzt.
+Manuel merkt an, dass das ein guter Einwand ist und dass \gls{OPC UA} auch daf\"ur eine passende Funktionalit\"at besitzt.
 
-Er \"offnet das Einstellungsmen\"u der \"Uberwachungskonsole und ruft den Reiter "`Alarme"'. Um die Flexibilit\"at
-von OPC UA erneut zu demonstrieren, fragt er Philipp, welchen vorhandenen Zustand er gerne abfangen w\"urde. Philipp möchte gerne
+Er \"offnet das Einstellungsmen\"u der \gls{Uberwachungskonsole} und ruft den Reiter "`Alarme"' auf. Um die Flexibilit\"at
+von \gls{OPC UA} erneut zu demonstrieren, fragt er Philipp, welchen vorhandenen Zustand er gerne abfangen w\"urde. Philipp möchte gerne
 wissen, wenn ein Tank \"uberzulaufen droht. Er schl\"agt daf\"ur als Grenze einen F\"ullstand von 95\% vor.
-Manuel gibt also in der \"Uberwachungskonsole 95\% als Grenze an und w\"ahlt einen Tank, f\"ur den der Alarm stattfinden soll.
+Manuel gibt also in der \gls{Uberwachungskonsole} 95\% als Grenze an und w\"ahlt einen Tank, f\"ur den der Alarm stattfinden soll.
 Dann speichert er die neuen Einstellungen.
 
-Anschlie{\ss}end dreht er in der Fertigungssimulation den Zufluss des entsprechenden Tanks auf, woraufhin der F\"ullstand
-zu steigen beginnt. In der Fertigungssimulation ist der steigende F\"ullstand zu sehen, in der \"Uberwachungskonsole werden
+Anschlie{\ss}end dreht er in der \gls{Fertigungssimulation} den Zufluss des entsprechenden Tanks auf, woraufhin der F\"ullstand
+zu steigen beginnt. In der \gls{Fertigungssimulation} ist der steigende F\"ullstand zu sehen, in der \gls{Uberwachungskonsole} werden
 steigende Werte angezeigt.
-Darauf wird der F\"ullstand von 95\% erreicht und in der \"Uberwachungskonsole der Alarm ausgel\"ost. Manuel
+Darauf wird der F\"ullstand von 95\% erreicht und in der \gls{Uberwachungskonsole} der Alarm ausgel\"ost. Manuel
 beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Philipp in den Einstellungen der
-Fertigungssimulation die Option "`zur\"ucksetzen"', woraufhin wieder die Standardkonfiguration angezeigt wird.
+\gls{Fertigungssimulation} die Option "`zur\"ucksetzen"', woraufhin wieder die Standardkonfiguration angezeigt wird.
 
 \subsection{Anwendungsfälle}
 \subsubsection{Änderung der Zu-/Abflussgeschwindigkeit}
 \begin{description}
- \item[Name] Erhöhen oder Verringern der Zu- oder Abflussgeschwindigkeit bei einem der Flüssigkeitstanks.
- \item[Akteure] Manuel (Bediener der Software)
- \item[Eingangsbedingung] Die Fertigungssimulation und die Überwachungskonsole sind in Betrieb und miteinander verbunden.
- \item[Ereignisfluss]~\\
- \begin{itemize}[noitemsep]
-  \item Manuel öffnet in der Fertigungssimulation den Menüeintrag "`Ansicht"'.
+  \item[Name] Erhöhen oder Verringern der Zu- oder Abflussgeschwindigkeit bei einem der Flüssigkeitstanks.
+  \item[Akteure] Manuel (Bediener der Software)
+  \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
+  \item[Ereignisfluss]~\\
+\begin{itemize}[noitemsep]
+  \item Manuel öffnet in der \gls{Fertigungssimulation} den Menüeintrag "`Ansicht"'.
   \item Manuel klickt auf "`Steuerung anzeigen"'.
   \item Ein Fenster öffnet sich. Manuel wählt den Reiter des Tanks, den er verändern will.
   \item Manuel verschiebt den Schieberegler des Zufluss- oder Abflussventils auf den gewünschten Wert.
   \item Manuel klickt den "`OK"' Knopf.
- \end{itemize}
- \item[Ausgangssituation] Die Zu- oder Abflussrate im gewählten Tank ist nun höher bzw. niedriger. Dies ist am schnelleren oder langsameren Füllen oder Leeren des Tanks in der Visualisierung der Tanks sichtbar.
- Außerdem zeigt die Überwachungskonsole höhere/niedrigere Durchflussraten an.
- \item [Nichtfunktionale Anforderungen] Der geänderte Zu- oder Abflusswert wird mit der nächsten Aktualisierung auf der Überwachungskonsole angezeigt.
+\end{itemize}
+  \item[Ausgangssituation] Die Zu- oder Abflussrate im gewählten Tank ist nun höher bzw. niedriger. Dies ist am schnelleren oder
+    langsameren Füllen oder Leeren des Tanks in der Visualisierung der Tanks sichtbar.
+    Außerdem zeigt die \gls{Uberwachungskonsole} höhere/niedrigere Durchflussraten an.
+  \item [Nichtfunktionale Anforderungen] Der geänderte Zu- oder Abflusswert wird mit der nächsten Aktualisierung auf der \gls{Uberwachungskonsole} angezeigt.
 \end{description}
 
 %
@@ -420,15 +422,15 @@ Fertigungssimulation die Option "`zur\"ucksetzen"', woraufhin wieder die Standar
 \begin{description}
  \item[Name] Erhöhen oder Verringern der Aktualisierungsfrequenz.
  \item[Akteure] Manuel (Bediener der Software)
- \item[Eingangsbedingung] Die Fertigungssimulation und die Überwachungskonsole sind in Betrieb und miteinander verbunden.
+ \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
  \item[Ereignisfluss]~\\
  \begin{itemize}[noitemsep]
-  \item Manuel öffnet in der Überwachungskonsole die Einstellungen.
+  \item Manuel öffnet in der \gls{Uberwachungskonsole} die Einstellungen.
   \item Manuel navigiert in den Reiter "`Allgemeine Einstellungen"'.
   \item Manuel verschiebt den Schieberegler, der die Aktualisierungsfrequenz einstellt.
   \item Manuel klickt den "`Speichern"' Knopf.
  \end{itemize}
- \item[Ausgangssituation] Die Sensorwerte in der Überwachungskonsole werden nun in Abständen der gewählten Aktualisierungsfrequenz aktualisiert.
+ \item[Ausgangssituation] Die \glspl{Sensordatum} in der \gls{Uberwachungskonsole} werden nun in Abständen der gewählten Aktualisierungsfrequenz aktualisiert.
  \item [Nichtfunktionale Anforderungen] Die Frequenz ändert sich spätestens mit der nächsten Aktualisierung.
 \end{description}
 
@@ -436,16 +438,16 @@ Fertigungssimulation die Option "`zur\"ucksetzen"', woraufhin wieder die Standar
 \begin{description}
  \item[Name] Einrichtung und Starten der Simulation auf virtuellen Maschinen
  \item[Akteure] Manuel (Bediener der Software)
- \item[Eingangsbedingung] Ein Computer (oder virtuelle Maschine), auf der die .jar Datei der Überwachungskonsole gespeichert ist und ein Computer (oder virtuelle Maschine), auf der die .jar
- Datei der Fertigungssimulation gespeichert ist, sind in Betrieb und haben feste IP Adressen zugewiesen bekommen.
+ \item[Eingangsbedingung] Ein Computer (oder virtuelle Maschine), auf der die .jar Datei der \gls{Uberwachungskonsole} gespeichert ist und ein Computer (oder virtuelle Maschine), auf der die .jar
+ Datei der \gls{Fertigungssimulation} gespeichert ist, sind in Betrieb und haben feste IP Adressen zugewiesen bekommen.
  \item[Ereignisfluss]~\\
  \begin{itemize}[noitemsep]
-  \item Manuel startet die JAR der Fertigungssimulation.
-  \item Manuel startet die JAR der Überwachungskonsole.
-  \item Manuel gibt die IP Adresse ein, unter der die Fertigungssimulation zu finden ist.
+  \item Manuel startet die JAR der \gls{Fertigungssimulation}.
+  \item Manuel startet die JAR der \gls{Uberwachungskonsole}.
+  \item Manuel gibt die IP Adresse ein, unter der die \gls{Fertigungssimulation} zu finden ist.
  \end{itemize}
- \item[Ausgangssituation] Die Fertigungssimulation und die Überwachungskonsole sind verbunden und laufen mit ihren Initialwerten.
- \item[Nichtfunktionale Anforderungen] Die Sensorwerte der Überwachungskonsole werden nach spätestens einer halben Sekunde aktualisiert.
+ \item[Ausgangssituation] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind verbunden und laufen mit ihren Initialwerten.
+ \item[Nichtfunktionale Anforderungen] Die \glspl{Sensordatum} der \gls{Uberwachungskonsole} werden nach spätestens einer halben Sekunde aktualisiert.
 \end{description}
  
 \subsubsection{Alarm einschalten}
@@ -501,23 +503,23 @@ Fertigungssimulation die Option "`zur\"ucksetzen"', woraufhin wieder die Standar
  \end{itemize}
  \item[Ausgangssituation] Die alte Alarmbedingung l\"ost keine Alarme mehr aus. Die neue Alarmbedingung l\"ost Alarme aus.
  \item [Nichtfunktionale Anforderungen] Die ge\"anderte Alarmbedingung ist nach sp\"atestens 500ms plus der Netzwerklatenz \"ubernommen und
-  wird an die Fertigungssimulation gesendet.
+  wird an die \gls{Fertigungssimulation} gesendet.
 \end{description}
 
 \subsubsection{Alarm ausschalten}
 \begin{description}
  \item[Name] Ausschalten eines eingeschaltenen Alarms.
  \item[Akteure] Manuel (Bediener der Software)
- \item[Eingangsbedingung] Die \"Uberwachungskonsole ist in Betrieb. Es ist mindestens ein Alarm bereits eingeschalten.
+ \item[Eingangsbedingung] Die \gls{Uberwachungskonsole} ist in Betrieb. Es ist mindestens ein Alarm bereits eingeschalten.
  \item[Ereignisfluss]~\\
  \begin{itemize}[noitemsep]
-  \item Manuel \"offnet in der \"Uberwachungskonsole die Einstellungen.
+  \item Manuel \"offnet in der \gls{Uberwachungskonsole} die Einstellungen.
   \item Manuel navigiert in den Reiter "`Alarme"'.
   \item Manuel deaktiviert die Checkbox aller gew\"unschten Alarme.
   \item Manuel klickt auf "`Speichern"'.
  \end{itemize}
  \item[Ausgangssituation] Die alten Alarmbedingungen l\"osen keine Alarme mehr aus.
- \item [Nichtfunktionale Anforderungen] Das Ausschalten der Alarme wird nach sp\"atestens 100ms an die Fertigungssimulation \"ubermittelt.
+ \item [Nichtfunktionale Anforderungen] Das Ausschalten der Alarme wird nach sp\"atestens 100ms an die \gls{Fertigungssimulation} \"ubermittelt.
 \end{description}
 
 \subsubsection{Anwendungsfalldiagramm}
@@ -539,7 +541,7 @@ Fertigungssimulation die Option "`zur\"ucksetzen"', woraufhin wieder die Standar
 
 \section{Anhang}
 \subsection{3D-Darstellung der Fertigungssimulation}
-Die 3D-Darstellung der Fertigungssimulation wurde verworfen, da diese sonst eher wie ein Spiel wirkt.
+Die 3D-Darstellung der \gls{Fertigungssimulation} wurde verworfen, da diese sonst eher wie ein Spiel wirkt.
 In der Anwendung soll somit eine schematische Darstellung zum Einsatz kommen.
 \begin{center}
   \includegraphics[scale=0.3]{./media/ui-sketch-server-3d.png}
