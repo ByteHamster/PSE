@@ -536,7 +536,14 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
 \Blindtext[1]
 
 \subsection{Statische Modelle}
-\Blindtext[1]
+\subsubsection{Komponentendiagramm}
+Die Fertigungssimulation schickt Sensordaten an OPC UA Server und zeigt gleichzeitig den simulierten Prozess graphisch an. Diese Werte werden von dem OPC UA Client angefordert und von betreffenden OPC UA Server an den OPC UA Client übermittelt. Unabhängig vom OPC UA Client schicken OPC UA Server bei Bedarf Alarme an den OPC UA Client. Die Überwachungskonsole fordert die übermittelten Daten bei dem OPC UA Client an und bekommt diese von ihm zurückgegeben.
+Alarme werden der Überwachungskonsole ohne Anfordern übermittelt.
+Die Daten werden dann in der GUI der Überwachungskonsole angezeigt.
+\begin{center}
+  \includegraphics[scale=0.5]{media/ComponentDiagram/componentDiagram.png}
+\end{center}
+
 
 \section{Nutzerinterface-Skizzen}
 \subsection{Fertigungssimulation}
