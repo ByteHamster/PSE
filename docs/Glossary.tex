@@ -28,6 +28,13 @@
   description={Eine Infrastruktur zum Austausch von Daten in der Industrie}
 }
 
+\newglossaryentry{IP-Adresse}
+{
+  name=IP-Adresse,
+  plural=IP-Adressen,
+  description={Eine Adresse in Computernetzen. Sie basiert auf dem Internetprotokoll}
+}
+
 \newglossaryentry{Jitter}
 {
   name=Jitter,
@@ -45,6 +52,20 @@
   name=OPC UA,
   plural=OPC UA,
   description={Ein Protokoll zur Übertragung von Daten und Steuersignalen von Industrieanlagen}
+}
+
+\newglossaryentry{OPC UA Client}
+{
+  name=OPC UA Client,
+  plural=OPC UA Clients,
+  description={Fordert bei einem \gls{OPC UA Server} Daten an und empf\"angt von diesem Alarme. Kommuniziert per \gls{OPC UA}}
+}
+
+\newglossaryentry{OPC UA Server}
+{
+  name=OPC UA Server,
+  plural=OPC UA Server,
+  description={Modelliert eine Menge aus Sensoren einer \gls{Produktionsanlage}. Sendet per \gls{OPC UA} Alarme an \glspl{OPC UA Client}. Antwortet \glspl{OPC UA Client} auf Anfragen mit \glspl{Sensordatum}}
 }
 
 \newglossaryentry{Produktionsanlage}

@@ -105,8 +105,8 @@ bereitstellen, die über \gls{OPC UA} Werte der \gls{Produktionsanlage} abfragt.
 \subsection{Abgrenzungskriterien}
 \subsubsection{Allgemein}
 \begin{itemize}
-  \item \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} dienen der Demonstration des \gls{OPC UA} Protokolls. Dazu wird die Open Source
-    Implementierung \gls{Milo} des \gls{OPC UA} Protokolls verwendet. \gls{OPC UA} wird nicht selbst implementiert.
+  \item \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} dienen der Demonstration des \glslink{OPC UA}{OPC UA Protokolls}. Dazu wird die Open Source
+    Implementierung \gls{Milo} des \glslink{OPC UA}{OPC UA Protokolls} verwendet. \gls{OPC UA} wird nicht selbst implementiert.
 \end{itemize}
 
 \subsubsection{Überwachungskonsole}
@@ -180,7 +180,7 @@ mindestens 2GHz getaktet sein.
 \item[FA90] Eine \gls{Uberwachungskonsole} kann sich bei der \gls{Fertigungssimulation} registrieren, um von dieser Daten zu erhalten.
 \item[FA110] Die Füllstände der Tanks werden gemessen.
 \item[FA120] Die \gls{Fertigungssimulation} kommuniziert über \gls{OPC UA} in einem \gls{TCP/IP} Netzwerk mit \glspl{Uberwachungskonsole}.
-\item[FA130] Die Ports, über welche die einzelnen \gls{OPC UA} Server der \gls{Fertigungssimulation} kommunizieren, können eingestellt werden.
+\item[FA130] Die Ports, über welche die einzelnen \gls{OPC UA Server} der \gls{Fertigungssimulation} kommunizieren, können eingestellt werden.
 \item[FA140] Die \gls{Fertigungssimulation} besitzt vordefinierte \glspl{Simulations-Szenario}, die über das Menü gestartet werden können (Kann-Kriterium).
 \item[FA150] Ein \gls{Simulations-Szenario} ist ein fester, zeitlicher Ablauf, der komplexere Szenarien in der \gls{Fertigungssimulation} darstellt. Somit kann ohne aktive Nutzerinteraktion eine sich
   im aktiven Betrieb befindliche \gls{Produktionsanlage} simuliert werden.
@@ -198,7 +198,7 @@ Die Umdrehungsgeschwindigkeit repräsentiert die Drehzahl des Mischermotors.
 \item[FA140] Die einstellbaren Parameter können in einem Unterfenster eingestellt werden. Darin existiert für jeden Tank ein eigener Reiter, der die 
 tankspezifischen Einstellungen wie zum Beispiel Zu- und Abflussmengen, Zuflusstemperaturen oder Motordrehzahlen (siehe FA10 bis FA30) enthält.
 Diese Parameter werden durch Schieberegler eingestellt.
-\item[FA150] Jeder der dargestellten Tanks ist mit einer hellgrauen Box hinterlegt, welche den Zuständigkeitsbereich des jeweiligen \gls{OPC UA} Servers repräsentiert.
+\item[FA150] Jeder der dargestellten Tanks ist mit einer hellgrauen Box hinterlegt, welche den Zuständigkeitsbereich des jeweiligen \glslink{OPC UA Server}{OPC UA Servers} repräsentiert.
 \item[FA160] Die \gls{Fertigungssimulation} besitzt einen "`Über"'-Dialog, welcher Lizenzinfos zu verwendeten Bibliotheken,
   sowie eine kurze Information zu den Erstellern des Programms, enthält.
 \item[FA170] Die \gls{Fertigungssimulation} besitzt einen Einstellungsdialog, der im Menü über "`Datei $\rightarrow$ Einstellungen"' angezeigt werden kann.
@@ -218,10 +218,10 @@ Diese Parameter werden durch Schieberegler eingestellt.
 \subsubsection{Funktionalität}
 \begin{enumerate}
 \item[FA310] Es gibt eine .jar-Datei, die bei Ausführung die \gls{Uberwachungskonsole} startet.
-\item[FA320] Die \gls{Uberwachungskonsole} ist ein OPC UA Client.
-\item[FA330] Der \gls{OPC UA} Client erhält die IP-Adresse, die durch die \gls{Uberwachungskonsole} nicht geändert werden kann, des verwendeten Computers.
-\item[FA340] Der \gls{OPC UA} Client verbindet sich mit den \gls{OPC UA} Servern einer \gls{Fertigungssimulation} und kommuniziert mit diesen über \gls{TCP/IP}.
-\item[FA350] Beim Start versucht die \gls{Uberwachungskonsole}, eine Verbindung mit den \gls{OPC UA} Servern herzustellen und sich dort zu registrieren.
+\item[FA320] Die \gls{Uberwachungskonsole} ist ein \gls{OPC UA Client}.
+\item[FA330] Der \gls{OPC UA Client} erhält die \gls{IP-Adresse}, die durch die \gls{Uberwachungskonsole} nicht geändert werden kann, des verwendeten Computers.
+\item[FA340] Der \gls{OPC UA Client} verbindet sich mit den \glslink{OPC UA Server}{OPC UA Servern} einer \gls{Fertigungssimulation} und kommuniziert mit diesen über \gls{TCP/IP}.
+\item[FA350] Beim Start versucht die \gls{Uberwachungskonsole}, eine Verbindung mit den \glslink{OPC UA Server}{OPC UA Servern} herzustellen und sich dort zu registrieren.
 \item[FA360] Schlägt die Verbindung von [FA350] oder [FA600] fehl, wird der Benutzer über einen Dialog informiert.
 \item[FA370] Alle angezeigten \glspl{Sensordatum} werden mit einer eingestellten, festen Frequenz aktualisiert.
 \item[FA380] Alarme mit ihrem jeweiligen Auslöser können bei der \gls{Fertigungssimulation} registriert werden.
@@ -252,15 +252,15 @@ Diese Parameter werden durch Schieberegler eingestellt.
 \item[FA580] Die \gls{Uberwachungskonsole} bietet eine Menüleiste mit den Punkten "`Datei"', das den Untermenüpunkt "`Einstellungen"' beinhaltet, und "`?"', das den Untermenüpunkt "`Über"' beinhaltet.
 \item[FA590] "`? $\rightarrow$ Über"' öffnet ein neues Fenster, in dem der Programmname, die Version, das Programmsymbol und die Lizenz angezeigt werden.
 \item[FA600] "`Datei $\rightarrow$ Einstellungen"' öffnet ein separates Fenster, in dem alle Einstellungen in einem Reiter "`Allgemeine Einstellungen"' vorgenommen werden können.
-\item[FA610] In den Einstellungen werden die IP-Adresse des \gls{OPC UA} Clients und der \gls{OPC UA} Server sowie deren Ports angezeigt.
+\item[FA610] In den Einstellungen werden die IP-Adresse des \glslink{OPC UA Client}{OPC UA Clients} und der \gls{OPC UA Server} sowie deren Ports angezeigt.
 \end{enumerate}
 
 \subsubsection{Benutzerinteraktion}
 \begin{enumerate}
-\item[FA570] Der Benutzer kann in den Einstellungen den Port für den \gls{OPC UA} Client bzw. die Ports und die IP-Adresse für die \gls{OPC UA} Server einstellen.
+\item[FA570] Der Benutzer kann in den Einstellungen den Port für den \gls{OPC UA Client} bzw. die Ports und die IP-Adresse für die \glspl{OPC UA Server} einstellen.
 \item[FA580] Nach Drücken eines Speichern-Knopfes im Einstellungsfenster werden alle vorhandenen Einstellungen mit denen aus dem Fenster überschrieben.
 \item[FA590] Nach Drücken eines Abbruch-Knopfes im Einstellungsfenster bleiben die Einstellungen unverändert.
-\item[FA600] Werden Einstellungen für die \gls{OPC UA} Server oder den \gls{OPC UA} Client überschrieben, wird der \gls{OPC UA} Client mit den neuen Einstellungen neu gestartet.
+\item[FA600] Werden Einstellungen für die \glspl{OPC UA Server} oder den \gls{OPC UA Client} überschrieben, wird der \gls{OPC UA Client} mit den neuen Einstellungen neu gestartet.
 \item[FA610] Die Eingaben in den Einstellungen werden direkt nach Eingabe auf richtige Formatierung und Einhaltung des Wertebereichs gepr\"uft.
 \item[FA620] Der Benutzer wird über eine Fehleingabe und deren Ursache informiert.
 \end{enumerate}
@@ -283,7 +283,7 @@ Diese Parameter werden durch Schieberegler eingestellt.
 \subsection{Fertigungssimulation}
 \begin{enumerate}
  \item[NF10] Die Drehzahl des Mischermotors kann in einem Bereich zwischen 0 und 300 Umdrehungen pro Minute gewählt werden.
- \item[NF20] Wenn Parameter verändert werden, sind sie nach spätestens einer halben Sekunde per OPC UA abrufbar.
+ \item[NF20] Wenn Parameter verändert werden, sind sie nach spätestens einer halben Sekunde per \gls{OPC UA} abrufbar.
  \item[NF30] Wenn der Zufluss eines Tanks komplett geschlossen, und der Ablauf komplett geöffnet wird, ist der Tank in etwa 10 Sekunden leergelaufen.
  \item[NF40] Wenn der Zufluss eines Tanks komplett geöffnet, und der Ablauf komplett geschlossen wird, ist der Tank in etwa 10 Sekunden übergelaufen.
 \end{enumerate}
@@ -301,12 +301,12 @@ Diese Parameter werden durch Schieberegler eingestellt.
 \pagebreak
 \section{Produktdaten}
 \begin{enumerate}
- \item[D10] Die \gls{Uberwachungskonsole} speichert den zuletzt eingestellten Port des \gls{OPC UA} Clients.
- \item[D20] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellte IP-Adresse und Ports der \gls{OPC UA} Server.
+ \item[D10] Die \gls{Uberwachungskonsole} speichert den zuletzt eingestellten Port des \glslink{OPC UA Client}{OPC UA Clients}.
+ \item[D20] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellte IP-Adresse und Ports der \gls{OPC UA Server}.
  \item[D30] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellte Aktualisierungsfrequenz für die \glspl{Sensordatum}.
  \item[D40] Die \gls{Uberwachungskonsole} speichert die zuletzt eingeschaltenen Alarme und alle Schwellenwerte.
  \item[D50] Die \gls{Uberwachungskonsole} speichert, welche Verläufe zuletzt angezeigt wurden.
- \item[D110] Die \gls{Fertigungssimulation} speichert die zuletzt genutzten Ports der \gls{OPC UA} Server.
+ \item[D110] Die \gls{Fertigungssimulation} speichert die zuletzt genutzten Ports der \glspl{OPC UA Server}.
  \item[D120] Die \gls{Fertigungssimulation} speichert den zuletzt eingestellten \gls{Jitter}.
  \item[D130] Die \gls{Fertigungssimulation} speichert \glspl{Simulations-Szenario} in einzelnen Dateien (sofern implementiert).
 \end{enumerate}
@@ -320,7 +320,7 @@ Diese Parameter werden durch Schieberegler eingestellt.
 \subsection{Szenarien}
 \subsubsection*{Akteure}
 \textbf{Manuel}: Der Benutzer des Programms, der \gls{OPC UA} vermarkten will.\\
-\textbf{Philipp}: Ein potenzieller Anwender von OPC UA, der das Protokoll noch nicht kennt.
+\textbf{Philipp}: Ein potenzieller Anwender von \gls{OPC UA}, der das Protokoll noch nicht kennt.
 
 \subsubsection{Szenario 1: Unabhängige Installation}
 Manuel möchte Philipp, einem Kunden aus der Industrie, zeigen, was mit modernen Industrie 4.0 Techniken möglich ist.
