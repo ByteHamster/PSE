@@ -61,6 +61,11 @@ bereitstellen, die über \gls{OPC UA} Werte der \gls{Produktionsanlage} abfragt.
 \begin{center}
   \includegraphics[scale=0.5]{../system-sketch.png}
 \end{center}
+In der Systemskizze ist links die Fertigungssimulation bzw. stellvertretend ihre GUI skizziert.
+Darüber lässt sich der simulierte Mischprozess steuern. Rechts davon wird die Überwachungskonsole dargestellt.
+Sie zeigt die Daten der Fertigungssimulation an.
+Der Doppelpfeil verdeutlicht die Beziehung zwischen den OPC UA Servern (S*) und
+dem OPC UA Client (C), die den Datenaustausch unterhalb der Fertigungssimulation und der Überwachungskonsole regeln.
 
 \subsection{Musskriterien}
 \subsubsection{Allgemein}
@@ -92,12 +97,14 @@ bereitstellen, die über \gls{OPC UA} Werte der \gls{Produktionsanlage} abfragt.
   \item Die \gls{Uberwachungskonsole} verfügt über eine Logging-Funktion.
   \item Die eingestellten Alarme k\"onnen gespeichert und beim n\"achsten Programmstart automatisch
     \"ubernommen werden.
+  \item Die Standard-Sprache Englisch kann über Java Property Dateien auf andere Sprachen umgestellt werden.
 \end{itemize}
 
 \subsubsection{Fertigungssimulation}
 \begin{itemize}
   \item Es gibt vordefinierte \glspl{Simulations-Szenario}, die über das Menü gestartet werden können.
   \item \gls{Jitter} in den Zuflussmengen der Tanks sorgt f\"ur Variation in den gemessenen Werten.
+  \item Die Standard-Sprache Englisch kann über Java Property Dateien auf andere Sprachen umgestellt werden.
 \end{itemize}
 
 \subsection{Abgrenzungskriterien}
