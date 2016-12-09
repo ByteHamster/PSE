@@ -70,11 +70,11 @@ bereitstellen, die über \gls{OPC UA} Werte der \gls{Produktionsanlage} abfragt.
   \caption{Systemskizze}
 \end{figure}
 
-In der Systemskizze ist links die Fertigungssimulation bzw. stellvertretend ihre GUI skizziert.
-Darüber lässt sich der simulierte Mischprozess steuern. Rechts davon wird die Überwachungskonsole dargestellt.
-Sie zeigt die Daten der Fertigungssimulation an.
-Der Doppelpfeil verdeutlicht die Beziehung zwischen den OPC UA Servern (S*) und
-dem OPC UA Client (C), die den Datenaustausch unterhalb der Fertigungssimulation und der Überwachungskonsole regeln.
+In der Systemskizze ist links die \gls{Fertigungssimulation} bzw. stellvertretend ihre \gls{GUI} skizziert.
+Darüber lässt sich das \gls{Simulations-Szenario} steuern. Rechts davon wird die \gls{Überwachungskonsole} dargestellt.
+Sie zeigt die Daten der \gls{Fertigungssimulation} an.
+Der Doppelpfeil verdeutlicht die Beziehung zwischen den \glspl{OPC UA Servern} (S*) und
+dem \gls{OPC UA Client} (C), die den Datenaustausch unterhalb der \gls{Fertigungssimulation} und der \gls{Überwachungskonsole} regeln.
 
 \subsection{Musskriterien}
 \subsubsection{Allgemein}
@@ -106,7 +106,7 @@ dem OPC UA Client (C), die den Datenaustausch unterhalb der Fertigungssimulation
   \item Die \gls{Uberwachungskonsole} verfügt über eine Logging-Funktion.
   \item Die eingestellten Alarme k\"onnen gespeichert und beim n\"achsten Programmstart automatisch
     \"ubernommen werden.
-  \item Die Standard-Sprache Englisch kann über Java Property Dateien auf andere Sprachen umgestellt werden.
+  \item Die Standard-Sprache Englisch kann über \gls{Java Property Dateien} auf andere Sprachen umgestellt werden.
 \end{itemize}
 
 \subsubsection{Fertigungssimulation}
@@ -549,9 +549,9 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
 
 \subsection{Statische Modelle}
 \subsubsection{Komponentendiagramm}
-Die Fertigungssimulation schickt Sensordaten an OPC UA Server und zeigt gleichzeitig den simulierten Prozess graphisch an. Diese Werte werden von dem OPC UA Client angefordert und von betreffenden OPC UA Server an den OPC UA Client übermittelt. Unabhängig vom OPC UA Client schicken OPC UA Server bei Bedarf Alarme an den OPC UA Client. Die Überwachungskonsole fordert die übermittelten Daten bei dem OPC UA Client an und bekommt diese von ihm zurückgegeben.
-Alarme werden der Überwachungskonsole ohne Anfordern übermittelt.
-Die Daten werden dann in der GUI der Überwachungskonsole angezeigt.
+Die \gls{Fertigungssimulation} schickt \gls{Sensordaten} an \gls{OPC UA Server} und zeigt gleichzeitig den simulierten Prozess graphisch an. Diese Werte werden von dem \gls{OPC UA Client} angefordert und von betreffenden \gls{OPC UA Server} an den \gls{OPC UA Client} übermittelt. Unabhängig vom \gls{OPC UA Client} schicken \gls{OPC UA Server} bei Bedarf Alarme an den \gls{OPC UA Client}. Die \gls{Überwachungskonsole} fordert die übermittelten Daten bei dem \gls{OPC UA Client} an und bekommt diese von ihm zurückgegeben.
+Alarme werden der \gls{Überwachungskonsole} ohne Anfordern übermittelt.
+Die Daten werden dann in der \gls{GUI} der \gls{Überwachungskonsole} angezeigt.
 \begin{center}
   \includegraphics[scale=0.5]{media/ComponentDiagram/componentDiagram.png}
 \end{center}
