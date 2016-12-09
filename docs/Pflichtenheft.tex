@@ -63,11 +63,18 @@ Der \gls{Systemadapter} dient dem Ziel, die Funktion von \gls{OPC UA} zu demonst
 benutzen zu müssen. Somit kann beim Kunden das Protokoll flexibler vorgestellt werden. Hierzu soll das Programm
 sowohl eine \gls{Produktionsanlage} simulieren und deren Status graphisch darstellen, als auch auch eine \gls{Uberwachungskonsole}
 bereitstellen, die über \gls{OPC UA} Werte der \gls{Produktionsanlage} abfragt.\\
+
 \begin{figure}[h]
   \centering
   \includegraphics[scale=0.5]{../system-sketch.png}
   \caption{Systemskizze}
 \end{figure}
+
+In der Systemskizze ist links die Fertigungssimulation bzw. stellvertretend ihre GUI skizziert.
+Darüber lässt sich der simulierte Mischprozess steuern. Rechts davon wird die Überwachungskonsole dargestellt.
+Sie zeigt die Daten der Fertigungssimulation an.
+Der Doppelpfeil verdeutlicht die Beziehung zwischen den OPC UA Servern (S*) und
+dem OPC UA Client (C), die den Datenaustausch unterhalb der Fertigungssimulation und der Überwachungskonsole regeln.
 
 \subsection{Musskriterien}
 \subsubsection{Allgemein}
