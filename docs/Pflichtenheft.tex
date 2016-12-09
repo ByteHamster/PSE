@@ -55,7 +55,7 @@ Drei Tanks werden mit je einer farbigen Flüssigkeit gefüllt und leiten diese i
 in dem die Flüssigkeiten durch einen Motor gemischt werden. Daten und Werte der \gls{Produktionsanlage} werden ebenfalls angezeigt. Dazu gibt es
 die Möglichkeit, die Parameter der \gls{Produktionsanlage} zu konfigurieren. Dies geschieht beispielsweise indem man Zu- und Abflussmengen einstellt. Die visuelle Darstellung passt sich an die Konfiguration an.
 Die \gls{Uberwachungskonsole} liest die Daten der \gls{Fertigungssimulation}, stellt sie optisch ansprechend in einem Monitoring dar
-und kann Alarme anzeigen, die vom \gls{OPC UA} Server empfangen werden. Das Monitoring ist ebenfalls konfigurierbar. Es ist etwa möglich, Filter auf Variablen anzuwenden. Allerdings hat die \gls{Uberwachungskonsole} keinen Einfluss auf die \gls{Fertigungssimulation}. 
+und kann Alarme anzeigen, die vom \gls{OPC UA Server} empfangen werden. Das Monitoring ist ebenfalls konfigurierbar. Es ist etwa möglich, Filter auf Variablen anzuwenden. Allerdings hat die \gls{Uberwachungskonsole} keinen Einfluss auf die \gls{Fertigungssimulation}. 
 
 \pagebreak
 \section{Zielbestimmung}
@@ -71,10 +71,15 @@ bereitstellen, die über \gls{OPC UA} Werte der \gls{Produktionsanlage} abfragt.
 \end{figure}
 
 In der Systemskizze ist links die \gls{Fertigungssimulation} bzw. stellvertretend ihre \gls{GUI} skizziert.
-Darüber lässt sich das \gls{Simulations-Szenario} steuern. Rechts davon wird die \gls{Überwachungskonsole} dargestellt.
-Sie zeigt die Daten der \gls{Fertigungssimulation} an.
-Der Doppelpfeil verdeutlicht die Beziehung zwischen den \glspl{OPC UA Servern} (S*) und
-dem \gls{OPC UA Client} (C), die den Datenaustausch unterhalb der \gls{Fertigungssimulation} und der \gls{Überwachungskonsole} regeln.
+Darüber lässt sich das \gls{Simulations-Szenario} steuern. Die \glspl{Sensordatum} der Simulation werden 
+im \gls{OPC UA Server} gesetzt, welche von einem \gls{OPC UA Client} abgefragt werden. 
+Dabei stellt ein Server je einen Tank dar. Rechts davon ist die \gls{Uberwachungskonsole} eingezeichnet.
+Sie zeigt die \glspl{Sensordatum} der \gls{Fertigungssimulation} mit Hilfe einer \gls{GUI} an. 
+Diese Daten erhält die \gls{Uberwachungskonsole} von einem \gls{OPC UA Client}. 
+Der Doppelpfeil verdeutlicht die Beziehung zwischen \glspl{OPC UA Server} (S*) und
+dem \gls{OPC UA Client} (C), die den Datenaustausch unterhalb der \gls{Fertigungssimulation} und
+der \gls{Uberwachungskonsole} regeln.
+Dabei steht jeder \gls{OPC UA Server} mit genau einem {OPC UA Client} in Verbindung.
 
 \subsection{Musskriterien}
 \subsubsection{Allgemein}
@@ -106,7 +111,7 @@ dem \gls{OPC UA Client} (C), die den Datenaustausch unterhalb der \gls{Fertigung
   \item Die \gls{Uberwachungskonsole} verfügt über eine Logging-Funktion.
   \item Die eingestellten Alarme k\"onnen gespeichert und beim n\"achsten Programmstart automatisch
     \"ubernommen werden.
-  \item Die Standard-Sprache Englisch kann über \gls{Java Property Dateien} auf andere Sprachen umgestellt werden.
+  \item Die Standard-Sprache Englisch kann über \glspl{Java Property Datei} auf andere Sprachen umgestellt werden.
 \end{itemize}
 
 \subsubsection{Fertigungssimulation}
@@ -549,9 +554,13 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
 
 \subsection{Statische Modelle}
 \subsubsection{Komponentendiagramm}
-Die \gls{Fertigungssimulation} schickt \gls{Sensordaten} an \gls{OPC UA Server} und zeigt gleichzeitig den simulierten Prozess graphisch an. Diese Werte werden von dem \gls{OPC UA Client} angefordert und von betreffenden \gls{OPC UA Server} an den \gls{OPC UA Client} übermittelt. Unabhängig vom \gls{OPC UA Client} schicken \gls{OPC UA Server} bei Bedarf Alarme an den \gls{OPC UA Client}. Die \gls{Überwachungskonsole} fordert die übermittelten Daten bei dem \gls{OPC UA Client} an und bekommt diese von ihm zurückgegeben.
-Alarme werden der \gls{Überwachungskonsole} ohne Anfordern übermittelt.
-Die Daten werden dann in der \gls{GUI} der \gls{Überwachungskonsole} angezeigt.
+Die \gls{Fertigungssimulation} schickt \glspl{Sensordatum} an einen \gls{OPC UA Server} und zeigt
+gleichzeitig den simulierten Prozess graphisch an. Diese Werte werden von dem \gls{OPC UA Client} angefordert
+und von betreffenden \gls{OPC UA Server} an den \gls{OPC UA Client} übermittelt. Unabhängig vom \gls{OPC UA Client}
+kann ein \gls{OPC UA Server} bei Bedarf Alarme an den \gls{OPC UA Client} schicken.
+Die \gls{Uberwachungskonsole} fordert die übermittelten Daten bei dem \gls{OPC UA Client} an und bekommt
+diese von ihm zurückgegeben. Alarme werden der \gls{Uberwachungskonsole} ohne Anfordern übermittelt.
+Die Daten werden dann in der \gls{GUI} der \gls{Uberwachungskonsole} angezeigt.
 \begin{center}
   \includegraphics[scale=0.5]{media/ComponentDiagram/componentDiagram.png}
 \end{center}
