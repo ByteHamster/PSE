@@ -564,6 +564,20 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
   \includegraphics[scale=0.62]{media/Activities/main-console.png}
 \end{center}
 
+\subsubsection{Hauptschleife der \gls{Fertigungssimulation}}
+\begin{enumerate}[noitemsep]
+ \item Die Fertigungssimulation startet.
+ \item Der Zustand der \gls{Fertigungssimulation} wird berechnet.
+ \item Wenn durch eine Zustandsänderung eine Alarmschwelle überschritten wurde, wird der Alarm an alle OPC UA Clients gesendet,
+ die sich für den Alarm registriert haben.
+ \item Danach wird der geänderte Zustand im OPC UA Server gesetzt.
+ \item Dann wird der aktualisierte Zustand in der GUI angezeigt.
+ \item Wenn der Benutzer das Fenster geschlossen hat, wird die \gls{Fertigungssimulation} nun beendet.
+\end{enumerate}
+\begin{center}
+  \includegraphics[scale=0.62]{media/Activities/main-simulation.png}
+\end{center}
+
 \subsection{Statische Modelle}
 \Blindtext[1]
 
