@@ -188,6 +188,8 @@ mindestens 2GHz getaktet sein.
 \subsection{Fertigungssimulation}
 \subsubsection{Funktionalität}
 \begin{enumerate}
+  \item[FA10] Die \gls{Produktionsanlage} wird innnerhalb der \glspl{OPC UA Server} repräsentiert.
+  \item[FA10] Der Betrieb der \gls{Produktionsanlage} wird simuliert und grafisch dargestellt.
   \item[FA10] Die Zu- und Abflussmengen der oberen (siehe FA110) Flüssigkeitstanks können seperat eingestellt werden.
   \item[FA20] Die Abflussmenge des unteren (siehe FA110) Flüssigkeitstanks kann eingestellt werden. Die Zuflussmenge ergibt sich aus der Summe der Abflussmengen der oberen Tanks.
   \item[FA30] Der untere Tank enthält einen motorbetriebenen Mischer, dessen Drehzahl eingestellt werden kann.
@@ -195,7 +197,7 @@ mindestens 2GHz getaktet sein.
     angenommen, dass die Flüssigkeiten der oberen Tanks die selbe Deckkraft haben.
   \item[FA40] Der linke obere Tank wird mit roter, der mittlere mit grüner und der rechte mit blauer Flüssigkeit gefüllt.
   \item[FA45] Die Zuflusstemperaturen der oberen Tanks können seperat eingestellt werden (Kann-Kriterium).
-  \item[FA50] Es gibt eine .jar Datei, die bei Ausführung die \gls{Fertigungssimulation} startet.
+  \item[FA50] Es gibt eine .jar Datei, die bei Ausführung die \gls{Fertigungssimulation}, sowie zugehörige \gls{OPC UA Server} startet.
   \item[FA60] Nach Anforderung durch die \gls{Uberwachungskonsole} wird in bestimmten, in der Anfrage definierten, Zust\"anden ein Alarm an die \gls{Uberwachungskonsole} gesendet.
   \item[FA70] Kommt es in der \gls{Fertigungssimulation} zu einem \"Uberlauf so h\"alt die \gls{Fertigungssimulation} an und es wird der Text "`\"Uberlauf"' angezeigt.
   \item[FA80] Das System kann aus einem "`\"Uberlauf"' durch den Knopf "`zur\"ucksetzen"' im gezeigten Dialog wieder in den Startzustand versetzt werden. Anschlie{\ss}end wird die Ausführung fortgesetzt.
