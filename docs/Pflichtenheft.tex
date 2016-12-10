@@ -552,7 +552,20 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
 \end{figure}
 
 \subsection{Dynamische Modelle}
-\Blindtext[1]
+\subsubsection{Starten der \gls{Uberwachungskonsole}}
+\label{console-launch}
+\begin{enumerate}[noitemsep]
+ \item Die Überwachungskonsole versucht, die Verbindung zu den \glspl{OPC UA Server} mit den zuletzt gespeicherten Verbindungsinformationen aufzunehmen.
+ \item Wenn der Verbindungsaufbau fehlschlägt, öffnet sich das Fenster mit den Verbindungseinstellungen. Wenn der Benutzer das Fenster wieder schließt,
+ werden die veränderten Verbindungsinformationen gespeichert und erneut versucht, die Verbindung aufzubauen.
+ \item Wenn der Verbindungsaufbau geklappt hat, zeigt die \gls{Uberwachungskonsole} die Übertragenen Werte der \gls{Fertigungssimulation}, sowie die
+ Alarme und Verläufe an.
+ \item Wenn der Benutzer die \gls{Uberwachungskonsole} schließt, ist das Programm beendet.
+\end{enumerate}
+\begin{center}
+  \includegraphics[scale=0.62]{media/Activities/launch-console.png}
+\end{center}
+
 
 \subsection{Statische Modelle}
 \subsubsection{Komponentendiagramm}
