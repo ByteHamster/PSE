@@ -381,23 +381,23 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
 \gls{Fertigungssimulation} die Option "`zur\"ucksetzen"', woraufhin wieder die Standardkonfiguration angezeigt wird.
 
 \subsection{Anwendungsfälle}
-\subsubsection{Änderung der Zu-/Abflussgeschwindigkeit}
+\subsubsection{Änderung der Prozessvariablen}
 \begin{description}
-  \item[Name] Erhöhen oder Verringern der Zu- oder Abflussgeschwindigkeit bei einem der Flüssigkeitstanks.
+  \item[Name] Anpassen der Variablen wie Zu- oder Abflussgeschwindigkeit, Temperatur oder Motordrehzahl bei einem der
+  Flüssigkeitstanks, sofern er die Anpassung dieser Werte erlaubt.
   \item[Akteure] Manuel (Bediener der Software)
   \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
   \item[Ereignisfluss]~\\
 \begin{itemize}[noitemsep]
-  \item Manuel öffnet in der \gls{Fertigungssimulation} den Menüeintrag "`Ansicht"'.
-  \item Manuel klickt auf "`Steuerung anzeigen"'.
-  \item Ein Fenster öffnet sich. Manuel wählt den Reiter des Tanks, den er verändern will.
-  \item Manuel verschiebt den Schieberegler des Zufluss- oder Abflussventils auf den gewünschten Wert.
+  \item Manuel öffnet das Steuerungsfenster.
+  \item Manuel wählt den Reiter des Tanks, den er verändern will.
+  \item Manuel stellt den gewünschten Wert ein.
   \item Manuel klickt den "`OK"' Knopf.
 \end{itemize}
-  \item[Ausgangssituation] Die Zu- oder Abflussrate im gewählten Tank ist nun höher bzw. niedriger. Dies ist am schnelleren oder
-    langsameren Füllen oder Leeren des Tanks in der Visualisierung der Tanks sichtbar.
-    Außerdem zeigt die \gls{Uberwachungskonsole} höhere/niedrigere Durchflussraten an.
-  \item [Nichtfunktionale Anforderungen] Der geänderte Zu- oder Abflusswert wird mit der nächsten Aktualisierung auf der \gls{Uberwachungskonsole} angezeigt.
+  \item[Ausgangssituation] Die Prozessvariable ist geändert. Dies ist in der GUI der Fertigungssimulation sichtbar, etwa durch schnelleres Befüllen oder Leeren eines Tanks,
+  durch ein schnelleres Drehen der Motorvisualisierung oder durch eine Statusanzeige.
+    Außerdem zeigt die \gls{Uberwachungskonsole} die geänderte Variable an.
+  \item [Nichtfunktionale Anforderungen] Die geänderte Variable wird mit der nächsten Aktualisierung auf der \gls{Uberwachungskonsole} angezeigt.
 \end{description}
 
 %
@@ -419,19 +419,21 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
 % \item [Nichtfunktionale Anforderungen] Die geänderten Einstellungen werden binnen einer halben Sekunde in der \gls{GUI} dargestellt.
 %\end{description}
 
-\subsubsection{Änderung der Aktualisierungsfrequenz}
+\subsubsection{Änderung der Verbindungseinstellungen}
 \begin{description}
-  \item[Name] Erhöhen oder Verringern der Aktualisierungsfrequenz.
+  \item[Name] Verändern der Verbindungseinstellungen.
   \item[Akteure] Manuel (Bediener der Software)
   \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
   \item[Ereignisfluss]~\\
   \begin{itemize}[noitemsep]
-    \item Manuel öffnet in der \gls{Uberwachungskonsole} die Einstellungen.
-    \item Manuel navigiert in den Reiter "`Allgemeine Einstellungen"'.
-    \item Manuel verschiebt den Schieberegler, der die Aktualisierungsfrequenz einstellt.
-    \item Manuel klickt den "`Speichern"' Knopf.
+    \item Manuel öffnet in der \gls{Uberwachungskonsole} die allgemeinen Einstellungen.
+    \item Manuel stellt die Aktualisierungsfrequenz, die \gls{IP-Adresse} oder einen Port der \gls{OPC UA Server} ein.
+    \item Manuel klickt den "`Speichern"' Knopf und das Einstellungsfenster schließt sich.
+    \item Der Verbindungsaufbau schlägt fehlt und das Einstellungsfenster öffnet sich wieder.
+    \item Manuel trägt nun die richtigen Ports und \gls{IP-Adresse} ein und klickt den "`Speichern"' Knopf.
   \end{itemize}
   \item[Ausgangssituation] Die \glspl{Sensordatum} in der \gls{Uberwachungskonsole} werden nun in Abständen der gewählten Aktualisierungsfrequenz aktualisiert.
+  Wenn sich die \gls{IP-Adresse} oder Ports verändert haben, verbinden sich die betroffenen \glspl{OPC UA Client} neu mit dem Server.
   \item [Nichtfunktionale Anforderungen] Die Frequenz ändert sich spätestens mit der nächsten Aktualisierung.
 \end{description}
 
@@ -451,77 +453,75 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
   \item[Nichtfunktionale Anforderungen] Die \glspl{Sensordatum} der \gls{Uberwachungskonsole} werden nach spätestens einer halben Sekunde aktualisiert.
 \end{description}
  
-\subsubsection{Alarm einschalten}
+\subsubsection{Alarm konfigurieren}
 \begin{description}
-  \item[Name] Einschalten eines Alarms in der \gls{Uberwachungskonsole}.
+  \item[Name] Einschalten, Ausschalten oder konfigurieren des Schwellenwertes eines Alarms in der \gls{Uberwachungskonsole}.
   \item[Akteure] Manuel (Bediener der Software)
   \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
   \item[Ereignisfluss]~\\
   \begin{itemize}[noitemsep]
-    \item Manuel \"offnet in der \gls{Uberwachungskonsole} die Einstellungen.
-    \item Manuel navigiert in den Reiter "`Alarme"'.
-    \item Manuel w\"ahlt den Alarm aus, der eingeschalten werden soll.
-    \item Manuel aktiviert die Checkbox, die zum Alarm gehört.
-    \item Manuel stellt zusätzlich einen Schwellenwert ein oder lässt den aktuell angezeigten.
+    \item Manuel \"offnet in der \gls{Uberwachungskonsole} die Alarmeinstellungen.
+    \item Manuel schaltet einen Alarm ein oder aus, indem er die Checkbox anklickt oder trägt einen Schwellwert ein.
     \item Manuel klickt den "`Speichern"' Knopf.
   \end{itemize}
-  \item[Ausgangssituation] Wenn der Sensor die Alarmbedingung erf\"ullt, wird an die \gls{Uberwachungskonsole} ein Alarm gesendet.
+  \item[Ausgangssituation] Wenn der Sensor die Alarmbedingung erf\"ullt, und der Alarm aktiviert ist, wird an die \gls{Uberwachungskonsole} ein Alarm gesendet.
+  Frühere Alarmschwellen lösen keine Alarme mehr aus.
   \item [Nichtfunktionale Anforderungen] Sp\"atestens nach 100ms ist die Aktualisierung \"ubernommen und wird
     an die \gls{Fertigungssimulation} gesendet.
 \end{description}
 
 \subsubsection{Alarm empfangen}
 \begin{description}
-  \item[Name] Empfangen eines Alarms in der \gls{Uberwachungskonsole}.
-  \item[Akteure] \gls{Fertigungssimulation}
+  \item[Name] Empfangen eines (Überlauf-) Alarms in der \gls{Uberwachungskonsole}.
+  \item[Akteure] Manuel (Bediener der Software)
   \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
-    Es ist mindestens ein Alarm eingerichtet.
+    Es ist mindestens ein Überlauf-Alarm eingerichtet.
   \item[Ereignisfluss]~\\
   \begin{itemize}[noitemsep]
-    \item In der \gls{Fertigungssimulation} kommt es zu einem Alarmzustand.
+    \item In der \gls{Fertigungssimulation} kommt es zu einem Alarmzustand weil ein Tank droht überzulaufen.
     \item Die \gls{Fertigungssimulation} sendet den entsprechenden Alarm an die registrierte \gls{Uberwachungskonsole}.
     \item Die \gls{Uberwachungskonsole} empf\"angt den Alarm.
-    \item Die \gls{Uberwachungskonsole} zeigt in der \gls{GUI} den Alarm an.
+    \item Die \gls{Uberwachungskonsole} zeigt in der \gls{GUI} den Alarm an, indem die Ampel auf Rot springt und der Kreis neben dem Wert ebenfalls rot wird.
+    \item Da Manuel die Zuflussmengen der Tanks in der \gls{Fertigungssimulation} nicht reduziert, kommt es zu einem Überlauf.
+    \item In der \gls{Fertigungssimulation} erscheint der Text "`Überlauf"' und Manuel klickt auf den "`zurücksetzen"' Knopf.
+    \item Die Fertigungssimulation wird in den Anfangszustand zurück gesetzt.
   \end{itemize}
-  \item[Ausgangssituation] \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} laufen normal weiter. In der \gls{GUI} der
-    \gls{Uberwachungskonsole} ist der Alarmeintrag zu sehen.
+  \item[Ausgangssituation] Die \gls{Uberwachungskonsole} läuft normal weiter und zeigt die zurückgesetzten Werte an. In der \gls{GUI} der
+    \gls{Uberwachungskonsole} ist der Alarmeintrag zu sehen. Die \gls{Fertigungssimulation} ist auf den Anfangszustand zurück gesetzt.
   \item [Nichtfunktionale Anforderungen] Die \gls{GUI} der \gls{Uberwachungskonsole} muss einen empfangenen Alarm nach sp\"atestens
     100ms plus der Aktualisierungsfrequenz anzeigen.
 \end{description}
 
-\subsubsection{Alarm \"andern}
+\subsubsection{Ein Simulations-Szenario verwenden}
 \begin{description}
-  \item[Name] \"Andern eines bereits vorhandenen Alarms in der \gls{Uberwachungskonsole}.
+  \item[Name] Starten eines \gls{Simulations-Szenario}s.
   \item[Akteure] Manuel (Bediener der Software)
-  \item[Eingangsbedingung] Die \gls{Uberwachungskonsole} ist in Betrieb. Es ist mindestens ein Alarm bereits eingeschalten.
+  \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
   \item[Ereignisfluss]~\\
   \begin{itemize}[noitemsep]
-    \item Manuel \"offnet in der \gls{Uberwachungskonsole} die Einstellungen.
-    \item Manuel navigiert in den Reiter "`Alarme"'.
-    \item Manuel w\"ahlt den gew\"unschten Alarm aus.
-    \item Manuel tr\"agt den gew\"unschten Schwellenwert ein.
-    \item Manuel klickt auf "`Speichern"'.
+    \item In der \gls{Fertigungssimulation} wird ein \gls{Simulations-Szenario} gestartet.
+    \item Die \glspl{Prozessvariable} ändern sich deterministisch und ohne zutun von Manuel. Diese Änderungen sind in der \gls{Uberwachungskonsole} sichtbar.
+    \item Nachdem das \gls{Simulations-Szenario} fertig ist, wird die \gls{Fertigungssimulation} wieder auf den Anfangswert zurückgesetzt, und das
+    \gls{Simulations-Szenario} beginnt von vorne zu laufen.
+    \item Manuel beendet das \gls{Simulations-Szenario} und die zuletzt vom \gls{Simulations-Szenario} eingestellten \glspl{Prozessvariable} können nun manuell von Manuel angepasst werden.
   \end{itemize}
-  \item[Ausgangssituation] Die alte Alarmbedingung l\"ost keine Alarme mehr aus. Die neue Alarmbedingung l\"ost Alarme aus.
-  \item [Nichtfunktionale Anforderungen] Die ge\"anderte Alarmbedingung ist nach sp\"atestens 500ms plus der Netzwerklatenz \"ubernommen und
-    wird an die \gls{Fertigungssimulation} gesendet.
+  \item[Ausgangssituation] Das \gls{Simulations-Szenario} ist beendet, es ändern sich keine \gls{Prozessvariable} mehr automatisch.
 \end{description}
 
-\subsubsection{Alarm ausschalten}
+\subsubsection{Verläufe konfigurieren}
 \begin{description}
-  \item[Name] Ausschalten eines eingeschaltenen Alarms.
+  \item[Name] Ein- oder Ausschalten eines Verlaufs.
   \item[Akteure] Manuel (Bediener der Software)
-  \item[Eingangsbedingung] Die \gls{Uberwachungskonsole} ist in Betrieb. Es ist mindestens ein Alarm bereits eingeschalten.
+  \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
   \item[Ereignisfluss]~\\
   \begin{itemize}[noitemsep]
-    \item Manuel \"offnet in der \gls{Uberwachungskonsole} die Einstellungen.
-    \item Manuel navigiert in den Reiter "`Alarme"'.
-    \item Manuel deaktiviert die Checkbox aller gew\"unschten Alarme.
-    \item Manuel klickt auf "`Speichern"'.
+    \item Manuel öffnet die Verlaufseinstellungen in der \gls{Uberwachungskonsole}.
+    \item Manuel klickt eine der Checkboxen.
+    \item Manuel klickt den "`Speichern"' Knopf und das Einstellungsfenster schließt sich.
   \end{itemize}
-  \item[Ausgangssituation] Die alten Alarmbedingungen l\"osen keine Alarme mehr aus.
-  \item [Nichtfunktionale Anforderungen] Das Ausschalten der Alarme wird nach sp\"atestens 100ms an die \gls{Fertigungssimulation} \"ubermittelt.
+  \item[Ausgangssituation] In der \gls{Uberwachungskonsole} wird der Verlauf des ausgewählten Wertes nun abhängig von der Checkbox angezeigt oder nicht angezeigt.
 \end{description}
+
 
 \subsubsection{Anwendungsfalldiagramm}
 \begin{center}
