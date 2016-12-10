@@ -214,9 +214,9 @@ mindestens 2GHz getaktet sein.
   \item[FA50] Es gibt eine .jar Datei, die bei Ausführung die \gls{Fertigungssimulation}, sowie zugehörige \gls{OPC UA Server} startet.
   \item[FA60] Nach Anforderung durch die \gls{Uberwachungskonsole} wird in bestimmten, in der Anfrage definierten, Zust\"anden ein Alarm an die \glspl{OPC UA Client} der \gls{Uberwachungskonsole} gesendet.
   \item[FA70] Kommt es in der \gls{Fertigungssimulation} zu einem \"Uberlauf so h\"alt die \gls{Fertigungssimulation} an und es wird der Text "`\"Uberlauf"' angezeigt.
-  \item[FA80] Das System kann aus einem "`\"Uberlauf"' durch den Knopf "`zur\"ucksetzen"' im gezeigten Dialog wieder in den Startzustand versetzt werden. Anschlie{\ss}end wird die Ausführung fortgesetzt.
-  \item[FA90] Die \glspl{OPC UA Client} der \gls{Uberwachungskonsole} k\"onnen sich bei den \glslink{OPC UA Server}{OPC UA Servern} der \gls{Fertigungssimulation} registrieren und dann von
-    diesen \glspl{Sensordatum} abfragen.
+  \item[FA80] Das System wird aus einem "`\"Uberlauf"' durch den Knopf "`zur\"ucksetzen"' im gezeigten Dialog wieder in den Startzustand versetzt. Anschlie{\ss}end wird die Ausführung fortgesetzt.
+  \item[FA90] Die \glspl{OPC UA Client} der \gls{Uberwachungskonsole} registrieren sich bei den \glslink{OPC UA Server}{OPC UA Servern} der \gls{Fertigungssimulation} und empfangen von
+    diesen \glspl{Sensordatum}.
   \item[FA110] Die Füllstände der Tanks werden gemessen.
   \item[FA130] Die Ports, über welche die einzelnen \gls{OPC UA Server} der \gls{Fertigungssimulation} kommunizieren, können eingestellt werden.
   \item[FA140] Die \gls{Fertigungssimulation} besitzt vordefinierte \glspl{Simulations-Szenario}, die über das Menü gestartet werden können (Kann-Kriterium).
@@ -240,7 +240,6 @@ mindestens 2GHz getaktet sein.
   \item[FA150] Jeder der dargestellten Tanks ist mit einer hellgrauen Box hinterlegt, welche den Zuständigkeitsbereich des jeweiligen \glslink{OPC UA Server}{OPC UA Servers} repräsentiert.
   \item[FA160] Die \gls{Fertigungssimulation} besitzt einen "`Über"'-Dialog, welcher Lizenzinfos zu verwendeten Bibliotheken,
     sowie eine kurze Information zu den Erstellern des Programms, enthält.
-  \item[FA170] Die \gls{Fertigungssimulation} besitzt einen Einstellungsdialog, der im Menü über "`Datei $\rightarrow$ Einstellungen"' angezeigt werden kann.
   \item[FA180] Der Einstellungsdialog besitzt Buttons zum Verwerfen ("`Abbrechen"') und Anwenden der Änderungen. Das Anwenden geschieht über einen "`OK"'-Button, welcher zudem den Dialog schließt.
   \item[FA200] Der Einstellungsdialog besitzt einen Regler, welcher den \gls{Jitter} durch einen Schieberegler konfigurierbar macht.
     Hierbei entspricht ein \gls{Jitter} von 0 der Deaktivierung der Funktion.
@@ -290,14 +289,14 @@ mindestens 2GHz getaktet sein.
   \item[FA550] Es gibt eine zweistufige Ampel für den allgemeinen Zustand der \gls{Uberwachungskonsole}.
   \item[FA560] Ist die Ampel rot, wurde mindestens ein Alarm ausgelöst.
   \item[FA570] Ist die Ampel grün, wurde kein Alarm ausgelöst.
-  \item[FA590] Es gibt ein "`Über"'-Fenster, in dem der Programmname, die Version, das Programmsymbol, die Lizenz und die Lizenzen verwendeter Projekte angezeigt werden.
-  \item[FA600] Es gibt ein Einstellungsfenster, in dem alle Einstellungen in einem Reiter "`Allgemeine Einstellungen"' vorgenommen werden können.
-  \item[FA610] In den "Allgemeinen Einstellungen" werden die IP-Adresse und Ports der \glslink{OPC UA Client}{OPC UA Clients} und \glspl{OPC UA Server} angezeigt.
+  \item[FA590] Der Menüeintrag "`Über'" öffnet ein neues Fenster, in dem der Programmname, die Version, das Programmsymbol und die Lizenz einschließlich der Lizenzen verwendeter Bibliotheken angezeigt werden.
+  \item[FA600] Der Menüeintrag "`Einstellungen"' öffnet ein separates Fenster.
+  \item[FA610] In den Einstellungen werden die \glslink{TCP/IP}{IP-Adresse} der \glslink{OPC UA Client}{OPC UA Clients} und der \gls{OPC UA Server} sowie deren Ports angezeigt.
 \end{enumerate}
 
 \subsubsection{Benutzerinteraktion}
 \begin{enumerate}
-  \item[FA570] Der Benutzer kann in den Einstellungen die Ports für die \glspl{OPC UA Client} bzw. die Ports und die IP-Adresse für die \glspl{OPC UA Server} einstellen.
+  \item[FA570] In den Einstellungen sind die Ports für die \glspl{OPC UA Client} bzw. die Ports und die IP-Adresse für die \glspl{OPC UA Server} konfigurierbar.
   \item[FA580] Nach Drücken eines Speichern-Knopfes im Einstellungsfenster werden alle vorhandenen Einstellungen mit denen aus dem Fenster überschrieben.
   \item[FA590] Nach Drücken eines Abbruch-Knopfes im Einstellungsfenster bleiben die Einstellungen unverändert.
   \item[FA600] Werden Einstellungen für die \glspl{OPC UA Server} oder \glspl{OPC UA Client} überschrieben, werden die \glspl{OPC UA Client} mit den neuen Einstellungen neu gestartet.
@@ -324,7 +323,7 @@ mindestens 2GHz getaktet sein.
 \section{Nichtfunktionale Anforderungen}
 \subsection{Fertigungssimulation}
 \begin{enumerate}
-  \item[NF10] Die Drehzahl des Mischermotors kann in einem Bereich zwischen 0 und 300 Umdrehungen pro Minute gewählt werden.
+  \item[NF10] Die Drehzahl des Mischermotors kann vom Benutzer in einem Bereich zwischen 0 und 300 Umdrehungen pro Minute gewählt werden.
   \item[NF20] Wenn Parameter verändert werden, sind sie nach spätestens einer halben Sekunde per \gls{OPC UA} abrufbar.
   \item[NF30] Wenn der Zufluss eines Tanks komplett geschlossen, und der Ablauf komplett geöffnet wird, ist der Tank in etwa 10 Sekunden leergelaufen.
   \item[NF40] Wenn der Zufluss eines Tanks komplett geöffnet, und der Ablauf komplett geschlossen wird, ist der Tank in etwa 10 Sekunden übergelaufen.
@@ -335,7 +334,7 @@ mindestens 2GHz getaktet sein.
   \item[NF110] IP-Adressen müssen gültige IPv4 Adressen oder Hostnamen sein. % Abkürzungsverzeichnis für Dinge wie IPv4?
   \item[NF120] Ports dürfen Werte im Bereich 1024 bis 61000 annehmen.
   \item[NF130] Die Schwellenwerte für die Alarme dürfen zwischen 0 und 100 \% gewählt werden.
-  \item[NF140] Die Aktualisierungsfrequenz kann im Bereich zwischen 100 und 4000 Millisekunden gewählt werden.
+  \item[NF140] Die Aktualisierungsfrequenz kann vom Benutzer im Bereich zwischen 100 und 4000 Millisekunden gewählt werden.
   \item[NF150] Wenn sich Werte in der \gls{Fertigungssimulation} ändern, werden die Änderungen spätestens nach der Zeitspanne von
     einer halben Sekunde plus dem Aktualisierungsintervall in der \gls{Uberwachungskonsole} angezeigt.
 \end{enumerate}
