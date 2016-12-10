@@ -5,7 +5,7 @@
 \usepackage[german]{babel}
 \usepackage[pangram]{blindtext}
 \usepackage{hyperref}
-\usepackage[toc, nonumberlist, numberedsection]{glossaries}
+\usepackage[toc, nonumberlist]{glossaries}
 \usepackage{graphicx}
 \usepackage{enumitem}
 
@@ -30,9 +30,11 @@
 
 \begin{document}
 \maketitle
-\begin{center}
+\begin{figure}[h]
+  \centering
   \includegraphics[scale=0.5]{../icon.png}
-\end{center}
+  \caption{Icon der Anwendung}
+\end{figure}
 \pagebreak
 \tableofcontents
 \pagebreak
@@ -61,9 +63,11 @@ Der \gls{Systemadapter} dient dem Ziel, die Funktion von \gls{OPC UA} zu demonst
 benutzen zu müssen. Somit kann beim Kunden das Protokoll flexibler vorgestellt werden. Hierzu soll das Programm
 sowohl eine \gls{Produktionsanlage} simulieren und deren Status graphisch darstellen, als auch auch eine \gls{Uberwachungskonsole}
 bereitstellen, die über \gls{OPC UA} Werte der \gls{Produktionsanlage} abfragt.\\
-\begin{center}
+\begin{figure}[h]
+  \centering
   \includegraphics[scale=0.5]{../system-sketch.png}
-\end{center}
+  \caption{Systemskizze}
+\end{figure}
 
 \subsection{Musskriterien}
 \subsubsection{Allgemein}
@@ -524,9 +528,11 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
 \end{description}
 
 \subsubsection{Anwendungsfalldiagramm}
-\begin{center}
+\begin{figure}[h]
+  \centering
   \includegraphics[scale=0.62]{media/UseCases/Ueberwachungskonsole.png}
-\end{center}
+  \caption{Anwendungsfalldiagramm für die Überwachungskonsole}
+\end{figure}
 
 \subsection{Dynamische Modelle}
 \Blindtext[1]
@@ -536,20 +542,36 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
 
 \section{Nutzerinterface-Skizzen}
 \subsection{Fertigungssimulation}
-\includegraphics[scale=0.5]{media/ui-sketch-server.png}
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.5]{media/ui-sketch-server.png}
+  \caption{Nutzerinterface-Skizze der Fertigungssimulation}
+\end{figure}
+\pagebreak
 
 \subsection{Überwachungskonsole}
-\includegraphics[scale=0.40]{media/ui-client.png}
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.45]{media/ui-client.png}
+  \caption{Nutzerinterface-Skizze der Überwachungskonsole}
+\end{figure}
+\pagebreak
 
 \section{Anhang}
 \subsection{3D-Darstellung der Fertigungssimulation}
 Die 3D-Darstellung der \gls{Fertigungssimulation} wurde verworfen, da diese sonst eher wie ein Spiel wirkt.
 In der Anwendung soll somit eine schematische Darstellung zum Einsatz kommen.
-\begin{center}
+\begin{figure}[h]
+  \centering
   \includegraphics[scale=0.3]{./media/ui-sketch-server-3d.png}
-\end{center}
+  \caption{Verworfene Skizze einer 3D-Darstellung der Fertigungssimulation}
+\end{figure}
 
 \pagebreak
 \printglossaries
+
+\phantomsection
+\addcontentsline{toc}{section}{\listfigurename}
+\listoffigures
 
 \end{document}
