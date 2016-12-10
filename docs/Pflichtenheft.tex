@@ -566,6 +566,26 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
   \includegraphics[scale=0.62]{media/Activities/launch-console.png}
 \end{center}
 
+\subsubsection{Hauptschleife und Alarme der \gls{Uberwachungskonsole}}
+\emph{Hauptschleife}
+\begin{enumerate}[noitemsep]
+ \item Die Überwachungskonsole startet, wie in \ref{console-launch} beschrieben.
+ \item Die Überwachungskonsole ruft die aktuellen Sensorwerte vom \gls{OPC UA Server} ab.
+ \item Diese Werte werden auf den Anzeigen der \gls{Uberwachungskonsole} angezeigt.
+ \item Dann werden diese Werte in den Verlauf (sofern aktiviert) eingefügt.
+ \item Wenn bei einem aktivem Alarm die Alarmbedingung nicht mehr erfüllt ist, wird er ausgeschaltet.
+ \item Wenn keine Alarme mehr aktiv sind, wird die Ampel auf grün geschaltet.
+ \item Wenn der Benutzer das Fenster geschlossen hat, wird die \gls{Uberwachungskonsole} nun beendet.
+ \item Vor der nächsten Aktualisierung wird gewartet, damit erst nach der Aktualisierungsfrequenz erneut Sensorwerte abgerufen werden.
+\end{enumerate}
+\emph{Alarme empfangen}
+\begin{enumerate}[noitemsep]
+ \item Wenn ein Alarm empfangen wird, wird die Ampel auf rot geschaltet.
+ \item Dann wird der Kreis bei den Anzeigen auf rot geschaltet.
+\end{enumerate}
+\begin{center}
+  \includegraphics[scale=0.62]{media/Activities/main-console.png}
+\end{center}
 
 \subsection{Statische Modelle}
 \subsubsection{Komponentendiagramm}
