@@ -112,6 +112,7 @@ bereitstellen, die über \gls{OPC UA} Werte der \gls{Produktionsanlage} abfragt.
 \begin{itemize}
   \item \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} dienen der Demonstration des \glslink{OPC UA}{OPC UA Protokolls}. Dazu wird die Open Source
     Implementierung \gls{Milo} des \glslink{OPC UA}{OPC UA Protokolls} verwendet. \gls{OPC UA} wird nicht selbst implementiert.
+  \item Es werden verschiedene Möglichkeiten des \glslink{OPC UA}{OPC UA Protokolls} aufgezeigt, allerdings wird die Sicherheitseigenschaft von \gls{OPC UA} nicht mit eingebunden.
 \end{itemize}
 
 \subsubsection{Überwachungskonsole}
@@ -140,10 +141,10 @@ Dies kann zum Beispiel auf Messen oder direkt bei potenziellen Kunden geschehen.
 
 \subsection{Zielgruppen}
 Die Zielgruppe umfasst Personen, die sich mit \gls{OPC UA} auskennen und es potenziellen Anwendern vorführen möchten.
-Dazu zählen insbesondere Mitglieder der OPC Foundation, die die Verbreitung des Protokolls fördern wollen,
-aber auch Softwareentwickler die \gls{OPC UA} konforme Software herstellen und möglichen Kunden auf einfache Art und
+Dazu zählen insbesondere Mitglieder der OPC Foundation, die die Verbreitung des Protokolls fördern wollen, und Personen, die im \gls{Industrial Data Space} beschäftigt sind,
+aber auch Softwareentwickler, die \gls{OPC UA} konforme Software herstellen und möglichen Kunden auf einfache Art und
 Weise die Funktionalität von \gls{OPC UA} präsentieren wollen.
-Die potenziellen Anwender haben meist keine Erfahrung mit \gls{OPC UA}, sind aber für \glspl{Produktionsanlage} verantwortlich
+Die potenziellen Anwender haben meist keine Erfahrung mit \gls{OPC UA}, sind aber für \glspl{Produktionsanlage} verantwortlich,
 die von \gls{OPC UA} profitieren würden.
 
 \subsection{Betriebsbedingungen}
@@ -153,8 +154,8 @@ so lange die eingesetzte Hardware (siehe \ref{Hardware}) keine Probleme mit den 
 \pagebreak
 \section{Produktumgebung}
 \subsection{Software}
-Das Produkt erfordert einen Computer, auf dem das Betriebssystem Microsoft Windows 7, 8.1 oder 10 installiert ist,
-oder auf dem Canonical Ubuntu 14.04 oder 16.04 installiert ist. Außerdem ist das Oracle Java Runtime Environment in Version 1.8
+Das Produkt erfordert einen Computer, auf dem das Betriebssystem Microsoft Windows 10, Canonical Ubuntu 16.04 oder Linux Mint 18 installiert ist,
+Außerdem ist das Oracle Java Runtime Environment in Version 1.8
 notwendig. Wenn die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} auf unterschiedlichen Computern laufen,
 ist eine \gls{TCP/IP} Verbindung mit einer Bandbreite von 100 MBit/s und einer Latenz von maximal 100 ms zwischen den Computern notwendig.
 Außerdem wird eventuell (siehe \ref{fertigung-optional} und \ref{konsole-optional}) unter Ubuntu 16.04 die Containersoftware Docker
@@ -295,10 +296,10 @@ mindestens 2GHz getaktet sein.
 
 \subsection{Überwachungskonsole}
 \begin{enumerate}
-  \item[NF110] IP-Adressen muss eine gültige IPv4 oder IPv6 Addresse oder gültige Hostnamen sein. % Abkürzungsverzeichnis für Dinge wie IPv4?
+  \item[NF110] IP-Adressen müssen gültige IPv4 Adressen oder Hostnamen sein. % Abkürzungsverzeichnis für Dinge wie IPv4?
   \item[NF120] Ports dürfen Werte im Bereich 1024 bis 61000 annehmen.
   \item[NF130] Die Schwellenwerte für die Alarme dürfen zwischen 0 und 100 \% gewählt werden.
-  \item[NF140] Die Aktualisierungsfrequenz kann im Bereich zwischen 20 und 4000 Millisekunden gewählt werden.
+  \item[NF140] Die Aktualisierungsfrequenz kann im Bereich zwischen 100 und 4000 Millisekunden gewählt werden.
   \item[NF150] Wenn sich Werte in der \gls{Fertigungssimulation} ändern, werden die Änderungen spätestens nach der Zeitspanne von
     einer halben Sekunde plus dem Aktualisierungsintervall in der \gls{Uberwachungskonsole} angezeigt.
 \end{enumerate}
