@@ -8,8 +8,8 @@ target
 #              Eclipse files              #
 ###########################################
 
-.project
 .settings/
+.project
 
 ###########################################
 #              Intellij files             #
