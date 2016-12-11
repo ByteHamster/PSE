@@ -3,26 +3,27 @@
   <element>
     <id>Text</id>
     <coordinates>
-      <x>720</x>
+      <x>680</x>
       <y>640</y>
-      <w>100</w>
-      <h>80</h>
+      <w>180</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>halign=center
-Client-
-Anwendung</panel_attributes>
+Pro simuliertem Tank
+ein OPC UA Client</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>340</x>
+      <x>320</x>
       <y>640</y>
-      <w>140</w>
-      <h>50</h>
+      <w>170</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>halign=center
-Pro simuliertem Tank ein Server</panel_attributes>
+Pro simuliertem Tank
+ein OPC UA Server</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -79,7 +80,7 @@ plot type=pie</panel_attributes>
     </coordinates>
     <panel_attributes>halign=center
 fontsize=18
-*S**</panel_attributes>
+*S⁴*</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -92,7 +93,7 @@ fontsize=18
     </coordinates>
     <panel_attributes>halign=center
 fontsize=18
-*C*</panel_attributes>
+*C⁴*</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -103,7 +104,7 @@ fontsize=18
       <w>780</w>
       <h>700</h>
     </coordinates>
-    <panel_attributes>OPC UA Adapter
+    <panel_attributes>OSIP
 halign=left</panel_attributes>
     <additional_attributes/>
   </element>
