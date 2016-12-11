@@ -268,13 +268,13 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>330</x>
+      <x>280</x>
       <y>340</y>
-      <w>140</w>
+      <w>170</w>
       <h>510</h>
     </coordinates>
     <panel_attributes>[nicht beenden]
 lt=&lt;-</panel_attributes>
-    <additional_attributes>100.0;10.0;10.0;10.0;10.0;490.0;80.0;490.0</additional_attributes>
+    <additional_attributes>150.0;10.0;10.0;10.0;10.0;490.0;130.0;490.0</additional_attributes>
   </element>
 </diagram>
