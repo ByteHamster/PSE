@@ -30,7 +30,7 @@
 
 \begin{document}
 \maketitle
-\begin{figure}[h]
+\begin{figure}[h!]
   \centering
   \includegraphics[scale=0.5]{../icon.png}
   \caption{Icon der Anwendung}
@@ -64,7 +64,7 @@ benutzen zu müssen. Somit kann beim Kunden das Protokoll flexibler vorgestellt 
 sowohl eine \gls{Produktionsanlage} simulieren und deren Status graphisch darstellen, als auch auch eine \gls{Uberwachungskonsole}
 bereitstellen, die über \gls{OPC UA} Werte der \gls{Produktionsanlage} abfragt.\\
 
-\begin{figure}[h]
+\begin{figure}[h!]
   \centering
   \includegraphics[scale=0.5]{../system-sketch.png}
   \caption{Systemskizze}
@@ -84,25 +84,34 @@ Dabei steht jeder \gls{OPC UA Server} mit genau einem {OPC UA Client} in Verbind
 \subsection{Musskriterien}
 \subsubsection{Allgemein}
 \begin{itemize}
-  \item Die gesamte Kommunikation zwischen \gls{Uberwachungskonsole} und \gls{Fertigungssimulation} findet \"uber das \gls{OPC UA} Protokoll statt.
-  \item \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} laufen auf getrennten Rechnern.
+  \item Die Kommunikation zwischen \gls{Uberwachungskonsole} und \gls{Fertigungssimulation} findet \"uber \glspl{OPC UA Server} auf Seiten der \gls{Fertigungssimulation}
+    und \glspl{OPC UA Client} auf Seiten der \gls{Uberwachungskonsole} statt.
+  \item Die \gls{Fertigungssimulation} mit den \glslink{OPC UA Server}{OPC UA Servern} und die \gls{Uberwachungskonsole} mit den \glspl{OPC UA Client} laufen auf getrennten Rechnern.
 \end{itemize}
 
 \subsubsection{Überwachungskonsole}
 \begin{itemize}
   \item Die \gls{Uberwachungskonsole} ruft alle \glspl{Sensordatum} der \gls{Fertigungssimulation} in einem festen Zeitintervall über einen \gls{OPC UA} Client ab.
   \item Der \gls{OPC UA} Client ist mit \gls{OPC UA} Servern verbunden. Dazu ist die Einstellung der Verbindungsinformationen möglich.
-  \item Die abgerufenen Werte und deren zeitlicher Verlauf werden graphisch dargestellt. Die Werte sind Zu- und Abflussmengen, Temperaturen, Flüssigkeitsfarben sowie die Drehzahl eines Mischermotors.
+  \item Die von den \glspl{OPC UA Client} abgerufenen Werte und deren zeitlicher Verlauf werden graphisch dargestellt. Die Werte sind Zu- und Abflussmengen, Temperaturen,
+    Flüssigkeitsfarben sowie die Drehzahl eines Mischermotors.
   \item Die \gls{Uberwachungskonsole} enthält Alarme, die beim Überschreiten von Schwellenwerten in der \gls{Fertigungssimulation} durch den \gls{OPC UA} Server gesendet
     und dem Nutzer graphisch mitgeteilt werden.
 \end{itemize}
 
 \subsubsection{Fertigungssimulation}
 \begin{itemize}
-  \item In der \gls{Fertigungssimulation} kann der Benutzer die simulierte Fertigung steuern.
+  \item Die \gls{Fertigungssimulation} enth\"alt eine schematische Darstellung der simulierten \gls{Produktionsanlage}.
+  \item In der \gls{GUI} der \gls{Fertigungssimulation} kann der Benutzer die simulierte \gls{Produktionsanlage} steuern.
+  \item Die \gls{Fertigungssimulation} aktualisiert die \glspl{Sensordatum} in den \glslink{OPC UA Server}{OPC UA Servern}.
 \end{itemize}
 
 \subsection{Kannkriterien}
+\subsubsection{Allgemein}
+\begin{itemize}
+  \item In der \gls{Fertigungssimulation} und der \gls{Uberwachungskonsole} werden Probleme in der Programmausf\"uhrung geloggt.
+\end{itemize}
+
 \subsubsection{Überwachungskonsole}
 \begin{itemize}
   \item Das Zeitintervall für den Empfang der \glspl{Sensordatum} kann eingestellt werden.
@@ -113,11 +122,14 @@ Dabei steht jeder \gls{OPC UA Server} mit genau einem {OPC UA Client} in Verbind
     \"ubernommen werden.
   \item Die Standard-Sprache Englisch kann über \glspl{Java Property Datei} in andere Sprachen übersetzt werden.
   \item Die zu verwendende Sprache kann im UI umgestellt werden.
+  \item Empfangene Alarme werden geloggt.
 \end{itemize}
 
 \subsubsection{Fertigungssimulation}
 \begin{itemize}
   \item Es gibt vordefinierte \glspl{Simulations-Szenario}, die über das Menü gestartet werden können.
+  \item Die \glspl{Simulations-Szenario} werden in eigenen Dateien definiert. Neue \glspl{Simulations-Szenario}
+    werden durch das Einf\"ugen eigener Dateien im entsprechenden Format erstellt.
   \item \gls{Jitter} in den Zuflussmengen der Tanks sorgt f\"ur Variation in den gemessenen Werten.
   \item Die Standard-Sprache Englisch kann über \glspl{Java Property Datei} in andere Sprachen übersetzt werden.
   \item Die zu verwendende Sprache kann im UI umgestellt werden.
@@ -127,7 +139,7 @@ Dabei steht jeder \gls{OPC UA Server} mit genau einem {OPC UA Client} in Verbind
 \subsubsection{Allgemein}
 \begin{itemize}
   \item \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} dienen der Demonstration des \glslink{OPC UA}{OPC UA Protokolls}. Dazu wird die Open Source
-    Implementierung \gls{Milo} des \glslink{OPC UA}{OPC UA Protokolls} verwendet. \gls{OPC UA} wird nicht selbst implementiert.
+    Implementierung \gls{Milo} des \glslink{OPC UA}{OPC UA Protokolls} verwendet. Das \glslink{OPC UA}{OPC UA Protokoll} wird nicht selbst implementiert.
   \item Es werden verschiedene Möglichkeiten des \glslink{OPC UA}{OPC UA Protokolls} aufgezeigt, allerdings wird die Sicherheitseigenschaft von \gls{OPC UA} nicht mit eingebunden.
 \end{itemize}
 
@@ -242,14 +254,13 @@ mindestens 2GHz getaktet sein.
 \subsubsection{Funktionalität}
 \begin{enumerate}
   \item[FA310] Es gibt eine .jar-Datei, die bei Ausführung die \gls{Uberwachungskonsole} startet.
-  \item[FA320] Die \gls{Uberwachungskonsole} ist ein \gls{OPC UA Client}.
-  \item[FA330] Der \gls{OPC UA Client} erhält die \gls{IP-Adresse}, die durch die \gls{Uberwachungskonsole} nicht geändert werden kann, des verwendeten Computers.
-  \item[FA340] Der \gls{OPC UA Client} verbindet sich mit den \glslink{OPC UA Server}{OPC UA Servern} einer \gls{Fertigungssimulation} und kommuniziert mit diesen über \gls{TCP/IP}.
+  \item[FA320] Die \gls{Uberwachungskonsole} enthält vier \glspl{OPC UA Client}, von denen sich jeder mit einem \gls{OPC UA Server} der \gls{Fertigungssimulation} verbindet und mit diesem über \gls{TCP/IP} kommuniziert.
+  \item[FA330] Die \glspl{OPC UA Client} erhalten die \gls{IP-Adresse}, die durch die \gls{Uberwachungskonsole} nicht geändert werden kann, des verwendeten Computers.
   \item[FA350] Beim Start versucht die \gls{Uberwachungskonsole}, eine Verbindung mit den \glslink{OPC UA Server}{OPC UA Servern} herzustellen und sich dort zu registrieren.
-  \item[FA360] Schlägt die Verbindung von [FA350] oder [FA600] fehl, wird der Benutzer über einen Dialog informiert.
+  \item[FA360] Schlägt die Verbindung von [FA350] oder [FA600] fehl oder verliert mindestens ein \gls{OPC UA Client} die Verbindung zu seinem \gls{OPC UA Server}, wird der Benutzer über einen Dialog informiert und das Einstellungsfenster zur Eingabe der \gls{IP-Adresse} und Ports der \glspl{OPC UA Server} öffnet sich.
   \item[FA370] Alle angezeigten \glspl{Sensordatum} werden mit einer eingestellten, festen Frequenz aktualisiert.
-  \item[FA380] Alarme mit ihrem jeweiligen Auslöser können bei der \gls{Fertigungssimulation} registriert werden.
-  \item[FA390] Alarme werden asynchron zu den \glspl{Sensordatum} empfangen und direkt angezeigt, sobald sie ausgelöst werden.
+  \item[FA380] Alarme mit ihrem jeweiligen Auslöser werden bei der \gls{Fertigungssimulation} registriert.
+  \item[FA390] Alarme werden asynchron zu den \glspl{Sensordatum} empfangen und über einen Dialog direkt angezeigt, sobald sie ausgelöst werden.
 \end{enumerate}
 
 \subsubsection{GUI Darstellung}
@@ -269,22 +280,21 @@ mindestens 2GHz getaktet sein.
   \item[FA520] Ist der Kreis rot, wurde der Alarm ausgelöst.
   \item[FA530] Ist der Kreis grün, ist der Alarm nicht ausgelöst.
   \item[FA540] Ein Alarm wird als ausgelöst angezeigt, nachdem die \gls{Uberwachungskonsole} durch die \gls{Fertigungssimulation} darüber benachrichtigt wurde und bis der Alarm in der
-    \gls{Fertigungssimulation} nicht mehr aktiv ist und die \gls{Uberwachungskonsole} darüber informiert wurde.
+    \gls{Fertigungssimulation} nicht mehr aktiv ist und die \gls{Uberwachungskonsole} mit der nächsten Aktualisierung der \glspl{Sensordatum} über das Ende informiert wurde.
   \item[FA550] Es gibt eine zweistufige Ampel für den allgemeinen Zustand der \gls{Uberwachungskonsole}.
   \item[FA560] Ist die Ampel rot, wurde mindestens ein Alarm ausgelöst.
   \item[FA570] Ist die Ampel grün, wurde kein Alarm ausgelöst.
-  \item[FA580] Die \gls{Uberwachungskonsole} bietet eine Menüleiste mit den Punkten "`Datei"', das den Untermenüpunkt "`Einstellungen"' beinhaltet, und "`?"', das den Untermenüpunkt "`Über"' beinhaltet.
-  \item[FA590] "`? $\rightarrow$ Über"' öffnet ein neues Fenster, in dem der Programmname, die Version, das Programmsymbol und die Lizenz angezeigt werden.
-  \item[FA600] "`Datei $\rightarrow$ Einstellungen"' öffnet ein separates Fenster, in dem alle Einstellungen in einem Reiter "`Allgemeine Einstellungen"' vorgenommen werden können.
-  \item[FA610] In den Einstellungen werden die IP-Adresse des \glslink{OPC UA Client}{OPC UA Clients} und der \gls{OPC UA Server} sowie deren Ports angezeigt.
+  \item[FA590] Es gibt ein "`Über"'-Fenster, in dem der Programmname, die Version, das Programmsymbol, die Lizenz und die Lizenzen verwendeter Projekte angezeigt werden.
+  \item[FA600] Es gibt ein Einstellungsfenster, in dem alle Einstellungen in einem Reiter "`Allgemeine Einstellungen"' vorgenommen werden können.
+  \item[FA610] In den "Allgemeinen Einstellungen" werden die IP-Adresse und Ports der \glslink{OPC UA Client}{OPC UA Clients} und \glspl{OPC UA Server} angezeigt.
 \end{enumerate}
 
 \subsubsection{Benutzerinteraktion}
 \begin{enumerate}
-  \item[FA570] Der Benutzer kann in den Einstellungen den Port für den \gls{OPC UA Client} bzw. die Ports und die IP-Adresse für die \glspl{OPC UA Server} einstellen.
+  \item[FA570] Der Benutzer kann in den Einstellungen die Ports für die \glspl{OPC UA Client} bzw. die Ports und die IP-Adresse für die \glspl{OPC UA Server} einstellen.
   \item[FA580] Nach Drücken eines Speichern-Knopfes im Einstellungsfenster werden alle vorhandenen Einstellungen mit denen aus dem Fenster überschrieben.
   \item[FA590] Nach Drücken eines Abbruch-Knopfes im Einstellungsfenster bleiben die Einstellungen unverändert.
-  \item[FA600] Werden Einstellungen für die \glspl{OPC UA Server} oder den \gls{OPC UA Client} überschrieben, wird der \gls{OPC UA Client} mit den neuen Einstellungen neu gestartet.
+  \item[FA600] Werden Einstellungen für die \glspl{OPC UA Server} oder \glspl{OPC UA Client} überschrieben, werden die \glspl{OPC UA Client} mit den neuen Einstellungen neu gestartet.
   \item[FA610] Die Eingaben in den Einstellungen werden direkt nach Eingabe auf richtige Formatierung und Einhaltung des Wertebereichs gepr\"uft.
   \item[FA620] Der Benutzer wird über eine Fehleingabe und deren Ursache informiert.
 \end{enumerate}
@@ -295,11 +305,13 @@ mindestens 2GHz getaktet sein.
   \item[FA630] Es gibt ein \gls{Dockerimage} zur einfachen Verteilung und isolierten Ausführung der \gls{Uberwachungskonsole}.
   \item[FA640] Bereits registrierte Alarme können wieder gelöscht werden.
   \item[FA650] Das Einstellungsfenster wird um zwei Reiter, "`Verläufe"' und "`Alarme"' erweitert.
+  \item[FA] In den "Allgemeinen Einstellungen" ist es dem Nutzer möglich, die Sprache auszuwählen.
   \item[FA660] In den "`Allgemeinen Einstellungen"' ist es dem Nutzer möglich, das Zeitintervall für die Aktualisierung der Werte über einen Schieberegler oder eine Textbox einzustellen.
   \item[FA670] Unter "`Verläufe"' ist es möglich, jede Aufnahme des zeitlichen Verlaufs eines Wertes ein und aus zu schalten.
   \item[FA680] In "`Alarme"' kann der Nutzer die verfügbaren Alarme ein- und ausschalten und deren Schwellenwerte festlegen.
+  \item[FA] Der Benutzer kann die Schwellenwerte der Alarme direkt an deren Anzeige ändern.
   \item[FA690] Es gibt eine Loggingkonsole in Form einer mehrzeiligen Textausgabe.
-  \item[FA700] Geloggt werden Fehler, Ausnahmen und Aktivitäten der \gls{Uberwachungskonsole} sowie alle eintreffenden Alarme.
+  \item[FA700] Geloggt werden Fehler und Ausnahmen während der Ausführung der \gls{Uberwachungskonsole} sowie alle eintreffenden Alarme.
 \end{enumerate}
 
 \pagebreak
@@ -325,10 +337,10 @@ mindestens 2GHz getaktet sein.
 \pagebreak
 \section{Produktdaten}
 \begin{enumerate}
-  \item[D10] Die \gls{Uberwachungskonsole} speichert den zuletzt eingestellten Port des \glslink{OPC UA Client}{OPC UA Clients}.
+  \item[D10] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellten Ports der \glslink{OPC UA Client}{OPC UA Clients}.
   \item[D20] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellte IP-Adresse und Ports der \gls{OPC UA Server}.
   \item[D30] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellte Aktualisierungsfrequenz für die \glspl{Sensordatum}.
-  \item[D40] Die \gls{Uberwachungskonsole} speichert die zuletzt eingeschaltenen Alarme und alle Schwellenwerte.
+  \item[D40] Die \gls{Uberwachungskonsole} speichert die zuletzt eingeschalteten Alarme und alle Schwellenwerte.
   \item[D50] Die \gls{Uberwachungskonsole} speichert, welche Verläufe zuletzt angezeigt wurden.
   \item[D110] Die \gls{Fertigungssimulation} speichert die zuletzt genutzten Ports der \glspl{OPC UA Server}.
   \item[D120] Die \gls{Fertigungssimulation} speichert den zuletzt eingestellten \gls{Jitter}.
@@ -404,23 +416,23 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
 \gls{Fertigungssimulation} die Option "`zur\"ucksetzen"', woraufhin wieder die Standardkonfiguration angezeigt wird.
 
 \subsection{Anwendungsfälle}
-\subsubsection{Änderung der Zu-/Abflussgeschwindigkeit}
+\subsubsection{Änderung der Prozessvariablen}
 \begin{description}
-  \item[Name] Erhöhen oder Verringern der Zu- oder Abflussgeschwindigkeit bei einem der Flüssigkeitstanks.
+  \item[Name] Anpassen der Variablen wie Zu- oder Abflussgeschwindigkeit, Temperatur oder Motordrehzahl bei einem der
+  Flüssigkeitstanks, sofern er die Anpassung dieser Werte erlaubt.
   \item[Akteure] Manuel (Bediener der Software)
   \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
   \item[Ereignisfluss]~\\
 \begin{itemize}[noitemsep]
-  \item Manuel öffnet in der \gls{Fertigungssimulation} den Menüeintrag "`Ansicht"'.
-  \item Manuel klickt auf "`Steuerung anzeigen"'.
-  \item Ein Fenster öffnet sich. Manuel wählt den Reiter des Tanks, den er verändern will.
-  \item Manuel verschiebt den Schieberegler des Zufluss- oder Abflussventils auf den gewünschten Wert.
+  \item Manuel öffnet das Steuerungsfenster.
+  \item Manuel wählt den Reiter des Tanks, den er verändern will.
+  \item Manuel stellt den gewünschten Wert ein.
   \item Manuel klickt den "`OK"' Knopf.
 \end{itemize}
-  \item[Ausgangssituation] Die Zu- oder Abflussrate im gewählten Tank ist nun höher bzw. niedriger. Dies ist am schnelleren oder
-    langsameren Füllen oder Leeren des Tanks in der Visualisierung der Tanks sichtbar.
-    Außerdem zeigt die \gls{Uberwachungskonsole} höhere/niedrigere Durchflussraten an.
-  \item [Nichtfunktionale Anforderungen] Der geänderte Zu- oder Abflusswert wird mit der nächsten Aktualisierung auf der \gls{Uberwachungskonsole} angezeigt.
+  \item[Ausgangssituation] Die Prozessvariable ist geändert. Dies ist in der GUI der Fertigungssimulation sichtbar, etwa durch schnelleres Befüllen oder Leeren eines Tanks,
+  durch ein schnelleres Drehen der Motorvisualisierung oder durch eine Statusanzeige.
+    Außerdem zeigt die \gls{Uberwachungskonsole} die geänderte Variable an.
+  \item [Nichtfunktionale Anforderungen] Die geänderte Variable wird mit der nächsten Aktualisierung auf der \gls{Uberwachungskonsole} angezeigt.
 \end{description}
 
 %
@@ -442,19 +454,21 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
 % \item [Nichtfunktionale Anforderungen] Die geänderten Einstellungen werden binnen einer halben Sekunde in der \gls{GUI} dargestellt.
 %\end{description}
 
-\subsubsection{Änderung der Aktualisierungsfrequenz}
+\subsubsection{Änderung der Verbindungseinstellungen}
 \begin{description}
-  \item[Name] Erhöhen oder Verringern der Aktualisierungsfrequenz.
+  \item[Name] Verändern der Verbindungseinstellungen.
   \item[Akteure] Manuel (Bediener der Software)
   \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
   \item[Ereignisfluss]~\\
   \begin{itemize}[noitemsep]
-    \item Manuel öffnet in der \gls{Uberwachungskonsole} die Einstellungen.
-    \item Manuel navigiert in den Reiter "`Allgemeine Einstellungen"'.
-    \item Manuel verschiebt den Schieberegler, der die Aktualisierungsfrequenz einstellt.
-    \item Manuel klickt den "`Speichern"' Knopf.
+    \item Manuel öffnet in der \gls{Uberwachungskonsole} die allgemeinen Einstellungen.
+    \item Manuel stellt die Aktualisierungsfrequenz, die \gls{IP-Adresse} oder einen Port der \gls{OPC UA Server} ein.
+    \item Manuel klickt den "`Speichern"' Knopf und das Einstellungsfenster schließt sich.
+    \item Der Verbindungsaufbau schlägt fehlt und das Einstellungsfenster öffnet sich wieder.
+    \item Manuel trägt nun die richtigen Ports und \gls{IP-Adresse} ein und klickt den "`Speichern"' Knopf.
   \end{itemize}
   \item[Ausgangssituation] Die \glspl{Sensordatum} in der \gls{Uberwachungskonsole} werden nun in Abständen der gewählten Aktualisierungsfrequenz aktualisiert.
+  Wenn sich die \gls{IP-Adresse} oder Ports verändert haben, verbinden sich die betroffenen \glspl{OPC UA Client} neu mit dem Server.
   \item [Nichtfunktionale Anforderungen] Die Frequenz ändert sich spätestens mit der nächsten Aktualisierung.
 \end{description}
 
@@ -474,87 +488,138 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
   \item[Nichtfunktionale Anforderungen] Die \glspl{Sensordatum} der \gls{Uberwachungskonsole} werden nach spätestens einer halben Sekunde aktualisiert.
 \end{description}
  
-\subsubsection{Alarm einschalten}
+\subsubsection{Alarm konfigurieren}
 \begin{description}
-  \item[Name] Einschalten eines Alarms in der \gls{Uberwachungskonsole}.
+  \item[Name] Einschalten, Ausschalten oder konfigurieren des Schwellenwertes eines Alarms in der \gls{Uberwachungskonsole}.
   \item[Akteure] Manuel (Bediener der Software)
   \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
   \item[Ereignisfluss]~\\
   \begin{itemize}[noitemsep]
-    \item Manuel \"offnet in der \gls{Uberwachungskonsole} die Einstellungen.
-    \item Manuel navigiert in den Reiter "`Alarme"'.
-    \item Manuel w\"ahlt den Alarm aus, der eingeschalten werden soll.
-    \item Manuel aktiviert die Checkbox, die zum Alarm gehört.
-    \item Manuel stellt zusätzlich einen Schwellenwert ein oder lässt den aktuell angezeigten.
+    \item Manuel \"offnet in der \gls{Uberwachungskonsole} die Alarmeinstellungen.
+    \item Manuel schaltet einen Alarm ein oder aus, indem er die Checkbox anklickt oder trägt einen Schwellwert ein.
     \item Manuel klickt den "`Speichern"' Knopf.
   \end{itemize}
-  \item[Ausgangssituation] Wenn der Sensor die Alarmbedingung erf\"ullt, wird an die \gls{Uberwachungskonsole} ein Alarm gesendet.
+  \item[Ausgangssituation] Wenn der Sensor die Alarmbedingung erf\"ullt, und der Alarm aktiviert ist, wird an die \gls{Uberwachungskonsole} ein Alarm gesendet.
+  Frühere Alarmschwellen lösen keine Alarme mehr aus.
   \item [Nichtfunktionale Anforderungen] Sp\"atestens nach 100ms ist die Aktualisierung \"ubernommen und wird
     an die \gls{Fertigungssimulation} gesendet.
 \end{description}
 
 \subsubsection{Alarm empfangen}
 \begin{description}
-  \item[Name] Empfangen eines Alarms in der \gls{Uberwachungskonsole}.
-  \item[Akteure] \gls{Fertigungssimulation}
+  \item[Name] Empfangen eines (Überlauf-) Alarms in der \gls{Uberwachungskonsole}.
+  \item[Akteure] Manuel (Bediener der Software)
   \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
-    Es ist mindestens ein Alarm eingerichtet.
+    Es ist mindestens ein Überlauf-Alarm eingerichtet.
   \item[Ereignisfluss]~\\
   \begin{itemize}[noitemsep]
-    \item In der \gls{Fertigungssimulation} kommt es zu einem Alarmzustand.
+    \item In der \gls{Fertigungssimulation} kommt es zu einem Alarmzustand weil ein Tank droht überzulaufen.
     \item Die \gls{Fertigungssimulation} sendet den entsprechenden Alarm an die registrierte \gls{Uberwachungskonsole}.
     \item Die \gls{Uberwachungskonsole} empf\"angt den Alarm.
-    \item Die \gls{Uberwachungskonsole} zeigt in der \gls{GUI} den Alarm an.
+    \item Die \gls{Uberwachungskonsole} zeigt in der \gls{GUI} den Alarm an, indem die Ampel auf Rot springt und der Kreis neben dem Wert ebenfalls rot wird.
+    \item Da Manuel die Zuflussmengen der Tanks in der \gls{Fertigungssimulation} nicht reduziert, kommt es zu einem Überlauf.
+    \item In der \gls{Fertigungssimulation} erscheint der Text "`Überlauf"' und Manuel klickt auf den "`zurücksetzen"' Knopf.
+    \item Die Fertigungssimulation wird in den Anfangszustand zurück gesetzt.
   \end{itemize}
-  \item[Ausgangssituation] \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} laufen normal weiter. In der \gls{GUI} der
-    \gls{Uberwachungskonsole} ist der Alarmeintrag zu sehen.
+  \item[Ausgangssituation] Die \gls{Uberwachungskonsole} läuft normal weiter und zeigt die zurückgesetzten Werte an. In der \gls{GUI} der
+    \gls{Uberwachungskonsole} ist der Alarmeintrag zu sehen. Die \gls{Fertigungssimulation} ist auf den Anfangszustand zurück gesetzt.
   \item [Nichtfunktionale Anforderungen] Die \gls{GUI} der \gls{Uberwachungskonsole} muss einen empfangenen Alarm nach sp\"atestens
     100ms plus der Aktualisierungsfrequenz anzeigen.
 \end{description}
 
-\subsubsection{Alarm \"andern}
+\subsubsection{Ein Simulations-Szenario verwenden}
 \begin{description}
-  \item[Name] \"Andern eines bereits vorhandenen Alarms in der \gls{Uberwachungskonsole}.
+  \item[Name] Starten eines \gls{Simulations-Szenario}s.
   \item[Akteure] Manuel (Bediener der Software)
-  \item[Eingangsbedingung] Die \gls{Uberwachungskonsole} ist in Betrieb. Es ist mindestens ein Alarm bereits eingeschalten.
+  \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
   \item[Ereignisfluss]~\\
   \begin{itemize}[noitemsep]
-    \item Manuel \"offnet in der \gls{Uberwachungskonsole} die Einstellungen.
-    \item Manuel navigiert in den Reiter "`Alarme"'.
-    \item Manuel w\"ahlt den gew\"unschten Alarm aus.
-    \item Manuel tr\"agt den gew\"unschten Schwellenwert ein.
-    \item Manuel klickt auf "`Speichern"'.
+    \item In der \gls{Fertigungssimulation} wird ein \gls{Simulations-Szenario} gestartet.
+    \item Die \glspl{Prozessvariable} ändern sich deterministisch und ohne zutun von Manuel. Diese Änderungen sind in der \gls{Uberwachungskonsole} sichtbar.
+    \item Nachdem das \gls{Simulations-Szenario} fertig ist, wird die \gls{Fertigungssimulation} wieder auf den Anfangswert zurückgesetzt, und das
+    \gls{Simulations-Szenario} beginnt von vorne zu laufen.
+    \item Manuel beendet das \gls{Simulations-Szenario} und die zuletzt vom \gls{Simulations-Szenario} eingestellten \glspl{Prozessvariable} können nun manuell von Manuel angepasst werden.
   \end{itemize}
-  \item[Ausgangssituation] Die alte Alarmbedingung l\"ost keine Alarme mehr aus. Die neue Alarmbedingung l\"ost Alarme aus.
-  \item [Nichtfunktionale Anforderungen] Die ge\"anderte Alarmbedingung ist nach sp\"atestens 500ms plus der Netzwerklatenz \"ubernommen und
-    wird an die \gls{Fertigungssimulation} gesendet.
+  \item[Ausgangssituation] Das \gls{Simulations-Szenario} ist beendet, es ändern sich keine \gls{Prozessvariable} mehr automatisch.
 \end{description}
 
-\subsubsection{Alarm ausschalten}
+\subsubsection{Verläufe konfigurieren}
 \begin{description}
-  \item[Name] Ausschalten eines eingeschaltenen Alarms.
+  \item[Name] Ein- oder Ausschalten eines Verlaufs.
   \item[Akteure] Manuel (Bediener der Software)
-  \item[Eingangsbedingung] Die \gls{Uberwachungskonsole} ist in Betrieb. Es ist mindestens ein Alarm bereits eingeschalten.
+  \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
   \item[Ereignisfluss]~\\
   \begin{itemize}[noitemsep]
-    \item Manuel \"offnet in der \gls{Uberwachungskonsole} die Einstellungen.
-    \item Manuel navigiert in den Reiter "`Alarme"'.
-    \item Manuel deaktiviert die Checkbox aller gew\"unschten Alarme.
-    \item Manuel klickt auf "`Speichern"'.
+    \item Manuel öffnet die Verlaufseinstellungen in der \gls{Uberwachungskonsole}.
+    \item Manuel klickt eine der Checkboxen.
+    \item Manuel klickt den "`Speichern"' Knopf und das Einstellungsfenster schließt sich.
   \end{itemize}
-  \item[Ausgangssituation] Die alten Alarmbedingungen l\"osen keine Alarme mehr aus.
-  \item [Nichtfunktionale Anforderungen] Das Ausschalten der Alarme wird nach sp\"atestens 100ms an die \gls{Fertigungssimulation} \"ubermittelt.
+  \item[Ausgangssituation] In der \gls{Uberwachungskonsole} wird der Verlauf des ausgewählten Wertes nun abhängig von der Checkbox angezeigt oder nicht angezeigt.
 \end{description}
+
 
 \subsubsection{Anwendungsfalldiagramm}
-\begin{figure}[h]
+\begin{figure}[h!]
   \centering
   \includegraphics[scale=0.62]{media/UseCases/Ueberwachungskonsole.png}
   \caption{Anwendungsfalldiagramm für die Überwachungskonsole}
 \end{figure}
 
 \subsection{Dynamische Modelle}
-\Blindtext[1]
+\subsubsection{Starten der Überwachungskonsole}
+\label{console-launch}
+\begin{enumerate}[noitemsep]
+ \item Die \gls{Uberwachungskonsole} versucht, die Verbindung zu den \glspl{OPC UA Server} mit den zuletzt gespeicherten Verbindungsinformationen aufzunehmen.
+ \item Wenn der Verbindungsaufbau fehlschlägt, öffnet sich das Fenster mit den Verbindungseinstellungen. Wenn der Benutzer das Fenster wieder schließt,
+ werden die veränderten Verbindungsinformationen gespeichert und erneut versucht, die Verbindung aufzubauen.
+ \item Wenn der Verbindungsaufbau geklappt hat, zeigt die \gls{Uberwachungskonsole} die übertragenen Werte der \gls{Fertigungssimulation}, sowie die
+ Alarme und Verläufe an.
+ \item Wenn der Benutzer die \gls{Uberwachungskonsole} schließt, ist das Programm beendet.
+\end{enumerate}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.62]{media/Activities/launch-console.png}
+  \caption{Aktivitätsdiagram für den Start der Überwachungskonsole}
+\end{figure}
+
+\subsubsection{Hauptschleife und Alarme der Überwachungskonsole}
+\emph{Hauptschleife}
+\begin{enumerate}[noitemsep]
+ \item Die Überwachungskonsole startet, wie in \ref{console-launch} beschrieben.
+ \item Die Überwachungskonsole ruft die aktuellen Sensorwerte vom \gls{OPC UA Server} ab.
+ \item Diese Werte werden auf den Anzeigen der \gls{Uberwachungskonsole} angezeigt.
+ \item Dann werden diese Werte in den Verlauf (sofern aktiviert) eingefügt.
+ \item Wenn bei einem aktivem Alarm die Alarmbedingung nicht mehr erfüllt ist, wird er ausgeschaltet.
+ \item Wenn keine Alarme mehr aktiv sind, wird die Ampel auf grün geschaltet.
+ \item Wenn der Benutzer das Fenster geschlossen hat, wird die \gls{Uberwachungskonsole} nun beendet.
+ \item Vor der nächsten Aktualisierung wird gewartet, damit erst nach der Aktualisierungsfrequenz erneut Sensorwerte abgerufen werden.
+\end{enumerate}
+\emph{Alarme empfangen}
+\begin{enumerate}[noitemsep]
+ \item Wenn ein Alarm empfangen wird, wird die Ampel auf rot geschaltet.
+ \item Dann wird der Kreis bei den Anzeigen auf rot geschaltet.
+\end{enumerate}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.62]{media/Activities/main-console.png}
+  \caption{Aktivitätsdiagram für die Hauptschleife und Alarme der Überwachungskonsole}
+\end{figure}
+
+\subsubsection{Hauptschleife der Fertigungssimulation}
+\begin{enumerate}[noitemsep]
+ \item Die Fertigungssimulation startet.
+ \item Der Zustand der \gls{Fertigungssimulation} wird berechnet.
+ \item Wenn durch eine Zustandsänderung eine Alarmschwelle überschritten wurde, wird der Alarm an alle \glspl{OPC UA Client} gesendet,
+ die sich für den Alarm registriert haben.
+ \item Danach wird der geänderte Zustand im \gls{OPC UA Server} gesetzt.
+ \item Dann wird der aktualisierte Zustand in der \gls{GUI} angezeigt.
+ \item Wenn der Benutzer das Fenster geschlossen hat, wird die \gls{Fertigungssimulation} nun beendet.
+\end{enumerate}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.62]{media/Activities/main-simulation.png}
+  \caption{Aktivitätsdiagram für die Hauptschleife der Fertigungssimulation}
+\end{figure}
 
 \subsection{Statische Modelle}
 \subsubsection{Komponentendiagramm}
@@ -567,14 +632,15 @@ diese von ihm zurückgegeben. Alarme werden der \gls{Uberwachungskonsole} ohne A
 Die Daten werden dann in der \gls{GUI} der \gls{Uberwachungskonsole} angezeigt. Jeder der modellierten Tanks
 besitzt seinen eigenen Server in der \gls{Fertigungssimulation} und seinen eigenen Client in der \gls{Uberwachungskonsole}.
 Somit werden 4 Server und 4 Clients benötigt.
-\begin{center}
+\begin{figure}[h!]
+  \centering
   \includegraphics[scale=0.5]{media/ComponentDiagram/componentDiagram.png}
-\end{center}
-
+  \caption{Komponentendiagramm}
+\end{figure}
 
 \section{Nutzerinterface-Skizzen}
 \subsection{Fertigungssimulation}
-\begin{figure}[h]
+\begin{figure}[h!]
   \centering
   \includegraphics[scale=0.5]{media/ui-sketch-server.png}
   \caption{Nutzerinterface-Skizze der Fertigungssimulation}
@@ -582,18 +648,37 @@ Somit werden 4 Server und 4 Clients benötigt.
 \pagebreak
 
 \subsection{Überwachungskonsole}
-\begin{figure}[h]
+\begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.45]{media/ui-client.png}
-  \caption{Nutzerinterface-Skizze der Überwachungskonsole}
+  \includegraphics[scale=0.5]{media/ui-client/ui-uw.png}
+  \caption{Nutzerinterface-Skizze des Hauptfensters der Überwachungskonsole}
 \end{figure}
+Im Hauptfenster der \gls{Uberwachungskonsole} werden die Anzeigen für die \glspl{Sensordatum} für jeden Tank in einem einzelnen Rahmen gesammelt. Dabei repräsentieren die Anzeigen im roten, grünen bzw. blauen Rahmen den roten, grünen bzw. blauen Tank. Die Anzeigen im schwarzen Rahmen repräsentieren den Mischtank, dessen Farbe explizit angezeigt wird.
+Neben den Anzeigen der \glspl{Sensordatum} sind auch die Füllstands- und Temperaturverläufe in Form von Graphen und die Alarme enthalten. Im grünen Tank ist beispielhaft der Alarm für einen Unterlauf ausgelöst.
+Darüber hinaus enthält das Hauptfenster das Loggingfenster und die Ampel für den allgemeinen Zustand der \gls{Uberwachungskonsole}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.5]{media/ui-client/ui-uw-settings1.png}
+	\includegraphics[scale=0.5]{media/ui-client/ui-uw-settings2.png}
+	\includegraphics[scale=0.5]{media/ui-client/ui-uw-settings3.png}
+	\caption{Nutzerinterface-Skizze des Einstellungsdialogs der Überwachungskonsole}
+\end{figure}
+Im Einstellungsdialog sind bereits alle möglichen Einstellungen skizziert. Dem entsprechend beinhalten die "Allgemeinen Einstellungen" die Verbindungsinformationen, die Sprache und die Aktualisierungsfrequenz, die "Verläufe" das Ein- und Ausschalten der einzelnen Füllstands- und Temperaturverläufe und die "Alarme" das Einstellen dieser.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.5]{media/ui-client/ui-uw-uber.png}
+	\caption{Nutzerinterface-Skizze des "`Über"'-Fensters der Überwachungskonsole}
+\end{figure}
+Das "`Über"'-Fenster der \gls{Uberwachungskonsole} enthält die Programm- und Lizenzinformationen zum Projekt. Daneben bietet es im Lizenztextfeld Platz für die Lizenzen verwendeter Projekte; es kann aber auch um ein separates Feld für diese Lizenzen erweitert werden.
 \pagebreak
 
 \section{Anhang}
 \subsection{3D-Darstellung der Fertigungssimulation}
 Die 3D-Darstellung der \gls{Fertigungssimulation} wurde verworfen, da diese sonst eher wie ein Spiel wirkt.
 In der Anwendung soll somit eine schematische Darstellung zum Einsatz kommen.
-\begin{figure}[h]
+\begin{figure}[h!]
   \centering
   \includegraphics[scale=0.3]{./media/ui-sketch-server-3d.png}
   \caption{Verworfene Skizze einer 3D-Darstellung der Fertigungssimulation}
