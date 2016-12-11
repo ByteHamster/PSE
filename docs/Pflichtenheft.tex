@@ -30,7 +30,7 @@
 
 \begin{document}
 \maketitle
-\begin{figure}[h]
+\begin{figure}[h!]
   \centering
   \includegraphics[scale=0.5]{../icon.png}
   \caption{Icon der Anwendung}
@@ -64,7 +64,7 @@ benutzen zu müssen. Somit kann beim Kunden das Protokoll flexibler vorgestellt 
 sowohl eine \gls{Produktionsanlage} simulieren und deren Status graphisch darstellen, als auch auch eine \gls{Uberwachungskonsole}
 bereitstellen, die über \gls{OPC UA} Werte der \gls{Produktionsanlage} abfragt.\\
 
-\begin{figure}[h]
+\begin{figure}[h!]
   \centering
   \includegraphics[scale=0.5]{../system-sketch.png}
   \caption{Systemskizze}
@@ -557,7 +557,7 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
 
 
 \subsubsection{Anwendungsfalldiagramm}
-\begin{figure}[h]
+\begin{figure}[h!]
   \centering
   \includegraphics[scale=0.62]{media/UseCases/Ueberwachungskonsole.png}
   \caption{Anwendungsfalldiagramm für die Überwachungskonsole}
@@ -630,14 +630,15 @@ diese von ihm zurückgegeben. Alarme werden der \gls{Uberwachungskonsole} ohne A
 Die Daten werden dann in der \gls{GUI} der \gls{Uberwachungskonsole} angezeigt. Jeder der modellierten Tanks
 besitzt seinen eigenen Server in der \gls{Fertigungssimulation} und seinen eigenen Client in der \gls{Uberwachungskonsole}.
 Somit werden 4 Server und 4 Clients benötigt.
-\begin{center}
+\begin{figure}[h!]
+  \centering
   \includegraphics[scale=0.5]{media/ComponentDiagram/componentDiagram.png}
-\end{center}
-
+  \caption{Komponentendiagramm}
+\end{figure}
 
 \section{Nutzerinterface-Skizzen}
 \subsection{Fertigungssimulation}
-\begin{figure}[h]
+\begin{figure}[h!]
   \centering
   \includegraphics[scale=0.5]{media/ui-sketch-server.png}
   \caption{Nutzerinterface-Skizze der Fertigungssimulation}
@@ -675,7 +676,7 @@ Das "`Über"'-Fenster der \gls{Uberwachungskonsole} enthält die Programm- und L
 \subsection{3D-Darstellung der Fertigungssimulation}
 Die 3D-Darstellung der \gls{Fertigungssimulation} wurde verworfen, da diese sonst eher wie ein Spiel wirkt.
 In der Anwendung soll somit eine schematische Darstellung zum Einsatz kommen.
-\begin{figure}[h]
+\begin{figure}[h!]
   \centering
   \includegraphics[scale=0.3]{./media/ui-sketch-server-3d.png}
   \caption{Verworfene Skizze einer 3D-Darstellung der Fertigungssimulation}
