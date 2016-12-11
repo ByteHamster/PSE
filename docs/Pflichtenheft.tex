@@ -252,14 +252,13 @@ mindestens 2GHz getaktet sein.
 \subsubsection{Funktionalität}
 \begin{enumerate}
   \item[FA310] Es gibt eine .jar-Datei, die bei Ausführung die \gls{Uberwachungskonsole} startet.
-  \item[FA320] Die \gls{Uberwachungskonsole} ist ein \gls{OPC UA Client}.
-  \item[FA330] Der \gls{OPC UA Client} erhält die \gls{IP-Adresse}, die durch die \gls{Uberwachungskonsole} nicht geändert werden kann, des verwendeten Computers.
-  \item[FA340] Der \gls{OPC UA Client} verbindet sich mit den \glslink{OPC UA Server}{OPC UA Servern} einer \gls{Fertigungssimulation} und kommuniziert mit diesen über \gls{TCP/IP}.
+  \item[FA320] Die \gls{Uberwachungskonsole} enthält vier \glspl{OPC UA Client}, von denen sich jeder mit einem \gls{OPC UA Server} der \gls{Fertigungssimulation} verbindet und mit diesem über \gls{TCP/IP} kommuniziert.
+  \item[FA330] Die \glspl{OPC UA Client} erhalten die \gls{IP-Adresse}, die durch die \gls{Uberwachungskonsole} nicht geändert werden kann, des verwendeten Computers.
   \item[FA350] Beim Start versucht die \gls{Uberwachungskonsole}, eine Verbindung mit den \glslink{OPC UA Server}{OPC UA Servern} herzustellen und sich dort zu registrieren.
-  \item[FA360] Schlägt die Verbindung von [FA350] oder [FA600] fehl, wird der Benutzer über einen Dialog informiert.
+  \item[FA360] Schlägt die Verbindung von [FA350] oder [FA600] fehl oder verliert mindestens ein \gls{OPC UA Client} die Verbindung zu seinem \gls{OPC UA Server}, wird der Benutzer über einen Dialog informiert und das Einstellungsfenster zur Eingabe der \gls{IP-Adresse} und Ports der \glspl{OPC UA Server} öffnet sich.
   \item[FA370] Alle angezeigten \glspl{Sensordatum} werden mit einer eingestellten, festen Frequenz aktualisiert.
-  \item[FA380] Alarme mit ihrem jeweiligen Auslöser können bei der \gls{Fertigungssimulation} registriert werden.
-  \item[FA390] Alarme werden asynchron zu den \glspl{Sensordatum} empfangen und direkt angezeigt, sobald sie ausgelöst werden.
+  \item[FA380] Alarme mit ihrem jeweiligen Auslöser werden bei der \gls{Fertigungssimulation} registriert.
+  \item[FA390] Alarme werden asynchron zu den \glspl{Sensordatum} empfangen und über einen Dialog direkt angezeigt, sobald sie ausgelöst werden.
 \end{enumerate}
 
 \subsubsection{GUI Darstellung}
@@ -279,22 +278,21 @@ mindestens 2GHz getaktet sein.
   \item[FA520] Ist der Kreis rot, wurde der Alarm ausgelöst.
   \item[FA530] Ist der Kreis grün, ist der Alarm nicht ausgelöst.
   \item[FA540] Ein Alarm wird als ausgelöst angezeigt, nachdem die \gls{Uberwachungskonsole} durch die \gls{Fertigungssimulation} darüber benachrichtigt wurde und bis der Alarm in der
-    \gls{Fertigungssimulation} nicht mehr aktiv ist und die \gls{Uberwachungskonsole} darüber informiert wurde.
+    \gls{Fertigungssimulation} nicht mehr aktiv ist und die \gls{Uberwachungskonsole} mit der nächsten Aktualisierung der \glspl{Sensordatum} über das Ende informiert wurde.
   \item[FA550] Es gibt eine zweistufige Ampel für den allgemeinen Zustand der \gls{Uberwachungskonsole}.
   \item[FA560] Ist die Ampel rot, wurde mindestens ein Alarm ausgelöst.
   \item[FA570] Ist die Ampel grün, wurde kein Alarm ausgelöst.
-  \item[FA580] Die \gls{Uberwachungskonsole} bietet eine Menüleiste mit den Punkten "`Datei"', das den Untermenüpunkt "`Einstellungen"' beinhaltet, und "`?"', das den Untermenüpunkt "`Über"' beinhaltet.
-  \item[FA590] "`? $\rightarrow$ Über"' öffnet ein neues Fenster, in dem der Programmname, die Version, das Programmsymbol und die Lizenz angezeigt werden.
-  \item[FA600] "`Datei $\rightarrow$ Einstellungen"' öffnet ein separates Fenster, in dem alle Einstellungen in einem Reiter "`Allgemeine Einstellungen"' vorgenommen werden können.
-  \item[FA610] In den Einstellungen werden die IP-Adresse des \glslink{OPC UA Client}{OPC UA Clients} und der \gls{OPC UA Server} sowie deren Ports angezeigt.
+  \item[FA590] Es gibt ein "`Über"'-Fenster, in dem der Programmname, die Version, das Programmsymbol, die Lizenz und die Lizenzen verwendeter Projekte angezeigt werden.
+  \item[FA600] Es gibt ein Einstellungsfenster, in dem alle Einstellungen in einem Reiter "`Allgemeine Einstellungen"' vorgenommen werden können.
+  \item[FA610] In den "Allgemeinen Einstellungen" werden die IP-Adresse und Ports der \glslink{OPC UA Client}{OPC UA Clients} und \glspl{OPC UA Server} angezeigt.
 \end{enumerate}
 
 \subsubsection{Benutzerinteraktion}
 \begin{enumerate}
-  \item[FA570] Der Benutzer kann in den Einstellungen den Port für den \gls{OPC UA Client} bzw. die Ports und die IP-Adresse für die \glspl{OPC UA Server} einstellen.
+  \item[FA570] Der Benutzer kann in den Einstellungen die Ports für die \glspl{OPC UA Client} bzw. die Ports und die IP-Adresse für die \glspl{OPC UA Server} einstellen.
   \item[FA580] Nach Drücken eines Speichern-Knopfes im Einstellungsfenster werden alle vorhandenen Einstellungen mit denen aus dem Fenster überschrieben.
   \item[FA590] Nach Drücken eines Abbruch-Knopfes im Einstellungsfenster bleiben die Einstellungen unverändert.
-  \item[FA600] Werden Einstellungen für die \glspl{OPC UA Server} oder den \gls{OPC UA Client} überschrieben, wird der \gls{OPC UA Client} mit den neuen Einstellungen neu gestartet.
+  \item[FA600] Werden Einstellungen für die \glspl{OPC UA Server} oder \glspl{OPC UA Client} überschrieben, werden die \glspl{OPC UA Client} mit den neuen Einstellungen neu gestartet.
   \item[FA610] Die Eingaben in den Einstellungen werden direkt nach Eingabe auf richtige Formatierung und Einhaltung des Wertebereichs gepr\"uft.
   \item[FA620] Der Benutzer wird über eine Fehleingabe und deren Ursache informiert.
 \end{enumerate}
@@ -305,11 +303,13 @@ mindestens 2GHz getaktet sein.
   \item[FA630] Es gibt ein \gls{Dockerimage} zur einfachen Verteilung und isolierten Ausführung der \gls{Uberwachungskonsole}.
   \item[FA640] Bereits registrierte Alarme können wieder gelöscht werden.
   \item[FA650] Das Einstellungsfenster wird um zwei Reiter, "`Verläufe"' und "`Alarme"' erweitert.
+  \item[FA] In den "Allgemeinen Einstellungen" ist es dem Nutzer möglich, die Sprache auszuwählen.
   \item[FA660] In den "`Allgemeinen Einstellungen"' ist es dem Nutzer möglich, das Zeitintervall für die Aktualisierung der Werte über einen Schieberegler oder eine Textbox einzustellen.
   \item[FA670] Unter "`Verläufe"' ist es möglich, jede Aufnahme des zeitlichen Verlaufs eines Wertes ein und aus zu schalten.
   \item[FA680] In "`Alarme"' kann der Nutzer die verfügbaren Alarme ein- und ausschalten und deren Schwellenwerte festlegen.
+  \item[FA] Der Benutzer kann die Schwellenwerte der Alarme direkt an deren Anzeige ändern.
   \item[FA690] Es gibt eine Loggingkonsole in Form einer mehrzeiligen Textausgabe.
-  \item[FA700] Geloggt werden Fehler, Ausnahmen und Aktivitäten der \gls{Uberwachungskonsole} sowie alle eintreffenden Alarme.
+  \item[FA700] Geloggt werden Fehler und Ausnahmen während der Ausführung der \gls{Uberwachungskonsole} sowie alle eintreffenden Alarme.
 \end{enumerate}
 
 \pagebreak
@@ -335,10 +335,10 @@ mindestens 2GHz getaktet sein.
 \pagebreak
 \section{Produktdaten}
 \begin{enumerate}
-  \item[D10] Die \gls{Uberwachungskonsole} speichert den zuletzt eingestellten Port des \glslink{OPC UA Client}{OPC UA Clients}.
+  \item[D10] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellten Ports der \glslink{OPC UA Client}{OPC UA Clients}.
   \item[D20] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellte IP-Adresse und Ports der \gls{OPC UA Server}.
   \item[D30] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellte Aktualisierungsfrequenz für die \glspl{Sensordatum}.
-  \item[D40] Die \gls{Uberwachungskonsole} speichert die zuletzt eingeschaltenen Alarme und alle Schwellenwerte.
+  \item[D40] Die \gls{Uberwachungskonsole} speichert die zuletzt eingeschalteten Alarme und alle Schwellenwerte.
   \item[D50] Die \gls{Uberwachungskonsole} speichert, welche Verläufe zuletzt angezeigt wurden.
   \item[D110] Die \gls{Fertigungssimulation} speichert die zuletzt genutzten Ports der \glspl{OPC UA Server}.
   \item[D120] Die \gls{Fertigungssimulation} speichert den zuletzt eingestellten \gls{Jitter}.
@@ -645,11 +645,30 @@ Somit werden 4 Server und 4 Clients benötigt.
 \pagebreak
 
 \subsection{Überwachungskonsole}
-\begin{figure}[h]
+\begin{figure}[h!]
   \centering
-  \includegraphics[scale=0.45]{media/ui-client.png}
-  \caption{Nutzerinterface-Skizze der Überwachungskonsole}
+  \includegraphics[scale=0.5]{media/ui-client/ui-uw.png}
+  \caption{Nutzerinterface-Skizze des Hauptfensters der Überwachungskonsole}
 \end{figure}
+Im Hauptfenster der \gls{Uberwachungskonsole} werden die Anzeigen für die \glspl{Sensordatum} für jeden Tank in einem einzelnen Rahmen gesammelt. Dabei repräsentieren die Anzeigen im roten, grünen bzw. blauen Rahmen den roten, grünen bzw. blauen Tank. Die Anzeigen im schwarzen Rahmen repräsentieren den Mischtank, dessen Farbe explizit angezeigt wird.
+Neben den Anzeigen der \glspl{Sensordatum} sind auch die Füllstands- und Temperaturverläufe in Form von Graphen und die Alarme enthalten. Im grünen Tank ist beispielhaft der Alarm für einen Unterlauf ausgelöst.
+Darüber hinaus enthält das Hauptfenster das Loggingfenster und die Ampel für den allgemeinen Zustand der \gls{Uberwachungskonsole}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.5]{media/ui-client/ui-uw-settings1.png}
+	\includegraphics[scale=0.5]{media/ui-client/ui-uw-settings2.png}
+	\includegraphics[scale=0.5]{media/ui-client/ui-uw-settings3.png}
+	\caption{Nutzerinterface-Skizze des Einstellungsdialogs der Überwachungskonsole}
+\end{figure}
+Im Einstellungsdialog sind bereits alle möglichen Einstellungen skizziert. Dem entsprechend beinhalten die "Allgemeinen Einstellungen" die Verbindungsinformationen, die Sprache und die Aktualisierungsfrequenz, die "Verläufe" das Ein- und Ausschalten der einzelnen Füllstands- und Temperaturverläufe und die "Alarme" das Einstellen dieser.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.5]{media/ui-client/ui-uw-uber.png}
+	\caption{Nutzerinterface-Skizze des "`Über"'-Fensters der Überwachungskonsole}
+\end{figure}
+Das "`Über"'-Fenster der \gls{Uberwachungskonsole} enthält die Programm- und Lizenzinformationen zum Projekt. Daneben bietet es im Lizenztextfeld Platz für die Lizenzen verwendeter Projekte; es kann aber auch um ein separates Feld für diese Lizenzen erweitert werden.
 \pagebreak
 
 \section{Anhang}
