@@ -84,25 +84,34 @@ Dabei steht jeder \gls{OPC UA Server} mit genau einem {OPC UA Client} in Verbind
 \subsection{Musskriterien}
 \subsubsection{Allgemein}
 \begin{itemize}
-  \item Die gesamte Kommunikation zwischen \gls{Uberwachungskonsole} und \gls{Fertigungssimulation} findet \"uber das \gls{OPC UA} Protokoll statt.
-  \item \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} laufen auf getrennten Rechnern.
+  \item Die Kommunikation zwischen \gls{Uberwachungskonsole} und \gls{Fertigungssimulation} findet \"uber \glspl{OPC UA Server} auf Seiten der \gls{Fertigungssimulation}
+    und \glspl{OPC UA Client} auf Seiten der \gls{Uberwachungskonsole} statt.
+  \item Die \gls{Fertigungssimulation} mit den \glslink{OPC UA Server}{OPC UA Servern} und die \gls{Uberwachungskonsole} mit den \glspl{OPC UA Client} laufen auf getrennten Rechnern.
 \end{itemize}
 
 \subsubsection{Überwachungskonsole}
 \begin{itemize}
   \item Die \gls{Uberwachungskonsole} ruft alle \glspl{Sensordatum} der \gls{Fertigungssimulation} in einem festen Zeitintervall über einen \gls{OPC UA} Client ab.
   \item Der \gls{OPC UA} Client ist mit \gls{OPC UA} Servern verbunden. Dazu ist die Einstellung der Verbindungsinformationen möglich.
-  \item Die abgerufenen Werte und deren zeitlicher Verlauf werden graphisch dargestellt. Die Werte sind Zu- und Abflussmengen, Temperaturen, Flüssigkeitsfarben sowie die Drehzahl eines Mischermotors.
+  \item Die von den \glspl{OPC UA Client} abgerufenen Werte und deren zeitlicher Verlauf werden graphisch dargestellt. Die Werte sind Zu- und Abflussmengen, Temperaturen,
+    Flüssigkeitsfarben sowie die Drehzahl eines Mischermotors.
   \item Die \gls{Uberwachungskonsole} enthält Alarme, die beim Überschreiten von Schwellenwerten in der \gls{Fertigungssimulation} durch den \gls{OPC UA} Server gesendet
     und dem Nutzer graphisch mitgeteilt werden.
 \end{itemize}
 
 \subsubsection{Fertigungssimulation}
 \begin{itemize}
-  \item In der \gls{Fertigungssimulation} kann der Benutzer die simulierte Fertigung steuern.
+  \item Die \gls{Fertigungssimulation} enth\"alt eine schematische Darstellung der simulierten \gls{Produktionsanlage}.
+  \item In der \gls{GUI} der \gls{Fertigungssimulation} kann der Benutzer die simulierte \gls{Produktionsanlage} steuern.
+  \item Die \gls{Fertigungssimulation} aktualisiert die \glspl{Sensordatum} in den \glslink{OPC UA Server}{OPC UA Servern}.
 \end{itemize}
 
 \subsection{Kannkriterien}
+\subsubsection{Allgemein}
+\begin{itemize}
+  \item In der \gls{Fertigungssimulation} und der \gls{Uberwachungskonsole} werden Probleme in der Programmausf\"uhrung geloggt.
+\end{itemize}
+
 \subsubsection{Überwachungskonsole}
 \begin{itemize}
   \item Das Zeitintervall für den Empfang der \glspl{Sensordatum} kann eingestellt werden.
@@ -113,11 +122,14 @@ Dabei steht jeder \gls{OPC UA Server} mit genau einem {OPC UA Client} in Verbind
     \"ubernommen werden.
   \item Die Standard-Sprache Englisch kann über \glspl{Java Property Datei} in andere Sprachen übersetzt werden.
   \item Die zu verwendende Sprache kann im UI umgestellt werden.
+  \item Empfangene Alarme werden geloggt.
 \end{itemize}
 
 \subsubsection{Fertigungssimulation}
 \begin{itemize}
   \item Es gibt vordefinierte \glspl{Simulations-Szenario}, die über das Menü gestartet werden können.
+  \item Die \glspl{Simulations-Szenario} werden in eigenen Dateien definiert. Neue \glspl{Simulations-Szenario}
+    werden durch das Einf\"ugen eigener Dateien im entsprechenden Format erstellt.
   \item \gls{Jitter} in den Zuflussmengen der Tanks sorgt f\"ur Variation in den gemessenen Werten.
   \item Die Standard-Sprache Englisch kann über \glspl{Java Property Datei} in andere Sprachen übersetzt werden.
   \item Die zu verwendende Sprache kann im UI umgestellt werden.
@@ -127,7 +139,7 @@ Dabei steht jeder \gls{OPC UA Server} mit genau einem {OPC UA Client} in Verbind
 \subsubsection{Allgemein}
 \begin{itemize}
   \item \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} dienen der Demonstration des \glslink{OPC UA}{OPC UA Protokolls}. Dazu wird die Open Source
-    Implementierung \gls{Milo} des \glslink{OPC UA}{OPC UA Protokolls} verwendet. \gls{OPC UA} wird nicht selbst implementiert.
+    Implementierung \gls{Milo} des \glslink{OPC UA}{OPC UA Protokolls} verwendet. Das \glslink{OPC UA}{OPC UA Protokoll} wird nicht selbst implementiert.
   \item Es werden verschiedene Möglichkeiten des \glslink{OPC UA}{OPC UA Protokolls} aufgezeigt, allerdings wird die Sicherheitseigenschaft von \gls{OPC UA} nicht mit eingebunden.
 \end{itemize}
 
