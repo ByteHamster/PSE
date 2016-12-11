@@ -5,7 +5,7 @@
 \usepackage[german]{babel}
 \usepackage[pangram]{blindtext}
 \usepackage{hyperref}
-\usepackage[toc, nonumberlist, numberedsection]{glossaries}
+\usepackage[toc, nonumberlist]{glossaries}
 \usepackage{graphicx}
 \usepackage{enumitem}
 
@@ -30,9 +30,11 @@
 
 \begin{document}
 \maketitle
-\begin{center}
+\begin{figure}[h]
+  \centering
   \includegraphics[scale=0.5]{../icon.png}
-\end{center}
+  \caption{Icon der Anwendung}
+\end{figure}
 \pagebreak
 \tableofcontents
 \pagebreak
@@ -44,7 +46,7 @@ Transparenz bietet. Auf diese Weise soll dazu beigetragen werden, Industrie 4.0 
 Maschinen, Computern und Menschen die Leistungsfähigkeit der Industrie zu erhöhen und auf die Zukunft auszurichten.
 Dabei hilft das auf \gls{TCP/IP} basierende Kommunikationsprotokoll \gls{OPC UA}, Maschinen miteinander kommunizieren zu lassen.
 
-Die hier vorgestellte Simulation ermöglicht es, die Vorteile der Vernetzung von Maschinen mit \gls{OPC UA} interaktiv zu demonstrieren, um Industriekunden von den neuen Möglichkeiten zu überzeugen.
+Die hier vorgestellte Simulation (siehe Systemskizze) ermöglicht es, die Vorteile der Vernetzung von Maschinen mit \gls{OPC UA} interaktiv zu demonstrieren, um Industriekunden von den neuen Möglichkeiten zu überzeugen.
 Die Hauptkomponenten sind eine \gls{Fertigungssimulation} (Server) und eine \gls{Uberwachungskonsole} (Client),
 die jeweils eine graphische Benutzeroberfläche (\gls{GUI}) enthalten und auf getrennten Computern laufen können.
 Sie kommunizieren lediglich über \gls{OPC UA}.
@@ -53,7 +55,7 @@ Drei Tanks werden mit je einer farbigen Flüssigkeit gefüllt und leiten diese i
 in dem die Flüssigkeiten durch einen Motor gemischt werden. Daten und Werte der \gls{Produktionsanlage} werden ebenfalls angezeigt. Dazu gibt es
 die Möglichkeit, die Parameter der \gls{Produktionsanlage} zu konfigurieren. Dies geschieht beispielsweise indem man Zu- und Abflussmengen einstellt. Die visuelle Darstellung passt sich an die Konfiguration an.
 Die \gls{Uberwachungskonsole} liest die Daten der \gls{Fertigungssimulation}, stellt sie optisch ansprechend in einem Monitoring dar
-und kann Alarme anzeigen, die vom \gls{OPC UA} Server empfangen werden. Das Monitoring ist ebenfalls konfigurierbar. Es ist etwa möglich, Filter auf Variablen anzuwenden. Allerdings hat die \gls{Uberwachungskonsole} keinen Einfluss auf die \gls{Fertigungssimulation}.
+und kann Alarme anzeigen, die vom \gls{OPC UA Server} empfangen werden. Das Monitoring ist ebenfalls konfigurierbar. Es ist etwa möglich, Filter auf Variablen anzuwenden. Allerdings hat die \gls{Uberwachungskonsole} keinen Einfluss auf die \gls{Fertigungssimulation}.
 
 \pagebreak
 \section{Zielbestimmung}
@@ -61,9 +63,23 @@ Der \gls{Systemadapter} dient dem Ziel, die Funktion von \gls{OPC UA} zu demonst
 benutzen zu müssen. Somit kann beim Kunden das Protokoll flexibler vorgestellt werden. Hierzu soll das Programm
 sowohl eine \gls{Produktionsanlage} simulieren und deren Status graphisch darstellen, als auch auch eine \gls{Uberwachungskonsole}
 bereitstellen, die über \gls{OPC UA} Werte der \gls{Produktionsanlage} abfragt.\\
-\begin{center}
+
+\begin{figure}[h]
+  \centering
   \includegraphics[scale=0.5]{../system-sketch.png}
-\end{center}
+  \caption{Systemskizze}
+\end{figure}
+
+In der Systemskizze ist links die \gls{Fertigungssimulation} bzw. stellvertretend ihre \gls{GUI} skizziert.
+Darüber lässt sich das \gls{Simulations-Szenario} steuern. Die \glspl{Sensordatum} der Simulation werden 
+im \gls{OPC UA Server} gesetzt, welche von einem \gls{OPC UA Client} abgefragt werden. 
+Dabei stellt ein Server je einen Tank dar. Rechts davon ist die \gls{Uberwachungskonsole} eingezeichnet.
+Sie zeigt die \glspl{Sensordatum} der \gls{Fertigungssimulation} mit Hilfe einer \gls{GUI} an. 
+Diese Daten erhält die \gls{Uberwachungskonsole} von einem \gls{OPC UA Client}. 
+Der Doppelpfeil verdeutlicht die Beziehung zwischen \glslink{OPC UA Server}{OPC UA Servern} (S) und
+\glspl{OPC UA Client} (C), die den Datenaustausch unterhalb der \gls{Fertigungssimulation} und
+der \gls{Uberwachungskonsole} regeln.
+Dabei steht jeder \gls{OPC UA Server} mit genau einem {OPC UA Client} in Verbindung.
 
 \subsection{Musskriterien}
 \subsubsection{Allgemein}
@@ -95,12 +111,16 @@ bereitstellen, die über \gls{OPC UA} Werte der \gls{Produktionsanlage} abfragt.
   \item Die \gls{Uberwachungskonsole} verfügt über eine Logging-Funktion.
   \item Die eingestellten Alarme k\"onnen gespeichert und beim n\"achsten Programmstart automatisch
     \"ubernommen werden.
+  \item Die Standard-Sprache Englisch kann über \glspl{Java Property Datei} in andere Sprachen übersetzt werden.
+  \item Die zu verwendende Sprache kann im UI umgestellt werden.
 \end{itemize}
 
 \subsubsection{Fertigungssimulation}
 \begin{itemize}
   \item Es gibt vordefinierte \glspl{Simulations-Szenario}, die über das Menü gestartet werden können.
   \item \gls{Jitter} in den Zuflussmengen der Tanks sorgt f\"ur Variation in den gemessenen Werten.
+  \item Die Standard-Sprache Englisch kann über \glspl{Java Property Datei} in andere Sprachen übersetzt werden.
+  \item Die zu verwendende Sprache kann im UI umgestellt werden.
 \end{itemize}
 
 \subsection{Abgrenzungskriterien}
@@ -108,6 +128,7 @@ bereitstellen, die über \gls{OPC UA} Werte der \gls{Produktionsanlage} abfragt.
 \begin{itemize}
   \item \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} dienen der Demonstration des \glslink{OPC UA}{OPC UA Protokolls}. Dazu wird die Open Source
     Implementierung \gls{Milo} des \glslink{OPC UA}{OPC UA Protokolls} verwendet. \gls{OPC UA} wird nicht selbst implementiert.
+  \item Es werden verschiedene Möglichkeiten des \glslink{OPC UA}{OPC UA Protokolls} aufgezeigt, allerdings wird die Sicherheitseigenschaft von \gls{OPC UA} nicht mit eingebunden.
 \end{itemize}
 
 \subsubsection{Überwachungskonsole}
@@ -136,10 +157,10 @@ Dies kann zum Beispiel auf Messen oder direkt bei potenziellen Kunden geschehen.
 
 \subsection{Zielgruppen}
 Die Zielgruppe umfasst Personen, die sich mit \gls{OPC UA} auskennen und es potenziellen Anwendern vorführen möchten.
-Dazu zählen insbesondere Mitglieder der OPC Foundation, die die Verbreitung des Protokolls fördern wollen,
-aber auch Softwareentwickler die \gls{OPC UA} konforme Software herstellen und möglichen Kunden auf einfache Art und
+Dazu zählen insbesondere Mitglieder der OPC Foundation, die die Verbreitung des Protokolls fördern wollen, und Personen, die im \gls{Industrial Data Space} beschäftigt sind,
+aber auch Softwareentwickler, die \gls{OPC UA} konforme Software herstellen und möglichen Kunden auf einfache Art und
 Weise die Funktionalität von \gls{OPC UA} präsentieren wollen.
-Die potenziellen Anwender haben meist keine Erfahrung mit \gls{OPC UA}, sind aber für \glspl{Produktionsanlage} verantwortlich
+Die potenziellen Anwender haben meist keine Erfahrung mit \gls{OPC UA}, sind aber für \glspl{Produktionsanlage} verantwortlich,
 die von \gls{OPC UA} profitieren würden.
 
 \subsection{Betriebsbedingungen}
@@ -149,8 +170,8 @@ so lange die eingesetzte Hardware (siehe \ref{Hardware}) keine Probleme mit den 
 \pagebreak
 \section{Produktumgebung}
 \subsection{Software}
-Das Produkt erfordert einen Computer, auf dem das Betriebssystem Microsoft Windows 7, 8.1 oder 10 installiert ist,
-oder auf dem Canonical Ubuntu 14.04 oder 16.04 installiert ist. Außerdem ist das Oracle Java Runtime Environment in Version 1.8
+Das Produkt erfordert einen Computer, auf dem das Betriebssystem Microsoft Windows 10, Canonical Ubuntu 16.04 oder Linux Mint 18 installiert ist,
+Außerdem ist das Oracle Java Runtime Environment in Version 1.8
 notwendig. Wenn die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} auf unterschiedlichen Computern laufen,
 ist eine \gls{TCP/IP} Verbindung mit einer Bandbreite von 100 MBit/s und einer Latenz von maximal 100 ms zwischen den Computern notwendig.
 Außerdem wird eventuell (siehe \ref{fertigung-optional} und \ref{konsole-optional}) unter Ubuntu 16.04 die Containersoftware Docker
@@ -291,10 +312,10 @@ mindestens 2GHz getaktet sein.
 
 \subsection{Überwachungskonsole}
 \begin{enumerate}
-  \item[NF110] IP-Adressen muss eine gültige IPv4 oder IPv6 Addresse oder gültige Hostnamen sein. % Abkürzungsverzeichnis für Dinge wie IPv4?
+  \item[NF110] IP-Adressen müssen gültige IPv4 Adressen oder Hostnamen sein. % Abkürzungsverzeichnis für Dinge wie IPv4?
   \item[NF120] Ports dürfen Werte im Bereich 1024 bis 61000 annehmen.
   \item[NF130] Die Schwellenwerte für die Alarme dürfen zwischen 0 und 100 \% gewählt werden.
-  \item[NF140] Die Aktualisierungsfrequenz kann im Bereich zwischen 20 und 4000 Millisekunden gewählt werden.
+  \item[NF140] Die Aktualisierungsfrequenz kann im Bereich zwischen 100 und 4000 Millisekunden gewählt werden.
   \item[NF150] Wenn sich Werte in der \gls{Fertigungssimulation} ändern, werden die Änderungen spätestens nach der Zeitspanne von
     einer halben Sekunde plus dem Aktualisierungsintervall in der \gls{Uberwachungskonsole} angezeigt.
 \end{enumerate}
@@ -524,32 +545,116 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
 
 
 \subsubsection{Anwendungsfalldiagramm}
-\begin{center}
+\begin{figure}[h]
+  \centering
   \includegraphics[scale=0.62]{media/UseCases/Ueberwachungskonsole.png}
-\end{center}
+  \caption{Anwendungsfalldiagramm für die Überwachungskonsole}
+\end{figure}
 
 \subsection{Dynamische Modelle}
-\Blindtext[1]
+\subsubsection{Starten der Überwachungskonsole}
+\label{console-launch}
+\begin{enumerate}[noitemsep]
+ \item Die \gls{Uberwachungskonsole} versucht, die Verbindung zu den \glspl{OPC UA Server} mit den zuletzt gespeicherten Verbindungsinformationen aufzunehmen.
+ \item Wenn der Verbindungsaufbau fehlschlägt, öffnet sich das Fenster mit den Verbindungseinstellungen. Wenn der Benutzer das Fenster wieder schließt,
+ werden die veränderten Verbindungsinformationen gespeichert und erneut versucht, die Verbindung aufzubauen.
+ \item Wenn der Verbindungsaufbau geklappt hat, zeigt die \gls{Uberwachungskonsole} die übertragenen Werte der \gls{Fertigungssimulation}, sowie die
+ Alarme und Verläufe an.
+ \item Wenn der Benutzer die \gls{Uberwachungskonsole} schließt, ist das Programm beendet.
+\end{enumerate}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.62]{media/Activities/launch-console.png}
+  \caption{Aktivitätsdiagram für den Start der Überwachungskonsole}
+\end{figure}
+
+\subsubsection{Hauptschleife und Alarme der Überwachungskonsole}
+\emph{Hauptschleife}
+\begin{enumerate}[noitemsep]
+ \item Die Überwachungskonsole startet, wie in \ref{console-launch} beschrieben.
+ \item Die Überwachungskonsole ruft die aktuellen Sensorwerte vom \gls{OPC UA Server} ab.
+ \item Diese Werte werden auf den Anzeigen der \gls{Uberwachungskonsole} angezeigt.
+ \item Dann werden diese Werte in den Verlauf (sofern aktiviert) eingefügt.
+ \item Wenn bei einem aktivem Alarm die Alarmbedingung nicht mehr erfüllt ist, wird er ausgeschaltet.
+ \item Wenn keine Alarme mehr aktiv sind, wird die Ampel auf grün geschaltet.
+ \item Wenn der Benutzer das Fenster geschlossen hat, wird die \gls{Uberwachungskonsole} nun beendet.
+ \item Vor der nächsten Aktualisierung wird gewartet, damit erst nach der Aktualisierungsfrequenz erneut Sensorwerte abgerufen werden.
+\end{enumerate}
+\emph{Alarme empfangen}
+\begin{enumerate}[noitemsep]
+ \item Wenn ein Alarm empfangen wird, wird die Ampel auf rot geschaltet.
+ \item Dann wird der Kreis bei den Anzeigen auf rot geschaltet.
+\end{enumerate}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.62]{media/Activities/main-console.png}
+  \caption{Aktivitätsdiagram für die Hauptschleife und Alarme der Überwachungskonsole}
+\end{figure}
+
+\subsubsection{Hauptschleife der Fertigungssimulation}
+\begin{enumerate}[noitemsep]
+ \item Die Fertigungssimulation startet.
+ \item Der Zustand der \gls{Fertigungssimulation} wird berechnet.
+ \item Wenn durch eine Zustandsänderung eine Alarmschwelle überschritten wurde, wird der Alarm an alle \glspl{OPC UA Client} gesendet,
+ die sich für den Alarm registriert haben.
+ \item Danach wird der geänderte Zustand im \gls{OPC UA Server} gesetzt.
+ \item Dann wird der aktualisierte Zustand in der \gls{GUI} angezeigt.
+ \item Wenn der Benutzer das Fenster geschlossen hat, wird die \gls{Fertigungssimulation} nun beendet.
+\end{enumerate}
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.62]{media/Activities/main-simulation.png}
+  \caption{Aktivitätsdiagram für die Hauptschleife der Fertigungssimulation}
+\end{figure}
 
 \subsection{Statische Modelle}
-\Blindtext[1]
+\subsubsection{Komponentendiagramm}
+Die \gls{Fertigungssimulation} setzt \glspl{Sensordatum} in einen \gls{OPC UA Server} und zeigt
+gleichzeitig den simulierten Prozess graphisch an. Diese Werte werden von dem \gls{OPC UA Client} angefordert
+und von betreffenden \gls{OPC UA Server} an den \gls{OPC UA Client} übermittelt. Unabhängig vom \gls{OPC UA Client}
+kann ein \gls{OPC UA Server} bei Bedarf Alarme an den \gls{OPC UA Client} schicken.
+Die \gls{Uberwachungskonsole} fordert die übermittelten Daten bei dem \gls{OPC UA Client} an und bekommt
+diese von ihm zurückgegeben. Alarme werden der \gls{Uberwachungskonsole} ohne Anfordern übermittelt.
+Die Daten werden dann in der \gls{GUI} der \gls{Uberwachungskonsole} angezeigt. Jeder der modellierten Tanks
+besitzt seinen eigenen Server in der \gls{Fertigungssimulation} und seinen eigenen Client in der \gls{Uberwachungskonsole}.
+Somit werden 4 Server und 4 Clients benötigt.
+\begin{center}
+  \includegraphics[scale=0.5]{media/ComponentDiagram/componentDiagram.png}
+\end{center}
+
 
 \section{Nutzerinterface-Skizzen}
 \subsection{Fertigungssimulation}
-\includegraphics[scale=0.5]{media/ui-sketch-server.png}
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.5]{media/ui-sketch-server.png}
+  \caption{Nutzerinterface-Skizze der Fertigungssimulation}
+\end{figure}
+\pagebreak
 
 \subsection{Überwachungskonsole}
-\includegraphics[scale=0.40]{media/ui-client.png}
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.45]{media/ui-client.png}
+  \caption{Nutzerinterface-Skizze der Überwachungskonsole}
+\end{figure}
+\pagebreak
 
 \section{Anhang}
 \subsection{3D-Darstellung der Fertigungssimulation}
 Die 3D-Darstellung der \gls{Fertigungssimulation} wurde verworfen, da diese sonst eher wie ein Spiel wirkt.
 In der Anwendung soll somit eine schematische Darstellung zum Einsatz kommen.
-\begin{center}
+\begin{figure}[h]
+  \centering
   \includegraphics[scale=0.3]{./media/ui-sketch-server-3d.png}
-\end{center}
+  \caption{Verworfene Skizze einer 3D-Darstellung der Fertigungssimulation}
+\end{figure}
 
 \pagebreak
 \printglossaries
+
+\phantomsection
+\addcontentsline{toc}{section}{\listfigurename}
+\listoffigures
 
 \end{document}
