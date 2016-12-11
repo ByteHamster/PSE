@@ -210,16 +210,17 @@ mindestens 2GHz getaktet sein.
   \item[FA40] Der linke obere Tank wird mit roter, der mittlere mit grüner und der rechte mit blauer Flüssigkeit gefüllt.
   \item[FA45] Die Zuflusstemperaturen der oberen Tanks können seperat eingestellt werden (Kann-Kriterium).
   \item[FA50] Es gibt eine .jar Datei, die bei Ausführung die \gls{Fertigungssimulation}, sowie zugehörige \gls{OPC UA Server} startet.
-  \item[FA60] Nach Anforderung durch die \gls{Uberwachungskonsole} wird in bestimmten, in der Anfrage definierten, Zust\"anden ein Alarm an die \gls{Uberwachungskonsole} gesendet.
+  \item[FA60] Nach Anforderung durch die \gls{Uberwachungskonsole} wird in bestimmten, in der Anfrage definierten, Zust\"anden ein Alarm an die \glspl{OPC UA Client} der \gls{Uberwachungskonsole} gesendet.
   \item[FA70] Kommt es in der \gls{Fertigungssimulation} zu einem \"Uberlauf so h\"alt die \gls{Fertigungssimulation} an und es wird der Text "`\"Uberlauf"' angezeigt.
   \item[FA80] Das System kann aus einem "`\"Uberlauf"' durch den Knopf "`zur\"ucksetzen"' im gezeigten Dialog wieder in den Startzustand versetzt werden. Anschlie{\ss}end wird die Ausführung fortgesetzt.
-  \item[FA90] Eine \gls{Uberwachungskonsole} kann sich bei der \gls{Fertigungssimulation} registrieren, um von dieser Daten zu erhalten.
+  \item[FA90] Die \glspl{OPC UA Client} der \gls{Uberwachungskonsole} k\"onnen sich bei den \glslink{OPC UA Server}{OPC UA Servern} der \gls{Fertigungssimulation} registrieren und dann von
+    diesen \glspl{Sensordatum} abfragen.
   \item[FA110] Die Füllstände der Tanks werden gemessen.
-  \item[FA120] Die \gls{Fertigungssimulation} kommuniziert über \gls{OPC UA} in einem \gls{TCP/IP} Netzwerk mit \glspl{Uberwachungskonsole}.
   \item[FA130] Die Ports, über welche die einzelnen \gls{OPC UA Server} der \gls{Fertigungssimulation} kommunizieren, können eingestellt werden.
   \item[FA140] Die \gls{Fertigungssimulation} besitzt vordefinierte \glspl{Simulations-Szenario}, die über das Menü gestartet werden können (Kann-Kriterium).
   \item[FA150] Ein \gls{Simulations-Szenario} ist ein fester, zeitlicher Ablauf, der komplexere Szenarien in der \gls{Fertigungssimulation} darstellt. Somit kann ohne aktive Nutzerinteraktion eine sich
     im aktiven Betrieb befindliche \gls{Produktionsanlage} simuliert werden.
+  \item[FA160] Die \gls{Fertigungssimulation} aktualisiert die Sensorwerte ihrer \glspl{OPC UA Server}.
 \end{enumerate}
 
 \subsubsection{GUI Darstellung}
@@ -254,12 +255,14 @@ mindestens 2GHz getaktet sein.
 \subsubsection{Funktionalität}
 \begin{enumerate}
   \item[FA310] Es gibt eine .jar-Datei, die bei Ausführung die \gls{Uberwachungskonsole} startet.
-  \item[FA320] Die \gls{Uberwachungskonsole} enthält vier \glspl{OPC UA Client}, von denen sich jeder mit einem \gls{OPC UA Server} der \gls{Fertigungssimulation} verbindet und mit diesem über \gls{TCP/IP} kommuniziert.
+  \item[FA320] Die \gls{Uberwachungskonsole} enthält vier \glspl{OPC UA Client}, von denen sich jeder mit einem \gls{OPC UA Server} der \gls{Fertigungssimulation} verbindet und mit diesem über \gls{TCP/IP} per \gls{OPC UA} kommuniziert.
   \item[FA330] Die \glspl{OPC UA Client} erhalten die \gls{IP-Adresse}, die durch die \gls{Uberwachungskonsole} nicht geändert werden kann, des verwendeten Computers.
   \item[FA350] Beim Start versucht die \gls{Uberwachungskonsole}, eine Verbindung mit den \glslink{OPC UA Server}{OPC UA Servern} herzustellen und sich dort zu registrieren.
   \item[FA360] Schlägt die Verbindung von [FA350] oder [FA600] fehl oder verliert mindestens ein \gls{OPC UA Client} die Verbindung zu seinem \gls{OPC UA Server}, wird der Benutzer über einen Dialog informiert und das Einstellungsfenster zur Eingabe der \gls{IP-Adresse} und Ports der \glspl{OPC UA Server} öffnet sich.
-  \item[FA370] Alle angezeigten \glspl{Sensordatum} werden mit einer eingestellten, festen Frequenz aktualisiert.
-  \item[FA380] Alarme mit ihrem jeweiligen Auslöser werden bei der \gls{Fertigungssimulation} registriert.
+  \item[FA370] Alle angezeigten \glspl{Sensordatum} werden mit einer eingestellten, festen Frequenz aktualisiert. Dabei fragen die \glspl{OPC UA Client} die Daten der \glspl{OPC UA Server}
+    ab und stellen sie anschlie{\ss}end der \gls{Uberwachungskonsole} bereit.
+  \item[FA380] Alarme mit ihrem jeweiligen Auslöser werden bei den \glslink{OPC UA Server}{OPC UA Servern} der \gls{Fertigungssimulation} registriert. Sie werden von den
+    \glslink{OPC UA Client}{OPC UA Clients} der \gls{Uberwachungskonsole} empfangen und an die \gls{Uberwachungskonsole} weitergeleitet.
   \item[FA390] Alarme werden asynchron zu den \glspl{Sensordatum} empfangen und über einen Dialog direkt angezeigt, sobald sie ausgelöst werden.
 \end{enumerate}
 
