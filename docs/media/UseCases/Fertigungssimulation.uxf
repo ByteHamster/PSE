@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?><diagram program="umlet" version="11.3">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
   <zoom_level>10</zoom_level>
   <element>
-    <type>com.umlet.element.Actor</type>
+    <type>com.baselet.element.old.element.Actor</type>
     <coordinates>
       <x>40</x>
       <y>130</y>
@@ -12,7 +13,7 @@
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>90</x>
       <y>90</y>
@@ -23,7 +24,7 @@
     <additional_attributes>110;30;30;50</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>90</x>
       <y>140</y>
@@ -34,7 +35,7 @@
     <additional_attributes>30;30;150;40</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.Package</type>
+    <type>com.baselet.element.old.element.Package</type>
     <coordinates>
       <x>160</x>
       <y>30</y>
@@ -42,11 +43,12 @@
       <h>270</h>
     </coordinates>
     <panel_attributes>Fertigungssimulation
-bg=light_gray</panel_attributes>
+bg=light_gray
+layer=-1</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.UseCase</type>
+    <type>com.baselet.element.old.element.UseCase</type>
     <coordinates>
       <x>190</x>
       <y>230</y>
@@ -57,11 +59,10 @@ bg=light_gray</panel_attributes>
 der Simulation
 
 bg=blue</panel_attributes>
->>>>>>> af10f37... [doc] Rework Use Case Diagrams.
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.Relation</type>
+    <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>90</x>
       <y>170</y>
@@ -72,7 +73,7 @@ bg=blue</panel_attributes>
     <additional_attributes>30;30;100;80</additional_attributes>
   </element>
   <element>
-    <type>com.umlet.element.UseCase</type>
+    <type>com.baselet.element.old.element.UseCase</type>
     <coordinates>
       <x>240</x>
       <y>150</y>
@@ -86,7 +87,7 @@ bg=blue</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <type>com.umlet.element.UseCase</type>
+    <type>com.baselet.element.old.element.UseCase</type>
     <coordinates>
       <x>190</x>
       <y>70</y>
