@@ -582,6 +582,11 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
 \subsection{Dynamische Modelle}
 \subsubsection{Starten der Überwachungskonsole}
 \label{console-launch}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.62]{media/Activities/launch-console.png}
+  \caption{Aktivitätsdiagram für den Start der Überwachungskonsole}
+\end{figure}
 \begin{enumerate}[noitemsep]
  \item Die \gls{Uberwachungskonsole} versucht, die Verbindung zu den \glspl{OPC UA Server} mit den zuletzt gespeicherten Verbindungsinformationen aufzunehmen.
  \item Wenn der Verbindungsaufbau fehlschlägt, öffnet sich das Fenster mit den Verbindungseinstellungen. Wenn der Benutzer das Fenster wieder schließt,
@@ -590,13 +595,14 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
  Alarme und Verläufe an.
  \item Wenn der Benutzer die \gls{Uberwachungskonsole} schließt, ist das Programm beendet.
 \end{enumerate}
-\begin{figure}[H]
-  \centering
-  \includegraphics[scale=0.62]{media/Activities/launch-console.png}
-  \caption{Aktivitätsdiagram für den Start der Überwachungskonsole}
-\end{figure}
 
 \subsubsection{Hauptschleife und Alarme der Überwachungskonsole}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.62]{media/Activities/main-console.png}
+  \caption{Aktivitätsdiagram für die Hauptschleife und Alarme der Überwachungskonsole}
+\end{figure}
+
 \emph{Hauptschleife}
 \begin{enumerate}[noitemsep]
  \item Die Überwachungskonsole startet, wie in \ref{console-launch} beschrieben.
@@ -613,13 +619,14 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
  \item Wenn ein Alarm empfangen wird, wird die Ampel auf rot geschaltet.
  \item Dann wird der Kreis bei den Anzeigen auf rot geschaltet.
 \end{enumerate}
-\begin{figure}[H]
-  \centering
-  \includegraphics[scale=0.62]{media/Activities/main-console.png}
-  \caption{Aktivitätsdiagram für die Hauptschleife und Alarme der Überwachungskonsole}
-\end{figure}
 
 \subsubsection{Hauptschleife der Fertigungssimulation}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.62]{media/Activities/main-simulation.png}
+  \caption{Aktivitätsdiagram für die Hauptschleife der Fertigungssimulation}
+\end{figure}
+
 \begin{enumerate}[noitemsep]
  \item Die Fertigungssimulation startet.
  \item Der Zustand der \gls{Fertigungssimulation} wird berechnet.
@@ -629,14 +636,15 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
  \item Dann wird der aktualisierte Zustand in der \gls{GUI} angezeigt.
  \item Wenn der Benutzer das Fenster geschlossen hat, wird die \gls{Fertigungssimulation} nun beendet.
 \end{enumerate}
-\begin{figure}[H]
-  \centering
-  \includegraphics[scale=0.62]{media/Activities/main-simulation.png}
-  \caption{Aktivitätsdiagram für die Hauptschleife der Fertigungssimulation}
-\end{figure}
 
 \subsection{Statische Modelle}
 \subsubsection{Komponentendiagramm}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5]{media/ComponentDiagram/componentDiagram.png}
+  \caption{Komponentendiagramm}
+\end{figure}
+
 Die \gls{Fertigungssimulation} setzt \glspl{Sensordatum} in einen \gls{OPC UA Server} und zeigt
 gleichzeitig den simulierten Prozess graphisch an. Diese Werte werden von dem \gls{OPC UA Client} angefordert
 und von betreffenden \gls{OPC UA Server} an den \gls{OPC UA Client} übermittelt. Unabhängig vom \gls{OPC UA Client}
@@ -646,12 +654,6 @@ diese von ihm zurückgegeben. Alarme werden der \gls{Uberwachungskonsole} ohne A
 Die Daten werden dann in der \gls{GUI} der \gls{Uberwachungskonsole} angezeigt. Jeder der modellierten Tanks
 besitzt seinen eigenen Server in der \gls{Fertigungssimulation} und seinen eigenen Client in der \gls{Uberwachungskonsole}.
 Somit werden 4 Server und 4 Clients benötigt.
-\begin{figure}[H]
-  \centering
-  \includegraphics[scale=0.5]{media/ComponentDiagram/componentDiagram.png}
-  \caption{Komponentendiagramm}
-\end{figure}
-
 
 \section{Nutzerinterface-Skizzen}
 \subsection{Fertigungssimulation}
