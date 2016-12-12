@@ -368,60 +368,61 @@ mindestens 2GHz getaktet sein.
 
 \subsubsection{Szenario 1: Unabhängige Installation}
 Manuel möchte Philipp, einem Kunden aus der Industrie, zeigen, was mit modernen Industrie 4.0 Techniken möglich ist.
-Da Philipp nur wenig Zeit hat, fährt Manuel mit dem Auto zu Philipp. Weil Manuel weder Platz 
-noch Zeit für eine komplette Demonstrationsanlage hat, nimmt er einen Laptop mit Simulationssoftware mit.
+Da Philipp nur wenig Zeit hat, fährt Manuel mit dem Auto zu Philipp. Weil Manuel weder Platz noch Zeit für das
+Mitführen einer kompletten Demonstrationsanlage hat, nimmt er einen Laptop mit Simulationssoftware mit.
 
-Vor Ort angekommen, startet er auf dem Laptop zwei virtuelle Maschinen, auf denen je ein Programm installiert ist. 
-Einmal eine \gls{Fertigungssimulation} und auf der anderen virtuellen Maschine eine \gls{Uberwachungskonsole}, um die Fertigung zu überwachen.
+Vor Ort angekommen startet er auf dem Laptop zwei virtuelle Maschinen, auf denen je ein Programm installiert ist.
+Auf der einen virtuellen Maschine eine \gls{Fertigungssimulation} und auf der anderen virtuellen Maschine
+eine \gls{Uberwachungskonsole}, um die simulierte Fertigung zu überwachen.
 Nun weist Manuel den beiden virtuellen Maschinen je eine feste IP-Adresse zu.
 Anschlie{\ss}end startet Manuel erst die \gls{Fertigungssimulation} und dann die \gls{Uberwachungskonsole}.
-Beim Start der \gls{Uberwachungskonsole} wird er nach der IP-Adresse gefragt, unter der die \gls{Fertigungssimulation} zu finden ist. 
-Er gibt die Adresse der anderen virtuellen Maschine an und auch die \gls{Uberwachungskonsole} startet erfolgreich. 
-Nun ist klar, dass die beiden Programme tatsächlich über das Netzwerk kommunizieren.
+Beim Start der \gls{Uberwachungskonsole} wird er nach IP-Adresse und Ports gefragt, unter denen die \gls{Fertigungssimulation} zu finden ist.
+Er gibt die Adresse der anderen virtuellen Maschine an, belässt die Ports auf dem Standard-Wert
+und auch die \gls{Uberwachungskonsole} startet erfolgreich.
+Nun ist klar, dass die beiden Programme tatsächlich ausschließlich über das Netzwerk kommunizieren.
 
-In der \gls{Fertigungssimulation} wird nun eine \gls{Produktionsanlage} angezeigt, in der Flüssigkeiten aus drei Tanks
+In der \gls{Fertigungssimulation} wird nach dem Starten eine \gls{Produktionsanlage} angezeigt, in der Flüssigkeiten aus drei Tanks
 in einem weiteren Tank vermischt werden; Farben des Inhalts der Ursprungs- und des Zieltanks visualisieren den Vorgang. 
 Im Zieltank dreht sich ein Motor, der für die Durchmischung sorgt.
 Es gibt Sensoren für Temperatur, Farbe, Füllstand und Durchfluss der Tanks sowie für die Drehzahl des Motors.
-In der \gls{Uberwachungskonsole} sieht man nun eine Reihe von Feldern mit sich aktualisierenden Daten,
+In der \gls{Uberwachungskonsole} sieht Philipp nun eine Reihe von Anzeigen, die sich automatisch aktualisieren und
 die Zu- und Abfluss, Farbe und Temperatur der verschiedenen Tanks zeigen.
 
 \subsubsection{Szenario 2: Konfigurierbarkeit}
 Als Philipp zu ihm kommt, will Manuel ihm die Funktion von \gls{OPC UA} demonstrieren.
 Als erstes ändert er in der \gls{Fertigungssimulation} den Zu- und Abfluss bei zwei der Tanks. Nun sehen die beiden, wie
 sich die von der \gls{Uberwachungskonsole} angezeigten Werte für Zu- und Abfluss mit der nächsten Aktualisierung ändern. Die
-Farbe im Zielcontainer ändert sich langsam, während sich das Mischungsverhältnis der Flüssigkeiten ändert. Auch diese
+Farbe im Zieltank ändert sich langsam, während sich das Mischungsverhältnis der Flüssigkeiten ändert. Auch diese
 Werte werden in der \gls{Uberwachungskonsole} jeweils aktualisiert.
 
-Als nächstes betrachten die beiden, wie sich in der \gls{Uberwachungskonsole} die Anzeigen für den Füllstand und die
-Motorgeschwindigkeit des unteren Tankes ändern.
+Als nächstes betrachten die beiden, wie sich in der \gls{Uberwachungskonsole} die Anzeigen für den Füllstand der Tanks ändern.
 Außerdem verweist Manuel auf Reiter unterhalb der Überwachungsanzeigen der Tanks,
 in denen Philipp die Füllstands- und Temperaturverläufe ansehen kann.
 
 Philipp merkt nun an, dass ihm die Flexibilität der empfangenen Daten sehr gefällt. Das Aktualisierungsintervall von
-einer Sekunde sei aber in manchen der Fertigungsprozesse zu lang, da in manchen kritischen Zuständen sehr schnell
-automatisch reagiert werden muss, etwa wenn Schwellenwerte überschritten werden. Daraufhin ändert Manuel in den
+einer Sekunde sei aber in seinen konkreten Fertigungsprozessen zu lang, da in kritischen Zuständen sehr schnell
+reagiert werden muss, etwa wenn Schwellenwerte überschritten werden. Daraufhin ändert Manuel in den
 Einstellungen das Aktualisierungsintervall von 1000ms auf 250ms. Anschließend sehen beide, wie sich die Werte in der
 \gls{Uberwachungskonsole} tatsächlich vier Mal pro Sekunde aktualisieren.
 
 \subsubsection{Szenario 3: Alarme}
 Philipp ist zunehmend an \gls{OPC UA} interessiert, hat aber noch letzte Zweifel. Er merkt an, dass die Abfrage der Daten
-zwar gut funktioniert, eine wirkliche \"Uberwachung aber noch einen \gls{Wrapper} f\"ur das Programm ben\"otigen w\"urde,
-um ungew\"ohnliche Zust\"ande in der Fertigung automatisch zu bemerken und darauf aufmerksam zu machen.
+zwar gut funktioniert, eine wirkliche \"Uberwachung aber noch eine Funktion ben\"otigen w\"urde,
+um ungew\"ohnliche Zust\"ande in der Fertigung automatisch zu erkennen und darauf aufmerksam zu machen.
 Manuel merkt an, dass das ein guter Einwand ist und dass \gls{OPC UA} auch daf\"ur eine passende Funktionalit\"at besitzt.
 
 Er \"offnet das Einstellungsmen\"u der \gls{Uberwachungskonsole} und ruft den Reiter "`Alarme"' auf. Um die Flexibilit\"at
 von \gls{OPC UA} erneut zu demonstrieren, fragt er Philipp, welchen vorhandenen Zustand er gerne abfangen w\"urde. Philipp möchte gerne
 wissen, wenn ein Tank \"uberzulaufen droht. Er schl\"agt daf\"ur als Grenze einen F\"ullstand von 95\% vor.
-Manuel gibt also in der \gls{Uberwachungskonsole} 95\% als Grenze an und w\"ahlt einen Tank, f\"ur den der Alarm stattfinden soll.
+Manuel aktiviert also den Alarm für Überlauf des roten Tanks und trägt als Schwelle 95\% ein.
 Dann speichert er die neuen Einstellungen.
 
-Anschlie{\ss}end dreht er in der \gls{Fertigungssimulation} den Zufluss des entsprechenden Tanks auf, woraufhin der F\"ullstand
-zu steigen beginnt. In der \gls{Fertigungssimulation} ist der steigende F\"ullstand zu sehen, in der \gls{Uberwachungskonsole} werden
-steigende Werte angezeigt.
-Darauf wird der F\"ullstand von 95\% erreicht und in der \gls{Uberwachungskonsole} der Alarm ausgel\"ost. Manuel
-beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Philipp in den Einstellungen der
-\gls{Fertigungssimulation} die Option "`zur\"ucksetzen"', woraufhin wieder die Standardkonfiguration angezeigt wird.
+Anschlie{\ss}end startet er in der \gls{Fertigungssimulation} ein vordefiniertes Simulations-Szenario für einen Überlauf
+des roten Tanks, woraufhin der F\"ullstand zu steigen beginnt. In der \gls{Uberwachungskonsole} werden ebenfalls steigende Werte angezeigt.
+Darauf wird der F\"ullstand von 95\% erreicht und in der \gls{Uberwachungskonsole} ein entsprechender Dialog angezeigt. Manuel
+beschlie{\ss}t, nicht zu handeln. Die \gls{Fertigungssimulation} meldet das Überlaufen eines Tanks.
+Danach w\"ahlt Philipp in der \gls{Fertigungssimulation} die Option "`zur\"ucksetzen"',
+woraufhin wieder die Standardkonfiguration angezeigt wird.
 
 \subsection{Anwendungsfälle}
 \subsubsection{Anwendungsfalldiagramme}
