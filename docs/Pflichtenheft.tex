@@ -590,7 +590,7 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
  Alarme und Verläufe an.
  \item Wenn der Benutzer die \gls{Uberwachungskonsole} schließt, ist das Programm beendet.
 \end{enumerate}
-\begin{figure}[h!]
+\begin{figure}[H]
   \centering
   \includegraphics[scale=0.62]{media/Activities/launch-console.png}
   \caption{Aktivitätsdiagram für den Start der Überwachungskonsole}
@@ -613,7 +613,7 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
  \item Wenn ein Alarm empfangen wird, wird die Ampel auf rot geschaltet.
  \item Dann wird der Kreis bei den Anzeigen auf rot geschaltet.
 \end{enumerate}
-\begin{figure}[h!]
+\begin{figure}[H]
   \centering
   \includegraphics[scale=0.62]{media/Activities/main-console.png}
   \caption{Aktivitätsdiagram für die Hauptschleife und Alarme der Überwachungskonsole}
@@ -629,7 +629,7 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
  \item Dann wird der aktualisierte Zustand in der \gls{GUI} angezeigt.
  \item Wenn der Benutzer das Fenster geschlossen hat, wird die \gls{Fertigungssimulation} nun beendet.
 \end{enumerate}
-\begin{figure}[h!]
+\begin{figure}[H]
   \centering
   \includegraphics[scale=0.62]{media/Activities/main-simulation.png}
   \caption{Aktivitätsdiagram für die Hauptschleife der Fertigungssimulation}
@@ -646,7 +646,7 @@ diese von ihm zurückgegeben. Alarme werden der \gls{Uberwachungskonsole} ohne A
 Die Daten werden dann in der \gls{GUI} der \gls{Uberwachungskonsole} angezeigt. Jeder der modellierten Tanks
 besitzt seinen eigenen Server in der \gls{Fertigungssimulation} und seinen eigenen Client in der \gls{Uberwachungskonsole}.
 Somit werden 4 Server und 4 Clients benötigt.
-\begin{figure}[h!]
+\begin{figure}[H]
   \centering
   \includegraphics[scale=0.5]{media/ComponentDiagram/componentDiagram.png}
   \caption{Komponentendiagramm}
@@ -657,9 +657,31 @@ Somit werden 4 Server und 4 Clients benötigt.
 \subsection{Fertigungssimulation}
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=0.5]{media/ui-sketch-server.png}
-  \caption{Nutzerinterface-Skizze der Fertigungssimulation}
+  \includegraphics[scale=0.5]{media/ui-server/ui-server-main.png}
+  \caption{Nutzerinterface-Skizze des Hauptfensers der Fertigungssimulation}
 \end{figure}
+Im Hauptfenster der \gls{Fertigungssimulation} wird die simulierte \gls{Produktionsanlage} angezeigt. Dabei wird jeder der Tanks
+mit einem blassgrauen Kasten hinterlegt, um den Zuständigkeitsbereich der einzelnen \gls{OPC UA Server} abzugrenzen. Die Anzeige wird
+in Echtzeit von der Simulation aktualisiert. Die Anzeigen der Durchflussmesser, sowie der Motor im unteren Tank drehen sich.
+Die Tanks werden als Zylinder dargestellt, die in der entsprechenden Farbe gefüllt sind.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5]{media/ui-server/ui-server-control.png}
+  \caption{Nutzerinterface-Skizze des Steuerungsfensters der Fertigungssimulation}
+\end{figure}
+Über das Menü kann ein Fenster angezeigt werden, das die Konfiguration der einzelnen \glspl{Prozessvariable} erlaubt. Hierbei
+wird für den Zuständigkeitsbereich jedes \glslink{OPC UA Server}{OPC UA Servers} ein Reiter angezeigt. Die Reiter beziehen sich also
+direkt auf die dargestellten blassgrauen Kästen. Die Einstellunge der jeweiligen \glspl{Prozessvariable} erfolgt über Schieberegler.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5]{media/ui-server/ui-server-settings.png}
+  \caption{Nutzerinterface-Skizze des Einstellungsfensters der Fertigungssimulation}
+\end{figure}
+Im Einstellungsdialog können die Ports der jeweiligen Server über Textfelder eingestellt werden. Der Jitter kann über einen Schieberegler
+eingestellt werden. Es existieren die Buttons "`Abbrechen"', "`Anwenden"' und "`OK"'. 
+
 \pagebreak
 
 \subsection{Überwachungskonsole}
@@ -691,6 +713,7 @@ Das "`Über"'-Fenster der \gls{Uberwachungskonsole} enthält die Programm- und L
 \pagebreak
 \printglossaries
 
+\pagebreak
 \phantomsection
 \addcontentsline{toc}{section}{\listfigurename}
 \listoffigures
