@@ -8,6 +8,7 @@
 \usepackage[toc, nonumberlist]{glossaries}
 \usepackage{graphicx}
 \usepackage{enumitem}
+\usepackage{float}
 
 \hypersetup{
   colorlinks=false,
@@ -30,7 +31,8 @@
 
 \begin{document}
 \maketitle
-\begin{figure}[h!]
+
+\begin{figure}[H]
   \centering
   \includegraphics[scale=0.5]{../icon.png}
   \caption{Icon der Anwendung}
@@ -64,7 +66,7 @@ benutzen zu müssen. Somit kann beim Kunden das Protokoll flexibler vorgestellt 
 sowohl eine \gls{Produktionsanlage} simulieren und deren Status graphisch darstellen, als auch auch eine \gls{Uberwachungskonsole}
 bereitstellen, die über \gls{OPC UA} Werte der \gls{Produktionsanlage} abfragt.\\
 
-\begin{figure}[h!]
+\begin{figure}[H]
   \centering
   \includegraphics[scale=0.5]{../system-sketch.png}
   \caption{Systemskizze}
@@ -423,6 +425,18 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
 \gls{Fertigungssimulation} die Option "`zur\"ucksetzen"', woraufhin wieder die Standardkonfiguration angezeigt wird.
 
 \subsection{Anwendungsfälle}
+\subsubsection{Anwendungsfalldiagramme}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.62]{media/UseCases/Ueberwachungskonsole.png}
+  \caption{Anwendungsfalldiagramm für die Überwachungskonsole}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.62]{media/UseCases/Fertigungssimulation.png}
+  \caption{Anwendungsfalldiagramm für die Fertigungssimulation}
+\end{figure}
+
 \subsubsection{Änderung der Prozessvariablen}
 \begin{description}
   \item[Name] Anpassen der Variablen wie Zu- oder Abflussgeschwindigkeit, Temperatur oder Motordrehzahl bei einem der
@@ -565,13 +579,6 @@ beschlie{\ss}t, nicht zu handeln, und der Tank l\"auft \"uber. Danach w\"ahlt Ph
 \end{description}
 
 
-\subsubsection{Anwendungsfalldiagramm}
-\begin{figure}[h!]
-  \centering
-  \includegraphics[scale=0.62]{media/UseCases/Ueberwachungskonsole.png}
-  \caption{Anwendungsfalldiagramm für die Überwachungskonsole}
-\end{figure}
-
 \subsection{Dynamische Modelle}
 \subsubsection{Starten der Überwachungskonsole}
 \label{console-launch}
@@ -645,9 +652,10 @@ Somit werden 4 Server und 4 Clients benötigt.
   \caption{Komponentendiagramm}
 \end{figure}
 
+
 \section{Nutzerinterface-Skizzen}
 \subsection{Fertigungssimulation}
-\begin{figure}[h!]
+\begin{figure}[H]
   \centering
   \includegraphics[scale=0.5]{media/ui-sketch-server.png}
   \caption{Nutzerinterface-Skizze der Fertigungssimulation}
@@ -655,7 +663,7 @@ Somit werden 4 Server und 4 Clients benötigt.
 \pagebreak
 
 \subsection{Überwachungskonsole}
-\begin{figure}[h!]
+\begin{figure}[H]
   \centering
   \includegraphics[scale=0.5]{media/ui-client/ui-uw.png}
   \caption{Nutzerinterface-Skizze des Hauptfensters der Überwachungskonsole}
@@ -664,7 +672,7 @@ Im Hauptfenster der \gls{Uberwachungskonsole} werden die Anzeigen für die \glsp
 Neben den Anzeigen der \glspl{Sensordatum} sind auch die Füllstands- und Temperaturverläufe in Form von Graphen und die Alarme enthalten. Im grünen Tank ist beispielhaft der Alarm für einen Unterlauf ausgelöst.
 Darüber hinaus enthält das Hauptfenster das Loggingfenster und die Ampel für den allgemeinen Zustand der \gls{Uberwachungskonsole}.
 
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{media/ui-client/ui-uw-settings1.png}
 	\includegraphics[scale=0.5]{media/ui-client/ui-uw-settings2.png}
@@ -673,7 +681,7 @@ Darüber hinaus enthält das Hauptfenster das Loggingfenster und die Ampel für 
 \end{figure}
 Im Einstellungsdialog sind bereits alle möglichen Einstellungen skizziert. Dem entsprechend beinhalten die "Allgemeinen Einstellungen" die Verbindungsinformationen, die Sprache und die Aktualisierungsfrequenz, die "Verläufe" das Ein- und Ausschalten der einzelnen Füllstands- und Temperaturverläufe und die "Alarme" das Einstellen dieser.
 
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{media/ui-client/ui-uw-uber.png}
 	\caption{Nutzerinterface-Skizze des "`Über"'-Fensters der Überwachungskonsole}
@@ -685,7 +693,7 @@ Das "`Über"'-Fenster der \gls{Uberwachungskonsole} enthält die Programm- und L
 \subsection{3D-Darstellung der Fertigungssimulation}
 Die 3D-Darstellung der \gls{Fertigungssimulation} wurde verworfen, da diese sonst eher wie ein Spiel wirkt.
 In der Anwendung soll somit eine schematische Darstellung zum Einsatz kommen.
-\begin{figure}[h!]
+\begin{figure}[H]
   \centering
   \includegraphics[scale=0.3]{./media/ui-sketch-server-3d.png}
   \caption{Verworfene Skizze einer 3D-Darstellung der Fertigungssimulation}
