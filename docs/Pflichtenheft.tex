@@ -301,17 +301,18 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
   \item[FA700] In den Einstellungen werden die \glslink{TCP/IP}{IP-Adresse} der \glslink{OPC UA Client}{OPC UA Clients} und der \gls{OPC UA Server} sowie deren Ports angezeigt.
   \item[FA710] In den Einstellungen sind die Ports und die IP-Adresse der \glspl{OPC UA Server} konfigurierbar.
   \item[\textcolor{blue}{FA720}] In den Einstellungen sind die Ports der \glspl{OPC UA Client} konfigurierbar.
-  \item[\textcolor{blue}{FA730}] In den Einstellungen ist es dem Nutzer möglich, die Sprache auszuwählen.
-  \item[FA740] Die Standardsprache ist Englisch.
-  \item[\textcolor{blue}{FA750}] Der Nutzer kann das Zeitintervall für die Aktualisierung der Werte über einen Schieberegler oder eine Textbox einstellen.
-  \item[\textcolor{blue}{FA760}] Die Aufnahme des zeitlichen Verlaufs jedes Füllstandes und jeder Temperatur ist ein- und ausschaltbar.
-  \item[\textcolor{blue}{FA770}] Der Nutzer kann die verfügbaren Alarme ein- und ausschalten und deren Schwellenwerte festlegen.
-  \item[FA780] Die Eingaben in den Einstellungen werden direkt nach Eingabe auf richtige Formatierung und Einhaltung des Wertebereichs gepr\"uft.
-  \item[FA790] Der Benutzer wird über eine Fehleingabe und deren Ursache informiert.
-  \item[FA800] Nach Drücken eines Abbruch-Knopfes im Einstellungsfenster bleiben die Einstellungen unverändert.
-  \item[FA810] Nach Drücken eines Speichern-Knopfes im Einstellungsfenster werden alle vorhandenen Einstellungen mit denen aus dem Fenster überschrieben.
-  \item[FA820] Werden Einstellungen für die \glspl{OPC UA Server} oder \glspl{OPC UA Client} überschrieben, werden die \glspl{OPC UA Client} mit den neuen Einstellungen neu gestartet.
-  \item[FA830] Schlägt die Verbindung zischen den \glspl{OPC UA Client} und \glslink{OPC UA Server}{OPC UA Servern} fehl oder verliert mindestens ein \gls{OPC UA Client} die Verbindung zu seinem \gls{OPC UA Server}, wird 
+  \item[FA730] Leere Eingaben für die Ports der \glspl{OPC UA Client} bedeuten, dass diese nicht festgelegt wurden und automatisch durch das Betriebssystem bezogen werden.
+  \item[\textcolor{blue}{FA740}] In den Einstellungen ist es dem Nutzer möglich, die Sprache auszuwählen.
+  \item[FA750] Die Standardsprache ist Englisch.
+  \item[\textcolor{blue}{FA760}] Der Nutzer kann das Zeitintervall für die Aktualisierung der Werte über einen Schieberegler oder eine Textbox einstellen.
+  \item[\textcolor{blue}{FA770}] Die Aufnahme des zeitlichen Verlaufs jedes Füllstandes und jeder Temperatur ist ein- und ausschaltbar.
+  \item[\textcolor{blue}{FA780}] Der Nutzer kann die verfügbaren Alarme ein- und ausschalten und deren Schwellenwerte festlegen.
+  \item[FA790] Die Eingaben in den Einstellungen werden direkt nach Eingabe auf richtige Formatierung und Einhaltung des Wertebereichs gepr\"uft.
+  \item[FA800] Der Benutzer wird über eine Fehleingabe und deren Ursache informiert.
+  \item[FA810] Nach Drücken eines Abbruch-Knopfes im Einstellungsfenster bleiben die Einstellungen unverändert.
+  \item[FA820] Nach Drücken eines Speichern-Knopfes im Einstellungsfenster werden alle vorhandenen Einstellungen mit denen aus dem Fenster überschrieben.
+  \item[FA830] Werden Einstellungen für die \glspl{OPC UA Server} oder \glspl{OPC UA Client} überschrieben, werden die \glspl{OPC UA Client} mit den neuen Einstellungen neu gestartet.
+  \item[FA840] Schlägt die Verbindung zischen den \glspl{OPC UA Client} und \glslink{OPC UA Server}{OPC UA Servern} fehl oder verliert mindestens ein \gls{OPC UA Client} die Verbindung zu seinem \gls{OPC UA Server}, wird 
     der Benutzer über einen Dialog informiert und das Einstellungsfenster zur Eingabe der \gls{IP-Adresse} und Ports der \glspl{OPC UA Server} öffnet sich.
 \end{enumerate}
 
@@ -319,7 +320,9 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
 \section{Nichtfunktionale Anforderungen}
 \subsection{Fertigungssimulation}
 \begin{enumerate}
+  \item[NF] Standardmäßig haben die \glspl{OPC UA Server} die Ports 8080, 8081, 8082 und 8083.
   \item[NF10] Die Drehzahl des Mischermotors kann vom Benutzer in einem Bereich zwischen 0 und 300 Umdrehungen pro Minute gewählt werden.
+  \item[NF] Standardmäßig hat der Mischermotor 250 Umdrehungen pro Minute.
   \item[NF20] Wenn Parameter verändert werden, sind sie nach spätestens einer halben Sekunde per \gls{OPC UA} abrufbar.
   \item[NF30] Wenn der Zufluss eines Tanks komplett geschlossen, und der Ablauf komplett geöffnet wird, ist der Tank in etwa 10 Sekunden leergelaufen.
   \item[NF40] Wenn der Zufluss eines Tanks komplett geöffnet, und der Ablauf komplett geschlossen wird, ist der Tank in etwa 10 Sekunden übergelaufen.
@@ -330,7 +333,10 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
   \item[NF110] IP-Adressen müssen gültige IPv4 Adressen oder Hostnamen sein. % Abkürzungsverzeichnis für Dinge wie IPv4?
   \item[NF120] Ports dürfen Werte im Bereich 1024 bis 61000 annehmen.
   \item[NF130] Die Schwellenwerte für die Alarme dürfen zwischen 0 und 100 \% gewählt werden.
-  \item[NF140] Die Aktualisierungsfrequenz kann vom Benutzer im Bereich zwischen 100 und 4000 Millisekunden gewählt werden.
+  \item[NF] Standardmäßig liegt der Schwellenwert für einen Unterlauf bei 5 \%.
+  \item[NF] Standardmäßig liegt der Schwellenwert für einen Überlauf bei 95 \%.
+  \item[NF140] Die Aktualisierungsfrequenz kann vom Benutzer im Bereich zwischen 100 und 4000 Millisekunden (ms) gewählt werden.
+  \item[NF] Standardmäßig liegt die Aktualisierungsfrequenz bei 1000 ms.
   \item[NF150] Wenn sich Werte in der \gls{Fertigungssimulation} ändern, werden die Änderungen spätestens nach der Zeitspanne von
     einer halben Sekunde plus dem Aktualisierungsintervall in der \gls{Uberwachungskonsole} angezeigt.
 \end{enumerate}
@@ -451,25 +457,6 @@ woraufhin wieder die Standardkonfiguration angezeigt wird.
     Außerdem zeigt die \gls{Uberwachungskonsole} die geänderte Variable an.
   \item [Nichtfunktionale Anforderungen] Die geänderte Variable wird mit der nächsten Aktualisierung auf der \gls{Uberwachungskonsole} angezeigt.
 \end{description}
-
-%
-% Diese Funktionalität ist im Moment nicht vorgesehen.
-%
-%\subsubsection{Änderung der angezeigten Sensorwerte}
-%\begin{description}
-% \item[Name] Hinzuwählen oder Abwählen von \glspl{Sensordatum}, die in der \gls{GUI} angezeigt werden.
-% \item[Akteure] Manuel (Bediener der Software)
-% \item[Eingangsbedingung] Die Fertigungssimulation und die Überwachungskonsole sind in Betrieb und miteinander verbunden.
-% \item[Ereignisfluss]~\\
-% \begin{itemize}[noitemsep]
-%  \item Manuel öffnet in der Überwachungskonsole die Einstellungen.
-%  \item Ein neues Fenster erscheint. Manuel navigiert in den Reiter "`Empfangene Daten"'.
-%  \item Manuel klickt auf die Haken in der Liste, um Sensorwerte hinzuzufügen oder auszublenden.
-%  \item Manuel klickt den "`OK"' Knopf.
-% \end{itemize}
-% \item[Ausgangssituation] Die \glspl{Sensordatum}, deren Haken entfernt wurden, werden sofort ausgeblendet. Die \glspl{Sensordatum}, deren Haken hinzugefügt wurden, erscheinen sofort in der \gls{GUI}.
-% \item [Nichtfunktionale Anforderungen] Die geänderten Einstellungen werden binnen einer halben Sekunde in der \gls{GUI} dargestellt.
-%\end{description}
 
 \subsubsection{Änderung der Verbindungseinstellungen}
 \begin{description}
