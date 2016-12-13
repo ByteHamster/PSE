@@ -315,27 +315,31 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
 
 \pagebreak
 \section{Nichtfunktionale Anforderungen}
+\subsection{Allgemeines}
+\begin{enumerate}
+  \item[NF10] IP-Adressen müssen gültige IPv4 Adressen oder Hostnamen sein.
+  \item[NF20] Ports dürfen Werte im Bereich 1024 bis 61000 annehmen.
+  \item[NF30] Wenn sich Werte in der \gls{Fertigungssimulation} ändern, werden die Änderungen spätestens nach der Zeitspanne von 500 Millisekunden (ms) plus dem Aktualisierungsintervall in der \gls{Uberwachungskonsole} angezeigt.
+\end{enumerate}
+
 \subsection{Fertigungssimulation}
 \begin{enumerate}
-  \item[NF] Standardmäßig haben die \glspl{OPC UA Server} die Ports 8080, 8081, 8082 und 8083.
-  \item[NF10] Die Drehzahl des Mischermotors kann vom Benutzer in einem Bereich zwischen 0 und 300 Umdrehungen pro Minute gewählt werden.
-  \item[NF] Standardmäßig hat der Mischermotor 250 Umdrehungen pro Minute.
-  \item[NF20] Wenn Parameter verändert werden, sind sie nach spätestens einer halben Sekunde per \gls{OPC UA} abrufbar.
-  \item[NF30] Wenn der Zufluss eines Tanks komplett geschlossen, und der Ablauf komplett geöffnet wird, ist der Tank in etwa 10 Sekunden leergelaufen.
-  \item[NF40] Wenn der Zufluss eines Tanks komplett geöffnet, und der Ablauf komplett geschlossen wird, ist der Tank in etwa 10 Sekunden übergelaufen.
+  \item[NF40] Standardmäßig haben die \glspl{OPC UA Server} die Ports 8080, 8081, 8082 und 8083.
+  \item[NF50] Wenn Parameter verändert werden, sind sie nach spätestens 500 ms per \gls{OPC UA} abrufbar.
+  \item[NF60] Die Drehzahl des Mischermotors kann vom Benutzer in einem Bereich zwischen 0 und 300 Umdrehungen pro Minute gewählt werden.
+  \item[NF70] Standardmäßig hat der Mischermotor 250 Umdrehungen pro Minute.
+  \item[NF80] Die Tanks haben ein Füllvermögen von 100 Litern.
+  \item[NF90] Der Zu- und Abfluss der oberen Tanks liegt zwischen 0 und 10 Litern pro Sekunde.
+  \item[NF100] Der Zu- und Abfluss des unteren Tanks liegt zwischen 0 und 30 Litern pro Sekunde.
 \end{enumerate}
 
 \subsection{Überwachungskonsole}
 \begin{enumerate}
-  \item[NF110] IP-Adressen müssen gültige IPv4 Adressen oder Hostnamen sein. % Abkürzungsverzeichnis für Dinge wie IPv4?
-  \item[NF120] Ports dürfen Werte im Bereich 1024 bis 61000 annehmen.
-  \item[NF130] Die Schwellenwerte für die Alarme dürfen zwischen 0 und 100 \% gewählt werden.
-  \item[NF] Standardmäßig liegt der Schwellenwert für einen Unterlauf bei 5 \%.
-  \item[NF] Standardmäßig liegt der Schwellenwert für einen Überlauf bei 95 \%.
-  \item[NF140] Die Aktualisierungsfrequenz kann vom Benutzer im Bereich zwischen 100 und 4000 Millisekunden (ms) gewählt werden.
-  \item[NF] Standardmäßig liegt die Aktualisierungsfrequenz bei 1000 ms.
-  \item[NF150] Wenn sich Werte in der \gls{Fertigungssimulation} ändern, werden die Änderungen spätestens nach der Zeitspanne von
-    einer halben Sekunde plus dem Aktualisierungsintervall in der \gls{Uberwachungskonsole} angezeigt.
+  \item[\textcolor{blue}{NF110}] Die Schwellenwerte für die Alarme dürfen zwischen 0 und 100 \% gewählt werden.
+  \item[NF120] Standardmäßig liegt der Schwellenwert für einen Überlauf bei 95 \%.
+  \item[NF130] Standardmäßig liegt der Schwellenwert für einen Unterlauf bei 5 \%.
+  \item[\textcolor{blue}{NF140}] Die Aktualisierungsfrequenz kann vom Benutzer im Bereich zwischen 100 und 4000 ms gewählt werden.
+  \item[NF150] Standardmäßig liegt die Aktualisierungsfrequenz bei 1000 ms.
 \end{enumerate}
 
 \pagebreak
