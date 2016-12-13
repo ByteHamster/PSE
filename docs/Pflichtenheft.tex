@@ -49,16 +49,20 @@ Transparenz bietet. Auf diese Weise soll dazu beigetragen werden, Industrie 4.0 
 Maschinen, Computern und Menschen die Leistungsfähigkeit der Industrie zu erhöhen und auf die Zukunft auszurichten.
 Dabei hilft das auf \gls{TCP/IP} basierende Kommunikationsprotokoll \gls{OPC UA}, Maschinen miteinander kommunizieren zu lassen.
 
-Die hier vorgestellte Simulation (siehe Systemskizze) ermöglicht es, die Vorteile der Vernetzung von Maschinen mit \gls{OPC UA} interaktiv zu demonstrieren, um Industriekunden von den neuen Möglichkeiten zu überzeugen.
-Die Hauptkomponenten sind eine \gls{Fertigungssimulation} (Server) und eine \gls{Uberwachungskonsole} (Client),
-die jeweils eine graphische Benutzeroberfläche (\gls{GUI}) enthalten und auf getrennten Computern laufen können.
-Sie kommunizieren lediglich über \gls{OPC UA}.
+Die hier vorgestellte Simulation (siehe Systemskizze) ermöglicht es, die Vorteile der Vernetzung von Maschinen mit \gls{OPC UA} interaktiv
+zu demonstrieren, um Industriekunden von den neuen Möglichkeiten zu überzeugen. Die Hauptkomponenten sind eine \gls{Fertigungssimulation}
+mit \glslink{OPC UA Server}{OPC UA Servern} und eine \gls{Uberwachungskonsole} mit \glspl{OPC UA Client}, die jeweils eine graphische
+Benutzeroberfläche (\gls{GUI}) enthalten und auf getrennten Computern laufen können. Sie kommunizieren lediglich über \gls{OPC UA}.
+
 In der GUI der \gls{Fertigungssimulation} wird eine \gls{Produktionsanlage} dargestellt.
 Drei Tanks werden mit je einer farbigen Flüssigkeit gefüllt und leiten diese in einen weiteren Tank,
-in dem die Flüssigkeiten durch einen Motor gemischt werden. Daten und Werte der \gls{Produktionsanlage} werden ebenfalls angezeigt. Dazu gibt es
-die Möglichkeit, die Parameter der \gls{Produktionsanlage} zu konfigurieren. Dies geschieht beispielsweise indem man Zu- und Abflussmengen einstellt. Die visuelle Darstellung passt sich an die Konfiguration an.
+in dem die Flüssigkeiten durch einen Motor gemischt werden. Daten und Werte der \gls{Produktionsanlage} werden ebenfalls angezeigt. Dazu gibt
+es die Möglichkeit, die Parameter der \gls{Produktionsanlage} zu konfigurieren. Dies geschieht beispielsweise indem man Zu- und Abflussmengen
+einstellt. Die visuelle Darstellung passt sich an die Konfiguration an.
+
 Die \gls{Uberwachungskonsole} liest die Daten der \gls{Fertigungssimulation}, stellt sie optisch ansprechend in einem Monitoring dar
-und kann Alarme anzeigen, die vom \gls{OPC UA Server} empfangen werden. Das Monitoring ist ebenfalls konfigurierbar. Es ist etwa möglich, Filter auf Variablen anzuwenden. Allerdings hat die \gls{Uberwachungskonsole} keinen Einfluss auf die \gls{Fertigungssimulation}.
+und kann Alarme anzeigen, die vom \gls{OPC UA Server} empfangen werden. Das Monitoring ist ebenfalls konfigurierbar. Es ist etwa möglich, Filter
+auf Variablen anzuwenden. Allerdings hat die \gls{Uberwachungskonsole} keinen Einfluss auf die \gls{Fertigungssimulation}.
 
 \pagebreak
 \section{Zielbestimmung}
