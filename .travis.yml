@@ -13,5 +13,6 @@ script:
 - cd src
 - mvn -U -B test
 - cd ../docs
-- pdflatex -interaction=batchmode Pflichtenheft
-- cat Pflichtenheft.log
+- export max_print_line=200
+- pdflatex -interaction=batchmode Pflichtenheft &> /dev/null
+- cat Pflichtenheft.log | grep -C 15 -i ERROR
