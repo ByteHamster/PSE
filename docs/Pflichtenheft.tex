@@ -43,30 +43,30 @@
 \section{Einleitung}
 In der heutigen Zeit dringt die Vernetzung in immer neue Bereiche vor. So auch in die Industrie und ihre Fertigungsprozesse.
 Dabei soll das Projekt \gls{Industrial Data Space} helfen, einen Datenraum zu erzeugen, der Datensicherheit, Datensouveränität und
-Transparenz bietet. Auf diese Weise soll dazu beigetragen werden, Industrie 4.0 voranzutreiben und somit durch Vernetzung von
+Transparenz bietet. Auf diese Weise soll dazu beigetragen werden, die Industrie 4.0 voranzutreiben und somit durch Vernetzung von
 Maschinen, Computern und Menschen die Leistungsfähigkeit der Industrie zu erhöhen und auf die Zukunft auszurichten.
-Dabei hilft das auf \gls{TCP/IP} basierende Kommunikationsprotokoll \gls{OPC UA}, Maschinen miteinander kommunizieren zu lassen.
+Dabei macht es das auf \gls{TCP/IP} basierende Kommunikationsprotokoll \gls{OPC UA} möglich, dass Maschinen miteinander kommunizieren.
 
-Die hier vorgestellte Simulation (siehe Systemskizze) ermöglicht es, die Vorteile der Vernetzung von Maschinen mit \gls{OPC UA} interaktiv
+Die hier vorgestellte Simulation (siehe Abbildung 1: Systemskizze) ermöglicht es, die Vorteile der Vernetzung von Maschinen mit \gls{OPC UA} interaktiv
 zu demonstrieren, um Industriekunden von den neuen Möglichkeiten zu überzeugen. Die Hauptkomponenten sind eine \gls{Fertigungssimulation}
 mit \glslink{OPC UA Server}{OPC UA Servern} und eine \gls{Uberwachungskonsole} mit \glspl{OPC UA Client}, die jeweils eine graphische
 Benutzeroberfläche (\gls{GUI}) enthalten und auf getrennten Computern laufen können. Sie kommunizieren lediglich über \gls{OPC UA}.
 
 In der GUI der \gls{Fertigungssimulation} wird eine \gls{Produktionsanlage} dargestellt.
-Drei Tanks werden mit je einer farbigen Flüssigkeit gefüllt und leiten diese in einen weiteren Tank,
-in dem die Flüssigkeiten durch einen Motor gemischt werden. Daten und Werte der \gls{Produktionsanlage} werden ebenfalls angezeigt. Dazu gibt
-es die Möglichkeit, die Parameter der \gls{Produktionsanlage} zu konfigurieren. Dies geschieht beispielsweise indem man Zu- und Abflussmengen
-einstellt. Die visuelle Darstellung passt sich an die Konfiguration an.
+Drei Tanks werden mit je einer farbigen Flüssigkeit gefüllt. Die Flüssigkeiten werden über Rohre in einen weiteren Tank geleitet,
+in dem diese dann durch einen Motor gemischt werden. Daten und Werte der \gls{Produktionsanlage} werden ebenfalls angezeigt.
+Dazu gibt es die Möglichkeit, die Parameter der \gls{Produktionsanlage} zu konfigurieren. Dies geschieht beispielsweise dadurch, dass man
+Zu- und Abflussmengen einstellt. Die visuelle Darstellung passt sich an die Konfiguration an.
 
-Die \gls{Uberwachungskonsole} liest die Daten der \gls{Fertigungssimulation}, stellt sie optisch ansprechend in einem Monitoring dar
-und kann Alarme anzeigen, die vom \gls{OPC UA Server} empfangen werden. Das Monitoring ist ebenfalls konfigurierbar. Es ist etwa möglich, Filter
-auf Variablen anzuwenden. Allerdings hat die \gls{Uberwachungskonsole} keinen Einfluss auf die \gls{Fertigungssimulation}.
+Die \gls{Uberwachungskonsole} liest die Daten der \gls{Fertigungssimulation}, stellt sie optisch ansprechend dar und kann Alarme
+anzeigen, die von \glspl{OPC UA Server} empfangen werden. Sie dient somit als reines Monitoring-Werkzeug
+und hat keinen Einfluss auf die \gls{Fertigungssimulation}.
 
 Dieser Zusammenhang ist in der Systemskizze verdeutlicht. Links ist die \gls{Fertigungssimulation} bzw. ihre \gls{GUI} skizziert.
-Dar\"uber wird die Simulation gesteuert. Darunter sind die verschiedenen \glspl{OPC UA Server} (S*).
-Rechts ist die \gls{Uberwachungskonsole} zu sehen. Unter ihr und zu ihr geh\"orend sind die \glspl{OPC UA Client}.
-Der Doppelpfeil zwischen den \glslink{OPC UA Server} und \glspl{OPC UA Client} verdeutlicht die Kommunikation zwischen den beiden
-Programmen, die auf dieser Ebene abl\"auft.
+Dar\"uber wird die Simulation gesteuert. Darunter sind die vier verschiedenen \glspl{OPC UA Server} (S) angedeutet.
+Rechts ist die \gls{Uberwachungskonsole} zu sehen. Unter ihr und zu ihr geh\"orend sind die vier \glspl{OPC UA Client}.
+Der Doppelpfeil zwischen den \glslink{OPC UA Server}{OPC UA Servern} und \glspl{OPC UA Client} verdeutlicht, dass die Kommunikation
+zwischen den beiden Programmen ausschließlich auf dieser Ebene abl\"auft.
 
 \begin{figure}[H]
   \centering
@@ -79,25 +79,26 @@ Programmen, die auf dieser Ebene abl\"auft.
 Der \gls{Systemadapter} dient dem Ziel, die Funktion von \gls{OPC UA} zu demonstrieren, ohne eine konkrete \gls{Produktionsanlage}
 benutzen zu müssen. Somit kann beim Kunden das Protokoll flexibler vorgestellt werden. Hierzu soll das Programm
 sowohl eine \gls{Produktionsanlage} simulieren und deren Status graphisch darstellen, als auch auch eine \gls{Uberwachungskonsole}
-bereitstellen, die über \gls{OPC UA} Werte der \gls{Produktionsanlage} abfragt.\\
+bereitstellen, die mit Hilfe von \gls{OPC UA} die \glspl{Sensordatum} der \gls{Produktionsanlage} abfragt.\\
 
 \subsection{Musskriterien}
 \subsubsection{Allgemein}
 \begin{itemize}
   \item Die verwendete \gls{Produktionsanlage} ist ein chemischer Produktionsprozess mit vier Tanks und Flüssigkeiten, die darin gemischt werden.
-  \item Die Kommunikation zwischen \gls{Uberwachungskonsole} und \gls{Fertigungssimulation} findet \"uber \glspl{OPC UA Server} auf Seiten der \gls{Fertigungssimulation}
-    und \glspl{OPC UA Client} auf Seiten der \gls{Uberwachungskonsole} statt.
-  \item Die \gls{Fertigungssimulation} mit den \glslink{OPC UA Server}{OPC UA Servern} und die \gls{Uberwachungskonsole} mit den \glspl{OPC UA Client} laufen auf dem selben oder auf getrennten Rechnern.
+  \item Die Kommunikation zwischen \gls{Uberwachungskonsole} und \gls{Fertigungssimulation} findet ausschließlich \"uber
+  \glspl{OPC UA Server} auf Seiten der \gls{Fertigungssimulation} und \glspl{OPC UA Client} auf Seiten der \gls{Uberwachungskonsole} statt.
+  \item Die \gls{Fertigungssimulation} mit den \glslink{OPC UA Server}{OPC UA Servern} und die \gls{Uberwachungskonsole} mit den \glspl{OPC UA Client} laufen auf dem selben oder auch auf getrennten Rechnern.
 \end{itemize}
 
 \subsubsection{Überwachungskonsole}
 \begin{itemize}
-  \item Die \gls{Uberwachungskonsole} ruft alle \glspl{Sensordatum} der \gls{Fertigungssimulation} in einem festgelegten Zeitintervall über einen \gls{OPC UA} Client ab.
-  \item Der \gls{OPC UA} Client ist mit \gls{OPC UA} Servern verbunden. Dazu ist die Einstellung der \glspl{Verbindungsinformation} möglich.
+  \item Die \gls{Uberwachungskonsole} ruft alle \glspl{Sensordatum} der \gls{Fertigungssimulation} in einem festgelegten Zeitintervall
+  über \glspl{OPC UA Client} ab.
+  \item Die \glspl{OPC UA Client} sind mit \glslink{OPC UA Server}{OPC UA Servern} verbunden. Dazu ist die Einstellung der \glspl{Verbindungsinformation} möglich.
   \item Die von den \glspl{OPC UA Client} abgerufenen Werte und deren zeitlicher Verlauf werden graphisch dargestellt. Die Werte sind Zu- und Abflussmengen,
     Flüssigkeitsfarben sowie die Drehzahl eines Mischermotors.
-  \item Die \gls{Uberwachungskonsole} enthält Alarme, die beim Überschreiten von Schwellenwerten in der \gls{Fertigungssimulation} durch den \gls{OPC UA} Server gesendet
-    und dem Nutzer graphisch mitgeteilt werden.
+  \item Beim Überschreiten von Schwellenwerten in der \gls{Fertigungssimulation} werden Alarme durch die \glspl{OPC UA Server} an
+  die \glspl{OPC UA Client} gesendet und dem Nutzer graphisch mitgeteilt.
 \end{itemize}
 
 \subsubsection{Fertigungssimulation}
@@ -137,7 +138,7 @@ bereitstellen, die über \gls{OPC UA} Werte der \gls{Produktionsanlage} abfragt.
 \subsubsection{Allgemein}
 \begin{itemize}
   \item \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} dienen der Demonstration des \glslink{OPC UA}{OPC UA Protokolls}. Dazu wird die Open Source
-    Implementierung \gls{Milo} des \glslink{OPC UA}{OPC UA Protokolls} verwendet. Das \glslink{OPC UA}{OPC UA Protokoll} wird nicht selbst implementiert.
+    Implementierung "`\gls{Milo}"' des \glslink{OPC UA}{OPC UA Protokolls} verwendet. Das \glslink{OPC UA}{OPC UA Protokoll} selbst wird nicht implementiert.
   \item Es werden verschiedene Möglichkeiten des \glslink{OPC UA}{OPC UA Protokolls} aufgezeigt, allerdings wird die kryptografische Sicherheit von \gls{OPC UA} nicht demonstriert.
 \end{itemize}
 
