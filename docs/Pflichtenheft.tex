@@ -48,23 +48,26 @@ Transparenz bietet. Auf diese Weise soll dazu beigetragen werden, Industrie 4.0 
 Maschinen, Computern und Menschen die Leistungsfähigkeit der Industrie zu erhöhen und auf die Zukunft auszurichten.
 Dabei hilft das auf \gls{TCP/IP} basierende Kommunikationsprotokoll \gls{OPC UA}, Maschinen miteinander kommunizieren zu lassen.
 
-Die hier vorgestellte Simulation (siehe Systemskizze) ermöglicht es, die Vorteile der Vernetzung von Maschinen mit \gls{OPC UA} interaktiv zu demonstrieren, um Industriekunden von den neuen Möglichkeiten zu überzeugen.
-Die Hauptkomponenten sind eine \gls{Fertigungssimulation} (Server) und eine \gls{Uberwachungskonsole} (Client),
-die jeweils eine graphische Benutzeroberfläche (\gls{GUI}) enthalten und auf getrennten Computern laufen können.
-Sie kommunizieren lediglich über \gls{OPC UA}.
+Die hier vorgestellte Simulation (siehe Systemskizze) ermöglicht es, die Vorteile der Vernetzung von Maschinen mit \gls{OPC UA} interaktiv
+zu demonstrieren, um Industriekunden von den neuen Möglichkeiten zu überzeugen. Die Hauptkomponenten sind eine \gls{Fertigungssimulation}
+mit \glslink{OPC UA Server}{OPC UA Servern} und eine \gls{Uberwachungskonsole} mit \glspl{OPC UA Client}, die jeweils eine graphische
+Benutzeroberfläche (\gls{GUI}) enthalten und auf getrennten Computern laufen können. Sie kommunizieren lediglich über \gls{OPC UA}.
+
 In der GUI der \gls{Fertigungssimulation} wird eine \gls{Produktionsanlage} dargestellt.
 Drei Tanks werden mit je einer farbigen Flüssigkeit gefüllt und leiten diese in einen weiteren Tank,
-in dem die Flüssigkeiten durch einen Motor gemischt werden. Daten und Werte der \gls{Produktionsanlage} werden ebenfalls angezeigt. Dazu gibt es
-die Möglichkeit, die Parameter der \gls{Produktionsanlage} zu konfigurieren. Dies geschieht beispielsweise indem man Zu- und Abflussmengen einstellt. Die visuelle Darstellung passt sich an die Konfiguration an.
-Die \gls{Uberwachungskonsole} liest die Daten der \gls{Fertigungssimulation}, stellt sie optisch ansprechend in einem Monitoring dar
-und kann Alarme anzeigen, die vom \gls{OPC UA Server} empfangen werden. Das Monitoring ist ebenfalls konfigurierbar. Es ist etwa möglich, Filter auf Variablen anzuwenden. Allerdings hat die \gls{Uberwachungskonsole} keinen Einfluss auf die \gls{Fertigungssimulation}.
+in dem die Flüssigkeiten durch einen Motor gemischt werden. Daten und Werte der \gls{Produktionsanlage} werden ebenfalls angezeigt. Dazu gibt
+es die Möglichkeit, die Parameter der \gls{Produktionsanlage} zu konfigurieren. Dies geschieht beispielsweise indem man Zu- und Abflussmengen
+einstellt. Die visuelle Darstellung passt sich an die Konfiguration an.
 
-\pagebreak
-\section{Zielbestimmung}
-Der \gls{Systemadapter} dient dem Ziel, die Funktion von \gls{OPC UA} zu demonstrieren, ohne eine konkrete \gls{Produktionsanlage}
-benutzen zu müssen. Somit kann beim Kunden das Protokoll flexibler vorgestellt werden. Hierzu soll das Programm
-sowohl eine \gls{Produktionsanlage} simulieren und deren Status graphisch darstellen, als auch auch eine \gls{Uberwachungskonsole}
-bereitstellen, die über \gls{OPC UA} Werte der \gls{Produktionsanlage} abfragt.\\
+Die \gls{Uberwachungskonsole} liest die Daten der \gls{Fertigungssimulation}, stellt sie optisch ansprechend in einem Monitoring dar
+und kann Alarme anzeigen, die vom \gls{OPC UA Server} empfangen werden. Das Monitoring ist ebenfalls konfigurierbar. Es ist etwa möglich, Filter
+auf Variablen anzuwenden. Allerdings hat die \gls{Uberwachungskonsole} keinen Einfluss auf die \gls{Fertigungssimulation}.
+
+Dieser Zusammenhang ist in der Systemskizze verdeutlicht. Links ist die \gls{Fertigungssimulation} bzw. ihre \gls{GUI} skizziert.
+Dar\"uber wird die Simulation gesteuert. Darunter sind die verschiedenen \glspl{OPC UA Server} (S*).
+Rechts ist die \gls{Uberwachungskonsole} zu sehen. Unter ihr und zu ihr geh\"orend sind die \glspl{OPC UA Client}.
+Der Doppelpfeil zwischen den \glslink{OPC UA Server} und \glspl{OPC UA Client} verdeutlicht die Kommunikation zwischen den beiden
+Programmen, die auf dieser Ebene abl\"auft.
 
 \begin{figure}[H]
   \centering
@@ -72,16 +75,12 @@ bereitstellen, die über \gls{OPC UA} Werte der \gls{Produktionsanlage} abfragt.
   \caption{Systemskizze}
 \end{figure}
 
-In der Systemskizze ist links die \gls{Fertigungssimulation} bzw. stellvertretend ihre \gls{GUI} skizziert.
-Darüber lässt sich das \gls{Simulations-Szenario} steuern. Die \glspl{Sensordatum} der Simulation werden 
-im \gls{OPC UA Server} gesetzt, welche von einem \gls{OPC UA Client} abgefragt werden. 
-Dabei stellt ein Server je einen Tank dar. Rechts davon ist die \gls{Uberwachungskonsole} eingezeichnet.
-Sie zeigt die \glspl{Sensordatum} der \gls{Fertigungssimulation} mit Hilfe einer \gls{GUI} an. 
-Diese Daten erhält die \gls{Uberwachungskonsole} von einem \gls{OPC UA Client}. 
-Der Doppelpfeil verdeutlicht die Beziehung zwischen \glslink{OPC UA Server}{OPC UA Servern} (S) und
-\glspl{OPC UA Client} (C), die den Datenaustausch unterhalb der \gls{Fertigungssimulation} und
-der \gls{Uberwachungskonsole} regeln.
-Dabei steht jeder \gls{OPC UA Server} mit genau einem {OPC UA Client} in Verbindung.
+\pagebreak
+\section{Zielbestimmung}
+Der \gls{Systemadapter} dient dem Ziel, die Funktion von \gls{OPC UA} zu demonstrieren, ohne eine konkrete \gls{Produktionsanlage}
+benutzen zu müssen. Somit kann beim Kunden das Protokoll flexibler vorgestellt werden. Hierzu soll das Programm
+sowohl eine \gls{Produktionsanlage} simulieren und deren Status graphisch darstellen, als auch auch eine \gls{Uberwachungskonsole}
+bereitstellen, die über \gls{OPC UA} Werte der \gls{Produktionsanlage} abfragt.\\
 
 \subsection{Musskriterien}
 \subsubsection{Allgemein}
@@ -343,17 +342,17 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
 \pagebreak
 \section{Produktdaten}
 \begin{enumerate}
-  \item[D10] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellten Ports der \glslink{OPC UA Client}{OPC UA Clients}.
-  \item[D20] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellte IP-Adresse und Ports der \gls{OPC UA Server}.
-  \item[D30] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellte Aktualisierungsfrequenz für die \glspl{Sensordatum}.
-  \item[D40] Die \gls{Uberwachungskonsole} speichert die zuletzt eingeschalteten Alarme und alle Schwellenwerte.
-  \item[D50] Die \gls{Uberwachungskonsole} speichert, welche Verläufe zuletzt angezeigt wurden.
-  \item[D60] Die \gls{Uberwachungskonsole} speichert empfangene Alarme in einer Log-Datei (sofern implementiert).
-  \item[D70] Die \gls{Uberwachungskonsole} speichert Fehler und Ausnahmen bei der Ausführung in einer Log-Datei (sofern implementiert).
-  \item[D110] Die \gls{Fertigungssimulation} speichert die zuletzt genutzten Ports der \glspl{OPC UA Server}.
-  \item[D120] Die \gls{Fertigungssimulation} speichert den zuletzt eingestellten \gls{Jitter}.
-  \item[D130] Die \gls{Fertigungssimulation} speichert \glspl{Simulations-Szenario} in einzelnen Dateien (sofern implementiert).
-  \item[D140] Die \gls{Fertigungssimulation} speichert Fehler und Ausnahmen bei der Ausführung in einer Log-Datei (sofern implementiert).
+  \item[\textcolor{blue}{D10}] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellten Ports der \glslink{OPC UA Client}{OPC UA Clients}.
+  \item[\textcolor{blue}{D20}] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellte IP-Adresse und Ports der \gls{OPC UA Server}.
+  \item[\textcolor{blue}{D30}] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellte Aktualisierungsfrequenz für die \glspl{Sensordatum}.
+  \item[\textcolor{blue}{D40}] Die \gls{Uberwachungskonsole} speichert die zuletzt eingeschalteten Alarme und alle Schwellenwerte.
+  \item[\textcolor{blue}{D50}] Die \gls{Uberwachungskonsole} speichert, welche Verläufe zuletzt angezeigt wurden.
+  \item[\textcolor{blue}{D60}] Die \gls{Uberwachungskonsole} speichert empfangene Alarme in einer Log-Datei.
+  \item[\textcolor{blue}{D70}] Die \gls{Uberwachungskonsole} speichert Fehler und Ausnahmen bei der Ausführung in einer Log-Datei.
+  \item[\textcolor{blue}{D110}] Die \gls{Fertigungssimulation} speichert die zuletzt genutzten Ports der \glspl{OPC UA Server}.
+  \item[\textcolor{blue}{D120}] Die \gls{Fertigungssimulation} speichert den zuletzt eingestellten \gls{Jitter}.
+  \item[\textcolor{blue}{D130}] Die \gls{Fertigungssimulation} speichert \glspl{Simulations-Szenario} in einzelnen Dateien.
+  \item[\textcolor{blue}{D140}] Die \gls{Fertigungssimulation} speichert Fehler und Ausnahmen bei der Ausführung in einer Log-Datei.
 \end{enumerate}
 
 \pagebreak
