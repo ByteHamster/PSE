@@ -89,14 +89,14 @@ Dabei steht jeder \gls{OPC UA Server} mit genau einem {OPC UA Client} in Verbind
   \item Die verwendete Produktionsanlage ist ein chemischer Produktionsprozess mit vier Tanks und Flüssigkeiten, die darin gemischt werden.
   \item Die Kommunikation zwischen \gls{Uberwachungskonsole} und \gls{Fertigungssimulation} findet \"uber \glspl{OPC UA Server} auf Seiten der \gls{Fertigungssimulation}
     und \glspl{OPC UA Client} auf Seiten der \gls{Uberwachungskonsole} statt.
-  \item Die \gls{Fertigungssimulation} mit den \glslink{OPC UA Server}{OPC UA Servern} und die \gls{Uberwachungskonsole} mit den \glspl{OPC UA Client} laufen auf dem selben, oder auf getrennten Rechnern.
+  \item Die \gls{Fertigungssimulation} mit den \glslink{OPC UA Server}{OPC UA Servern} und die \gls{Uberwachungskonsole} mit den \glspl{OPC UA Client} laufen auf dem selben oder auf getrennten Rechnern.
 \end{itemize}
 
 \subsubsection{Überwachungskonsole}
 \begin{itemize}
   \item Die \gls{Uberwachungskonsole} ruft alle \glspl{Sensordatum} der \gls{Fertigungssimulation} in einem festgelegten Zeitintervall über einen \gls{OPC UA} Client ab.
   \item Der \gls{OPC UA} Client ist mit \gls{OPC UA} Servern verbunden. Dazu ist die Einstellung der \glspl{Verbindungsinformation} möglich.
-  \item Die von den \glspl{OPC UA Client} abgerufenen Werte und deren zeitlicher Verlauf werden graphisch dargestellt. Die Werte sind Zu- und Abflussmengen, Temperaturen,
+  \item Die von den \glspl{OPC UA Client} abgerufenen Werte und deren zeitlicher Verlauf werden graphisch dargestellt. Die Werte sind Zu- und Abflussmengen,
     Flüssigkeitsfarben sowie die Drehzahl eines Mischermotors.
   \item Die \gls{Uberwachungskonsole} enthält Alarme, die beim Überschreiten von Schwellenwerten in der \gls{Fertigungssimulation} durch den \gls{OPC UA} Server gesendet
     und dem Nutzer graphisch mitgeteilt werden.
@@ -114,16 +114,17 @@ Dabei steht jeder \gls{OPC UA Server} mit genau einem {OPC UA Client} in Verbind
 \begin{itemize}
   \item In der \gls{Fertigungssimulation} und der \gls{Uberwachungskonsole} werden Probleme der Programmausf\"uhrung geloggt.
   \item Die Standard-Sprache Englisch kann über \glspl{Java Property Datei} in andere Sprachen übersetzt werden.
-  \item Die zu verwendende Sprache ist im UI einstellbar.
+  \item Die zu verwendende Sprache ist in der \gls{GUI} einstellbar.
 \end{itemize}
 
 \subsubsection{Überwachungskonsole}
 \begin{itemize}
-  \item Das Zeitintervall für den Empfang der \glspl{Sensordatum} ist eingestellbar.
+  \item Die von den \glspl{OPC UA Client} abgerufenen Werte enthalten die Temperaturen der Flüssigkeiten in den Tanks.
+  \item Das Zeitintervall für den Empfang der \glspl{Sensordatum} ist einstellbar.
   \item Die Alarme sind ein- und ausschaltbar.
   \item Die Schwellen zur Ausl\"osung der Alarme sind vom Benutzer veränderbar.
   \item Die eingestellten Alarme werden gespeichert und beim n\"achsten Programmstart automatisch wiederhergestellt.
-  \item Es gibt über eine Logging-Funktion.
+  \item Es gibt eine Logging-Funktion.
 \end{itemize}
 
 \subsubsection{Fertigungssimulation}
