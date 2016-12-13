@@ -206,13 +206,13 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
   \item[FA30] Die \gls{Fertigungssimulation} wird nach der Model-View-Controller-Architektur entworfen.
   \item[FA40] Der Betrieb der \gls{Produktionsanlage} wird simuliert und grafisch dargestellt.
   \item[FA50] Die \gls{Produktionsanlage} wird innerhalb der \glspl{OPC UA Server} repräsentiert.
-  \item[FA60] Die Ports, über welche die einzelnen \gls{OPC UA Server} der \gls{Fertigungssimulation} kommunizieren, können eingestellt werden.
+  \item[FA60] Die Ports, über welche die einzelnen \gls{OPC UA Server} der \gls{Fertigungssimulation} kommunizieren, sind konfigurierbar.
   \item[FA70] Die \gls{Fertigungssimulation} aktualisiert die \glspl{Sensordatum} ihrer \glspl{OPC UA Server}.    
   \item[FA80] Die \glspl{OPC UA Client} der \gls{Uberwachungskonsole} registrieren sich bei den \glslink{OPC UA Server}{OPC UA Servern} der \gls{Fertigungssimulation} und empfangen von
     diesen \glspl{Sensordatum}.
-  \item[FA90] Nach Anforderung durch die \gls{Uberwachungskonsole} wird in bestimmten, der Anfrage definierten Zust\"anden ein Alarm an die \glspl{OPC UA Client} der \gls{Uberwachungskonsole} gesendet.
+  \item[FA90] Nach Anforderung durch die \gls{Uberwachungskonsole} wird in bestimmten, in der Anfrage definierten Zust\"anden ein Alarm an die \glspl{OPC UA Client} der \gls{Uberwachungskonsole} gesendet.
   \item[\textcolor{blue}{FA100}] Fehler und Ausnahmen bei der Ausführung werden geloggt.  
-  \item[\textcolor{blue}{FA110}] Die \gls{Fertigungssimulation} verfügt über einen \gls{Jitter}.
+  \item[\textcolor{blue}{FA110}] Die \gls{Fertigungssimulation} benutzt zur realistischen Darstellung \gls{Jitter} für die \glspl{Sensordatum}.
   \item[\textcolor{blue}{FA120}] Die \gls{Fertigungssimulation} besitzt vordefinierte \glspl{Simulations-Szenario}, die über das Menü gestartet werden können. Somit kann ohne aktive Nutzerinteraktion eine sich
     im aktiven Betrieb befindliche \gls{Produktionsanlage} simuliert werden.
 \end{enumerate}
@@ -221,7 +221,7 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
 \begin{enumerate}
   \item[FA130] Die \gls{GUI} der \gls{Fertigungssimulation} zeigt drei Flüssigkeitstanks, die auf einer Höhe sind, und einen weiteren Flüssigkeitstank unter den oberen drei.
     Es führen Leitungen von den drei oberen Tanks zum unteren Tank.
-  \item[FA140] An jeder Leitung befinden sich ein Ventil sowie ein Durchflussmesser in Form eines sich drehenden Elements. Der Öffnungsgrad des Ventils wird prozentual auf dem Ventil angezeigt.
+  \item[FA140] An jeder Leitung befinden sich ein Ventil sowie ein Durchflussmesser, dargestellt in Form eines sich drehenden Elements. Der Öffnungsgrad des Ventils wird prozentual auf dem Ventil angezeigt.
   \item[FA150] Die Zu- und Abflussmengen der oberen Tanks können separat eingestellt werden.
   \item[FA160] Die Abflussmenge des unteren Tanks kann eingestellt werden. Die Zuflussmenge ergibt sich aus der Summe der Abflussmengen der oberen Tanks.
   \item[FA170] Jedem der oberen Tanks ist eine feste Flüssigkeitsfarbe zugeordnet. Die Farbe des unteren Tanks ergibt sich aus dem Mischungsverhältnis der oberen Tanks. Dabei wird
@@ -235,7 +235,8 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
   \item[\textcolor{blue}{FA230}] An jedem Tank ist ein Temperatursensor angebracht.
   \item[\textcolor{blue}{FA240}] Die Zuflusstemperaturen der oberen Tanks können separat eingestellt werden.
   \item[FA250] Jeder der dargestellten Tanks ist mit einer hellgrauen Box hinterlegt, welche den Zuständigkeitsbereich des jeweiligen \glslink{OPC UA Server}{OPC UA Servers} repräsentiert.
-  \item[FA260] Kommt es in der \gls{Fertigungssimulation} zu einem \"Uberlauf, so h\"alt die \gls{Fertigungssimulation} an und es wird der Text "`\"Uberlauf"' angezeigt.
+  \item[FA260] Kommt es in der \gls{Fertigungssimulation} zu einem \"Uberlauf, so h\"alt die \gls{Fertigungssimulation} an
+  und es wird ein Dialog mit dem Text "`\"Uberlauf"' angezeigt.
   \item[FA270] Das System wird aus einem "`\"Uberlauf"' durch den Knopf "`Zur\"ucksetzen"' im gezeigten Dialog wieder in den Startzustand versetzt. Anschlie{\ss}end wird die Ausführung fortgesetzt.	
   \item[FA280] Die \gls{Fertigungssimulation} besitzt einen "`Über"'-Dialog, welcher Lizenzinformationen zu verwendeten Bibliotheken
     sowie eine kurze Information zu den Erstellern des Programms, enthält.
@@ -245,7 +246,7 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
     Diese Parameter werden durch Schieberegler eingestellt.
   \item[\textcolor{blue}{FA310}] Der Einstellungsdialog besitzt einen Regler, welcher den \gls{Jitter} konfigurierbar macht.
     Hierbei entspricht ein \gls{Jitter} von 0 der Deaktivierung der Funktion.
-  \item[\textcolor{blue}{FA320}] Im Einstellungsdialog kann die Sprache der \gls{Fertigungssimulation} bestimmt werden.
+  \item[\textcolor{blue}{FA320}] Im Einstellungsdialog kann die Sprache der \gls{Fertigungssimulation} eingestellt werden.
   \item[FA330] Die Standardsprache der \gls{GUI} ist Englisch.
   \item[FA340] Der Einstellungsdialog besitzt Knöpfe zum Verwerfen ("`Abbrechen"') und Anwenden ("`Speichern"') der Änderungen. Ein Klick auf einer der beiden Knöpfe schließt zudem den Dialog.    
 \end{enumerate}
@@ -258,7 +259,8 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
   \item[FA370] Die \gls{Uberwachungskonsole} wird nach der Model-View-Controller-Architektur entworfen.
   \item[FA380] Die \gls{Uberwachungskonsole} enthält vier \glspl{OPC UA Client}, von denen sich jeder mit einem \gls{OPC UA Server} der \gls{Fertigungssimulation} verbindet und mit diesem über \gls{TCP/IP} per
     \gls{OPC  UA} kommuniziert.
-  \item[FA390] Die \glspl{OPC UA Client} erhalten die \glslink{TCP/IP}{IP-Adresse}, die durch die \gls{Uberwachungskonsole} nicht geändert werden kann, des verwendeten Computers.
+  \item[FA390] Die \glspl{OPC UA Client} erhalten die \glslink{TCP/IP}{IP-Adresse} des verwendeten Computers,
+  die durch die \gls{Uberwachungskonsole} nicht geändert werden kann.
   \item[FA400] Die \glspl{OPC UA Client} erhalten beim Start die Ports automatisch durch das Betriebssystem.
   \item[FA410] Beim Start versucht die \gls{Uberwachungskonsole}, eine Verbindung zwischen den \glspl{OPC UA Client} und den \glslink{OPC UA Server}{OPC UA Servern} herzustellen und sich so bei der
     \gls{Fertigungssimulation} zu registrieren.
@@ -268,7 +270,7 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
     \glslink{OPC UA Client}{OPC UA Clients} der \gls{Uberwachungskonsole} empfangen und an die \gls{Uberwachungskonsole} weitergeleitet.
   \item[FA440] Alarme werden asynchron zu den \glspl{Sensordatum} empfangen.
   \item[\textcolor{blue}{FA450}] Bereits registrierte Alarme können wieder gelöscht werden.    
-  \item[\textcolor{blue}{FA460}] Geloggt werden Fehler und Ausnahmen während der Ausführung der \gls{Uberwachungskonsole} sowie alle eintreffenden Alarme.
+  \item[\textcolor{blue}{FA460}] Fehler und Ausnahmen während der Ausführung der \gls{Uberwachungskonsole} sowie alle eintreffenden Alarme werden geloggt.
 \end{enumerate}
 
 \subsubsection{GUI Darstellung}
