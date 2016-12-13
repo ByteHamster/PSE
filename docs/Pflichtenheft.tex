@@ -628,15 +628,24 @@ woraufhin wieder die Standardkonfiguration angezeigt wird.
   \caption{Komponentendiagramm}
 \end{figure}
 
-Die \gls{Fertigungssimulation} setzt \glspl{Sensordatum} in einen \gls{OPC UA Server} und zeigt
-gleichzeitig den simulierten Prozess graphisch an. Diese Werte werden von dem \gls{OPC UA Client} angefordert
-und von betreffenden \gls{OPC UA Server} an den \gls{OPC UA Client} übermittelt. Unabhängig vom \gls{OPC UA Client}
-kann ein \gls{OPC UA Server} bei Bedarf Alarme an den \gls{OPC UA Client} schicken.
-Die \gls{Uberwachungskonsole} fordert die übermittelten Daten bei dem \gls{OPC UA Client} an und bekommt
-diese von ihm zurückgegeben. Alarme werden der \gls{Uberwachungskonsole} ohne Anfordern übermittelt.
-Die Daten werden dann in der \gls{GUI} der \gls{Uberwachungskonsole} angezeigt. Jeder der modellierten Tanks
-besitzt seinen eigenen Server in der \gls{Fertigungssimulation} und seinen eigenen Client in der \gls{Uberwachungskonsole}.
-Somit werden 4 Server und 4 Clients benötigt.
+Die \gls{Fertigungssimulation} simuliert die Werte f\"ur die Tanks. Sie zeigt in ihrer \gls{GUI} eine schematische Darstellung der
+\gls{Produktionsanlage}. Die \gls{Produktionsanlage} l\"asst sich \"uber die \gls{Fertigungssimulation} steuern. Die \gls{Fertigungssimulation} setzt
+in den \glslink{OPC UA Server}{OPC UA Servern} die "`gemessenen"' Werte.
+
+Die \glspl{OPC UA Server} aggregieren mehrere \glspl{Sensordatum}, die durch die \gls{Fertigungssimulation} gesetzt werden. An jedem \gls{OPC UA Server} k\"onnen
+sich 0 bis beliebig viele \glspl{OPC UA Client} registrieren. Auf Anfrage erhalten die \glspl{OPC UA Client} \glspl{Sensordatum}. Bei einem \gls{OPC UA Server} registrierte
+Alarme werden an die \glspl{OPC UA Client} geschickt wo n\"otig.
+
+Die \glspl{OPC UA Client} sind bei je genau einem \gls{OPC UA Server} registriert. Sie fragen, wenn sie von der \gls{Uberwachungskonsole} dazu
+aufgefordert werden, die Daten von ihrem jeweiligen \gls{OPC UA Server} ab. Sie k\"onnen bei ihrem \gls{OPC UA Server} Alarme registrieren und diese
+dann empfangen. Die \glspl{OPC UA Client} stellen der \gls{Uberwachungskonsole} Daten bereit.
+
+Die \gls{Uberwachungskonsole} verwendet mehrere \glspl{OPC UA Client}, um \"uber diese und die \glspl{OPC UA Server} Daten von der
+\gls{Fertigungssimulation} zu erhalten. \"Uber sie werden die \glspl{OPC UA Client} indirekt gesteuert. In der \gls{Uberwachungskonsole} kann der Benutzer Alarme
+f\"ur die \glspl{OPC UA Client} registrieren und angeben, welche Daten von den \glslink{OPC UA Server}{OPC UA Servern} abgefragt werden sollen. Die Daten und Alarme, die
+die \gls{Uberwachungskonsole} von den \glspl{OPC UA Client} erh\"alt, stellt sie graphisch dar.
+
+Die einzige Verbindung von \gls{Uberwachungskonsole} und \gls{Fertigungssimulation} ist \"uber die \glspl{OPC UA Server} und \glspl{OPC UA Client} realisiert.
 
 \section{Nutzerinterface-Skizzen}
 \subsection{Fertigungssimulation}
