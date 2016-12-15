@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.2">
-  <zoom_level>10</zoom_level>
+  <zoom_level>13</zoom_level>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>590</x>
-      <y>170</y>
-      <w>30</w>
-      <h>130</h>
+      <x>598</x>
+      <y>156</y>
+      <w>39</w>
+      <h>169</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
@@ -15,10 +15,10 @@
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>590</x>
-      <y>160</y>
-      <w>20</w>
-      <h>20</h>
+      <x>598</x>
+      <y>143</y>
+      <w>26</w>
+      <h>26</h>
     </coordinates>
     <panel_attributes>type=initial</panel_attributes>
     <additional_attributes/>
@@ -26,10 +26,10 @@
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>260</x>
-      <y>110</y>
-      <w>490</w>
-      <h>490</h>
+      <x>169</x>
+      <y>78</y>
+      <w>637</w>
+      <h>637</h>
     </coordinates>
     <panel_attributes>Start der Überwachungskonsole
 
@@ -39,10 +39,10 @@ valign=top</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>530</x>
-      <y>280</y>
-      <w>150</w>
-      <h>60</h>
+      <x>520</x>
+      <y>299</y>
+      <w>195</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>gespeicherte
 Verbindung
@@ -53,10 +53,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>590</x>
-      <y>330</y>
-      <w>30</w>
-      <h>70</h>
+      <x>598</x>
+      <y>364</y>
+      <w>39</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
@@ -64,10 +64,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>580</x>
-      <y>380</y>
-      <w>40</w>
-      <h>40</h>
+      <x>585</x>
+      <y>429</y>
+      <w>52</w>
+      <h>52</h>
     </coordinates>
     <panel_attributes>type=decision</panel_attributes>
     <additional_attributes/>
@@ -75,10 +75,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>270</x>
-      <y>290</y>
-      <w>220</w>
-      <h>60</h>
+      <x>182</x>
+      <y>312</y>
+      <w>286</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>Verbindungseinstellungen
 anzeigen und auf schließen
@@ -89,10 +89,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>340</y>
-      <w>240</w>
-      <h>80</h>
+      <x>299</x>
+      <y>377</y>
+      <w>312</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>[nicht erfolgreich]
 lt=&lt;-</panel_attributes>
@@ -101,25 +101,25 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>590</x>
-      <y>410</y>
-      <w>110</w>
-      <h>80</h>
+      <x>598</x>
+      <y>468</y>
+      <w>143</w>
+      <h>104</h>
     </coordinates>
-    <panel_attributes>[Erfolgreich]
+    <panel_attributes>[erfolgreich]
 lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>490</x>
-      <y>470</y>
-      <w>220</w>
-      <h>50</h>
+      <x>468</x>
+      <y>546</y>
+      <w>286</w>
+      <h>65</h>
     </coordinates>
-    <panel_attributes>Sensorwerte, Verläufe
-und Alarme anzeigen
+    <panel_attributes>Hauptschleife 
+und Alarme
 bg=red
 customelement=
 drawLine(10,height-10,10,height-20)
@@ -132,10 +132,10 @@ drawLine(30,height-20,30,height-10)</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>590</x>
-      <y>560</y>
-      <w>20</w>
-      <h>20</h>
+      <x>598</x>
+      <y>663</y>
+      <w>26</w>
+      <h>26</h>
     </coordinates>
     <panel_attributes>type=flow_final</panel_attributes>
     <additional_attributes/>
@@ -143,10 +143,10 @@ drawLine(30,height-20,30,height-10)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>180</y>
-      <w>260</w>
-      <h>50</h>
+      <x>299</x>
+      <y>169</y>
+      <w>338</w>
+      <h>65</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>240.0;10.0;10.0;10.0;10.0;30.0</additional_attributes>
@@ -154,10 +154,10 @@ drawLine(30,height-20,30,height-10)</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>270</x>
-      <y>210</y>
-      <w>210</w>
-      <h>60</h>
+      <x>182</x>
+      <y>208</y>
+      <w>273</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>veränderte 
 Verbindungseinstellungen
@@ -168,10 +168,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>260</y>
-      <w>30</w>
-      <h>50</h>
+      <x>299</x>
+      <y>273</y>
+      <w>39</w>
+      <h>65</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
@@ -179,10 +179,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>590</x>
-      <y>510</y>
-      <w>30</w>
-      <h>70</h>
+      <x>598</x>
+      <y>598</y>
+      <w>39</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>

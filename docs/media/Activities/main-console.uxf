@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.2">
-  <zoom_level>10</zoom_level>
+  <zoom_level>11</zoom_level>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>480</x>
-      <y>130</y>
-      <w>20</w>
-      <h>20</h>
+      <x>484</x>
+      <y>44</y>
+      <w>22</w>
+      <h>22</h>
     </coordinates>
     <panel_attributes>type=initial</panel_attributes>
     <additional_attributes/>
@@ -15,24 +15,25 @@
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>210</x>
-      <y>70</y>
-      <w>590</w>
-      <h>860</h>
+      <x>187</x>
+      <y>0</y>
+      <w>649</w>
+      <h>968</h>
     </coordinates>
-    <panel_attributes>Hauptprogrammschleife und Alarme der Überwachungskonsole
+    <panel_attributes>Hauptschleife und Alarme der Überwachungskonsole
 valign=top</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>440</x>
-      <y>180</y>
-      <w>100</w>
-      <h>40</h>
+      <x>385</x>
+      <y>110</y>
+      <w>220</w>
+      <h>77</h>
     </coordinates>
-    <panel_attributes>Start
+    <panel_attributes>Start der Überwachungs-
+konsole
 bg=red
 customelement=
 drawLine(10,height-10,10,height-20)
@@ -45,12 +46,12 @@ drawLine(30,height-20,30,height-10)</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>390</x>
-      <y>260</y>
-      <w>190</w>
-      <h>40</h>
+      <x>385</x>
+      <y>231</y>
+      <w>209</w>
+      <h>44</h>
     </coordinates>
-    <panel_attributes>Werte vom OPA UA
+    <panel_attributes>Werte vom OPC UA
 Client abrufen
 bg=red</panel_attributes>
     <additional_attributes/>
@@ -58,10 +59,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>400</x>
-      <y>350</y>
-      <w>180</w>
-      <h>40</h>
+      <x>396</x>
+      <y>330</y>
+      <w>198</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>GUI aktualisieren
 bg=red</panel_attributes>
@@ -70,10 +71,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>500</x>
-      <y>310</y>
-      <w>70</w>
-      <h>20</h>
+      <x>506</x>
+      <y>286</y>
+      <w>77</w>
+      <h>22</h>
     </coordinates>
     <panel_attributes>Werte</panel_attributes>
     <additional_attributes/>
@@ -81,10 +82,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>290</y>
-      <w>30</w>
-      <h>80</h>
+      <x>484</x>
+      <y>264</y>
+      <w>33</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
@@ -92,10 +93,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>400</x>
-      <y>430</y>
-      <w>180</w>
-      <h>40</h>
+      <x>396</x>
+      <y>418</y>
+      <w>198</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>Werte in Verläufen
 eintragen
@@ -105,10 +106,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>380</y>
-      <w>30</w>
-      <h>70</h>
+      <x>484</x>
+      <y>363</y>
+      <w>33</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
@@ -116,10 +117,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>230</x>
-      <y>190</y>
-      <w>110</w>
-      <h>40</h>
+      <x>209</x>
+      <y>154</y>
+      <w>121</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>Alarm
 empfangen
@@ -130,10 +131,10 @@ type=receiver</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>240</x>
-      <y>260</y>
-      <w>100</w>
-      <h>40</h>
+      <x>220</x>
+      <y>231</y>
+      <w>110</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>Ampel rot
 schalten
@@ -143,10 +144,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>220</x>
-      <y>330</y>
-      <w>140</w>
-      <h>40</h>
+      <x>198</x>
+      <y>308</y>
+      <w>154</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>Kreis bei dem
 Wert rot schalten
@@ -156,10 +157,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>270</x>
-      <y>220</y>
-      <w>30</w>
-      <h>60</h>
+      <x>253</x>
+      <y>187</y>
+      <w>33</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -167,10 +168,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>270</x>
-      <y>290</y>
-      <w>30</w>
-      <h>60</h>
+      <x>253</x>
+      <y>264</y>
+      <w>33</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -178,10 +179,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>470</x>
-      <y>500</y>
-      <w>40</w>
-      <h>40</h>
+      <x>473</x>
+      <y>495</y>
+      <w>44</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>type=decision</panel_attributes>
     <additional_attributes/>
@@ -189,22 +190,23 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>530</y>
-      <w>120</w>
-      <h>70</h>
+      <x>484</x>
+      <y>528</y>
+      <w>132</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>[Alarme aus]
+
 lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>410</x>
-      <y>580</y>
-      <w>160</w>
-      <h>40</h>
+      <x>407</x>
+      <y>583</y>
+      <w>176</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>Kreis bei den
 Werten grün schalten
@@ -214,10 +216,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>470</x>
-      <y>650</y>
-      <w>40</w>
-      <h>40</h>
+      <x>473</x>
+      <y>660</y>
+      <w>44</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>type=decision</panel_attributes>
     <additional_attributes/>
@@ -225,22 +227,23 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>680</y>
-      <w>170</w>
-      <h>70</h>
+      <x>484</x>
+      <y>693</y>
+      <w>187</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>[keine Alarme aktiv]
+
 lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>610</y>
-      <w>30</w>
-      <h>60</h>
+      <x>484</x>
+      <y>616</y>
+      <w>33</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -248,10 +251,10 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>270</x>
-      <y>400</y>
-      <w>20</w>
-      <h>20</h>
+      <x>253</x>
+      <y>385</y>
+      <w>22</w>
+      <h>22</h>
     </coordinates>
     <panel_attributes>type=final</panel_attributes>
     <additional_attributes/>
@@ -259,10 +262,10 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>270</x>
-      <y>360</y>
-      <w>30</w>
-      <h>60</h>
+      <x>253</x>
+      <y>341</y>
+      <w>33</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -270,10 +273,10 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>410</x>
-      <y>730</y>
-      <w>160</w>
-      <h>40</h>
+      <x>407</x>
+      <y>748</y>
+      <w>176</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>Ampel grün
 schalten
@@ -283,10 +286,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>680</x>
-      <y>240</y>
-      <w>60</w>
-      <h>600</h>
+      <x>704</x>
+      <y>209</y>
+      <w>66</w>
+      <h>660</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>40.0;10.0;40.0;580.0;10.0;580.0</additional_attributes>
@@ -294,33 +297,33 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>210</y>
-      <w>30</w>
-      <h>70</h>
+      <x>484</x>
+      <y>165</y>
+      <w>33</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>500</x>
-      <y>650</y>
-      <w>240</w>
-      <h>40</h>
+      <x>506</x>
+      <y>660</y>
+      <w>264</w>
+      <h>44</h>
     </coordinates>
-    <panel_attributes>[Immernoch Alarme aktiv]
+    <panel_attributes>[immernoch Alarme aktiv]
 lt=&lt;-</panel_attributes>
     <additional_attributes>220.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>500</x>
-      <y>500</y>
-      <w>240</w>
-      <h>40</h>
+      <x>506</x>
+      <y>495</y>
+      <w>264</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>[Alarme bleiben an]
 lt=&lt;-</panel_attributes>
@@ -329,10 +332,10 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>460</y>
-      <w>30</w>
-      <h>60</h>
+      <x>484</x>
+      <y>451</y>
+      <w>33</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -340,21 +343,21 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>140</y>
-      <w>30</w>
-      <h>60</h>
+      <x>484</x>
+      <y>55</y>
+      <w>33</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLObject</id>
     <coordinates>
-      <x>500</x>
-      <y>400</y>
-      <w>70</w>
-      <h>20</h>
+      <x>506</x>
+      <y>385</y>
+      <w>77</w>
+      <h>22</h>
     </coordinates>
     <panel_attributes>Werte</panel_attributes>
     <additional_attributes/>
@@ -362,10 +365,10 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>610</x>
-      <y>210</y>
-      <w>180</w>
-      <h>40</h>
+      <x>627</x>
+      <y>176</y>
+      <w>198</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>Bis zur nächsten
 Aktualisierung warten
@@ -375,10 +378,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>220</y>
-      <w>150</w>
-      <h>30</h>
+      <x>484</x>
+      <y>187</y>
+      <w>165</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
@@ -386,10 +389,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>470</x>
-      <y>800</y>
-      <w>40</w>
-      <h>40</h>
+      <x>473</x>
+      <y>825</y>
+      <w>44</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>type=decision</panel_attributes>
     <additional_attributes/>
@@ -397,10 +400,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>500</x>
-      <y>800</y>
-      <w>210</w>
-      <h>40</h>
+      <x>506</x>
+      <y>825</y>
+      <w>231</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>[nicht beenden]
 lt=-</panel_attributes>
@@ -409,22 +412,23 @@ lt=-</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>830</y>
-      <w>100</w>
-      <h>70</h>
+      <x>484</x>
+      <y>858</y>
+      <w>110</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>[beenden]
+
 lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>480</x>
-      <y>880</y>
-      <w>20</w>
-      <h>20</h>
+      <x>484</x>
+      <y>924</y>
+      <w>22</w>
+      <h>22</h>
     </coordinates>
     <panel_attributes>type=flow_final</panel_attributes>
     <additional_attributes/>
@@ -432,10 +436,10 @@ lt=&lt;-</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>760</y>
-      <w>30</w>
-      <h>60</h>
+      <x>484</x>
+      <y>781</y>
+      <w>33</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
