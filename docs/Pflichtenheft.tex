@@ -90,6 +90,13 @@ bereitstellen, die mit Hilfe von \gls{OPC UA} die \glspl{Sensordatum} der \gls{P
   \item Die \gls{Fertigungssimulation} mit den \glslink{OPC UA Server}{OPC UA Servern} und die \gls{Uberwachungskonsole} mit den \glspl{OPC UA Client} laufen auf dem selben oder auch auf getrennten Rechnern.
 \end{itemize}
 
+\subsubsection{Fertigungssimulation}
+\begin{itemize}
+  \item Die \gls{Fertigungssimulation} enth\"alt eine schematische Darstellung der simulierten \gls{Produktionsanlage}.
+  \item In der \gls{GUI} der \gls{Fertigungssimulation} kann der Benutzer die simulierte \gls{Produktionsanlage} steuern.
+  \item Die \gls{Fertigungssimulation} aktualisiert die \glspl{Sensordatum} in den \glslink{OPC UA Server}{OPC UA Servern}.
+\end{itemize}
+
 \subsubsection{Überwachungskonsole}
 \begin{itemize}
   \item Die \gls{Uberwachungskonsole} ruft alle \glspl{Sensordatum} der \gls{Fertigungssimulation} in einem festgelegten Zeitintervall
@@ -101,19 +108,20 @@ bereitstellen, die mit Hilfe von \gls{OPC UA} die \glspl{Sensordatum} der \gls{P
   die \glspl{OPC UA Client} gesendet und dem Nutzer graphisch mitgeteilt.
 \end{itemize}
 
-\subsubsection{Fertigungssimulation}
-\begin{itemize}
-  \item Die \gls{Fertigungssimulation} enth\"alt eine schematische Darstellung der simulierten \gls{Produktionsanlage}.
-  \item In der \gls{GUI} der \gls{Fertigungssimulation} kann der Benutzer die simulierte \gls{Produktionsanlage} steuern.
-  \item Die \gls{Fertigungssimulation} aktualisiert die \glspl{Sensordatum} in den \glslink{OPC UA Server}{OPC UA Servern}.
-\end{itemize}
-
 \subsection{Kannkriterien}
 \subsubsection{Allgemein}
 \begin{itemize}
   \item In der \gls{Fertigungssimulation} und der \gls{Uberwachungskonsole} werden Probleme der Programmausf\"uhrung geloggt.
   \item Die Standard-Sprache Englisch kann über \glspl{Java Property Datei} in andere Sprachen übersetzt werden.
   \item Die zu verwendende Sprache ist in der \gls{GUI} einstellbar.
+\end{itemize}
+
+\subsubsection{Fertigungssimulation}
+\begin{itemize}
+  \item Es gibt vordefinierte \glspl{Simulations-Szenario}, die über das Menü gestartet werden können.
+  \item Die \glspl{Simulations-Szenario} werden in eigenen Dateien definiert. Neue \glspl{Simulations-Szenario}
+    werden durch das Einf\"ugen eigener Dateien im entsprechenden Format erstellt.
+  \item \gls{Jitter} in den Zuflussmengen der Tanks sorgt f\"ur Variation in den gemessenen Werten.
 \end{itemize}
 
 \subsubsection{Überwachungskonsole}
@@ -126,20 +134,18 @@ bereitstellen, die mit Hilfe von \gls{OPC UA} die \glspl{Sensordatum} der \gls{P
   \item Es gibt eine Logging-Funktion.
 \end{itemize}
 
-\subsubsection{Fertigungssimulation}
-\begin{itemize}
-  \item Es gibt vordefinierte \glspl{Simulations-Szenario}, die über das Menü gestartet werden können.
-  \item Die \glspl{Simulations-Szenario} werden in eigenen Dateien definiert. Neue \glspl{Simulations-Szenario}
-    werden durch das Einf\"ugen eigener Dateien im entsprechenden Format erstellt.
-  \item \gls{Jitter} in den Zuflussmengen der Tanks sorgt f\"ur Variation in den gemessenen Werten.
-\end{itemize}
-
 \subsection{Abgrenzungskriterien}
 \subsubsection{Allgemein}
 \begin{itemize}
   \item \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} dienen der Demonstration des \glslink{OPC UA}{OPC UA Protokolls}. Dazu wird die Open Source
     Implementierung "`\gls{Milo}"' des \glslink{OPC UA}{OPC UA Protokolls} verwendet. Das \glslink{OPC UA}{OPC UA Protokoll} selbst wird nicht implementiert.
   \item Es werden verschiedene Möglichkeiten des \glslink{OPC UA}{OPC UA Protokolls} aufgezeigt, allerdings wird die kryptografische Sicherheit von \gls{OPC UA} nicht demonstriert.
+\end{itemize}
+
+\subsubsection{Fertigungssimulation}
+\begin{itemize}
+  \item Die \gls{Fertigungssimulation} stellt eine einzelne \gls{Produktionsanlage} schematisch dar. Die Darstellung verschiedener \glspl{Produktionsanlage}
+    ist nicht das Ziel. Eine realistisch-detaillierte Simulation ist nicht das Ziel.
 \end{itemize}
 
 \subsubsection{Überwachungskonsole}
@@ -150,13 +156,6 @@ bereitstellen, die mit Hilfe von \gls{OPC UA} die \glspl{Sensordatum} der \gls{P
   \item Die \gls{Uberwachungskonsole} dient ausschlie{\ss}lich der \"Uberwachung der Daten, die von der \gls{Fertigungssimulation}
     stammen. Sie kann nicht steuernd in die \gls{Fertigungssimulation} eingreifen.
 \end{itemize}
-
-\subsubsection{Fertigungssimulation}
-\begin{itemize}
-  \item Die \gls{Fertigungssimulation} stellt eine einzelne \gls{Produktionsanlage} schematisch dar. Die Darstellung verschiedener \glspl{Produktionsanlage}
-    ist nicht das Ziel. Eine realistisch-detaillierte Simulation ist nicht das Ziel.
-\end{itemize}
-
 
 \newpage
 \section{Produkteinsatz}
