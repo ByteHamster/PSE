@@ -256,7 +256,7 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
     \gls{OPC  UA} kommuniziert.
   \item[FA390] Die \glspl{OPC UA Client} erhalten die \glslink{TCP/IP}{IP-Adresse} des verwendeten Computers,
   die durch die \gls{Uberwachungskonsole} nicht geändert werden kann.
-  \item[FA400] Die \glspl{OPC UA Client} erhalten beim Start die Ports automatisch durch das Betriebssystem.
+  \item[FA400] Die \glspl{OPC UA Client} erhalten beim Start die ausgehenden Ports automatisch durch das Betriebssystem.
   \item[FA410] Beim Start versucht die \gls{Uberwachungskonsole}, eine Verbindung zwischen den \glspl{OPC UA Client} und den \glslink{OPC UA Server}{OPC UA Servern} herzustellen und sich so bei der
     \gls{Fertigungssimulation} zu registrieren.
   \item[FA420] Alle angezeigten \glspl{Sensordatum} werden mit einer festen Frequenz aktualisiert. Dabei fragen die \glspl{OPC UA Client} die Daten der \glspl{OPC UA Server}
@@ -289,7 +289,7 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
   \item[FA690] Der Menüeintrag "`Einstellungen"' öffnet ein separates Fenster.
   \item[FA700] In den Einstellungen werden die \glslink{TCP/IP}{IP-Adresse} der \glslink{OPC UA Client}{OPC UA Clients} und der \gls{OPC UA Server} sowie deren Ports angezeigt. Die Ports und die IP-Adresse
   der \glspl{OPC UA Server} sind konfigurierbar.
-  \item[\textcolor{blue}{*FA720}] In den Einstellungen sind die Ports der \glspl{OPC UA Client} konfigurierbar.
+  \item[\textcolor{blue}{*FA720}] In den Einstellungen sind die ausgehenden Ports der \glspl{OPC UA Client} konfigurierbar.
   \item[FA730] Leere Eingaben für die Ports der \glspl{OPC UA Client} bedeuten, dass diese nicht festgelegt wurden und automatisch durch das Betriebssystem bezogen werden.
   \item[\textcolor{blue}{*FA740}] In den Einstellungen ist es dem Nutzer möglich, die Sprache auszuwählen.
   \item[FA750] Die Standardsprache ist Englisch.
@@ -297,7 +297,7 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
   \item[\textcolor{blue}{*FA770}] Die Aufnahme des zeitlichen Verlaufs jedes Füllstandes und jeder Temperatur ist ein- und ausschaltbar.
   \item[\textcolor{blue}{*FA780}] Der Nutzer kann die verfügbaren Alarme ein- und ausschalten und deren Schwellenwerte festlegen.
   \item[FA790] Die Eingaben in den Einstellungen werden direkt nach der Eingabe auf richtige Formatierung und Einhaltung des Wertebereichs gepr\"uft.
-  \item[FA800] Der Benutzer wird über eine Fehleingabe und die Art des Fehlers informiert.
+  \item[FA800] Der Benutzer wird über eine Fehleingabe informiert.
   \item[FA810] Nach Drücken des Abbruch-Knopfes im Einstellungsfenster bleiben die Einstellungen unverändert. Nach Drücken des Speichern-Knopfes im Einstellungsfenster werden alle vorhandenen
   Einstellungen mit denen aus dem Fenster überschrieben.
   \item[FA830] Werden die Verbindungseinstellungen der \gls{Uberwachungskonsole} für die \glspl{OPC UA Server} oder \glspl{OPC UA Client} überschrieben, werden die \glspl{OPC UA Client} mit den neuen Einstellungen neu gestartet.
@@ -309,6 +309,7 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
 \section{Nichtfunktionale Anforderungen}
 \subsection{Allgemeines}
 \begin{enumerate}
+  \item[NF05] OSIP wird frei unter einer open-source Lizenz veröffentlicht.
   \item[NF10] IP-Adressen müssen gültige IPv4 Adressen oder Hostnamen sein.
   \item[NF20] Ports dürfen Werte im Bereich 1024 bis 61000 annehmen.
   \item[NF30] Wenn sich Werte in der \gls{Fertigungssimulation} ändern, werden die Änderungen spätestens nach der Zeitspanne von 500 Millisekunden (ms) plus dem Aktualisierungsintervall in der \gls{Uberwachungskonsole} angezeigt.
@@ -336,7 +337,7 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
 \section{Produktdaten}
 \begin{enumerate}
   \item[D10] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellte IP-Adresse und Ports der \gls{OPC UA Server}.
-  \item[\textcolor{blue}{*D20}] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellten Ports der \glslink{OPC UA Client}{OPC UA Clients}.
+  \item[\textcolor{blue}{*D20}] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellten ausgehenden Ports der \glslink{OPC UA Client}{OPC UA Clients}.
   \item[\textcolor{blue}{*D30}] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellte Aktualisierungsfrequenz für die \glspl{Sensordatum}.
   \item[\textcolor{blue}{*D40}] Die \gls{Uberwachungskonsole} speichert die zuletzt eingeschalteten Alarme und alle Schwellenwerte.
   \item[\textcolor{blue}{*D50}] Die \gls{Uberwachungskonsole} speichert, welche Verläufe zuletzt angezeigt wurden.
@@ -368,7 +369,7 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
    Die Sprache ist jeweils Englisch (FA330, FA750).
   \item[GT150] \textbf{Einstellung der \gls{Verbindungsinformation} der \gls{Fertigungssimulation}}: Die \gls{Fertigungssimulation} läuft. Die Ports für die \gls{OPC UA Server} werden neu eingestellt (FA60). Eine auf die
    alten Ports eingestellte \gls{Uberwachungskonsole} erhält zunächst keine \glspl{Sensordatum} mehr. Nach Einstellung der \gls{Uberwachungskonsole} auf die neuen Ports (FA700, FA810, FA820) und leeren Eingaben für die Ports der \glspl{OPC UA Client}, die somit automatisch bezogen werden (FA730), werden die \glspl{Sensordatum} wieder abgerufen (FA830).
-  \item[GT160] \textbf{Einstellung der \glspl{Verbindungsinformation} der \gls{Uberwachungskonsole}}: Die \gls{Fertigungssimulation} läuft und die \gls{Uberwachungskonsole} ist bei dieser registriert. Die Ports der
+  \item[GT160] \textbf{Einstellung der \glspl{Verbindungsinformation} der \gls{Uberwachungskonsole}}: Die \gls{Fertigungssimulation} läuft und die \gls{Uberwachungskonsole} ist bei dieser registriert. Die ausgehenden Ports der
    \glspl{OPC UA Client} werden in der \gls{Uberwachungskonsole} zwei Mal neu eingestellt (FA720). Beim ersten Mal erfolgt die Einstellung mit nicht belegten Ports. Nach Schließen der Einstellungen werden daher immer noch \glspl{Sensordatum} empfangen. Bei der zweiten Einstellung ist mindestens ein Port belegt, sodass es zu einer Fehlermeldung kommt (FA840), die geloggt wird (FA460) und in der Loggingkonsole angezeigt wird (FA670).
   \item[GT170] \textbf{Umstellung der Sprache}: Alle verfügbaren Sprachen in der \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} werden nacheinander eingestellt (FA320, FA740) und von der \gls{GUI} übernommen.
   \item[GT180] \textbf{Einstellung der \glspl{Sensordatum} mit Messung des zeitlichen Verlaufs}: Die \gls{Fertigungssimulation} läuft und die \gls{Uberwachungskonsole} ist bei dieser mit einer
