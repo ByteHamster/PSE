@@ -222,22 +222,19 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
   \item[FA130] Die \gls{GUI} der \gls{Fertigungssimulation} zeigt drei Flüssigkeitstanks, die auf einer Höhe sind, und einen weiteren Flüssigkeitstank unter den oberen drei.
     Es führen Leitungen von den drei oberen Tanks zum unteren Tank.
   \item[FA140] An jeder Leitung befinden sich ein Ventil sowie ein Durchflussmesser, dargestellt in Form eines sich drehenden Elements. Der Öffnungsgrad des Ventils wird prozentual auf dem Ventil angezeigt.
-  \item[FA150] Die Zu- und Abflussmengen der oberen Tanks können separat eingestellt werden.
-  \item[FA160] Die Abflussmenge des unteren Tanks kann eingestellt werden. Die Zuflussmenge ergibt sich aus der Summe der Abflussmengen der oberen Tanks.
+  \item[FA150] Die Zu- und Abflussmengen der oberen Tanks, sowie die Abflussmenge des unteren Tanks können separat eingestellt werden. Die Zuflussmenge ergibt sich aus der Summe der Abflussmengen der oberen Tanks.
   \item[FA170] Jedem der oberen Tanks ist eine feste Flüssigkeitsfarbe zugeordnet. Die Farbe des unteren Tanks ergibt sich aus dem Mischungsverhältnis der oberen Tanks. Dabei wird
 	angenommen, dass die Flüssigkeiten der oberen Tanks die selbe Deckkraft haben.
   \item[FA180] Der linke obere Tank wird mit roter, der mittlere mit grüner und der rechte mit blauer Flüssigkeit gefüllt.
-  \item[FA190] Die Füllstände der Tanks werden gemessen.
-  \item[FA200] Der Füllstand der Tanks wird durch das Füllen der Tanks in der Farbe ihrer Flüssigkeit dargestellt.
-  \item[FA210] Der untere Tank enthält einen motorbetriebenen Mischer, dessen Drehzahl eingestellt werden kann.
-  \item[FA220] Der Mischer im unteren Tank wird durch ein sich drehendes \gls{GUI} Element dargestellt.
+  \item[FA190] Die Füllstände der Tanks werden gemessen. Der Füllstand der Tanks wird durch das Füllen der Tanks in der Farbe ihrer Flüssigkeit dargestellt.
+  \item[FA210] Der untere Tank enthält einen motorbetriebenen Mischer, dessen Drehzahl eingestellt werden kann. Dieser wird durch ein sich drehendes \gls{GUI} Element dargestellt.
     Die Umdrehungsgeschwindigkeit repräsentiert die Drehzahl des Mischermotors.
   \item[\textcolor{blue}{*FA230}] An jedem Tank ist ein Temperatursensor angebracht.
   \item[\textcolor{blue}{*FA240}] Die Zuflusstemperaturen der oberen Tanks können separat eingestellt werden.
   \item[FA250] Jeder der dargestellten Tanks ist mit einer hellgrauen Box hinterlegt, welche den Zuständigkeitsbereich des jeweiligen \glslink{OPC UA Server}{OPC UA Servers} repräsentiert.
   \item[FA260] Kommt es in der \gls{Fertigungssimulation} zu einem \"Uberlauf, so h\"alt die \gls{Fertigungssimulation} an
-  und es wird ein Dialog mit dem Text "`\"Uberlauf"' angezeigt.
-  \item[FA270] Das System wird aus einem "`\"Uberlauf"' durch den Knopf "`Zur\"ucksetzen"' im gezeigten Dialog wieder in den Startzustand versetzt. Anschlie{\ss}end wird die Ausführung fortgesetzt.	
+  und es wird ein Dialog mit dem Text "`\"Uberlauf"' angezeigt. Durch den Knopf "`Zur\"ucksetzen"' im Dialog wird das System wieder in den Startzustand versetzt.
+  Anschlie{\ss}end wird die Ausführung fortgesetzt.
   \item[FA280] Die \gls{Fertigungssimulation} besitzt einen "`Über"'-Dialog, welcher Lizenzinformationen zu verwendeten Bibliotheken
     sowie eine kurze Information zu den Erstellern des Programms, enthält.
   \item[\textcolor{blue}{*FA290}] Der Menüeintrag "`Szenarien"' zeigt eine Liste der \glspl{Simulations-Szenario}, die durch einen Klick gestartet werden können.
@@ -277,30 +274,23 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
 \begin{enumerate}
   \item[FA470] Die \gls{Uberwachungskonsole} stellt die \glspl{Sensordatum} und Alarme jedes Flüssigkeitsanks in einem eigenen Bereich dar.
   \item[FA480] Die \gls{Uberwachungskonsole} zeigt die Farbe der Tanks an.
-  \item[FA490] Die \gls{Uberwachungskonsole} zeigt die Zuflussmenge der oberen Tanks auf jeweils einer Skala an.
-  \item[FA500] Die \gls{Uberwachungskonsole} zeigt die Abflussmenge aller Tanks auf jeweils einer Skala an.
+  \item[FA490] Die \gls{Uberwachungskonsole} zeigt die Zuflussmenge der oberen Tanks und die Abflussmenge aller Tanks auf jeweils einer Skala an.
   \item[FA510] Die \gls{Uberwachungskonsole} zeigt den Füllstand aller Tanks auf jeweils einer Skala an.
   \item[\textcolor{blue}{*FA520}] Die \gls{Uberwachungskonsole} zeigt die Temperatur aller Tanks auf jeweils einer Skala an.
   \item[FA530] Die \gls{Uberwachungskonsole} zeigt die Drehzahl des Mischermotors im unteren Tank auf einer Skala an.
-  \item[FA540] Der zeitliche Verlauf des Füllstandes wird jeweils für alle Tanks angezeigt.
-  \item[FA550] Der zeitliche Verlauf der Temperatur wird jeweils für alle Tanks angezeigt.
-  \item[FA560] Die \gls{Uberwachungskonsole} registriert für jeden Tank jeweils einen Alarm für einen Überlauf.
-  \item[FA570] Die \gls{Uberwachungskonsole} registriert für jeden Tank jeweils einen Alarm für einen Unterlauf.
-  \item[FA580] Ein Alarm wird durch einen Bezeichner und einen Kreis als Zustandssymbol dargestellt.
-  \item[FA590] Ist der Kreis rot, wurde der Alarm ausgelöst.
-  \item[FA600] Ist der Kreis grün, wurde der Alarm nicht ausgelöst.
+  \item[FA540] Der zeitliche Verlauf des Füllstandes und der Temperatur wird jeweils für alle Tanks angezeigt.
+  \item[FA560] Die \gls{Uberwachungskonsole} registriert für jeden Tank jeweils einen Alarm für einen Überlauf und für einen Unterlauf.
+  \item[FA580] Ein Alarm wird durch einen Bezeichner und einen Kreis als Zustandssymbol dargestellt. Ist der Kreis rot, wurde der Alarm ausgelöst, ist er grün, wurde der Alarm nicht ausgelöst.
   \item[\textcolor{blue}{*FA610}] Der Benutzer kann die Schwellenwerte der Alarme direkt in der Anzeige [FA580] ändern.
   \item[FA620] Der Benutzer wird über einen Dialog und durch einen roten Kreis der Anzeige des entsprechenden Alarms direkt benachrichtigt, wenn der Alarm ausgelöst wurde.
   \item[FA630] Ein Alarm wird als ausgelöst angezeigt nachdem die \gls{Uberwachungskonsole} durch die \gls{Fertigungssimulation} \"uber den Alarm informiert wurde. Die Anzeige besteht, bis der Alarm in der
     \gls{Fertigungssimulation} nicht mehr aktiv ist und die \gls{Uberwachungskonsole} mit der nächsten Aktualisierung der \glspl{Sensordatum} über das Ende informiert wurde.
-  \item[FA640] Es gibt eine zweistufige Ampel für den allgemeinen Zustand der \gls{Uberwachungskonsole}.
-  \item[FA650] Ist die Ampel rot, wurde mindestens ein Alarm ausgelöst.
-  \item[FA660] Ist die Ampel grün, wurde kein Alarm ausgelöst.
+  \item[FA640] Es gibt eine zweistufige Ampel für den allgemeinen Zustand der \gls{Uberwachungskonsole}. Ist die Ampel rot, wurde mindestens ein Alarm ausgelöst, ist sie grün, wurde kein Alarm ausgelöst.
   \item[\textcolor{blue}{*FA670}] Es gibt eine Loggingkonsole in Form einer mehrzeiligen Textausgabe, die die geloggten Ereignisse der \gls{Uberwachungskonsole} ausgibt.
   \item[FA680] Der Menüeintrag "`Über"' öffnet ein neues Fenster, in dem der Programmname, die Version, das Programmsymbol und die Lizenz einschließlich der Lizenzen verwendeter Bibliotheken angezeigt werden.
   \item[FA690] Der Menüeintrag "`Einstellungen"' öffnet ein separates Fenster.
-  \item[FA700] In den Einstellungen werden die \glslink{TCP/IP}{IP-Adresse} der \glslink{OPC UA Client}{OPC UA Clients} und der \gls{OPC UA Server} sowie deren Ports angezeigt.
-  \item[FA710] In den Einstellungen sind die Ports und die IP-Adresse der \glspl{OPC UA Server} konfigurierbar.
+  \item[FA700] In den Einstellungen werden die \glslink{TCP/IP}{IP-Adresse} der \glslink{OPC UA Client}{OPC UA Clients} und der \gls{OPC UA Server} sowie deren Ports angezeigt. Die Ports und die IP-Adresse
+  der \glspl{OPC UA Server} sind konfigurierbar.
   \item[\textcolor{blue}{*FA720}] In den Einstellungen sind die Ports der \glspl{OPC UA Client} konfigurierbar.
   \item[FA730] Leere Eingaben für die Ports der \glspl{OPC UA Client} bedeuten, dass diese nicht festgelegt wurden und automatisch durch das Betriebssystem bezogen werden.
   \item[\textcolor{blue}{*FA740}] In den Einstellungen ist es dem Nutzer möglich, die Sprache auszuwählen.
@@ -310,8 +300,8 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
   \item[\textcolor{blue}{*FA780}] Der Nutzer kann die verfügbaren Alarme ein- und ausschalten und deren Schwellenwerte festlegen.
   \item[FA790] Die Eingaben in den Einstellungen werden direkt nach der Eingabe auf richtige Formatierung und Einhaltung des Wertebereichs gepr\"uft.
   \item[FA800] Der Benutzer wird über eine Fehleingabe und die Art des Fehlers informiert.
-  \item[FA810] Nach Drücken des Abbruch-Knopfes im Einstellungsfenster bleiben die Einstellungen unverändert.
-  \item[FA820] Nach Drücken des Speichern-Knopfes im Einstellungsfenster werden alle vorhandenen Einstellungen mit denen aus dem Fenster überschrieben.
+  \item[FA810] Nach Drücken des Abbruch-Knopfes im Einstellungsfenster bleiben die Einstellungen unverändert. Nach Drücken des Speichern-Knopfes im Einstellungsfenster werden alle vorhandenen
+  Einstellungen mit denen aus dem Fenster überschrieben.
   \item[FA830] Werden die Verbindungseinstellungen der \gls{Uberwachungskonsole} für die \glspl{OPC UA Server} oder \glspl{OPC UA Client} überschrieben, werden die \glspl{OPC UA Client} mit den neuen Einstellungen neu gestartet.
   \item[FA840] Schlägt die Verbindung zischen den \glspl{OPC UA Client} und \glslink{OPC UA Server}{OPC UA Servern} fehl oder verliert mindestens ein \gls{OPC UA Client} die Verbindung zu seinem \gls{OPC UA Server}, wird
     der Benutzer über einen Dialog informiert und das Einstellungsfenster zur Eingabe der \gls{IP-Adresse} und Ports der \glspl{OPC UA Server} öffnet sich.
@@ -333,15 +323,13 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
   \item[NF60] Die Drehzahl des Mischermotors kann vom Benutzer in einem Bereich zwischen 0 und 300 Umdrehungen pro Minute gewählt werden.
   \item[NF70] Standardmäßig hat der Mischermotor 250 Umdrehungen pro Minute.
   \item[NF80] Die Tanks haben ein Füllvermögen von 100 Litern.
-  \item[NF90] Der Zu- und Abfluss der oberen Tanks liegt zwischen 0 und 10 Litern pro Sekunde.
-  \item[NF100] Der Zu- und Abfluss des unteren Tanks liegt zwischen 0 und 30 Litern pro Sekunde.
+  \item[NF90] Der Zu- und Abfluss der oberen Tanks liegt zwischen 0 und 10 Litern pro Sekunde. Der Zu- und Abfluss des unteren Tanks liegt zwischen 0 und 30 Litern pro Sekunde.
 \end{enumerate}
 
 \subsection{Überwachungskonsole}
 \begin{enumerate}
-  \item[\textcolor{blue}{*NF110}] Die Schwellenwerte für die Alarme dürfen zwischen 0 und 100 \% gewählt werden.
-  \item[NF120] Standardmäßig liegt der Schwellenwert für einen Überlauf bei 95 \%.
-  \item[NF130] Standardmäßig liegt der Schwellenwert für einen Unterlauf bei 5 \%.
+  \item[\textcolor{blue}{*NF110}] Die Schwellenwerte für die Alarme dürfen zwischen 0 und 100 \% gewählt werden. Standardmäßig liegt der Schwellenwert für einen Überlauf bei
+  95 \% und der Schwellenwert für einen Unterlauf bei 5 \%.
   \item[\textcolor{blue}{*NF140}] Die Aktualisierungsfrequenz kann vom Benutzer im Bereich zwischen 100 und 4000 ms gewählt werden.
   \item[NF150] Standardmäßig liegt die Aktualisierungsfrequenz bei 1000 ms.
 \end{enumerate}
@@ -376,23 +364,23 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
   \item[GT130] \textbf{Test der \glspl{Dockerimage}}: Das \gls{Dockerimage} der \gls{Fertigungssimulation} (FA20) und im Anschluss das der \gls{Uberwachungskonsole} (FA360) werden gestartet. Beide besitzen unterschiedliche \glspl{IP-Adresse}.
   \item[GT140] \textbf{Vollständigkeit der \glspl{GUI}}: Nach dem ersten Öffnen der \gls{Fertigungssimulation} und der \gls{Uberwachungskonsole} enthalten die Fenster alle Anzeigen
    entsprechend FA40, FA130, FA140, FA170 - FA230, FA250 für die \gls{Fertigungssimulation} und
-   FA470 - FA600, FA640 - FA670 für die \gls{Uberwachungskonsole}.
+   FA470 - FA580, FA640 - FA670 für die \gls{Uberwachungskonsole}.
    Außerdem beinhalten der "`Über"'- und "`Einstellungen"'-Dialog der \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} alle Elemente entsprechend
-   FA280, FA300 - FA340 für die \gls{Fertigungssimulation} und FA680 - FA720, FA740 - FA780, FA810, FA820 für die \gls{Uberwachungskonsole}.
+   FA280, FA300 - FA340 für die \gls{Fertigungssimulation} und FA680 - FA720, FA740 - FA780, FA810 für die \gls{Uberwachungskonsole}.
    Die Sprache ist jeweils Englisch (FA330, FA750).
   \item[GT150] \textbf{Einstellung der \gls{Verbindungsinformation} der \gls{Fertigungssimulation}}: Die \gls{Fertigungssimulation} läuft. Die Ports für die \gls{OPC UA Server} werden neu eingestellt (FA60). Eine auf die
-   alten Ports eingestellte \gls{Uberwachungskonsole} erhält zunächst keine \glspl{Sensordatum} mehr. Nach Einstellung der \gls{Uberwachungskonsole} auf die neuen Ports (FA710, FA810, FA820) und leeren Eingaben für die Ports der \glspl{OPC UA Client}, die somit automatisch bezogen werden (FA730), werden die \glspl{Sensordatum} wieder abgerufen (FA830).
+   alten Ports eingestellte \gls{Uberwachungskonsole} erhält zunächst keine \glspl{Sensordatum} mehr. Nach Einstellung der \gls{Uberwachungskonsole} auf die neuen Ports (FA700, FA810, FA820) und leeren Eingaben für die Ports der \glspl{OPC UA Client}, die somit automatisch bezogen werden (FA730), werden die \glspl{Sensordatum} wieder abgerufen (FA830).
   \item[GT160] \textbf{Einstellung der \glspl{Verbindungsinformation} der \gls{Uberwachungskonsole}}: Die \gls{Fertigungssimulation} läuft und die \gls{Uberwachungskonsole} ist bei dieser registriert. Die Ports der
    \glspl{OPC UA Client} werden in der \gls{Uberwachungskonsole} zwei Mal neu eingestellt (FA720). Beim ersten Mal erfolgt die Einstellung mit nicht belegten Ports. Nach Schließen der Einstellungen werden daher immer noch \glspl{Sensordatum} empfangen. Bei der zweiten Einstellung ist mindestens ein Port belegt, sodass es zu einer Fehlermeldung kommt (FA840), die geloggt wird (FA460) und in der Loggingkonsole angezeigt wird (FA670).
   \item[GT170] \textbf{Umstellung der Sprache}: Alle verfügbaren Sprachen in der \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} werden nacheinander eingestellt (FA320, FA740) und von der \gls{GUI} übernommen.
   \item[GT180] \textbf{Einstellung der \glspl{Sensordatum} mit Messung des zeitlichen Verlaufs}: Die \gls{Fertigungssimulation} läuft und die \gls{Uberwachungskonsole} ist bei dieser mit einer
    Aktualisierungsfrequenz von 500 ms registriert. Nacheinander werden die Werte für die Zuflussmengen der oberen Tanks (FA150), die Abflussmengen und
-   Temperaturen aller Tanks (FA150, FA160, FA240) sowie die Drehzahl des Mischermotors (FA210) in der \gls{Fertigungssimulation} neu eingestellt (FA300, FA340) und wieder auf ihren Standardwert zurückgesetzt.
+   Temperaturen aller Tanks (FA150, FA240) sowie die Drehzahl des Mischermotors (FA210) in der \gls{Fertigungssimulation} neu eingestellt (FA300, FA340) und wieder auf ihren Standardwert zurückgesetzt.
    Alle Veränderungen werden in der \gls{Uberwachungskonsole} innerhalb von 1000 ms (NF30) angezeigt. Ebenfalls werden über die Zeit die Änderungen der Füllstände und
-   Temperaturen korrekt aufgezeichnet und dargestellt (FA540, FA550).
+   Temperaturen korrekt aufgezeichnet und dargestellt (FA540).
   \item[GT190] \textbf{Auslösen der Alarme}: Die \gls{Fertigungssimulation} läuft und die \gls{Uberwachungskonsole} ist bei dieser mit einer Aktualisierungsfrequenz von 4000 ms registriert.
-   Nacheinander werden die Alarme für die Überläufe und Unterläufe in der \gls{Fertigungssimulation} ausgelöst, indem die Tanks voll bzw. leer laufen. Nach jedem Überlauf muss die \gls{Fertigungssimulation} zurückgesetzt werden (FA260, FA270).
-   Die ausgelösten Alarme werden direkt in der \gls{Uberwachungskonsole} angezeigt (FA90, FA430, FA440, FA460, FA560, FA570, FA590, FA600, FA620 - FA670).
+   Nacheinander werden die Alarme für die Überläufe und Unterläufe in der \gls{Fertigungssimulation} ausgelöst, indem die Tanks voll bzw. leer laufen. Nach jedem Überlauf muss die \gls{Fertigungssimulation} zurückgesetzt werden (FA260).
+   Die ausgelösten Alarme werden direkt in der \gls{Uberwachungskonsole} angezeigt (FA90, FA430, FA440, FA460, FA560, FA580, FA620 - FA670).
   \item[GT200] \textbf{Einstellung des \glslink{Jitter}{Jitters}}: Die \gls{Fertigungssimulation} läuft und die \gls{Uberwachungskonsole} ist bei dieser registriert.
    Der \gls{Jitter} wird in der \gls{Fertigungssimulation} auf die Werte 0, 10 und 20 gesetzt und für eine Minute in diesem Zustand gelassen (FA110, FA310). In diesem Zeitraum sind die Auswirkungen
    in der \gls{Fertigungssimulation} und insbesondere in der \gls{Uberwachungskonsole} beobachtbar.
