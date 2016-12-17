@@ -706,8 +706,10 @@ Die \glspl{OPC UA Client} sind bei je genau einem \gls{OPC UA Server} registrier
 aufgefordert werden, die Daten von ihrem jeweiligen \gls{OPC UA Server} ab. Sie k\"onnen bei ihrem \gls{OPC UA Server} Alarme registrieren und diese
 dann empfangen. Die \glspl{OPC UA Client} stellen der \gls{Uberwachungskonsole} Daten bereit.
 
-Die \gls{Uberwachungskonsole} verwendet mehrere \glspl{OPC UA Client}, um \"uber diese und die \glspl{OPC UA Server} Daten von der
-\gls{Fertigungssimulation} zu erhalten. \"Uber sie werden die \glspl{OPC UA Client} indirekt gesteuert. In der \gls{Uberwachungskonsole} kann der Benutzer Alarme
+Die \gls{Uberwachungskonsole} verwendet vier \glspl{OPC UA Client}, um \"uber diese und die \glspl{OPC UA Server} Daten von der
+\gls{Fertigungssimulation} zu erhalten. \"Uber die \gls{Uberwachungskonsole} werden die \glspl{OPC UA Client} indirekt gesteuert.
+Es werden intern vier \glspl{OPC UA Client} benutzt, da jeder der Clients nur mit einem einzelnen Endpunkt kommunizieren kann.
+In der \gls{Uberwachungskonsole} kann der Benutzer Alarme
 f\"ur die \glspl{OPC UA Client} registrieren und angeben, welche Daten von den \glslink{OPC UA Server}{OPC UA Servern} abgefragt werden sollen. Die Daten und Alarme, die
 die \gls{Uberwachungskonsole} von den \glspl{OPC UA Client} erh\"alt, stellt sie graphisch dar.
 
