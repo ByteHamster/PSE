@@ -55,7 +55,7 @@ Benutzeroberfläche (\gls{GUI}) enthalten und auf getrennten Computern laufen k�
 In der GUI der \gls{Fertigungssimulation} wird eine \gls{Produktionsanlage} dargestellt.
 Drei Tanks werden mit je einer farbigen Flüssigkeit gefüllt. Die Flüssigkeiten werden über Rohre in einen weiteren Tank geleitet,
 in dem diese dann durch einen Motor gemischt werden. Daten und Werte der \gls{Produktionsanlage} werden ebenfalls angezeigt.
-Dazu gibt es die Möglichkeit, die Parameter der \gls{Produktionsanlage} zu konfigurieren. Dies geschieht beispielsweise dadurch, dass man
+Dazu gibt es die Möglichkeit, die \glspl{Prozessvariable} der \gls{Produktionsanlage} zu konfigurieren. Dies geschieht beispielsweise dadurch, dass man
 Zu- und Abflussmengen einstellt. Die visuelle Darstellung passt sich an die Konfiguration an.
 
 Die \gls{Uberwachungskonsole} liest die Daten der \gls{Fertigungssimulation}, stellt sie optisch ansprechend dar und kann Alarme
@@ -64,7 +64,7 @@ und hat keinen Einfluss auf die \gls{Fertigungssimulation}.
 
 Dieser Zusammenhang ist in der Systemskizze verdeutlicht. Links ist die \gls{Fertigungssimulation} bzw. ihre \gls{GUI} skizziert.
 Dar\"uber wird die Simulation gesteuert. Darunter sind die vier verschiedenen \glspl{OPC UA Server} (S) angedeutet.
-Rechts ist die \gls{Uberwachungskonsole} zu sehen. Unter ihr und zu ihr geh\"orend sind die vier \glspl{OPC UA Client}.
+Rechts ist die \gls{Uberwachungskonsole} zu sehen. Unter ihr und zu ihr geh\"orend sind die vier \glspl{OPC UA Client} (C).
 Der Doppelpfeil zwischen den \glslink{OPC UA Server}{OPC UA Servern} und \glspl{OPC UA Client} verdeutlicht, dass die Kommunikation
 zwischen den beiden Programmen ausschließlich auf dieser Ebene abl\"auft.
 
@@ -76,18 +76,25 @@ zwischen den beiden Programmen ausschließlich auf dieser Ebene abl\"auft.
 
 \pagebreak
 \section{Zielbestimmung}
-Der \gls{Systemadapter} dient dem Ziel, die Funktion von \gls{OPC UA} zu demonstrieren, ohne eine konkrete \gls{Produktionsanlage}
-benutzen zu müssen. Somit kann beim Kunden das Protokoll flexibler vorgestellt werden. Hierzu soll das Programm
+OSIP dient dem Ziel, die Funktion von \gls{OPC UA} zu demonstrieren, ohne eine konkrete \gls{Produktionsanlage}
+benutzen zu müssen. Somit kann beim Kunden das Protokoll flexibler vorgestellt werden. Hierzu soll OSIP
 sowohl eine \gls{Produktionsanlage} simulieren und deren Status graphisch darstellen, als auch auch eine \gls{Uberwachungskonsole}
 bereitstellen, die mit Hilfe von \gls{OPC UA} die \glspl{Sensordatum} der \gls{Produktionsanlage} abfragt.\\
 
 \subsection{Musskriterien}
 \subsubsection{Allgemein}
 \begin{itemize}
-  \item Die verwendete \gls{Produktionsanlage} ist ein chemischer Produktionsprozess mit vier Tanks und Flüssigkeiten, die darin gemischt werden.
+  \item Die simulierte \gls{Produktionsanlage} ist ein chemischer Produktionsprozess mit vier Tanks und Flüssigkeiten, die darin gemischt werden.
   \item Die Kommunikation zwischen \gls{Uberwachungskonsole} und \gls{Fertigungssimulation} findet ausschließlich \"uber
   \glspl{OPC UA Server} auf Seiten der \gls{Fertigungssimulation} und \glspl{OPC UA Client} auf Seiten der \gls{Uberwachungskonsole} statt.
-  \item Die \gls{Fertigungssimulation} mit den \glslink{OPC UA Server}{OPC UA Servern} und die \gls{Uberwachungskonsole} mit den \glspl{OPC UA Client} laufen auf dem selben oder auch auf getrennten Rechnern.
+  \item Die \gls{Fertigungssimulation} mit den \glslink{OPC UA Server}{OPC UA Servern} und die \gls{Uberwachungskonsole} mit den \glspl{OPC UA Client} ist auf dem selben oder auch auf getrennten Rechnern lauffähig.
+\end{itemize}
+
+\subsubsection{Fertigungssimulation}
+\begin{itemize}
+  \item Die \gls{Fertigungssimulation} enth\"alt eine schematische Darstellung der simulierten \gls{Produktionsanlage}.
+  \item In der \gls{GUI} der \gls{Fertigungssimulation} kann der Benutzer die simulierte \gls{Produktionsanlage} steuern.
+  \item Die \gls{Fertigungssimulation} aktualisiert die \glspl{Sensordatum} in den \glslink{OPC UA Server}{OPC UA Servern}.
 \end{itemize}
 
 \subsubsection{Überwachungskonsole}
@@ -101,19 +108,20 @@ bereitstellen, die mit Hilfe von \gls{OPC UA} die \glspl{Sensordatum} der \gls{P
   die \glspl{OPC UA Client} gesendet und dem Nutzer graphisch mitgeteilt.
 \end{itemize}
 
-\subsubsection{Fertigungssimulation}
-\begin{itemize}
-  \item Die \gls{Fertigungssimulation} enth\"alt eine schematische Darstellung der simulierten \gls{Produktionsanlage}.
-  \item In der \gls{GUI} der \gls{Fertigungssimulation} kann der Benutzer die simulierte \gls{Produktionsanlage} steuern.
-  \item Die \gls{Fertigungssimulation} aktualisiert die \glspl{Sensordatum} in den \glslink{OPC UA Server}{OPC UA Servern}.
-\end{itemize}
-
 \subsection{Kannkriterien}
 \subsubsection{Allgemein}
 \begin{itemize}
   \item In der \gls{Fertigungssimulation} und der \gls{Uberwachungskonsole} werden Probleme der Programmausf\"uhrung geloggt.
   \item Die Standard-Sprache Englisch kann über \glspl{Java Property Datei} in andere Sprachen übersetzt werden.
   \item Die zu verwendende Sprache ist in der \gls{GUI} einstellbar.
+\end{itemize}
+
+\subsubsection{Fertigungssimulation}
+\begin{itemize}
+  \item Es gibt vordefinierte \glspl{Simulations-Szenario}, die über das Menü gestartet werden können.
+  \item Die \glspl{Simulations-Szenario} werden in eigenen Dateien definiert. Neue \glspl{Simulations-Szenario}
+    werden durch das Einf\"ugen eigener Dateien im entsprechenden Format erstellt.
+  \item \gls{Jitter} in den Zuflussmengen der Tanks sorgt f\"ur Variation in den gemessenen Werten.
 \end{itemize}
 
 \subsubsection{Überwachungskonsole}
@@ -126,20 +134,18 @@ bereitstellen, die mit Hilfe von \gls{OPC UA} die \glspl{Sensordatum} der \gls{P
   \item Es gibt eine Logging-Funktion.
 \end{itemize}
 
-\subsubsection{Fertigungssimulation}
-\begin{itemize}
-  \item Es gibt vordefinierte \glspl{Simulations-Szenario}, die über das Menü gestartet werden können.
-  \item Die \glspl{Simulations-Szenario} werden in eigenen Dateien definiert. Neue \glspl{Simulations-Szenario}
-    werden durch das Einf\"ugen eigener Dateien im entsprechenden Format erstellt.
-  \item \gls{Jitter} in den Zuflussmengen der Tanks sorgt f\"ur Variation in den gemessenen Werten.
-\end{itemize}
-
 \subsection{Abgrenzungskriterien}
 \subsubsection{Allgemein}
 \begin{itemize}
   \item \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} dienen der Demonstration des \glslink{OPC UA}{OPC UA Protokolls}. Dazu wird die Open Source
     Implementierung "`\gls{Milo}"' des \glslink{OPC UA}{OPC UA Protokolls} verwendet. Das \glslink{OPC UA}{OPC UA Protokoll} selbst wird nicht implementiert.
   \item Es werden verschiedene Möglichkeiten des \glslink{OPC UA}{OPC UA Protokolls} aufgezeigt, allerdings wird die kryptografische Sicherheit von \gls{OPC UA} nicht demonstriert.
+\end{itemize}
+
+\subsubsection{Fertigungssimulation}
+\begin{itemize}
+  \item Die \gls{Fertigungssimulation} stellt eine einzelne \gls{Produktionsanlage} schematisch dar. Die Darstellung verschiedener \glspl{Produktionsanlage}
+    ist nicht das Ziel. Eine realistisch-detaillierte Simulation ist nicht das Ziel.
 \end{itemize}
 
 \subsubsection{Überwachungskonsole}
@@ -151,18 +157,11 @@ bereitstellen, die mit Hilfe von \gls{OPC UA} die \glspl{Sensordatum} der \gls{P
     stammen. Sie kann nicht steuernd in die \gls{Fertigungssimulation} eingreifen.
 \end{itemize}
 
-\subsubsection{Fertigungssimulation}
-\begin{itemize}
-  \item Die \gls{Fertigungssimulation} stellt eine einzelne \gls{Produktionsanlage} schematisch dar. Die Darstellung verschiedener \glspl{Produktionsanlage}
-    ist nicht das Ziel. Eine realistisch-detaillierte Simulation ist nicht das Ziel.
-\end{itemize}
-
-
 \newpage
 \section{Produkteinsatz}
 \subsection{Anwendungsbereiche}
-Das Produkt wird verwendet, um \gls{OPC UA} und dessen Möglichkeiten zu präsentieren.
-Insbesondere soll es einfacher aufzubauen und zu zeigen sein als reale \glspl{Fertigungssimulation}.
+OSIP wird verwendet, um \gls{OPC UA} und dessen Möglichkeiten zu präsentieren.
+Insbesondere soll es einfacher aufzubauen und zu zeigen sein als physische Modelle.
 Dies kann zum Beispiel auf Messen oder direkt bei potenziellen Kunden geschehen.
 
 \subsection{Zielgruppen}
@@ -175,13 +174,13 @@ Die potenziellen Anwender haben meist keine Erfahrung mit \gls{OPC UA}, sind abe
 die von \gls{OPC UA} profitieren würden.
 
 \subsection{Betriebsbedingungen}
-Das Produkt kann auf Messen, in Büros oder in Fertigungshallen direkt bei Kunden verwendet werden,
+OSIP kann auf Messen, in Büros oder in Fertigungshallen direkt bei Kunden verwendet werden,
 so lange die eingesetzte Hardware (siehe \ref{Hardware}) keine Probleme mit den Umgebungsbedingungen hat.
 
 \pagebreak
 \section{Produktumgebung}
 \subsection{Software}
-Das Produkt erfordert einen Computer, auf dem das Betriebssystem Microsoft Windows 10, Canonical Ubuntu 16.04 oder Linux Mint 18 installiert ist.
+OSIP erfordert einen Computer, auf dem das Betriebssystem Microsoft Windows 10 oder Canonical Ubuntu 16.04 installiert ist.
 Außerdem ist das Oracle Java Runtime Environment in Version 1.8
 notwendig. Wenn die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} auf unterschiedlichen Computern laufen,
 ist eine \gls{TCP/IP} Verbindung mit einer Bandbreite von 100 MBit/s und einer Latenz von maximal 100 ms zwischen den Computern notwendig.
@@ -229,8 +228,8 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
   \item[FA190] Die Füllstände der Tanks werden gemessen. Der Füllstand der Tanks wird durch das Füllen der Tanks in der Farbe ihrer Flüssigkeit dargestellt.
   \item[FA210] Der untere Tank enthält einen motorbetriebenen Mischer, dessen Drehzahl eingestellt werden kann. Dieser wird durch ein sich drehendes \gls{GUI} Element dargestellt.
     Die Umdrehungsgeschwindigkeit repräsentiert die Drehzahl des Mischermotors.
-  \item[\textcolor{blue}{*FA230}] An jedem Tank ist ein Temperatursensor angebracht.
-  \item[\textcolor{blue}{*FA240}] Die Zuflusstemperaturen der oberen Tanks können separat eingestellt werden.
+  \item[FA230] An jedem Tank ist ein Temperatursensor angebracht.
+  \item[FA240] Die Zuflusstemperaturen der oberen Tanks können separat eingestellt werden.
   \item[FA250] Jeder der dargestellten Tanks ist mit einer hellgrauen Box hinterlegt, welche den Zuständigkeitsbereich des jeweiligen \glslink{OPC UA Server}{OPC UA Servers} repräsentiert.
   \item[FA260] Kommt es in der \gls{Fertigungssimulation} zu einem \"Uberlauf, so h\"alt die \gls{Fertigungssimulation} an
   und es wird ein Dialog mit dem Text "`\"Uberlauf"' angezeigt. Durch den Knopf "`Zur\"ucksetzen"' im Dialog wird das System wieder in den Startzustand versetzt.
@@ -238,9 +237,8 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
   \item[FA280] Die \gls{Fertigungssimulation} besitzt einen "`Über"'-Dialog, welcher Lizenzinformationen zu verwendeten Bibliotheken
     sowie eine kurze Information zu den Erstellern des Programms, enthält.
   \item[\textcolor{blue}{*FA290}] Der Menüeintrag "`Szenarien"' zeigt eine Liste der \glspl{Simulations-Szenario}, die durch einen Klick gestartet werden können.
-  \item[FA300] Die einstellbaren Parameter können in einem Einstellungsdialog festgelegt werden. Darin existiert für jeden Tank ein eigener Reiter, der die
+  \item[FA300] Die \glspl{Prozessvariable} können in einem Einstellungsdialog durch Schieberegler festgelegt werden. Darin existiert für jeden Tank ein eigener Reiter, der die
     tankspezifischen Einstellungen, wie zum Beispiel Zu- und Abflussmengen, Zuflusstemperaturen oder Motordrehzahlen enthält.
-    Diese Parameter werden durch Schieberegler eingestellt.
   \item[\textcolor{blue}{*FA310}] Der Einstellungsdialog besitzt einen Regler, welcher den \gls{Jitter} konfigurierbar macht.
     Hierbei entspricht ein \gls{Jitter} von 0 der Deaktivierung der Funktion.
   \item[\textcolor{blue}{*FA320}] Im Einstellungsdialog kann die Sprache der \gls{Fertigungssimulation} eingestellt werden.
@@ -258,7 +256,7 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
     \gls{OPC  UA} kommuniziert.
   \item[FA390] Die \glspl{OPC UA Client} erhalten die \glslink{TCP/IP}{IP-Adresse} des verwendeten Computers,
   die durch die \gls{Uberwachungskonsole} nicht geändert werden kann.
-  \item[FA400] Die \glspl{OPC UA Client} erhalten beim Start die Ports automatisch durch das Betriebssystem.
+  \item[FA400] Die \glspl{OPC UA Client} erhalten beim Start die ausgehenden Ports automatisch durch das Betriebssystem.
   \item[FA410] Beim Start versucht die \gls{Uberwachungskonsole}, eine Verbindung zwischen den \glspl{OPC UA Client} und den \glslink{OPC UA Server}{OPC UA Servern} herzustellen und sich so bei der
     \gls{Fertigungssimulation} zu registrieren.
   \item[FA420] Alle angezeigten \glspl{Sensordatum} werden mit einer festen Frequenz aktualisiert. Dabei fragen die \glspl{OPC UA Client} die Daten der \glspl{OPC UA Server}
@@ -276,7 +274,7 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
   \item[FA480] Die \gls{Uberwachungskonsole} zeigt die Farbe der Tanks an.
   \item[FA490] Die \gls{Uberwachungskonsole} zeigt die Zuflussmenge der oberen Tanks und die Abflussmenge aller Tanks auf jeweils einer Skala an.
   \item[FA510] Die \gls{Uberwachungskonsole} zeigt den Füllstand aller Tanks auf jeweils einer Skala an.
-  \item[\textcolor{blue}{*FA520}] Die \gls{Uberwachungskonsole} zeigt die Temperatur aller Tanks auf jeweils einer Skala an.
+  \item[FA520] Die \gls{Uberwachungskonsole} zeigt die Temperatur aller Tanks auf jeweils einer Skala an.
   \item[FA530] Die \gls{Uberwachungskonsole} zeigt die Drehzahl des Mischermotors im unteren Tank auf einer Skala an.
   \item[FA540] Der zeitliche Verlauf des Füllstandes und der Temperatur wird jeweils für alle Tanks angezeigt.
   \item[FA560] Die \gls{Uberwachungskonsole} registriert für jeden Tank jeweils einen Alarm für einen Überlauf und für einen Unterlauf.
@@ -287,11 +285,11 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
     \gls{Fertigungssimulation} nicht mehr aktiv ist und die \gls{Uberwachungskonsole} mit der nächsten Aktualisierung der \glspl{Sensordatum} über das Ende informiert wurde.
   \item[FA640] Es gibt eine zweistufige Ampel für den allgemeinen Zustand der \gls{Uberwachungskonsole}. Ist die Ampel rot, wurde mindestens ein Alarm ausgelöst, ist sie grün, wurde kein Alarm ausgelöst.
   \item[\textcolor{blue}{*FA670}] Es gibt eine Loggingkonsole in Form einer mehrzeiligen Textausgabe, die die geloggten Ereignisse der \gls{Uberwachungskonsole} ausgibt.
-  \item[FA680] Der Menüeintrag "`Über"' öffnet ein neues Fenster, in dem der Programmname, die Version, das Programmsymbol und die Lizenz einschließlich der Lizenzen verwendeter Bibliotheken angezeigt werden.
+  \item[FA680] Der Menüeintrag "`Über"' öffnet ein neues Fenster, in dem der Programmname "`OSIP"', die Version, das Programmsymbol und die Lizenz einschließlich der Lizenzen verwendeter Bibliotheken angezeigt werden.
   \item[FA690] Der Menüeintrag "`Einstellungen"' öffnet ein separates Fenster.
   \item[FA700] In den Einstellungen werden die \glslink{TCP/IP}{IP-Adresse} der \glslink{OPC UA Client}{OPC UA Clients} und der \gls{OPC UA Server} sowie deren Ports angezeigt. Die Ports und die IP-Adresse
   der \glspl{OPC UA Server} sind konfigurierbar.
-  \item[\textcolor{blue}{*FA720}] In den Einstellungen sind die Ports der \glspl{OPC UA Client} konfigurierbar.
+  \item[\textcolor{blue}{*FA720}] In den Einstellungen sind die ausgehenden Ports der \glspl{OPC UA Client} konfigurierbar.
   \item[FA730] Leere Eingaben für die Ports der \glspl{OPC UA Client} bedeuten, dass diese nicht festgelegt wurden und automatisch durch das Betriebssystem bezogen werden.
   \item[\textcolor{blue}{*FA740}] In den Einstellungen ist es dem Nutzer möglich, die Sprache auszuwählen.
   \item[FA750] Die Standardsprache ist Englisch.
@@ -299,7 +297,7 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
   \item[\textcolor{blue}{*FA770}] Die Aufnahme des zeitlichen Verlaufs jedes Füllstandes und jeder Temperatur ist ein- und ausschaltbar.
   \item[\textcolor{blue}{*FA780}] Der Nutzer kann die verfügbaren Alarme ein- und ausschalten und deren Schwellenwerte festlegen.
   \item[FA790] Die Eingaben in den Einstellungen werden direkt nach der Eingabe auf richtige Formatierung und Einhaltung des Wertebereichs gepr\"uft.
-  \item[FA800] Der Benutzer wird über eine Fehleingabe und die Art des Fehlers informiert.
+  \item[FA800] Der Benutzer wird über eine Fehleingabe informiert.
   \item[FA810] Nach Drücken des Abbruch-Knopfes im Einstellungsfenster bleiben die Einstellungen unverändert. Nach Drücken des Speichern-Knopfes im Einstellungsfenster werden alle vorhandenen
   Einstellungen mit denen aus dem Fenster überschrieben.
   \item[FA830] Werden die Verbindungseinstellungen der \gls{Uberwachungskonsole} für die \glspl{OPC UA Server} oder \glspl{OPC UA Client} überschrieben, werden die \glspl{OPC UA Client} mit den neuen Einstellungen neu gestartet.
@@ -311,6 +309,7 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
 \section{Nichtfunktionale Anforderungen}
 \subsection{Allgemeines}
 \begin{enumerate}
+  \item[NF05] OSIP wird frei unter einer open-source Lizenz veröffentlicht.
   \item[NF10] IP-Adressen müssen gültige IPv4 Adressen oder Hostnamen sein.
   \item[NF20] Ports dürfen Werte im Bereich 1024 bis 61000 annehmen.
   \item[NF30] Wenn sich Werte in der \gls{Fertigungssimulation} ändern, werden die Änderungen spätestens nach der Zeitspanne von 500 Millisekunden (ms) plus dem Aktualisierungsintervall in der \gls{Uberwachungskonsole} angezeigt.
@@ -319,7 +318,7 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
 \subsection{Fertigungssimulation}
 \begin{enumerate}
   \item[NF40] Standardmäßig haben die \glspl{OPC UA Server} die Ports 8080, 8081, 8082 und 8083.
-  \item[NF50] Wenn Parameter verändert werden, sind sie nach spätestens 500 ms per \gls{OPC UA} abrufbar.
+  \item[NF50] Wenn \glspl{Prozessvariable} verändert werden, sind sie nach spätestens 500 ms per \gls{OPC UA} abrufbar.
   \item[NF60] Die Drehzahl des Mischermotors kann vom Benutzer in einem Bereich zwischen 0 und 300 Umdrehungen pro Minute gewählt werden.
   \item[NF70] Standardmäßig hat der Mischermotor 250 Umdrehungen pro Minute.
   \item[NF80] Die Tanks haben ein Füllvermögen von 100 Litern.
@@ -338,7 +337,7 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
 \section{Produktdaten}
 \begin{enumerate}
   \item[D10] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellte IP-Adresse und Ports der \gls{OPC UA Server}.
-  \item[\textcolor{blue}{*D20}] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellten Ports der \glslink{OPC UA Client}{OPC UA Clients}.
+  \item[\textcolor{blue}{*D20}] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellten ausgehenden Ports der \glslink{OPC UA Client}{OPC UA Clients}.
   \item[\textcolor{blue}{*D30}] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellte Aktualisierungsfrequenz für die \glspl{Sensordatum}.
   \item[\textcolor{blue}{*D40}] Die \gls{Uberwachungskonsole} speichert die zuletzt eingeschalteten Alarme und alle Schwellenwerte.
   \item[\textcolor{blue}{*D50}] Die \gls{Uberwachungskonsole} speichert, welche Verläufe zuletzt angezeigt wurden.
@@ -370,7 +369,7 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
    Die Sprache ist jeweils Englisch (FA330, FA750).
   \item[GT150] \textbf{Einstellung der \gls{Verbindungsinformation} der \gls{Fertigungssimulation}}: Die \gls{Fertigungssimulation} läuft. Die Ports für die \gls{OPC UA Server} werden neu eingestellt (FA60). Eine auf die
    alten Ports eingestellte \gls{Uberwachungskonsole} erhält zunächst keine \glspl{Sensordatum} mehr. Nach Einstellung der \gls{Uberwachungskonsole} auf die neuen Ports (FA700, FA810, FA820) und leeren Eingaben für die Ports der \glspl{OPC UA Client}, die somit automatisch bezogen werden (FA730), werden die \glspl{Sensordatum} wieder abgerufen (FA830).
-  \item[GT160] \textbf{Einstellung der \glspl{Verbindungsinformation} der \gls{Uberwachungskonsole}}: Die \gls{Fertigungssimulation} läuft und die \gls{Uberwachungskonsole} ist bei dieser registriert. Die Ports der
+  \item[GT160] \textbf{Einstellung der \glspl{Verbindungsinformation} der \gls{Uberwachungskonsole}}: Die \gls{Fertigungssimulation} läuft und die \gls{Uberwachungskonsole} ist bei dieser registriert. Die ausgehenden Ports der
    \glspl{OPC UA Client} werden in der \gls{Uberwachungskonsole} zwei Mal neu eingestellt (FA720). Beim ersten Mal erfolgt die Einstellung mit nicht belegten Ports. Nach Schließen der Einstellungen werden daher immer noch \glspl{Sensordatum} empfangen. Bei der zweiten Einstellung ist mindestens ein Port belegt, sodass es zu einer Fehlermeldung kommt (FA840), die geloggt wird (FA460) und in der Loggingkonsole angezeigt wird (FA670).
   \item[GT170] \textbf{Umstellung der Sprache}: Alle verfügbaren Sprachen in der \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} werden nacheinander eingestellt (FA320, FA740) und von der \gls{GUI} übernommen.
   \item[GT180] \textbf{Einstellung der \glspl{Sensordatum} mit Messung des zeitlichen Verlaufs}: Die \gls{Fertigungssimulation} läuft und die \gls{Uberwachungskonsole} ist bei dieser mit einer
