@@ -222,9 +222,9 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
     Es führen Leitungen von den drei oberen Tanks zum unteren Tank.
   \item[FA140] An jeder Leitung befinden sich ein Ventil sowie ein Durchflussmesser, dargestellt in Form eines sich drehenden Elements. Der Öffnungsgrad des Ventils wird prozentual auf dem Ventil angezeigt.
   \item[FA150] Die Zu- und Abflussmengen der oberen Tanks, sowie die Abflussmenge des unteren Tanks können separat eingestellt werden. Die Zuflussmenge ergibt sich aus der Summe der Abflussmengen der oberen Tanks.
-  \item[FA170] Jedem der oberen Tanks ist eine feste Flüssigkeitsfarbe zugeordnet. Die Farbe des unteren Tanks ergibt sich aus dem Mischungsverhältnis der oberen Tanks. Dabei wird
-	angenommen, dass die Flüssigkeiten der oberen Tanks die selbe Deckkraft haben.
-  \item[FA180] Der linke obere Tank wird mit roter, der mittlere mit grüner und der rechte mit blauer Flüssigkeit gefüllt.
+  \item[FA170] Jedem der oberen Tanks ist eine feste Flüssigkeitsfarbe zugeordnet (Gelb, Cyan und Magenta). Die Farbe des unteren Tanks ergibt sich aus dem Mischungsverhältnis der oberen
+  Tanks mittels \glslink{subtraktive Farbmischung}{subtraktiver Farbmischung}.
+  \item[FA180] Der linke obere Tank wird mit gelber, der mittlere mit cyanfarbener und der rechte mit magentafarbener Flüssigkeit gefüllt.
   \item[FA190] Die Füllstände der Tanks werden gemessen. Der Füllstand der Tanks wird durch das Füllen der Tanks in der Farbe ihrer Flüssigkeit dargestellt.
   \item[FA210] Der untere Tank enthält einen motorbetriebenen Mischer, dessen Drehzahl eingestellt werden kann. Dieser wird durch ein sich drehendes \gls{GUI} Element dargestellt.
     Die Umdrehungsgeschwindigkeit repräsentiert die Drehzahl des Mischermotors.
@@ -475,11 +475,11 @@ Manuel merkt an, dass das ein guter Einwand ist und dass \gls{OPC UA} auch daf\"
 Er \"offnet das Einstellungsmen\"u der \gls{Uberwachungskonsole} und ruft den Reiter "`Alarme"' auf. Um die Flexibilit\"at
 von \gls{OPC UA} erneut zu demonstrieren, fragt er Philipp, welchen vorhandenen Zustand er gerne abfangen w\"urde. Philipp möchte gerne
 wissen, wenn ein Tank \"uberzulaufen droht. Er schl\"agt daf\"ur als Grenze einen F\"ullstand von 95\% vor.
-Manuel aktiviert also den Alarm für Überlauf des roten Tanks und trägt als Schwelle 95\% ein.
+Manuel aktiviert also den Alarm für Überlauf des gelben Tanks und trägt als Schwelle 95\% ein.
 Dann speichert er die neuen Einstellungen.
 
 Anschlie{\ss}end startet er in der \gls{Fertigungssimulation} ein vordefiniertes \gls{Simulations-Szenario} für einen Überlauf
-des roten Tanks, woraufhin der F\"ullstand zu steigen beginnt. In der \gls{Uberwachungskonsole} werden ebenfalls steigende Werte angezeigt.
+des gelben Tanks, woraufhin der F\"ullstand zu steigen beginnt. In der \gls{Uberwachungskonsole} werden ebenfalls steigende Werte angezeigt.
 Daraufhin wird der F\"ullstand von 95\% erreicht und in der \gls{Uberwachungskonsole} ein entsprechender Dialog angezeigt. Manuel
 beschlie{\ss}t, nicht zu handeln. Die \gls{Fertigungssimulation} meldet das Überlaufen eines Tanks.
 Danach w\"ahlt Philipp in der \gls{Fertigungssimulation} die Option "`Zur\"ucksetzen"',
@@ -753,7 +753,8 @@ eingestellt werden. Es existieren die Buttons "`Abbrechen"', "`Anwenden"' und "`
   \includegraphics[scale=0.4]{media/ui-client/ui-uw.png}
   \caption{Nutzerinterface-Skizze des Hauptfensters der Überwachungskonsole}
 \end{figure}
-Im Hauptfenster der \gls{Uberwachungskonsole} werden die Anzeigen für die \glspl{Sensordatum} für jeden Tank in einem einzelnen Rahmen gesammelt. Dabei repräsentieren die Anzeigen im roten, grünen bzw. blauen Rahmen den roten, grünen bzw. blauen Tank. Die Anzeigen im schwarzen Rahmen repräsentieren den Mischtank, dessen Farbe explizit angezeigt wird.
+Im Hauptfenster der \gls{Uberwachungskonsole} werden die Anzeigen für die \glspl{Sensordatum} für jeden Tank in einem einzelnen Rahmen gesammelt. Dabei repräsentieren die Anzeigen im gelben, cyanfarbenen bzw.
+magentafarbenen Rahmen den gelben, cyanfarbenen bzw. magentafarbenen Tank. Die Anzeigen im schwarzen Rahmen repräsentieren den Mischtank, dessen Farbe explizit angezeigt wird.
 Neben den Anzeigen der \glspl{Sensordatum} sind auch die Füllstands- und Temperaturverläufe in Form von Graphen und die Alarme enthalten. Im cyanfarbenen Tank ist beispielhaft der Alarm für einen Unterlauf ausgelöst.
 Darüber hinaus enthält das Hauptfenster das Loggingfenster und die Ampel für den allgemeinen Zustand der \gls{Uberwachungskonsole}.
 
