@@ -58,7 +58,7 @@ layer=-1</panel_attributes>
     <panel_attributes>Erstes Starten
 der Simulation
 
-bg=blue</panel_attributes>
+bg=cyan</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -83,7 +83,7 @@ bg=blue</panel_attributes>
     <panel_attributes>Änderung der
 Prozessvariablen
 
-bg=blue</panel_attributes>
+bg=cyan</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -96,7 +96,8 @@ bg=blue</panel_attributes>
     </coordinates>
     <panel_attributes>Simulations-Szenario
 verwenden
-bg=blue</panel_attributes>
+
+bg=cyan</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
