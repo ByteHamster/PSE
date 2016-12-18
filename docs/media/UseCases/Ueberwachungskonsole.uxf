@@ -49,7 +49,7 @@ layer=-1</panel_attributes>
     <panel_attributes>Erstes Starten
 der Konsole
 
-bg=blue</panel_attributes>
+bg=cyan</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -62,7 +62,7 @@ bg=blue</panel_attributes>
     </coordinates>
     <panel_attributes>Alarm empfangen
 
-bg=blue</panel_attributes>
+bg=cyan</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -75,7 +75,7 @@ bg=blue</panel_attributes>
     </coordinates>
     <panel_attributes>Alarm konfigurieren
 
-bg=blue</panel_attributes>
+bg=cyan</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -89,7 +89,7 @@ bg=blue</panel_attributes>
     <panel_attributes>Verläufe
 konfigurieren
 
-bg=blue</panel_attributes>
+bg=cyan</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -103,7 +103,7 @@ bg=blue</panel_attributes>
     <panel_attributes>Änderung der
 Verbindungseinstellungen
 
-bg=blue</panel_attributes>
+bg=cyan</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
