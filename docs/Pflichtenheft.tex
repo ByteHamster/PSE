@@ -47,7 +47,7 @@ Transparenz bietet. Auf diese Weise soll dazu beigetragen werden, die Industrie 
 Maschinen, Computern und Menschen die Leistungsfähigkeit der Industrie zu erhöhen und auf die Zukunft auszurichten.
 Dabei macht es das auf \gls{TCP/IP} basierende Kommunikationsprotokoll \gls{OPC UA} möglich, dass Maschinen miteinander kommunizieren.
 
-Die hier vorgestellte Simulation (siehe Abbildung 1: Systemskizze) ermöglicht es, die Vorteile der Vernetzung von Maschinen mit \gls{OPC UA} interaktiv
+Die hier vorgestellte Simulation ermöglicht es, die Vorteile der Vernetzung von Maschinen mit \gls{OPC UA} interaktiv
 zu demonstrieren, um Industriekunden von den neuen Möglichkeiten zu überzeugen. Die Hauptkomponenten sind eine \gls{Fertigungssimulation}
 mit \glslink{OPC UA Server}{OPC UA Servern} und eine \gls{Uberwachungskonsole} mit \glspl{OPC UA Client}, die jeweils eine graphische
 Benutzeroberfläche (\gls{GUI}) enthalten und auf getrennten Computern laufen können. Sie kommunizieren lediglich über \gls{OPC UA}.
@@ -62,11 +62,11 @@ Die \gls{Uberwachungskonsole} liest die Daten der \gls{Fertigungssimulation}, st
 anzeigen, die von \glspl{OPC UA Server} empfangen werden. Sie dient somit als reines Monitoring-Werkzeug
 und hat keinen Einfluss auf die \gls{Fertigungssimulation}.
 
-Dieser Zusammenhang ist in der Systemskizze verdeutlicht. Links ist die \gls{Fertigungssimulation} bzw. ihre \gls{GUI} skizziert.
+Dieser Zusammenhang ist in der Systemskizze (siehe Abbildung 1) verdeutlicht. Links ist die \gls{Fertigungssimulation} bzw. ihre \gls{GUI} skizziert.
 Dar\"uber wird die Simulation gesteuert. Darunter sind die vier verschiedenen \glspl{OPC UA Server} (S) angedeutet.
 Rechts ist die \gls{Uberwachungskonsole} zu sehen. Unter ihr und zu ihr geh\"orend sind die vier \glspl{OPC UA Client} (C).
 Der Doppelpfeil zwischen den \glslink{OPC UA Server}{OPC UA Servern} und \glspl{OPC UA Client} verdeutlicht, dass die Kommunikation
-zwischen den beiden Programmen ausschließlich auf dieser Ebene abl\"auft.
+zwischen den beiden Programmen ausschließlich auf Ebene von \gls{OPC UA} abl\"auft.
 
 \begin{figure}[H]
   \centering
