@@ -312,7 +312,9 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
   \item[NF05] OSIP wird frei unter einer open-source Lizenz veröffentlicht.
   \item[NF10] IP-Adressen müssen gültige IPv4 Adressen oder Hostnamen sein.
   \item[NF20] Ports dürfen Werte im Bereich 1024 bis 61000 annehmen.
-  \item[NF30] Wenn sich Werte in der \gls{Fertigungssimulation} ändern, werden die Änderungen spätestens nach der Zeitspanne von 500 Millisekunden (ms) plus dem Aktualisierungsintervall in der \gls{Uberwachungskonsole} angezeigt.
+  \item[NF30] Wenn sich \glspl{Sensordatum} in der \gls{Fertigungssimulation} ändern, werden die Änderungen spätestens nach der Zeitspanne von 100 Millisekunden (ms)
+    durch \gls{OPC UA} bereitgestellt. Nach der Aktualisierungsfrequenz und der Aktualisierung der \gls{Uberwachungskonsole} sind die ge\"anderten \glspl{Sensordatum}
+    gesch\"atzt nach 500 ms plus der Aktualisierungsfrequenz in der \gls{Uberwachungskonsole} sichtbar.
 \end{enumerate}
 
 \subsection{Fertigungssimulation}
