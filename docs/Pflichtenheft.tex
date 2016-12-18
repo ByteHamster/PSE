@@ -320,7 +320,7 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
 \subsection{Fertigungssimulation}
 \begin{enumerate}
   \item[NF40] Standardmäßig haben die \glspl{OPC UA Server} die Ports 8080, 8081, 8082 und 8083.
-  \item[NF50] Wenn \glspl{Prozessvariable} verändert werden, sind sie nach spätestens 500 ms per \gls{OPC UA} abrufbar.
+  \item[NF50] Wenn \glspl{Prozessvariable} verändert werden, sind sie gesch\"atzt nach spätestens 500 ms per \gls{OPC UA} abrufbar.
   \item[NF60] Die Drehzahl des Mischermotors kann vom Benutzer in einem Bereich zwischen 0 und 300 Umdrehungen pro Minute gewählt werden.
   \item[NF70] Standardmäßig hat der Mischermotor 250 Umdrehungen pro Minute.
   \item[NF80] Die Tanks haben ein Füllvermögen von 100 Litern.
@@ -388,9 +388,9 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
   \item[GT210] \textbf{Korrekter Ablauf der \glspl{Simulations-Szenario}}: Die \gls{Fertigungssimulation} läuft und die \gls{Uberwachungskonsole} ist bei dieser registriert.
    Alle verfügbaren \glspl{Simulations-Szenario} werden nacheinander korrekt ausgeführt (FA120, FA290), ohne dass eine Bedienung durch den Nutzer benötigt wird.
   \item[GT220] \textbf{Änderung der Aktualisierungsfrequenz}: Die \gls{Fertigungssimulation} läuft und die \gls{Uberwachungskonsole} ist bei dieser mit einer Aktualisierungsfrequenz von 500 ms
-   registriert. Das Ändern beliebiger \glspl{Sensordatum} in der \gls{Fertigungssimulation} wird innerhalb maximal 1000 ms in der \gls{Uberwachungskonsole} angezeigt (FA50, FA70, FA420, NF30).
+   registriert. Das Ändern beliebiger \glspl{Sensordatum} in der \gls{Fertigungssimulation} wird innerhalb gesch\"atzt 1000 ms in der \gls{Uberwachungskonsole} angezeigt (FA50, FA70, FA420, NF30).
    Anschließend wird die Aktualisierungsfrequenz auf 4000 ms erhöht (FA760) und innerhalb der \gls{Fertigungssimulation} werden beliebige \glspl{Sensordatum} umgeändert, deren
-   Veränderung nach spätestens 4500 ms in der \gls{Uberwachungskonsole} angezeigt wird (NF30).
+   Veränderung gesch\"atzt nach spätestens 4500 ms in der \gls{Uberwachungskonsole} angezeigt wird (NF30).
   \item[GT230] \textbf{Ein- und Ausschalten der Alarme}: Die \gls{Fertigungssimulation} läuft und die \gls{Uberwachungskonsole} ist bei dieser registriert.
    Die vorhandenen Alarme werden in der \gls{Uberwachungskonsole} ausgeschalten (FA450, FA780) und anschließend wird der Schwellenwert in der \gls{Fertigungssimulation} überschritten.
    Dies wird in der \gls{Uberwachungskonsole} nicht angezeigt.
