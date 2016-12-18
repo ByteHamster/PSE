@@ -52,6 +52,18 @@ zu demonstrieren, um Industriekunden von den neuen Möglichkeiten zu überzeugen
 mit \glslink{OPC UA Server}{OPC UA Servern} und eine \gls{Uberwachungskonsole} mit \glspl{OPC UA Client}, die jeweils eine graphische
 Benutzeroberfläche (\gls{GUI}) enthalten und auf getrennten Computern laufen können. Sie kommunizieren lediglich über \gls{OPC UA}.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{../system-sketch.png}
+	\caption{Systemskizze}
+\end{figure}
+
+Dieser Zusammenhang ist in der Systemskizze (siehe Abbildung 1) verdeutlicht. Links ist die \gls{Fertigungssimulation} bzw. ihre \gls{GUI} skizziert.
+Dar\"uber wird die Simulation gesteuert. Darunter sind die vier verschiedenen \glspl{OPC UA Server} (S) angedeutet.
+Rechts ist die \gls{Uberwachungskonsole} zu sehen. Unter ihr und zu ihr geh\"orend sind die vier \glspl{OPC UA Client} (C).
+Der Doppelpfeil zwischen den \glslink{OPC UA Server}{OPC UA Servern} und \glspl{OPC UA Client} verdeutlicht, dass die Kommunikation
+zwischen den beiden Programmen ausschließlich auf Ebene von \gls{OPC UA} abl\"auft.
+
 In der GUI der \gls{Fertigungssimulation} wird eine \gls{Produktionsanlage} dargestellt.
 Drei Tanks werden mit je einer farbigen Flüssigkeit gefüllt. Die Flüssigkeiten werden über Rohre in einen weiteren Tank geleitet,
 in dem diese dann durch einen Motor gemischt werden. Daten und Werte der \gls{Produktionsanlage} werden ebenfalls angezeigt.
@@ -61,18 +73,6 @@ Zu- und Abflussmengen einstellt. Die visuelle Darstellung passt sich an die Konf
 Die \gls{Uberwachungskonsole} liest die Daten der \gls{Fertigungssimulation}, stellt sie optisch ansprechend dar und kann Alarme
 anzeigen, die von \glspl{OPC UA Server} empfangen werden. Sie dient somit als reines Monitoring-Werkzeug
 und hat keinen Einfluss auf die \gls{Fertigungssimulation}.
-
-Dieser Zusammenhang ist in der Systemskizze (siehe Abbildung 1) verdeutlicht. Links ist die \gls{Fertigungssimulation} bzw. ihre \gls{GUI} skizziert.
-Dar\"uber wird die Simulation gesteuert. Darunter sind die vier verschiedenen \glspl{OPC UA Server} (S) angedeutet.
-Rechts ist die \gls{Uberwachungskonsole} zu sehen. Unter ihr und zu ihr geh\"orend sind die vier \glspl{OPC UA Client} (C).
-Der Doppelpfeil zwischen den \glslink{OPC UA Server}{OPC UA Servern} und \glspl{OPC UA Client} verdeutlicht, dass die Kommunikation
-zwischen den beiden Programmen ausschließlich auf Ebene von \gls{OPC UA} abl\"auft.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[scale=0.5]{../system-sketch.png}
-  \caption{Systemskizze}
-\end{figure}
 
 \pagebreak
 \section{Zielbestimmung}
@@ -750,25 +750,25 @@ eingestellt werden. Es existieren die Buttons "`Abbrechen"', "`Anwenden"' und "`
 \subsection{Überwachungskonsole}
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=0.5]{media/ui-client/ui-uw.png}
+  \includegraphics[scale=0.4]{media/ui-client/ui-uw.png}
   \caption{Nutzerinterface-Skizze des Hauptfensters der Überwachungskonsole}
 \end{figure}
 Im Hauptfenster der \gls{Uberwachungskonsole} werden die Anzeigen für die \glspl{Sensordatum} für jeden Tank in einem einzelnen Rahmen gesammelt. Dabei repräsentieren die Anzeigen im roten, grünen bzw. blauen Rahmen den roten, grünen bzw. blauen Tank. Die Anzeigen im schwarzen Rahmen repräsentieren den Mischtank, dessen Farbe explizit angezeigt wird.
-Neben den Anzeigen der \glspl{Sensordatum} sind auch die Füllstands- und Temperaturverläufe in Form von Graphen und die Alarme enthalten. Im grünen Tank ist beispielhaft der Alarm für einen Unterlauf ausgelöst.
+Neben den Anzeigen der \glspl{Sensordatum} sind auch die Füllstands- und Temperaturverläufe in Form von Graphen und die Alarme enthalten. Im cyanfarbenen Tank ist beispielhaft der Alarm für einen Unterlauf ausgelöst.
 Darüber hinaus enthält das Hauptfenster das Loggingfenster und die Ampel für den allgemeinen Zustand der \gls{Uberwachungskonsole}.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{media/ui-client/ui-uw-settings1.png}
-	\includegraphics[scale=0.5]{media/ui-client/ui-uw-settings2.png}
-	\includegraphics[scale=0.5]{media/ui-client/ui-uw-settings3.png}
+	\includegraphics[scale=0.3]{media/ui-client/ui-uw-settings1.png}
+	\includegraphics[scale=0.3]{media/ui-client/ui-uw-settings2.png}
+	\includegraphics[scale=0.3]{media/ui-client/ui-uw-settings3.png}
 	\caption{Nutzerinterface-Skizze des Einstellungsdialogs der Überwachungskonsole}
 \end{figure}
 Im Einstellungsdialog sind bereits alle möglichen Einstellungen skizziert. Dem entsprechend beinhalten die "`Allgemeinen Einstellungen"' die \glspl{Verbindungsinformation}, die Sprache und die Aktualisierungsfrequenz, die "`Verläufe"' das Ein- und Ausschalten der einzelnen Füllstands- und Temperaturverläufe und die "`Alarme"' das Einstellen dieser.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{media/ui-client/ui-uw-uber.png}
+	\includegraphics[scale=0.4]{media/ui-client/ui-uw-uber.png}
 	\caption{Nutzerinterface-Skizze des "`Über"'-Fensters der Überwachungskonsole}
 \end{figure}
 Das "`Über"'-Fenster der \gls{Uberwachungskonsole} enthält die Programm- und Lizenzinformationen zum Projekt. Daneben bietet es im Lizenztextfeld Platz für die Lizenzen verwendeter Bibliotheken; es kann aber auch um ein separates Feld für diese Lizenzen erweitert werden.
