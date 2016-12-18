@@ -103,7 +103,7 @@ bereitstellen, die mit Hilfe von \gls{OPC UA} die \glspl{Sensordatum} der \gls{P
   über \glspl{OPC UA Client} ab.
   \item Die \glspl{OPC UA Client} sind mit \glslink{OPC UA Server}{OPC UA Servern} verbunden. Dazu ist die Einstellung der \glspl{Verbindungsinformation} möglich.
   \item Die von den \glspl{OPC UA Client} abgerufenen Werte und deren zeitlicher Verlauf werden graphisch dargestellt. Die Werte sind Zu- und Abflussmengen,
-    Flüssigkeitsfarben sowie die Drehzahl eines Mischermotors.
+    die Flüssigkeitsfarbe des unteren Tanks sowie die Drehzahl des Mischermotors.
   \item Beim Überschreiten von Schwellenwerten in der \gls{Fertigungssimulation} werden Alarme durch die \glspl{OPC UA Server} an
   die \glspl{OPC UA Client} gesendet und dem Nutzer graphisch mitgeteilt.
 \end{itemize}
@@ -271,7 +271,7 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
 \subsubsection{GUI Darstellung}
 \begin{enumerate}
   \item[FA470] Die \gls{Uberwachungskonsole} stellt die \glspl{Sensordatum} und Alarme jedes Flüssigkeitsanks in einem eigenen Bereich dar.
-  \item[FA480] Die \gls{Uberwachungskonsole} zeigt die Farbe der Tanks an.
+  \item[FA480] Die \gls{Uberwachungskonsole} zeigt die Farbe des unteren Tanks an.
   \item[FA490] Die \gls{Uberwachungskonsole} zeigt die Zuflussmenge der oberen Tanks und die Abflussmenge aller Tanks auf jeweils einer Skala an.
   \item[FA510] Die \gls{Uberwachungskonsole} zeigt den Füllstand aller Tanks auf jeweils einer Skala an.
   \item[FA520] Die \gls{Uberwachungskonsole} zeigt die Temperatur aller Tanks auf jeweils einer Skala an.
@@ -445,9 +445,9 @@ Nun ist klar, dass die beiden Programme tatsächlich ausschließlich über das N
 In der \gls{Fertigungssimulation} wird nach dem Starten eine \gls{Produktionsanlage} angezeigt, in der Flüssigkeiten aus drei Tanks
 in einem weiteren Tank vermischt werden; Farben des Inhalts der Ursprungs- und des Zieltanks visualisieren den Vorgang.
 Im Zieltank dreht sich ein Motor, der für die Durchmischung sorgt.
-Es gibt Sensoren für Temperatur, Farbe, Füllstand und Durchfluss der Tanks sowie für die Drehzahl des Motors.
+Es gibt Sensoren für Temperatur, Farbe des unteren Tanks, Füllstand und Durchfluss der Tanks sowie für die Drehzahl des Motors.
 In der \gls{Uberwachungskonsole} sieht Philipp nun eine Reihe von Anzeigen, die sich automatisch aktualisieren und
-die Zu- und Abfluss, Farbe und Temperatur der verschiedenen Tanks zeigen.
+die die Farbe des unteren Tanks sowie Zu- und Abflussmengen und Temperaturen der verschiedenen Tanks zeigen.
 
 \subsubsection{Szenario 2: Konfigurierbarkeit}
 Als Philipp zu ihm kommt, will Manuel ihm die Funktion von \gls{OPC UA} demonstrieren.
