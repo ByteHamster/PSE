@@ -547,7 +547,6 @@ woraufhin wieder die Standardkonfiguration angezeigt wird.
     \item Manuel gibt die \gls{IP-Adresse} ein, unter der die \gls{Fertigungssimulation} zu finden ist.
   \end{itemize}
   \item[Ausgangssituation] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind verbunden und laufen mit ihren Initialwerten.
-  \item[Nichtfunktionale Anforderungen] Die \glspl{Sensordatum} der \gls{Uberwachungskonsole} werden nach spätestens einer halben Sekunde aktualisiert.
 \end{description}
 
 \subsubsection{Alarm konfigurieren}
@@ -563,8 +562,6 @@ woraufhin wieder die Standardkonfiguration angezeigt wird.
   \end{itemize}
   \item[Ausgangssituation] Wenn der Sensor die Alarmbedingung erf\"ullt und der Alarm aktiviert ist, wird an die \gls{Uberwachungskonsole} ein Alarm gesendet.
   Frühere Alarmschwellen lösen keine Alarme mehr aus.
-  \item [Nichtfunktionale Anforderungen] Sp\"atestens nach 100ms ist die Aktualisierung \"ubernommen und wird
-    an die \gls{Fertigungssimulation} gesendet.
 \end{description}
 
 \subsubsection{Alarm empfangen}
@@ -585,8 +582,6 @@ woraufhin wieder die Standardkonfiguration angezeigt wird.
   \end{itemize}
   \item[Ausgangssituation] Die \gls{Uberwachungskonsole} läuft normal weiter und zeigt die zurückgesetzten Werte an. In der \gls{GUI} der
     \gls{Uberwachungskonsole} ist der Alarmeintrag zu sehen. Die \gls{Fertigungssimulation} ist auf den Anfangszustand zurück gesetzt.
-  \item [Nichtfunktionale Anforderungen] Die \gls{GUI} der \gls{Uberwachungskonsole} muss einen empfangenen Alarm nach sp\"atestens
-    100ms plus der Aktualisierungsfrequenz anzeigen.
 \end{description}
 
 \subsubsection{Ein Simulations-Szenario verwenden}
