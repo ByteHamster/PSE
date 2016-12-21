@@ -103,7 +103,7 @@ bereitstellen, die mit Hilfe von \gls{OPC UA} die \glspl{Sensordatum} der \gls{P
   über \glspl{OPC UA Client} ab.
   \item Die \glspl{OPC UA Client} sind mit \glslink{OPC UA Server}{OPC UA Servern} verbunden. Dazu ist die Einstellung der \glspl{Verbindungsinformation} möglich.
   \item Die von den \glspl{OPC UA Client} abgerufenen Werte und deren zeitlicher Verlauf werden graphisch dargestellt. Die Werte sind Zu- und Abflussmengen,
-    die Flüssigkeitsfarbe des unteren Tanks sowie die Drehzahl des Mischermotors.
+    Temperaturen, die Flüssigkeitsfarbe des unteren Tanks sowie die Drehzahl des Mischermotors.
   \item Beim Überschreiten von Schwellenwerten in der \gls{Fertigungssimulation} werden Alarme durch die \glspl{OPC UA Server} an
   die \glspl{OPC UA Client} gesendet und dem Nutzer graphisch mitgeteilt.
 \end{itemize}
@@ -126,12 +126,11 @@ bereitstellen, die mit Hilfe von \gls{OPC UA} die \glspl{Sensordatum} der \gls{P
 
 \subsubsection{Überwachungskonsole}
 \begin{itemize}
-  \item Die von den \glspl{OPC UA Client} abgerufenen Werte enthalten die Temperaturen der Flüssigkeiten in den Tanks.
   \item Das Zeitintervall für den Empfang der \glspl{Sensordatum} ist einstellbar.
   \item Die Alarme sind ein- und ausschaltbar.
   \item Die Schwellen zur Ausl\"osung der Alarme sind vom Benutzer veränderbar.
   \item Die eingestellten Alarme werden gespeichert und beim n\"achsten Programmstart automatisch wiederhergestellt.
-  \item Es gibt eine Logging-Funktion.
+  \item Empfangene Alarme werden in der \gls{Uberwachungskonsole} geloggt.
 \end{itemize}
 
 \subsection{Abgrenzungskriterien}
