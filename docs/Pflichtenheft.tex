@@ -47,7 +47,7 @@ Transparenz bietet. Auf diese Weise soll dazu beigetragen werden, die Industrie 
 Maschinen, Computern und Menschen die Leistungsfähigkeit der Industrie zu erhöhen und auf die Zukunft auszurichten.
 Dabei macht es das auf \gls{TCP/IP} basierende Kommunikationsprotokoll \gls{OPC UA} möglich, dass Maschinen miteinander kommunizieren.
 
-Die hier vorgestellte Simulation ermöglicht es, die Vorteile der Vernetzung von Maschinen mit \gls{OPC UA} interaktiv
+Die hier vorgestellte Simulation "`OSIP"' (OPC UA Simulator for Industrial Plants) ermöglicht es, die Vorteile der Vernetzung von Maschinen mit \gls{OPC UA} interaktiv
 zu demonstrieren, um Industriekunden von den neuen Möglichkeiten zu überzeugen. Die Hauptkomponenten sind eine \gls{Fertigungssimulation}
 mit \glslink{OPC UA Server}{OPC UA Servern} und eine \gls{Uberwachungskonsole} mit \glspl{OPC UA Client}, die jeweils eine graphische
 Benutzeroberfläche (\gls{GUI}) enthalten und auf getrennten Computern laufen können. Sie kommunizieren lediglich über \gls{OPC UA}.
@@ -82,6 +82,7 @@ sowohl eine \gls{Produktionsanlage} simulieren und deren Status graphisch darste
 bereitstellen, die mit Hilfe von \gls{OPC UA} die \glspl{Sensordatum} der \gls{Produktionsanlage} abfragt.\\
 
 \subsection{Musskriterien}
+Im Folgenden werden Kriterien aufgelistet, die auf jeden Fall umgesetzt werden.
 \subsubsection{Allgemein}
 \begin{itemize}
   \item Die simulierte \gls{Produktionsanlage} ist ein chemischer Produktionsprozess mit vier Tanks und Flüssigkeiten, die darin gemischt werden.
@@ -109,6 +110,8 @@ bereitstellen, die mit Hilfe von \gls{OPC UA} die \glspl{Sensordatum} der \gls{P
 \end{itemize}
 
 \subsection{Kannkriterien}
+Im Folgenden werden Kriterien aufgelistet, die OSIP umsetzen kann.
+Im Verlauf des Entwurfs wird entschieden, welche der Kriterien mit angemessenem Aufwand integriert werden können.
 \subsubsection{Allgemein}
 \begin{itemize}
   \item In der \gls{Fertigungssimulation} und der \gls{Uberwachungskonsole} werden Probleme der Programmausf\"uhrung geloggt.
@@ -134,6 +137,7 @@ bereitstellen, die mit Hilfe von \gls{OPC UA} die \glspl{Sensordatum} der \gls{P
 \end{itemize}
 
 \subsection{Abgrenzungskriterien}
+Im Folgenden wird erläutert, was OSIP explizit nicht leisten soll.
 \subsubsection{Allgemein}
 \begin{itemize}
   \item \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} dienen der Demonstration des \glslink{OPC UA}{OPC UA Protokolls}. Dazu wird die Open Source
@@ -158,6 +162,7 @@ bereitstellen, die mit Hilfe von \gls{OPC UA} die \glspl{Sensordatum} der \gls{P
 
 \newpage
 \section{Produkteinsatz}
+Im Folgenden wird dargestellt, wozu OSIP verwendet werden soll.
 \subsection{Anwendungsbereiche}
 OSIP wird verwendet, um \gls{OPC UA} und dessen Möglichkeiten zu präsentieren.
 Insbesondere soll es einfacher aufzubauen und zu zeigen sein als physische Modelle.
@@ -178,6 +183,7 @@ so lange die eingesetzte Hardware (siehe \ref{Hardware}) keine Probleme mit den 
 
 \pagebreak
 \section{Produktumgebung}
+Im Folgenden wird erläutert, in welcher Soft- und Hardwareumgebung die ordnungsgemäße Funktionalität des Programms sichergestellt wird.
 \subsection{Software}
 OSIP erfordert einen Computer, auf dem das Betriebssystem Microsoft Windows 10 oder Canonical Ubuntu 16.04 installiert ist.
 Außerdem ist das Oracle Java Runtime Environment in Version 1.8
@@ -194,7 +200,7 @@ mindestens 2GHz getaktet sein.
 
 \pagebreak
 \section{Funktionale Anforderungen}
-Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den Kann-Kriterien ergeben, \textcolor{blue}{blau und mit Sternchen (*)} markiert.
+Feste Anforderungen an die Funktionalität von OSIP werden im Folgenden aufgelistet. Die Nummern optionaler Funktionalitäten, die sich aus den Kann-Kriterien ergeben, sind \textcolor{blue}{blau und mit Sternchen (*)} markiert.
 
 \subsection{Fertigungssimulation}
 \subsubsection{Funktionalität}
@@ -305,6 +311,7 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
 
 \pagebreak
 \section{Nichtfunktionale Anforderungen}
+Im Folgenden werden Randbedingungen zur Qualität von OSIP spezifiziert.
 \subsection{Allgemeines}
 \begin{enumerate}
   \item[NF05] OSIP wird frei unter der MIT Lizenz veröffentlicht.
@@ -335,6 +342,7 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
 
 \pagebreak
 \section{Produktdaten}
+Im Folgenden wird spezifiziert, welche der von OSIP erhobenen Daten persistent gespeichert werden.
 \begin{enumerate}
   \item[D10] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellte IP-Adresse und Ports der \gls{OPC UA Server}.
   \item[\textcolor{blue}{*D20}] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellten ausgehenden Ports der \glslink{OPC UA Client}{OPC UA Clients}.
@@ -351,6 +359,7 @@ Im Nachfolgenden sind die Nummern optionaler Funktionalitäten, die sich aus den
 
 \pagebreak
 \section{Globale Testfälle}
+Im Folgenden werden Testfälle definiert, die bei einer Auslieferung der Software durchführbar sein müssen.
 \subsection{Funktionstests}
 \begin{enumerate}
   \item[GT100] \textbf{Starten der \gls{Fertigungssimulation}}: Eine .jar-Datei startet bei Ausführung die \gls{Fertigungssimulation} und die \glspl{OPC UA Server} (FA10).
@@ -484,6 +493,8 @@ Danach w\"ahlt Philipp in der \gls{Fertigungssimulation} die Option "`Zur\"uckse
 woraufhin wieder die Standardkonfiguration angezeigt wird.
 
 \subsection{Anwendungsfälle}
+Im Folgenden werden typische Interaktionen mit dem Programm beschrieben.
+Dazu werden zuerst die Anwendungsfalldiagramme gezeigt und anschließend die Anwendungsfälle im Detail erläutert.
 \subsubsection{Anwendungsfalldiagramme}
 \begin{figure}[H]
   \centering
@@ -503,6 +514,7 @@ woraufhin wieder die Standardkonfiguration angezeigt wird.
   \item[Akteure] Manuel (Bediener der Software)
   \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
   \item[Ereignisfluss]~\\
+  \vspace{-2em}
 \begin{itemize}[noitemsep]
   \item Manuel öffnet das Steuerungsfenster.
   \item Manuel wählt den Reiter des Tanks, den er verändern will.
@@ -521,6 +533,7 @@ woraufhin wieder die Standardkonfiguration angezeigt wird.
   \item[Akteure] Manuel (Bediener der Software)
   \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
   \item[Ereignisfluss]~\\
+  \vspace{-2em}
   \begin{itemize}[noitemsep]
     \item Manuel öffnet in der \gls{Uberwachungskonsole} die allgemeinen Einstellungen.
     \item Manuel stellt die Aktualisierungsfrequenz, die \gls{IP-Adresse} oder einen Port der \gls{OPC UA Server} ein.
@@ -540,6 +553,7 @@ woraufhin wieder die Standardkonfiguration angezeigt wird.
   \item[Eingangsbedingung] Ein Computer (oder virtuelle Maschine), auf der die .jar Datei der \gls{Uberwachungskonsole} gespeichert ist und ein Computer (oder virtuelle Maschine), auf der die .jar
     Datei der \gls{Fertigungssimulation} gespeichert ist, sind in Betrieb und haben feste \glspl{IP-Adresse} zugewiesen bekommen.
   \item[Ereignisfluss]~\\
+  \vspace{-2em}
   \begin{itemize}[noitemsep]
     \item Manuel startet die .jar der \gls{Fertigungssimulation}.
     \item Manuel startet die .jar der \gls{Uberwachungskonsole}.
@@ -554,6 +568,7 @@ woraufhin wieder die Standardkonfiguration angezeigt wird.
   \item[Akteure] Manuel (Bediener der Software)
   \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
   \item[Ereignisfluss]~\\
+  \vspace{-2em}
   \begin{itemize}[noitemsep]
     \item Manuel \"offnet in der \gls{Uberwachungskonsole} die Alarmeinstellungen.
     \item Manuel schaltet einen Alarm ein oder aus, indem er die Checkbox anklickt, oder trägt einen Schwellwert ein.
@@ -570,6 +585,7 @@ woraufhin wieder die Standardkonfiguration angezeigt wird.
   \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
     Es ist mindestens ein Überlauf-Alarm eingerichtet.
   \item[Ereignisfluss]~\\
+  \vspace{-2em}
   \begin{itemize}[noitemsep]
     \item In der \gls{Fertigungssimulation} kommt es zu einem Alarmzustand, weil ein Tank droht überzulaufen.
     \item Die \gls{Fertigungssimulation} sendet den entsprechenden Alarm an die registrierte \gls{Uberwachungskonsole}.
@@ -589,6 +605,7 @@ woraufhin wieder die Standardkonfiguration angezeigt wird.
   \item[Akteure] Manuel (Bediener der Software)
   \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
   \item[Ereignisfluss]~\\
+  \vspace{-2em}
   \begin{itemize}[noitemsep]
     \item In der \gls{Fertigungssimulation} wird ein \gls{Simulations-Szenario} gestartet.
     \item Die \glspl{Prozessvariable} ändern sich deterministisch und ohne Zutun von Manuel. Diese Änderungen sind in der \gls{Uberwachungskonsole} sichtbar.
@@ -605,6 +622,7 @@ woraufhin wieder die Standardkonfiguration angezeigt wird.
   \item[Akteure] Manuel (Bediener der Software)
   \item[Eingangsbedingung] Die \gls{Fertigungssimulation} und die \gls{Uberwachungskonsole} sind in Betrieb und miteinander verbunden.
   \item[Ereignisfluss]~\\
+  \vspace{-2em}
   \begin{itemize}[noitemsep]
     \item Manuel öffnet die Verlaufseinstellungen in der \gls{Uberwachungskonsole}.
     \item Manuel klickt eine der Checkboxen.
@@ -710,6 +728,7 @@ die \gls{Uberwachungskonsole} von den \glspl{OPC UA Client} erh\"alt, stellt sie
 Die einzige Verbindung von \gls{Uberwachungskonsole} und \gls{Fertigungssimulation} ist \"uber die \glspl{OPC UA Server} und \glspl{OPC UA Client} realisiert.
 
 \section{Nutzerinterface-Skizzen}
+Im Folgenden werden vorläufige Entwürfe der \gls{GUI} dargestellt und erklärt.
 \subsection{Fertigungssimulation}
 \begin{figure}[H]
   \centering
