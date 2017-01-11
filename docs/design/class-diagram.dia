@@ -68,7 +68,7 @@
         <dia:point val="-168.499,-157.485"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-168.549,-158.535;405.791,49.9075"/>
+        <dia:rectangle val="-168.549,-158.535;405.791,49.9077"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -145,7 +145,7 @@
         <dia:point val="-127.461,-45.8416"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-127.511,-46.8916;52.4559,44.8581"/>
+        <dia:rectangle val="-127.511,-46.8916;52.4554,44.8581"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -213,7 +213,7 @@
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#behaviour#</dia:string>
+        <dia:string>#behavior#</dia:string>
       </dia:attribute>
       <dia:childnode parent="O2"/>
     </dia:object>
@@ -222,7 +222,7 @@
         <dia:point val="-125.611,-42.8972"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-125.661,-43.9472;-0.492345,43.1204"/>
+        <dia:rectangle val="-125.661,-43.9472;-0.492604,43.1204"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -527,7 +527,7 @@
         <dia:point val="26.9844,-13.3312"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="26.9344,-13.3812;50.2494,-4.58124"/>
+        <dia:rectangle val="26.9344,-13.3812;50.2494,-4.5812"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="26.9844,-13.3312"/>
@@ -1412,7 +1412,7 @@
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#bool#</dia:string>
+            <dia:string>#boolean#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="0"/>
@@ -1815,7 +1815,7 @@
         <dia:point val="-25.9165,11.969"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-25.9665,11.919;-2.87402,37.119"/>
+        <dia:rectangle val="-25.9665,11.919;-2.874,37.119"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-25.9165,11.969"/>
@@ -2185,7 +2185,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:point val="-65.4535,26.4487"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-65.5035,26.3987;-54.5085,32.4487"/>
+        <dia:rectangle val="-65.5035,26.3987;-54.5085,34.2987"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-65.4535,26.4487"/>
@@ -2194,7 +2194,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:real val="10.895"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="5.9499999999999993"/>
+        <dia:real val="7.7999999999999989"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#MixTank#</dia:string>
@@ -2285,6 +2285,36 @@ crosssection*$SIM_STEP_SIZE*threshold
       </dia:attribute>
       <dia:attribute name="attributes"/>
       <dia:attribute name="operations">
+        <dia:composite type="umloperation">
+          <dia:attribute name="name">
+            <dia:string>#MixTank#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="stereotype">
+            <dia:string>#constructor#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="visibility">
+            <dia:enum val="0"/>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>#Create a new mix tank#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="abstract">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="inheritance_type">
+            <dia:enum val="2"/>
+          </dia:attribute>
+          <dia:attribute name="query">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="class_scope">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="parameters"/>
+        </dia:composite>
         <dia:composite type="umloperation">
           <dia:attribute name="name">
             <dia:string>#getMotor#</dia:string>
@@ -2615,7 +2645,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:point val="-119.946,-34.8035"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-119.996,-34.8535;-113.574,-28.7535"/>
+        <dia:rectangle val="-119.996,-34.8535;-113.573,-28.7535"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-119.946,-34.8035"/>
@@ -3197,17 +3227,17 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="-54.5082,29.4237"/>
+        <dia:point val="-54.5082,30.3487"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-55.2582,26.4675;-44.7201,30.2737"/>
+        <dia:rectangle val="-55.2582,26.4675;-44.7201,31.1987"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-54.5082,29.4237"/>
-        <dia:point val="-49.2891,29.4237"/>
+        <dia:point val="-54.5082,30.3487"/>
+        <dia:point val="-49.2891,30.3487"/>
         <dia:point val="-49.2891,27.2175"/>
         <dia:point val="-44.7701,27.2175"/>
       </dia:attribute>
@@ -3226,7 +3256,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:color val="#000000"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O13" connection="10"/>
+        <dia:connection handle="0" to="O13" connection="12"/>
         <dia:connection handle="1" to="O21" connection="12"/>
       </dia:connections>
       <dia:childnode parent="O2"/>
@@ -3305,19 +3335,19 @@ crosssection*$SIM_STEP_SIZE*threshold
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O20">
       <dia:attribute name="obj_pos">
-        <dia:point val="-91.3583,-41.3488"/>
+        <dia:point val="-92.1907,-38.8515"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-91.4083,-41.3988;-72.3283,-0.2988"/>
+        <dia:rectangle val="-92.2407,-38.9015;-73.1607,-5.20147"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="-91.3583,-41.3488"/>
+        <dia:point val="-92.1907,-38.8515"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="18.98"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="41"/>
+        <dia:real val="33.600000000000001"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#ProductionSite#</dia:string>
@@ -3433,52 +3463,6 @@ Groups all elements of the production site#</dia:string>
         </dia:composite>
         <dia:composite type="umlattribute">
           <dia:attribute name="name">
-            <dia:string>#fillSensors#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="type">
-            <dia:string>#FillSensor[]#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="value">
-            <dia:string>##</dia:string>
-          </dia:attribute>
-          <dia:attribute name="comment">
-            <dia:string>#The fill sensor of every tank#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="visibility">
-            <dia:enum val="1"/>
-          </dia:attribute>
-          <dia:attribute name="abstract">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-          <dia:attribute name="class_scope">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-        </dia:composite>
-        <dia:composite type="umlattribute">
-          <dia:attribute name="name">
-            <dia:string>#tempSensors#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="type">
-            <dia:string>#TempSensor[]#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="value">
-            <dia:string>##</dia:string>
-          </dia:attribute>
-          <dia:attribute name="comment">
-            <dia:string>#The temperature sensor of every tank#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="visibility">
-            <dia:enum val="1"/>
-          </dia:attribute>
-          <dia:attribute name="abstract">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-          <dia:attribute name="class_scope">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-        </dia:composite>
-        <dia:composite type="umlattribute">
-          <dia:attribute name="name">
             <dia:string>#pipes#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
@@ -3489,52 +3473,6 @@ Groups all elements of the production site#</dia:string>
           </dia:attribute>
           <dia:attribute name="comment">
             <dia:string>#The pipes to and from the tanks#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="visibility">
-            <dia:enum val="1"/>
-          </dia:attribute>
-          <dia:attribute name="abstract">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-          <dia:attribute name="class_scope">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-        </dia:composite>
-        <dia:composite type="umlattribute">
-          <dia:attribute name="name">
-            <dia:string>#pipeSensors#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="type">
-            <dia:string>#PipeSensor[]#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="value">
-            <dia:string>##</dia:string>
-          </dia:attribute>
-          <dia:attribute name="comment">
-            <dia:string>#The pipe sensor of the pipes#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="visibility">
-            <dia:enum val="1"/>
-          </dia:attribute>
-          <dia:attribute name="abstract">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-          <dia:attribute name="class_scope">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-        </dia:composite>
-        <dia:composite type="umlattribute">
-          <dia:attribute name="name">
-            <dia:string>#rpmSensor#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="type">
-            <dia:string>#RPMSensor#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="value">
-            <dia:string>##</dia:string>
-          </dia:attribute>
-          <dia:attribute name="comment">
-            <dia:string>#The RPM sensor of the mixtank#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="1"/>
@@ -4768,7 +4706,7 @@ Groups all elements of the production site#</dia:string>
         <dia:point val="-124.265,4.1744"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-124.315,4.1244;-95.2254,14.7744"/>
+        <dia:rectangle val="-124.315,4.1244;-95.225,14.7744"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-124.265,4.1744"/>
@@ -5023,7 +4961,7 @@ Groups all elements of the production site#</dia:string>
         <dia:point val="-112.892,57.0705"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-112.942,57.0205;-96.2044,59.3205"/>
+        <dia:rectangle val="-112.942,57.0205;-96.2045,59.3205"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-112.892,57.0705"/>
@@ -5245,7 +5183,7 @@ Groups all elements of the production site#</dia:string>
         <dia:point val="25.2147,-16.4581"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="24.3647,-16.5081;38.6419,-13.3308"/>
+        <dia:rectangle val="24.3647,-16.5081;38.6419,-13.3307"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -5254,7 +5192,7 @@ Groups all elements of the production site#</dia:string>
         <dia:point val="25.2147,-16.4581"/>
         <dia:point val="25.2147,-14.7487"/>
         <dia:point val="38.5919,-14.7487"/>
-        <dia:point val="38.5919,-13.3808"/>
+        <dia:point val="38.5919,-13.3807"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -5326,16 +5264,16 @@ Groups all elements of the production site#</dia:string>
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O31">
       <dia:attribute name="obj_pos">
-        <dia:point val="-27.8016,54.864"/>
+        <dia:point val="-27.8016,54.8641"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-38.6697,31.4175;-26.9516,54.914"/>
+        <dia:rectangle val="-38.6697,31.4175;-26.9516,54.9141"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-27.8016,54.864"/>
+        <dia:point val="-27.8016,54.8641"/>
         <dia:point val="-27.8016,52.4806"/>
         <dia:point val="-38.6197,52.4806"/>
         <dia:point val="-38.6197,31.4675"/>
@@ -5367,19 +5305,19 @@ Groups all elements of the production site#</dia:string>
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O32">
       <dia:attribute name="obj_pos">
-        <dia:point val="-59.3224,-39.1276"/>
+        <dia:point val="-60.3927,-33.5383"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-59.3724,-39.1776;-35.6724,-5.7276"/>
+        <dia:rectangle val="-60.4427,-33.5883;-36.7427,-13.1383"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="-59.3224,-39.1276"/>
+        <dia:point val="-60.3927,-33.5383"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="23.600000000000001"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="33.350000000000001"/>
+        <dia:real val="20.349999999999998"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#TankIterator#</dia:string>
@@ -5627,130 +5565,6 @@ Groups all elements of the production site#</dia:string>
           <dia:attribute name="comment">
             <dia:string>#Get the output Pipe of the currently selected tank (the pipe which goes from the tank to the mixtank)
 @return the output pipe#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="abstract">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-          <dia:attribute name="inheritance_type">
-            <dia:enum val="2"/>
-          </dia:attribute>
-          <dia:attribute name="query">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-          <dia:attribute name="class_scope">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-          <dia:attribute name="parameters"/>
-        </dia:composite>
-        <dia:composite type="umloperation">
-          <dia:attribute name="name">
-            <dia:string>#getFillSensor#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="stereotype">
-            <dia:string>##</dia:string>
-          </dia:attribute>
-          <dia:attribute name="type">
-            <dia:string>#FillSensor#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="visibility">
-            <dia:enum val="0"/>
-          </dia:attribute>
-          <dia:attribute name="comment">
-            <dia:string>#Get the FillSensor of the currently selected tank
-@return the FillSensor#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="abstract">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-          <dia:attribute name="inheritance_type">
-            <dia:enum val="2"/>
-          </dia:attribute>
-          <dia:attribute name="query">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-          <dia:attribute name="class_scope">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-          <dia:attribute name="parameters"/>
-        </dia:composite>
-        <dia:composite type="umloperation">
-          <dia:attribute name="name">
-            <dia:string>#getTempSensor#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="stereotype">
-            <dia:string>##</dia:string>
-          </dia:attribute>
-          <dia:attribute name="type">
-            <dia:string>#TempSensor#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="visibility">
-            <dia:enum val="0"/>
-          </dia:attribute>
-          <dia:attribute name="comment">
-            <dia:string>#Get the TempSensor of the currently selected tank
-@return the TempSensor#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="abstract">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-          <dia:attribute name="inheritance_type">
-            <dia:enum val="2"/>
-          </dia:attribute>
-          <dia:attribute name="query">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-          <dia:attribute name="class_scope">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-          <dia:attribute name="parameters"/>
-        </dia:composite>
-        <dia:composite type="umloperation">
-          <dia:attribute name="name">
-            <dia:string>#getInPipeSensor#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="stereotype">
-            <dia:string>##</dia:string>
-          </dia:attribute>
-          <dia:attribute name="type">
-            <dia:string>#PipeSensor#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="visibility">
-            <dia:enum val="0"/>
-          </dia:attribute>
-          <dia:attribute name="comment">
-            <dia:string>#Get the PipeSensor of the input pipe of the currently selected tank
-@return the PipeSensor#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="abstract">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-          <dia:attribute name="inheritance_type">
-            <dia:enum val="2"/>
-          </dia:attribute>
-          <dia:attribute name="query">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-          <dia:attribute name="class_scope">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-          <dia:attribute name="parameters"/>
-        </dia:composite>
-        <dia:composite type="umloperation">
-          <dia:attribute name="name">
-            <dia:string>#getOutPipeSensor#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="stereotype">
-            <dia:string>##</dia:string>
-          </dia:attribute>
-          <dia:attribute name="type">
-            <dia:string>##</dia:string>
-          </dia:attribute>
-          <dia:attribute name="visibility">
-            <dia:enum val="0"/>
-          </dia:attribute>
-          <dia:attribute name="comment">
-            <dia:string>#Get the PipeSensor of the output pipe of the currently selected tank
-@return the PipeSensor#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -6216,7 +6030,7 @@ Groups all elements of the production site#</dia:string>
                 <dia:string>#o#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#Observerable#</dia:string>
+                <dia:string>#Observable#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -6408,7 +6222,7 @@ Groups all elements of the production site#</dia:string>
         <dia:point val="-160.704,-154.92"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-160.754,-155.97;404.99,-55.5627"/>
+        <dia:rectangle val="-160.754,-155.97;404.99,-55.563"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -6446,7 +6260,7 @@ Groups all elements of the production site#</dia:string>
         <dia:point val="-155.569,-148.568"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-155.619,-149.618;103.609,-59.8927"/>
+        <dia:rectangle val="-155.619,-149.618;103.609,-59.8925"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -6484,7 +6298,7 @@ Groups all elements of the production site#</dia:string>
         <dia:point val="-152.208,-141.351"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-152.258,-142.401;-94.3408,-62.4555"/>
+        <dia:rectangle val="-152.258,-142.401;-94.3413,-62.4552"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -7033,7 +6847,7 @@ Groups all elements of the production site#</dia:string>
         <dia:point val="-146.966,-118.546"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-147.016,-118.596;-131.401,-96.9963"/>
+        <dia:rectangle val="-147.016,-118.596;-131.401,-96.996"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-146.966,-118.546"/>
@@ -7878,7 +7692,7 @@ Groups all elements of the production site#</dia:string>
         <dia:point val="-149.835,-86.4328"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-149.885,-86.4828;-138.048,-81.8328"/>
+        <dia:rectangle val="-149.885,-86.4828;-138.047,-81.8328"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-149.835,-86.4328"/>
@@ -8270,7 +8084,7 @@ Groups all elements of the production site#</dia:string>
         <dia:point val="116.386,-152.285"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="116.336,-153.335;401.247,-60.6904"/>
+        <dia:rectangle val="116.336,-153.335;401.247,-60.6901"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -8308,7 +8122,7 @@ Groups all elements of the production site#</dia:string>
         <dia:point val="119.411,-138.777"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="119.361,-139.827;196.686,-66.3864"/>
+        <dia:rectangle val="119.361,-139.827;196.687,-66.3865"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -8929,7 +8743,7 @@ Extends UAClientWrapper#</dia:string>
                 <dia:string>#onReceived#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#DoubleReceivedListener#</dia:string>
+                <dia:string>#FloatReceivedListener#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -8955,7 +8769,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="121.904,-100.183"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="121.854,-100.233;144.647,-93.0329"/>
+        <dia:rectangle val="121.854,-100.233;144.647,-93.033"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="121.904,-100.183"/>
@@ -9137,7 +8951,7 @@ Extends UAClientWrapper#</dia:string>
                 <dia:string>#onReceived#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#DoubleReceivedListener#</dia:string>
+                <dia:string>#FloatReceivedListener#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -9171,8 +8985,8 @@ Extends UAClientWrapper#</dia:string>
       <dia:attribute name="orth_points">
         <dia:point val="143.959,-84.5667"/>
         <dia:point val="143.959,-88.505"/>
-        <dia:point val="157.664,-88.505"/>
-        <dia:point val="157.664,-93.5176"/>
+        <dia:point val="157.663,-88.505"/>
+        <dia:point val="157.663,-93.5176"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -9204,7 +9018,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="143.959,-84.5667"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="133.201,-93.0828;144.809,-84.5167"/>
+        <dia:rectangle val="133.2,-93.0828;144.809,-84.5167"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -9212,8 +9026,8 @@ Extends UAClientWrapper#</dia:string>
       <dia:attribute name="orth_points">
         <dia:point val="143.959,-84.5667"/>
         <dia:point val="143.959,-88.505"/>
-        <dia:point val="133.251,-88.505"/>
-        <dia:point val="133.251,-93.0328"/>
+        <dia:point val="133.25,-88.505"/>
+        <dia:point val="133.25,-93.0328"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -9387,7 +9201,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="-118.369,-121.716"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-118.419,-121.766;-95.5967,-114.916"/>
+        <dia:rectangle val="-118.419,-121.766;-95.5965,-114.916"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-118.369,-121.716"/>
@@ -9621,7 +9435,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="-122.631,-107.023"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-122.681,-107.073;-99.859,-100.323"/>
+        <dia:rectangle val="-122.681,-107.073;-99.8585,-100.323"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-122.631,-107.023"/>
@@ -9790,8 +9604,8 @@ Extends UAClientWrapper#</dia:string>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="-107.008,-114.916"/>
-        <dia:point val="-107.008,-110.595"/>
-        <dia:point val="-111.27,-110.595"/>
+        <dia:point val="-107.008,-110.594"/>
+        <dia:point val="-111.27,-110.594"/>
         <dia:point val="-111.27,-107.073"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -9863,15 +9677,15 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="-120.97,-80.3936"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-129.443,-85.3825;-120.92,-79.5436"/>
+        <dia:rectangle val="-129.444,-85.3825;-120.92,-79.5436"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="-120.97,-80.3936"/>
-        <dia:point val="-129.393,-80.3936"/>
-        <dia:point val="-129.393,-85.3325"/>
+        <dia:point val="-129.394,-80.3936"/>
+        <dia:point val="-129.394,-85.3325"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -9976,7 +9790,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="62.719,-44.5407"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="62.669,-45.5907;115.419,15.9268"/>
+        <dia:rectangle val="62.669,-45.5907;115.419,15.9267"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -10611,7 +10425,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="87.319,-19.2407"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="87.269,-19.2907;110.584,-4.69067"/>
+        <dia:rectangle val="87.269,-19.2907;110.584,-4.6907"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="87.319,-19.2407"/>
@@ -11152,13 +10966,13 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="85.698,6.50013"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="85.648,6.45013;103.288,14.8001"/>
+        <dia:rectangle val="85.648,6.45013;104.728,14.8001"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="85.698,6.50013"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="17.539999999999999"/>
+        <dia:real val="18.98"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
         <dia:real val="8.2499999999999982"/>
@@ -11286,7 +11100,7 @@ Extends UAClientWrapper#</dia:string>
                 <dia:string>#file#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#File#</dia:string>
+                <dia:string>#java.io.File#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -11338,7 +11152,7 @@ Extends UAClientWrapper#</dia:string>
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#File#</dia:string>
+            <dia:string>#java.io.File#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="0"/>
@@ -11372,7 +11186,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="63.782,18.3509"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="63.732,17.3009;84.5724,34.6276"/>
+        <dia:rectangle val="63.732,17.3009;84.5725,34.6276"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -11694,7 +11508,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="63.769,-35.0907"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="63.719,-35.1407;85.109,1.75933"/>
+        <dia:rectangle val="63.719,-35.1407;85.109,1.7593"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="63.769,-35.0907"/>
@@ -13025,7 +12839,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="-89.3296,-140.883"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-89.3796,-141.933;102.521,-63.7034"/>
+        <dia:rectangle val="-89.3796,-141.933;102.521,-63.7032"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -13063,7 +12877,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="64.665,-138.364"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="64.615,-139.414;101.58,-81.7794"/>
+        <dia:rectangle val="64.615,-139.414;101.58,-81.7792"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -13454,7 +13268,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="76.5665,-101.71"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="76.5165,-101.76;92.1315,-97.1101"/>
+        <dia:rectangle val="76.5165,-101.76;92.1315,-97.11"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="76.5665,-101.71"/>
@@ -14046,7 +13860,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="23.6377,-138.629"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="23.5877,-139.679;62.4554,-67.2707"/>
+        <dia:rectangle val="23.5877,-139.679;62.4554,-67.2705"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -15368,7 +15182,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="47.4311,-123.667"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="46.6811,-124.417;48.1811,-119.557"/>
+        <dia:rectangle val="46.6811,-124.417;48.1811,-119.556"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -15377,7 +15191,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="47.4311,-123.667"/>
         <dia:point val="47.4311,-121.662"/>
         <dia:point val="47.3699,-121.662"/>
-        <dia:point val="47.3699,-120.357"/>
+        <dia:point val="47.3699,-120.356"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -15404,7 +15218,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="47.3699,-112.506"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="36.9163,-112.556;48.2199,-98.5617"/>
+        <dia:rectangle val="36.9163,-112.556;48.2199,-98.5616"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -15413,7 +15227,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="47.3699,-112.506"/>
         <dia:point val="47.3699,-109.537"/>
         <dia:point val="36.9663,-109.537"/>
-        <dia:point val="36.9663,-98.6117"/>
+        <dia:point val="36.9663,-98.6116"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -15445,7 +15259,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="47.3699,-112.506"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="46.5199,-112.556;50.9246,-106.657"/>
+        <dia:rectangle val="46.5199,-112.556;50.9246,-106.656"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -15454,7 +15268,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="47.3699,-112.506"/>
         <dia:point val="47.3699,-109.206"/>
         <dia:point val="50.8746,-109.206"/>
-        <dia:point val="50.8746,-106.707"/>
+        <dia:point val="50.8746,-106.706"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -15486,7 +15300,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="-86.3796,-137.673"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-86.4296,-138.723;21.7511,-65.4749"/>
+        <dia:rectangle val="-86.4296,-138.723;21.7511,-65.4747"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -15696,7 +15510,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:real val="6.0499999999999989"/>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#TankDrawer#</dia:string>
+        <dia:string>#AbstractTankDrawer#</dia:string>
       </dia:attribute>
       <dia:attribute name="stereotype">
         <dia:string>##</dia:string>
@@ -15786,7 +15600,7 @@ Extends UAClientWrapper#</dia:string>
       <dia:attribute name="operations">
         <dia:composite type="umloperation">
           <dia:attribute name="name">
-            <dia:string>#TankDrawer#</dia:string>
+            <dia:string>#AbstractTankDrawer#</dia:string>
           </dia:attribute>
           <dia:attribute name="stereotype">
             <dia:string>#constructor#</dia:string>
@@ -15861,13 +15675,13 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="-8.99164,-103.383"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-9.04164,-103.433;11.5784,-98.0832"/>
+        <dia:rectangle val="-9.04164,-103.433;11.2834,-98.083"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-8.99164,-103.383"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="20.52"/>
+        <dia:real val="20.225000000000001"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
         <dia:real val="5.25"/>
@@ -15995,7 +15809,7 @@ Extends UAClientWrapper#</dia:string>
                 <dia:string>#waypoints#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#Point2D[0..*]#</dia:string>
+                <dia:string>#Point2D[]#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -16021,7 +15835,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="-40.0303,-135.361"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-40.0803,-135.411;-17.6903,-128.211"/>
+        <dia:rectangle val="-40.0803,-135.411;-17.6903,-125.661"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-40.0303,-135.361"/>
@@ -16030,7 +15844,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:real val="22.289999999999999"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="7.0999999999999996"/>
+        <dia:real val="9.6499999999999986"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#UIMain#</dia:string>
@@ -16121,6 +15935,54 @@ Extends UAClientWrapper#</dia:string>
       </dia:attribute>
       <dia:attribute name="attributes"/>
       <dia:attribute name="operations">
+        <dia:composite type="umloperation">
+          <dia:attribute name="name">
+            <dia:string>#start#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="stereotype">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="visibility">
+            <dia:enum val="0"/>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>#Called through JavaFX when the application starts. This method initializes the window.#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="abstract">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="inheritance_type">
+            <dia:enum val="2"/>
+          </dia:attribute>
+          <dia:attribute name="query">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="class_scope">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="parameters">
+            <dia:composite type="umlparameter">
+              <dia:attribute name="name">
+                <dia:string>#stage#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="type">
+                <dia:string>#javafx.stage.Stage#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="value">
+                <dia:string>##</dia:string>
+              </dia:attribute>
+              <dia:attribute name="comment">
+                <dia:string>##</dia:string>
+              </dia:attribute>
+              <dia:attribute name="kind">
+                <dia:enum val="0"/>
+              </dia:attribute>
+            </dia:composite>
+          </dia:attribute>
+        </dia:composite>
         <dia:composite type="umloperation">
           <dia:attribute name="name">
             <dia:string>#redraw#</dia:string>
@@ -16579,7 +16441,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="-10.6101,-76.1112"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-10.6601,-76.1612;6.09236,-72.5612"/>
+        <dia:rectangle val="-10.6601,-76.1612;6.0924,-72.5612"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-10.6101,-76.1112"/>
@@ -16971,19 +16833,19 @@ Extends UAClientWrapper#</dia:string>
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="-28.8853,-128.211"/>
+        <dia:point val="-28.8853,-125.661"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-29.6353,-128.961;-25.9817,-115.867"/>
+        <dia:rectangle val="-29.6353,-126.411;-25.9817,-115.866"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-28.8853,-128.211"/>
-        <dia:point val="-28.8853,-121.714"/>
-        <dia:point val="-28.8767,-121.714"/>
-        <dia:point val="-28.8767,-115.917"/>
+        <dia:point val="-28.8853,-125.661"/>
+        <dia:point val="-28.8853,-120.439"/>
+        <dia:point val="-28.8767,-120.439"/>
+        <dia:point val="-28.8767,-115.916"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -17000,7 +16862,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:color val="#000000"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O102" connection="12"/>
+        <dia:connection handle="0" to="O102" connection="14"/>
         <dia:connection handle="1" to="O99" connection="10"/>
       </dia:connections>
       <dia:childnode parent="O98"/>
@@ -17022,7 +16884,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:real val="4.1999999999999993"/>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#InTankDrawer#</dia:string>
+        <dia:string>#TankDrawer#</dia:string>
       </dia:attribute>
       <dia:attribute name="stereotype">
         <dia:string>##</dia:string>
@@ -17375,18 +17237,18 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O111">
       <dia:attribute name="obj_pos">
-        <dia:point val="-67.3964,-87.2759"/>
+        <dia:point val="-67.3963,-87.2758"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-73.5276,-87.3259;-66.5464,-81.7895"/>
+        <dia:rectangle val="-73.5276,-87.3258;-66.5464,-81.7895"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-67.3964,-87.2759"/>
-        <dia:point val="-67.3964,-84.1577"/>
-        <dia:point val="-73.4776,-84.1577"/>
+        <dia:point val="-67.3963,-87.2758"/>
+        <dia:point val="-67.3963,-84.1576"/>
+        <dia:point val="-73.4776,-84.1576"/>
         <dia:point val="-73.4776,-81.8395"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -17416,7 +17278,7 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O112">
       <dia:attribute name="obj_pos">
-        <dia:point val="-67.3964,-87.2791"/>
+        <dia:point val="-67.3963,-87.2791"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
         <dia:rectangle val="-68.2464,-87.3291;-61.813,-75.3515"/>
@@ -17425,8 +17287,8 @@ Extends UAClientWrapper#</dia:string>
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-67.3964,-87.2791"/>
-        <dia:point val="-67.3964,-84.1402"/>
+        <dia:point val="-67.3963,-87.2791"/>
+        <dia:point val="-67.3963,-84.1402"/>
         <dia:point val="-61.863,-84.1402"/>
         <dia:point val="-61.863,-75.4015"/>
       </dia:attribute>
@@ -17532,7 +17394,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="-24.6021,-91.8042"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-24.6521,-91.8542;-2.82964,-85.7042"/>
+        <dia:rectangle val="-24.6521,-91.8542;-2.8296,-85.7042"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-24.6021,-91.8042"/>
@@ -17706,19 +17568,19 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O115">
       <dia:attribute name="obj_pos">
-        <dia:point val="-13.7409,-85.7039"/>
+        <dia:point val="-13.7409,-85.7038"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-14.5909,-85.7539;-2.23389,-76.1117"/>
+        <dia:rectangle val="-14.5908,-85.7538;-2.23385,-76.1116"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-13.7409,-85.7039"/>
-        <dia:point val="-13.7409,-80.5328"/>
-        <dia:point val="-2.28389,-80.5328"/>
-        <dia:point val="-2.28389,-76.1617"/>
+        <dia:point val="-13.7409,-85.7038"/>
+        <dia:point val="-13.7409,-80.5327"/>
+        <dia:point val="-2.28385,-80.5327"/>
+        <dia:point val="-2.28385,-76.1616"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -17793,7 +17655,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="-52.4928,-103.68"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-52.5428,-103.73;-30.1578,-97.6802"/>
+        <dia:rectangle val="-52.5428,-103.73;-30.1578,-97.68"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-52.4928,-103.68"/>
@@ -17953,7 +17815,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="-28.8767,-109.116"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-29.7267,-109.166;1.31836,-103.383"/>
+        <dia:rectangle val="-29.7267,-109.166;1.17086,-103.383"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -17961,8 +17823,8 @@ Extends UAClientWrapper#</dia:string>
       <dia:attribute name="orth_points">
         <dia:point val="-28.8767,-109.116"/>
         <dia:point val="-28.8767,-106.515"/>
-        <dia:point val="1.26836,-106.515"/>
-        <dia:point val="1.26836,-103.433"/>
+        <dia:point val="1.12086,-106.515"/>
+        <dia:point val="1.12086,-103.433"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -18110,7 +17972,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="-2.28389,-76.1112"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-2.33389,-98.8832;3.35836,-76.0612"/>
+        <dia:rectangle val="-2.33389,-98.883;3.21086,-76.0612"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -18118,8 +17980,8 @@ Extends UAClientWrapper#</dia:string>
       <dia:attribute name="orth_points">
         <dia:point val="-2.28389,-76.1112"/>
         <dia:point val="-2.28389,-82.9482"/>
-        <dia:point val="1.26836,-82.9482"/>
-        <dia:point val="1.26836,-98.1332"/>
+        <dia:point val="1.12086,-82.9482"/>
+        <dia:point val="1.12086,-98.133"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -18146,7 +18008,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="-11.2291,-129.188"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-11.2791,-129.238;6.72588,-126.238"/>
+        <dia:rectangle val="-11.2791,-129.238;6.7259,-126.238"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-11.2291,-129.188"/>
@@ -18290,17 +18152,17 @@ Extends UAClientWrapper#</dia:string>
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="-17.7403,-132.361"/>
+        <dia:point val="-17.7403,-129.811"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-17.7903,-133.111;-11.223,-126.888"/>
+        <dia:rectangle val="-17.7903,-130.561;-11.223,-126.888"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-17.7403,-132.361"/>
-        <dia:point val="-15.4276,-132.361"/>
+        <dia:point val="-17.7403,-129.811"/>
+        <dia:point val="-15.4276,-129.811"/>
         <dia:point val="-15.4276,-127.738"/>
         <dia:point val="-11.273,-127.738"/>
       </dia:attribute>
@@ -18319,7 +18181,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:color val="#000000"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O102" connection="9"/>
+        <dia:connection handle="0" to="O102" connection="11"/>
         <dia:connection handle="1" to="O122" connection="8"/>
       </dia:connections>
       <dia:childnode parent="O98"/>
@@ -18621,13 +18483,13 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O128">
       <dia:attribute name="obj_pos">
-        <dia:point val="-110.219,-99.0442"/>
+        <dia:point val="-70.1428,-161.121"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-110.269,-99.0942;-99.1288,-96.7942"/>
+        <dia:rectangle val="-70.1928,-161.171;-59.0528,-158.871"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="-110.219,-99.0442"/>
+        <dia:point val="-70.1428,-161.121"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="11.040000000000001"/>
@@ -18770,7 +18632,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="-52.4928,-101.93"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-99.2288,-101.98;-49.5978,-96.7442"/>
+        <dia:rectangle val="-59.1528,-160.471;-49.5978,-97.7532"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -18778,8 +18640,8 @@ Extends UAClientWrapper#</dia:string>
       <dia:attribute name="orth_points">
         <dia:point val="-52.4928,-101.93"/>
         <dia:point val="-52.4928,-97.8032"/>
-        <dia:point val="-99.1788,-97.8032"/>
-        <dia:point val="-99.1788,-98.3442"/>
+        <dia:point val="-59.1028,-97.8032"/>
+        <dia:point val="-59.1028,-160.421"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -19104,19 +18966,19 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O134">
       <dia:attribute name="obj_pos">
-        <dia:point val="19.1432,-163.515"/>
+        <dia:point val="19.1433,-163.515"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-2.32662,-163.565;19.9932,-129.138"/>
+        <dia:rectangle val="-2.3266,-163.565;19.9933,-129.138"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="19.1432,-163.515"/>
-        <dia:point val="19.1432,-145.952"/>
-        <dia:point val="-2.27662,-145.952"/>
-        <dia:point val="-2.27662,-129.188"/>
+        <dia:point val="19.1433,-163.515"/>
+        <dia:point val="19.1433,-145.952"/>
+        <dia:point val="-2.2766,-145.952"/>
+        <dia:point val="-2.2766,-129.188"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -19450,15 +19312,15 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="106.135,-165.435"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="92.0315,-165.485;106.985,-97.8601"/>
+        <dia:rectangle val="92.0315,-165.485;106.985,-97.86"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="106.135,-165.435"/>
-        <dia:point val="106.135,-98.7101"/>
-        <dia:point val="92.0815,-98.7101"/>
+        <dia:point val="106.135,-98.71"/>
+        <dia:point val="92.0815,-98.71"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -20184,13 +20046,13 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O149">
       <dia:attribute name="obj_pos">
-        <dia:point val="-108.506,-91.0532"/>
+        <dia:point val="-96.3761,-161.811"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-108.556,-91.1032;-101.423,-88.8032"/>
+        <dia:rectangle val="-96.4261,-161.861;-89.2936,-159.561"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="-108.506,-91.0532"/>
+        <dia:point val="-96.3761,-161.811"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="7.0325000000000006"/>
@@ -20330,19 +20192,19 @@ Extends UAClientWrapper#</dia:string>
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="-101.473,-90.3532"/>
+        <dia:point val="-89.3436,-161.111"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-101.523,-91.1032;-78.008,-89.5012"/>
+        <dia:rectangle val="-89.3936,-161.861;-78.0079,-89.5012"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-101.473,-90.3532"/>
-        <dia:point val="-89.7657,-90.3532"/>
-        <dia:point val="-89.7657,-90.3512"/>
-        <dia:point val="-78.058,-90.3512"/>
+        <dia:point val="-89.3436,-161.111"/>
+        <dia:point val="-83.7008,-161.111"/>
+        <dia:point val="-83.7008,-90.3512"/>
+        <dia:point val="-78.0579,-90.3512"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -20409,15 +20271,15 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="7.05521,-166.554"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="7.00521,-167.404;11.5784,-103.333"/>
+        <dia:rectangle val="7.00521,-167.404;11.2834,-103.333"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="7.05521,-166.554"/>
-        <dia:point val="11.5284,-166.554"/>
-        <dia:point val="11.5284,-103.383"/>
+        <dia:point val="11.2334,-166.554"/>
+        <dia:point val="11.2334,-103.383"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -20527,16 +20389,16 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O155">
       <dia:attribute name="obj_pos">
-        <dia:point val="19.1432,-163.466"/>
+        <dia:point val="19.1432,-163.465"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="18.2932,-163.516;68.9514,-109.796"/>
+        <dia:rectangle val="18.2932,-163.515;68.9514,-109.796"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="19.1432,-163.466"/>
+        <dia:point val="19.1432,-163.465"/>
         <dia:point val="19.1432,-121.822"/>
         <dia:point val="68.9014,-121.822"/>
         <dia:point val="68.9014,-109.846"/>
@@ -20568,22 +20430,22 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O156">
       <dia:attribute name="obj_pos">
-        <dia:point val="146.457,-168.208"/>
+        <dia:point val="148.835,-167.613"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="146.407,-168.258;173.562,-164.558"/>
+        <dia:rectangle val="148.785,-167.663;161.45,-163.963"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="146.457,-168.208"/>
+        <dia:point val="148.835,-167.613"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="27.055"/>
+        <dia:real val="12.565000000000001"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
         <dia:real val="3.6000000000000001"/>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#javafx.event.EventHandler&lt;T extends javafx.event.Event&gt;#</dia:string>
+        <dia:string>#javafx.event.EventHandler#</dia:string>
       </dia:attribute>
       <dia:attribute name="stereotype">
         <dia:string>#interface#</dia:string>
@@ -20637,7 +20499,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:font family="monospace" style="0" name="Courier"/>
       </dia:attribute>
       <dia:attribute name="abstract_font">
-        <dia:font family="monospace" style="4" name="Courier"/>
+        <dia:font family="monospace" style="0" name="Courier"/>
       </dia:attribute>
       <dia:attribute name="polymorphic_font">
         <dia:font family="monospace" style="0" name="Courier"/>
@@ -21699,18 +21561,18 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Realizes" version="1" id="O161">
       <dia:attribute name="obj_pos">
-        <dia:point val="159.984,-164.557"/>
+        <dia:point val="155.118,-163.963"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="138.314,-164.607;160.834,-136.891"/>
+        <dia:rectangle val="138.314,-164.013;155.968,-136.891"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="159.984,-164.557"/>
-        <dia:point val="159.984,-150.349"/>
-        <dia:point val="138.364,-150.349"/>
+        <dia:point val="155.118,-163.963"/>
+        <dia:point val="155.118,-150.052"/>
+        <dia:point val="138.364,-150.052"/>
         <dia:point val="138.364,-136.941"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -21740,17 +21602,17 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Realizes" version="1" id="O162">
       <dia:attribute name="obj_pos">
-        <dia:point val="159.984,-164.558"/>
+        <dia:point val="155.118,-163.963"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="159.134,-164.608;176.211,-136.429"/>
+        <dia:rectangle val="154.268,-164.013;176.211,-136.429"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="159.984,-164.558"/>
-        <dia:point val="159.984,-150.258"/>
+        <dia:point val="155.118,-163.963"/>
+        <dia:point val="155.118,-150.258"/>
         <dia:point val="176.161,-150.258"/>
         <dia:point val="176.161,-136.479"/>
       </dia:attribute>
@@ -21781,17 +21643,17 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Realizes" version="1" id="O163">
       <dia:attribute name="obj_pos">
-        <dia:point val="159.984,-164.557"/>
+        <dia:point val="155.118,-163.964"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="156.046,-164.607;160.834,-122.7"/>
+        <dia:rectangle val="154.268,-164.014;156.146,-122.7"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="159.984,-164.557"/>
-        <dia:point val="159.984,-143.956"/>
+        <dia:point val="155.118,-163.964"/>
+        <dia:point val="155.118,-143.956"/>
         <dia:point val="156.096,-143.956"/>
         <dia:point val="156.096,-122.75"/>
       </dia:attribute>
@@ -21822,17 +21684,17 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Realizes" version="1" id="O164">
       <dia:attribute name="obj_pos">
-        <dia:point val="159.984,-164.557"/>
+        <dia:point val="155.118,-163.964"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="157.466,-164.607;160.834,-126.915"/>
+        <dia:rectangle val="154.268,-164.014;157.566,-126.915"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="159.984,-164.557"/>
-        <dia:point val="159.984,-143.956"/>
+        <dia:point val="155.118,-163.964"/>
+        <dia:point val="155.118,-143.956"/>
         <dia:point val="157.516,-143.956"/>
         <dia:point val="157.516,-126.965"/>
       </dia:attribute>
@@ -21866,7 +21728,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="122.802,-115.833"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="122.752,-115.883;145.129,-102.633"/>
+        <dia:rectangle val="122.752,-115.883;145.13,-102.633"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="122.802,-115.833"/>
@@ -22289,7 +22151,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="198.276,-150.581"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="198.226,-151.631;400.417,-64.4162"/>
+        <dia:rectangle val="198.226,-151.631;400.418,-64.416"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -22363,7 +22225,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="199.251,-149.324"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="199.201,-150.374;301.518,-65.0658"/>
+        <dia:rectangle val="199.201,-150.374;301.518,-65.0656"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -23375,7 +23237,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:font family="monospace" style="0" name="Courier"/>
       </dia:attribute>
       <dia:attribute name="abstract_font">
-        <dia:font family="monospace" style="4" name="Courier"/>
+        <dia:font family="monospace" style="0" name="Courier"/>
       </dia:attribute>
       <dia:attribute name="polymorphic_font">
         <dia:font family="monospace" style="0" name="Courier"/>
@@ -23413,10 +23275,10 @@ Extends UAClientWrapper#</dia:string>
             <dia:string>#state#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#AlarmStates#</dia:string>
+            <dia:string>#AlarmState#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
-            <dia:string>#ALARM_ENABLED#</dia:string>
+            <dia:string>#AlarmState.ALARM_ENABLED#</dia:string>
           </dia:attribute>
           <dia:attribute name="comment">
             <dia:string>#Stores the current state of all alarms: The light is enabled when at least one other alarm is enabled.#</dia:string>
@@ -25092,7 +24954,7 @@ false otherwise.#</dia:string>
         <dia:point val="246.972,-125.709"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="246.122,-125.759;254.543,-121.489"/>
+        <dia:rectangle val="246.122,-125.759;254.543,-121.488"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -25101,7 +24963,7 @@ false otherwise.#</dia:string>
         <dia:point val="246.972,-125.709"/>
         <dia:point val="246.972,-123.224"/>
         <dia:point val="254.493,-123.224"/>
-        <dia:point val="254.493,-121.539"/>
+        <dia:point val="254.493,-121.538"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -25502,7 +25364,7 @@ false otherwise.#</dia:string>
         <dia:real val="7.2000000000000002"/>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#AlarmStates#</dia:string>
+        <dia:string>#AlarmState#</dia:string>
       </dia:attribute>
       <dia:attribute name="stereotype">
         <dia:string>#enumeration#</dia:string>
@@ -25556,7 +25418,7 @@ false otherwise.#</dia:string>
         <dia:font family="monospace" style="0" name="Courier"/>
       </dia:attribute>
       <dia:attribute name="abstract_font">
-        <dia:font family="monospace" style="4" name="Courier"/>
+        <dia:font family="monospace" style="0" name="Courier"/>
       </dia:attribute>
       <dia:attribute name="polymorphic_font">
         <dia:font family="monospace" style="0" name="Courier"/>
@@ -25645,16 +25507,16 @@ false otherwise.#</dia:string>
     </dia:object>
     <dia:object type="UML - Realizes" version="1" id="O186">
       <dia:attribute name="obj_pos">
-        <dia:point val="304.847,-164.96"/>
+        <dia:point val="304.847,-164.961"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="300.538,-165.01;305.697,-131.481"/>
+        <dia:rectangle val="300.538,-165.011;305.697,-131.481"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="304.847,-164.96"/>
+        <dia:point val="304.847,-164.961"/>
         <dia:point val="304.847,-132.331"/>
         <dia:point val="300.588,-132.331"/>
       </dia:attribute>
@@ -26021,7 +25883,7 @@ false otherwise.#</dia:string>
         <dia:point val="243.36,-113.445"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="243.31,-113.495;272.4,-98.3952"/>
+        <dia:rectangle val="243.31,-113.495;272.4,-98.395"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="243.36,-113.445"/>
@@ -27056,16 +26918,16 @@ the chart showing the progression.#</dia:string>
         <dia:boolean val="true"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="249.956,-91.4702"/>
+        <dia:point val="249.955,-91.4702"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="249.206,-92.2202;269.154,-84.8255"/>
+        <dia:rectangle val="249.205,-92.2202;269.154,-84.8255"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="249.956,-91.4702"/>
+        <dia:point val="249.955,-91.4702"/>
         <dia:point val="259.749,-91.4702"/>
         <dia:point val="259.749,-84.8755"/>
       </dia:attribute>
@@ -27093,7 +26955,7 @@ the chart showing the progression.#</dia:string>
         <dia:point val="279.718,-105.545"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="279.668,-105.595;299.518,-90.4952"/>
+        <dia:rectangle val="279.668,-105.595;299.518,-90.495"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="279.718,-105.545"/>
@@ -27627,7 +27489,7 @@ the chart showing the progression.#</dia:string>
         <dia:point val="307.511,-148.537"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="307.461,-149.587;399.644,-66.4428"/>
+        <dia:rectangle val="307.461,-149.587;399.644,-66.4426"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -27665,13 +27527,13 @@ the chart showing the progression.#</dia:string>
         <dia:point val="308.409,-147.637"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="308.359,-147.687;335.139,-112.887"/>
+        <dia:rectangle val="308.359,-147.687;337.449,-112.887"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="308.409,-147.637"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="26.68"/>
+        <dia:real val="28.989999999999998"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
         <dia:real val="34.700000000000003"/>
@@ -27731,7 +27593,7 @@ the chart showing the progression.#</dia:string>
         <dia:font family="monospace" style="0" name="Courier"/>
       </dia:attribute>
       <dia:attribute name="abstract_font">
-        <dia:font family="monospace" style="4" name="Courier"/>
+        <dia:font family="monospace" style="0" name="Courier"/>
       </dia:attribute>
       <dia:attribute name="polymorphic_font">
         <dia:font family="monospace" style="0" name="Courier"/>
@@ -27961,7 +27823,7 @@ the chart showing the progression.#</dia:string>
                 <dia:string>#currentSettings#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#Settings#</dia:string>
+                <dia:string>#ClientSettingsWrapper#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -28208,13 +28070,13 @@ the current used window.#</dia:string>
         <dia:point val="338.451,-108.369"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="338.401,-108.419;364.411,-88.1192"/>
+        <dia:rectangle val="338.401,-108.419;366.336,-88.119"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="338.451,-108.369"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="25.91"/>
+        <dia:real val="27.835000000000001"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
         <dia:real val="20.199999999999996"/>
@@ -28274,7 +28136,7 @@ the current used window.#</dia:string>
         <dia:font family="monospace" style="0" name="Courier"/>
       </dia:attribute>
       <dia:attribute name="abstract_font">
-        <dia:font family="monospace" style="4" name="Courier"/>
+        <dia:font family="monospace" style="0" name="Courier"/>
       </dia:attribute>
       <dia:attribute name="polymorphic_font">
         <dia:font family="monospace" style="0" name="Courier"/>
@@ -28458,7 +28320,7 @@ the current used window.#</dia:string>
                 <dia:string>#currentSettings#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#Settings#</dia:string>
+                <dia:string>#ClientSettingsWrapper#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -28592,13 +28454,13 @@ the current used window.#</dia:string>
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O199">
       <dia:attribute name="obj_pos">
-        <dia:point val="370.202,-129.034"/>
+        <dia:point val="369.964,-127.369"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="370.152,-129.084;398.857,-108.834"/>
+        <dia:rectangle val="369.914,-127.419;398.619,-107.169"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="370.202,-129.034"/>
+        <dia:point val="369.964,-127.369"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="28.605"/>
@@ -28661,7 +28523,7 @@ the current used window.#</dia:string>
         <dia:font family="monospace" style="0" name="Courier"/>
       </dia:attribute>
       <dia:attribute name="abstract_font">
-        <dia:font family="monospace" style="4" name="Courier"/>
+        <dia:font family="monospace" style="0" name="Courier"/>
       </dia:attribute>
       <dia:attribute name="polymorphic_font">
         <dia:font family="monospace" style="0" name="Courier"/>
@@ -28776,7 +28638,7 @@ the current used window.#</dia:string>
                 <dia:string>#currentSettings#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#Settings#</dia:string>
+                <dia:string>#ClientSettingsWrapper#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -28968,7 +28830,7 @@ true if the temperature progression should be enabled for the specified tank. fa
         <dia:font family="monospace" style="0" name="Courier"/>
       </dia:attribute>
       <dia:attribute name="abstract_font">
-        <dia:font family="monospace" style="4" name="Courier"/>
+        <dia:font family="monospace" style="0" name="Courier"/>
       </dia:attribute>
       <dia:attribute name="polymorphic_font">
         <dia:font family="monospace" style="0" name="Courier"/>
@@ -29083,7 +28945,7 @@ true if the temperature progression should be enabled for the specified tank. fa
                 <dia:string>#currentSettings#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#Settings#</dia:string>
+                <dia:string>#ClientSettingsWrapper#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -29206,7 +29068,7 @@ true if the overflow alarm for a specified tank should be enabled and false othe
     </dia:object>
     <dia:object type="UML - Association" version="2" id="O201">
       <dia:attribute name="name">
-        <dia:string>#contains content for tab "General Settings" in#</dia:string>
+        <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="direction">
         <dia:enum val="2"/>
@@ -29230,7 +29092,7 @@ true if the overflow alarm for a specified tank should be enabled and false othe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="role_b">
-        <dia:string>##</dia:string>
+        <dia:string>#generalSettingsTab#</dia:string>
       </dia:attribute>
       <dia:attribute name="multipicity_b">
         <dia:string>##</dia:string>
@@ -29242,17 +29104,17 @@ true if the overflow alarm for a specified tank should be enabled and false othe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="335.089,-112.937"/>
+        <dia:point val="337.399,-112.937"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="327.315,-112.987;345.625,-107.569"/>
+        <dia:rectangle val="337.325,-112.987;345.581,-108.319"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="335.089,-112.937"/>
-        <dia:point val="335.089,-109.766"/>
+        <dia:point val="337.399,-112.937"/>
+        <dia:point val="337.399,-109.766"/>
         <dia:point val="338.451,-109.766"/>
         <dia:point val="338.451,-108.369"/>
       </dia:attribute>
@@ -29278,7 +29140,7 @@ true if the overflow alarm for a specified tank should be enabled and false othe
     </dia:object>
     <dia:object type="UML - Association" version="2" id="O202">
       <dia:attribute name="name">
-        <dia:string>#contains content for tab "Progressions" in#</dia:string>
+        <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="direction">
         <dia:enum val="2"/>
@@ -29302,7 +29164,7 @@ true if the overflow alarm for a specified tank should be enabled and false othe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="role_b">
-        <dia:string>##</dia:string>
+        <dia:string>#progressionsTab#</dia:string>
       </dia:attribute>
       <dia:attribute name="multipicity_b">
         <dia:string>##</dia:string>
@@ -29314,19 +29176,19 @@ true if the overflow alarm for a specified tank should be enabled and false othe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="335.089,-112.937"/>
+        <dia:point val="337.399,-112.937"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="335.039,-129.784;370.252,-112.087"/>
+        <dia:rectangle val="337.349,-128.119;370.014,-112.087"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="335.089,-112.937"/>
-        <dia:point val="352.646,-112.937"/>
-        <dia:point val="352.646,-129.034"/>
-        <dia:point val="370.202,-129.034"/>
+        <dia:point val="337.399,-112.937"/>
+        <dia:point val="353.682,-112.937"/>
+        <dia:point val="353.682,-127.369"/>
+        <dia:point val="369.964,-127.369"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -29350,13 +29212,13 @@ true if the overflow alarm for a specified tank should be enabled and false othe
     </dia:object>
     <dia:object type="UML - Association" version="2" id="O203">
       <dia:attribute name="name">
-        <dia:string>#contains content for tab "Alarms" in#</dia:string>
+        <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="direction">
         <dia:enum val="2"/>
       </dia:attribute>
       <dia:attribute name="show_direction">
-        <dia:boolean val="true"/>
+        <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="assoc_type">
         <dia:enum val="0"/>
@@ -29374,7 +29236,7 @@ true if the overflow alarm for a specified tank should be enabled and false othe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="role_b">
-        <dia:string>##</dia:string>
+        <dia:string>#settingsTab#</dia:string>
       </dia:attribute>
       <dia:attribute name="multipicity_b">
         <dia:string>##</dia:string>
@@ -29386,16 +29248,16 @@ true if the overflow alarm for a specified tank should be enabled and false othe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="335.139,-130.287"/>
+        <dia:point val="322.904,-130.287"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="335.089,-139.652;353.013,-129.437"/>
+        <dia:rectangle val="322.854,-139.652;353.013,-129.437"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="335.139,-130.287"/>
+        <dia:point val="322.904,-130.287"/>
         <dia:point val="336.195,-130.287"/>
         <dia:point val="336.195,-138.902"/>
         <dia:point val="352.963,-138.902"/>
@@ -29535,7 +29397,7 @@ true if the overflow alarm for a specified tank should be enabled and false othe
         <dia:point val="309.9,-108.395"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="309.85,-108.445;336.63,-69.6452"/>
+        <dia:rectangle val="309.85,-108.445;336.63,-69.645"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="309.9,-108.395"/>
@@ -29601,7 +29463,7 @@ true if the overflow alarm for a specified tank should be enabled and false othe
         <dia:font family="monospace" style="0" name="Courier"/>
       </dia:attribute>
       <dia:attribute name="abstract_font">
-        <dia:font family="monospace" style="4" name="Courier"/>
+        <dia:font family="monospace" style="0" name="Courier"/>
       </dia:attribute>
       <dia:attribute name="polymorphic_font">
         <dia:font family="monospace" style="0" name="Courier"/>
@@ -29693,7 +29555,7 @@ true if the overflow alarm for a specified tank should be enabled and false othe
                 <dia:string>#currentSettings#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#Settings#</dia:string>
+                <dia:string>#ClientSettingsWrapper#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -30157,7 +30019,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="254.941,-168.923"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="254.891,-168.973;266.783,-166.673"/>
+        <dia:rectangle val="254.891,-168.973;266.784,-166.673"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="254.941,-168.923"/>
@@ -30308,7 +30170,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="360.042,-164.997"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="351.356,-165.047;360.892,-108.368"/>
+        <dia:rectangle val="352.319,-165.047;360.892,-108.368"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -30316,8 +30178,8 @@ true if the logging of the temperature progression should be enabled for the spe
       <dia:attribute name="orth_points">
         <dia:point val="360.042,-164.997"/>
         <dia:point val="360.042,-162.293"/>
-        <dia:point val="351.406,-162.293"/>
-        <dia:point val="351.406,-108.418"/>
+        <dia:point val="352.369,-162.293"/>
+        <dia:point val="352.369,-108.418"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -30349,7 +30211,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="360.042,-164.994"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="359.192,-165.044;384.555,-129.034"/>
+        <dia:rectangle val="359.192,-165.044;384.317,-127.369"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -30357,8 +30219,8 @@ true if the logging of the temperature progression should be enabled for the spe
       <dia:attribute name="orth_points">
         <dia:point val="360.042,-164.994"/>
         <dia:point val="360.042,-161.445"/>
-        <dia:point val="384.505,-161.445"/>
-        <dia:point val="384.505,-129.084"/>
+        <dia:point val="384.267,-161.445"/>
+        <dia:point val="384.267,-127.419"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -30428,19 +30290,19 @@ true if the logging of the temperature progression should be enabled for the spe
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O211">
       <dia:attribute name="obj_pos">
-        <dia:point val="260.837,-166.674"/>
+        <dia:point val="260.837,-166.673"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="246.922,-166.724;261.687,-146.759"/>
+        <dia:rectangle val="246.922,-166.723;261.687,-146.758"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="260.837,-166.674"/>
+        <dia:point val="260.837,-166.673"/>
         <dia:point val="260.837,-163.272"/>
         <dia:point val="246.972,-163.272"/>
-        <dia:point val="246.972,-146.809"/>
+        <dia:point val="246.972,-146.808"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -30730,16 +30592,16 @@ true if the logging of the temperature progression should be enabled for the spe
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O215">
       <dia:attribute name="obj_pos">
-        <dia:point val="234.174,-165.512"/>
+        <dia:point val="234.174,-165.513"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="229.946,-165.562;235.024,-119.566"/>
+        <dia:rectangle val="229.946,-165.563;235.024,-119.566"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="234.174,-165.512"/>
+        <dia:point val="234.174,-165.513"/>
         <dia:point val="234.174,-142.164"/>
         <dia:point val="229.996,-142.164"/>
         <dia:point val="229.996,-119.616"/>
@@ -31917,7 +31779,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="123.627,1.62816"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="123.577,0.578156;178.935,32.6276"/>
+        <dia:rectangle val="123.577,0.57816;178.935,32.6276"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -31955,13 +31817,13 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="152.251,3.29786"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="152.201,3.24786;176.671,21.1979"/>
+        <dia:rectangle val="152.201,3.24786;176.194,21.1979"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="152.251,3.29786"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="24.369999999999997"/>
+        <dia:real val="23.892500000000002"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
         <dia:real val="17.850000000000001"/>
@@ -32128,7 +31990,7 @@ true if the logging of the temperature progression should be enabled for the spe
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#milo.OpcUaServer#</dia:string>
+            <dia:string>#OpcUaServer#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="1"/>
@@ -32428,7 +32290,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>#value#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#milo.DataValue#</dia:string>
+                <dia:string>#DataValue#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -32454,13 +32316,13 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="183.808,3.88156"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="183.758,3.83156;209.768,21.7816"/>
+        <dia:rectangle val="183.758,3.83156;208.228,21.7816"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="183.808,3.88156"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="25.91"/>
+        <dia:real val="24.369999999999997"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
         <dia:real val="17.850000000000001"/>
@@ -32627,7 +32489,7 @@ true if the logging of the temperature progression should be enabled for the spe
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#milo.OpcUaClient#</dia:string>
+            <dia:string>#OpcUaClient#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="1"/>
@@ -33057,7 +32919,7 @@ true if the logging of the temperature progression should be enabled for the spe
             <dia:string>#subscriptionModel#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#milo.SubscriptionModel#</dia:string>
+            <dia:string>#SubscriptionModel#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
@@ -33080,7 +32942,7 @@ true if the logging of the temperature progression should be enabled for the spe
             <dia:string>#server#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#milo.OpcUaServer#</dia:string>
+            <dia:string>#OpcUaServer#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
@@ -33134,7 +32996,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>#server#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#milo.OpcUaServer#</dia:string>
+                <dia:string>#OpcUaServer#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -33428,7 +33290,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>#context#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#milo.AccessContext#</dia:string>
+                <dia:string>#AccessContext#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -33445,7 +33307,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>#nodeId#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#milo.NodeId#</dia:string>
+                <dia:string>#NodeId#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -33493,7 +33355,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>#context#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#milo.ReadContext#</dia:string>
+                <dia:string>#ReadContext#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -33527,7 +33389,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>#timestamps#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#milo.TimestampsToReturn#</dia:string>
+                <dia:string>#TimestampsToReturn#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -33544,7 +33406,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>#readValueIds#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#List&lt;milo.ReadValueId&gt;#</dia:string>
+                <dia:string>#List&lt;ReadValueId&gt;#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -33570,7 +33432,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="206.74,23.8121"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="206.69,23.7621;217.582,29.9121"/>
+        <dia:rectangle val="206.69,23.7621;217.583,29.9121"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="206.74,23.8121"/>
@@ -33730,7 +33592,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="223.881,23.485"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="223.831,23.435;235.848,29.585"/>
+        <dia:rectangle val="223.831,23.435;235.849,29.585"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="223.881,23.485"/>
@@ -34231,7 +34093,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="230.947,8.90386"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="229.789,8.05386;232.847,23.535"/>
+        <dia:rectangle val="229.79,8.05386;232.847,23.535"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -34240,8 +34102,8 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="230.947,8.90386"/>
         <dia:point val="232.797,8.90386"/>
         <dia:point val="232.797,16.1694"/>
-        <dia:point val="229.839,16.1694"/>
-        <dia:point val="229.839,23.485"/>
+        <dia:point val="229.84,16.1694"/>
+        <dia:point val="229.84,23.485"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -34274,7 +34136,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="225.434,13.8539"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="221.021,13.8039;226.284,16.5416"/>
+        <dia:rectangle val="221.022,13.8039;226.284,16.5416"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -34282,8 +34144,8 @@ true if the logging of the temperature progression should be enabled for the spe
       <dia:attribute name="orth_points">
         <dia:point val="225.434,13.8539"/>
         <dia:point val="225.434,15.5727"/>
-        <dia:point val="221.071,15.5727"/>
-        <dia:point val="221.071,16.4916"/>
+        <dia:point val="221.072,15.5727"/>
+        <dia:point val="221.072,16.4916"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -34348,17 +34210,17 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="164.436,21.1479"/>
+        <dia:point val="164.197,21.1479"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="150.323,20.3979;165.186,29.871"/>
+        <dia:rectangle val="150.323,20.3979;164.947,29.871"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="164.436,21.1479"/>
-        <dia:point val="164.436,29.8026"/>
+        <dia:point val="164.197,21.1479"/>
+        <dia:point val="164.197,29.8026"/>
         <dia:point val="150.373,29.8026"/>
         <dia:point val="150.373,28.271"/>
       </dia:attribute>
@@ -34387,7 +34249,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="158.13,64.482"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="158.08,64.432;180.052,66.732"/>
+        <dia:rectangle val="158.08,64.432;180.053,66.732"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="158.13,64.482"/>
@@ -34607,7 +34469,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="132.623,59.1463"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="131.773,31.371;138.045,59.1963"/>
+        <dia:rectangle val="131.773,31.371;138.046,59.1963"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -34684,7 +34546,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="169.066,64.482"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="169.016,20.3979;176.671,65.332"/>
+        <dia:rectangle val="169.016,20.3979;176.194,65.332"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -34693,7 +34555,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="169.066,64.482"/>
         <dia:point val="169.319,64.482"/>
         <dia:point val="169.319,21.1479"/>
-        <dia:point val="176.621,21.1479"/>
+        <dia:point val="176.144,21.1479"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -34719,7 +34581,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="300.614,24.6135"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="300.564,23.5635;328.077,34.4591"/>
+        <dia:rectangle val="300.564,23.5635;328.077,34.4592"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -34979,7 +34841,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="240.235,12.5502"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="240.185,11.5002;269.777,34.7835"/>
+        <dia:rectangle val="240.185,11.5002;269.777,34.7836"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -35278,7 +35140,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="271.334,24.5182"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="271.284,23.4682;299.167,34.9998"/>
+        <dia:rectangle val="271.284,23.4682;299.167,34.9999"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -35760,7 +35622,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="246.584,30.5899"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="246.534,30.5399;261.746,33.5399"/>
+        <dia:rectangle val="246.534,30.5399;261.747,33.5399"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="246.584,30.5899"/>
@@ -35871,7 +35733,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="310.022,52.0317"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="309.972,51.9817;320.025,54.2817"/>
+        <dia:rectangle val="309.972,51.9817;320.024,54.2817"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="310.022,52.0317"/>
@@ -35981,7 +35843,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="289.489,51.8714"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="289.439,51.8214;296.922,54.1214"/>
+        <dia:rectangle val="289.439,51.8214;296.921,54.1214"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="289.489,51.8714"/>
@@ -36375,16 +36237,16 @@ true if the logging of the temperature progression should be enabled for the spe
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O261">
       <dia:attribute name="obj_pos">
-        <dia:point val="319.975,52.7317"/>
+        <dia:point val="319.974,52.7317"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="319.925,32.4587;326.285,54.3317"/>
+        <dia:rectangle val="319.924,32.4587;326.285,53.5817"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="319.975,52.7317"/>
+        <dia:point val="319.974,52.7317"/>
         <dia:point val="326.235,52.7317"/>
         <dia:point val="326.235,32.5087"/>
       </dia:attribute>
@@ -36417,7 +36279,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="-22.9979,55.5873"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-23.0479,29.565;36.1778,57.1873"/>
+        <dia:rectangle val="-23.0479,29.565;36.1778,56.4373"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -36453,17 +36315,17 @@ true if the logging of the temperature progression should be enabled for the spe
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O263">
       <dia:attribute name="obj_pos">
-        <dia:point val="-27.8016,54.8873"/>
+        <dia:point val="-27.8017,54.8873"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-42.603,15.712;-26.9516,54.9373"/>
+        <dia:rectangle val="-42.603,15.012;-26.9517,54.9373"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-27.8016,54.8873"/>
-        <dia:point val="-27.8016,15.762"/>
+        <dia:point val="-27.8017,54.8873"/>
+        <dia:point val="-27.8017,15.762"/>
         <dia:point val="-42.553,15.762"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
