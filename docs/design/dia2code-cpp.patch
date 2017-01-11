@@ -1,0 +1,113 @@
+From d80e538c8806aa6154af5da2c61267a96b6353a8 Mon Sep 17 00:00:00 2001
+From: ByteHamster <info@bytehamster.com>
+Date: Wed, 11 Jan 2017 22:04:53 +0100
+Subject: [PATCH] Fixed java code generation
+
+* All methods withoud return type (except constructors)
+get a void return type
+* Moved package declaration above imports
+* Do not write return value (done manually)
+* Write RuntimeException into every method (otherwise return would be needed)
+* Do not create 'final' constructors
+---
+ src/GenerateCode.cpp     | 10 ++++++++--
+ src/GenerateCode.hpp     |  1 +
+ src/GenerateCodeJava.cpp | 12 ++++++++----
+ 3 files changed, 17 insertions(+), 6 deletions(-)
+
+diff --git a/src/GenerateCode.cpp b/src/GenerateCode.cpp
+index bbcac96..73c299b 100644
+--- a/src/GenerateCode.cpp
++++ b/src/GenerateCode.cpp
+@@ -196,8 +196,13 @@ GenerateCode::openOutfile (const std::string & filename, declaration & d) {
+     assert (indentlevel == 0);
+     writeStartHeader (tmpname);
+ 
+-    writeLicense ();
++    writeLicense();
+ 
++    return;
++}
++
++void 
++GenerateCode::writeIncludes(const std::string & filename, declaration & d) {
+     getDia ().cleanIncludes ();
+     getDia ().determineIncludes (d, !handleIncludePackage, noLoopSupport);
+ #ifdef ENABLE_CORBA
+@@ -615,8 +620,8 @@ GenerateCode::genDecl (declaration &d,
+         }
+     }
+ 
++    std::string name_;
+     if (forceOpen && (!oneClassOneHeader || !d.decl_kind == dk_module)) {
+-        std::string name_;
+ 
+         if (d.decl_kind == dk_module) {
+             if (buildtree) {
+@@ -657,6 +662,7 @@ GenerateCode::genDecl (declaration &d,
+     node = d.u.this_class;
+ 
+     writeNameSpaceStart (node);
++    writeIncludes(name_, d);
+ #ifdef ENABLE_CORBA
+     name = node->getName ().c_str ();
+     umla = node->getAttributes ().begin ();
+diff --git a/src/GenerateCode.hpp b/src/GenerateCode.hpp
+index 3e4b3e2..6eda5fa 100644
+--- a/src/GenerateCode.hpp
++++ b/src/GenerateCode.hpp
+@@ -59,6 +59,7 @@ class GenerateCode {
+ 
+         bool passByReference (umlClass &cl) const;
+         void openOutfile (const std::string & filename, declaration & d);
++        void writeIncludes(const std::string & filename, declaration & d);
+         void closeOutfile ();
+         void genDecl (declaration &d, bool forceOpen);
+     public:
+diff --git a/src/GenerateCodeJava.cpp b/src/GenerateCodeJava.cpp
+index 88a8618..d09b100 100644
+--- a/src/GenerateCodeJava.cpp
++++ b/src/GenerateCodeJava.cpp
+@@ -184,9 +184,9 @@ GenerateCodeJava::writeFunctionComment1 (const umlOperation & ope,
+                                std::string (spc () + " *        "),
+                                "\n");
+     }
+-    if (!ope.getType ().empty ()) {
+-        getFile () << spc () << " * @return " << ope.getType () << "\n";
+-    }
++    //if (!ope.getType ().empty ()) {
++    //    getFile () << spc () << " * @return " << ope.getType () << "\n";
++    //}
+     getFile () << spc () << " */\n";
+ }
+ 
+@@ -223,6 +223,8 @@ GenerateCodeJava::writeFunction2 (const umlClassNode & node,
+                                   char prefix) {
+     if ((!ope.getType ().empty ()) && (showType)) {
+         getFile () << cppName (ope.getType ()) << " ";
++    } else if(ope.getType().empty() && ope.getName() != node.getName()) {
++        getFile () << "void ";
+     }
+     getFile () << ope.getName () << " (";
+ 
+@@ -272,6 +274,7 @@ GenerateCodeJava::writeFunction2 (const umlClassNode & node,
+         else {
+             getFile () << " {\n";
+         }
++        getFile () << spc () << spc () << "throw new RuntimeException(\"Not implemented!\");\n";
+         getFile () << spc () << "}\n";
+     }
+ }
+@@ -295,7 +298,8 @@ GenerateCodeJava::writeFunction (const umlClassNode & node,
+     if (ope.getInheritance () == Inheritance::ABSTRACT) {
+         getFile () << "abstract ";
+     }
+-    else if (ope.getInheritance () == Inheritance::FINAL) {
++    else if (ope.getInheritance () == Inheritance::FINAL
++             && node.getName() != ope.getName()) {
+         getFile () << "final ";
+     }
+ 
+-- 
+2.7.4
+
