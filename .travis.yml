@@ -16,3 +16,5 @@ script:
 - export max_print_line=200
 - pdflatex -interaction=batchmode Pflichtenheft &> /dev/null
 - cat Pflichtenheft.log | grep -C 15 -i ERROR
+- pdflatex -interaction=batchmode Design &> /dev/null
+- cat Design.log | grep -C 15 -i ERROR

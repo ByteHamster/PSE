@@ -36,6 +36,7 @@ $RECYCLE.BIN/
 #               LaTeX files               #
 ###########################################
 docs/Pflichtenheft.pdf
+docs/Design.pdf
 *.aux
 *.lof
 *.log
