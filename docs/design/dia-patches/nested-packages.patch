@@ -1,4 +1,4 @@
-From d410b18e3e2fe4613d20b2a79988c34b81f02c21 Mon Sep 17 00:00:00 2001
+From 991ea28f8d3dd3e1950db110c72d3f3907057c87 Mon Sep 17 00:00:00 2001
 From: David Kahles <david.kahles96@gmail.com>
 Date: Mon, 9 Jan 2017 16:19:54 +0100
 Subject: [PATCH] Improve nested package support
@@ -9,7 +9,7 @@ Subject: [PATCH] Improve nested package support
  2 files changed, 31 insertions(+), 14 deletions(-)
 
 diff --git a/src/GenerateCode.cpp b/src/GenerateCode.cpp
-index bbcac96..11220cf 100644
+index bbcac96..ac61af1 100644
 --- a/src/GenerateCode.cpp
 +++ b/src/GenerateCode.cpp
 @@ -559,7 +559,7 @@ GenerateCode::genClass (const umlClassNode & node) {
@@ -27,7 +27,7 @@ index bbcac96..11220cf 100644
      while (it != pkglist.end ()) {
 -        buf.append ((*it)->getName ());
 +        std::string separated = (*it)->getName ();
-+        std::replace( separated.begin(), separated.end(), strPackage(""), separator);
++        std::replace( separated.begin(), separated.end(), '.', separator);
 +        buf.append (separated);
          ++it;
          if (it != pkglist.end ()) {
@@ -85,14 +85,14 @@ index bbcac96..11220cf 100644
  
      if (forceOpen && (!oneClassOneHeader || !d.decl_kind == dk_module)) {
 diff --git a/src/GenerateCode.hpp b/src/GenerateCode.hpp
-index 3e4b3e2..2a7506c 100644
+index 3e4b3e2..e7fbe62 100644
 --- a/src/GenerateCode.hpp
 +++ b/src/GenerateCode.hpp
 @@ -61,6 +61,7 @@ class GenerateCode {
          void openOutfile (const std::string & filename, declaration & d);
          void closeOutfile ();
          void genDecl (declaration &d, bool forceOpen);
-+        const char* dirName (umlPackage * pkg, char separator)
++        const char* dirName (umlPackage * pkg, char separator);
      public:
          GenerateCode (DiaGram    & diagram,
                        const char * ext,
