@@ -1,0 +1,101 @@
+From d410b18e3e2fe4613d20b2a79988c34b81f02c21 Mon Sep 17 00:00:00 2001
+From: David Kahles <david.kahles96@gmail.com>
+Date: Mon, 9 Jan 2017 16:19:54 +0100
+Subject: [PATCH] Improve nested package support
+
+---
+ src/GenerateCode.cpp | 44 ++++++++++++++++++++++++++++++--------------
+ src/GenerateCode.hpp |  1 +
+ 2 files changed, 31 insertions(+), 14 deletions(-)
+
+diff --git a/src/GenerateCode.cpp b/src/GenerateCode.cpp
+index bbcac96..11220cf 100644
+--- a/src/GenerateCode.cpp
++++ b/src/GenerateCode.cpp
+@@ -559,7 +559,7 @@ GenerateCode::genClass (const umlClassNode & node) {
+ }
+ 
+ const char *
+-dirName (umlPackage * pkg, char separator) {
++GenerateCode::dirName (umlPackage * pkg, char separator) {
+     static std::string buf;
+     std::list <umlPackage *>::const_iterator it;
+     std::list <umlPackage *> pkglist;
+@@ -568,7 +568,9 @@ dirName (umlPackage * pkg, char separator) {
+     umlPackage::makePackageList (pkg, pkglist);
+     it = pkglist.begin ();
+     while (it != pkglist.end ()) {
+-        buf.append ((*it)->getName ());
++        std::string separated = (*it)->getName ();
++        std::replace( separated.begin(), separated.end(), strPackage(""), separator);
++        buf.append (separated);
+         ++it;
+         if (it != pkglist.end ()) {
+             buf.append (1, separator);
+@@ -577,6 +579,31 @@ dirName (umlPackage * pkg, char separator) {
+     return buf.c_str ();
+ }
+ 
++void cpp_mkdir(std::string &folder) {
++    if (
++        #if defined(_WIN32) || defined(_WIN64)
++        _mkdir (folder.c_str ()) != 0
++        #else
++        mkdir (folder.c_str (), 0777) != 0
++        #endif
++    ) {
++        if (errno != EEXIST) {
++            throw std::string (std::string ("Fail to create folder ") +
++            folder + std::string (".\n"));
++        }
++    }
++}
++
++void recursive_mkdir(std::string &folder) {
++    size_t pos = 0;
++    while ((pos = folder.find("/", pos + 1)) != std::string::npos) {
++        std::string mkdir_string = folder.substr(0, pos);
++        cpp_mkdir(mkdir_string);
++    }
++    /* Create last directory */
++    cpp_mkdir(folder);
++}
++
+ void
+ GenerateCode::genDecl (declaration &d,
+                        bool forceOpen) {
+@@ -601,18 +628,7 @@ GenerateCode::genDecl (declaration &d,
+         folder.append (1, SEPARATOR);
+         folder.append (dirName (d.u.this_module->pkg, SEPARATOR));
+ 
+-        if (
+-#if defined(_WIN32) || defined(_WIN64)
+-        _mkdir (folder.c_str ()) != 0
+-#else
+-        mkdir (folder.c_str (), 0777) != 0
+-#endif
+-        ) {
+-            if (errno != EEXIST) {
+-                throw std::string (std::string ("Fail to create folder ") +
+-                                   folder + std::string (".\n"));
+-            }
+-        }
++        recursive_mkdir(folder);
+     }
+ 
+     if (forceOpen && (!oneClassOneHeader || !d.decl_kind == dk_module)) {
+diff --git a/src/GenerateCode.hpp b/src/GenerateCode.hpp
+index 3e4b3e2..2a7506c 100644
+--- a/src/GenerateCode.hpp
++++ b/src/GenerateCode.hpp
+@@ -61,6 +61,7 @@ class GenerateCode {
+         void openOutfile (const std::string & filename, declaration & d);
+         void closeOutfile ();
+         void genDecl (declaration &d, bool forceOpen);
++        const char* dirName (umlPackage * pkg, char separator)
+     public:
+         GenerateCode (DiaGram    & diagram,
+                       const char * ext,
+-- 
+2.11.0
+
