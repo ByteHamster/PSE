@@ -1,0 +1,27 @@
+From 864c111c51179cb73178329a155fa6f729f6cadc Mon Sep 17 00:00:00 2001
+From: David Kahles <david.kahles96@gmail.com>
+Date: Fri, 13 Jan 2017 07:14:40 +0100
+Subject: [PATCH] Don't write (???) if kind is unknown
+
+If kind is unknown, this means that the diagram creator didn't set it,
+so he probably doesn't care about it.
+---
+ src/string2.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/string2.cpp b/src/string2.cpp
+index 490dee6..8d5b357 100644
+--- a/src/string2.cpp
++++ b/src/string2.cpp
+@@ -108,7 +108,7 @@ const char *
+ kindStr (Kind k) {
+     switch (k) {
+         case Kind::UNKNOWN : {
+-            return "???";
++            return "";
+         }
+         case Kind::IN : {
+             return "in";
+-- 
+2.11.0
+
