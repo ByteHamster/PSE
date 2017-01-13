@@ -35,66 +35,52 @@
 % Aufteilung in die Pakete erklären
 
 \section{Klassenbeschreibungen}
-% JavaDoc
+Die Klassenbeschreibungen können im Anhang dieses Dokuments gefunden werden.
 
 \section{Abläufe}
 % Sequenzdiagramme
 
 \section{Änderungen zum Pflichtenheft}
 
-\section{\"Ubernommene Kann-Kriterien}
+\subsection{\"Ubernommene Kann-Kriterien}
 Im folgenden werden die Kann-Kriterien aus dem Pflichtenheft noch einmal alle aufgelistet. Zu jedem der Kriterien wird
 kurz zusammengefasst, was genau es bedeutet. Es werden erst die implementierten und anschlie{\ss}end die nicht implementierten
 Kriterien gelistet.
 
-%Implementiert:
-%- Logging von Fehler bei der Ausführung stdout
-%- Szenarien
-%- Jitter
-%- Zeitintervall
-%- Alarme ein-/ausschalten (und das abspeichern)
-%- Logging für Alarme in der Überwachungskonsole
-\subsection{Implementierte Kann-Kriterien}
+\subsubsection{Implementierte Kann-Kriterien}
 Die implementierten Kann-Kriterien sind wie folgt:
 
-Sowohl in der \"Uberwachungskonsole als auch in der Fertigungssimulation werden Fehler bei der Programmausf\"uhrung nach
-stdout geloggt.
+\begin{itemize}
+    \item Sowohl in der \"Uberwachungskonsole als auch in der Fertigungssimulation werden Fehler bei der Programmausf\"uhrung
+    nach stdout geloggt.
+    \item In der Fertigungssimulation k\"onnen vorgefertigte Simulationsszenarien geladen werden. Diese sind in eigenen Dateien definiert.
+    Die Ausführung der Simulationsszenarien f\"uhrt dazu, dass die Steuervariablen sich nach Vorgaben des Szenarios ohne
+    weitere Aktion des Benutzers \"andern.
+    \item In den Zuflusswerten der Fertigungssimulation ist ein Jitter eingebaut. Dieser sorgt f\"ur leichte Variationen in den
+    Zuflussmengen und der Temperatur der Zufl\"usse. Das Ausma{\ss} des Jitters ist nicht einstellbar.
+    \item Innerhalb der \"Uberwachungskonsole kann der Benutzer selbst einstellen, in welchem Zeitintervall die Werte der
+    Fertigungssimulation abgefragt werden. Alle Werte werden im jeweils gleichen Intervall abgefragt.
+    \item Die Alarme in der \"Uberwachungskonsole k\"onnen vom Benutzer jeweils einzeln zu- und abgeschaltet werden. Die Menge der
+    aktivierten Alarme wird bei Beenden der \"Uberwachungskonsole persistiert. Beim n\"achsten Start der \"Uberwachungskonsole
+    werden die gleichen Alarme automatisch wieder aktiviert.
+    \item Die Alarme, die von der \"Uberwachungskonsole empfangen werden, werden in einer Textausgabe innerhalb der
+    \"Uberwachungskonsole geloggt.
+\end{itemize}
 
-In der Fertigungssimulation k\"onnen vorgefertigte Simulationsszenarien geladen werden. Diese sind in eigenen Dateien definiert.
-Die Ausführung der Simulationsszenarien f\"uhrt dazu, dass die Steuervariablen sich nach Vorgaben des Szenarios ohne
-weitere Aktion des Benutzers \"andern.
-
-In den Zuflusswerten der Fertigungssimulation ist ein Jitter eingebaut. Dieser sorgt f\"ur leichte Variationen in den
-Zuflussmengen und der Temperatur der Zufl\"usse. Das Ausma{\ss} des Jitters ist nicht einstellbar.
-
-Innerhalb der \"Uberwachungskonsole kann der Benutzer selbst einstellen, in welchem Zeitintervall die Werte der
-Fertigungssimulation abgefragt werden. Alle Werte werden im jeweils gleichen Intervall abgefragt.
-
-Die Alarme in der \"Uberwachungskonsole k\"onnen vom Benutzer jeweils einzeln zu- und abgeschaltet werden. Die Menge der
-aktivierten Alarme wird bei Beenden der \"Uberwachungskonsole persistiert. Beim n\"achsten Start der \"Uberwachungskonsole
-werden die gleichen Alarme automatisch wieder aktiviert.
-
-Die Alarme, die von der \"Uberwachungskonsole empfangen werden, werden in einer Textausgabe innerhalb der \"Uberwachungskonsole
-geloggt.
-
-%nicht implementiert:
-%- andere Sprache
-%- Alarmschwellen konfigurieren
-%- Jitter einstellen
-\subsection{Nicht implementierte Kann-Kriterien}
+\subsubsection{Nicht implementierte Kann-Kriterien}
 Die nicht implementierten Kann-Kriterien sind wie folgt:
 
-%Sollen wir es moeglich machen, eigene Sprachdateien einzulesen?
-Es stehen keine verschiedenen Sprachoptionen f\"ur \"Uberwachungskonsole und Fertigungssimulation zur Verf\"ugung. Die einzige
-vorhandene Sprache ist Englisch.
-
-Die vorgegebenen Alarme k\"onnen nicht ver\"andert werden. Insbesondere ist es nicht m\"oglich, eigene Alarme hinzuzuf\"ugen
-oder die Schwellenwerte der vorgegebenen Alarme zu modifizieren.
-
-Der Jitter in den Simulationswerten ist fest vorgegeben und kann in seiner Intensit\"at nicht ver\"andert werden.
+\begin{itemize}
+    \item Es stehen keine verschiedenen Sprachoptionen f\"ur \"Uberwachungskonsole und Fertigungssimulation zur Verf\"ugung.
+    Die einzige vorhandene Sprache ist Englisch. Durch die Verwendung von i18n ist die Anwendung allerdings leicht übersetzbar.
+    \item Die vorgegebenen Alarme k\"onnen nicht ver\"andert werden. Insbesondere ist es nicht m\"oglich, eigene Alarme hinzuzuf\"ugen
+    oder die Schwellenwerte der vorgegebenen Alarme zu modifizieren.
+    \item Der Jitter in den Simulationswerten ist fest vorgegeben und kann in seiner Intensit\"at nicht ver\"andert werden.
+    \item Fehler bei der Programmausf\"uhrung werden nicht in eine Datei geschrieben.
+\end{itemize}
 
 \section{Klassendiagramme}
-Im Anhang.
+Die Klassendiagramme können im Anhang dieses Dokuments gefunden werden.
 
 \section{Verwendete Entwurfsmuster}
 % Aufzählen: Geheimnisprinzip, MVC etc.
