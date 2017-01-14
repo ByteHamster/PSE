@@ -2037,14 +2037,14 @@
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#java.util.LinkedList&lt;Liquid&gt;#</dia:string>
+            <dia:string>#Liquid#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
             <dia:string>#Take out the liquid of the last $SIM_STEP_SIZE of the Pipe
-@return the liquid which is in the last cm#</dia:string>
+@return the liquid which is in the last part of the pipe#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -5132,17 +5132,17 @@ crosssection*$SIM_STEP_SIZE*threshold
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O31">
       <dia:attribute name="obj_pos">
-        <dia:point val="6.44212,52.9614"/>
+        <dia:point val="6.44541,52.9614"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-4.42109,29.5148;7.29233,53.015"/>
+        <dia:rectangle val="-4.42109,29.5148;7.29548,53.0125"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="6.44212,52.9614"/>
-        <dia:point val="6.43184,50.5779"/>
+        <dia:point val="6.44541,52.9614"/>
+        <dia:point val="6.44212,50.5779"/>
         <dia:point val="-4.37109,50.5779"/>
         <dia:point val="-4.37109,29.5648"/>
       </dia:attribute>
@@ -5457,17 +5457,17 @@ crosssection*$SIM_STEP_SIZE*threshold
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O33">
       <dia:attribute name="obj_pos">
-        <dia:point val="6.44094,52.9345"/>
+        <dia:point val="6.44492,52.9345"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="5.59069,35.1163;19.8784,52.989"/>
+        <dia:rectangle val="5.59483,35.1163;19.8784,52.986"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="6.44094,52.9345"/>
-        <dia:point val="6.42922,50.6968"/>
+        <dia:point val="6.44492,52.9345"/>
+        <dia:point val="6.44094,50.6968"/>
         <dia:point val="19.8284,50.6968"/>
         <dia:point val="19.8284,35.1663"/>
       </dia:attribute>
@@ -7522,16 +7522,16 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:point val="-131.716,-106.519"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-131.766,-107.269;-109.672,-98.896"/>
+        <dia:rectangle val="-131.766,-107.269;-116.458,-91.4934"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="-131.716,-106.519"/>
-        <dia:point val="-120.719,-106.519"/>
-        <dia:point val="-120.719,-99.746"/>
-        <dia:point val="-109.722,-99.746"/>
+        <dia:point val="-124.112,-106.519"/>
+        <dia:point val="-124.112,-92.3434"/>
+        <dia:point val="-116.508,-92.3434"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -7555,13 +7555,13 @@ crosssection*$SIM_STEP_SIZE*threshold
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O45">
       <dia:attribute name="obj_pos">
-        <dia:point val="-109.672,-102.021"/>
+        <dia:point val="-116.458,-94.6184"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-109.722,-102.071;-97.8845,-97.421"/>
+        <dia:rectangle val="-116.508,-94.6684;-104.67,-90.0184"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="-109.672,-102.021"/>
+        <dia:point val="-116.458,-94.6184"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="11.737500000000001"/>
@@ -7715,13 +7715,13 @@ crosssection*$SIM_STEP_SIZE*threshold
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O46">
       <dia:attribute name="obj_pos">
-        <dia:point val="-121.508,-96.0859"/>
+        <dia:point val="-130.761,-90.3797"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-121.558,-96.1359;-108.253,-90.7859"/>
+        <dia:rectangle val="-130.811,-90.4297;-117.506,-85.0797"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="-121.508,-96.0859"/>
+        <dia:point val="-130.761,-90.3797"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="13.205"/>
@@ -7914,21 +7914,23 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:point val="-131.716,-103.969"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-131.766,-104.719;-121.508,-92.6109"/>
+        <dia:rectangle val="-131.766,-104.719;-126.326,-90.3297"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="-131.716,-103.969"/>
-        <dia:point val="-126.637,-103.969"/>
-        <dia:point val="-126.637,-93.4609"/>
-        <dia:point val="-121.558,-93.4609"/>
+        <dia:point val="-130.666,-103.969"/>
+        <dia:point val="-130.666,-97.1994"/>
+        <dia:point val="-130.761,-97.1994"/>
+        <dia:point val="-130.761,-90.3797"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
         <dia:enum val="1"/>
         <dia:enum val="0"/>
+        <dia:enum val="1"/>
       </dia:attribute>
       <dia:attribute name="orth_autoroute">
         <dia:boolean val="true"/>
@@ -7941,7 +7943,7 @@ crosssection*$SIM_STEP_SIZE*threshold
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O42" connection="19"/>
-        <dia:connection handle="1" to="O46" connection="10"/>
+        <dia:connection handle="1" to="O46" connection="0"/>
       </dia:connections>
       <dia:childnode parent="O39"/>
     </dia:object>
@@ -8840,19 +8842,19 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O53">
       <dia:attribute name="obj_pos">
-        <dia:point val="146.163,-82.2323"/>
+        <dia:point val="146.163,-82.2303"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="145.313,-87.7093;157.384,-82.1823"/>
+        <dia:rectangle val="145.313,-87.7099;157.384,-82.1803"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="146.163,-82.2323"/>
-        <dia:point val="146.163,-84.7382"/>
-        <dia:point val="157.334,-84.7382"/>
-        <dia:point val="157.334,-87.6593"/>
+        <dia:point val="146.163,-82.2303"/>
+        <dia:point val="146.163,-84.5968"/>
+        <dia:point val="157.334,-84.5968"/>
+        <dia:point val="157.334,-87.6599"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -8997,7 +8999,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="-108.471,-80.1789"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-109.321,-97.5213;-103.753,-80.1289"/>
+        <dia:rectangle val="-110.639,-90.1184;-107.621,-80.1289"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -9005,8 +9007,8 @@ Extends UAClientWrapper#</dia:string>
       <dia:attribute name="orth_points">
         <dia:point val="-108.471,-80.1789"/>
         <dia:point val="-108.471,-83.0528"/>
-        <dia:point val="-103.803,-83.0528"/>
-        <dia:point val="-103.803,-97.4713"/>
+        <dia:point val="-110.589,-83.0528"/>
+        <dia:point val="-110.589,-90.0684"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -9038,7 +9040,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="-108.471,-80.1789"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-114.955,-90.8859;-107.621,-80.1289"/>
+        <dia:rectangle val="-124.209,-85.1797;-107.621,-80.1289"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -9046,8 +9048,8 @@ Extends UAClientWrapper#</dia:string>
       <dia:attribute name="orth_points">
         <dia:point val="-108.471,-80.1789"/>
         <dia:point val="-108.471,-83.0528"/>
-        <dia:point val="-114.905,-83.0528"/>
-        <dia:point val="-114.905,-90.8359"/>
+        <dia:point val="-124.159,-83.0528"/>
+        <dia:point val="-124.159,-85.1297"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -12275,19 +12277,19 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O74">
       <dia:attribute name="obj_pos">
-        <dia:point val="68.9014,-112.846"/>
+        <dia:point val="69.1327,-112.846"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="68.8514,-112.896;90.9089,-101.746"/>
+        <dia:rectangle val="69.0827,-112.896;97.7877,-99.896"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="68.9014,-112.846"/>
+        <dia:point val="69.1327,-112.846"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="21.9575"/>
+        <dia:real val="28.605"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="11.049999999999999"/>
+        <dia:real val="12.899999999999999"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#SimulationSettingsWindow#</dia:string>
@@ -12380,6 +12382,54 @@ Extends UAClientWrapper#</dia:string>
       <dia:attribute name="operations">
         <dia:composite type="umloperation">
           <dia:attribute name="name">
+            <dia:string>#SimulationSettingsWindow#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="stereotype">
+            <dia:string>#constructor#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="visibility">
+            <dia:enum val="0"/>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>#Generates a new window that shows the simulation settings#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="abstract">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="inheritance_type">
+            <dia:enum val="2"/>
+          </dia:attribute>
+          <dia:attribute name="query">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="class_scope">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="parameters">
+            <dia:composite type="umlparameter">
+              <dia:attribute name="name">
+                <dia:string>#settings#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="type">
+                <dia:string>#ServerSettingsWrapper#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="value">
+                <dia:string>##</dia:string>
+              </dia:attribute>
+              <dia:attribute name="comment">
+                <dia:string>##</dia:string>
+              </dia:attribute>
+              <dia:attribute name="kind">
+                <dia:enum val="0"/>
+              </dia:attribute>
+            </dia:composite>
+          </dia:attribute>
+        </dia:composite>
+        <dia:composite type="umloperation">
+          <dia:attribute name="name">
             <dia:string>#getJitter#</dia:string>
           </dia:attribute>
           <dia:attribute name="stereotype">
@@ -12442,10 +12492,10 @@ Extends UAClientWrapper#</dia:string>
           <dia:attribute name="parameters">
             <dia:composite type="umlparameter">
               <dia:attribute name="name">
-                <dia:string>#id#</dia:string>
+                <dia:string>#tank#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#int#</dia:string>
+                <dia:string>#TankSelector#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -12461,7 +12511,7 @@ Extends UAClientWrapper#</dia:string>
         </dia:composite>
         <dia:composite type="umloperation">
           <dia:attribute name="name">
-            <dia:string>#setPortListener#</dia:string>
+            <dia:string>#setSettingsChangedListener#</dia:string>
           </dia:attribute>
           <dia:attribute name="stereotype">
             <dia:string>##</dia:string>
@@ -12473,7 +12523,7 @@ Extends UAClientWrapper#</dia:string>
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Sets the listener that gets notified as soon as the ports change#</dia:string>
+            <dia:string>#Sets the listener that gets notified as soon as the settings change#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -12493,7 +12543,7 @@ Extends UAClientWrapper#</dia:string>
                 <dia:string>#listener#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#PortListener#</dia:string>
+                <dia:string>#SettingsChangedListener#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -12516,28 +12566,28 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O75">
       <dia:attribute name="obj_pos">
-        <dia:point val="78.22,-96.7792"/>
+        <dia:point val="77.4489,-95.7768"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="78.17,-96.8292;93.6875,-91.3792"/>
+        <dia:rectangle val="77.3989,-95.8268;94.3889,-90.3768"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="78.22,-96.7792"/>
+        <dia:point val="77.4489,-95.7768"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="15.4175"/>
+        <dia:real val="16.890000000000001"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
         <dia:real val="5.3499999999999996"/>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#PortListener#</dia:string>
+        <dia:string>#SettingsChangedListener#</dia:string>
       </dia:attribute>
       <dia:attribute name="stereotype">
         <dia:string>#interface#</dia:string>
       </dia:attribute>
       <dia:attribute name="comment">
-        <dia:string>#This Listener listens for changes in the PortTextField.#</dia:string>
+        <dia:string>#This Listener listens for changes in the settings#</dia:string>
       </dia:attribute>
       <dia:attribute name="abstract">
         <dia:boolean val="false"/>
@@ -12621,7 +12671,7 @@ Extends UAClientWrapper#</dia:string>
       <dia:attribute name="operations">
         <dia:composite type="umloperation">
           <dia:attribute name="name">
-            <dia:string>#onPortsUpdated#</dia:string>
+            <dia:string>#onSettingsChanged#</dia:string>
           </dia:attribute>
           <dia:attribute name="stereotype">
             <dia:string>##</dia:string>
@@ -12633,7 +12683,7 @@ Extends UAClientWrapper#</dia:string>
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Alerts the Controller that the port has been changed.#</dia:string>
+            <dia:string>#Alerts the Controller that the settings have been changed.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -12838,17 +12888,17 @@ Extends UAClientWrapper#</dia:string>
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="79.8802,-112.846"/>
+        <dia:point val="83.4352,-112.846"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="78.4448,-126.199;83.8952,-112.096"/>
+        <dia:rectangle val="78.4448,-126.199;87.4502,-112.096"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="79.8802,-112.846"/>
-        <dia:point val="79.8802,-114.622"/>
+        <dia:point val="83.4352,-112.846"/>
+        <dia:point val="83.4352,-114.622"/>
         <dia:point val="78.4948,-114.622"/>
         <dia:point val="78.4948,-126.149"/>
       </dia:attribute>
@@ -14653,19 +14703,19 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O91">
       <dia:attribute name="obj_pos">
-        <dia:point val="-78.0076,-93.3762"/>
+        <dia:point val="-80.6938,-92.2262"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-78.0576,-93.4262;-56.7351,-87.2762"/>
+        <dia:rectangle val="-80.7438,-92.2762;-59.4213,-77.3262"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="-78.0076,-93.3762"/>
+        <dia:point val="-80.6938,-92.2262"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="21.2225"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="6.0499999999999989"/>
+        <dia:real val="14.849999999999998"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#AbstractTankDrawer#</dia:string>
@@ -14770,7 +14820,7 @@ Extends UAClientWrapper#</dia:string>
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Sets the position by using super(pos) and sets the color to col.#</dia:string>
+            <dia:string>#Sets the position by using super(pos) and sets the tank#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -14804,10 +14854,10 @@ Extends UAClientWrapper#</dia:string>
             </dia:composite>
             <dia:composite type="umlparameter">
               <dia:attribute name="name">
-                <dia:string>#color#</dia:string>
+                <dia:string>#tank#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#Color#</dia:string>
+                <dia:string>#Tank#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -14821,6 +14871,166 @@ Extends UAClientWrapper#</dia:string>
             </dia:composite>
           </dia:attribute>
         </dia:composite>
+        <dia:composite type="umloperation">
+          <dia:attribute name="name">
+            <dia:string>#setWidth#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="stereotype">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="visibility">
+            <dia:enum val="0"/>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>#Sets the width of this tank#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="abstract">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="inheritance_type">
+            <dia:enum val="2"/>
+          </dia:attribute>
+          <dia:attribute name="query">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="class_scope">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="parameters">
+            <dia:composite type="umlparameter">
+              <dia:attribute name="name">
+                <dia:string>#width#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="type">
+                <dia:string>#double#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="value">
+                <dia:string>##</dia:string>
+              </dia:attribute>
+              <dia:attribute name="comment">
+                <dia:string>##</dia:string>
+              </dia:attribute>
+              <dia:attribute name="kind">
+                <dia:enum val="0"/>
+              </dia:attribute>
+            </dia:composite>
+          </dia:attribute>
+        </dia:composite>
+        <dia:composite type="umloperation">
+          <dia:attribute name="name">
+            <dia:string>#getWidth#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="stereotype">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>#double#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="visibility">
+            <dia:enum val="0"/>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>#Gets the width of this tank
+
+@return the width#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="abstract">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="inheritance_type">
+            <dia:enum val="2"/>
+          </dia:attribute>
+          <dia:attribute name="query">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="class_scope">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="parameters"/>
+        </dia:composite>
+        <dia:composite type="umloperation">
+          <dia:attribute name="name">
+            <dia:string>#setHeight#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="stereotype">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="visibility">
+            <dia:enum val="0"/>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>#Sets the height of this tank#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="abstract">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="inheritance_type">
+            <dia:enum val="2"/>
+          </dia:attribute>
+          <dia:attribute name="query">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="class_scope">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="parameters">
+            <dia:composite type="umlparameter">
+              <dia:attribute name="name">
+                <dia:string>#height#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="type">
+                <dia:string>#double#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="value">
+                <dia:string>##</dia:string>
+              </dia:attribute>
+              <dia:attribute name="comment">
+                <dia:string>##</dia:string>
+              </dia:attribute>
+              <dia:attribute name="kind">
+                <dia:enum val="0"/>
+              </dia:attribute>
+            </dia:composite>
+          </dia:attribute>
+        </dia:composite>
+        <dia:composite type="umloperation">
+          <dia:attribute name="name">
+            <dia:string>#getHeight#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="stereotype">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>#double#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="visibility">
+            <dia:enum val="0"/>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>#Gets the height of this tank
+
+@return the height#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="abstract">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="inheritance_type">
+            <dia:enum val="2"/>
+          </dia:attribute>
+          <dia:attribute name="query">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="class_scope">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="parameters"/>
+        </dia:composite>
       </dia:attribute>
       <dia:attribute name="template">
         <dia:boolean val="false"/>
@@ -14830,13 +15040,13 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O92">
       <dia:attribute name="obj_pos">
-        <dia:point val="-10.092,-100.907"/>
+        <dia:point val="-10.192,-99.757"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-10.142,-100.957;10.183,-94.807"/>
+        <dia:rectangle val="-10.242,-99.807;10.083,-93.657"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="-10.092,-100.907"/>
+        <dia:point val="-10.192,-99.757"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="20.225000000000001"/>
@@ -15041,16 +15251,16 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="-40.4194,-133.286"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-40.4694,-133.336;-22.9294,-124.986"/>
+        <dia:rectangle val="-40.4694,-133.336;-11.3794,-122.336"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-40.4194,-133.286"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="17.440000000000001"/>
+        <dia:real val="28.989999999999998"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="8.2499999999999982"/>
+        <dia:real val="10.899999999999999"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#SimulationMainWindow#</dia:string>
@@ -15284,6 +15494,102 @@ Extends UAClientWrapper#</dia:string>
             </dia:composite>
           </dia:attribute>
         </dia:composite>
+        <dia:composite type="umloperation">
+          <dia:attribute name="name">
+            <dia:string>#setControlButtonHandler#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="stereotype">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="visibility">
+            <dia:enum val="0"/>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>#Sets the handler for pressing the control entry in the menu#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="abstract">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="inheritance_type">
+            <dia:enum val="2"/>
+          </dia:attribute>
+          <dia:attribute name="query">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="class_scope">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="parameters">
+            <dia:composite type="umlparameter">
+              <dia:attribute name="name">
+                <dia:string>#controlButtonHandler#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="type">
+                <dia:string>#MenuControlButtonHandler#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="value">
+                <dia:string>##</dia:string>
+              </dia:attribute>
+              <dia:attribute name="comment">
+                <dia:string>#The handler to execute#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="kind">
+                <dia:enum val="0"/>
+              </dia:attribute>
+            </dia:composite>
+          </dia:attribute>
+        </dia:composite>
+        <dia:composite type="umloperation">
+          <dia:attribute name="name">
+            <dia:string>#setSettingsButtonHandler#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="stereotype">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="visibility">
+            <dia:enum val="0"/>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="abstract">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="inheritance_type">
+            <dia:enum val="2"/>
+          </dia:attribute>
+          <dia:attribute name="query">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="class_scope">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="parameters">
+            <dia:composite type="umlparameter">
+              <dia:attribute name="name">
+                <dia:string>#settingsButtonHandler#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="type">
+                <dia:string>#MenuSettingsButtonHandler#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="value">
+                <dia:string>##</dia:string>
+              </dia:attribute>
+              <dia:attribute name="comment">
+                <dia:string>##</dia:string>
+              </dia:attribute>
+              <dia:attribute name="kind">
+                <dia:enum val="0"/>
+              </dia:attribute>
+            </dia:composite>
+          </dia:attribute>
+        </dia:composite>
       </dia:attribute>
       <dia:attribute name="template">
         <dia:boolean val="false"/>
@@ -15296,7 +15602,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="-25.455,-74.3341"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-25.505,-74.3841;-9.12,-66.2841"/>
+        <dia:rectangle val="-25.505,-74.3841;-9.12,-68.1341"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-25.455,-74.3341"/>
@@ -15305,7 +15611,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:real val="16.285"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="7.9999999999999982"/>
+        <dia:real val="6.1499999999999986"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#MotorDrawer#</dia:string>
@@ -15444,58 +15750,10 @@ Extends UAClientWrapper#</dia:string>
             </dia:composite>
             <dia:composite type="umlparameter">
               <dia:attribute name="name">
-                <dia:string>#speed#</dia:string>
+                <dia:string>#motor#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#int#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="value">
-                <dia:string>##</dia:string>
-              </dia:attribute>
-              <dia:attribute name="comment">
-                <dia:string>##</dia:string>
-              </dia:attribute>
-              <dia:attribute name="kind">
-                <dia:enum val="0"/>
-              </dia:attribute>
-            </dia:composite>
-          </dia:attribute>
-        </dia:composite>
-        <dia:composite type="umloperation">
-          <dia:attribute name="name">
-            <dia:string>#setSpeed#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="stereotype">
-            <dia:string>##</dia:string>
-          </dia:attribute>
-          <dia:attribute name="type">
-            <dia:string>#void#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="visibility">
-            <dia:enum val="0"/>
-          </dia:attribute>
-          <dia:attribute name="comment">
-            <dia:string>#Sets the speed to speed.#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="abstract">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-          <dia:attribute name="inheritance_type">
-            <dia:enum val="2"/>
-          </dia:attribute>
-          <dia:attribute name="query">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-          <dia:attribute name="class_scope">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-          <dia:attribute name="parameters">
-            <dia:composite type="umlparameter">
-              <dia:attribute name="name">
-                <dia:string>#speed#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="type">
-                <dia:string>#int#</dia:string>
+                <dia:string>#Motor#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -15925,16 +16183,16 @@ Extends UAClientWrapper#</dia:string>
             </dia:composite>
             <dia:composite type="umlparameter">
               <dia:attribute name="name">
-                <dia:string>#speed#</dia:string>
+                <dia:string>#pipe#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#int#</dia:string>
+                <dia:string>#Pipe#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>##</dia:string>
+                <dia:string>#The pipe to which the valve is attached#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -16207,17 +16465,17 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O98">
       <dia:attribute name="obj_pos">
-        <dia:point val="-41.3503,-97.73"/>
+        <dia:point val="-41.0503,-95.18"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-42.2003,-97.78;-40.5003,-85.2256"/>
+        <dia:rectangle val="-41.9003,-95.23;-40.2003,-85.2256"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-41.3503,-97.73"/>
-        <dia:point val="-41.3503,-86.0756"/>
+        <dia:point val="-41.0503,-95.18"/>
+        <dia:point val="-41.0503,-86.0756"/>
         <dia:point val="-40.8889,-86.0756"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -16282,18 +16540,18 @@ Extends UAClientWrapper#</dia:string>
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="-31.6994,-124.986"/>
+        <dia:point val="-25.9244,-122.336"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-32.4494,-125.736;-24.5168,-114.941"/>
+        <dia:rectangle val="-27.4618,-123.086;-23.0619,-114.941"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-31.6994,-124.986"/>
-        <dia:point val="-31.6994,-119.639"/>
-        <dia:point val="-27.4118,-119.639"/>
+        <dia:point val="-25.9244,-122.336"/>
+        <dia:point val="-25.9244,-118.314"/>
+        <dia:point val="-27.4118,-118.314"/>
         <dia:point val="-27.4118,-114.991"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -16311,20 +16569,20 @@ Extends UAClientWrapper#</dia:string>
         <dia:color val="#000000"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O93" connection="14"/>
+        <dia:connection handle="0" to="O93" connection="18"/>
         <dia:connection handle="1" to="O90" connection="10"/>
       </dia:connections>
       <dia:childnode parent="O89"/>
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O100">
       <dia:attribute name="obj_pos">
-        <dia:point val="-84.2926,-81.7892"/>
+        <dia:point val="-85.8398,-73.4613"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-84.3426,-81.8392;-62.6126,-75.9392"/>
+        <dia:rectangle val="-85.8898,-73.5113;-64.1598,-67.6113"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="-84.2926,-81.7892"/>
+        <dia:point val="-85.8398,-73.4613"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="21.630000000000003"/>
@@ -16469,10 +16727,10 @@ Extends UAClientWrapper#</dia:string>
             </dia:composite>
             <dia:composite type="umlparameter">
               <dia:attribute name="name">
-                <dia:string>#color#</dia:string>
+                <dia:string>#tank#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#Color#</dia:string>
+                <dia:string>#Tank#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -16543,19 +16801,19 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O101">
       <dia:attribute name="obj_pos">
-        <dia:point val="-72.5092,-75.3512"/>
+        <dia:point val="-63.7186,-73.2692"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-72.5592,-75.4012;-51.1667,-66.6012"/>
+        <dia:rectangle val="-63.7686,-73.3192;-42.3761,-66.3692"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="-72.5092,-75.3512"/>
+        <dia:point val="-63.7186,-73.2692"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="21.2925"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="8.6999999999999993"/>
+        <dia:real val="6.8499999999999996"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#MixTankDrawer#</dia:string>
@@ -16694,10 +16952,10 @@ Extends UAClientWrapper#</dia:string>
             </dia:composite>
             <dia:composite type="umlparameter">
               <dia:attribute name="name">
-                <dia:string>#color#</dia:string>
+                <dia:string>#tank#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#Color#</dia:string>
+                <dia:string>#MixTank#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -16759,54 +17017,6 @@ Extends UAClientWrapper#</dia:string>
             </dia:composite>
           </dia:attribute>
         </dia:composite>
-        <dia:composite type="umloperation">
-          <dia:attribute name="name">
-            <dia:string>#setColor#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="stereotype">
-            <dia:string>##</dia:string>
-          </dia:attribute>
-          <dia:attribute name="type">
-            <dia:string>#void#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="visibility">
-            <dia:enum val="0"/>
-          </dia:attribute>
-          <dia:attribute name="comment">
-            <dia:string>#Sets the color to col.#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="abstract">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-          <dia:attribute name="inheritance_type">
-            <dia:enum val="2"/>
-          </dia:attribute>
-          <dia:attribute name="query">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-          <dia:attribute name="class_scope">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-          <dia:attribute name="parameters">
-            <dia:composite type="umlparameter">
-              <dia:attribute name="name">
-                <dia:string>#col#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="type">
-                <dia:string>#Color#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="value">
-                <dia:string>##</dia:string>
-              </dia:attribute>
-              <dia:attribute name="comment">
-                <dia:string>##</dia:string>
-              </dia:attribute>
-              <dia:attribute name="kind">
-                <dia:enum val="0"/>
-              </dia:attribute>
-            </dia:composite>
-          </dia:attribute>
-        </dia:composite>
       </dia:attribute>
       <dia:attribute name="template">
         <dia:boolean val="false"/>
@@ -16816,19 +17026,19 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O102">
       <dia:attribute name="obj_pos">
-        <dia:point val="-67.3963,-87.2758"/>
+        <dia:point val="-70.0826,-77.3257"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-73.5276,-87.3258;-66.5464,-81.7896"/>
+        <dia:rectangle val="-75.0748,-77.3757;-69.2326,-73.4113"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-67.3963,-87.2758"/>
-        <dia:point val="-67.3963,-84.1577"/>
-        <dia:point val="-73.4776,-84.1577"/>
-        <dia:point val="-73.4776,-81.8396"/>
+        <dia:point val="-70.0826,-77.3257"/>
+        <dia:point val="-70.0826,-74.9935"/>
+        <dia:point val="-75.0248,-74.9935"/>
+        <dia:point val="-75.0248,-73.4613"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -16851,25 +17061,25 @@ Extends UAClientWrapper#</dia:string>
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O91" connection="10"/>
-        <dia:connection handle="1" to="O100" connection="12"/>
+        <dia:connection handle="0" to="O91" connection="18"/>
+        <dia:connection handle="1" to="O100" connection="1"/>
       </dia:connections>
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O103">
       <dia:attribute name="obj_pos">
-        <dia:point val="-67.3963,-87.3262"/>
+        <dia:point val="-70.0826,-77.3762"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-68.2463,-87.3762;-61.813,-75.3012"/>
+        <dia:rectangle val="-70.9326,-77.4262;-53.0224,-73.2192"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-67.3963,-87.3262"/>
-        <dia:point val="-67.3963,-84.0638"/>
-        <dia:point val="-61.863,-84.0638"/>
-        <dia:point val="-61.863,-75.3512"/>
+        <dia:point val="-70.0826,-77.3762"/>
+        <dia:point val="-70.0826,-74.9227"/>
+        <dia:point val="-53.0724,-74.9227"/>
+        <dia:point val="-53.0724,-73.2692"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -16877,7 +17087,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:enum val="1"/>
       </dia:attribute>
       <dia:attribute name="orth_autoroute">
-        <dia:boolean val="false"/>
+        <dia:boolean val="true"/>
       </dia:attribute>
       <dia:attribute name="text_colour">
         <dia:color val="#000000"/>
@@ -16934,18 +17144,18 @@ Extends UAClientWrapper#</dia:string>
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="-51.2167,-70.0512"/>
+        <dia:point val="-42.4261,-67.9692"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-51.2667,-70.8012;-25.405,-67.8341"/>
+        <dia:rectangle val="-42.4761,-69.4341;-25.405,-67.1192"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-51.2167,-70.0512"/>
-        <dia:point val="-38.3359,-70.0512"/>
-        <dia:point val="-38.3359,-68.6841"/>
+        <dia:point val="-42.4261,-67.9692"/>
+        <dia:point val="-33.9406,-67.9692"/>
+        <dia:point val="-33.9406,-68.6841"/>
         <dia:point val="-25.455,-68.6841"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -16964,19 +17174,18 @@ Extends UAClientWrapper#</dia:string>
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O101" connection="11"/>
-        <dia:connection handle="1" to="O94" connection="10"/>
       </dia:connections>
       <dia:childnode parent="O89"/>
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O105">
       <dia:attribute name="obj_pos">
-        <dia:point val="-24.5373,-93.3604"/>
+        <dia:point val="-24.2873,-92.2104"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-24.5873,-93.4104;-2.7648,-87.2604"/>
+        <dia:rectangle val="-24.3373,-92.2604;-2.5148,-86.1104"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="-24.5373,-93.3604"/>
+        <dia:point val="-24.2873,-92.2104"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="21.7225"/>
@@ -17147,17 +17356,17 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O106">
       <dia:attribute name="obj_pos">
-        <dia:point val="-13.676,-87.3104"/>
+        <dia:point val="-13.4261,-86.1604"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-14.526,-87.3604;-5.63223,-75.2183"/>
+        <dia:rectangle val="-14.2761,-86.2104;-5.63223,-75.2183"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-13.676,-87.3104"/>
-        <dia:point val="-13.676,-80.6481"/>
+        <dia:point val="-13.4261,-86.1604"/>
+        <dia:point val="-13.4261,-80.6481"/>
         <dia:point val="-5.68223,-80.6481"/>
         <dia:point val="-5.68223,-75.2683"/>
       </dia:attribute>
@@ -17188,20 +17397,20 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O107">
       <dia:attribute name="obj_pos">
-        <dia:point val="-41.3503,-97.73"/>
+        <dia:point val="-41.0503,-95.18"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-42.2003,-97.78;-24.4873,-88.7922"/>
+        <dia:rectangle val="-41.9003,-95.23;-24.2373,-87.6716"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-41.3503,-97.73"/>
-        <dia:point val="-41.3503,-89.6422"/>
-        <dia:point val="-29.2613,-89.6422"/>
-        <dia:point val="-29.2613,-89.6604"/>
-        <dia:point val="-24.5373,-89.6604"/>
+        <dia:point val="-41.0503,-95.18"/>
+        <dia:point val="-41.0503,-88.5216"/>
+        <dia:point val="-29.2613,-88.5216"/>
+        <dia:point val="-29.2613,-88.5104"/>
+        <dia:point val="-24.2873,-88.5104"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -17231,19 +17440,19 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O108">
       <dia:attribute name="obj_pos">
-        <dia:point val="-52.4928,-103.68"/>
+        <dia:point val="-52.1928,-105.53"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-52.5428,-103.73;-30.1578,-97.68"/>
+        <dia:rectangle val="-52.2428,-105.58;-29.8578,-95.13"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="-52.4928,-103.68"/>
+        <dia:point val="-52.1928,-105.53"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="22.285"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="5.9499999999999993"/>
+        <dia:real val="10.349999999999998"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#ObjectDrawer#</dia:string>
@@ -17382,6 +17591,86 @@ Extends UAClientWrapper#</dia:string>
             </dia:composite>
           </dia:attribute>
         </dia:composite>
+        <dia:composite type="umloperation">
+          <dia:attribute name="name">
+            <dia:string>#setPosition#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="stereotype">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="visibility">
+            <dia:enum val="0"/>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>#Sets the position of this element#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="abstract">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="inheritance_type">
+            <dia:enum val="2"/>
+          </dia:attribute>
+          <dia:attribute name="query">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="class_scope">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="parameters">
+            <dia:composite type="umlparameter">
+              <dia:attribute name="name">
+                <dia:string>#position#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="type">
+                <dia:string>#Point2D#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="value">
+                <dia:string>##</dia:string>
+              </dia:attribute>
+              <dia:attribute name="comment">
+                <dia:string>##</dia:string>
+              </dia:attribute>
+              <dia:attribute name="kind">
+                <dia:enum val="0"/>
+              </dia:attribute>
+            </dia:composite>
+          </dia:attribute>
+        </dia:composite>
+        <dia:composite type="umloperation">
+          <dia:attribute name="name">
+            <dia:string>#getPosition#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="stereotype">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>#Point2D#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="visibility">
+            <dia:enum val="0"/>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>#Returns the position of this element
+
+@return The position#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="abstract">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="inheritance_type">
+            <dia:enum val="2"/>
+          </dia:attribute>
+          <dia:attribute name="query">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="class_scope">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="parameters"/>
+        </dia:composite>
       </dia:attribute>
       <dia:attribute name="template">
         <dia:boolean val="false"/>
@@ -17394,7 +17683,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="-27.4118,-108.191"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-28.2618,-108.241;0.0705,-100.907"/>
+        <dia:rectangle val="-28.2618,-108.241;-0.0294999,-99.7571"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -17402,8 +17691,8 @@ Extends UAClientWrapper#</dia:string>
       <dia:attribute name="orth_points">
         <dia:point val="-27.4118,-108.191"/>
         <dia:point val="-27.4118,-106.265"/>
-        <dia:point val="0.0205,-106.265"/>
-        <dia:point val="0.0205,-100.957"/>
+        <dia:point val="-0.0794999,-106.265"/>
+        <dia:point val="-0.0794999,-99.8071"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -17432,18 +17721,18 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O110">
       <dia:attribute name="obj_pos">
-        <dia:point val="-41.3503,-97.73"/>
+        <dia:point val="-41.0503,-95.18"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-56.8351,-97.78;-40.5003,-88.8262"/>
+        <dia:rectangle val="-59.5213,-95.23;-40.2003,-87.6762"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-41.3503,-97.73"/>
-        <dia:point val="-41.3503,-89.6762"/>
-        <dia:point val="-56.7851,-89.6762"/>
+        <dia:point val="-41.0503,-95.18"/>
+        <dia:point val="-41.0503,-88.5262"/>
+        <dia:point val="-59.4713,-88.5262"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -17474,7 +17763,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="-27.4118,-108.191"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-41.4003,-108.241;-26.5618,-103.68"/>
+        <dia:rectangle val="-41.1003,-108.241;-26.5618,-105.39"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -17482,8 +17771,8 @@ Extends UAClientWrapper#</dia:string>
       <dia:attribute name="orth_points">
         <dia:point val="-27.4118,-108.191"/>
         <dia:point val="-27.4118,-106.24"/>
-        <dia:point val="-41.3503,-106.24"/>
-        <dia:point val="-41.3503,-103.73"/>
+        <dia:point val="-41.0503,-106.24"/>
+        <dia:point val="-41.0503,-105.58"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -17507,7 +17796,7 @@ Extends UAClientWrapper#</dia:string>
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O90" connection="6"/>
-        <dia:connection handle="1" to="O108" connection="10"/>
+        <dia:connection handle="1" to="O108" connection="14"/>
       </dia:connections>
     </dia:object>
     <dia:object type="UML - Association" version="2" id="O112">
@@ -17551,7 +17840,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="2.64402,-75.2683"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-0.7295,-95.607;4.76902,-75.2183"/>
+        <dia:rectangle val="-0.8295,-94.457;4.76902,-75.2183"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -17559,8 +17848,8 @@ Extends UAClientWrapper#</dia:string>
       <dia:attribute name="orth_points">
         <dia:point val="2.64402,-75.2683"/>
         <dia:point val="2.64402,-82.9482"/>
-        <dia:point val="0.0205,-82.9482"/>
-        <dia:point val="0.0205,-94.857"/>
+        <dia:point val="-0.0794999,-82.9482"/>
+        <dia:point val="-0.0794999,-93.707"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -17584,13 +17873,13 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O113">
       <dia:attribute name="obj_pos">
-        <dia:point val="-8.70667,-129.44"/>
+        <dia:point val="-2.76917,-133.296"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-8.75667,-129.49;9.24833,-126.49"/>
+        <dia:rectangle val="-2.81917,-133.346;15.1858,-130.346"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="-8.70667,-129.44"/>
+        <dia:point val="-2.76917,-133.296"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="17.905000000000001"/>
@@ -17731,19 +18020,19 @@ Extends UAClientWrapper#</dia:string>
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="-22.9794,-130.286"/>
+        <dia:point val="-11.4294,-130.286"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-23.0294,-131.036;-8.70654,-127.14"/>
+        <dia:rectangle val="-11.4794,-132.596;-2.76944,-129.436"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-22.9794,-130.286"/>
-        <dia:point val="-15.4276,-130.286"/>
-        <dia:point val="-15.4276,-127.99"/>
-        <dia:point val="-8.75654,-127.99"/>
+        <dia:point val="-11.4294,-130.286"/>
+        <dia:point val="-7.12442,-130.286"/>
+        <dia:point val="-7.12442,-131.846"/>
+        <dia:point val="-2.81944,-131.846"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -17751,7 +18040,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:enum val="0"/>
       </dia:attribute>
       <dia:attribute name="orth_autoroute">
-        <dia:boolean val="false"/>
+        <dia:boolean val="true"/>
       </dia:attribute>
       <dia:attribute name="text_colour">
         <dia:color val="#000000"/>
@@ -17803,17 +18092,17 @@ Extends UAClientWrapper#</dia:string>
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="-56.7851,-87.3262"/>
+        <dia:point val="-59.4713,-77.3762"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-57.5351,-88.0762;-49.9439,-84.1756"/>
+        <dia:rectangle val="-60.2213,-85.7756;-49.9439,-76.5262"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-56.7851,-87.3262"/>
-        <dia:point val="-54.5267,-87.3262"/>
+        <dia:point val="-59.4713,-77.3762"/>
+        <dia:point val="-54.5267,-77.3762"/>
         <dia:point val="-54.5267,-85.0256"/>
         <dia:point val="-49.9939,-85.0256"/>
       </dia:attribute>
@@ -17875,18 +18164,18 @@ Extends UAClientWrapper#</dia:string>
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="-56.7851,-87.3262"/>
+        <dia:point val="-59.4713,-77.3762"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-57.5351,-88.0762;-47.5454,-77.8219"/>
+        <dia:rectangle val="-60.2213,-79.4219;-47.5454,-76.5262"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-56.7851,-87.3262"/>
-        <dia:point val="-54.5495,-87.3262"/>
-        <dia:point val="-54.5495,-78.6719"/>
+        <dia:point val="-59.4713,-77.3762"/>
+        <dia:point val="-54.5529,-77.3762"/>
+        <dia:point val="-54.5529,-78.6719"/>
         <dia:point val="-47.5954,-78.6719"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -17947,17 +18236,17 @@ Extends UAClientWrapper#</dia:string>
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="-52.4928,-101.93"/>
+        <dia:point val="-52.1928,-103.78"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-64.9504,-102.68;-52.4428,-99.373"/>
+        <dia:rectangle val="-64.9504,-104.53;-52.1428,-99.373"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-52.4928,-101.93"/>
-        <dia:point val="-58.6966,-101.93"/>
+        <dia:point val="-52.1928,-103.78"/>
+        <dia:point val="-58.6966,-103.78"/>
         <dia:point val="-58.6966,-100.223"/>
         <dia:point val="-64.9004,-100.223"/>
       </dia:attribute>
@@ -17977,23 +18266,23 @@ Extends UAClientWrapper#</dia:string>
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O108" connection="3"/>
-        <dia:connection handle="1" to="O238" connection="7"/>
+        <dia:connection handle="1" to="O237" connection="7"/>
       </dia:connections>
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O118">
       <dia:attribute name="obj_pos">
-        <dia:point val="-41.3503,-97.73"/>
+        <dia:point val="-41.0503,-95.18"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-42.2003,-97.78;-25.3154,-79.6719"/>
+        <dia:rectangle val="-41.9003,-95.23;-25.3154,-79.6719"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-41.3503,-97.73"/>
-        <dia:point val="-41.3503,-89.64"/>
-        <dia:point val="-25.3654,-89.64"/>
+        <dia:point val="-41.0503,-95.18"/>
+        <dia:point val="-41.0503,-88.5216"/>
+        <dia:point val="-25.3654,-88.5216"/>
         <dia:point val="-25.3654,-79.7219"/>
         <dia:point val="-26.6904,-79.7219"/>
       </dia:attribute>
@@ -18138,16 +18427,16 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="0.21715,-160.113"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-0.63285,-160.163;1.06715,-129.39"/>
+        <dia:rectangle val="-0.63285,-160.163;6.23333,-133.246"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="0.21715,-160.113"/>
-        <dia:point val="0.21715,-144.377"/>
-        <dia:point val="0.24583,-144.377"/>
-        <dia:point val="0.24583,-129.44"/>
+        <dia:point val="0.21715,-146.304"/>
+        <dia:point val="6.18333,-146.304"/>
+        <dia:point val="6.18333,-133.296"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -18170,7 +18459,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O264" connection="6"/>
+        <dia:connection handle="0" to="O263" connection="6"/>
         <dia:connection handle="1" to="O113" connection="1"/>
       </dia:connections>
     </dia:object>
@@ -18587,17 +18876,17 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O126">
       <dia:attribute name="obj_pos">
-        <dia:point val="-13.676,-87.3104"/>
+        <dia:point val="-13.4261,-86.1604"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-17.3625,-87.3604;-12.826,-74.2841"/>
+        <dia:rectangle val="-17.3625,-86.2104;-12.5761,-74.2841"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-13.676,-87.3104"/>
-        <dia:point val="-13.676,-80.5624"/>
+        <dia:point val="-13.4261,-86.1604"/>
+        <dia:point val="-13.4261,-80.5624"/>
         <dia:point val="-17.3125,-80.5624"/>
         <dia:point val="-17.3125,-74.3341"/>
       </dia:attribute>
@@ -18672,7 +18961,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="17.9606,-163.789"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="17.1106,-163.839;68.9514,-109.796"/>
+        <dia:rectangle val="17.1106,-163.839;69.1827,-107.946"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -18681,8 +18970,8 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="17.9606,-163.789"/>
         <dia:point val="17.9606,-152.268"/>
         <dia:point val="65.6328,-152.268"/>
-        <dia:point val="65.6328,-109.846"/>
-        <dia:point val="68.9014,-109.846"/>
+        <dia:point val="65.6328,-107.996"/>
+        <dia:point val="69.1327,-107.996"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -18707,7 +18996,7 @@ Extends UAClientWrapper#</dia:string>
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O119" connection="8"/>
-        <dia:connection handle="1" to="O74" connection="8"/>
+        <dia:connection handle="1" to="O74" connection="10"/>
       </dia:connections>
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O129">
@@ -19535,7 +19824,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="159.072,-110.885"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="159.022,-110.935;195.042,-97.485"/>
+        <dia:rectangle val="159.022,-110.935;195.042,-99.335"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="159.072,-110.885"/>
@@ -19544,7 +19833,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:real val="35.920000000000002"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="13.349999999999998"/>
+        <dia:real val="11.5"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#SettingsSaveButtonHandler#</dia:string>
@@ -19601,7 +19890,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:font family="monospace" style="0" name="Courier"/>
       </dia:attribute>
       <dia:attribute name="abstract_font">
-        <dia:font family="monospace" style="4" name="Courier"/>
+        <dia:font family="monospace" style="0" name="Courier"/>
       </dia:attribute>
       <dia:attribute name="polymorphic_font">
         <dia:font family="monospace" style="0" name="Courier"/>
@@ -19634,29 +19923,6 @@ Extends UAClientWrapper#</dia:string>
         <dia:real val="0.69999999999999996"/>
       </dia:attribute>
       <dia:attribute name="attributes">
-        <dia:composite type="umlattribute">
-          <dia:attribute name="name">
-            <dia:string>#currentModel#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="type">
-            <dia:string>#ProductionSite#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="value">
-            <dia:string>##</dia:string>
-          </dia:attribute>
-          <dia:attribute name="comment">
-            <dia:string>#Access point to the model.#</dia:string>
-          </dia:attribute>
-          <dia:attribute name="visibility">
-            <dia:enum val="1"/>
-          </dia:attribute>
-          <dia:attribute name="abstract">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-          <dia:attribute name="class_scope">
-            <dia:boolean val="false"/>
-          </dia:attribute>
-        </dia:composite>
         <dia:composite type="umlattribute">
           <dia:attribute name="name">
             <dia:string>#currentMonitoringViewFacade#</dia:string>
@@ -19736,16 +20002,16 @@ Extends UAClientWrapper#</dia:string>
           <dia:attribute name="parameters">
             <dia:composite type="umlparameter">
               <dia:attribute name="name">
-                <dia:string>#currentModel#</dia:string>
+                <dia:string>#settings#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#ProductionSite#</dia:string>
+                <dia:string>#ClientSettingsWrapper#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The current model.#</dia:string>
+                <dia:string>#The settings object to save the data#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -19762,7 +20028,7 @@ Extends UAClientWrapper#</dia:string>
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The facade to the monitoring view.#</dia:string>
+                <dia:string>#Stores the access point to the monitoring view to set the user-set settings.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -21485,7 +21751,7 @@ Extends UAClientWrapper#</dia:string>
         </dia:composite>
         <dia:composite type="umloperation">
           <dia:attribute name="name">
-            <dia:string>#setMenuDialogButtonHandler#</dia:string>
+            <dia:string>#setMenuHelpButtonHandler#</dia:string>
           </dia:attribute>
           <dia:attribute name="stereotype">
             <dia:string>##</dia:string>
@@ -22223,13 +22489,13 @@ Extends UAClientWrapper#</dia:string>
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O151">
       <dia:attribute name="obj_pos">
-        <dia:point val="240.383,-121.488"/>
+        <dia:point val="243.93,-121.411"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="240.333,-121.538;268.653,-114.438"/>
+        <dia:rectangle val="243.88,-121.461;272.2,-114.361"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="240.383,-121.488"/>
+        <dia:point val="243.93,-121.411"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="28.219999999999999"/>
@@ -23398,16 +23664,16 @@ false otherwise.#</dia:string>
         <dia:point val="246.972,-125.709"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="246.122,-125.759;254.543,-121.488"/>
+        <dia:rectangle val="246.122,-125.759;258.09,-121.411"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="246.972,-125.709"/>
-        <dia:point val="246.972,-123.224"/>
-        <dia:point val="254.493,-123.224"/>
-        <dia:point val="254.493,-121.538"/>
+        <dia:point val="246.972,-123.185"/>
+        <dia:point val="258.04,-123.185"/>
+        <dia:point val="258.04,-121.461"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -25811,7 +26077,7 @@ the chart showing the progression.#</dia:string>
         <dia:string>#tanks#</dia:string>
       </dia:attribute>
       <dia:attribute name="multipicity_b">
-        <dia:string>#1 .. *#</dia:string>
+        <dia:string>#1..*#</dia:string>
       </dia:attribute>
       <dia:attribute name="visibility_b">
         <dia:enum val="3"/>
@@ -25823,7 +26089,7 @@ the chart showing the progression.#</dia:string>
         <dia:point val="221.253,-139.179"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="220.503,-139.929;240.433,-120.638"/>
+        <dia:rectangle val="220.503,-139.929;243.98,-120.561"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -25831,8 +26097,8 @@ the chart showing the progression.#</dia:string>
       <dia:attribute name="orth_points">
         <dia:point val="221.253,-139.179"/>
         <dia:point val="233.417,-139.179"/>
-        <dia:point val="233.417,-121.488"/>
-        <dia:point val="240.383,-121.488"/>
+        <dia:point val="233.417,-121.411"/>
+        <dia:point val="243.93,-121.411"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -28570,17 +28836,17 @@ true if the logging of the temperature progression should be enabled for the spe
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O180">
       <dia:attribute name="obj_pos">
-        <dia:point val="360.041,-164.994"/>
+        <dia:point val="360.042,-164.994"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="359.191,-165.045;366.787,-147.927"/>
+        <dia:rectangle val="359.192,-165.044;366.787,-147.927"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="360.041,-164.994"/>
-        <dia:point val="360.037,-160.03"/>
+        <dia:point val="360.042,-164.994"/>
+        <dia:point val="360.041,-160.03"/>
         <dia:point val="366.737,-160.03"/>
         <dia:point val="366.737,-147.977"/>
       </dia:attribute>
@@ -28611,17 +28877,17 @@ true if the logging of the temperature progression should be enabled for the spe
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O181">
       <dia:attribute name="obj_pos">
-        <dia:point val="360.041,-164.994"/>
+        <dia:point val="360.042,-164.994"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="346.653,-165.044;360.891,-108.319"/>
+        <dia:rectangle val="346.653,-165.044;360.892,-108.319"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="360.041,-164.994"/>
-        <dia:point val="360.037,-160.074"/>
+        <dia:point val="360.042,-164.994"/>
+        <dia:point val="360.041,-160.074"/>
         <dia:point val="346.703,-160.074"/>
         <dia:point val="346.703,-108.369"/>
         <dia:point val="352.369,-108.369"/>
@@ -28654,17 +28920,17 @@ true if the logging of the temperature progression should be enabled for the spe
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O182">
       <dia:attribute name="obj_pos">
-        <dia:point val="360.041,-164.994"/>
+        <dia:point val="360.042,-164.994"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="359.191,-165.044;384.317,-127.367"/>
+        <dia:rectangle val="359.192,-165.044;384.317,-127.367"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="360.041,-164.994"/>
-        <dia:point val="360.037,-160.074"/>
+        <dia:point val="360.042,-164.994"/>
+        <dia:point val="360.041,-160.074"/>
         <dia:point val="384.267,-160.074"/>
         <dia:point val="384.267,-127.417"/>
       </dia:attribute>
@@ -28695,17 +28961,17 @@ true if the logging of the temperature progression should be enabled for the spe
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O183">
       <dia:attribute name="obj_pos">
-        <dia:point val="260.835,-166.673"/>
+        <dia:point val="260.837,-166.673"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="259.985,-166.725;270.916,-147.77"/>
+        <dia:rectangle val="259.987,-166.724;270.916,-147.77"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="260.835,-166.673"/>
-        <dia:point val="260.829,-163.172"/>
+        <dia:point val="260.837,-166.673"/>
+        <dia:point val="260.835,-163.172"/>
         <dia:point val="270.866,-163.172"/>
         <dia:point val="270.866,-147.82"/>
       </dia:attribute>
@@ -28736,17 +29002,17 @@ true if the logging of the temperature progression should be enabled for the spe
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O184">
       <dia:attribute name="obj_pos">
-        <dia:point val="260.835,-166.673"/>
+        <dia:point val="260.837,-166.673"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="246.922,-166.724;261.685,-146.758"/>
+        <dia:rectangle val="246.922,-166.723;261.687,-146.758"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="260.835,-166.673"/>
-        <dia:point val="260.828,-163.272"/>
+        <dia:point val="260.837,-166.673"/>
+        <dia:point val="260.835,-163.272"/>
         <dia:point val="246.972,-163.272"/>
         <dia:point val="246.972,-146.808"/>
       </dia:attribute>
@@ -28885,56 +29151,15 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Realizes" version="1" id="O186">
+    <dia:object type="UML - Class" version="0" id="O186">
       <dia:attribute name="obj_pos">
-        <dia:point val="304.847,-165.011"/>
+        <dia:point val="190.511,-168.531"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="297.891,-165.861;304.897,-93.1102"/>
-      </dia:attribute>
-      <dia:attribute name="meta">
-        <dia:composite type="dict"/>
-      </dia:attribute>
-      <dia:attribute name="orth_points">
-        <dia:point val="304.847,-165.011"/>
-        <dia:point val="304.711,-165.011"/>
-        <dia:point val="304.711,-93.1602"/>
-        <dia:point val="297.941,-93.1602"/>
-      </dia:attribute>
-      <dia:attribute name="orth_orient">
-        <dia:enum val="0"/>
-        <dia:enum val="1"/>
-        <dia:enum val="0"/>
-      </dia:attribute>
-      <dia:attribute name="orth_autoroute">
-        <dia:boolean val="false"/>
-      </dia:attribute>
-      <dia:attribute name="line_colour">
-        <dia:color val="#000000"/>
-      </dia:attribute>
-      <dia:attribute name="text_colour">
-        <dia:color val="#000000"/>
-      </dia:attribute>
-      <dia:attribute name="name">
-        <dia:string>##</dia:string>
-      </dia:attribute>
-      <dia:attribute name="stereotype">
-        <dia:string>##</dia:string>
-      </dia:attribute>
-      <dia:connections>
-        <dia:connection handle="0" to="O185" connection="6"/>
-        <dia:connection handle="1" to="O165" connection="15"/>
-      </dia:connections>
-    </dia:object>
-    <dia:object type="UML - Class" version="0" id="O187">
-      <dia:attribute name="obj_pos">
-        <dia:point val="183.417,-160.666"/>
-      </dia:attribute>
-      <dia:attribute name="obj_bb">
-        <dia:rectangle val="183.367,-160.716;198.187,-158.416"/>
+        <dia:rectangle val="190.461,-168.581;205.281,-166.281"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="183.417,-160.666"/>
+        <dia:point val="190.511,-168.531"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="14.719999999999999"/>
@@ -29036,15 +29261,15 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O188">
+    <dia:object type="UML - Class" version="0" id="O187">
       <dia:attribute name="obj_pos">
-        <dia:point val="180.409,-168.265"/>
+        <dia:point val="181.951,-160.091"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="180.359,-168.315;194.464,-166.015"/>
+        <dia:rectangle val="181.901,-160.141;196.006,-157.841"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="180.409,-168.265"/>
+        <dia:point val="181.951,-160.091"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="14.005000000000001"/>
@@ -29146,19 +29371,19 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Generalization" version="1" id="O189">
+    <dia:object type="UML - Generalization" version="1" id="O188">
       <dia:attribute name="obj_pos">
-        <dia:point val="194.463,-167.165"/>
+        <dia:point val="196.006,-158.991"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="194.413,-168.015;204.851,-125.807"/>
+        <dia:rectangle val="195.956,-159.841;204.851,-125.807"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="194.463,-167.165"/>
-        <dia:point val="197.261,-167.165"/>
+        <dia:point val="196.006,-158.991"/>
+        <dia:point val="197.261,-158.991"/>
         <dia:point val="197.261,-125.857"/>
         <dia:point val="204.801,-125.857"/>
       </dia:attribute>
@@ -29183,11 +29408,11 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O188" connection="8"/>
+        <dia:connection handle="0" to="O187" connection="8"/>
         <dia:connection handle="1" to="O146" connection="26"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O190">
+    <dia:object type="UML - Class" version="0" id="O189">
       <dia:attribute name="obj_pos">
         <dia:point val="201.664,-96.1742"/>
       </dia:attribute>
@@ -29751,7 +29976,7 @@ true if the logging of the temperature progression should be enabled for the spe
       <dia:attribute name="templates"/>
       <dia:childnode parent="O142"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O191">
+    <dia:object type="UML - Class" version="0" id="O190">
       <dia:attribute name="obj_pos">
         <dia:point val="409.464,-49.7913"/>
       </dia:attribute>
@@ -29861,19 +30086,19 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Generalization" version="1" id="O192">
+    <dia:object type="UML - Generalization" version="1" id="O191">
       <dia:attribute name="obj_pos">
         <dia:point val="416.329,-49.8408"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="239.018,-85.2952;417.179,-49.7907"/>
+        <dia:rectangle val="239.018,-85.2952;417.179,-49.7908"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="416.329,-49.8408"/>
-        <dia:point val="416.328,-58.7036"/>
+        <dia:point val="416.329,-58.7036"/>
         <dia:point val="239.068,-58.7036"/>
         <dia:point val="239.068,-85.2452"/>
       </dia:attribute>
@@ -29898,11 +30123,11 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O191" connection="8"/>
+        <dia:connection handle="0" to="O190" connection="8"/>
         <dia:connection handle="1" to="O163" connection="6"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Realizes" version="1" id="O193">
+    <dia:object type="UML - Realizes" version="1" id="O192">
       <dia:attribute name="obj_pos">
         <dia:point val="304.847,-165.011"/>
       </dia:attribute>
@@ -29943,7 +30168,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:connection handle="1" to="O162" connection="21"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Realizes" version="1" id="O194">
+    <dia:object type="UML - Realizes" version="1" id="O193">
       <dia:attribute name="obj_pos">
         <dia:point val="304.847,-165.011"/>
       </dia:attribute>
@@ -29984,7 +30209,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:connection handle="1" to="O148" connection="17"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Realizes" version="1" id="O195">
+    <dia:object type="UML - Realizes" version="1" id="O194">
       <dia:attribute name="obj_pos">
         <dia:point val="304.847,-165.011"/>
       </dia:attribute>
@@ -30025,7 +30250,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:connection handle="1" to="O161" connection="2"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Realizes" version="1" id="O196">
+    <dia:object type="UML - Realizes" version="1" id="O195">
       <dia:attribute name="obj_pos">
         <dia:point val="304.847,-165.011"/>
       </dia:attribute>
@@ -30066,7 +30291,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:connection handle="1" to="O160" connection="11"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Realizes" version="1" id="O197">
+    <dia:object type="UML - Realizes" version="1" id="O196">
       <dia:attribute name="obj_pos">
         <dia:point val="304.847,-165.011"/>
       </dia:attribute>
@@ -30107,7 +30332,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:connection handle="1" to="O157" connection="11"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - LargePackage" version="0" id="O198">
+    <dia:object type="UML - LargePackage" version="0" id="O197">
       <dia:attribute name="obj_pos">
         <dia:point val="273.936,8.65839"/>
       </dia:attribute>
@@ -30145,7 +30370,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>#utils#</dia:string>
       </dia:attribute>
     </dia:object>
-    <dia:object type="UML - LargePackage" version="0" id="O199">
+    <dia:object type="UML - LargePackage" version="0" id="O198">
       <dia:attribute name="obj_pos">
         <dia:point val="154.845,1.05378"/>
       </dia:attribute>
@@ -30183,7 +30408,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>#opcua#</dia:string>
       </dia:attribute>
     </dia:object>
-    <dia:object type="UML - LargePackage" version="0" id="O200">
+    <dia:object type="UML - LargePackage" version="0" id="O199">
       <dia:attribute name="obj_pos">
         <dia:point val="213.707,3.72149"/>
       </dia:attribute>
@@ -30221,7 +30446,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>#client#</dia:string>
       </dia:attribute>
     </dia:object>
-    <dia:object type="UML - LargePackage" version="0" id="O201">
+    <dia:object type="UML - LargePackage" version="0" id="O200">
       <dia:attribute name="obj_pos">
         <dia:point val="155.671,2.83749"/>
       </dia:attribute>
@@ -30259,7 +30484,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>#server#</dia:string>
       </dia:attribute>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O202">
+    <dia:object type="UML - Class" version="0" id="O201">
       <dia:attribute name="obj_pos">
         <dia:point val="184.295,4.50719"/>
       </dia:attribute>
@@ -30756,9 +30981,9 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="templates"/>
-      <dia:childnode parent="O201"/>
+      <dia:childnode parent="O200"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O203">
+    <dia:object type="UML - Class" version="0" id="O202">
       <dia:attribute name="obj_pos">
         <dia:point val="215.852,5.09089"/>
       </dia:attribute>
@@ -31255,9 +31480,9 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="templates"/>
-      <dia:childnode parent="O200"/>
+      <dia:childnode parent="O199"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O204">
+    <dia:object type="UML - Class" version="0" id="O203">
       <dia:attribute name="obj_pos">
         <dia:point val="157.97,4.44945"/>
       </dia:attribute>
@@ -32129,9 +32354,9 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="templates"/>
-      <dia:childnode parent="O201"/>
+      <dia:childnode parent="O200"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O205">
+    <dia:object type="UML - Class" version="0" id="O204">
       <dia:attribute name="obj_pos">
         <dia:point val="238.784,25.0214"/>
       </dia:attribute>
@@ -32289,9 +32514,9 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="templates"/>
-      <dia:childnode parent="O200"/>
+      <dia:childnode parent="O199"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O206">
+    <dia:object type="UML - Class" version="0" id="O205">
       <dia:attribute name="obj_pos">
         <dia:point val="255.925,24.6943"/>
       </dia:attribute>
@@ -32449,9 +32674,9 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="templates"/>
-      <dia:childnode parent="O200"/>
+      <dia:childnode parent="O199"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O207">
+    <dia:object type="UML - Class" version="0" id="O206">
       <dia:attribute name="obj_pos">
         <dia:point val="247.468,17.7009"/>
       </dia:attribute>
@@ -32609,9 +32834,9 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="templates"/>
-      <dia:childnode parent="O200"/>
+      <dia:childnode parent="O199"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O208">
+    <dia:object type="UML - Class" version="0" id="O207">
       <dia:attribute name="obj_pos">
         <dia:point val="251.966,8.31319"/>
       </dia:attribute>
@@ -32751,9 +32976,9 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="templates"/>
-      <dia:childnode parent="O200"/>
+      <dia:childnode parent="O199"/>
     </dia:object>
-    <dia:object type="UML - Generalization" version="1" id="O209">
+    <dia:object type="UML - Generalization" version="1" id="O208">
       <dia:attribute name="obj_pos">
         <dia:point val="251.966,10.1132"/>
       </dia:attribute>
@@ -32788,11 +33013,11 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O208" connection="3"/>
-        <dia:connection handle="1" to="O205" connection="1"/>
+        <dia:connection handle="0" to="O207" connection="3"/>
+        <dia:connection handle="1" to="O204" connection="1"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Generalization" version="1" id="O210">
+    <dia:object type="UML - Generalization" version="1" id="O209">
       <dia:attribute name="obj_pos">
         <dia:point val="262.991,10.1132"/>
       </dia:attribute>
@@ -32831,11 +33056,11 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O208" connection="4"/>
-        <dia:connection handle="1" to="O206" connection="1"/>
+        <dia:connection handle="0" to="O207" connection="4"/>
+        <dia:connection handle="1" to="O205" connection="1"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Generalization" version="1" id="O211">
+    <dia:object type="UML - Generalization" version="1" id="O210">
       <dia:attribute name="obj_pos">
         <dia:point val="257.478,15.0632"/>
       </dia:attribute>
@@ -32872,11 +33097,11 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O208" connection="6"/>
-        <dia:connection handle="1" to="O207" connection="1"/>
+        <dia:connection handle="0" to="O207" connection="6"/>
+        <dia:connection handle="1" to="O206" connection="1"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Association" version="2" id="O212">
+    <dia:object type="UML - Association" version="2" id="O211">
       <dia:attribute name="name">
         <dia:string>##</dia:string>
       </dia:attribute>
@@ -32943,12 +33168,12 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:color val="#000000"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O202" connection="6"/>
-        <dia:connection handle="1" to="O204" connection="25"/>
+        <dia:connection handle="0" to="O201" connection="6"/>
+        <dia:connection handle="1" to="O203" connection="25"/>
       </dia:connections>
-      <dia:childnode parent="O201"/>
+      <dia:childnode parent="O200"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O213">
+    <dia:object type="UML - Class" version="0" id="O212">
       <dia:attribute name="obj_pos">
         <dia:point val="192.26,52.5907"/>
       </dia:attribute>
@@ -33058,7 +33283,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O214">
+    <dia:object type="UML - Class" version="0" id="O213">
       <dia:attribute name="obj_pos">
         <dia:point val="155.558,52.725"/>
       </dia:attribute>
@@ -33168,7 +33393,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Realizes" version="1" id="O215">
+    <dia:object type="UML - Realizes" version="1" id="O214">
       <dia:attribute name="obj_pos">
         <dia:point val="166.99,52.725"/>
       </dia:attribute>
@@ -33205,11 +33430,11 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O214" connection="1"/>
-        <dia:connection handle="1" to="O204" connection="6"/>
+        <dia:connection handle="0" to="O213" connection="1"/>
+        <dia:connection handle="1" to="O203" connection="6"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Association" version="2" id="O216">
+    <dia:object type="UML - Association" version="2" id="O215">
       <dia:attribute name="name">
         <dia:string>##</dia:string>
       </dia:attribute>
@@ -33276,11 +33501,11 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:color val="#000000"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O213" connection="1"/>
-        <dia:connection handle="1" to="O202" connection="7"/>
+        <dia:connection handle="0" to="O212" connection="1"/>
+        <dia:connection handle="1" to="O201" connection="7"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - LargePackage" version="0" id="O217">
+    <dia:object type="UML - LargePackage" version="0" id="O216">
       <dia:attribute name="obj_pos">
         <dia:point val="274.484,10.6475"/>
       </dia:attribute>
@@ -33318,7 +33543,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>#formatting#</dia:string>
       </dia:attribute>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O218">
+    <dia:object type="UML - Class" version="0" id="O217">
       <dia:attribute name="obj_pos">
         <dia:point val="274.839,11.2547"/>
       </dia:attribute>
@@ -33577,9 +33802,9 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="templates"/>
-      <dia:childnode parent="O217"/>
+      <dia:childnode parent="O216"/>
     </dia:object>
-    <dia:object type="UML - LargePackage" version="0" id="O219">
+    <dia:object type="UML - LargePackage" version="0" id="O218">
       <dia:attribute name="obj_pos">
         <dia:point val="305.583,22.6155"/>
       </dia:attribute>
@@ -33617,7 +33842,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>#language#</dia:string>
       </dia:attribute>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O220">
+    <dia:object type="UML - Class" version="0" id="O219">
       <dia:attribute name="obj_pos">
         <dia:point val="306.754,23.4225"/>
       </dia:attribute>
@@ -33837,9 +34062,9 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="templates"/>
-      <dia:childnode parent="O219"/>
+      <dia:childnode parent="O218"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O221">
+    <dia:object type="UML - Class" version="0" id="O220">
       <dia:attribute name="obj_pos">
         <dia:point val="274.923,25.21"/>
       </dia:attribute>
@@ -33948,9 +34173,9 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="templates"/>
-      <dia:childnode parent="O217"/>
+      <dia:childnode parent="O216"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O222">
+    <dia:object type="UML - Class" version="0" id="O221">
       <dia:attribute name="obj_pos">
         <dia:point val="289.311,25.0358"/>
       </dia:attribute>
@@ -34059,9 +34284,9 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="templates"/>
-      <dia:childnode parent="O217"/>
+      <dia:childnode parent="O216"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O223">
+    <dia:object type="UML - Class" version="0" id="O222">
       <dia:attribute name="obj_pos">
         <dia:point val="280.833,28.6872"/>
       </dia:attribute>
@@ -34170,9 +34395,9 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="templates"/>
-      <dia:childnode parent="O217"/>
+      <dia:childnode parent="O216"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O224">
+    <dia:object type="UML - Class" version="0" id="O223">
       <dia:attribute name="obj_pos">
         <dia:point val="328.018,50.92"/>
       </dia:attribute>
@@ -34282,7 +34507,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O225">
+    <dia:object type="UML - Class" version="0" id="O224">
       <dia:attribute name="obj_pos">
         <dia:point val="313.995,53.0103"/>
       </dia:attribute>
@@ -34392,7 +34617,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Association" version="2" id="O226">
+    <dia:object type="UML - Association" version="2" id="O225">
       <dia:attribute name="name">
         <dia:string>##</dia:string>
       </dia:attribute>
@@ -34457,11 +34682,11 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:color val="#000000"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O220" connection="6"/>
-        <dia:connection handle="1" to="O224" connection="3"/>
+        <dia:connection handle="0" to="O219" connection="6"/>
+        <dia:connection handle="1" to="O223" connection="3"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Association" version="2" id="O227">
+    <dia:object type="UML - Association" version="2" id="O226">
       <dia:attribute name="name">
         <dia:string>##</dia:string>
       </dia:attribute>
@@ -34526,11 +34751,11 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:color val="#000000"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O220" connection="5"/>
-        <dia:connection handle="1" to="O225" connection="3"/>
+        <dia:connection handle="0" to="O219" connection="5"/>
+        <dia:connection handle="1" to="O224" connection="3"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Generalization" version="1" id="O228">
+    <dia:object type="UML - Generalization" version="1" id="O227">
       <dia:attribute name="obj_pos">
         <dia:point val="11.2507,53.6846"/>
       </dia:attribute>
@@ -34569,7 +34794,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:connection handle="1" to="O10" connection="6"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Generalization" version="1" id="O229">
+    <dia:object type="UML - Generalization" version="1" id="O228">
       <dia:attribute name="obj_pos">
         <dia:point val="6.44696,52.9846"/>
       </dia:attribute>
@@ -34608,7 +34833,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:connection handle="1" to="O11" connection="19"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Generalization" version="1" id="O230">
+    <dia:object type="UML - Generalization" version="1" id="O229">
       <dia:attribute name="obj_pos">
         <dia:point val="11.2507,53.6846"/>
       </dia:attribute>
@@ -34649,7 +34874,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:connection handle="1" to="O36" connection="5"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O231">
+    <dia:object type="UML - Class" version="0" id="O230">
       <dia:attribute name="obj_pos">
         <dia:point val="-80.8101,-164.874"/>
       </dia:attribute>
@@ -34759,7 +34984,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Generalization" version="1" id="O232">
+    <dia:object type="UML - Generalization" version="1" id="O231">
       <dia:attribute name="obj_pos">
         <dia:point val="-72.4914,-162.674"/>
       </dia:attribute>
@@ -34796,11 +35021,11 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O231" connection="6"/>
+        <dia:connection handle="0" to="O230" connection="6"/>
         <dia:connection handle="1" to="O125" connection="1"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O233">
+    <dia:object type="UML - Class" version="0" id="O232">
       <dia:attribute name="obj_pos">
         <dia:point val="280.092,51.1756"/>
       </dia:attribute>
@@ -34910,7 +35135,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Generalization" version="1" id="O234">
+    <dia:object type="UML - Generalization" version="1" id="O233">
       <dia:attribute name="obj_pos">
         <dia:point val="288.411,51.1756"/>
       </dia:attribute>
@@ -34947,11 +35172,11 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O233" connection="1"/>
-        <dia:connection handle="1" to="O221" connection="5"/>
+        <dia:connection handle="0" to="O232" connection="1"/>
+        <dia:connection handle="1" to="O220" connection="5"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Generalization" version="1" id="O235">
+    <dia:object type="UML - Generalization" version="1" id="O234">
       <dia:attribute name="obj_pos">
         <dia:point val="288.411,51.1756"/>
       </dia:attribute>
@@ -34988,11 +35213,11 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O233" connection="1"/>
-        <dia:connection handle="1" to="O222" connection="7"/>
+        <dia:connection handle="0" to="O232" connection="1"/>
+        <dia:connection handle="1" to="O221" connection="7"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Generalization" version="1" id="O236">
+    <dia:object type="UML - Generalization" version="1" id="O235">
       <dia:attribute name="obj_pos">
         <dia:point val="288.411,51.1756"/>
       </dia:attribute>
@@ -35029,11 +35254,11 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O233" connection="1"/>
-        <dia:connection handle="1" to="O223" connection="6"/>
+        <dia:connection handle="0" to="O232" connection="1"/>
+        <dia:connection handle="1" to="O222" connection="6"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Association" version="2" id="O237">
+    <dia:object type="UML - Association" version="2" id="O236">
       <dia:attribute name="name">
         <dia:string>##</dia:string>
       </dia:attribute>
@@ -35059,7 +35284,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="role_b">
-        <dia:string>##</dia:string>
+        <dia:string>#tank#</dia:string>
       </dia:attribute>
       <dia:attribute name="multipicity_b">
         <dia:string>##</dia:string>
@@ -35071,17 +35296,17 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="-78.0076,-89.6762"/>
+        <dia:point val="-80.6938,-88.5262"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-92.1907,-90.4262;-15.0193,-2.39067"/>
+        <dia:rectangle val="-92.1907,-89.2762;-13.4793,-3.14067"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-78.0076,-89.6762"/>
-        <dia:point val="-92.1407,-89.6762"/>
+        <dia:point val="-80.6938,-88.5262"/>
+        <dia:point val="-92.1407,-88.5262"/>
         <dia:point val="-92.1407,-5.33557"/>
         <dia:point val="-15.2193,-5.33557"/>
         <dia:point val="-15.2193,-3.19067"/>
@@ -35106,7 +35331,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:connection handle="1" to="O11" connection="1"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O238">
+    <dia:object type="UML - Class" version="0" id="O237">
       <dia:attribute name="obj_pos">
         <dia:point val="-81.9554,-112.873"/>
       </dia:attribute>
@@ -35440,7 +35665,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Association" version="2" id="O239">
+    <dia:object type="UML - Association" version="2" id="O238">
       <dia:attribute name="name">
         <dia:string>##</dia:string>
       </dia:attribute>
@@ -35478,18 +35703,18 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="-10.092,-94.857"/>
+        <dia:point val="-10.192,-93.707"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-73.4779,-100.223;-10.042,-94.007"/>
+        <dia:rectangle val="-73.4779,-100.224;-10.142,-92.857"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-10.092,-94.857"/>
-        <dia:point val="-73.4279,-94.857"/>
-        <dia:point val="-73.4279,-100.173"/>
+        <dia:point val="-10.192,-93.707"/>
+        <dia:point val="-73.4279,-93.707"/>
+        <dia:point val="-73.4279,-100.174"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -35506,10 +35731,10 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O92" connection="5"/>
-        <dia:connection handle="1" to="O238" connection="18"/>
+        <dia:connection handle="1" to="O237" connection="18"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O240">
+    <dia:object type="UML - Class" version="0" id="O239">
       <dia:attribute name="obj_pos">
         <dia:point val="-39.7792,-165.082"/>
       </dia:attribute>
@@ -35619,12 +35844,12 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Realizes" version="1" id="O241">
+    <dia:object type="UML - Realizes" version="1" id="O240">
       <dia:attribute name="obj_pos">
         <dia:point val="-35.4592,-162.882"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-36.3092,-162.932;-31.6494,-133.236"/>
+        <dia:rectangle val="-36.3092,-162.932;-25.8744,-133.236"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -35632,8 +35857,8 @@ true if the logging of the temperature progression should be enabled for the spe
       <dia:attribute name="orth_points">
         <dia:point val="-35.4592,-162.882"/>
         <dia:point val="-35.4592,-147.684"/>
-        <dia:point val="-31.6994,-147.684"/>
-        <dia:point val="-31.6994,-133.286"/>
+        <dia:point val="-25.9244,-147.684"/>
+        <dia:point val="-25.9244,-133.286"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -35656,11 +35881,11 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O240" connection="6"/>
+        <dia:connection handle="0" to="O239" connection="6"/>
         <dia:connection handle="1" to="O93" connection="1"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - LargePackage" version="0" id="O242">
+    <dia:object type="UML - LargePackage" version="0" id="O241">
       <dia:attribute name="obj_pos">
         <dia:point val="-149.578,-43.4977"/>
       </dia:attribute>
@@ -35699,7 +35924,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:childnode parent="O2"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O243">
+    <dia:object type="UML - Class" version="0" id="O242">
       <dia:attribute name="obj_pos">
         <dia:point val="-130.17,-6.262"/>
       </dia:attribute>
@@ -35971,7 +36196,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Generalization" version="1" id="O244">
+    <dia:object type="UML - Generalization" version="1" id="O243">
       <dia:attribute name="obj_pos">
         <dia:point val="-27.5968,-3.19067"/>
       </dia:attribute>
@@ -36009,11 +36234,11 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O11" connection="0"/>
-        <dia:connection handle="1" to="O243" connection="9"/>
+        <dia:connection handle="1" to="O242" connection="9"/>
       </dia:connections>
       <dia:childnode parent="O2"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O245">
+    <dia:object type="UML - Class" version="0" id="O244">
       <dia:attribute name="obj_pos">
         <dia:point val="-126.409,9.26071"/>
       </dia:attribute>
@@ -36174,7 +36399,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Association" version="2" id="O246">
+    <dia:object type="UML - Association" version="2" id="O245">
       <dia:attribute name="name">
         <dia:string>##</dia:string>
       </dia:attribute>
@@ -36241,11 +36466,11 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:color val="#000000"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O243" connection="5"/>
-        <dia:connection handle="1" to="O245" connection="1"/>
+        <dia:connection handle="0" to="O242" connection="5"/>
+        <dia:connection handle="1" to="O244" connection="1"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O247">
+    <dia:object type="UML - Class" version="0" id="O246">
       <dia:attribute name="obj_pos">
         <dia:point val="-131.449,23.6944"/>
       </dia:attribute>
@@ -36406,7 +36631,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Realizes" version="1" id="O248">
+    <dia:object type="UML - Realizes" version="1" id="O247">
       <dia:attribute name="obj_pos">
         <dia:point val="-115.048,16.0611"/>
       </dia:attribute>
@@ -36443,11 +36668,11 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O245" connection="10"/>
-        <dia:connection handle="1" to="O247" connection="10"/>
+        <dia:connection handle="0" to="O244" connection="10"/>
+        <dia:connection handle="1" to="O246" connection="10"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O249">
+    <dia:object type="UML - Class" version="0" id="O248">
       <dia:attribute name="obj_pos">
         <dia:point val="-130.226,-24.596"/>
       </dia:attribute>
@@ -36607,7 +36832,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Generalization" version="1" id="O250">
+    <dia:object type="UML - Generalization" version="1" id="O249">
       <dia:attribute name="obj_pos">
         <dia:point val="-56.9614,-32.6081"/>
       </dia:attribute>
@@ -36645,11 +36870,11 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O20" connection="3"/>
-        <dia:connection handle="1" to="O249" connection="4"/>
+        <dia:connection handle="1" to="O248" connection="4"/>
       </dia:connections>
       <dia:childnode parent="O2"/>
     </dia:object>
-    <dia:object type="UML - Association" version="2" id="O251">
+    <dia:object type="UML - Association" version="2" id="O250">
       <dia:attribute name="name">
         <dia:string>##</dia:string>
       </dia:attribute>
@@ -36717,11 +36942,11 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O41" connection="6"/>
-        <dia:connection handle="1" to="O249" connection="1"/>
+        <dia:connection handle="1" to="O248" connection="1"/>
       </dia:connections>
       <dia:childnode parent="O0"/>
     </dia:object>
-    <dia:object type="UML - Association" version="2" id="O252">
+    <dia:object type="UML - Association" version="2" id="O251">
       <dia:attribute name="name">
         <dia:string>##</dia:string>
       </dia:attribute>
@@ -36789,11 +37014,11 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O42" connection="5"/>
-        <dia:connection handle="1" to="O249" connection="0"/>
+        <dia:connection handle="1" to="O248" connection="0"/>
       </dia:connections>
       <dia:childnode parent="O0"/>
     </dia:object>
-    <dia:object type="UML - Association" version="2" id="O253">
+    <dia:object type="UML - Association" version="2" id="O252">
       <dia:attribute name="name">
         <dia:string>##</dia:string>
       </dia:attribute>
@@ -36863,7 +37088,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:connections>
       <dia:childnode parent="O4"/>
     </dia:object>
-    <dia:object type="UML - Association" version="2" id="O254">
+    <dia:object type="UML - Association" version="2" id="O253">
       <dia:attribute name="name">
         <dia:string>##</dia:string>
       </dia:attribute>
@@ -36933,7 +37158,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:connections>
       <dia:childnode parent="O4"/>
     </dia:object>
-    <dia:object type="UML - Association" version="2" id="O255">
+    <dia:object type="UML - Association" version="2" id="O254">
       <dia:attribute name="name">
         <dia:string>##</dia:string>
       </dia:attribute>
@@ -37005,7 +37230,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:connections>
       <dia:childnode parent="O4"/>
     </dia:object>
-    <dia:object type="UML - LargePackage" version="0" id="O256">
+    <dia:object type="UML - LargePackage" version="0" id="O255">
       <dia:attribute name="obj_pos">
         <dia:point val="64.4766,-80.0903"/>
       </dia:attribute>
@@ -37044,7 +37269,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:childnode parent="O72"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O257">
+    <dia:object type="UML - Class" version="0" id="O256">
       <dia:attribute name="obj_pos">
         <dia:point val="66.5916,-75.6228"/>
       </dia:attribute>
@@ -37154,7 +37379,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O258">
+    <dia:object type="UML - Class" version="0" id="O257">
       <dia:attribute name="obj_pos">
         <dia:point val="77.7522,-70.6438"/>
       </dia:attribute>
@@ -37264,7 +37489,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Generalization" version="1" id="O259">
+    <dia:object type="UML - Generalization" version="1" id="O258">
       <dia:attribute name="obj_pos">
         <dia:point val="17.9606,-163.833"/>
       </dia:attribute>
@@ -37300,10 +37525,10 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O119" connection="6"/>
-        <dia:connection handle="1" to="O257" connection="3"/>
+        <dia:connection handle="1" to="O256" connection="3"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - LargePackage" version="0" id="O260">
+    <dia:object type="UML - LargePackage" version="0" id="O259">
       <dia:attribute name="obj_pos">
         <dia:point val="154.977,-150.904"/>
       </dia:attribute>
@@ -37341,7 +37566,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>#dialogs#</dia:string>
       </dia:attribute>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O261">
+    <dia:object type="UML - Class" version="0" id="O260">
       <dia:attribute name="obj_pos">
         <dia:point val="160.672,-143.173"/>
       </dia:attribute>
@@ -37450,9 +37675,9 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="templates"/>
-      <dia:childnode parent="O260"/>
+      <dia:childnode parent="O259"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O262">
+    <dia:object type="UML - Class" version="0" id="O261">
       <dia:attribute name="obj_pos">
         <dia:point val="160.665,-148.515"/>
       </dia:attribute>
@@ -37561,9 +37786,9 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="templates"/>
-      <dia:childnode parent="O260"/>
+      <dia:childnode parent="O259"/>
     </dia:object>
-    <dia:object type="UML - Generalization" version="1" id="O263">
+    <dia:object type="UML - Generalization" version="1" id="O262">
       <dia:attribute name="obj_pos">
         <dia:point val="17.9606,-163.833"/>
       </dia:attribute>
@@ -37599,10 +37824,10 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O119" connection="6"/>
-        <dia:connection handle="1" to="O258" connection="3"/>
+        <dia:connection handle="1" to="O257" connection="3"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O264">
+    <dia:object type="UML - Class" version="0" id="O263">
       <dia:attribute name="obj_pos">
         <dia:point val="-5.6791,-162.313"/>
       </dia:attribute>
@@ -37712,7 +37937,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O265">
+    <dia:object type="UML - Class" version="0" id="O264">
       <dia:attribute name="obj_pos">
         <dia:point val="-151.886,-162.731"/>
       </dia:attribute>
@@ -37936,7 +38161,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Generalization" version="1" id="O266">
+    <dia:object type="UML - Generalization" version="1" id="O265">
       <dia:attribute name="obj_pos">
         <dia:point val="-139.124,-158.331"/>
       </dia:attribute>
@@ -37973,11 +38198,11 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O265" connection="6"/>
+        <dia:connection handle="0" to="O264" connection="6"/>
         <dia:connection handle="1" to="O42" connection="1"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O267">
+    <dia:object type="UML - Class" version="0" id="O266">
       <dia:attribute name="obj_pos">
         <dia:point val="158.103,-163.032"/>
       </dia:attribute>
@@ -38087,7 +38312,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Generalization" version="1" id="O268">
+    <dia:object type="UML - Generalization" version="1" id="O267">
       <dia:attribute name="obj_pos">
         <dia:point val="162.591,-160.832"/>
       </dia:attribute>
@@ -38126,11 +38351,11 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O267" connection="6"/>
-        <dia:connection handle="1" to="O261" connection="3"/>
+        <dia:connection handle="0" to="O266" connection="6"/>
+        <dia:connection handle="1" to="O260" connection="3"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Generalization" version="1" id="O269">
+    <dia:object type="UML - Generalization" version="1" id="O268">
       <dia:attribute name="obj_pos">
         <dia:point val="162.591,-160.832"/>
       </dia:attribute>
@@ -38169,23 +38394,23 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O267" connection="6"/>
-        <dia:connection handle="1" to="O262" connection="3"/>
+        <dia:connection handle="0" to="O266" connection="6"/>
+        <dia:connection handle="1" to="O261" connection="3"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Generalization" version="1" id="O270">
+    <dia:object type="UML - Generalization" version="1" id="O269">
       <dia:attribute name="obj_pos">
-        <dia:point val="190.777,-158.466"/>
+        <dia:point val="197.871,-166.331"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="189.927,-158.516;207.344,-113.514"/>
+        <dia:rectangle val="197.021,-166.381;207.344,-113.514"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="190.777,-158.466"/>
-        <dia:point val="190.777,-114.364"/>
+        <dia:point val="197.871,-166.331"/>
+        <dia:point val="197.871,-114.364"/>
         <dia:point val="207.294,-114.364"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -38208,12 +38433,12 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O187" connection="6"/>
+        <dia:connection handle="0" to="O186" connection="6"/>
         <dia:connection handle="1" to="O149" connection="3"/>
       </dia:connections>
       <dia:childnode parent="O0"/>
     </dia:object>
-    <dia:object type="UML - Association" version="2" id="O271">
+    <dia:object type="UML - Association" version="2" id="O270">
       <dia:attribute name="name">
         <dia:string>##</dia:string>
       </dia:attribute>
@@ -38280,12 +38505,12 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:color val="#000000"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O190" connection="0"/>
+        <dia:connection handle="0" to="O189" connection="0"/>
         <dia:connection handle="1" to="O144" connection="5"/>
       </dia:connections>
       <dia:childnode parent="O142"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O272">
+    <dia:object type="UML - Class" version="0" id="O271">
       <dia:attribute name="obj_pos">
         <dia:point val="169.658,-94.4868"/>
       </dia:attribute>
@@ -38848,7 +39073,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Realizes" version="1" id="O273">
+    <dia:object type="UML - Realizes" version="1" id="O272">
       <dia:attribute name="obj_pos">
         <dia:point val="194.798,-83.5368"/>
       </dia:attribute>
@@ -38885,12 +39110,12 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O272" connection="15"/>
-        <dia:connection handle="1" to="O190" connection="14"/>
+        <dia:connection handle="0" to="O271" connection="15"/>
+        <dia:connection handle="1" to="O189" connection="14"/>
       </dia:connections>
       <dia:childnode parent="O48"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O274">
+    <dia:object type="UML - Class" version="0" id="O273">
       <dia:attribute name="obj_pos">
         <dia:point val="-112.651,-133.316"/>
       </dia:attribute>
@@ -39079,7 +39304,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="templates"/>
     </dia:object>
-    <dia:object type="UML - Realizes" version="1" id="O275">
+    <dia:object type="UML - Realizes" version="1" id="O274">
       <dia:attribute name="obj_pos">
         <dia:point val="-97.136,-127.666"/>
       </dia:attribute>
@@ -39116,12 +39341,12 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O274" connection="11"/>
+        <dia:connection handle="0" to="O273" connection="11"/>
         <dia:connection handle="1" to="O93" connection="10"/>
       </dia:connections>
       <dia:childnode parent="O38"/>
     </dia:object>
-    <dia:object type="UML - Association" version="2" id="O276">
+    <dia:object type="UML - Association" version="2" id="O275">
       <dia:attribute name="name">
         <dia:string>##</dia:string>
       </dia:attribute>
@@ -39169,8 +39394,8 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="-131.716,-114.269"/>
-        <dia:point val="-122.183,-114.269"/>
-        <dia:point val="-122.183,-127.666"/>
+        <dia:point val="-130.738,-114.269"/>
+        <dia:point val="-130.738,-127.666"/>
         <dia:point val="-112.651,-127.666"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -39179,7 +39404,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:enum val="0"/>
       </dia:attribute>
       <dia:attribute name="orth_autoroute">
-        <dia:boolean val="true"/>
+        <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="text_colour">
         <dia:color val="#000000"/>
@@ -39189,11 +39414,11 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O42" connection="9"/>
-        <dia:connection handle="1" to="O274" connection="10"/>
+        <dia:connection handle="1" to="O273" connection="10"/>
       </dia:connections>
       <dia:childnode parent="O39"/>
     </dia:object>
-    <dia:object type="UML - Class" version="0" id="O277">
+    <dia:object type="UML - Class" version="0" id="O276">
       <dia:attribute name="obj_pos">
         <dia:point val="117.506,-100.375"/>
       </dia:attribute>
@@ -39353,7 +39578,7 @@ true if the logging of the temperature progression should be enabled for the spe
       <dia:attribute name="templates"/>
       <dia:childnode parent="O49"/>
     </dia:object>
-    <dia:object type="UML - Association" version="2" id="O278">
+    <dia:object type="UML - Association" version="2" id="O277">
       <dia:attribute name="name">
         <dia:string>##</dia:string>
       </dia:attribute>
@@ -39423,7 +39648,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:connections>
       <dia:childnode parent="O142"/>
     </dia:object>
-    <dia:object type="UML - Realizes" version="1" id="O279">
+    <dia:object type="UML - Realizes" version="1" id="O278">
       <dia:attribute name="obj_pos">
         <dia:point val="180.761,-161.638"/>
       </dia:attribute>
@@ -39437,8 +39662,8 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="180.761,-161.638"/>
         <dia:point val="180.761,-161.638"/>
         <dia:point val="180.761,-125.412"/>
-        <dia:point val="157.596,-125.412"/>
-        <dia:point val="157.596,-97.3863"/>
+        <dia:point val="157.552,-125.412"/>
+        <dia:point val="157.552,-97.3863"/>
         <dia:point val="135.991,-97.3863"/>
         <dia:point val="135.991,-97.3751"/>
       </dia:attribute>
@@ -39467,10 +39692,10 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O129" connection="6"/>
-        <dia:connection handle="1" to="O277" connection="9"/>
+        <dia:connection handle="1" to="O276" connection="9"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Association" version="2" id="O280">
+    <dia:object type="UML - Association" version="2" id="O279">
       <dia:attribute name="name">
         <dia:string>##</dia:string>
       </dia:attribute>
@@ -39496,7 +39721,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="role_b">
-        <dia:string>#portListener#</dia:string>
+        <dia:string>#settingsChangedListener#</dia:string>
       </dia:attribute>
       <dia:attribute name="multipicity_b">
         <dia:string>##</dia:string>
@@ -39508,19 +39733,19 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="79.8802,-101.796"/>
+        <dia:point val="83.4352,-99.946"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="79.8302,-101.846;90.7487,-96.7292"/>
+        <dia:rectangle val="83.3852,-99.996;94.9489,-95.7268"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="79.8802,-101.796"/>
-        <dia:point val="79.8802,-100.861"/>
-        <dia:point val="85.9287,-100.861"/>
-        <dia:point val="85.9287,-96.7792"/>
+        <dia:point val="83.4352,-99.946"/>
+        <dia:point val="83.4352,-97.8614"/>
+        <dia:point val="85.8939,-97.8614"/>
+        <dia:point val="85.8939,-95.7768"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -39528,7 +39753,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:enum val="1"/>
       </dia:attribute>
       <dia:attribute name="orth_autoroute">
-        <dia:boolean val="false"/>
+        <dia:boolean val="true"/>
       </dia:attribute>
       <dia:attribute name="text_colour">
         <dia:color val="#000000"/>
@@ -39542,7 +39767,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:connections>
       <dia:childnode parent="O73"/>
     </dia:object>
-    <dia:object type="UML - Association" version="2" id="O281">
+    <dia:object type="UML - Association" version="2" id="O280">
       <dia:attribute name="name">
         <dia:string>##</dia:string>
       </dia:attribute>
@@ -39614,7 +39839,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:connections>
       <dia:childnode parent="O78"/>
     </dia:object>
-    <dia:object type="UML - Association" version="2" id="O282">
+    <dia:object type="UML - Association" version="2" id="O281">
       <dia:attribute name="name">
         <dia:string>##</dia:string>
       </dia:attribute>
@@ -39686,7 +39911,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:connections>
       <dia:childnode parent="O78"/>
     </dia:object>
-    <dia:object type="UML - Association" version="2" id="O283">
+    <dia:object type="UML - Association" version="2" id="O282">
       <dia:attribute name="name">
         <dia:string>##</dia:string>
       </dia:attribute>
@@ -39758,7 +39983,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:connections>
       <dia:childnode parent="O78"/>
     </dia:object>
-    <dia:object type="UML - Association" version="2" id="O284">
+    <dia:object type="UML - Association" version="2" id="O283">
       <dia:attribute name="name">
         <dia:string>##</dia:string>
       </dia:attribute>
@@ -39829,6 +40054,777 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:connection handle="1" to="O79" connection="6"/>
       </dia:connections>
       <dia:childnode parent="O78"/>
+    </dia:object>
+    <dia:object type="UML - Class" version="0" id="O284">
+      <dia:attribute name="obj_pos">
+        <dia:point val="-128.051,-124.827"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="-128.101,-124.877;-96.7008,-118.377"/>
+      </dia:attribute>
+      <dia:attribute name="elem_corner">
+        <dia:point val="-128.051,-124.827"/>
+      </dia:attribute>
+      <dia:attribute name="elem_width">
+        <dia:real val="31.300000000000001"/>
+      </dia:attribute>
+      <dia:attribute name="elem_height">
+        <dia:real val="6.3999999999999986"/>
+      </dia:attribute>
+      <dia:attribute name="name">
+        <dia:string>#MenuControlButtonHandler#</dia:string>
+      </dia:attribute>
+      <dia:attribute name="stereotype">
+        <dia:string>##</dia:string>
+      </dia:attribute>
+      <dia:attribute name="comment">
+        <dia:string>#Handles a click on the control menu button#</dia:string>
+      </dia:attribute>
+      <dia:attribute name="abstract">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+      <dia:attribute name="suppress_attributes">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+      <dia:attribute name="suppress_operations">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+      <dia:attribute name="visible_attributes">
+        <dia:boolean val="true"/>
+      </dia:attribute>
+      <dia:attribute name="visible_operations">
+        <dia:boolean val="true"/>
+      </dia:attribute>
+      <dia:attribute name="visible_comments">
+        <dia:boolean val="true"/>
+      </dia:attribute>
+      <dia:attribute name="wrap_operations">
+        <dia:boolean val="true"/>
+      </dia:attribute>
+      <dia:attribute name="wrap_after_char">
+        <dia:int val="40"/>
+      </dia:attribute>
+      <dia:attribute name="comment_line_length">
+        <dia:int val="80"/>
+      </dia:attribute>
+      <dia:attribute name="comment_tagging">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+      <dia:attribute name="line_width">
+        <dia:real val="0.10000000000000001"/>
+      </dia:attribute>
+      <dia:attribute name="line_color">
+        <dia:color val="#000000"/>
+      </dia:attribute>
+      <dia:attribute name="fill_color">
+        <dia:color val="#ffffff"/>
+      </dia:attribute>
+      <dia:attribute name="text_color">
+        <dia:color val="#000000"/>
+      </dia:attribute>
+      <dia:attribute name="normal_font">
+        <dia:font family="monospace" style="0" name="Courier"/>
+      </dia:attribute>
+      <dia:attribute name="abstract_font">
+        <dia:font family="monospace" style="0" name="Courier"/>
+      </dia:attribute>
+      <dia:attribute name="polymorphic_font">
+        <dia:font family="monospace" style="0" name="Courier"/>
+      </dia:attribute>
+      <dia:attribute name="classname_font">
+        <dia:font family="sans" style="80" name="Helvetica-Bold"/>
+      </dia:attribute>
+      <dia:attribute name="abstract_classname_font">
+        <dia:font family="sans" style="0" name="Helvetica"/>
+      </dia:attribute>
+      <dia:attribute name="comment_font">
+        <dia:font family="sans" style="0" name="Helvetica"/>
+      </dia:attribute>
+      <dia:attribute name="normal_font_height">
+        <dia:real val="0.80000000000000004"/>
+      </dia:attribute>
+      <dia:attribute name="polymorphic_font_height">
+        <dia:real val="0.80000000000000004"/>
+      </dia:attribute>
+      <dia:attribute name="abstract_font_height">
+        <dia:real val="0.80000000000000004"/>
+      </dia:attribute>
+      <dia:attribute name="classname_font_height">
+        <dia:real val="1"/>
+      </dia:attribute>
+      <dia:attribute name="abstract_classname_font_height">
+        <dia:real val="1"/>
+      </dia:attribute>
+      <dia:attribute name="comment_font_height">
+        <dia:real val="0.69999999999999996"/>
+      </dia:attribute>
+      <dia:attribute name="attributes"/>
+      <dia:attribute name="operations">
+        <dia:composite type="umloperation">
+          <dia:attribute name="name">
+            <dia:string>#MenuControlButtonHandler#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="stereotype">
+            <dia:string>#constructor#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="visibility">
+            <dia:enum val="2"/>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>#Creates a new handler.#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="abstract">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="inheritance_type">
+            <dia:enum val="2"/>
+          </dia:attribute>
+          <dia:attribute name="query">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="class_scope">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="parameters">
+            <dia:composite type="umlparameter">
+              <dia:attribute name="name">
+                <dia:string>#controlWindow#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="type">
+                <dia:string>#SimulationControlWindow#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="value">
+                <dia:string>##</dia:string>
+              </dia:attribute>
+              <dia:attribute name="comment">
+                <dia:string>#The current control window#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="kind">
+                <dia:enum val="0"/>
+              </dia:attribute>
+            </dia:composite>
+          </dia:attribute>
+        </dia:composite>
+        <dia:composite type="umloperation">
+          <dia:attribute name="name">
+            <dia:string>#handle#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="stereotype">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="visibility">
+            <dia:enum val="0"/>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>#Handles a click on the settings menu button in the monitoring view.#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="abstract">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="inheritance_type">
+            <dia:enum val="2"/>
+          </dia:attribute>
+          <dia:attribute name="query">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="class_scope">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="parameters">
+            <dia:composite type="umlparameter">
+              <dia:attribute name="name">
+                <dia:string>#event#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="type">
+                <dia:string>#javafx.event.ActionEvent#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="value">
+                <dia:string>##</dia:string>
+              </dia:attribute>
+              <dia:attribute name="comment">
+                <dia:string>#The occured event.#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="kind">
+                <dia:enum val="0"/>
+              </dia:attribute>
+            </dia:composite>
+          </dia:attribute>
+        </dia:composite>
+      </dia:attribute>
+      <dia:attribute name="template">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+      <dia:attribute name="templates"/>
+    </dia:object>
+    <dia:object type="UML - Class" version="0" id="O285">
+      <dia:attribute name="obj_pos">
+        <dia:point val="-129.092,-117.887"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="-129.142,-117.937;-96.5868,-111.437"/>
+      </dia:attribute>
+      <dia:attribute name="elem_corner">
+        <dia:point val="-129.092,-117.887"/>
+      </dia:attribute>
+      <dia:attribute name="elem_width">
+        <dia:real val="32.454999999999998"/>
+      </dia:attribute>
+      <dia:attribute name="elem_height">
+        <dia:real val="6.3999999999999986"/>
+      </dia:attribute>
+      <dia:attribute name="name">
+        <dia:string>#MenuSettingsButtonHandler#</dia:string>
+      </dia:attribute>
+      <dia:attribute name="stereotype">
+        <dia:string>##</dia:string>
+      </dia:attribute>
+      <dia:attribute name="comment">
+        <dia:string>#Handles a click on the settings menu button#</dia:string>
+      </dia:attribute>
+      <dia:attribute name="abstract">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+      <dia:attribute name="suppress_attributes">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+      <dia:attribute name="suppress_operations">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+      <dia:attribute name="visible_attributes">
+        <dia:boolean val="true"/>
+      </dia:attribute>
+      <dia:attribute name="visible_operations">
+        <dia:boolean val="true"/>
+      </dia:attribute>
+      <dia:attribute name="visible_comments">
+        <dia:boolean val="true"/>
+      </dia:attribute>
+      <dia:attribute name="wrap_operations">
+        <dia:boolean val="true"/>
+      </dia:attribute>
+      <dia:attribute name="wrap_after_char">
+        <dia:int val="40"/>
+      </dia:attribute>
+      <dia:attribute name="comment_line_length">
+        <dia:int val="80"/>
+      </dia:attribute>
+      <dia:attribute name="comment_tagging">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+      <dia:attribute name="line_width">
+        <dia:real val="0.10000000000000001"/>
+      </dia:attribute>
+      <dia:attribute name="line_color">
+        <dia:color val="#000000"/>
+      </dia:attribute>
+      <dia:attribute name="fill_color">
+        <dia:color val="#ffffff"/>
+      </dia:attribute>
+      <dia:attribute name="text_color">
+        <dia:color val="#000000"/>
+      </dia:attribute>
+      <dia:attribute name="normal_font">
+        <dia:font family="monospace" style="0" name="Courier"/>
+      </dia:attribute>
+      <dia:attribute name="abstract_font">
+        <dia:font family="monospace" style="0" name="Courier"/>
+      </dia:attribute>
+      <dia:attribute name="polymorphic_font">
+        <dia:font family="monospace" style="0" name="Courier"/>
+      </dia:attribute>
+      <dia:attribute name="classname_font">
+        <dia:font family="sans" style="80" name="Helvetica-Bold"/>
+      </dia:attribute>
+      <dia:attribute name="abstract_classname_font">
+        <dia:font family="sans" style="0" name="Helvetica"/>
+      </dia:attribute>
+      <dia:attribute name="comment_font">
+        <dia:font family="sans" style="0" name="Helvetica"/>
+      </dia:attribute>
+      <dia:attribute name="normal_font_height">
+        <dia:real val="0.80000000000000004"/>
+      </dia:attribute>
+      <dia:attribute name="polymorphic_font_height">
+        <dia:real val="0.80000000000000004"/>
+      </dia:attribute>
+      <dia:attribute name="abstract_font_height">
+        <dia:real val="0.80000000000000004"/>
+      </dia:attribute>
+      <dia:attribute name="classname_font_height">
+        <dia:real val="1"/>
+      </dia:attribute>
+      <dia:attribute name="abstract_classname_font_height">
+        <dia:real val="1"/>
+      </dia:attribute>
+      <dia:attribute name="comment_font_height">
+        <dia:real val="0.69999999999999996"/>
+      </dia:attribute>
+      <dia:attribute name="attributes"/>
+      <dia:attribute name="operations">
+        <dia:composite type="umloperation">
+          <dia:attribute name="name">
+            <dia:string>#MenuSettingsButtonHandler#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="stereotype">
+            <dia:string>#constructor#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="visibility">
+            <dia:enum val="2"/>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>#Creates a new handler.#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="abstract">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="inheritance_type">
+            <dia:enum val="2"/>
+          </dia:attribute>
+          <dia:attribute name="query">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="class_scope">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="parameters">
+            <dia:composite type="umlparameter">
+              <dia:attribute name="name">
+                <dia:string>#settingsWindow#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="type">
+                <dia:string>#SimulationSettingsWindow#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="value">
+                <dia:string>##</dia:string>
+              </dia:attribute>
+              <dia:attribute name="comment">
+                <dia:string>#The current control window#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="kind">
+                <dia:enum val="0"/>
+              </dia:attribute>
+            </dia:composite>
+          </dia:attribute>
+        </dia:composite>
+        <dia:composite type="umloperation">
+          <dia:attribute name="name">
+            <dia:string>#handle#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="stereotype">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="visibility">
+            <dia:enum val="0"/>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>#Handles a click on the settings menu button in the monitoring view.#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="abstract">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="inheritance_type">
+            <dia:enum val="2"/>
+          </dia:attribute>
+          <dia:attribute name="query">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="class_scope">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="parameters">
+            <dia:composite type="umlparameter">
+              <dia:attribute name="name">
+                <dia:string>#event#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="type">
+                <dia:string>#javafx.event.ActionEvent#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="value">
+                <dia:string>##</dia:string>
+              </dia:attribute>
+              <dia:attribute name="comment">
+                <dia:string>#The occured event.#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="kind">
+                <dia:enum val="0"/>
+              </dia:attribute>
+            </dia:composite>
+          </dia:attribute>
+        </dia:composite>
+      </dia:attribute>
+      <dia:attribute name="template">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+      <dia:attribute name="templates"/>
+    </dia:object>
+    <dia:object type="UML - Class" version="0" id="O286">
+      <dia:attribute name="obj_pos">
+        <dia:point val="-121.971,-110.851"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="-122.021,-110.901;-103.168,-106.251"/>
+      </dia:attribute>
+      <dia:attribute name="elem_corner">
+        <dia:point val="-121.971,-110.851"/>
+      </dia:attribute>
+      <dia:attribute name="elem_width">
+        <dia:real val="18.752500000000001"/>
+      </dia:attribute>
+      <dia:attribute name="elem_height">
+        <dia:real val="4.5499999999999989"/>
+      </dia:attribute>
+      <dia:attribute name="name">
+        <dia:string>#MenuAboutButtonHandler#</dia:string>
+      </dia:attribute>
+      <dia:attribute name="stereotype">
+        <dia:string>##</dia:string>
+      </dia:attribute>
+      <dia:attribute name="comment">
+        <dia:string>#Handles a click on the about menu button in the simulation view.#</dia:string>
+      </dia:attribute>
+      <dia:attribute name="abstract">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+      <dia:attribute name="suppress_attributes">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+      <dia:attribute name="suppress_operations">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+      <dia:attribute name="visible_attributes">
+        <dia:boolean val="true"/>
+      </dia:attribute>
+      <dia:attribute name="visible_operations">
+        <dia:boolean val="true"/>
+      </dia:attribute>
+      <dia:attribute name="visible_comments">
+        <dia:boolean val="true"/>
+      </dia:attribute>
+      <dia:attribute name="wrap_operations">
+        <dia:boolean val="true"/>
+      </dia:attribute>
+      <dia:attribute name="wrap_after_char">
+        <dia:int val="40"/>
+      </dia:attribute>
+      <dia:attribute name="comment_line_length">
+        <dia:int val="80"/>
+      </dia:attribute>
+      <dia:attribute name="comment_tagging">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+      <dia:attribute name="line_width">
+        <dia:real val="0.10000000000000001"/>
+      </dia:attribute>
+      <dia:attribute name="line_color">
+        <dia:color val="#000000"/>
+      </dia:attribute>
+      <dia:attribute name="fill_color">
+        <dia:color val="#ffffff"/>
+      </dia:attribute>
+      <dia:attribute name="text_color">
+        <dia:color val="#000000"/>
+      </dia:attribute>
+      <dia:attribute name="normal_font">
+        <dia:font family="monospace" style="0" name="Courier"/>
+      </dia:attribute>
+      <dia:attribute name="abstract_font">
+        <dia:font family="monospace" style="0" name="Courier"/>
+      </dia:attribute>
+      <dia:attribute name="polymorphic_font">
+        <dia:font family="monospace" style="0" name="Courier"/>
+      </dia:attribute>
+      <dia:attribute name="classname_font">
+        <dia:font family="sans" style="80" name="Helvetica-Bold"/>
+      </dia:attribute>
+      <dia:attribute name="abstract_classname_font">
+        <dia:font family="sans" style="0" name="Helvetica"/>
+      </dia:attribute>
+      <dia:attribute name="comment_font">
+        <dia:font family="sans" style="0" name="Helvetica"/>
+      </dia:attribute>
+      <dia:attribute name="normal_font_height">
+        <dia:real val="0.80000000000000004"/>
+      </dia:attribute>
+      <dia:attribute name="polymorphic_font_height">
+        <dia:real val="0.80000000000000004"/>
+      </dia:attribute>
+      <dia:attribute name="abstract_font_height">
+        <dia:real val="0.80000000000000004"/>
+      </dia:attribute>
+      <dia:attribute name="classname_font_height">
+        <dia:real val="1"/>
+      </dia:attribute>
+      <dia:attribute name="abstract_classname_font_height">
+        <dia:real val="1"/>
+      </dia:attribute>
+      <dia:attribute name="comment_font_height">
+        <dia:real val="0.69999999999999996"/>
+      </dia:attribute>
+      <dia:attribute name="attributes"/>
+      <dia:attribute name="operations">
+        <dia:composite type="umloperation">
+          <dia:attribute name="name">
+            <dia:string>#handle#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="stereotype">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="visibility">
+            <dia:enum val="0"/>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>#Handles a click on the about menu button in the simulation view.#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="abstract">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="inheritance_type">
+            <dia:enum val="2"/>
+          </dia:attribute>
+          <dia:attribute name="query">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="class_scope">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="parameters">
+            <dia:composite type="umlparameter">
+              <dia:attribute name="name">
+                <dia:string>#event#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="type">
+                <dia:string>#javafx.event.ActionEvent#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="value">
+                <dia:string>##</dia:string>
+              </dia:attribute>
+              <dia:attribute name="comment">
+                <dia:string>#The occured event.#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="kind">
+                <dia:enum val="0"/>
+              </dia:attribute>
+            </dia:composite>
+          </dia:attribute>
+        </dia:composite>
+      </dia:attribute>
+      <dia:attribute name="template">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+      <dia:attribute name="templates"/>
+    </dia:object>
+    <dia:object type="UML - Class" version="0" id="O287">
+      <dia:attribute name="obj_pos">
+        <dia:point val="-121.766,-105.344"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="-121.816,-105.394;-103.369,-100.744"/>
+      </dia:attribute>
+      <dia:attribute name="elem_corner">
+        <dia:point val="-121.766,-105.344"/>
+      </dia:attribute>
+      <dia:attribute name="elem_width">
+        <dia:real val="18.3475"/>
+      </dia:attribute>
+      <dia:attribute name="elem_height">
+        <dia:real val="4.5499999999999989"/>
+      </dia:attribute>
+      <dia:attribute name="name">
+        <dia:string>#MenuHelpButtonHandler#</dia:string>
+      </dia:attribute>
+      <dia:attribute name="stereotype">
+        <dia:string>##</dia:string>
+      </dia:attribute>
+      <dia:attribute name="comment">
+        <dia:string>#Handles a click on the help menu button in the simulation view.#</dia:string>
+      </dia:attribute>
+      <dia:attribute name="abstract">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+      <dia:attribute name="suppress_attributes">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+      <dia:attribute name="suppress_operations">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+      <dia:attribute name="visible_attributes">
+        <dia:boolean val="true"/>
+      </dia:attribute>
+      <dia:attribute name="visible_operations">
+        <dia:boolean val="true"/>
+      </dia:attribute>
+      <dia:attribute name="visible_comments">
+        <dia:boolean val="true"/>
+      </dia:attribute>
+      <dia:attribute name="wrap_operations">
+        <dia:boolean val="true"/>
+      </dia:attribute>
+      <dia:attribute name="wrap_after_char">
+        <dia:int val="40"/>
+      </dia:attribute>
+      <dia:attribute name="comment_line_length">
+        <dia:int val="80"/>
+      </dia:attribute>
+      <dia:attribute name="comment_tagging">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+      <dia:attribute name="line_width">
+        <dia:real val="0.10000000000000001"/>
+      </dia:attribute>
+      <dia:attribute name="line_color">
+        <dia:color val="#000000"/>
+      </dia:attribute>
+      <dia:attribute name="fill_color">
+        <dia:color val="#ffffff"/>
+      </dia:attribute>
+      <dia:attribute name="text_color">
+        <dia:color val="#000000"/>
+      </dia:attribute>
+      <dia:attribute name="normal_font">
+        <dia:font family="monospace" style="0" name="Courier"/>
+      </dia:attribute>
+      <dia:attribute name="abstract_font">
+        <dia:font family="monospace" style="0" name="Courier"/>
+      </dia:attribute>
+      <dia:attribute name="polymorphic_font">
+        <dia:font family="monospace" style="0" name="Courier"/>
+      </dia:attribute>
+      <dia:attribute name="classname_font">
+        <dia:font family="sans" style="80" name="Helvetica-Bold"/>
+      </dia:attribute>
+      <dia:attribute name="abstract_classname_font">
+        <dia:font family="sans" style="0" name="Helvetica"/>
+      </dia:attribute>
+      <dia:attribute name="comment_font">
+        <dia:font family="sans" style="0" name="Helvetica"/>
+      </dia:attribute>
+      <dia:attribute name="normal_font_height">
+        <dia:real val="0.80000000000000004"/>
+      </dia:attribute>
+      <dia:attribute name="polymorphic_font_height">
+        <dia:real val="0.80000000000000004"/>
+      </dia:attribute>
+      <dia:attribute name="abstract_font_height">
+        <dia:real val="0.80000000000000004"/>
+      </dia:attribute>
+      <dia:attribute name="classname_font_height">
+        <dia:real val="1"/>
+      </dia:attribute>
+      <dia:attribute name="abstract_classname_font_height">
+        <dia:real val="1"/>
+      </dia:attribute>
+      <dia:attribute name="comment_font_height">
+        <dia:real val="0.69999999999999996"/>
+      </dia:attribute>
+      <dia:attribute name="attributes"/>
+      <dia:attribute name="operations">
+        <dia:composite type="umloperation">
+          <dia:attribute name="name">
+            <dia:string>#handle#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="stereotype">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="visibility">
+            <dia:enum val="0"/>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>#Handles a click on the help menu button in the simulation view.#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="abstract">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="inheritance_type">
+            <dia:enum val="2"/>
+          </dia:attribute>
+          <dia:attribute name="query">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="class_scope">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="parameters">
+            <dia:composite type="umlparameter">
+              <dia:attribute name="name">
+                <dia:string>#event#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="type">
+                <dia:string>#javafx.event.ActionEvent#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="value">
+                <dia:string>##</dia:string>
+              </dia:attribute>
+              <dia:attribute name="comment">
+                <dia:string>#The ocurred event.#</dia:string>
+              </dia:attribute>
+              <dia:attribute name="kind">
+                <dia:enum val="0"/>
+              </dia:attribute>
+            </dia:composite>
+          </dia:attribute>
+        </dia:composite>
+      </dia:attribute>
+      <dia:attribute name="template">
+        <dia:boolean val="false"/>
+      </dia:attribute>
+      <dia:attribute name="templates"/>
+    </dia:object>
+    <dia:object type="UML - Realizes" version="1" id="O288">
+      <dia:attribute name="obj_pos">
+        <dia:point val="304.847,-165.011"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="297.891,-165.061;305.697,-97.31"/>
+      </dia:attribute>
+      <dia:attribute name="meta">
+        <dia:composite type="dict"/>
+      </dia:attribute>
+      <dia:attribute name="orth_points">
+        <dia:point val="304.847,-165.011"/>
+        <dia:point val="304.847,-98.91"/>
+        <dia:point val="297.941,-98.91"/>
+      </dia:attribute>
+      <dia:attribute name="orth_orient">
+        <dia:enum val="1"/>
+        <dia:enum val="0"/>
+      </dia:attribute>
+      <dia:attribute name="orth_autoroute">
+        <dia:boolean val="true"/>
+      </dia:attribute>
+      <dia:attribute name="line_colour">
+        <dia:color val="#000000"/>
+      </dia:attribute>
+      <dia:attribute name="text_colour">
+        <dia:color val="#000000"/>
+      </dia:attribute>
+      <dia:attribute name="name">
+        <dia:string>##</dia:string>
+      </dia:attribute>
+      <dia:attribute name="stereotype">
+        <dia:string>##</dia:string>
+      </dia:attribute>
+      <dia:connections>
+        <dia:connection handle="0" to="O185" connection="6"/>
+        <dia:connection handle="1" to="O165" connection="9"/>
+      </dia:connections>
     </dia:object>
   </dia:layer>
 </dia:diagram>
