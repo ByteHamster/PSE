@@ -4874,7 +4874,7 @@ crosssection*$SIM_STEP_SIZE*threshold
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O30">
       <dia:attribute name="obj_pos">
-        <dia:point val="6.44695,52.9614"/>
+        <dia:point val="6.44696,52.9614"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
         <dia:rectangle val="-20.3425,-28.5304;7.29696,53.0114"/>
@@ -4883,8 +4883,8 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="6.44695,52.9614"/>
-        <dia:point val="6.44694,50.5779"/>
+        <dia:point val="6.44696,52.9614"/>
+        <dia:point val="6.44695,50.5779"/>
         <dia:point val="-20.2925,50.5779"/>
         <dia:point val="-20.2925,-28.4804"/>
       </dia:attribute>
@@ -4915,17 +4915,17 @@ crosssection*$SIM_STEP_SIZE*threshold
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O31">
       <dia:attribute name="obj_pos">
-        <dia:point val="6.44695,52.9618"/>
+        <dia:point val="6.44696,52.9618"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-1.30575,-19.7284;7.29695,53.0118"/>
+        <dia:rectangle val="-1.30575,-19.7284;7.29696,53.0118"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="6.44695,52.9618"/>
-        <dia:point val="6.44694,50.5793"/>
+        <dia:point val="6.44696,52.9618"/>
+        <dia:point val="6.44695,50.5793"/>
         <dia:point val="-1.25575,50.5793"/>
         <dia:point val="-1.25575,-19.6784"/>
       </dia:attribute>
@@ -35291,13 +35291,13 @@ true if the logging of the temperature progression should be enabled for the spe
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O236">
       <dia:attribute name="obj_pos">
-        <dia:point val="-148.115,-25.9625"/>
+        <dia:point val="-147.985,-25.9625"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-148.165,-26.0125;-122.155,-15.4625"/>
+        <dia:rectangle val="-148.035,-26.0125;-122.025,-15.4625"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="-148.115,-25.9625"/>
+        <dia:point val="-147.985,-25.9625"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="25.91"/>
@@ -35567,7 +35567,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="-52.2087,-12.4815"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-122.255,-15.5625;-52.1587,-11.6315"/>
+        <dia:rectangle val="-122.125,-15.5625;-52.1587,-11.6315"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -35576,7 +35576,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="-52.2087,-12.4815"/>
         <dia:point val="-91.3981,-12.4815"/>
         <dia:point val="-91.3981,-15.5125"/>
-        <dia:point val="-122.205,-15.5125"/>
+        <dia:point val="-122.075,-15.5125"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -35803,17 +35803,17 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="-135.16,-26.0128"/>
+        <dia:point val="-135.03,-26.0128"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-135.21,-28.8786;-129.475,-25.2128"/>
+        <dia:rectangle val="-135.115,-28.8786;-129.475,-25.2128"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-135.16,-26.0128"/>
-        <dia:point val="-135.16,-27.4207"/>
+        <dia:point val="-135.03,-26.0128"/>
+        <dia:point val="-135.03,-27.4207"/>
         <dia:point val="-135.065,-27.4207"/>
         <dia:point val="-135.065,-28.8286"/>
       </dia:attribute>
@@ -37810,18 +37810,18 @@ true if the logging of the temperature progression should be enabled for the spe
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O263">
       <dia:attribute name="obj_pos">
-        <dia:point val="219.778,-167.149"/>
+        <dia:point val="220.016,-167.149"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="218.928,-167.199;229.351,-113.732"/>
+        <dia:rectangle val="219.166,-167.199;229.589,-113.732"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="219.778,-167.149"/>
-        <dia:point val="219.778,-114.582"/>
-        <dia:point val="229.301,-114.582"/>
+        <dia:point val="220.016,-167.149"/>
+        <dia:point val="220.016,-114.582"/>
+        <dia:point val="229.539,-114.582"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -42379,19 +42379,19 @@ true if the logging of the temperature progression should be enabled for the spe
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O293">
       <dia:attribute name="obj_pos">
-        <dia:point val="-118.513,-28.4583"/>
+        <dia:point val="-118.578,-30.2739"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-118.563,-28.5083;-95.633,-23.0583"/>
+        <dia:rectangle val="-118.628,-30.3239;-95.6978,-23.0239"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="-118.513,-28.4583"/>
+        <dia:point val="-118.578,-30.2739"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="22.830000000000002"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="5.3499999999999996"/>
+        <dia:real val="7.1999999999999993"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#TankSimulation#</dia:string>
@@ -42547,6 +42547,36 @@ true if the logging of the temperature progression should be enabled for the spe
             </dia:composite>
           </dia:attribute>
         </dia:composite>
+        <dia:composite type="umloperation">
+          <dia:attribute name="name">
+            <dia:string>#getInPipe#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="stereotype">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>#Pipe#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="visibility">
+            <dia:enum val="0"/>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>#Get the ingoing pipe#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="abstract">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="inheritance_type">
+            <dia:enum val="2"/>
+          </dia:attribute>
+          <dia:attribute name="query">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="class_scope">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="parameters"/>
+        </dia:composite>
       </dia:attribute>
       <dia:attribute name="template">
         <dia:boolean val="false"/>
@@ -42558,7 +42588,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="-118.549,-22.1298"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-118.599,-22.1798;-94.514,-16.7298"/>
+        <dia:rectangle val="-118.599,-22.1798;-94.514,-14.8798"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-118.549,-22.1298"/>
@@ -42567,7 +42597,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:real val="23.984999999999999"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="5.3499999999999996"/>
+        <dia:real val="7.1999999999999993"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#MixTankSimulation#</dia:string>
@@ -42723,6 +42753,36 @@ true if the logging of the temperature progression should be enabled for the spe
             </dia:composite>
           </dia:attribute>
         </dia:composite>
+        <dia:composite type="umloperation">
+          <dia:attribute name="name">
+            <dia:string>#getMotor#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="stereotype">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>#Motor#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="visibility">
+            <dia:enum val="0"/>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>#Get the motor#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="abstract">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="inheritance_type">
+            <dia:enum val="2"/>
+          </dia:attribute>
+          <dia:attribute name="query">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="class_scope">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="parameters"/>
+        </dia:composite>
       </dia:attribute>
       <dia:attribute name="template">
         <dia:boolean val="false"/>
@@ -42731,19 +42791,19 @@ true if the logging of the temperature progression should be enabled for the spe
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O295">
       <dia:attribute name="obj_pos">
-        <dia:point val="-122.155,-20.7375"/>
+        <dia:point val="-122.025,-20.7375"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-122.205,-25.8333;-118.513,-19.8875"/>
+        <dia:rectangle val="-122.075,-26.7239;-118.578,-19.8875"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-122.155,-20.7375"/>
-        <dia:point val="-119.959,-20.7375"/>
-        <dia:point val="-119.959,-25.7833"/>
-        <dia:point val="-118.563,-25.7833"/>
+        <dia:point val="-122.025,-20.7375"/>
+        <dia:point val="-119.927,-20.7375"/>
+        <dia:point val="-119.927,-26.6739"/>
+        <dia:point val="-118.628,-26.6739"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -42767,25 +42827,25 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O236" connection="14"/>
-        <dia:connection handle="1" to="O293" connection="10"/>
+        <dia:connection handle="1" to="O293" connection="12"/>
       </dia:connections>
       <dia:childnode parent="O235"/>
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O296">
       <dia:attribute name="obj_pos">
-        <dia:point val="-122.155,-20.7375"/>
+        <dia:point val="-122.025,-20.7375"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-122.205,-21.5875;-118.549,-19.2461"/>
+        <dia:rectangle val="-122.075,-21.5875;-118.549,-18.4798"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-122.155,-20.7375"/>
-        <dia:point val="-119.977,-20.7375"/>
-        <dia:point val="-119.977,-19.4548"/>
-        <dia:point val="-118.599,-19.4548"/>
+        <dia:point val="-122.025,-20.7375"/>
+        <dia:point val="-119.912,-20.7375"/>
+        <dia:point val="-119.912,-18.5298"/>
+        <dia:point val="-118.599,-18.5298"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -42809,7 +42869,7 @@ true if the logging of the temperature progression should be enabled for the spe
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O236" connection="14"/>
-        <dia:connection handle="1" to="O294" connection="10"/>
+        <dia:connection handle="1" to="O294" connection="12"/>
       </dia:connections>
       <dia:childnode parent="O235"/>
     </dia:object>
