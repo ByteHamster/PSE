@@ -15,20 +15,20 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>170</x>
+      <x>300</x>
       <y>370</y>
       <w>420</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-getServerHostName(tank:TankSelector)</panel_attributes>
+getHostName(tank:TankSelector)</panel_attributes>
     <additional_attributes>400.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>430</x>
-      <y>320</y>
+      <x>560</x>
+      <y>310</y>
       <w>290</w>
       <h>30</h>
     </coordinates>
@@ -38,18 +38,18 @@ getServerHostName(tank:TankSelector)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>570</x>
-      <y>340</y>
+      <x>700</x>
+      <y>330</y>
       <w>30</w>
-      <h>70</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>570</x>
+      <x>700</x>
       <y>390</y>
       <w>20</w>
       <h>100</h>
@@ -60,7 +60,7 @@ getServerHostName(tank:TankSelector)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>170</x>
+      <x>300</x>
       <y>460</y>
       <w>420</w>
       <h>30</h>
@@ -83,7 +83,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>570</x>
+      <x>700</x>
       <y>480</y>
       <w>30</w>
       <h>100</h>
@@ -94,19 +94,19 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>170</x>
+      <x>300</x>
       <y>540</y>
       <w>420</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-getServerPort(tank:TankSelector)</panel_attributes>
+getPort(tank:TankSelector)</panel_attributes>
     <additional_attributes>400.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>570</x>
+      <x>700</x>
       <y>560</y>
       <w>20</w>
       <h>100</h>
@@ -117,7 +117,7 @@ getServerPort(tank:TankSelector)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>170</x>
+      <x>300</x>
       <y>630</y>
       <w>420</w>
       <h>30</h>
@@ -140,7 +140,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>570</x>
+      <x>700</x>
       <y>650</y>
       <w>30</w>
       <h>160</h>
@@ -151,7 +151,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>50</x>
+      <x>180</x>
       <y>310</y>
       <w>240</w>
       <h>30</h>
@@ -163,7 +163,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>160</x>
+      <x>290</x>
       <y>330</y>
       <w>30</w>
       <h>70</h>
@@ -174,7 +174,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>160</x>
+      <x>290</x>
       <y>380</y>
       <w>20</w>
       <h>110</h>
@@ -185,7 +185,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>160</x>
+      <x>290</x>
       <y>480</y>
       <w>30</w>
       <h>90</h>
@@ -196,7 +196,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>160</x>
+      <x>290</x>
       <y>550</y>
       <w>20</w>
       <h>110</h>
@@ -207,7 +207,7 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>160</x>
+      <x>290</x>
       <y>650</y>
       <w>30</w>
       <h>160</h>
@@ -220,45 +220,45 @@ style=wordwrap</panel_attributes>
     <coordinates>
       <x>10</x>
       <y>360</y>
-      <w>170</w>
+      <w>300</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-getServerIp()</panel_attributes>
-    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
+getServerHost()</panel_attributes>
+    <additional_attributes>280.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>10</x>
       <y>470</y>
-      <w>170</w>
+      <w>300</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;280.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>10</x>
       <y>640</y>
-      <w>170</w>
+      <w>300</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;280.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>10</x>
       <y>530</y>
-      <w>170</w>
+      <w>300</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-getServerPort()</panel_attributes>
-    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
+getServerPort(tank:TankSelector)</panel_attributes>
+    <additional_attributes>280.0;20.0;10.0;20.0</additional_attributes>
   </element>
 </diagram>
