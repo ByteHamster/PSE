@@ -1,4 +1,4 @@
-h\documentclass[parskip=full]{scrartcl}
+\documentclass[parskip=full]{scrartcl}
 \usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -32,7 +32,13 @@ h\documentclass[parskip=full]{scrartcl}
 \pagebreak
 
 \section{Einleitung}
-% Aufteilung in die Pakete erklären
+OSIP ist in drei große Pakete gegliedert: Simulation, Monitoring und Core.
+Simulation realisiert die Fertigungssimulation und Monitoring die Überwachungskonsole.
+Core beinhaltet gemeinsame Unterpakete vom Fertigungssimulation und Monitoring sowie Unterpakete zu IO und der OPCUA-Implementierung.
+Das grundlegende Entwurfsmuster MVC ist bis auf das Model zweifach für die Fertigungssimulation und die Überwachungskonsole verwirklicht, die getrennt von einander existieren.
+Das gemeinsame Model befindet sich in Core. Dabei benutzt die Überwachungskonsole benutzt nur core.base und core.behavior.
+Die Fertigungssimulation benutzt ein erweitertes Model aus den Unterpakteten core.simulation, core.base und core.behavior.
+core.simulation ist für das Mischen von Farben und die Simulation der Verbindungsrohre zuständig.
 
 \section{Klassenbeschreibungen}
 Die Klassenbeschreibungen können im Anhang dieses Dokuments gefunden werden.
