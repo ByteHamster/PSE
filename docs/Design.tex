@@ -45,7 +45,43 @@ Das Unterpaket core.simulation ist für das Mischen von Farben und die Simulatio
 Die Klassenbeschreibungen können im Anhang dieses Dokuments gefunden werden.
 
 \section{Abläufe}
-% Sequenzdiagramme
+\subsection{Wrapper für OPC UA}
+
+\subsubsection{Server-Wrapper}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.35]{design/sequence-diagrams/sequence-set-server-value.png}
+  \caption{Setzen von Werten über den server wrapper}
+\end{figure}
+
+\subsubsection{Client-Wrapper}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.34]{design/sequence-diagrams/sequence-read-client-value.png}
+  \caption{Lesen von Werten über den client wrapper}
+\end{figure}
+
+\subsection{Neuzeichnen der GUI der Simulation}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.35]{design/sequence-diagrams/simulation-redraw.png}
+  \caption{Neuzeichnen der GUI der Simulation}
+\end{figure}
+
+\subsection{Berechnen der Tank-Simulation}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.45]{design/sequence-diagrams/tank-simulation.png}
+  \caption{Berechnen der Tank-Simulation}
+\end{figure}
+
+\subsection{Einstellungen aus der Datei erhalten und verwenden}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.4]{design/sequence-diagrams/getting-networking-settings.png}
+  \caption{Einstellungen aus der Datei erhalten und verwenden}
+\end{figure}
+
 
 \section{Änderungen zum Pflichtenheft}
 
