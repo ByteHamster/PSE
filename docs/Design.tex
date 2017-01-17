@@ -55,7 +55,7 @@ und werden durch den Wrapper verborgen.
 \subsubsection{Server-Wrapper}
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=0.35]{design/sequence-diagrams/sequence-set-server-value.png}
+  \includegraphics[scale=0.38]{design/sequence-diagrams/sequence-set-server-value.png}
   \caption{Setzen von Werten über den UAServerWrapper}
 \end{figure}
 Beim Erstellen des Controllers werden auch der Simulator und die Server der Tanks erstellt.
@@ -71,14 +71,13 @@ Server und Namspace.
 \subsubsection{Client-Wrapper}
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=0.34]{design/sequence-diagrams/sequence-read-client-value.png}
+  \includegraphics[scale=0.4]{design/sequence-diagrams/sequence-read-client-value.png}
   \caption{Lesen von Werten über den UAClientWrapper}
 \end{figure}
-Der Controller erstellt einen neuen Listener, der nach dem Lesen des Wertes aufgerufen wird. Darauf ruft
-er beim TankServer, welcher vom UAClientWrapper erbt, die read-Methode für den entsprechenden Parameter auf
+Der Controller ruft beim TankServer, welcher vom UAClientWrapper erbt, die read-Methode für den entsprechenden Parameter auf
 (hier exemplarisch \emph{readFillLevel()}). Der UAClientWrapper erstellt ein NodeId-Objekt und ruft damit
 vom Client die entsprechende VariableNode ab. Von dieser VariableNode wird nun schlussendlich der Wert abgerufen.
-Dieser Wert wird über den Listener zurück an den Controller gegeben. Der UAClientWrapper übernimmt somit die
+Dieser Wert wird zurück an den Controller gegeben. Der UAClientWrapper übernimmt somit die
 komplette Interaktion mit Milo.
 
 \subsection{Neuzeichnen der GUI der Simulation}
