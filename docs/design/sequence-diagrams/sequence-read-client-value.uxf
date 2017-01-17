@@ -613,7 +613,7 @@ FloatReceivedListener()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>730</x>
+      <x>720</x>
       <y>680</y>
       <w>20</w>
       <h>390</h>
@@ -631,7 +631,7 @@ FloatReceivedListener()</panel_attributes>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;
  readFloat("YellowTank/FillLevel", listener)</panel_attributes>
-    <additional_attributes>10.0;10.0;60.0;10.0;60.0;40.0;30.0;40.0</additional_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0;60.0;40.0;20.0;40.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
@@ -647,14 +647,14 @@ FloatReceivedListener()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
+      <x>730</x>
       <y>700</y>
-      <w>310</w>
+      <w>320</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 &lt;&lt;create&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;290.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;300.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -670,25 +670,25 @@ FloatReceivedListener()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
+      <x>730</x>
       <y>750</y>
-      <w>410</w>
+      <w>420</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;
 NodeId(namespaceIdex, "YellowTank/FillLevel")</panel_attributes>
-    <additional_attributes>10.0;20.0;390.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;400.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
+      <x>730</x>
       <y>780</y>
-      <w>410</w>
+      <w>420</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;390.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;400.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
@@ -704,14 +704,14 @@ NodeId(namespaceIdex, "YellowTank/FillLevel")</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
+      <x>730</x>
       <y>820</y>
-      <w>580</w>
+      <w>590</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;
 getAddressSpace().getVariableNode(nodeId, VariableNode.class)</panel_attributes>
-    <additional_attributes>10.0;20.0;560.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;570.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
@@ -783,13 +783,13 @@ getAddressSpace().getVariableNode(nodeId, VariableNode.class)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
+      <x>730</x>
       <y>910</y>
-      <w>580</w>
+      <w>590</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;560.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;570.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLSpecialState</id>
@@ -805,26 +805,26 @@ getAddressSpace().getVariableNode(nodeId, VariableNode.class)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
+      <x>730</x>
       <y>930</y>
-      <w>410</w>
+      <w>420</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 &lt;&lt;destroy&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;390.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;400.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
+      <x>730</x>
       <y>960</y>
-      <w>180</w>
+      <w>190</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;
 readValue()</panel_attributes>
-    <additional_attributes>10.0;20.0;160.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
@@ -840,13 +840,13 @@ readValue()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
+      <x>730</x>
       <y>990</y>
-      <w>180</w>
+      <w>190</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;160.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -873,14 +873,14 @@ readValue()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
+      <x>730</x>
       <y>1020</y>
-      <w>180</w>
+      <w>190</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 &lt;&lt;destroy&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;160.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
