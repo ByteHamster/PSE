@@ -59,13 +59,13 @@ und werden durch den Wrapper verborgen.
   \caption{Setzen von Werten über den UAServerWrapper}
 \end{figure}
 Beim Erstellen des Controllers werden auch der Simulator und die Server der Tanks erstellt.
-Dieser Server erbt von UAServerWrapper, welcher eine Abstraktion von Milo vornimmt. Wie im Diagramm zu sehen,
+Dieser Server erbt von \emph{UAServerWrapper}, welcher eine Abstraktion von Milo vornimmt. Wie im Diagramm zu sehen,
 werden vom Wrapper Server und Namespace erstellt. Der Namespace wird beim Server registriert und
 im Namespace werden die Ordner und Variablen erstellt (hier exemplarisch der Füllstand).
 
-Beim Setzen des Füllstandes wird nur \emph{setFillLevel()} aufgerufen. Der UAServerWrapper erstellt daraufhin
-ein entsprechendes DataValue, das von Milo gebraucht wird, und übergibt es an den Standard-Namespace.
-Durch einen Aufruf von \emph{stop()} fährt der UAServerWrapper den Server herunter und entfernt
+Beim Setzen des Füllstandes wird nur \emph{setFillLevel()} aufgerufen. Der \emph{UAServerWrapper} erstellt daraufhin
+ein entsprechendes \emph{DataValue}, das von Milo gebraucht wird, und übergibt es an den Standard-Namespace.
+Durch einen Aufruf von \emph{stop()} fährt der \emph{UAServerWrapper} den Server herunter und dereferenziert
 Server und Namspace.
 
 \subsubsection{Client-Wrapper}
@@ -74,10 +74,10 @@ Server und Namspace.
   \includegraphics[scale=0.4]{design/sequence-diagrams/sequence-read-client-value.png}
   \caption{Lesen von Werten über den UAClientWrapper}
 \end{figure}
-Der Controller ruft beim TankServer, welcher vom UAClientWrapper erbt, die read-Methode für den entsprechenden Parameter auf
-(hier exemplarisch \emph{readFillLevel()}). Der UAClientWrapper erstellt ein NodeId-Objekt und ruft damit
-vom Client die entsprechende VariableNode ab. Von dieser VariableNode wird nun schlussendlich der Wert abgerufen.
-Dieser Wert wird zurück an den Controller gegeben. Der UAClientWrapper übernimmt somit die
+Der Controller ruft beim \emph{TankServer}, welcher von \emph{UAClientWrapper} erbt, die read-Methode für den entsprechenden Parameter auf
+(hier exemplarisch \emph{readFillLevel()}). Der \emph{UAClientWrapper} erstellt ein \emph{NodeId}-Objekt und ruft damit
+vom Client die entsprechende \emph{VariableNode} ab. Von dieser \emph{VariableNode} wird nun schlussendlich der Wert abgerufen.
+Dieser Wert wird zurück an den Controller gegeben. Der \emph{UAClientWrapper} übernimmt somit die
 komplette Interaktion mit Milo.
 
 \subsection{Neuzeichnen der GUI der Simulation}
@@ -100,11 +100,12 @@ komplette Interaktion mit Milo.
   \includegraphics[scale=0.4]{design/sequence-diagrams/getting-networking-settings.png}
   \caption{Einstellungen aus der Datei erhalten und verwenden}
 \end{figure}
-Bei der Erstellung eines TankClient werden HostName und Port des zugehörigen Servers vom mit \emph{getHostName(tank:TankSelector)} und
-\emph{getPort(tank:TankSelector)} vom ClientSettingsWrapper abgerufen. ClientSettingsWrapper ist im MonitoringController zu finden. Es
-wird eine RemoteMachine erstellt und mit HostName und Port konfiguriert. Danach erstellt man einen TankClient, der die RemoteMachine
-übergeben bekommt und sich mit dem Server verbinden kann.
+Bei der Erstellung eines \emph{TankClient} werden Hostname und Port des zugehörigen Servers vom mit \emph{getHostName(tank:TankSelector)}
+und \emph{getPort(tank:TankSelector)} vom \emph{ClientSettingsWrapper} abgerufen. Eine Instanz des \emph{ClientSettingsWrapper}s
+ist im \emph{MonitoringController} zu finden. Es wird eine \emph{RemoteMachine} erstellt und mit Hostname und Port konfiguriert.
+Danach erstellt man einen \emph{TankClient}, der die \emph{RemoteMachine} übergeben bekommt und sich mit dem Server verbinden kann.
 
+\pagebreak
 \section{Änderungen zum Pflichtenheft}
 
 \subsection{\"Ubernommene Kann-Kriterien}
@@ -147,8 +148,22 @@ Die nicht implementierten Kann-Kriterien sind wie folgt:
 \section{Klassendiagramme}
 Die Klassendiagramme können im Anhang dieses Dokuments gefunden werden.
 
+\pagebreak
 \section{Verwendete Entwurfsmuster}
-% Aufzählen: Geheimnisprinzip, MVC etc.
+\subsection{Fassaden-Muster: UAServerWrapper, UAClientWrapper}
+Milo besitzt eine sehr komplexe Schnittstelle, zu deren Benutzung man sich ausgiebig mit dem oft schlecht dokumentierten Code
+der Library beschäftigen muss (Zertifikate manuell deaktivieren etc.). Des Weiteren unterstützt Milo mehr Funktionalität,
+als sie in unserem Kontext gebraucht wird (mehrere Namespaces etc.).
+
+Das Fassaden-Muster ist dazu da, um Schnittstellen zu vereinfachen und vereinheitlichen.
+Der \emph{UAServerWrapper} erstellt automatisch einen standard namespace und leitet Anfragen an
+diesen weiter. Zusätzlich wird das Starten des Servers durch Verstecken von Initialisierungen vereinfacht. Der \emph{UAClientWrapper}
+bietet Methoden, um Werte bestimmter Typen direkt und synchron vom Server abzurufen. Die Werte können hierbei direkt über ihren
+Namen angesprochen werden - die Umsetzung in \emph{NodeId}s entfällt über die Fassade.
+
+Wir haben das Muster gewählt, um allen
+Beteiligten die Handhabung von Milo zu erleichtern. Durch die Fassade muss sich nur noch eine Person damit beschäftigen, wie
+Milo intern zu benutzen ist - nicht mehr jeder, der Werte über OPC UA austauschen möchte.
 
 \pagebreak
 \phantomsection
