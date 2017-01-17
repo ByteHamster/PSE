@@ -186,6 +186,21 @@ das Strategie Muster angewand. Dieses Muster hat das Ziel, eime Familie von Algo
 Dabei ist \emph{MixingStrategy} das Interface, dass die Strategie definiert, und \emph{AbstractTankSimulation} die Kontextklasse, die die Algorithmen
 benutzt. Momentan ist nur eine konkrete Strategie implementiert, und zwar die \emph{SubtractiveMixingStrategy}.
 
+\subsection{Beobachter-Muster}
+Das derzeit geplante View Modul holt sich periodisch den neuen Zustand des Models. Es wäre aber auch denkbar, ein View Modul zu implementieren,
+dass sich nur aktualisiert wenn sich Werte im Model geändert haben. Außerdem lösen die OPC UA Server die Alarme immer dann aus, wenn die Alarme im Model
+ausgelöst werden. Es ist also nötig, einen Mechanismus zu verwenden, mit dem das View Modul und die OPC UA Server sich über Änderungen im Model informieren
+lassen können.
+
+Dazu haben wir das Beobachter (engl. Observer) Muster verwendet. Dies definiert eine 1 zu n Abhängigkeit zwischen dem Model und (z.B.) den OPC UA Server.
+Dabei wird jedoch eine möglichst lose Kopplung aufrecht erhalten. Darum ist das Beobachter Muster sehr allgemein gehalten. Dabei kann ein OPC UA Server (konkreter Beobachter)
+sich bei den relevanten Klassen (konkretes Subjekt) als Beobachter registrieren, und wird dann bei jeder Änderung informiert, in dem die Methode \emph{update()}
+vom Subjekt aufgerufen wird. Dazu muss der konkrete Beobachter nur ein sehr kleines Interface (\emph{java.util.Observer}) implementieren.
+
+Das Beobachter Muster wird verwendet, um die View oder die OPC UA Server über Änderungen in den Zuständen der Tanks, den Leitungen, dem Motor sowie über
+das Auslösen von Alarmen zu informieren. Deswegen ist die Klasse \emph{AbstractTank}, \emph{Pipe}, \emph{Motor} und \emph{TankAlarm} als Subjekt implementiert
+(d.h. sie erben von \emph{java.util.Observerable}). Damit können alle Teile der Anwendung sich über Veränderungen im Model informieren lassen.
+
 \pagebreak
 \phantomsection
 \addcontentsline{toc}{section}{\listfigurename}
