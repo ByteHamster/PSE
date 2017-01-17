@@ -45,20 +45,34 @@ Das Unterpaket core.simulation ist für das Mischen von Farben und die Simulatio
 Die Klassenbeschreibungen können im Anhang dieses Dokuments gefunden werden.
 
 \section{Abläufe}
+Im Folgenden werden Sequenzdiagramme für typische Aktionen innerhalb von OSIP aufgezeigt und beschrieben.
 \subsection{Wrapper für OPC UA}
+OSIP verwendet einen Wrapper für Milo, da Milo eine zu komplexe Schnittstelle bereitstellt.
+Viele der angebotenen Funktionen (wie beispielsweise mehrere Namespaces) werden von uns nicht benötigt
+und werden durch den Wrapper verborgen.
+
 
 \subsubsection{Server-Wrapper}
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.35]{design/sequence-diagrams/sequence-set-server-value.png}
-  \caption{Setzen von Werten über den server wrapper}
+  \caption{Setzen von Werten über den UAServerWrapper}
 \end{figure}
+Beim Erstellen des Controllers werden auch der Simulator und die Server der Tanks erstellt.
+Dieser Server erbt von UAServerWrapper, welcher eine Abstraktion von Milo vornimmt. Wie im Diagramm zu sehen,
+werden vom Wrapper Server und Namespace erstellt. Der Namespace wird beim Server registriert und
+im Namespace werden die Ordner und Variablen erstellt (hier exemplarisch der Füllstand).
+
+Beim Setzen des Füllstandes wird nur \emph{setFillLevel()} aufgerufen. Der UAServerWrapper erstellt daraufhin
+ein entsprechendes DataValue, das von Milo gebraucht wird, und übergibt es an den Standard-Namespace.
+Durch einen Aufruf von \emph{stop()} fährt der UAServerWrapper den Server herunter und entfernt
+Server und Namspace.
 
 \subsubsection{Client-Wrapper}
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.34]{design/sequence-diagrams/sequence-read-client-value.png}
-  \caption{Lesen von Werten über den client wrapper}
+  \caption{Lesen von Werten über den UAClientWrapper}
 \end{figure}
 
 \subsection{Neuzeichnen der GUI der Simulation}
