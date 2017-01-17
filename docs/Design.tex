@@ -100,7 +100,10 @@ komplette Interaktion mit Milo.
   \includegraphics[scale=0.4]{design/sequence-diagrams/getting-networking-settings.png}
   \caption{Einstellungen aus der Datei erhalten und verwenden}
 \end{figure}
-Bei der Erstellung eines TankClient werden HostName und Port des zugehörigen Servers vom mit \emph{getHostName(tank:TankSelector)} und \emph{getPort(tank:TankSelector)} vom ClientSettingsWrapper abgerufen. ClientSettingsWrapper ist im MonitoringController zu finden. Es wird eine RemoteMachine erstellt und mit HostName und Port konfiguriert. Danach erstellt man einen TankClient, der die RemoteMachine übergeben bekommt und sich mit dem Server verbinden kann.
+Bei der Erstellung eines TankClient werden HostName und Port des zugehörigen Servers vom mit \emph{getHostName(tank:TankSelector)} und
+\emph{getPort(tank:TankSelector)} vom ClientSettingsWrapper abgerufen. ClientSettingsWrapper ist im MonitoringController zu finden. Es
+wird eine RemoteMachine erstellt und mit HostName und Port konfiguriert. Danach erstellt man einen TankClient, der die RemoteMachine
+übergeben bekommt und sich mit dem Server verbinden kann.
 
 \section{Änderungen zum Pflichtenheft}
 
@@ -134,7 +137,7 @@ Die nicht implementierten Kann-Kriterien sind wie folgt:
 
 \begin{itemize}
     \item Es stehen keine verschiedenen Sprachoptionen f\"ur \"Uberwachungskonsole und Fertigungssimulation zur Verf\"ugung.
-    Die einzige vorhandene Sprache ist Englisch. Durch die Verwendung von i18n ist die Anwendung allerdings leicht übersetzbar.
+    Die einzige vorhandene Sprache ist Englisch. Durch die Verwendung von \emph{java.util.ResourceBundle} ist die Anwendung allerdings leicht übersetzbar.
     \item Die vorgegebenen Alarme k\"onnen nicht ver\"andert werden. Insbesondere ist es nicht m\"oglich, eigene Alarme hinzuzuf\"ugen
     oder die Schwellenwerte der vorgegebenen Alarme zu modifizieren.
     \item Der Jitter in den Simulationswerten ist fest vorgegeben und kann in seiner Intensit\"at nicht ver\"andert werden.
