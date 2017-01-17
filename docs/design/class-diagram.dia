@@ -7750,7 +7750,7 @@ Extends UAClientWrapper#</dia:string>
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>##</dia:string>
+            <dia:string>#int#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="0"/>
@@ -7770,25 +7770,7 @@ Extends UAClientWrapper#</dia:string>
           <dia:attribute name="class_scope">
             <dia:boolean val="false"/>
           </dia:attribute>
-          <dia:attribute name="parameters">
-            <dia:composite type="umlparameter">
-              <dia:attribute name="name">
-                <dia:string>#onReceived#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="type">
-                <dia:string>#IntReceivedListener#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="value">
-                <dia:string>##</dia:string>
-              </dia:attribute>
-              <dia:attribute name="comment">
-                <dia:string>#Callback function that is called as soon as reading is complete#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="kind">
-                <dia:enum val="0"/>
-              </dia:attribute>
-            </dia:composite>
-          </dia:attribute>
+          <dia:attribute name="parameters"/>
         </dia:composite>
         <dia:composite type="umloperation">
           <dia:attribute name="name">
@@ -7798,7 +7780,7 @@ Extends UAClientWrapper#</dia:string>
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>##</dia:string>
+            <dia:string>#float#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="0"/>
@@ -7818,25 +7800,7 @@ Extends UAClientWrapper#</dia:string>
           <dia:attribute name="class_scope">
             <dia:boolean val="false"/>
           </dia:attribute>
-          <dia:attribute name="parameters">
-            <dia:composite type="umlparameter">
-              <dia:attribute name="name">
-                <dia:string>#onReceived#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="type">
-                <dia:string>#FloatReceivedListener#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="value">
-                <dia:string>##</dia:string>
-              </dia:attribute>
-              <dia:attribute name="comment">
-                <dia:string>#Callback function that is called as soon as reading is complete#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="kind">
-                <dia:enum val="0"/>
-              </dia:attribute>
-            </dia:composite>
-          </dia:attribute>
+          <dia:attribute name="parameters"/>
         </dia:composite>
         <dia:composite type="umloperation">
           <dia:attribute name="name">
@@ -7846,7 +7810,7 @@ Extends UAClientWrapper#</dia:string>
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>##</dia:string>
+            <dia:string>#float#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="0"/>
@@ -7866,25 +7830,7 @@ Extends UAClientWrapper#</dia:string>
           <dia:attribute name="class_scope">
             <dia:boolean val="false"/>
           </dia:attribute>
-          <dia:attribute name="parameters">
-            <dia:composite type="umlparameter">
-              <dia:attribute name="name">
-                <dia:string>#onReceived#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="type">
-                <dia:string>#FloatReceivedListener#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="value">
-                <dia:string>##</dia:string>
-              </dia:attribute>
-              <dia:attribute name="comment">
-                <dia:string>#Callback function that is called as soon as reading is complete#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="kind">
-                <dia:enum val="0"/>
-              </dia:attribute>
-            </dia:composite>
-          </dia:attribute>
+          <dia:attribute name="parameters"/>
         </dia:composite>
         <dia:composite type="umloperation">
           <dia:attribute name="name">
@@ -7894,7 +7840,7 @@ Extends UAClientWrapper#</dia:string>
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>##</dia:string>
+            <dia:string>#float#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="0"/>
@@ -7914,25 +7860,7 @@ Extends UAClientWrapper#</dia:string>
           <dia:attribute name="class_scope">
             <dia:boolean val="false"/>
           </dia:attribute>
-          <dia:attribute name="parameters">
-            <dia:composite type="umlparameter">
-              <dia:attribute name="name">
-                <dia:string>#onReceived#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="type">
-                <dia:string>#FloatReceivedListener#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="value">
-                <dia:string>##</dia:string>
-              </dia:attribute>
-              <dia:attribute name="comment">
-                <dia:string>#Callback function that is called as soon as reading is complete#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="kind">
-                <dia:enum val="0"/>
-              </dia:attribute>
-            </dia:composite>
-          </dia:attribute>
+          <dia:attribute name="parameters"/>
         </dia:composite>
         <dia:composite type="umloperation">
           <dia:attribute name="name">
@@ -7942,7 +7870,7 @@ Extends UAClientWrapper#</dia:string>
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>##</dia:string>
+            <dia:string>#boolean#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="0"/>
@@ -7962,25 +7890,7 @@ Extends UAClientWrapper#</dia:string>
           <dia:attribute name="class_scope">
             <dia:boolean val="false"/>
           </dia:attribute>
-          <dia:attribute name="parameters">
-            <dia:composite type="umlparameter">
-              <dia:attribute name="name">
-                <dia:string>#onReceived#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="type">
-                <dia:string>#BooleanReceivedListener#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="value">
-                <dia:string>##</dia:string>
-              </dia:attribute>
-              <dia:attribute name="comment">
-                <dia:string>#Callback function that is called as soon as reading is complete#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="kind">
-                <dia:enum val="0"/>
-              </dia:attribute>
-            </dia:composite>
-          </dia:attribute>
+          <dia:attribute name="parameters"/>
         </dia:composite>
         <dia:composite type="umloperation">
           <dia:attribute name="name">
@@ -7990,7 +7900,7 @@ Extends UAClientWrapper#</dia:string>
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>##</dia:string>
+            <dia:string>#boolean#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="0"/>
@@ -8010,25 +7920,7 @@ Extends UAClientWrapper#</dia:string>
           <dia:attribute name="class_scope">
             <dia:boolean val="false"/>
           </dia:attribute>
-          <dia:attribute name="parameters">
-            <dia:composite type="umlparameter">
-              <dia:attribute name="name">
-                <dia:string>#onReceived#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="type">
-                <dia:string>#BooleanReceivedListener#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="value">
-                <dia:string>##</dia:string>
-              </dia:attribute>
-              <dia:attribute name="comment">
-                <dia:string>#Callback function that is called as soon as reading is complete#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="kind">
-                <dia:enum val="0"/>
-              </dia:attribute>
-            </dia:composite>
-          </dia:attribute>
+          <dia:attribute name="parameters"/>
         </dia:composite>
         <dia:composite type="umloperation">
           <dia:attribute name="name">
@@ -8390,7 +8282,7 @@ Extends UAClientWrapper#</dia:string>
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>##</dia:string>
+            <dia:string>#float#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="0"/>
@@ -8410,25 +8302,7 @@ Extends UAClientWrapper#</dia:string>
           <dia:attribute name="class_scope">
             <dia:boolean val="false"/>
           </dia:attribute>
-          <dia:attribute name="parameters">
-            <dia:composite type="umlparameter">
-              <dia:attribute name="name">
-                <dia:string>#onReceived#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="type">
-                <dia:string>#FloatReceivedListener#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="value">
-                <dia:string>##</dia:string>
-              </dia:attribute>
-              <dia:attribute name="comment">
-                <dia:string>#Callback function that is called as soon as reading is complete#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="kind">
-                <dia:enum val="0"/>
-              </dia:attribute>
-            </dia:composite>
-          </dia:attribute>
+          <dia:attribute name="parameters"/>
         </dia:composite>
       </dia:attribute>
       <dia:attribute name="template">
@@ -8598,7 +8472,7 @@ Extends UAClientWrapper#</dia:string>
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>##</dia:string>
+            <dia:string>#float#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="0"/>
@@ -8618,25 +8492,7 @@ Extends UAClientWrapper#</dia:string>
           <dia:attribute name="class_scope">
             <dia:boolean val="false"/>
           </dia:attribute>
-          <dia:attribute name="parameters">
-            <dia:composite type="umlparameter">
-              <dia:attribute name="name">
-                <dia:string>#onReceived#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="type">
-                <dia:string>#FloatReceivedListener#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="value">
-                <dia:string>##</dia:string>
-              </dia:attribute>
-              <dia:attribute name="comment">
-                <dia:string>#Callback function that is called as soon as reading is complete#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="kind">
-                <dia:enum val="0"/>
-              </dia:attribute>
-            </dia:composite>
-          </dia:attribute>
+          <dia:attribute name="parameters"/>
         </dia:composite>
       </dia:attribute>
       <dia:attribute name="template">
@@ -8650,7 +8506,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="134.512,-82.5316"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="133.662,-88.2112;151.283,-82.4816"/>
+        <dia:rectangle val="133.662,-88.2112;151.284,-82.4816"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -8691,7 +8547,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="134.512,-82.5303"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="128.278,-87.5767;135.362,-82.4802"/>
+        <dia:rectangle val="128.278,-87.5767;135.362,-82.4803"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -29775,7 +29631,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="161.945,-42.8848"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="161.895,-42.9348;185.888,-24.9848"/>
+        <dia:rectangle val="161.895,-42.9348;185.888,-23.5848"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="161.945,-42.8848"/>
@@ -29784,7 +29640,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:real val="23.892500000000002"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="17.850000000000001"/>
+        <dia:real val="19.250000000000004"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#UAServerWrapper#</dia:string>
@@ -30021,7 +29877,8 @@ true if the logging of the temperature progression should be enabled for the spe
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Starts the server#</dia:string>
+            <dia:string>#Starts the server
+@throws InterruptedException, ExecutionException, ConnectException If Milo has problems connecting to the remote machine#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -30574,13 +30431,13 @@ true if the logging of the temperature progression should be enabled for the spe
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>##</dia:string>
+            <dia:string>#float#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="2"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Reads a double from the server#</dia:string>
+            <dia:string>#Reads a float from the server#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -30612,23 +30469,6 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:enum val="0"/>
               </dia:attribute>
             </dia:composite>
-            <dia:composite type="umlparameter">
-              <dia:attribute name="name">
-                <dia:string>#listener#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="type">
-                <dia:string>#FloatReceivedListener#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="value">
-                <dia:string>##</dia:string>
-              </dia:attribute>
-              <dia:attribute name="comment">
-                <dia:string>#Callback function that is called when the value was received#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="kind">
-                <dia:enum val="0"/>
-              </dia:attribute>
-            </dia:composite>
           </dia:attribute>
         </dia:composite>
         <dia:composite type="umloperation">
@@ -30639,7 +30479,7 @@ true if the logging of the temperature progression should be enabled for the spe
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>##</dia:string>
+            <dia:string>#boolean#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="2"/>
@@ -30677,23 +30517,6 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:enum val="0"/>
               </dia:attribute>
             </dia:composite>
-            <dia:composite type="umlparameter">
-              <dia:attribute name="name">
-                <dia:string>#listener#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="type">
-                <dia:string>#BooleanReceivedListener#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="value">
-                <dia:string>##</dia:string>
-              </dia:attribute>
-              <dia:attribute name="comment">
-                <dia:string>#Callback function that is called when the value was received#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="kind">
-                <dia:enum val="0"/>
-              </dia:attribute>
-            </dia:composite>
           </dia:attribute>
         </dia:composite>
         <dia:composite type="umloperation">
@@ -30704,7 +30527,7 @@ true if the logging of the temperature progression should be enabled for the spe
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>##</dia:string>
+            <dia:string>#int#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="2"/>
@@ -30737,23 +30560,6 @@ true if the logging of the temperature progression should be enabled for the spe
               </dia:attribute>
               <dia:attribute name="comment">
                 <dia:string>#The path of the node to read#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="kind">
-                <dia:enum val="0"/>
-              </dia:attribute>
-            </dia:composite>
-            <dia:composite type="umlparameter">
-              <dia:attribute name="name">
-                <dia:string>#listener#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="type">
-                <dia:string>#IntReceivedListener#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="value">
-                <dia:string>##</dia:string>
-              </dia:attribute>
-              <dia:attribute name="comment">
-                <dia:string>#Callback function that is called when the value was received#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -32651,16 +32457,16 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="173.891,-25.0348"/>
+        <dia:point val="173.891,-23.6348"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="158.62,-25.7848;174.641,-16.4096"/>
+        <dia:rectangle val="158.62,-24.3848;174.641,-16.4096"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="173.891,-25.0348"/>
+        <dia:point val="173.891,-23.6348"/>
         <dia:point val="173.891,-17.2971"/>
         <dia:point val="158.67,-17.2971"/>
         <dia:point val="158.67,-16.4596"/>
@@ -32987,7 +32793,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="201.578,52.4872"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="185.787,-25.0848;204.088,52.5372"/>
+        <dia:rectangle val="185.787,-23.6848;204.088,52.5372"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -32995,8 +32801,8 @@ true if the logging of the temperature progression should be enabled for the spe
       <dia:attribute name="orth_points">
         <dia:point val="201.578,52.4872"/>
         <dia:point val="201.578,-0.402704"/>
-        <dia:point val="185.837,-0.402704"/>
-        <dia:point val="185.837,-25.0348"/>
+        <dia:point val="185.838,-0.402704"/>
+        <dia:point val="185.838,-23.6348"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
