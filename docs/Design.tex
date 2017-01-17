@@ -174,6 +174,18 @@ Wir haben das Muster gewählt, um allen
 Beteiligten die Handhabung von Milo zu erleichtern. Durch die Fassade muss sich nur noch eine Person damit beschäftigen, wie
 Milo intern zu benutzen ist - nicht mehr jeder, der Werte über OPC UA austauschen möchte.
 
+\subsection{Strategie-Muster: Tanksimulation}
+In der Klasse \emph{AbstractTankSimulation} müssen Flüssigkeiten gemischt werden, wenn neue Flüssigkeiten in Tanks eingefügt werden.
+Dafür müssen Temperaturen und Farben gemischt werden. Zur Farbmischung gibt es unterschiedliche Algorithmen, wie subtraktive oder additive
+Farbmischung. Außerdem ist es denkbar, die Mischung der Temperaturen unterschiedlich zu implementieren (z.B. durch einen genauen und einen schnelleren,
+approximativen Algorithmus).
+
+Um diese Algorithmen, falls in Zukunft andere implementiert werden, einfach austauschbar zu machen, wurde
+das Strategie Muster angewand. Dieses Muster hat das Ziel, eime Familie von Algorithmen zu definieren, zu kapseln und austauschbar zu machen.
+
+Dabei ist \emph{MixingStrategy} das Interface, dass die Strategie definiert, und \emph{AbstractTankSimulation} die Kontextklasse, die die Algorithmen
+benutzt. Momentan ist nur eine konkrete Strategie implementiert, und zwar die \emph{SubtractiveMixingStrategy}.
+
 \pagebreak
 \phantomsection
 \addcontentsline{toc}{section}{\listfigurename}
