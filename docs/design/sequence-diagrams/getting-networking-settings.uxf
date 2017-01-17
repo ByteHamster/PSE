@@ -9,7 +9,7 @@
       <w>1000</w>
       <h>660</h>
     </coordinates>
-    <panel_attributes>Getting networking settings from tank</panel_attributes>
+    <panel_attributes>Creating TankClient</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

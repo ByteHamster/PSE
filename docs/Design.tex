@@ -101,7 +101,7 @@ komplette Interaktion mit Milo.
   \includegraphics[scale=0.4]{design/sequence-diagrams/getting-networking-settings.png}
   \caption{Einstellungen aus der Datei erhalten und verwenden}
 \end{figure}
-
+Bei der Erstellung eines TankClient werden HostName und Port des zugehörigen Servers vom mit \emph{getHostName(tank:TankSelector)} und \emph{getPort(tank:TankSelector)} vom ClientSettingsWrapper abgerufen. ClientSettingsWrapper ist im MonitoringController zu finden. Es wird eine RemoteMachine erstellt und mit HostName und Port konfiguriert. Danach erstellt man einen TankClient, der die RemoteMachine übergeben bekommt und sich mit dem Server verbinden kann.
 
 \section{Änderungen zum Pflichtenheft}
 
