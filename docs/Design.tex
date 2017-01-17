@@ -93,6 +93,15 @@ komplette Interaktion mit Milo.
   \includegraphics[scale=0.45]{design/sequence-diagrams/tank-simulation.png}
   \caption{Berechnen der Tank-Simulation}
 \end{figure}
+Dies ist die Simulaiton eines der oberen Tanks. Für die vollständige Simulation, muss \emph{simulateTank()} für jeden Tank aufgerufen werden,
+und die Rückgabewerte zum Mixtank hinzugefügt werden. Zuerst erfrägt die Simulation beim Tank die Leitung, die zum Tank hinführt, und ermittelt
+mit \emph{getMaxInput()} die maximale Durchflussmenge. Anschließend wird die noch im Tank enthaltene Flüssigkeit geholt, um dessen Farbe zu bestimmen.
+Dann kann ein neues \emph{Liquid} Objekt erstellt werden, das so groß ist, das es gerade noch in die Leitung passt. Mittels \emph{putIn} wird es
+in die Leitung gesteckt. Der Rückgabewert von \emph{putIn} ist die Flüssigkeit, die am anderen Ende der Leitung herauskommt. Diese wird dann in den
+Tank eingefügt. Dazu verwendet der Tank eine \emph{SubtractiveMixingStrategy} um die Farben und Temperaturen zu mischen. Nachdem die Flüssigkeiten
+gemischt sind, wird die Leitung vom oberen Tank zum Mixtank geholt, und ermittelt, wie viel Flüssigkeit dort hineinpasst. Diese Menge wird dann aus dem
+Tank herausgenommen, und in diese Leitung hineingesteckt. Der Rückgabewert von \emph{simulateTank()} ist dann die Flüssigkeit, die am Ende der Leitung
+(also beim Mixtank) herauskam. Diese Flüssigkeit kann die Simulation dann in den Mixtank einfügen (nicht mehr in diesem Diagramm dargestellt).
 
 \subsection{Einstellungen aus der Datei erhalten und verwenden}
 \begin{figure}[H]
