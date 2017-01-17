@@ -34,11 +34,12 @@
 \section{Einleitung}
 OSIP ist in drei große Pakete gegliedert: Simulation, Monitoring und Core.
 Simulation realisiert die Fertigungssimulation und Monitoring die Überwachungskonsole.
-Core beinhaltet gemeinsame Unterpakete vom Fertigungssimulation und Monitoring sowie Unterpakete zu IO und der OPCUA-Implementierung.
-Das grundlegende Entwurfsmuster MVC ist bis auf das Model zweifach für die Fertigungssimulation und die Überwachungskonsole verwirklicht, die getrennt von einander existieren.
-Das gemeinsame Model befindet sich in Core. Dabei benutzt die Überwachungskonsole benutzt nur core.base und core.behavior.
+Core beinhaltet gemeinsame Unterpakete vom Fertigungssimulation und Monitoring sowie Unterpakete zu IO und der Implementierung
+von OPC UA.
+Das grundlegende Entwurfsmuster Model-View-Controller (MVC) ist bis auf das Model zweifach für die Fertigungssimulation und die Überwachungskonsole verwirklicht, die getrennt von einander existieren.
+Das gemeinsame Model befindet sich in Core. Dabei benutzt die Überwachungskonsole nur core.base und core.behavior.
 Die Fertigungssimulation benutzt ein erweitertes Model aus den Unterpakteten core.simulation, core.base und core.behavior.
-core.simulation ist für das Mischen von Farben und die Simulation der Verbindungsrohre zuständig.
+Das Unterpaket core.simulation ist für das Mischen von Farben und die Simulation der Verbindungsrohre zuständig.
 
 \section{Klassenbeschreibungen}
 Die Klassenbeschreibungen können im Anhang dieses Dokuments gefunden werden.
