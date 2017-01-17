@@ -20,7 +20,7 @@
       <w>216</w>
       <h>24</h>
     </coordinates>
-    <panel_attributes>monitoring:MonitoringMainWindow</panel_attributes>
+    <panel_attributes>monitoring:MonitoringController</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -121,7 +121,7 @@ mainLoop()</panel_attributes>
       <h>32</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;
-MonitoringMainWindow()</panel_attributes>
+MonitoringController()</panel_attributes>
     <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
   </element>
   <element>
