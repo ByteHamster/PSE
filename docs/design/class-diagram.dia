@@ -8650,7 +8650,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="134.512,-82.5316"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="133.662,-88.2112;151.284,-82.4816"/>
+        <dia:rectangle val="133.662,-88.2112;151.283,-82.4816"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -8691,7 +8691,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="134.512,-82.5303"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="128.278,-87.5767;135.362,-82.4803"/>
+        <dia:rectangle val="128.278,-87.5767;135.362,-82.4802"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -43670,10 +43670,10 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="role_b">
-        <dia:string>##</dia:string>
+        <dia:string>#productionSite#</dia:string>
       </dia:attribute>
       <dia:attribute name="multipicity_b">
-        <dia:string>#productionSite#</dia:string>
+        <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="visibility_b">
         <dia:enum val="3"/>
@@ -43682,19 +43682,19 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="true"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="-84.8625,-114.571"/>
+        <dia:point val="-84.8625,-129.471"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-90.8656,-115.321;-72.2604,-40.6982"/>
+        <dia:rectangle val="-90.8656,-130.221;-72.2604,-39.6482"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-84.8625,-114.571"/>
-        <dia:point val="-90.8156,-114.571"/>
-        <dia:point val="-90.8156,-41.5482"/>
-        <dia:point val="-72.3104,-41.5482"/>
+        <dia:point val="-84.8625,-129.471"/>
+        <dia:point val="-90.8156,-129.471"/>
+        <dia:point val="-90.8156,-40.4982"/>
+        <dia:point val="-72.3104,-40.4982"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -43711,8 +43711,8 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:color val="#000000"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O87" connection="22"/>
-        <dia:connection handle="1" to="O19" connection="0"/>
+        <dia:connection handle="0" to="O87" connection="3"/>
+        <dia:connection handle="1" to="O19" connection="3"/>
       </dia:connections>
       <dia:childnode parent="O0"/>
     </dia:object>
