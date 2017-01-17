@@ -29,7 +29,7 @@
       <x>272</x>
       <y>136</y>
       <w>16</w>
-      <h>632</h>
+      <h>696</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -95,7 +95,7 @@ pipe=getInPipe()</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>856</x>
-      <y>272</y>
+      <y>304</y>
       <w>80</w>
       <h>24</h>
     </coordinates>
@@ -106,7 +106,7 @@ pipe=getInPipe()</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>888</x>
-      <y>312</y>
+      <y>352</y>
       <w>16</w>
       <h>32</h>
     </coordinates>
@@ -117,7 +117,7 @@ pipe=getInPipe()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>280</x>
-      <y>296</y>
+      <y>336</y>
       <w>624</w>
       <h>32</h>
     </coordinates>
@@ -230,7 +230,7 @@ color=getColor()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>280</x>
-      <y>336</y>
+      <y>376</y>
       <w>624</w>
       <h>24</h>
     </coordinates>
@@ -243,16 +243,16 @@ color=getColor()</panel_attributes>
       <x>608</x>
       <y>232</y>
       <w>24</w>
-      <h>152</h>
+      <h>192</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;220.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
       <x>608</x>
-      <y>368</y>
+      <y>408</y>
       <w>16</w>
       <h>32</h>
     </coordinates>
@@ -263,7 +263,7 @@ color=getColor()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>280</x>
-      <y>352</y>
+      <y>392</y>
       <w>344</w>
       <h>32</h>
     </coordinates>
@@ -275,7 +275,7 @@ out=putIn(liquid)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>280</x>
-      <y>392</y>
+      <y>432</y>
       <w>344</w>
       <h>24</h>
     </coordinates>
@@ -288,16 +288,16 @@ out=putIn(liquid)</panel_attributes>
       <x>448</x>
       <y>280</y>
       <w>24</w>
-      <h>152</h>
+      <h>240</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;280.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
       <x>448</x>
-      <y>416</y>
+      <y>504</y>
       <w>16</w>
       <h>128</h>
     </coordinates>
@@ -308,7 +308,7 @@ out=putIn(liquid)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>280</x>
-      <y>400</y>
+      <y>488</y>
       <w>184</w>
       <h>32</h>
     </coordinates>
@@ -320,7 +320,7 @@ putIn(out)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>680</x>
-      <y>376</y>
+      <y>456</y>
       <w>192</w>
       <h>24</h>
     </coordinates>
@@ -331,7 +331,7 @@ putIn(out)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>784</x>
-      <y>432</y>
+      <y>520</y>
       <w>16</w>
       <h>24</h>
     </coordinates>
@@ -342,7 +342,7 @@ putIn(out)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>456</x>
-      <y>416</y>
+      <y>504</y>
       <w>344</w>
       <h>32</h>
     </coordinates>
@@ -354,7 +354,7 @@ newLiquid=MixLiquids(new LinkedList(out + tankLiquid)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>456</x>
-      <y>448</y>
+      <y>536</y>
       <w>344</w>
       <h>24</h>
     </coordinates>
@@ -365,7 +365,7 @@ newLiquid=MixLiquids(new LinkedList(out + tankLiquid)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>456</x>
-      <y>496</y>
+      <y>584</y>
       <w>16</w>
       <h>24</h>
     </coordinates>
@@ -376,7 +376,7 @@ newLiquid=MixLiquids(new LinkedList(out + tankLiquid)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>456</x>
-      <y>464</y>
+      <y>552</y>
       <w>184</w>
       <h>48</h>
     </coordinates>
@@ -388,7 +388,7 @@ setLiquid(newLiquid)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>280</x>
-      <y>536</y>
+      <y>624</y>
       <w>184</w>
       <h>24</h>
     </coordinates>
@@ -399,7 +399,7 @@ setLiquid(newLiquid)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>456</x>
-      <y>512</y>
+      <y>600</y>
       <w>72</w>
       <h>48</h>
     </coordinates>
@@ -421,7 +421,7 @@ setLiquid(newLiquid)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>448</x>
-      <y>568</y>
+      <y>656</y>
       <w>16</w>
       <h>24</h>
     </coordinates>
@@ -432,7 +432,7 @@ setLiquid(newLiquid)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>280</x>
-      <y>552</y>
+      <y>640</y>
       <w>184</w>
       <h>32</h>
     </coordinates>
@@ -444,7 +444,7 @@ pipe=getOutPipe()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>280</x>
-      <y>584</y>
+      <y>672</y>
       <w>184</w>
       <h>24</h>
     </coordinates>
@@ -455,7 +455,7 @@ pipe=getOutPipe()</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>608</x>
-      <y>616</y>
+      <y>704</y>
       <w>16</w>
       <h>24</h>
     </coordinates>
@@ -466,7 +466,7 @@ pipe=getOutPipe()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>280</x>
-      <y>600</y>
+      <y>688</y>
       <w>344</w>
       <h>32</h>
     </coordinates>
@@ -478,18 +478,18 @@ maxInput=getMaxInput()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>608</x>
-      <y>392</y>
+      <y>432</y>
       <w>24</w>
-      <h>168</h>
+      <h>208</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;190.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;240.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>280</x>
-      <y>632</y>
+      <y>720</y>
       <w>344</w>
       <h>24</h>
     </coordinates>
@@ -500,7 +500,7 @@ maxInput=getMaxInput()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>280</x>
-      <y>680</y>
+      <y>768</y>
       <w>192</w>
       <h>24</h>
     </coordinates>
@@ -511,7 +511,7 @@ maxInput=getMaxInput()</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>448</x>
-      <y>664</y>
+      <y>752</y>
       <w>16</w>
       <h>24</h>
     </coordinates>
@@ -522,7 +522,7 @@ maxInput=getMaxInput()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>280</x>
-      <y>648</y>
+      <y>736</y>
       <w>184</w>
       <h>32</h>
     </coordinates>
@@ -534,7 +534,7 @@ out=takeOut(maxAmount)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>448</x>
-      <y>584</y>
+      <y>672</y>
       <w>24</w>
       <h>96</h>
     </coordinates>
@@ -545,7 +545,7 @@ out=takeOut(maxAmount)</panel_attributes>
     <id>UMLSpecialState</id>
     <coordinates>
       <x>608</x>
-      <y>536</y>
+      <y>624</y>
       <w>16</w>
       <h>16</h>
     </coordinates>
@@ -556,7 +556,7 @@ out=takeOut(maxAmount)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>608</x>
-      <y>576</y>
+      <y>664</y>
       <w>24</w>
       <h>56</h>
     </coordinates>
@@ -567,7 +567,7 @@ out=takeOut(maxAmount)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>608</x>
-      <y>632</y>
+      <y>720</y>
       <w>24</w>
       <h>96</h>
     </coordinates>
@@ -578,7 +578,7 @@ out=takeOut(maxAmount)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>280</x>
-      <y>728</y>
+      <y>816</y>
       <w>344</w>
       <h>24</h>
     </coordinates>
@@ -589,7 +589,7 @@ out=takeOut(maxAmount)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>608</x>
-      <y>712</y>
+      <y>800</y>
       <w>16</w>
       <h>24</h>
     </coordinates>
@@ -600,7 +600,7 @@ out=takeOut(maxAmount)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>280</x>
-      <y>696</y>
+      <y>784</y>
       <w>344</w>
       <h>32</h>
     </coordinates>
@@ -612,7 +612,7 @@ out=putIn(newLiquid)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>160</x>
-      <y>752</y>
+      <y>816</y>
       <w>128</w>
       <h>32</h>
     </coordinates>
@@ -624,18 +624,18 @@ out</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>888</x>
-      <y>288</y>
+      <y>320</y>
       <w>24</w>
-      <h>40</h>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>448</x>
-      <y>536</y>
+      <y>624</y>
       <w>24</w>
       <h>48</h>
     </coordinates>
@@ -646,7 +646,7 @@ out</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>576</x>
-      <y>560</y>
+      <y>648</y>
       <w>80</w>
       <h>24</h>
     </coordinates>
@@ -657,7 +657,29 @@ out</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>784</x>
-      <y>392</y>
+      <y>472</y>
+      <w>24</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>888</x>
+      <y>376</y>
+      <w>24</w>
+      <h>496</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;600.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>608</x>
+      <y>816</y>
       <w>24</w>
       <h>56</h>
     </coordinates>
@@ -667,46 +689,24 @@ out</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>888</x>
-      <y>336</y>
-      <w>24</w>
-      <h>472</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;570.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>608</x>
-      <y>728</y>
-      <w>24</w>
-      <h>80</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
       <x>448</x>
-      <y>680</y>
+      <y>768</y>
       <w>24</w>
-      <h>128</h>
+      <h>104</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>784</x>
-      <y>448</y>
+      <y>536</y>
       <w>24</w>
-      <h>360</h>
+      <h>336</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;430.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;400.0</additional_attributes>
   </element>
   <element>
     <id>UMLFrame</id>
@@ -714,9 +714,33 @@ out</panel_attributes>
       <x>168</x>
       <y>56</y>
       <w>776</w>
-      <h>736</h>
+      <h>800</h>
     </coordinates>
     <panel_attributes>Simulate an upper tank</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>304</y>
+      <w>592</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+&lt;&lt;create&gt;&gt;</panel_attributes>
+    <additional_attributes>720.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>456</y>
+      <w>416</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+&lt;&lt;create&gt;&gt;</panel_attributes>
+    <additional_attributes>500.0;20.0;10.0;20.0</additional_attributes>
   </element>
 </diagram>
