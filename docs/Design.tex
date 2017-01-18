@@ -198,22 +198,22 @@ Die Klassendiagramme können im Anhang dieses Dokuments gefunden werden.
 \pagebreak
 \section{Verwendete Entwurfsmuster}
 \subsection{Model View Controller f\"ur Fertigungssimulation}
-Das Programm der Fertigungssimulation ist nach dem Prinzip Model View Controller aufgebaut.\\
+Das Programm der Fertigungssimulation ist nach dem Prinzip Model View Controller aufgebaut.
 Das Model beinhaltet dabei die intere Darstellung der Produktionsanlage. Im Model der Fertigungssimulation ist ebenfalls die interen Logik
-vorhanden, nach der die Produktionsanlage funktioniert. \\
+vorhanden, nach der die Produktionsanlage funktioniert. 
 Die View erh\"alt die Daten vom Model und stellt diese passend grafisch dar. Sie enth\"alt zudem die M\"oglichkeit f\"ur den Benutzer, Eingaben zu
-t\"atigen. Sofern Eingaben erfolgen werden diese an den Controller weiter gereicht, sodass dieser darauf reagieren kann.\\
+t\"atigen. Sofern Eingaben erfolgen werden diese an den Controller weiter gereicht, sodass dieser darauf reagieren kann.
 Der Controller steuert das Programm und reagiert auf Benutzereingaben. Dazu veranlasst er einerseits, dass in regelm\"a{\ss}igen Intervallen der
 n\"achste Simulationsschritt ausgef\"uhrt wird. Andererseits veranlasst er, je nach Nutzereingabe, dass die Parameter der Simulation ge\"andert werden
 und f\"ur die kommenden Simulationsschritte in der ge\"anderten Form verwendet werden. Der Controller steuert zudem die OPC UA Server an, die die
 Werte f\"ur die OPC UA Clients der \"Uberwachungskonsole bereitstellen.
 
 \subsection{Model View Controller f\"ur \"Uberwachungskonsole}
-Das Programm der \"Uberwachungskonsole ist ebenfalls nach dem Prinzip Model View Controller aufgebaut.\\
+Das Programm der \"Uberwachungskonsole ist ebenfalls nach dem Prinzip Model View Controller aufgebaut.
 Sie enth\"alt das nahezu gleiche Model wie die Fertigungssimulation, allerdings ist hier weniger der internen Logik offenbart. Dies kommt daher, dass
-die \"Uberwachungskonsole nicht steuernd in die Produktionsanlage eingreifen soll. \\
+die \"Uberwachungskonsole nicht steuernd in die Produktionsanlage eingreifen soll.
 Die View benachrichtigt den Controller zu Benutzereingaben, sodass dieser darauf reagieren kann. Die Eingaben dienen hier der Steuerung und Konfiguration
-der \"Uberwachungskonsole, z.B. die Einstellung der anzuzeigenden Daten.\\
+der \"Uberwachungskonsole, z.B. die Einstellung der anzuzeigenden Daten.
 Der Controller steuert das Programm und reagiert auf Benutzereingaben. Dazu veranlasst er einerseits, dass in regelm\"a{\ss}igen Intervallen die Daten der
 Fertigungssimulation abgefragt werden und steuert die OPC UA Clients an, die der Kommunikation mit der Fertigungssimulation dienen.
 
@@ -317,6 +317,11 @@ Außerdem lässt sich leichter ein weiterer Handler hinzufügen oder ein bestehe
 
 \pagebreak
 \subsection{Singleton-Muster: Translator}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.4]{design/pattern-screenshots/singleton-Translator.png}
+  \caption{Ausschnitt aus dem Klassendiagramm: Translator als Singleton}
+\end{figure}
 Translator hat die Aufgabe, Menütexte in verschiedenen Sprachen zu laden.
 Dabei lädt er zur gewählten Sprache eine Datei, wo Keys Worten in der gewählten Sprache
 zugeordnet werden. Jedes Mal, wenn ein Translator erzeugt wird, muss eine solche Datei
@@ -324,15 +329,13 @@ für eine Sprache geladen werden. Um dieses wiederholte Laden zu verhindern, ist
 Es kann somit nur eine Translator-Instanz erzeugt werden und eine bereits geladene Datei
 wird nicht erneut geladen. Falls die Sprache gewechselt wird, muss allerdings eine andere Datei geladen werden.
 
-\subsection{Memento-Muster: ProductionSiteState}
-ProductionSite beinhaltet alle Tanks und Pipes der Simulation. Um diesen Aufbau zwischenzuspeichern
-wird ProductionSiteState als Memento verwendet. ProductionSite ist der zugehörige Urheber.
-Scenario ist der Aufbewahrer der Mementos. ProductionSite kann über \emph{createState()} und \emph{restoreState(state:ProductionSiteState)} Mementos erzeugen und wieder laden,
-um den damals gespeicherten Stand wiederherzustellen. Scenario hält Mementos und konfigurtiert damit ProductionSites,
-welche von Scenario aus gestartet werden.
-ProductionSiteState hat Getter-Methoden für Tanks und Pipes, weshalb das Memento-Muster in diesem Fall keine Implementierungsdetails kapselt, sondern nur zur Zwischenspeicherung von Zuständen dient.
-
-\subsection{Schablonenmethode : Tanks in der GUI der Fertigungssimulation}
+\pagebreak
+\subsection{Schablonenmethode: Tanks in der GUI der Fertigungssimulation}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.4]{design/pattern-screenshots/template-TankDrawer.png}
+  \caption{Ausschnitt aus dem Klassendiagramm: Schablonenmethode im TankDrawer}
+\end{figure}
 Die Klassen \emph{TankDrawer} und \emph{MixTankDrawer} dienen der Visualisierung der Tanks in der Fertigungssimulation. Da sich die Tanks grunds\"atzlich
 sehr \"ahnlich sind und sich in der Darstellung nur in der Menge der Sensoren unterscheiden wurde die \emph{draw()}-Methode als Schablonenmethode umgesetzt.
 Dazu wurde die Oberklasse \emph{AbstractTankDrawer} kreiert, die bereits Teile von \emph{draw()} implementiert und anschlie{\ss}end \emph{drawSensors()}
@@ -340,7 +343,13 @@ aufruft. Die Methode \emph{drawSensors()} ist in AbstractTankDrawer abstrakt und
 So werden die gemeinsamen Teile des Algorithmus' zur Darstellung in eine gemeinsame Klasse ausgelagert, um Code-Duplikationen zu vermeiden. Auch \"Anderungen
 werden so leichter umzusetzen, da der Code nur noch an einer statt an mehreren Stellen ge\"andert werden muss.
 
-\subsection{Value Object : Liquid}
+\pagebreak
+\subsection{Value Object: Liquid}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5]{design/pattern-screenshots/value-Liquid.png}
+  \caption{Ausschnitt aus dem Klassendiagramm: Liquid als Value Object}
+\end{figure}
 Die Klasse \emph{Liquid} dient der \"Ubermittlung von Werten aus einem Tank in einen anderen durch die die \emph{Pipe}. Sie ist als Value Object realisiert.
 Dass hei{\ss}t, sie erh\"alt bei der Erzeugung feste Werte, die sich sp\"ater nichtmehr \"andern k\"onnen. An Methoden werden nur Getter f\"ur die
 verschiedenen Variablen angeboten. So wird sichergestellt, dass die \"ubermittelten Daten nicht ver\"andert werden.
