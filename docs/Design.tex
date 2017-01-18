@@ -81,11 +81,21 @@ Dieser Wert wird zur√ºck an den Controller gegeben. Der \emph{UAClientWrapper} √
 komplette Interaktion mit Milo.
 
 \subsection{Neuzeichnen der GUI der Simulation}
-\begin{figure}[H]
-  \centering
-  \includegraphics[scale=0.35]{design/sequence-diagrams/simulation-redraw.png}
-  \caption{Neuzeichnen der GUI der Simulation}
-\end{figure}
+  Das aktualisieren der GUI der Fertigungssimulation erfolgt immer dann, wenn es innerhalb der Tanks der Fertigungssimulation
+  zu einer \"Anderung von Farbe oder F\"ullstand kommt. Das Hauptfenster tr\"agt dazu seinen Komponenten auf, sich selbst
+  an passender Stelle im Fenster neu zu zeichnen. Hier ist der Vorgang nur beispielhaft an den Tanks gezeigt. Er funktioniert
+  f\"ur die anderen Komponenten analog.
+  \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.35]{design/sequence-diagrams/simulation-redraw.png}
+    \caption{Neuzeichnen der GUI der Simulation}
+  \end{figure}
+  Bei der Erzeugung des Hauptfensters instanziiert dieses einen neuen \emph{GraphicsContext}, der die Schnittstelle zum Canvas darstellt.
+  Anschlie{\ss}end werden die einzelnen Grafikkomponenten, die \emph{Drawer}, erstellt und mit Ihrer jeweiligen Position versehen.\\
+  Kommt es in der Fertigungssimulation zu einer \"Anderung wird das Hauptfenster \"uber die update-Methode alarmiert. Daraufhin
+  veranlasst das Hauptfenster jeden \emph{Drawer}, sich selbst neu zu zeichnen. Im Falle der \emph{TankDrawer} fragen diese erst die
+  aktuellen Werte vom jeweils zugeordneten \emph{Tank} der Fertigungssimulation ab, um anschlie{\ss}end \"uber Aufrufe an den \{context}
+  die neue Darstellung zu veranlassen.
 
 \subsection{Berechnen der Tank-Simulation}
 \begin{figure}[H]
