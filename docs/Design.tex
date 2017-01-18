@@ -166,18 +166,18 @@ Die implementierten Kann-Kriterien sind wie folgt:
 
 \begin{itemize}
     \item Sowohl in der \"Uberwachungskonsole als auch in der Fertigungssimulation werden Fehler bei der Programmausf\"uhrung
-    nach stdout geloggt. Die Logs werden nicht persistiert.
+    nach stdout geloggt. Die Logs sind nicht persistiert.
     \item In der Fertigungssimulation k\"onnen vorgefertigte Simulationsszenarien geladen werden. Diese sind in eigenen Dateien definiert.
-    Die Ausführung der Simulationsszenarien f\"uhrt dazu, dass die Steuervariablen sich nach Vorgaben des Szenarios ohne
+    Die Ausführung der Simulationsszenarien f\"uhrt dazu, dass die Prozessvariablen sich nach Vorgaben des Szenarios ohne
     weitere Aktion des Benutzers \"andern.
     \item In den Zuflusswerten der Fertigungssimulation ist ein Jitter eingebaut. Dieser sorgt f\"ur leichte Variationen in den
-    Zuflussmengen und der Temperatur der Zufl\"usse. Das Ausma{\ss} des Jitters ist nicht einstellbar.
+    Zuflussmengen und der Temperatur der Zufl\"usse. Das Stärke des Jitters ist nicht einstellbar.
     \item Innerhalb der \"Uberwachungskonsole kann der Benutzer selbst einstellen, in welchem Zeitintervall die Werte der
     Fertigungssimulation abgefragt werden. Alle Werte werden im jeweils gleichen Intervall abgefragt.
     \item Die Alarme in der \"Uberwachungskonsole k\"onnen vom Benutzer jeweils einzeln zu- und abgeschaltet werden. Die Menge der
     aktivierten Alarme wird bei Beenden der \"Uberwachungskonsole persistiert. Beim n\"achsten Start der \"Uberwachungskonsole
     werden die gleichen Alarme automatisch wieder aktiviert.
-    \item Die Alarme, die von der \"Uberwachungskonsole empfangen werden, werden in einer Textausgabe innerhalb der
+    \item Die Alarme, die von der \"Uberwachungskonsole empfangen werden, werden in einem Textfenster innerhalb der
     \"Uberwachungskonsole geloggt.
 \end{itemize}
 
@@ -205,10 +205,9 @@ eine grobe Übersicht über die entworfenen Pakete und ihre Anordnung im Klassen
 
 \pagebreak
 \section{Verwendete Entwurfsmuster}
-\subsection{Model View Controller f\"ur Fertigungssimulation}
-Das Programm der Fertigungssimulation ist nach dem Prinzip Model View Controller aufgebaut.
-Das Model beinhaltet dabei die interne Darstellung der Produktionsanlage. Im Model der Fertigungssimulation ist ebenfalls die interen Logik
-vorhanden, nach der die Produktionsanlage funktioniert. 
+\subsection{Model View Controller f\"ur die Fertigungssimulation}
+Die Fertigungssimulation ist nach dem Prinzip Model-View-Controller aufgebaut.
+Das Model beinhaltet dabei die interne Darstellung der Produktionsanlage sowie die interne Logik, nach der die Produktionsanlage funktioniert. 
 Die View erh\"alt die Daten vom Model und stellt diese passend grafisch dar. Sie enth\"alt zudem die M\"oglichkeit f\"ur den Benutzer, Eingaben zu
 t\"atigen. Sofern Eingaben erfolgen werden diese an den Controller weiter gereicht, sodass dieser darauf reagieren kann.
 Der Controller steuert das Programm und reagiert auf Benutzereingaben. Dazu veranlasst er einerseits, dass in regelm\"a{\ss}igen Intervallen der
