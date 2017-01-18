@@ -21,7 +21,7 @@
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-getHostName(tank:TankSelector)</panel_attributes>
+getHostName(tank)</panel_attributes>
     <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -76,7 +76,7 @@ getHostName(tank:TankSelector)</panel_attributes>
       <w>140</w>
       <h>70</h>
     </coordinates>
-    <panel_attributes>hostName:String
+    <panel_attributes>hostName
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
@@ -100,7 +100,7 @@ style=wordwrap</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-getPort(tank:TankSelector)</panel_attributes>
+getPort(tank)</panel_attributes>
     <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -133,7 +133,7 @@ getPort(tank:TankSelector)</panel_attributes>
       <w>140</w>
       <h>70</h>
     </coordinates>
-    <panel_attributes>portServer:int
+    <panel_attributes>portServer
 style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
