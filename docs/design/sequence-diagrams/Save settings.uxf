@@ -6,7 +6,7 @@
     <coordinates>
       <x>63</x>
       <y>72</y>
-      <w>1359</w>
+      <w>1035</w>
       <h>324</h>
     </coordinates>
     <panel_attributes>Reaction to save button</panel_attributes>
@@ -60,7 +60,7 @@ handle(event:javafx.event.ActionEvent)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1098</x>
+      <x>774</x>
       <y>108</y>
       <w>315</w>
       <h>27</h>
@@ -71,7 +71,7 @@ handle(event:javafx.event.ActionEvent)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>522</x>
+      <x>468</x>
       <y>108</y>
       <w>297</w>
       <h>27</h>
@@ -82,7 +82,7 @@ handle(event:javafx.event.ActionEvent)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1260</x>
+      <x>936</x>
       <y>126</y>
       <w>27</w>
       <h>216</h>
@@ -93,7 +93,7 @@ handle(event:javafx.event.ActionEvent)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>675</x>
+      <x>621</x>
       <y>126</y>
       <w>27</w>
       <h>63</h>
@@ -106,18 +106,18 @@ handle(event:javafx.event.ActionEvent)</panel_attributes>
     <coordinates>
       <x>333</x>
       <y>153</y>
-      <w>360</w>
+      <w>306</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 getServerIP()</panel_attributes>
-    <additional_attributes>380.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>320.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>837</x>
-      <y>108</y>
+      <x>648</x>
+      <y>153</y>
       <w>243</w>
       <h>27</h>
     </coordinates>
@@ -127,7 +127,7 @@ getServerIP()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>675</x>
+      <x>621</x>
       <y>171</y>
       <w>18</w>
       <h>27</h>
@@ -140,17 +140,17 @@ getServerIP()</panel_attributes>
     <coordinates>
       <x>333</x>
       <y>180</y>
-      <w>360</w>
+      <w>306</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 hostname:String</panel_attributes>
-    <additional_attributes>10.0;20.0;380.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;320.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>675</x>
+      <x>621</x>
       <y>189</y>
       <w>27</w>
       <h>99</h>
@@ -161,7 +161,7 @@ hostname:String</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>963</x>
+      <x>774</x>
       <y>225</y>
       <w>18</w>
       <h>18</h>
@@ -172,41 +172,41 @@ hostname:String</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>963</x>
-      <y>126</y>
+      <x>774</x>
+      <y>171</y>
       <w>27</w>
-      <h>117</h>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>333</x>
       <y>207</y>
-      <w>648</w>
+      <w>459</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 setServerHostname(tank:TankSelector, hostname:String)</panel_attributes>
-    <additional_attributes>700.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>490.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>333</x>
       <y>234</y>
-      <w>648</w>
+      <w>459</w>
       <h>27</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;700.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;490.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>963</x>
+      <x>774</x>
       <y>234</y>
       <w>27</w>
       <h>180</h>
@@ -217,7 +217,7 @@ setServerHostname(tank:TankSelector, hostname:String)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>675</x>
+      <x>621</x>
       <y>270</y>
       <w>18</w>
       <h>27</h>
@@ -230,29 +230,29 @@ setServerHostname(tank:TankSelector, hostname:String)</panel_attributes>
     <coordinates>
       <x>333</x>
       <y>252</y>
-      <w>360</w>
+      <w>306</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 isOverflowAlarmEnabled(tank:TankSelector)</panel_attributes>
-    <additional_attributes>380.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>320.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>333</x>
       <y>279</y>
-      <w>360</w>
+      <w>306</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 alarmEnabled:boolean</panel_attributes>
-    <additional_attributes>10.0;20.0;380.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;320.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>675</x>
+      <x>621</x>
       <y>288</y>
       <w>27</w>
       <h>126</h>
@@ -265,28 +265,28 @@ alarmEnabled:boolean</panel_attributes>
     <coordinates>
       <x>333</x>
       <y>342</y>
-      <w>945</w>
+      <w>621</w>
       <h>27</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;1030.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;670.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>333</x>
       <y>306</y>
-      <w>945</w>
+      <w>621</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 setOverflowAlarmEnabled(tank:TankSelector, alarmEnabled:boolean)</panel_attributes>
-    <additional_attributes>1030.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>670.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1260</x>
+      <x>936</x>
       <y>324</y>
       <w>18</w>
       <h>27</h>
@@ -308,7 +308,7 @@ setOverflowAlarmEnabled(tank:TankSelector, alarmEnabled:boolean)</panel_attribut
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1260</x>
+      <x>936</x>
       <y>342</y>
       <w>27</w>
       <h>72</h>

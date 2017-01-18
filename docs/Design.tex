@@ -117,7 +117,7 @@ Danach erstellt man einen \emph{TankClient}, der die \emph{RemoteMachine} überg
 \subsection{Start der Überwachungskonsole}
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{design/sequence-diagrams/Start-of-monitoring.png}
+	\includegraphics[scale=0.3]{design/sequence-diagrams/Start-of-monitoring.png}
 	\caption{Start der Überwachungskonsole}
 \end{figure}
 Beim Start der Überwachungskonsole wird über die \emph{main}-Methode die statische \emph{launch}-Methode der Oberklasse \emph{javafx.application.Application} von \emph{MonitoringController} aufgerufen. Diese ist für den eigentlichen Startvorgang verantwortlich und initialisiert unter anderem JavaFX.
@@ -126,7 +126,7 @@ Im Laufe des Startvorgangs wird eine Instanz des \emph{MonitoringControllers} er
 \subsection{Speichern der Einstellungen}
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{design/sequence-diagrams/Save-settings.png}
+	\includegraphics[scale=0.4]{design/sequence-diagrams/Save-settings.png}
 	\caption{Speichern der Einstellungen}
 \end{figure}
 Wird in den Einstellungen der Überwachungskonsole der "`Speichern"'-Knopf gedrückt, löst dieses Ereignis die Methode \emph{handle} in einer Instanz des \emph{SettingsSaveButtonHandlers} aus.
