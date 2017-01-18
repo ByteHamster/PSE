@@ -281,6 +281,23 @@ Haupt- und Einstellungsfenster der Überwachungskonsole beinhalten Knöpfe, mit 
 Die Verwendung des Befehlsmusters ermöglicht es, ein bestimmtes Ereignis in einem dafür vorgesehenen Handler zu bearbeiten und dieses damit in einem Objekt zu kapseln. Jeder Handler lässt sich eindeutig einer Aufgabe und einem Ereignis zuordnen, sodass keine Verschränkung zwischen zwei verschiedenen Handlern auftritt. Außerdem lässt sich leichter ein weiterer Handler hinzufügen oder ein bestehender Handler austauschen.
 
 \pagebreak
+\subsection{Singleton-Muster: Translator}
+Translator hat die Aufgabe, Menütexte in verschiedenen Sprachen zu laden.
+Dabei lädt er zur gewählten Sprache eine Datei, wo Keys Worten in der gewählten Sprache
+zugeordnet werden. Jedes Mal, wenn ein Translator erzeugt wird, muss eine solche Datei
+für eine Sprache geladen werden. Um dieses wiederholte Laden zu verhindern, ist Translator ein Singleton.
+Es kann somit nur eine Translator-Instanz erzeugt werden und eine bereits geladene Datei
+wird nicht erneut geladen. Falls die Sprache gewechselt wird, muss allerdings eine andere Datei geladen werden.
+
+\subsection{Memento-Muster: ProductionSiteState}
+ProductionSite beinhaltet alle Tanks und Pipes der Simulation. Um diesen Aufbau zwischenzuspeichern
+wird ProductionSiteState als Memento verwendet. ProductionSite ist der zugehörige Urheber.
+Scenario ist der Aufbewahrer der Mementos. ProductionSite kann über \emph{createState()} und \emph{restoreState(state:ProductionSiteState)} Mementos erzeugen und wieder laden,
+um den damals gespeicherten Stand wiederherzustellen. Scenario hält Mementos und konfigurtiert damit ProductionSites,
+welche von Scenario aus gestartet werden.
+ProductionSiteState hat Getter-Methoden für Tanks und Pipes, weshalb das Memento-Muster in diesem Fall keine Implementierungsdetails kapselt, sondern nur zur Zwischenspeicherung von Zuständen dient.
+
+\pagebreak
 \phantomsection
 \addcontentsline{toc}{section}{\listfigurename}
 \listoffigures
