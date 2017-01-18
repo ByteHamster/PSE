@@ -34,7 +34,7 @@
 \section{Einleitung}
 OSIP ist in drei große Pakete gegliedert: Simulation, Monitoring und Core.
 Simulation realisiert die Fertigungssimulation und Monitoring die Überwachungskonsole.
-Core beinhaltet gemeinsame Unterpakete vom Fertigungssimulation und Monitoring sowie Unterpakete zu IO und der Implementierung
+Core beinhaltet gemeinsame Unterpakete von Fertigungssimulation und Monitoring sowie Unterpakete zu IO und der Implementierung
 von OPC UA.
 Das grundlegende Entwurfsmuster Model-View-Controller (MVC) ist bis auf das Model zweifach für die Fertigungssimulation und die Überwachungskonsole verwirklicht, die getrennt von einander existieren.
 Das gemeinsame Model befindet sich in Core. Dabei benutzt die Überwachungskonsole nur core.base und core.behavior.
@@ -81,7 +81,7 @@ Dieser Wert wird zurück an den Controller gegeben. Der \emph{UAClientWrapper} �
 komplette Interaktion mit Milo.
 
 \subsection{Neuzeichnen der GUI der Simulation}
-  Das aktualisieren der GUI der Fertigungssimulation erfolgt immer dann, wenn es innerhalb der Tanks der Fertigungssimulation
+  Das Aktualisieren der GUI der Fertigungssimulation erfolgt immer dann, wenn es innerhalb der Tanks der Fertigungssimulation
   zu einer \"Anderung von Farbe oder F\"ullstand kommt. Das Hauptfenster tr\"agt dazu seinen Komponenten auf, sich selbst
   an passender Stelle im Fenster neu zu zeichnen. Hier ist der Vorgang nur beispielhaft an den Tanks gezeigt. Er funktioniert
   f\"ur die anderen Komponenten analog.
@@ -94,7 +94,7 @@ komplette Interaktion mit Milo.
   Anschlie{\ss}end werden die einzelnen Grafikkomponenten, die \emph{Drawer}, erstellt und mit Ihrer jeweiligen Position versehen.\\
   Kommt es in der Fertigungssimulation zu einer \"Anderung wird das Hauptfenster \"uber die update-Methode alarmiert. Daraufhin
   veranlasst das Hauptfenster jeden \emph{Drawer}, sich selbst neu zu zeichnen. Im Falle der \emph{TankDrawer} fragen diese erst die
-  aktuellen Werte vom jeweils zugeordneten \emph{Tank} der Fertigungssimulation ab, um anschlie{\ss}end \"uber Aufrufe an den \{context}
+  aktuellen Werte vom jeweils zugeordneten \emph{Tank} der Fertigungssimulation ab, um anschlie{\ss}end \"uber Aufrufe an den \emph{context}
   die neue Darstellung zu veranlassen.
 
 \subsection{Berechnen der Tank-Simulation}
@@ -131,7 +131,7 @@ Danach erstellt man einen \emph{TankClient}, der die \emph{RemoteMachine} überg
 	\caption{Start der Überwachungskonsole}
 \end{figure}
 Beim Start der Überwachungskonsole wird über die \emph{main}-Methode die statische \emph{launch}-Methode der Oberklasse \emph{javafx.application.Application} von \emph{MonitoringController} aufgerufen. Diese ist für den eigentlichen Startvorgang verantwortlich und initialisiert unter anderem JavaFX.
-Im Laufe des Startvorgangs wird eine Instanz des \emph{MonitoringControllers} erstellt, das die Verbindung zwischen der Ansicht der Überwachungskonsole und dem Modell herstellt. Dazu erstellt es beispielsweise die Ansicht innerhalb der Methode \emph{setupUI} über das \emph{MonitoringViewInterface} sowie alle Handler, wobei der \emph{MenuSettingsButtonHandler} als ein Beispiel dargestellt ist.
+Im Laufe des Startvorgangs wird eine Instanz des \emph{MonitoringControllers} erstellt, die die Verbindung zwischen der Ansicht der Überwachungskonsole und dem Modell herstellt. Dazu erstellt es beispielsweise die Ansicht innerhalb der Methode \emph{setupUI} über das \emph{MonitoringViewInterface} sowie alle Handler, wobei der \emph{MenuSettingsButtonHandler} als ein Beispiel dargestellt ist.
 
 \subsection{Speichern der Einstellungen}
 \begin{figure}[H]
@@ -196,6 +196,9 @@ Die Klassendiagramme können im Anhang dieses Dokuments gefunden werden.
 
 \pagebreak
 \section{Verwendete Entwurfsmuster}
+\subsection{Model View Controller f\"ur Fertigungssimulation}
+
+
 \subsection{Fassaden-Muster: UAServerWrapper, UAClientWrapper}
 Milo besitzt eine sehr komplexe Schnittstelle, zu deren Benutzung man sich ausgiebig mit dem oft schlecht dokumentierten Code
 der Library beschäftigen muss (Zertifikate manuell deaktivieren etc.). Des Weiteren unterstützt Milo mehr Funktionalität,
