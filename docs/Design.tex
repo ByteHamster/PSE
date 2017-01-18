@@ -34,12 +34,13 @@
 \section{Einleitung}
 OSIP ist in drei große Pakete gegliedert: Simulation, Monitoring und Core.
 Simulation realisiert die Fertigungssimulation und Monitoring die Überwachungskonsole.
-Core beinhaltet gemeinsame Unterpakete von Fertigungssimulation und Monitoring sowie Unterpakete zu IO und der Implementierung
+Core beinhaltet gemeinsame Unterpakete der Fertigungssimulation und des Monitorings sowie Unterpakete zu IO und der Implementierung
 von OPC UA.
-Das grundlegende Entwurfsmuster Model-View-Controller (MVC) ist bis auf das Model zweifach für die Fertigungssimulation und die Überwachungskonsole verwirklicht, die getrennt von einander existieren.
+Das grundlegende Entwurfsmuster Model-View-Controller (MVC) ist bis auf das Model zweimal implementiert, nämlich einmal für die
+Fertigungssimulation und einmal für die Überwachungskonsole.
 Das gemeinsame Model befindet sich in Core. Dabei benutzt die Überwachungskonsole nur core.base und core.behavior.
-Die Fertigungssimulation benutzt ein erweitertes Model aus den Unterpakteten core.simulation, core.base und core.behavior.
-Das Unterpaket core.simulation ist für das Mischen von Farben und die Simulation der Verbindungsrohre zuständig.
+Die Fertigungssimulation benutzt ein erweitertes Model, das aus den Unterpakteten core.simulation, core.base und core.behavior besteht.
+Dabei ist das Unterpaket core.simulation ist für das Mischen von Farben und die Simulation der Verbindungsrohre zuständig.
 
 \section{Klassenbeschreibungen}
 Die Klassenbeschreibungen können im Anhang dieses Dokuments gefunden werden.
@@ -59,7 +60,7 @@ und werden durch den Wrapper verborgen.
   \caption{Setzen von Werten über den UAServerWrapper}
 \end{figure}
 Beim Erstellen des Controllers werden auch der Simulator und die Server der Tanks erstellt.
-Dieser Server erbt von \emph{UAServerWrapper}, welcher eine Abstraktion von Milo vornimmt. Wie im Diagramm zu sehen,
+Dieser Server erbt von \emph{UAServerWrapper}, welcher Milo abstrahiert. Wie im Diagramm zu sehen,
 werden vom Wrapper Server und Namespace erstellt. Der Namespace wird beim Server registriert und
 im Namespace werden die Ordner und Variablen erstellt (hier exemplarisch der Füllstand).
 
@@ -92,7 +93,7 @@ komplette Interaktion mit Milo.
   \end{figure}
   Bei der Erzeugung des Hauptfensters instanziiert dieses einen neuen \emph{GraphicsContext}, der die Schnittstelle zum Canvas darstellt.
   Anschlie{\ss}end werden die einzelnen Grafikkomponenten, die \emph{Drawer}, erstellt und mit Ihrer jeweiligen Position versehen.\\
-  Kommt es in der Fertigungssimulation zu einer \"Anderung wird das Hauptfenster \"uber die update-Methode alarmiert. Daraufhin
+  Kommt es in der Fertigungssimulation zu einer \"Anderung, wird das Hauptfenster \"uber die \emph{update()} alarmiert. Daraufhin
   veranlasst das Hauptfenster jeden \emph{Drawer}, sich selbst neu zu zeichnen. Im Falle der \emph{TankDrawer} fragen diese erst die
   aktuellen Werte vom jeweils zugeordneten \emph{Tank} der Fertigungssimulation ab, um anschlie{\ss}end \"uber Aufrufe an den \emph{context}
   die neue Darstellung zu veranlassen.
@@ -103,15 +104,15 @@ komplette Interaktion mit Milo.
   \includegraphics[scale=0.45]{design/sequence-diagrams/tank-simulation.png}
   \caption{Berechnen der Tank-Simulation}
 \end{figure}
-Dies ist die Simulation eines der oberen Tanks. Für die vollständige Simulation, muss \emph{simulateTank()} für jeden Tank aufgerufen werden,
-und die Rückgabewerte zum Mixtank hinzugefügt werden. Zuerst erfrägt die Simulation beim Tank die Leitung, die zum Tank hinführt, und ermittelt
-mit \emph{getMaxInput()} die maximale Durchflussmenge. Anschließend wird die noch im Tank enthaltene Flüssigkeit geholt, um dessen Farbe zu bestimmen.
-Dann kann ein neues \emph{Liquid} Objekt erstellt werden, das so groß ist, das es gerade noch in die Leitung passt. Mittels \emph{putIn} wird es
-in die Leitung gesteckt. Der Rückgabewert von \emph{putIn} ist die Flüssigkeit, die am anderen Ende der Leitung herauskommt. Diese wird dann in den
+Dies ist die Simulation eines der oberen Tanks. Für die vollständige Simulation, muss \emph{simulateTank()} für jeden Tank aufgerufen werden
+und die Rückgabewerte zum Mixtank hinzugefügt werden. Zuerst erfrägt die Simulation beim Tank die Leitung die zum Tank hinführt, und ermittelt
+mit \emph{getMaxInput()} die maximale Durchflussmenge. Anschließend wird die noch im Tank enthaltene Flüssigkeit geholt um dessen Farbe zu bestimmen.
+Dann kann ein neues \emph{Liquid} Objekt erstellt werden, das so groß ist, dass es gerade noch in die Leitung passt. Mittels \emph{putIn()} wird es
+in die Leitung gesteckt. Der Rückgabewert von \emph{putIn()} ist die Flüssigkeit die am anderen Ende der Leitung herauskommt. Diese wird dann in den
 Tank eingefügt. Dazu verwendet der Tank eine \emph{SubtractiveMixingStrategy} um die Farben und Temperaturen zu mischen. Nachdem die Flüssigkeiten
-gemischt sind, wird die Leitung vom oberen Tank zum Mixtank geholt, und ermittelt, wie viel Flüssigkeit dort hineinpasst. Diese Menge wird dann aus dem
-Tank herausgenommen, und in diese Leitung hineingesteckt. Der Rückgabewert von \emph{simulateTank()} ist dann die Flüssigkeit, die am Ende der Leitung
-(also beim Mixtank) herauskam. Diese Flüssigkeit kann die Simulation dann in den Mixtank einfügen (nicht mehr in diesem Diagramm dargestellt).
+gemischt sind, wird die Leitung vom oberen Tank zum Mixtank geholt und ermittelt, wie viel Flüssigkeit dort hineinpasst. Diese Menge wird dann aus dem
+Tank herausgenommen und in diese Leitung hineingesteckt. Der Rückgabewert von \emph{simulateTank()} ist dann die Flüssigkeit die am Ende der Leitung
+(also beim Mixtank) herauskommt. Diese Flüssigkeit kann die Simulation dann in den Mixtank einfügen (nicht mehr in diesem Diagramm dargestellt).
 
 \subsection{Einstellungen aus der Datei erhalten und verwenden}
 \begin{figure}[H]
@@ -119,8 +120,8 @@ Tank herausgenommen, und in diese Leitung hineingesteckt. Der Rückgabewert von 
   \includegraphics[scale=0.4]{design/sequence-diagrams/getting-networking-settings.png}
   \caption{Einstellungen aus der Datei erhalten und verwenden}
 \end{figure}
-Bei der Erstellung eines \emph{TankClient} werden Hostname und Port des zugehörigen Servers vom mit \emph{getHostName(tank:TankSelector)}
-und \emph{getPort(tank:TankSelector)} vom \emph{ClientSettingsWrapper} abgerufen. Eine Instanz des \emph{ClientSettingsWrapper}s
+Bei der Erstellung eines \emph{TankClient} werden Hostname und Port des zugehörigen Servers vom \emph{MonitoringController} mit \emph{getHostName()}
+und \emph{getPort()} vom \emph{ClientSettingsWrapper} abgerufen. Eine Instanz des \emph{ClientSettingsWrapper}s
 ist im \emph{MonitoringController} zu finden. Es wird eine \emph{RemoteMachine} erstellt und mit Hostname und Port konfiguriert.
 Danach erstellt man einen \emph{TankClient}, der die \emph{RemoteMachine} übergeben bekommt und sich mit dem Server verbinden kann.
 
@@ -130,8 +131,8 @@ Danach erstellt man einen \emph{TankClient}, der die \emph{RemoteMachine} überg
 	\includegraphics[scale=0.4]{design/sequence-diagrams/Start-of-monitoring.png}
 	\caption{Start der Überwachungskonsole}
 \end{figure}
-Beim Start der Überwachungskonsole wird über die \emph{main}-Methode die statische \emph{launch}-Methode der Oberklasse \emph{javafx.application.Application} von \emph{MonitoringController} aufgerufen. Diese ist für den eigentlichen Startvorgang verantwortlich und initialisiert unter anderem JavaFX.
-Im Laufe des Startvorgangs wird eine Instanz des \emph{MonitoringControllers} erstellt, die die Verbindung zwischen der Ansicht der Überwachungskonsole und dem Modell herstellt. Dazu erstellt es beispielsweise die Ansicht innerhalb der Methode \emph{setupUI} über das \emph{MonitoringViewInterface} sowie alle Handler, wobei der \emph{MenuSettingsButtonHandler} als ein Beispiel dargestellt ist.
+Beim Start der Überwachungskonsole wird über die \emph{main()} Methode die statische \emph{launch()} Methode der Oberklasse \emph{javafx.application.Application} von \emph{MonitoringController} aufgerufen. Diese ist für den eigentlichen Startvorgang verantwortlich und initialisiert unter anderem JavaFX.
+Im Laufe des Startvorgangs wird eine Instanz des \emph{MonitoringControllers} erstellt, die die Verbindung zwischen der Ansicht der Überwachungskonsole und dem Modell herstellt. Dazu erstellt es beispielsweise die Ansicht innerhalb der Methode \emph{setupUI()} über das \emph{MonitoringViewInterface} sowie alle Handler, wobei der \emph{MenuSettingsButtonHandler} als ein Beispiel dargestellt ist.
 
 \subsection{Speichern der Einstellungen}
 \begin{figure}[H]
@@ -139,8 +140,8 @@ Im Laufe des Startvorgangs wird eine Instanz des \emph{MonitoringControllers} er
 	\includegraphics[scale=0.4]{design/sequence-diagrams/Save-settings.png}
 	\caption{Speichern der Einstellungen}
 \end{figure}
-Wird in den Einstellungen der Überwachungskonsole der "`Speichern"'-Knopf gedrückt, löst dieses Ereignis die Methode \emph{handle} in einer Instanz des \emph{SettingsSaveButtonHandlers} aus.
-Dort werden alle vom Benutzer getätigten Einstellungen über die \emph{SettingsViewFacade} ausgelesen und in den \emph{ClientSettingsWrapper} zum Speichern geschrieben sowie bestimmte Änderungen über die \emph{MonitoringViewFacade} direkt in der Ansicht dargestellt.
+Wird in den Einstellungen der Überwachungskonsole der "`Speichern"'-Knopf gedrückt, löst dieses Ereignis die Methode \emph{handle()} in einer Instanz des \emph{SettingsSaveButtonHandlers} aus.
+Dort werden alle vom Benutzer getätigten Einstellungen über die \emph{SettingsViewFacade} ausgelesen und in den \emph{ClientSettingsWrapper} zum Speichern geschrieben, sowie bestimmte Änderungen über die \emph{MonitoringViewFacade} direkt in der Ansicht dargestellt.
 Beispielhaft wird das Auslesen und Setzen des Hostnamens für die OPC UA Server und eines Überlaufalarms gezeigt.
 
 \subsection{Funktionsweise der ViewFacades der Überwachungskonsole}
@@ -149,7 +150,7 @@ Beispielhaft wird das Auslesen und Setzen des Hostnamens für die OPC UA Server 
 	\includegraphics[scale=0.5]{design/sequence-diagrams/Functions-behind-the-facade.png}
 	\caption{Funktionsweise der ViewFacades der Überwachungskonsole}
 \end{figure}
-Jeder Aufruf einer Methode der \emph{MonitoringViewFacade} oder \emph{SettingsViewFacade} wird an die dahinter liegenden Objekte delegiert, um an den eigentlichen Wert zu kommen oder die eigentliche Operation auszuführen. Das beispielhafte Vorgehen der \emph{SettingsViewFacade} zeigt, wie der Hostname der OPC UA Server vom eigentlichen \emph{javafx.scene.control.TextField}, über den der Benutzer den Hostnamen eingestellt hat, an die \emph{SettingsViewFacade} zurückgereicht wird.
+Jeder Aufruf einer Methode der \emph{MonitoringViewFacade()} oder \emph{SettingsViewFacade()} wird an die dahinter liegenden Objekte delegiert, um an den eigentlichen Wert zu kommen oder die eigentliche Operation auszuführen. Das beispielhafte Vorgehen der \emph{SettingsViewFacade} zeigt, wie der Hostname der OPC UA Server vom eigentlichen \emph{javafx.scene.control.TextField}, über den der Benutzer den Hostnamen eingestellt hat, an die \emph{SettingsViewFacade} zurückgereicht wird.
 
 \pagebreak
 \section{Änderungen zum Pflichtenheft}
