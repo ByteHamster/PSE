@@ -6,7 +6,7 @@
     <coordinates>
       <x>20</x>
       <y>0</y>
-      <w>1320</w>
+      <w>1000</w>
       <h>600</h>
     </coordinates>
     <panel_attributes>Redrawing Simulation GUI</panel_attributes>
@@ -15,7 +15,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
+      <x>120</x>
       <y>60</y>
       <w>230</w>
       <h>30</h>
@@ -26,7 +26,7 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>180</x>
+      <x>220</x>
       <y>110</y>
       <w>20</w>
       <h>140</h>
@@ -39,7 +39,7 @@ layer=2
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>180</x>
+      <x>220</x>
       <y>80</y>
       <w>30</w>
       <h>50</h>
@@ -51,8 +51,8 @@ layer=2
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>640</x>
-      <y>160</y>
+      <x>680</x>
+      <y>150</y>
       <w>150</w>
       <h>30</h>
     </coordinates>
@@ -62,7 +62,7 @@ layer=2
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>710</x>
+      <x>750</x>
       <y>310</y>
       <w>20</w>
       <h>190</h>
@@ -75,19 +75,19 @@ layer=2
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>710</x>
-      <y>180</y>
+      <x>750</x>
+      <y>170</y>
       <w>30</w>
-      <h>150</h>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
   </element>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>210</x>
+      <x>250</x>
       <y>290</y>
       <w>720</w>
       <h>250</h>
@@ -98,7 +98,7 @@ layer=2
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
+      <x>380</x>
       <y>300</y>
       <w>390</w>
       <h>40</h>
@@ -110,7 +110,7 @@ draw(context)</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>820</x>
+      <x>860</x>
       <y>60</y>
       <w>90</w>
       <h>30</h>
@@ -121,7 +121,7 @@ draw(context)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>860</x>
+      <x>900</x>
       <y>80</y>
       <w>30</w>
       <h>260</h>
@@ -133,7 +133,7 @@ draw(context)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>860</x>
+      <x>900</x>
       <y>320</y>
       <w>20</w>
       <h>50</h>
@@ -146,7 +146,7 @@ layer=2
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>720</x>
+      <x>760</x>
       <y>310</y>
       <w>160</w>
       <h>40</h>
@@ -158,7 +158,7 @@ getColor()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>720</x>
+      <x>760</x>
       <y>350</y>
       <w>160</w>
       <h>30</h>
@@ -169,7 +169,7 @@ getColor()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>860</x>
+      <x>900</x>
       <y>380</y>
       <w>20</w>
       <h>50</h>
@@ -182,7 +182,7 @@ layer=2
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>860</x>
+      <x>900</x>
       <y>360</y>
       <w>30</w>
       <h>40</h>
@@ -194,7 +194,7 @@ layer=2
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>720</x>
+      <x>760</x>
       <y>370</y>
       <w>160</w>
       <h>40</h>
@@ -206,7 +206,7 @@ getFillLevel()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>720</x>
+      <x>760</x>
       <y>410</y>
       <w>160</w>
       <h>30</h>
@@ -217,7 +217,7 @@ getFillLevel()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
+      <x>380</x>
       <y>480</y>
       <w>390</w>
       <h>30</h>
@@ -228,7 +228,7 @@ getFillLevel()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>710</x>
+      <x>750</x>
       <y>490</y>
       <w>30</w>
       <h>120</h>
@@ -240,7 +240,7 @@ getFillLevel()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>860</x>
+      <x>900</x>
       <y>420</y>
       <w>30</w>
       <h>190</h>
@@ -252,7 +252,7 @@ getFillLevel()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>190</x>
+      <x>230</x>
       <y>150</y>
       <w>470</w>
       <h>40</h>
@@ -264,19 +264,19 @@ getFillLevel()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>30</x>
-      <y>50</y>
-      <w>70</w>
+      <x>20</x>
+      <y>60</y>
+      <w>120</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 &lt;&lt;create&gt;&gt;</panel_attributes>
-    <additional_attributes>50.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>180</x>
+      <x>220</x>
       <y>240</y>
       <w>30</w>
       <h>370</h>
@@ -288,7 +288,7 @@ getFillLevel()</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>430</x>
+      <x>470</x>
       <y>110</y>
       <w>190</w>
       <h>30</h>
@@ -299,8 +299,8 @@ getFillLevel()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>190</x>
-      <y>100</y>
+      <x>230</x>
+      <y>110</y>
       <w>260</w>
       <h>40</h>
     </coordinates>
@@ -311,7 +311,7 @@ getFillLevel()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>510</x>
+      <x>550</x>
       <y>130</y>
       <w>30</w>
       <h>320</h>
@@ -323,7 +323,7 @@ getFillLevel()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>510</x>
+      <x>550</x>
       <y>430</y>
       <w>20</w>
       <h>50</h>
@@ -336,7 +336,7 @@ layer=2
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>520</x>
+      <x>560</x>
       <y>420</y>
       <w>210</w>
       <h>40</h>
@@ -348,7 +348,7 @@ fillPolygon()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>520</x>
+      <x>560</x>
       <y>460</y>
       <w>210</w>
       <h>30</h>
@@ -359,7 +359,7 @@ fillPolygon()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>510</x>
+      <x>550</x>
       <y>470</y>
       <w>30</w>
       <h>140</h>
@@ -371,7 +371,7 @@ fillPolygon()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>190</x>
+      <x>230</x>
       <y>180</y>
       <w>120</w>
       <h>40</h>
@@ -383,7 +383,7 @@ fillPolygon()</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>290</x>
+      <x>330</x>
       <y>180</y>
       <w>110</w>
       <h>30</h>
@@ -394,7 +394,7 @@ fillPolygon()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>330</x>
+      <x>370</x>
       <y>200</y>
       <w>30</w>
       <h>50</h>
@@ -406,7 +406,7 @@ fillPolygon()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>330</x>
+      <x>370</x>
       <y>230</y>
       <w>20</w>
       <h>340</h>
@@ -419,7 +419,7 @@ layer=2
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>190</x>
+      <x>230</x>
       <y>220</y>
       <w>160</w>
       <h>40</h>
@@ -431,7 +431,7 @@ start()</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>50</x>
+      <x>90</x>
       <y>270</y>
       <w>900</w>
       <h>290</h>
@@ -442,7 +442,7 @@ start()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>330</x>
+      <x>370</x>
       <y>560</y>
       <w>30</w>
       <h>50</h>
