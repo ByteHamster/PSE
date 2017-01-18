@@ -38,9 +38,9 @@ Core beinhaltet gemeinsame Unterpakete der Fertigungssimulation und des Monitori
 von OPC UA.
 Das grundlegende Entwurfsmuster Model-View-Controller (MVC) ist bis auf das Model zweimal implementiert, nämlich einmal für die
 Fertigungssimulation und einmal für die Überwachungskonsole.
-Das gemeinsame Model befindet sich in Core. Dabei benutzt die Überwachungskonsole nur core.base und core.behavior.
-Die Fertigungssimulation benutzt ein erweitertes Model, das aus den Unterpakteten core.simulation, core.base und core.behavior besteht.
-Dabei ist das Unterpaket core.simulation ist für das Mischen von Farben und die Simulation der Verbindungsrohre zuständig.
+Das gemeinsame Model befindet sich in Core. Dabei benutzt die Überwachungskonsole nur \emph{core.base} und \emph{core.behavior}.
+Die Fertigungssimulation benutzt ein erweitertes Model, das aus den Unterpakteten \emph{core.simulation}, \emph{core.base} und \emph{core.behavior} besteht.
+Dabei ist das Unterpaket \emph{core.simulation} ist für das Mischen von Farben und die Simulation der Verbindungsrohre zuständig.
 
 \section{Klassenbeschreibungen}
 Die Klassenbeschreibungen können im Anhang dieses Dokuments gefunden werden.
@@ -105,7 +105,7 @@ komplette Interaktion mit Milo.
   \caption{Berechnen der Tank-Simulation}
 \end{figure}
 Dies ist die Simulation eines der oberen Tanks. Für die vollständige Simulation, muss \emph{simulateTank()} für jeden Tank aufgerufen werden
-und die Rückgabewerte zum Mixtank hinzugefügt werden. Zuerst erfrägt die Simulation beim Tank die Leitung die zum Tank hinführt, und ermittelt
+und die Rückgabewerte zum Mixtank hinzugefügt werden. Zuerst erfragt die Simulation beim Tank die Leitung die zum Tank hinführt, und ermittelt
 mit \emph{getMaxInput()} die maximale Durchflussmenge. Anschließend wird die noch im Tank enthaltene Flüssigkeit geholt um dessen Farbe zu bestimmen.
 Dann kann ein neues \emph{Liquid} Objekt erstellt werden, das so groß ist, dass es gerade noch in die Leitung passt. Mittels \emph{putIn()} wird es
 in die Leitung gesteckt. Der Rückgabewert von \emph{putIn()} ist die Flüssigkeit die am anderen Ende der Leitung herauskommt. Diese wird dann in den
@@ -199,7 +199,7 @@ Die Klassendiagramme können im Anhang dieses Dokuments gefunden werden.
 \section{Verwendete Entwurfsmuster}
 \subsection{Model View Controller f\"ur Fertigungssimulation}
 Das Programm der Fertigungssimulation ist nach dem Prinzip Model View Controller aufgebaut.
-Das Model beinhaltet dabei die intere Darstellung der Produktionsanlage. Im Model der Fertigungssimulation ist ebenfalls die interen Logik
+Das Model beinhaltet dabei die interne Darstellung der Produktionsanlage. Im Model der Fertigungssimulation ist ebenfalls die interen Logik
 vorhanden, nach der die Produktionsanlage funktioniert. 
 Die View erh\"alt die Daten vom Model und stellt diese passend grafisch dar. Sie enth\"alt zudem die M\"oglichkeit f\"ur den Benutzer, Eingaben zu
 t\"atigen. Sofern Eingaben erfolgen werden diese an den Controller weiter gereicht, sodass dieser darauf reagieren kann.
@@ -251,7 +251,7 @@ Farbmischung. Außerdem ist es denkbar, die Mischung der Temperaturen unterschie
 approximativen Algorithmus).
 
 Um diese Algorithmen, falls in Zukunft andere implementiert werden, einfach austauschbar zu machen, wurde
-das Strategie Muster angewand. Dieses Muster hat das Ziel, eime Familie von Algorithmen zu definieren, zu kapseln und austauschbar zu machen.
+das Strategie Muster angewandt. Dieses Muster hat das Ziel, eine Familie von Algorithmen zu definieren, zu kapseln und austauschbar zu machen.
 
 Dabei ist \emph{MixingStrategy} das Interface, dass die Strategie definiert, und \emph{AbstractTankSimulation} die Kontextklasse, die die Algorithmen
 benutzt. Momentan ist nur eine konkrete Strategie implementiert, und zwar die \emph{SubtractiveMixingStrategy}.
