@@ -4,9 +4,9 @@
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>63</x>
+      <x>180</x>
       <y>72</y>
-      <w>1035</w>
+      <w>918</w>
       <h>324</h>
     </coordinates>
     <panel_attributes>Reaction to save button</panel_attributes>
@@ -15,12 +15,12 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>243</x>
+      <x>198</x>
       <y>108</y>
-      <w>180</w>
+      <w>252</w>
       <h>27</h>
     </coordinates>
-    <panel_attributes>_:SettingsSaveButtonHandler_</panel_attributes>
+    <panel_attributes>_saveHandler:SettingsSaveButtonHandler_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -48,14 +48,14 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>63</x>
+      <x>198</x>
       <y>135</y>
-      <w>279</w>
+      <w>144</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-handle(event:javafx.event.ActionEvent)</panel_attributes>
-    <additional_attributes>290.0;20.0;10.0;20.0</additional_attributes>
+handle(event)</panel_attributes>
+    <additional_attributes>140.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
@@ -189,7 +189,7 @@ hostname:String</panel_attributes>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-setServerHostname(tank:TankSelector, hostname:String)</panel_attributes>
+setServerHostname(tank, hostname)</panel_attributes>
     <additional_attributes>490.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -234,7 +234,7 @@ setServerHostname(tank:TankSelector, hostname:String)</panel_attributes>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-isOverflowAlarmEnabled(tank:TankSelector)</panel_attributes>
+isOverflowAlarmEnabled(tank)</panel_attributes>
     <additional_attributes>320.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -280,7 +280,7 @@ alarmEnabled:boolean</panel_attributes>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-setOverflowAlarmEnabled(tank:TankSelector, alarmEnabled:boolean)</panel_attributes>
+setOverflowAlarmEnabled(tank, alarmEnabled)</panel_attributes>
     <additional_attributes>670.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -297,13 +297,13 @@ setOverflowAlarmEnabled(tank:TankSelector, alarmEnabled:boolean)</panel_attribut
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>63</x>
+      <x>198</x>
       <y>360</y>
-      <w>279</w>
+      <w>144</w>
       <h>27</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;290.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;140.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>

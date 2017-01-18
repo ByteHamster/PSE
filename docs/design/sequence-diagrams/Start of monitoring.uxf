@@ -4,9 +4,9 @@
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>130</x>
-      <y>100</y>
-      <w>1450</w>
+      <x>350</x>
+      <y>120</y>
+      <w>1160</w>
       <h>460</h>
     </coordinates>
     <panel_attributes>Start of monitoring</panel_attributes>
@@ -15,18 +15,18 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>250</x>
+      <x>490</x>
       <y>130</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>MainClass</panel_attributes>
+    <panel_attributes>:MainClass</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>290</x>
+      <x>530</x>
       <y>150</y>
       <w>30</w>
       <h>60</h>
@@ -37,7 +37,7 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>290</x>
+      <x>530</x>
       <y>190</y>
       <w>20</w>
       <h>350</h>
@@ -48,14 +48,14 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>130</x>
+      <x>400</x>
       <y>170</y>
-      <w>180</w>
+      <w>150</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-main(args:String[])</panel_attributes>
-    <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
+main(args)</panel_attributes>
+    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
@@ -65,39 +65,36 @@ main(args:String[])</panel_attributes>
       <w>160</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>_:MonitoringController_</panel_attributes>
+    <panel_attributes>_con:MonitoringController_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>550</x>
+      <x>660</x>
       <y>130</y>
       <w>150</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>MonitoringController</panel_attributes>
+    <panel_attributes>:MonitoringController</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>300</x>
+      <x>540</x>
       <y>170</y>
-      <w>340</w>
-      <h>80</h>
+      <w>210</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-launch(
-appClass:
-Class&lt;? extends javafx.application.Application&gt;,
-args:String[])</panel_attributes>
-    <additional_attributes>320.0;20.0;10.0;20.0</additional_attributes>
+launch(appClass, args)</panel_attributes>
+    <additional_attributes>190.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>620</x>
+      <x>730</x>
       <y>190</y>
       <w>20</w>
       <h>330</h>
@@ -108,7 +105,7 @@ args:String[])</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>620</x>
+      <x>730</x>
       <y>150</y>
       <w>30</w>
       <h>60</h>
@@ -119,14 +116,14 @@ args:String[])</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>630</x>
+      <x>740</x>
       <y>180</y>
-      <w>240</w>
+      <w>130</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 &lt;&lt;create&gt;&gt;</panel_attributes>
-    <additional_attributes>220.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>110.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -153,19 +150,19 @@ args:String[])</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>630</x>
+      <x>740</x>
       <y>230</y>
-      <w>310</w>
+      <w>200</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 init()</panel_attributes>
-    <additional_attributes>290.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1300</x>
+      <x>1230</x>
       <y>190</y>
       <w>260</w>
       <h>30</h>
@@ -178,23 +175,23 @@ init()</panel_attributes>
     <coordinates>
       <x>1000</x>
       <y>180</y>
-      <w>320</w>
+      <w>250</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 &lt;&lt;create&gt;&gt;</panel_attributes>
-    <additional_attributes>300.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>630</x>
+      <x>740</x>
       <y>260</y>
-      <w>310</w>
+      <w>200</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;290.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;180.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -221,14 +218,14 @@ init()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>630</x>
+      <x>740</x>
       <y>280</y>
-      <w>310</w>
+      <w>200</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-start(primaryStage:javafx.stage.Stage)</panel_attributes>
-    <additional_attributes>290.0;20.0;10.0;20.0</additional_attributes>
+start(primaryStage)</panel_attributes>
+    <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
@@ -246,11 +243,11 @@ start(primaryStage:javafx.stage.Stage)</panel_attributes>
     <coordinates>
       <x>930</x>
       <y>290</y>
-      <w>330</w>
+      <w>210</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-setupUI(primaryStage:javafx.stage.Stage)</panel_attributes>
+setupUI(primaryStage)</panel_attributes>
     <additional_attributes>30.0;30.0;50.0;30.0;50.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
@@ -281,17 +278,17 @@ setupUI(primaryStage:javafx.stage.Stage)</panel_attributes>
     <coordinates>
       <x>950</x>
       <y>410</y>
-      <w>490</w>
+      <w>420</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-setMenuSettingsButtonHandler(handler:MenuSettingsButtonHandler)</panel_attributes>
-    <additional_attributes>470.0;20.0;10.0;20.0</additional_attributes>
+setMenuSettingsButtonHandler(handler)</panel_attributes>
+    <additional_attributes>400.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1420</x>
+      <x>1350</x>
       <y>430</y>
       <w>20</w>
       <h>20</h>
@@ -304,16 +301,16 @@ setMenuSettingsButtonHandler(handler:MenuSettingsButtonHandler)</panel_attribute
     <coordinates>
       <x>950</x>
       <y>440</y>
-      <w>490</w>
+      <w>420</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;470.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;400.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1420</x>
+      <x>1350</x>
       <y>210</y>
       <w>30</w>
       <h>160</h>
@@ -326,17 +323,17 @@ setMenuSettingsButtonHandler(handler:MenuSettingsButtonHandler)</panel_attribute
     <coordinates>
       <x>950</x>
       <y>330</y>
-      <w>490</w>
+      <w>420</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-showMonitoringView(primaryStage:javafx.stage.Stage)</panel_attributes>
-    <additional_attributes>470.0;20.0;10.0;20.0</additional_attributes>
+showMonitoringView(primaryStage)</panel_attributes>
+    <additional_attributes>400.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1420</x>
+      <x>1350</x>
       <y>350</y>
       <w>20</w>
       <h>20</h>
@@ -349,16 +346,16 @@ showMonitoringView(primaryStage:javafx.stage.Stage)</panel_attributes>
     <coordinates>
       <x>950</x>
       <y>360</y>
-      <w>490</w>
+      <w>420</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;470.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;400.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1420</x>
+      <x>1350</x>
       <y>360</y>
       <w>30</w>
       <h>90</h>
@@ -369,7 +366,7 @@ showMonitoringView(primaryStage:javafx.stage.Stage)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1420</x>
+      <x>1350</x>
       <y>440</y>
       <w>30</w>
       <h>100</h>
@@ -391,30 +388,52 @@ showMonitoringView(primaryStage:javafx.stage.Stage)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>630</x>
+      <x>740</x>
       <y>490</y>
-      <w>310</w>
+      <w>200</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;290.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;180.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>300</x>
+      <x>540</x>
       <y>510</y>
-      <w>340</w>
+      <w>210</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;320.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;190.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>620</x>
+      <x>730</x>
       <y>510</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>430</x>
+      <y>530</y>
+      <w>120</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>530</x>
+      <y>530</y>
       <w>30</w>
       <h>70</h>
     </coordinates>
@@ -422,31 +441,9 @@ showMonitoringView(primaryStage:javafx.stage.Stage)</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>140</x>
-      <y>520</y>
-      <w>170</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>290</x>
-      <y>530</y>
-      <w>30</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1420</x>
+      <x>1350</x>
       <y>510</y>
       <w>20</w>
       <h>20</h>

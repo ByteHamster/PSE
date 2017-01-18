@@ -15,12 +15,12 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>170</x>
+      <x>160</x>
       <y>60</y>
-      <w>180</w>
+      <w>190</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>_:SettingsViewFacade_</panel_attributes>
+    <panel_attributes>_setFac:SettingsViewFacade_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
