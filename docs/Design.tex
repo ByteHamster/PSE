@@ -197,7 +197,13 @@ Die Klassendiagramme können im Anhang dieses Dokuments gefunden werden.
 \pagebreak
 \section{Verwendete Entwurfsmuster}
 \subsection{Model View Controller f\"ur Fertigungssimulation}
-
+Das Programm der Fertigungssimulation ist nach dem Prinzip Model View Controller aufgebaut. Das Model beinhaltet dabei die intere Darstellung der
+Produktionsanlage. Im Model der Fertigungssimulation ist ebenfalls die interen Logik vorhanden, nach der die Produktionsanlage funktioniert. \\
+Die View erh\"alt die Daten vom Model und stellt diese passend grafisch dar. Sie enth\"alt zudem die M\"oglichkeit f\"ur den Benutzer, Eingaben zu
+t\"atigen. Sofern Eingaben erfolgen werden diese an den Controller weiter gereicht, sodass dieser darauf reagieren kann.\\
+Der Controller steuert das Programm und reagiert auf Benutzereingaben. Dazu veranlasst er einerseits, dass in regelm\"a{\ss}igen Intervallen der
+n\"achste Simulationsschritt ausgef\"uhrt wird. Andererseits veranlasst er, je nach Nutzereingabe, dass die Parameter der Simulation ge\"andert werden
+und f\"ur die kommenden Simulationsschritte in der ge\"anderten Form verwendet werden.
 
 \subsection{Fassaden-Muster: UAServerWrapper, UAClientWrapper}
 Milo besitzt eine sehr komplexe Schnittstelle, zu deren Benutzung man sich ausgiebig mit dem oft schlecht dokumentierten Code
