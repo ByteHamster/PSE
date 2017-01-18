@@ -332,13 +332,18 @@ um den damals gespeicherten Stand wiederherzustellen. Scenario hält Mementos un
 welche von Scenario aus gestartet werden.
 ProductionSiteState hat Getter-Methoden für Tanks und Pipes, weshalb das Memento-Muster in diesem Fall keine Implementierungsdetails kapselt, sondern nur zur Zwischenspeicherung von Zuständen dient.
 
-\subsection{Schablonenmethode - Tanks in der GUI der Fertigungssimulation}
+\subsection{Schablonenmethode : Tanks in der GUI der Fertigungssimulation}
 Die Klassen \emph{TankDrawer} und \emph{MixTankDrawer} dienen der Visualisierung der Tanks in der Fertigungssimulation. Da sich die Tanks grunds\"atzlich
 sehr \"ahnlich sind und sich in der Darstellung nur in der Menge der Sensoren unterscheiden wurde die \emph{draw()}-Methode als Schablonenmethode umgesetzt.
 Dazu wurde die Oberklasse \emph{AbstractTankDrawer} kreiert, die bereits Teile von \emph{draw()} implementiert und anschlie{\ss}end \emph{drawSensors()}
 aufruft. Die Methode \emph{drawSensors()} ist in AbstractTankDrawer abstrakt und wird erst von den Unterklassen implementiert.\\
 So werden die gemeinsamen Teile des Algorithmus' zur Darstellung in eine gemeinsame Klasse ausgelagert, um Code-Duplikationen zu vermeiden. Auch \"Anderungen
 werden so leichter umzusetzen, da der Code nur noch an einer statt an mehreren Stellen ge\"andert werden muss.
+
+\subsection{Value Object : Liquid}
+Die Klasse \emph{Liquid} dient der \"Ubermittlung von Werten aus einem Tank in einen anderen durch die die \emph{Pipe}. Sie ist als Value Object realisiert.
+Dass hei{\ss}t, sie erh\"alt bei der Erzeugung feste Werte, die sich sp\"ater nichtmehr \"andern k\"onnen. An Methoden werden nur Getter f\"ur die
+verschiedenen Variablen angeboten. So wird sichergestellt, dass die \"ubermittelten Daten nicht ver\"andert werden.
 
 \pagebreak
 \phantomsection
