@@ -197,13 +197,24 @@ Die Klassendiagramme können im Anhang dieses Dokuments gefunden werden.
 \pagebreak
 \section{Verwendete Entwurfsmuster}
 \subsection{Model View Controller f\"ur Fertigungssimulation}
-Das Programm der Fertigungssimulation ist nach dem Prinzip Model View Controller aufgebaut. Das Model beinhaltet dabei die intere Darstellung der
-Produktionsanlage. Im Model der Fertigungssimulation ist ebenfalls die interen Logik vorhanden, nach der die Produktionsanlage funktioniert. \\
+Das Programm der Fertigungssimulation ist nach dem Prinzip Model View Controller aufgebaut.\\
+Das Model beinhaltet dabei die intere Darstellung der Produktionsanlage. Im Model der Fertigungssimulation ist ebenfalls die interen Logik
+vorhanden, nach der die Produktionsanlage funktioniert. \\
 Die View erh\"alt die Daten vom Model und stellt diese passend grafisch dar. Sie enth\"alt zudem die M\"oglichkeit f\"ur den Benutzer, Eingaben zu
 t\"atigen. Sofern Eingaben erfolgen werden diese an den Controller weiter gereicht, sodass dieser darauf reagieren kann.\\
 Der Controller steuert das Programm und reagiert auf Benutzereingaben. Dazu veranlasst er einerseits, dass in regelm\"a{\ss}igen Intervallen der
 n\"achste Simulationsschritt ausgef\"uhrt wird. Andererseits veranlasst er, je nach Nutzereingabe, dass die Parameter der Simulation ge\"andert werden
-und f\"ur die kommenden Simulationsschritte in der ge\"anderten Form verwendet werden.
+und f\"ur die kommenden Simulationsschritte in der ge\"anderten Form verwendet werden. Der Controller steuert zudem die OPC UA Server an, die die
+Werte f\"ur die OPC UA Clients der \"Uberwachungskonsole bereitstellen.
+
+\subsection{Model View Controller f\"ur \"Uberwachungskonsole}
+Das Programm der \"Uberwachungskonsole ist ebenfalls nach dem Prinzip Model View Controller aufgebaut.\\
+Sie enth\"alt das nahezu gleiche Model wie die Fertigungssimulation, allerdings ist hier weniger der internen Logik offenbart. Dies kommt daher, dass
+die \"Uberwachungskonsole nicht steuernd in die Produktionsanlage eingreifen soll. \\
+Die View benachrichtigt den Controller zu Benutzereingaben, sodass dieser darauf reagieren kann. Die Eingaben dienen hier der Steuerung und Konfiguration
+der \"Uberwachungskonsole, z.B. die Einstellung der anzuzeigenden Daten.\\
+Der Controller steuert das Programm und reagiert auf Benutzereingaben. Dazu veranlasst er einerseits, dass in regelm\"a{\ss}igen Intervallen die Daten der
+Fertigungssimulation abgefragt werden und steuert die OPC UA Clients an, die der Kommunikation mit der Fertigungssimulation dienen.
 
 \pagebreak
 \subsection{Fassaden-Muster: UAServerWrapper, UAClientWrapper}
