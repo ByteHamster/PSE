@@ -245,7 +245,7 @@ Dabei ist \emph{MixingStrategy} das Interface, dass die Strategie definiert, und
 benutzt. Momentan ist nur eine konkrete Strategie implementiert, und zwar die \emph{SubtractiveMixingStrategy}.
 
 \pagebreak
-\subsection{Beobachter-Muster}
+\subsection{Beobachter-Muster: Observer bei Elementen des Models}
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.35]{design/pattern-screenshots/observer-Model.png}
@@ -267,6 +267,11 @@ das Auslösen von Alarmen zu informieren. Deswegen ist die Klasse \emph{Abstract
 
 \pagebreak
 \subsection{Fassaden-Muster: Views der Überwachungskonsole}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.22]{design/pattern-screenshots/fascade-SettingsView.png}
+  \caption{Ausschnitt aus dem Klassendiagramm: Fassade des Views der Überwachungskonsole}
+\end{figure}
 Jeder Zugriff auf das Haupt- oder Einstellungsfenster der Überwachungskonsole von außerhalb der Views erfolgt über jeweils eine eigene, konkrete Fassade: \emph{MonitoringViewFacade} für das Hauptfenster und \emph{SettingsViewFacade} für das Einstellungsfenster. Beide Fassaden leiten sich von den eigentlichen Fassaden, die in Form von Interfaces (\emph{MonitoringViewInterface} und \emph{SettingsViewInterface}) vorliegen, ab.
 
 Die Fassaden an sich ermöglichen zunächst einen einheitlichen und zentralen Zugriff auf die notwendigsten Funktionen und Werte der Views, die außerhalb benötigt werden. Somit bleiben die Entwurfs- und Implementierungsdetails der Views (Aufbau, verwendete GUI-Komponenten) zum größten Teil verborgen. Gleichzeitig können die Views nicht beliebig modifiziert werden, womit gewährleistet wird, dass sie genau das anzeigen, was sie anzeigen sollen.
@@ -275,10 +280,23 @@ Vor allem die Interfaces sorgen für eine stärkere Trennung zwischen View und C
 
 \pagebreak
 \subsection{Befehlsmuster: ButtonHandler im Controller der Überwachungskonsole}
-\subsection{Beobachter-Muster}
-Haupt- und Einstellungsfenster der Überwachungskonsole beinhalten Knöpfe, mit denen der Benutzer verschiedene Ereignisse auslösen kann. Zur Behandlung dieser Ereignisse wird das Befehlsmuster genutzt, das JavaFX bereits unterstützt. So handelt es sich beim Interface \emph{javafx.event.EventHandler<? extends javafx.event.Event>} um den abstrakten Befehl, der Bestandteil der Knöpfe von JavaFX (konkret hier: \emph{javafx.scene.control.Button} bzw. \emph{javafx.scene.control.MenuButton}) ist. Die konkreten Befehle stellen die \emph{ButtonHandler}-Klassen im Controller dar, die das Interface implementieren und über ihre Konstruktoren die Empfänger der Ereignisbehandlung erhalten.
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.33]{design/pattern-screenshots/command-ButtonHandler.png}
+  \caption{Ausschnitt aus dem Klassendiagramm: ButtonHandler der Überwachungskonsole}
+\end{figure}
+Haupt- und Einstellungsfenster der Überwachungskonsole beinhalten Knöpfe, mit denen der Benutzer verschiedene
+Ereignisse auslösen kann. Zur Behandlung dieser Ereignisse wird das Befehlsmuster genutzt, das JavaFX bereits
+unterstützt. So handelt es sich beim Interface \emph{javafx.event.EventHandler<? extends javafx.event.Event>}
+um den abstrakten Befehl, der Bestandteil der Knöpfe von JavaFX (konkret hier: \emph{javafx.scene.control.Button} bzw. 
+\emph{javafx.scene.control.\\MenuButton}) ist. Die konkreten Befehle stellen die \emph{ButtonHandler}-Klassen
+im Controller dar, die das Interface implementieren und über ihre Konstruktoren die Empfänger der
+Ereignisbehandlung erhalten.
 
-Die Verwendung des Befehlsmusters ermöglicht es, ein bestimmtes Ereignis in einem dafür vorgesehenen Handler zu bearbeiten und dieses damit in einem Objekt zu kapseln. Jeder Handler lässt sich eindeutig einer Aufgabe und einem Ereignis zuordnen, sodass keine Verschränkung zwischen zwei verschiedenen Handlern auftritt. Außerdem lässt sich leichter ein weiterer Handler hinzufügen oder ein bestehender Handler austauschen.
+Die Verwendung des Befehlsmusters ermöglicht es, ein bestimmtes Ereignis in einem dafür vorgesehenen Handler
+zu bearbeiten und dieses damit in einem Objekt zu kapseln. Jeder Handler lässt sich eindeutig einer Aufgabe
+und einem Ereignis zuordnen, sodass keine Verschränkung zwischen zwei verschiedenen Handlern auftritt.
+Außerdem lässt sich leichter ein weiterer Handler hinzufügen oder ein bestehender Handler austauschen.
 
 \pagebreak
 \subsection{Singleton-Muster: Translator}
