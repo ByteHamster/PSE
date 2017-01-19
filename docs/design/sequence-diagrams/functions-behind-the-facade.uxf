@@ -4,10 +4,10 @@
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>90</x>
-      <y>20</y>
-      <w>890</w>
-      <h>260</h>
+      <x>290</x>
+      <y>410</y>
+      <w>1040</w>
+      <h>270</h>
     </coordinates>
     <panel_attributes>Functions behind the facade</panel_attributes>
     <additional_attributes/>
@@ -15,8 +15,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>140</x>
-      <y>60</y>
+      <x>430</x>
+      <y>440</y>
       <w>210</w>
       <h>30</h>
     </coordinates>
@@ -26,8 +26,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>360</x>
-      <y>60</y>
+      <x>650</x>
+      <y>440</y>
       <w>320</w>
       <h>30</h>
     </coordinates>
@@ -37,8 +37,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>560</x>
-      <y>100</y>
+      <x>880</x>
+      <y>480</y>
       <w>280</w>
       <h>30</h>
     </coordinates>
@@ -48,123 +48,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>250</x>
-      <y>80</y>
-      <w>30</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>250</x>
-      <y>120</y>
-      <w>20</w>
-      <h>130</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>100</x>
-      <y>100</y>
-      <w>170</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-getServerIP()</panel_attributes>
-    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>100</x>
-      <y>230</y>
-      <w>170</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-hostname</panel_attributes>
-    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>530</x>
-      <y>80</y>
-      <w>30</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>530</x>
-      <y>130</y>
-      <w>20</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>260</x>
-      <y>140</y>
-      <w>290</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-generalSettingsTab:GeneralSettings</panel_attributes>
-    <additional_attributes>10.0;20.0;270.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>260</x>
-      <y>110</y>
-      <w>290</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-getGeneralSettings()</panel_attributes>
-    <additional_attributes>270.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>260</x>
-      <y>170</y>
-      <w>450</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-getServerHost()</panel_attributes>
-    <additional_attributes>430.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>690</x>
-      <y>190</y>
-      <w>20</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>690</x>
-      <y>120</y>
+      <x>540</x>
+      <y>460</y>
       <w>30</w>
       <h>90</h>
     </coordinates>
@@ -174,31 +59,53 @@ getServerHost()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>690</x>
-      <y>60</y>
-      <w>280</w>
-      <h>30</h>
+      <x>540</x>
+      <y>530</y>
+      <w>20</w>
+      <h>130</h>
     </coordinates>
-    <panel_attributes>_serverIP:javafx.scene.control.TextField_</panel_attributes>
+    <panel_attributes/>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>700</x>
-      <y>180</y>
-      <w>160</w>
+      <x>290</x>
+      <y>510</y>
+      <w>270</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-getText()</panel_attributes>
-    <additional_attributes>140.0;20.0;10.0;20.0</additional_attributes>
+hostname=getServerHostname()</panel_attributes>
+    <additional_attributes>250.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>290</x>
+      <y>650</y>
+      <w>270</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;250.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>860</x>
+      <y>460</y>
+      <w>30</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>840</x>
-      <y>200</y>
+      <x>860</x>
+      <y>540</y>
       <w>20</w>
       <h>30</h>
     </coordinates>
@@ -208,43 +115,143 @@ getText()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>700</x>
-      <y>210</y>
-      <w>160</w>
-      <h>40</h>
+      <x>550</x>
+      <y>560</y>
+      <w>330</w>
+      <h>30</h>
     </coordinates>
-    <panel_attributes>lt=&lt;.
-hostname</panel_attributes>
-    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;310.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>260</x>
-      <y>220</y>
+      <x>550</x>
+      <y>520</y>
+      <w>330</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+generalSettingsTab=getGeneralSettings()</panel_attributes>
+    <additional_attributes>310.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>550</x>
+      <y>580</y>
       <w>450</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;.
-hostname</panel_attributes>
-    <additional_attributes>10.0;20.0;430.0;20.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+hostname=getServerHost()</panel_attributes>
+    <additional_attributes>430.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>980</x>
+      <y>600</y>
+      <w>20</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>840</x>
-      <y>80</y>
+      <x>980</x>
+      <y>500</y>
       <w>30</w>
-      <h>140</h>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>980</x>
+      <y>440</y>
+      <w>340</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>_serverHostname:javafx.scene.control.TextField_</panel_attributes>
+    <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>250</x>
-      <y>240</y>
+      <x>990</x>
+      <y>590</y>
+      <w>200</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+hostname=getText()</panel_attributes>
+    <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1170</x>
+      <y>610</y>
+      <w>20</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>990</x>
+      <y>630</y>
+      <w>200</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;180.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>550</x>
+      <y>640</y>
+      <w>450</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;430.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1170</x>
+      <y>460</y>
+      <w>30</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;150.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>650</y>
+      <w>30</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>980</x>
+      <y>640</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -254,8 +261,8 @@ hostname</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>690</x>
-      <y>230</y>
+      <x>1170</x>
+      <y>630</y>
       <w>30</w>
       <h>70</h>
     </coordinates>
@@ -265,12 +272,12 @@ hostname</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>840</x>
-      <y>220</y>
+      <x>860</x>
+      <y>560</y>
       <w>30</w>
-      <h>80</h>
+      <h>140</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
   </element>
 </diagram>

@@ -148,7 +148,7 @@ Beispielhaft wird das Auslesen und Setzen des Hostnamens für die OPC UA Server 
 \subsection{Funktionsweise der ViewFacades der Überwachungskonsole}
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.5]{design/sequence-diagrams/functions-behind-the-facade.png}
+	\includegraphics[scale=0.4]{design/sequence-diagrams/functions-behind-the-facade.png}
 	\caption{Funktionsweise der ViewFacades der Überwachungskonsole}
 \end{figure}
 Jeder Aufruf einer Methode der \emph{MonitoringViewFacade()} oder \emph{SettingsViewFacade()} wird an die dahinter liegenden Objekte delegiert, um an den eigentlichen Wert zu kommen oder die eigentliche Operation auszuführen. Das beispielhafte Vorgehen der \emph{SettingsViewFacade} zeigt, wie der Hostname der OPC UA Server vom eigentlichen \emph{javafx.scene.control.TextField}, über den der Benutzer den Hostnamen eingestellt hat, an die \emph{SettingsViewFacade} zurückgereicht wird.
