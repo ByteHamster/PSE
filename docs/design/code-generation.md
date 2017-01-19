@@ -11,6 +11,7 @@ Hinweis: Die zu wechselnden Pfade wurden nicht explizit angegeben.
 ## Beheben des Codes
 - Löschen der Dateien im Hauptverzeichnis, die ohne Package generiert wurden
 - Beheben von Imports und anderen kleineren Fehlern im generierten Code (mit IDE)
+- hinzufügen von Funktionen zu Enums. Das wird von dia2code ignoriert, ist aber in Java möglich
 
 ## JavaDoc
 - Download von TeXDoclet (http://doclet.github.io)
