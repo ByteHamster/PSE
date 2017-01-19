@@ -4,8 +4,8 @@
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>350</x>
-      <y>120</y>
+      <x>80</x>
+      <y>60</y>
       <w>1160</w>
       <h>460</h>
     </coordinates>
@@ -15,8 +15,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>490</x>
-      <y>130</y>
+      <x>220</x>
+      <y>70</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
@@ -26,8 +26,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>530</x>
-      <y>150</y>
+      <x>260</x>
+      <y>90</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -37,8 +37,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>530</x>
-      <y>190</y>
+      <x>260</x>
+      <y>130</y>
       <w>20</w>
       <h>350</h>
     </coordinates>
@@ -48,20 +48,20 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>170</y>
+      <x>130</x>
+      <y>110</y>
       <w>150</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 main(args)</panel_attributes>
     <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>850</x>
-      <y>190</y>
+      <x>580</x>
+      <y>130</y>
       <w>160</w>
       <h>30</h>
     </coordinates>
@@ -71,8 +71,8 @@ main(args)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>660</x>
-      <y>130</y>
+      <x>390</x>
+      <y>70</y>
       <w>150</w>
       <h>30</h>
     </coordinates>
@@ -82,20 +82,20 @@ main(args)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>540</x>
-      <y>170</y>
+      <x>270</x>
+      <y>110</y>
       <w>210</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 launch(appClass, args)</panel_attributes>
     <additional_attributes>190.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>730</x>
-      <y>190</y>
+      <x>460</x>
+      <y>130</y>
       <w>20</w>
       <h>330</h>
     </coordinates>
@@ -105,8 +105,8 @@ launch(appClass, args)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>730</x>
-      <y>150</y>
+      <x>460</x>
+      <y>90</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -116,20 +116,20 @@ launch(appClass, args)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
-      <y>180</y>
+      <x>470</x>
+      <y>120</y>
       <w>130</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;.
 &lt;&lt;create&gt;&gt;</panel_attributes>
     <additional_attributes>110.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>920</x>
-      <y>210</y>
+      <x>650</x>
+      <y>150</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -139,8 +139,8 @@ launch(appClass, args)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>920</x>
-      <y>250</y>
+      <x>650</x>
+      <y>190</y>
       <w>20</w>
       <h>20</h>
     </coordinates>
@@ -150,21 +150,21 @@ launch(appClass, args)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
-      <y>230</y>
+      <x>470</x>
+      <y>170</y>
       <w>200</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 init()</panel_attributes>
     <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1230</x>
-      <y>190</y>
-      <w>260</w>
+      <x>960</x>
+      <y>130</y>
+      <w>270</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>_currentView:MonitoringViewInterface_</panel_attributes>
@@ -173,31 +173,31 @@ init()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1000</x>
-      <y>180</y>
+      <x>730</x>
+      <y>120</y>
       <w>250</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;.
 &lt;&lt;create&gt;&gt;</panel_attributes>
     <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
-      <y>260</y>
+      <x>470</x>
+      <y>200</y>
       <w>200</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;180.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>920</x>
-      <y>260</y>
+      <x>650</x>
+      <y>200</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -207,8 +207,8 @@ init()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>920</x>
-      <y>300</y>
+      <x>650</x>
+      <y>240</y>
       <w>20</w>
       <h>200</h>
     </coordinates>
@@ -218,20 +218,20 @@ init()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
-      <y>280</y>
+      <x>470</x>
+      <y>220</y>
       <w>200</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 start(primaryStage)</panel_attributes>
     <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>940</x>
-      <y>320</y>
+      <x>660</x>
+      <y>260</y>
       <w>20</w>
       <h>150</h>
     </coordinates>
@@ -241,20 +241,20 @@ start(primaryStage)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>930</x>
-      <y>290</y>
-      <w>210</w>
+      <x>660</x>
+      <y>230</y>
+      <w>230</w>
       <h>50</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 setupUI(primaryStage)</panel_attributes>
-    <additional_attributes>30.0;30.0;50.0;30.0;50.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>20.0;30.0;50.0;30.0;50.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1070</x>
-      <y>380</y>
+      <x>800</x>
+      <y>320</y>
       <w>260</w>
       <h>30</h>
     </coordinates>
@@ -264,32 +264,32 @@ setupUI(primaryStage)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>950</x>
-      <y>370</y>
-      <w>140</w>
+      <x>670</x>
+      <y>310</y>
+      <w>150</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;.
 &lt;&lt;create&gt;&gt;</panel_attributes>
-    <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>950</x>
-      <y>410</y>
-      <w>420</w>
+      <x>670</x>
+      <y>350</y>
+      <w>430</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 setMenuSettingsButtonHandler(handler)</panel_attributes>
-    <additional_attributes>400.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>410.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1350</x>
-      <y>430</y>
+      <x>1080</x>
+      <y>370</y>
       <w>20</w>
       <h>20</h>
     </coordinates>
@@ -299,19 +299,19 @@ setMenuSettingsButtonHandler(handler)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>950</x>
-      <y>440</y>
-      <w>420</w>
+      <x>670</x>
+      <y>380</y>
+      <w>430</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;400.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;410.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1350</x>
-      <y>210</y>
+      <x>1080</x>
+      <y>150</y>
       <w>30</w>
       <h>160</h>
     </coordinates>
@@ -321,20 +321,20 @@ setMenuSettingsButtonHandler(handler)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>950</x>
-      <y>330</y>
-      <w>420</w>
+      <x>670</x>
+      <y>270</y>
+      <w>430</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 showMonitoringView(primaryStage)</panel_attributes>
-    <additional_attributes>400.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>410.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1350</x>
-      <y>350</y>
+      <x>1080</x>
+      <y>290</y>
       <w>20</w>
       <h>20</h>
     </coordinates>
@@ -344,19 +344,19 @@ showMonitoringView(primaryStage)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>950</x>
-      <y>360</y>
-      <w>420</w>
+      <x>670</x>
+      <y>300</y>
+      <w>430</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;400.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;410.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1350</x>
-      <y>360</y>
+      <x>1080</x>
+      <y>300</y>
       <w>30</w>
       <h>90</h>
     </coordinates>
@@ -366,8 +366,8 @@ showMonitoringView(primaryStage)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1350</x>
-      <y>440</y>
+      <x>1080</x>
+      <y>380</y>
       <w>30</w>
       <h>100</h>
     </coordinates>
@@ -377,41 +377,41 @@ showMonitoringView(primaryStage)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>930</x>
-      <y>460</y>
+      <x>660</x>
+      <y>400</y>
       <w>70</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;20.0;50.0;20.0;50.0;10.0;30.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;20.0;50.0;20.0;50.0;10.0;20.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
-      <y>490</y>
+      <x>470</x>
+      <y>430</y>
       <w>200</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;180.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>540</x>
-      <y>510</y>
+      <x>270</x>
+      <y>450</y>
       <w>210</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
+    <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;190.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>730</x>
-      <y>510</y>
+      <x>460</x>
+      <y>450</y>
       <w>30</w>
       <h>90</h>
     </coordinates>
@@ -421,19 +421,19 @@ showMonitoringView(primaryStage)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>430</x>
-      <y>530</y>
+      <x>160</x>
+      <y>470</y>
       <w>120</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>530</x>
-      <y>530</y>
+      <x>260</x>
+      <y>470</y>
       <w>30</w>
       <h>70</h>
     </coordinates>
@@ -443,8 +443,8 @@ showMonitoringView(primaryStage)</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1350</x>
-      <y>510</y>
+      <x>1080</x>
+      <y>450</y>
       <w>20</w>
       <h>20</h>
     </coordinates>
@@ -454,8 +454,8 @@ showMonitoringView(primaryStage)</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>920</x>
-      <y>510</y>
+      <x>650</x>
+      <y>450</y>
       <w>20</w>
       <h>20</h>
     </coordinates>
@@ -465,8 +465,8 @@ showMonitoringView(primaryStage)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>920</x>
-      <y>490</y>
+      <x>650</x>
+      <y>430</y>
       <w>30</w>
       <h>50</h>
     </coordinates>

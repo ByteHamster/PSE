@@ -15,9 +15,9 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>160</x>
+      <x>140</x>
       <y>60</y>
-      <w>190</w>
+      <w>210</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>_setFac:SettingsViewFacade_</panel_attributes>
@@ -26,9 +26,9 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>380</x>
+      <x>360</x>
       <y>60</y>
-      <w>300</w>
+      <w>320</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>_currentSettingsWindow:SettingsMainWindow_</panel_attributes>
@@ -39,7 +39,7 @@
     <coordinates>
       <x>560</x>
       <y>100</y>
-      <w>250</w>
+      <w>280</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>_generalSettingsTab:GeneralSettings_</panel_attributes>
@@ -75,7 +75,7 @@
       <w>170</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 getServerIP()</panel_attributes>
     <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -87,8 +87,8 @@ getServerIP()</panel_attributes>
       <w>170</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-hostname:String</panel_attributes>
+    <panel_attributes>lt=&lt;.
+hostname</panel_attributes>
     <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
   </element>
   <element>
@@ -121,7 +121,7 @@ hostname:String</panel_attributes>
       <w>290</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
+    <panel_attributes>lt=&lt;.
 generalSettingsTab:GeneralSettings</panel_attributes>
     <additional_attributes>10.0;20.0;270.0;20.0</additional_attributes>
   </element>
@@ -133,7 +133,7 @@ generalSettingsTab:GeneralSettings</panel_attributes>
       <w>290</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 getGeneralSettings()</panel_attributes>
     <additional_attributes>270.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -145,7 +145,7 @@ getGeneralSettings()</panel_attributes>
       <w>450</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 getServerHost()</panel_attributes>
     <additional_attributes>430.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -190,7 +190,7 @@ getServerHost()</panel_attributes>
       <w>160</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 getText()</panel_attributes>
     <additional_attributes>140.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -213,8 +213,8 @@ getText()</panel_attributes>
       <w>160</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-hostname:String</panel_attributes>
+    <panel_attributes>lt=&lt;.
+hostname</panel_attributes>
     <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
   </element>
   <element>
@@ -225,8 +225,8 @@ hostname:String</panel_attributes>
       <w>450</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-hostname:String</panel_attributes>
+    <panel_attributes>lt=&lt;.
+hostname</panel_attributes>
     <additional_attributes>10.0;20.0;430.0;20.0</additional_attributes>
   </element>
   <element>

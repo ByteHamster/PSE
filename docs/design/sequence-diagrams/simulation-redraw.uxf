@@ -257,7 +257,7 @@ getFillLevel()</panel_attributes>
       <w>470</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;.
 &lt;&lt;create&gt;&gt;</panel_attributes>
     <additional_attributes>450.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -269,7 +269,7 @@ getFillLevel()</panel_attributes>
       <w>120</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;.
 &lt;&lt;create&gt;&gt;</panel_attributes>
     <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -304,7 +304,7 @@ getFillLevel()</panel_attributes>
       <w>260</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;.
 &lt;&lt;create&gt;&gt;</panel_attributes>
     <additional_attributes>240.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -376,7 +376,7 @@ fillPolygon()</panel_attributes>
       <w>120</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;.
 &lt;&lt;create&gt;&gt;</panel_attributes>
     <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
   </element>
