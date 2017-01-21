@@ -67,14 +67,15 @@ Server und Namspace.
 \label{milo-wrapper-diagram}
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=0.4]{design/sequence-diagrams/sequence-read-client-value.png}
-  \caption{Lesen von Werten über den UAClientWrapper}
+  \includegraphics[scale=0.4]{design/sequence-diagrams/sequence-subscribe-client-value.png}
+  \caption{Abonnieren von Werten über den UAClientWrapper}
 \end{figure}
-Der Controller ruft beim \emph{TankServer}, welcher von \emph{UAClientWrapper} erbt, die read-Methode für den entsprechenden Parameter auf
-(hier exemplarisch \emph{readFillLevel()}). Der \emph{UAClientWrapper} erstellt ein \emph{NodeId}-Objekt und ruft damit
-vom Client die entsprechende \emph{VariableNode} ab. Von dieser \emph{VariableNode} wird nun schlussendlich der Wert abgerufen.
-Dieser Wert wird zurück an den Controller gegeben. Der \emph{UAClientWrapper} übernimmt somit die
-komplette Interaktion mit Milo.
+Der Controller ruft beim \emph{TankServer}, welcher von \emph{UAClientWrapper} erbt, die subscribe-Methode für den entsprechenden Parameter auf
+(hier exemplarisch \emph{subscribeFillLevel()}). Der \emph{UAClientWrapper} erstellt ein \emph{NodeId}-Objekt und damit die
+entsprechende \emph{ReadValueId}. Diese registriert er beim \emph{OpcUaClient}.
+Beim Empfang von Werten wird der entsprechende listener aufgerufen. Der \emph{UAClientWrapper} übernimmt somit die
+komplette Interaktion mit Milo. Die obige Zeichnung ist nicht vollständig. Zum Erstellen einer Subscription bei Milo werden über 10
+Objekte erzeugt und gleich wieder dereferenziert, was diesen Rahmen sprengen würden. Die Zeichnung gibt nur einen groben Überblick.
 
 \subsection{Neuzeichnen der GUI der Simulation}
   Das Aktualisieren der GUI der Fertigungssimulation erfolgt in regelm\"a{\ss}igen Abst\"anden. Das Hauptfenster tr\"agt dazu seinen Komponenten auf,
