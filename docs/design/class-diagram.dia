@@ -4068,7 +4068,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:point val="-51.4306,-2.5714"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-64.0067,-3.3214;-51.3806,-1.60371"/>
+        <dia:rectangle val="-64.0067,-3.3214;-51.3806,-1.6037"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -4077,7 +4077,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:point val="-51.4306,-2.5714"/>
         <dia:point val="-57.3782,-2.5714"/>
         <dia:point val="-57.3782,-2.45371"/>
-        <dia:point val="-63.9567,-2.45371"/>
+        <dia:point val="-63.9567,-2.4537"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -4899,7 +4899,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:point val="22.3111,-42.5104"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="22.2611,-43.2604;50.9911,-28.0604"/>
+        <dia:rectangle val="22.2611,-43.2604;47.9111,-28.0604"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="22.3111,-42.5104"/>
@@ -5214,10 +5214,10 @@ crosssection*$SIM_STEP_SIZE*threshold
       <dia:attribute name="templates">
         <dia:composite type="umlformalparameter">
           <dia:attribute name="name">
-            <dia:string>#monitoredValue#</dia:string>
+            <dia:string>#T#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#T#</dia:string>
+            <dia:string>#Object#</dia:string>
           </dia:attribute>
         </dia:composite>
       </dia:attribute>
@@ -13695,7 +13695,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="42.9602,-94.8408"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="29.0111,-97.8524;43.8102,-94.7908"/>
+        <dia:rectangle val="29.0113,-97.8524;43.8102,-94.7908"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -13703,8 +13703,8 @@ Extends UAClientWrapper#</dia:string>
       <dia:attribute name="orth_points">
         <dia:point val="42.9602,-94.8408"/>
         <dia:point val="42.9602,-96.8712"/>
-        <dia:point val="29.0611,-96.8712"/>
-        <dia:point val="29.0612,-97.8024"/>
+        <dia:point val="29.0613,-96.8712"/>
+        <dia:point val="29.0613,-97.8024"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -13736,7 +13736,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="42.9602,-94.8408"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="42.1102,-99.6147;49.9324,-94.7908"/>
+        <dia:rectangle val="42.1102,-99.6147;49.9325,-94.7908"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -13744,8 +13744,8 @@ Extends UAClientWrapper#</dia:string>
       <dia:attribute name="orth_points">
         <dia:point val="42.9602,-94.8408"/>
         <dia:point val="42.9602,-96.8712"/>
-        <dia:point val="49.8823,-96.8712"/>
-        <dia:point val="49.8824,-99.5647"/>
+        <dia:point val="49.8824,-96.8712"/>
+        <dia:point val="49.8825,-99.5647"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -15111,7 +15111,7 @@ Extends UAClientWrapper#</dia:string>
         <dia:point val="-23.127,-95.7046"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-23.177,-95.7546;-4.37704,-88.4546"/>
+        <dia:rectangle val="-23.177,-95.7546;-4.377,-88.4546"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-23.127,-95.7046"/>
