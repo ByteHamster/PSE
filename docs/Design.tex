@@ -33,8 +33,17 @@
 
 \section{Einleitung}
 Nachdem die Anforderungen an OSIP im Pflichtenheft ausführlich spezifiziert wurden, wird in diesem Dokument
-das Design von OSIP, insbesondere die Klasseneinteilung erläutert. Außerdem sind einige intressante Stellen in
-Form von Sequenzdiagramme erläutert.
+der softwaretechnische Entwurf von OSIP, insbesondere die Klasseneinteilung, erläutert. Makroskopisch wurde OSIP
+mit einer \emph{Model View Controller}-Architektur entworfen. Diese ermöglicht beispielsweise
+lose Kopplung zwischen Simulation und Anzeige der simulierten Anlage.
+
+Um die Anwendung und Interaktion der entworfenen Klassen zu illustrieren, sind Ausschnitte aus dem Programmablauf
+in Form von Sequenzdiagrammen erläutert. Die meisten der Sequenzdiagramme zeigen eine Interaktion über die Grenzen
+des jeweiligen Paketes hinweg.
+
+In diesem Dokument ist auch beschrieben, welche der im Pflichtenheft genannten Kann-Kriterien nun tatsächlich
+umgesetzt werden und in welchem Umfang die Umsetzung stattfindet. Im Entwurf verwendete Entwurfsmuster werden
+ebenfalls in diesem Dokument beschrieben.
 
 \section{Klassenbeschreibungen}
 Die Klassenbeschreibungen können im Anhang dieses Dokuments gefunden werden.
@@ -293,7 +302,7 @@ das sich nur aktualisiert wenn sich Werte im Model geändert haben. Außerdem l�
 ausgelöst werden. Es ist also nötig, einen Mechanismus zu verwenden, mit dem das View-Modul und die Steuerung sich über Änderungen im Model informieren
 lassen können.
 
-Dazu haben wir das Beobachter (engl. Observer) Muster verwendet. Dies definiert eine \emph{1 zu n}-Abhängigkeit zwischen dem Model und (z.B.) den OPC UA Server.
+Dazu haben wir das Beobachter (engl. Observer) Muster verwendet. Dies definiert eine \emph{1 zu n}-Abhängigkeit zwischen dem Model und (z.B.) dem View.
 Dabei wird jedoch eine möglichst lose Kopplung aufrecht erhalten. Darum ist das Beobachter Muster sehr allgemein gehalten. Dabei kann ein OPC UA Server (konkreter Beobachter)
 sich bei den relevanten Klassen (konkretes Subjekt) als Beobachter registrieren, und wird dann bei jeder Änderung informiert, in dem die Methode \emph{update()}
 vom Subjekt aufgerufen wird. Dazu muss der konkrete Beobachter nur ein sehr kleines Interface (\emph{java.util.Observer}) implementieren.
