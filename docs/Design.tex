@@ -32,15 +32,9 @@
 \pagebreak
 
 \section{Einleitung}
-OSIP ist in drei große Pakete gegliedert: Simulation, Monitoring und Core.
-Simulation realisiert die Fertigungssimulation und Monitoring die Überwachungskonsole.
-Core beinhaltet gemeinsame Unterpakete der Fertigungssimulation und des Monitorings sowie Unterpakete zu IO und der Implementierung
-von OPC UA.
-Das grundlegende Entwurfsmuster Model-View-Controller (MVC) ist bis auf das Model zweimal implementiert, nämlich einmal für die
-Fertigungssimulation und einmal für die Überwachungskonsole.
-Das gemeinsame Model befindet sich in Core. Dabei benutzt die Überwachungskonsole nur \emph{core.base} und \emph{core.behavior}.
-Die Fertigungssimulation benutzt ein erweitertes Model, das aus den Unterpakteten \emph{core.simulation}, \emph{core.base} und \emph{core.behavior} besteht.
-Dabei ist das Unterpaket \emph{core.simulation} ist für das Mischen von Farben und die Simulation der Verbindungsrohre zuständig.
+Nachdem die Anforderungen an OSIP im Pflichtenheft ausführlich spezifiziert wurden, wird in diesem Dokument
+das Design von OSIP, insbesondere die Klasseneinteilung erläutert. Außerdem sind einige intressante Stellen in
+Form von Sequenzdiagramme erläutert.
 
 \section{Klassenbeschreibungen}
 Die Klassenbeschreibungen können im Anhang dieses Dokuments gefunden werden.
@@ -70,6 +64,7 @@ Durch einen Aufruf von \emph{stop()} fährt der \emph{UAServerWrapper} den Serve
 Server und Namspace.
 
 \subsubsection{Client-Wrapper}
+\label{milo-wrapper-diagram}
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.4]{design/sequence-diagrams/sequence-read-client-value.png}
@@ -194,7 +189,7 @@ Die nicht implementierten Kann-Kriterien sind wie folgt:
     \item Fehler bei der Programmausf\"uhrung werden nicht in eine Datei geschrieben.
 \end{itemize}
 
-\section{Klassendiagramme}
+\section{Klassendiagramme und Paketstruktur}
 Das Klassendiagramm kann im Anhang dieses Dokuments gefunden werden. Zum besseren Verständnis des Diagramms im Folgenden
 eine grobe Übersicht über die entworfenen Pakete und ihre Anordnung im Klassendiagramm.
 
@@ -204,11 +199,31 @@ eine grobe Übersicht über die entworfenen Pakete und ihre Anordnung im Klassen
   \caption{Übersicht über das Klassendiagramm}
 \end{figure}
 
+Da die Fertigungssimulation und die Überwachungskonsole eigenständige Programme sind, ist es sinnvoll, diese in getrennten Paketen zu
+implementieren. Dazu haben wir die Pakete \emph{simulation} (für die Fertigungssimulation) und \emph{monitoring} (für die Überwachungskonsole)
+gewählt. Details zu diesen beiden Paketen gibt es in Kapitel \ref{mvc}. Da viele Funktionalitäten in beiden Programmen
+benötigt werden, gibt es außerdem ein Paket \emph{core} das gemeinsame Funktionalität enthält.
+
+Darin gibt es ein Unterpaket für das Model
+der Model-View-Controller Architektur (siehe \ref{mvc}), da für beide Programme das selbe Model verwendet wird. Das Model ist wiederum in
+drei Unterpakete unterteilt. Zum einen gibt es das Paket \emph{base}, dass den Zustand der Produktionsanlage mit all den Tanks und Leitungen beschreibt.
+Eine Simulation ist aber in diesem Paket nicht enthalten, da die Überwachungskonsole dies nicht benötigt. So kann einem Tank beispielsweise keine Flüssigkeit hinzugefügt oder entnommen werden,
+sondern nur der komplette Inhalt auf einmal gesetzt werden. Da die Simulation diese Simulationskomponenten jedoch benötigt,
+gibt es das Paket \emph{simulation}, dass \emph{base} um solche Simulationskomponenten erweitert. Das dritte Unterpakt des Models ist \emph{behavior}.
+Darin sind Klassen enthalten die nicht den Zustand der Produktionsanlage beschreiben, sondern Aktionen sind, z.B. Alarme und Szenarien.
+
+Außerdem gibt es in \emph{core} ein Unterpaket \emph{io}, dass das Einlesen und Parsen von Konfigurationsdateien für beide Programme enthält. Dann gibt
+es ein Unterpaket \emph{opcua}, dass die Verwendung von Milo kapselt und vereinfacht, da das Interface von Milo für OSIP viel zu mächtig
+ist (siehe \ref{milo-wrapper-diagram}. Zuletzt gibt es ein Unterpaket \emph{utils}, dass weitere gemeinsame Funktionalität wie Internationalisierung oder das Überprüfen von
+Formaten beinhaltet.
+
 \pagebreak
 \section{Verwendete Entwurfsmuster}
 \subsection{Model View Controller f\"ur die Fertigungssimulation}
+\label{mvc}
 Die Fertigungssimulation ist nach dem Prinzip Model-View-Controller aufgebaut.
-Das Model beinhaltet dabei die interne Darstellung der Produktionsanlage sowie die interne Logik, nach der die Produktionsanlage funktioniert. 
+Das Model beinhaltet dabei die interne Darstellung der Produktionsanlage sowie die interne Logik, nach der die Produktionsanlage funktioniert
+(Pakete \emph{core.model.base}, \emph{core.model.simulation} und \emph{core.model.behaviour}.
 Die View erh\"alt die Daten vom Model und stellt diese passend grafisch dar. Sie enth\"alt zudem die M\"oglichkeit f\"ur den Benutzer, Eingaben zu
 t\"atigen. Sofern Eingaben erfolgen werden diese an den Controller weiter gereicht, sodass dieser darauf reagieren kann.
 Der Controller steuert das Programm und reagiert auf Benutzereingaben. Dazu veranlasst er einerseits, dass in regelm\"a{\ss}igen Intervallen der
@@ -218,8 +233,7 @@ Werte f\"ur die OPC UA Clients der \"Uberwachungskonsole bereitstellen.
 
 \subsection{Model View Controller f\"ur \"Uberwachungskonsole}
 Das Programm der \"Uberwachungskonsole ist ebenfalls nach dem Prinzip Model View Controller aufgebaut.
-Sie enth\"alt das nahezu gleiche Model wie die Fertigungssimulation, allerdings ist hier weniger der internen Logik offenbart. Dies kommt daher, dass
-die \"Uberwachungskonsole nicht steuernd in die Produktionsanlage eingreifen soll.
+Da es die Produktionsanlage nicht simulieren muss, besteht das Model nur aus dem Paket \emph{core.model.base} und \emph{core.model.behaviour}.
 Die View benachrichtigt den Controller zu Benutzereingaben, sodass dieser darauf reagieren kann. Die Eingaben dienen hier der Steuerung und Konfiguration
 der \"Uberwachungskonsole, z.B. die Einstellung der anzuzeigenden Daten.
 Der Controller steuert das Programm und reagiert auf Benutzereingaben. Dazu veranlasst er einerseits, dass in regelm\"a{\ss}igen Intervallen die Daten der
