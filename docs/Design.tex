@@ -49,12 +49,19 @@ ebenfalls in diesem Dokument beschrieben.
 Die Klassenbeschreibungen können im Anhang dieses Dokuments gefunden werden.
 
 \section{Abläufe}
-Im Folgenden werden Sequenzdiagramme für typische Aktionen innerhalb von OSIP aufgezeigt und beschrieben.
+Um die Anwendung und Interaktion der entworfenen Klassen zu illustrieren, sind im Folgenden Ausschnitte aus dem Programmablauf
+in Form von Sequenzdiagrammen erläutert. Die meisten der Sequenzdiagramme zeigen eine Interaktion über die Grenzen
+des jeweiligen Paketes hinweg. Es werden zentrale und komplexe Abläufe innerhalb von OSIP gezeigt und textuell beschrieben.
+
+Die Sequenzdiagramme sind insbesondere deshalb wichtig, weil dadurch genau die verwendeten Schnittstellen nachgedacht wird
+und somit Unklarheiten zwischen den verschiedenen Softwarearchitekten beseitigt werden können.
 
 \subsection{Wrapper für OPC UA}
-OSIP verwendet einen Wrapper für Milo, da Milo eine zu komplexe Schnittstelle bereitstellt.
+OSIP verwendet Wrapper für Milo, da Milo eine zu komplexe Schnittstelle bereitstellt.
 Viele der angebotenen Funktionen (wie beispielsweise mehrere Namespaces) werden von uns nicht benötigt
-und werden durch den Wrapper verborgen.
+und werden durch die Wrapper verborgen. Für die Server-Seite und die Client-Seite wurde je eine Schnittstelle entworfen.
+Beide Seiten sollen nun kurz vorgestellt werden. Die komplexen Aufrufe an die Schnittstelle von Milo werden in den
+Sequenzdiagrammen gut sichtbar.
 
 \subsubsection{Server-Wrapper}
 \begin{figure}[H]
