@@ -126,7 +126,7 @@ Objekte erzeugt und gleich wieder dereferenziert, was diesen Rahmen sprengen wü
 Dies ist die Simulation eines der oberen Tanks. Für die vollständige Simulation muss \emph{simulateTank()} für jeden Tank aufgerufen
 und die Rückgabewerte zum Mixtank hinzugefügt werden. Zuerst erfragt die Simulation beim Tank die Leitung, die zum Tank hinführt, und ermittelt
 mit \emph{getMaxInput()} die maximale Durchflussmenge. Anschließend muss berechnet werden, welche Farbe die Flüssigkeit haben soll, die in den Tank
-hinein fließt. Da sich die Farbe der oberen Tanks aber nie ändert, kann man einfach die Flüssigkeit im Tank holen und dessen Farbe bestimmen.
+hinein fließt. Dazu wird der TankSelector Enum-Wert vom Tank geholt, und damit die Funktion \emph{getInitialColor()} aufgerufen, die die initiale Farbe der Tanks definiert.
 Dann kann ein neues \emph{Liquid} Objekt erstellt werden, das so groß ist, dass es gerade noch in die Leitung passt. Mittels \emph{putIn()} wird es
 in die Leitung gesteckt. Der Rückgabewert von \emph{putIn()} ist die Flüssigkeit, die am anderen Ende der Leitung herauskommt. Diese wird dann in den
 Tank eingefügt. Dazu verwendet der Tank eine \emph{SubtractiveMixingStrategy}, um die Farben und Temperaturen zu mischen. Nachdem die Flüssigkeiten

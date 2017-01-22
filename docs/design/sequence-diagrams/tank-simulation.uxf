@@ -173,14 +173,14 @@ size=getMaxInput()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>280</x>
+      <x>270</x>
       <y>230</y>
-      <w>230</w>
+      <w>250</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-liquid=getLiquid()</panel_attributes>
-    <additional_attributes>210.0;20.0;10.0;20.0</additional_attributes>
+tankSelector=getTankSelector()</panel_attributes>
+    <additional_attributes>220.0;20.0;20.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -547,7 +547,7 @@ out=putIn(newLiquid)</panel_attributes>
     <coordinates>
       <x>140</x>
       <y>0</y>
-      <w>970</w>
+      <w>1020</w>
       <h>1050</h>
     </coordinates>
     <panel_attributes>Simulate an upper tank</panel_attributes>
@@ -556,24 +556,24 @@ out=putIn(newLiquid)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1000</x>
-      <y>230</y>
-      <w>100</w>
+      <x>950</x>
+      <y>240</y>
+      <w>200</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>liquid:Liquid</panel_attributes>
+    <panel_attributes>tankSelector:TankSelector</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1040</x>
-      <y>250</y>
+      <y>260</y>
       <w>30</w>
-      <h>80</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLSpecialState</id>
@@ -595,7 +595,7 @@ out=putIn(newLiquid)</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-color=getColor()</panel_attributes>
+color=getInitialColor()</panel_attributes>
     <additional_attributes>760.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
