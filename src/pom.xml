@@ -1,11 +1,32 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <name>PSE</name>
-    <version>0.0.1</version>
-    <groupId>edu.kit.pse</groupId>
-    <artifactId>pse</artifactId>
-    <packaging>pom</packaging>
+	<name>PSE</name>
+	<version>0.0.1</version>
+	<groupId>edu.kit.pse</groupId>
+	<artifactId>pse</artifactId>
+	<packaging>pom</packaging>
 
+	<modules>
+		<module>osip-model</module>
+		<module>osip-model-simulation</module>
+		<module>osip-core</module>
+		<module>osip-opcua-server</module>
+		<module>osip-opcua-client</module>
+		<module>osip-simulation-controller</module>
+		<module>osip-simulation-view</module>
+		<module>osip-monitoring-controller</module>
+		<module>osip-monitoring-view</module>
+		<module>osip-monitoring-view-interface</module>
+		<module>osip-simulation-view-interface</module>
+	</modules>
+
+	<repositories>
+		<repository>
+			<id>oss-sonatype</id>
+			<name>oss-sonatype</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+		</repository>
+	</repositories>
 </project>
