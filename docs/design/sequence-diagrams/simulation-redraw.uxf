@@ -424,7 +424,7 @@ layer=2
       <w>160</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 start()</panel_attributes>
     <additional_attributes>140.0;20.0;10.0;20.0</additional_attributes>
   </element>
