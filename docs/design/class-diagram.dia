@@ -20729,14 +20729,14 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#AbstractTankVisualisation#</dia:string>
+            <dia:string>#AbstractTankVisualization#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="2"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Returns the current used visualisation for a specified tank.
-@return The current used visualisation of a specified tank.#</dia:string>
+            <dia:string>#Returns the current used visualization for a specified tank.
+@return The current used visualization of a specified tank.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -20762,7 +20762,7 @@ crosssection*$SIM_STEP_SIZE*threshold
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The tank whose current used visualisation should be returned.#</dia:string>
+                <dia:string>#The tank whose current used visualization should be returned.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -21951,13 +21951,13 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:real val="6.1999999999999993"/>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#TankVisualisation#</dia:string>
+        <dia:string>#TankVisualization#</dia:string>
       </dia:attribute>
       <dia:attribute name="stereotype">
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="comment">
-        <dia:string>#Visualisation for a normal tank.#</dia:string>
+        <dia:string>#Visualization for a normal tank.#</dia:string>
       </dia:attribute>
       <dia:attribute name="abstract">
         <dia:boolean val="false"/>
@@ -22043,13 +22043,13 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:string>#supply#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#BarVisualisation#</dia:string>
+            <dia:string>#BarVisualization#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Visualisation of the supply pipe.#</dia:string>
+            <dia:string>#Visualization of the supply pipe.#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="1"/>
@@ -22065,7 +22065,7 @@ crosssection*$SIM_STEP_SIZE*threshold
       <dia:attribute name="operations">
         <dia:composite type="umloperation">
           <dia:attribute name="name">
-            <dia:string>#TankVisualisation#</dia:string>
+            <dia:string>#TankVisualization#</dia:string>
           </dia:attribute>
           <dia:attribute name="stereotype">
             <dia:string>#constructor#</dia:string>
@@ -22077,7 +22077,7 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="2"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Creates a new visualisation.#</dia:string>
+            <dia:string>#Creates a new visualization.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -22135,13 +22135,13 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:real val="8.0499999999999989"/>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#MixTankVisualisation#</dia:string>
+        <dia:string>#MixTankVisualization#</dia:string>
       </dia:attribute>
       <dia:attribute name="stereotype">
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="comment">
-        <dia:string>#Visualisation for the mixtank.#</dia:string>
+        <dia:string>#Visualization for the mixtank.#</dia:string>
       </dia:attribute>
       <dia:attribute name="abstract">
         <dia:boolean val="false"/>
@@ -22227,13 +22227,13 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:string>#motorSpeed#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#BarVisualisation#</dia:string>
+            <dia:string>#BarVisualization#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Visualisation of the motor speed.#</dia:string>
+            <dia:string>#Visualization of the motor speed.#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="1"/>
@@ -22250,13 +22250,13 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:string>#color#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#ColorVisualisation#</dia:string>
+            <dia:string>#ColorVisualization#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Visualisation of the mixed color.#</dia:string>
+            <dia:string>#Visualization of the mixed color.#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="1"/>
@@ -22272,7 +22272,7 @@ crosssection*$SIM_STEP_SIZE*threshold
       <dia:attribute name="operations">
         <dia:composite type="umloperation">
           <dia:attribute name="name">
-            <dia:string>#MixTankVisualisation#</dia:string>
+            <dia:string>#MixTankVisualization#</dia:string>
           </dia:attribute>
           <dia:attribute name="stereotype">
             <dia:string>#constructor#</dia:string>
@@ -22284,7 +22284,7 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="2"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Creates a new visualisation.#</dia:string>
+            <dia:string>#Creates a new visualization.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -22342,7 +22342,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:real val="28.400000000000002"/>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#AbstractTankVisualisation#</dia:string>
+        <dia:string>#AbstractTankVisualization#</dia:string>
       </dia:attribute>
       <dia:attribute name="stereotype">
         <dia:string>##</dia:string>
@@ -22434,13 +22434,13 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:string>#overflowAlarm#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#AlarmVisualisation#</dia:string>
+            <dia:string>#AlarmVisualization#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Visualisation for the overflow alarm.#</dia:string>
+            <dia:string>#Visualization for the overflow alarm.#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="2"/>
@@ -22457,13 +22457,13 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:string>#underflowAlarm#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#AlarmVisualisation#</dia:string>
+            <dia:string>#AlarmVisualization#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Visualisation for the underflow alarm.#</dia:string>
+            <dia:string>#Visualization for the underflow alarm.#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="2"/>
@@ -22480,7 +22480,7 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:string>#temperatureOverflowAlarm#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#AlarmVisualisation#</dia:string>
+            <dia:string>#AlarmVisualization#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
@@ -22503,7 +22503,7 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:string>#temperatureUnderflowAlarm#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#AlarmVisualisation#</dia:string>
+            <dia:string>#AlarmVisualization#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
@@ -22526,13 +22526,13 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:string>#drain#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#BarVisualisation#</dia:string>
+            <dia:string>#BarVisualization#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Visualisation for the drain pipe.#</dia:string>
+            <dia:string>#Visualization for the drain pipe.#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="2"/>
@@ -22549,13 +22549,13 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:string>#fillLevel#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#FillLevelVisualisation#</dia:string>
+            <dia:string>#FillLevelVisualization#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Visualisation of the fill level.#</dia:string>
+            <dia:string>#Visualization of the fill level.#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="2"/>
@@ -22572,13 +22572,13 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:string>#temperature#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#TemperatureVisualisation#</dia:string>
+            <dia:string>#TemperatureVisualization#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Visualisation of the temperature.#</dia:string>
+            <dia:string>#Visualization of the temperature.#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="2"/>
@@ -22601,7 +22601,7 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Visualisation of the progressions.#</dia:string>
+            <dia:string>#Visualization of the progressions.#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="2"/>
@@ -22928,7 +22928,7 @@ false otherwise.#</dia:string>
         <dia:real val="11.849999999999998"/>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#AlarmVisualisation#</dia:string>
+        <dia:string>#AlarmVisualization#</dia:string>
       </dia:attribute>
       <dia:attribute name="stereotype">
         <dia:string>##</dia:string>
@@ -23065,7 +23065,7 @@ false otherwise.#</dia:string>
       <dia:attribute name="operations">
         <dia:composite type="umloperation">
           <dia:attribute name="name">
-            <dia:string>#AlarmVisualisation#</dia:string>
+            <dia:string>#AlarmVisualization#</dia:string>
           </dia:attribute>
           <dia:attribute name="stereotype">
             <dia:string>#constructor#</dia:string>
@@ -23077,7 +23077,7 @@ false otherwise.#</dia:string>
             <dia:enum val="2"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Creates and initializes a new alarm visualisation.#</dia:string>
+            <dia:string>#Creates and initializes a new alarm visualization.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -23328,7 +23328,7 @@ false otherwise.#</dia:string>
         <dia:real val="15.800000000000001"/>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#TemperatureVisualisation#</dia:string>
+        <dia:string>#TemperatureVisualization#</dia:string>
       </dia:attribute>
       <dia:attribute name="stereotype">
         <dia:string>##</dia:string>
@@ -23465,7 +23465,7 @@ false otherwise.#</dia:string>
       <dia:attribute name="operations">
         <dia:composite type="umloperation">
           <dia:attribute name="name">
-            <dia:string>#TemperatureVisualisation#</dia:string>
+            <dia:string>#TemperatureVisualization#</dia:string>
           </dia:attribute>
           <dia:attribute name="stereotype">
             <dia:string>#constructor#</dia:string>
@@ -23477,7 +23477,7 @@ false otherwise.#</dia:string>
             <dia:enum val="2"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Creates and initializes a new temperature visualisation.#</dia:string>
+            <dia:string>#Creates and initializes a new temperature visualization.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -23841,7 +23841,7 @@ false otherwise.#</dia:string>
         <dia:real val="15.800000000000001"/>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#BarVisualisation#</dia:string>
+        <dia:string>#BarVisualization#</dia:string>
       </dia:attribute>
       <dia:attribute name="stereotype">
         <dia:string>##</dia:string>
@@ -23939,7 +23939,7 @@ false otherwise.#</dia:string>
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#The label shows which type is represented in this visualisation.#</dia:string>
+            <dia:string>#The label shows which type is represented in this visualization.#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="1"/>
@@ -23978,7 +23978,7 @@ false otherwise.#</dia:string>
       <dia:attribute name="operations">
         <dia:composite type="umloperation">
           <dia:attribute name="name">
-            <dia:string>#BarVisualisation#</dia:string>
+            <dia:string>#BarVisualization#</dia:string>
           </dia:attribute>
           <dia:attribute name="stereotype">
             <dia:string>#constructor#</dia:string>
@@ -23990,7 +23990,7 @@ false otherwise.#</dia:string>
             <dia:enum val="2"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Creates and initializes a new visualisation.#</dia:string>
+            <dia:string>#Creates and initializes a new visualization.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -24175,7 +24175,7 @@ false otherwise.#</dia:string>
         <dia:real val="15.800000000000001"/>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#FillLevelVisualisation#</dia:string>
+        <dia:string>#FillLevelVisualization#</dia:string>
       </dia:attribute>
       <dia:attribute name="stereotype">
         <dia:string>##</dia:string>
@@ -24312,7 +24312,7 @@ false otherwise.#</dia:string>
       <dia:attribute name="operations">
         <dia:composite type="umloperation">
           <dia:attribute name="name">
-            <dia:string>#FillLevelVisualisation#</dia:string>
+            <dia:string>#FillLevelVisualization#</dia:string>
           </dia:attribute>
           <dia:attribute name="stereotype">
             <dia:string>#constructor#</dia:string>
@@ -24324,7 +24324,7 @@ false otherwise.#</dia:string>
             <dia:enum val="2"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Creates a new fill level visualisation.#</dia:string>
+            <dia:string>#Creates a new fill level visualization.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -24491,7 +24491,7 @@ false otherwise.#</dia:string>
         <dia:real val="19.850000000000001"/>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#ProgressVisualisation#</dia:string>
+        <dia:string>#ProgressVisualization#</dia:string>
       </dia:attribute>
       <dia:attribute name="stereotype">
         <dia:string>##</dia:string>
@@ -24628,7 +24628,7 @@ false otherwise.#</dia:string>
       <dia:attribute name="operations">
         <dia:composite type="umloperation">
           <dia:attribute name="name">
-            <dia:string>#ProgressVisualisation#</dia:string>
+            <dia:string>#ProgressVisualization#</dia:string>
           </dia:attribute>
           <dia:attribute name="stereotype">
             <dia:string>#constructor#</dia:string>
@@ -25247,7 +25247,7 @@ the chart showing the progression.#</dia:string>
         <dia:real val="15.800000000000001"/>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#ColorVisualisation#</dia:string>
+        <dia:string>#ColorVisualization#</dia:string>
       </dia:attribute>
       <dia:attribute name="stereotype">
         <dia:string>##</dia:string>
@@ -25384,7 +25384,7 @@ the chart showing the progression.#</dia:string>
       <dia:attribute name="operations">
         <dia:composite type="umloperation">
           <dia:attribute name="name">
-            <dia:string>#ColorVisualisation#</dia:string>
+            <dia:string>#ColorVisualization#</dia:string>
           </dia:attribute>
           <dia:attribute name="stereotype">
             <dia:string>#constructor#</dia:string>
@@ -25396,7 +25396,7 @@ the chart showing the progression.#</dia:string>
             <dia:enum val="2"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Creates and initializes all controls for the color visualisation.#</dia:string>
+            <dia:string>#Creates and initializes all controls for the color visualization.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
