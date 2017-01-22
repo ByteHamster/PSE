@@ -16,5 +16,9 @@ Hinweis: Die zu wechselnden Pfade wurden nicht explizit angegeben.
 ## JavaDoc
 - Download von TeXDoclet (http://doclet.github.io)
 - javadoc -docletpath TeXDoclet.jar -doclet org.stfm.texdoclet.TeXDoclet -title "OSIP - Dokumentation" -subtitle "OPC UA Simulator for Industrial Plants" -hr -noinherited -nosummaries -nopackagetoc -subpackages edu.kit.pse.osip
+- Durch `\setcounter{page}{25}` nach `\maketitle` die fortlaufenden Seitenzahlen ermöglichen. Anzahl muss 2 Seiten mehr sein als im anderen Dokument.
 - lualatex docs.tex
   - pdflatex hat ein zu niedriges memory limit, das man aufwändig umstellen muss. Einfacher Fix: LuaLaTeX
+
+## Abgabe
+- Beide PDFs verketten
