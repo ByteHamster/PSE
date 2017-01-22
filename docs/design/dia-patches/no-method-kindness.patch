@@ -1,0 +1,29 @@
+From 5d95e3cefb1d45752b579611b5cd967da1b1340b Mon Sep 17 00:00:00 2001
+From: David Kahles <david.kahles96@gmail.com>
+Date: Sun, 15 Jan 2017 18:43:06 +0100
+Subject: [PATCH] Don't print method kindness
+
+---
+ src/GenerateCodeJava.cpp | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/src/GenerateCodeJava.cpp b/src/GenerateCodeJava.cpp
+index ad5bcd7..0512bdd 100644
+--- a/src/GenerateCodeJava.cpp
++++ b/src/GenerateCodeJava.cpp
+@@ -174,11 +174,7 @@ GenerateCodeJava::writeFunctionComment1 (const umlOperation & ope,
+         }
+         comment_.append (tmpa2.getName ());
+ 
+-        comment_.append (" (" + std::string (kindStr (tmpa2.getKind ())) +
+-                         (tmpa2.getComment ().empty () ?
+-                           ")" :
+-                           ") " +
+-                         tmpa2.getComment ()));
++        comment_.append (" " + tmpa2.getComment ());
+         getFile () << comment (comment_,
+                                std::string (spc () + " * @param "),
+                                std::string (spc () + " *        "),
+-- 
+2.11.0
+

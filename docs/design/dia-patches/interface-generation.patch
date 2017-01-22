@@ -1,0 +1,36 @@
+From 83e3391648274f894edca691131febc869675f27 Mon Sep 17 00:00:00 2001
+From: ByteHamster <info@bytehamster.com>
+Date: Fri, 13 Jan 2017 00:10:17 +0100
+Subject: [PATCH 1/2] Fixed interface generation
+
+---
+ src/GenerateCodeJava.cpp | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/GenerateCodeJava.cpp b/src/GenerateCodeJava.cpp
+index 1762289..3d5d12e 100644
+--- a/src/GenerateCodeJava.cpp
++++ b/src/GenerateCodeJava.cpp
+@@ -264,7 +264,8 @@ GenerateCodeJava::writeFunction2 (const umlClassNode & node,
+                   << ope.getName ()
+                   << "\": this generator doesn't support const operation.\n";
+     }
+-    if (ope.getInheritance () == Inheritance::ABSTRACT) {
++    if (ope.getInheritance () == Inheritance::ABSTRACT ||
++        node.isStereotypeInterface()) {
+         getFile () << ";\n";
+     }
+     else
+@@ -301,7 +302,8 @@ GenerateCodeJava::writeFunction (const umlClassNode & node,
+         getFile () << "abstract ";
+     }
+     else if (ope.getInheritance () == Inheritance::FINAL
+-             && node.getName() != ope.getName()) {
++             && node.getName() != ope.getName()
++             && !node.isStereotypeInterface()) {
+         getFile () << "final ";
+     }
+ 
+-- 
+2.7.4
+
