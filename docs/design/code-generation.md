@@ -6,6 +6,7 @@ Hinweis: Die zu wechselnden Pfade wurden nicht explizit angegeben.
 - git apply constructor-include-throw.patch
 - git apply interface-generation.patch
 - git apply questionmark-removal.patch
+- git apply removing-unnecessary-comments.patch
 - dia2code class-diagram.dia -t java --buildtree
 
 ## Beheben des Codes

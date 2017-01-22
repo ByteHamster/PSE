@@ -1,0 +1,56 @@
+From dba0ae1d6dfe5f9ad118bdfc5501af2a3a27e1fc Mon Sep 17 00:00:00 2001
+From: ByteHamster <info@bytehamster.com>
+Date: Sun, 22 Jan 2017 18:18:37 +0100
+Subject: [PATCH] Removing unnecessary comments
+
+---
+ src/GenerateCode.cpp | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/src/GenerateCode.cpp b/src/GenerateCode.cpp
+index 13d3386..168bf5b 100644
+--- a/src/GenerateCode.cpp
++++ b/src/GenerateCode.cpp
+@@ -430,7 +430,6 @@ GenerateCode::genClass (const umlClassNode & node) {
+     incIndentLevel ();
+ 
+     if (!node.getAssociations ().empty ()) {
+-        writeComment ("Associations");
+         for (const umlassoc & assoc : node.getAssociations ()) {
+             writeAssociation (node, assoc, tmpv);
+         }
+@@ -439,7 +438,6 @@ GenerateCode::genClass (const umlClassNode & node) {
+     if (!node.getAttributes ().empty ()) {
+ #ifdef ENABLE_CORBA
+         if (isCorba) {
+-            writeComment ("Public state members");
+             getFile () << spc () << "public:\n";
+             incIndentLevel ();
+             for (const umlAttribute & umla : node.getAttributes ()) {
+@@ -500,7 +498,6 @@ GenerateCode::genClass (const umlClassNode & node) {
+         else
+ #endif
+         {
+-            writeComment ("Attributes");
+             for (const umlAttribute & umla : node.getAttributes ()) {
+                 if (umla.getName ().empty ()) {
+                     std::cerr << "An attribute of the "
+@@ -517,7 +514,6 @@ GenerateCode::genClass (const umlClassNode & node) {
+     }
+ 
+     if (!node.getOperations ().empty ()) {
+-        writeComment ("Operations");
+ #ifdef ENABLE_CORBA
+         if (isCorba) {
+             getFile () << spc () << "public :\n";
+@@ -537,7 +533,6 @@ GenerateCode::genClass (const umlClassNode & node) {
+     if ((!node.getAttributes ().empty ()) && (isCorba)) {
+         getFile () << "\n";
+         decIndentLevel ();
+-        writeComment ("State member implementation");
+         getFile () << spc () << "private :\n";
+         incIndentLevel ();
+         for (const umlAttribute & umla : node.getAttributes ()) {
+-- 
+2.7.4
+
