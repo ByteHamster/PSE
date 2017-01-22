@@ -75,7 +75,7 @@ Die komplexen Aufrufe an die Schnittstelle von Milo und die Vereinfachung durch 
   \includegraphics[scale=0.38]{design/sequence-diagrams/sequence-set-server-value.png}
   \caption{Setzen von Werten über den UAServerWrapper}
 \end{figure}
-Beim Erstellen des Controllers werden auch der Simulator, sowie die Server der Tanks erstellt.
+Beim Erstellen des Controllers werden auch der Simulator sowie die Server der Tanks erstellt.
 Diese \emph{TankServer} erben von \emph{UAServerWrapper}, was eine grundlegende Abstraktion von Milo darstellt.
 Wie im Diagramm zu sehen, werden vom Wrapper automatisch Server und Namespace erstellt. Der Namespace wird beim Server
 registriert und im Namespace werden die Ordner und Variablen erstellt (hier exemplarisch der Füllstand).
@@ -125,8 +125,8 @@ Objekte erzeugt und sofort wieder dereferenziert, was diesen Rahmen sprengen wü
 Dies ist die Simulation eines der oberen Tanks. Für die vollständige Simulation muss \emph{simulateTank()} für jeden Tank aufgerufen
 und die Rückgabewerte zum \emph{MixTank} hinzugefügt werden. Zuerst erfragt die Simulation beim Tank die Leitung, die zum Tank hinführt, und ermittelt
 mit \emph{getMaxInput()} die maximale Durchflussmenge. Anschließend muss berechnet werden, welche Farbe die Flüssigkeit haben soll, die in den Tank
-hinein fließt. Dazu wird der TankSelector Enum-Wert vom Tank geholt, und damit die Funktion \emph{getInitialColor()} aufgerufen, die die initiale Farbe der Tanks definiert.
-Dann kann ein neues \emph{Liquid} Objekt erstellt werden, das so groß ist, dass es gerade noch in die Leitung passt. Mittels \emph{putIn()} wird es
+hinein fließt. Dazu wird der TankSelector-Wert vom Tank geholt und damit die Funktion \emph{getInitialColor()} aufgerufen, die die initiale Farbe der Tanks definiert.
+Dann kann ein neues \emph{Liquid}-Objekt erstellt werden, das so groß ist, dass es gerade noch in die Leitung passt. Mittels \emph{putIn()} wird es
 in die Leitung gesteckt. Der Rückgabewert von \emph{putIn()} ist die Flüssigkeit, die am anderen Ende der Leitung herauskommt. Diese wird dann in den
 Tank eingefügt. Dazu verwendet der Tank eine \emph{SubtractiveMixingStrategy}, um die Farben und Temperaturen zu mischen. Nachdem die Flüssigkeiten
 gemischt sind, wird die Leitung vom oberen Tank zum Mixtank geholt und ermittelt, wie viel Flüssigkeit dort hineinpasst. Diese Menge wird dann aus dem
@@ -160,7 +160,7 @@ Im Laufe des Startvorgangs wird eine Instanz des \emph{MonitoringControllers} er
 	\caption{Speichern der Einstellungen}
 \end{figure}
 Wird in den Einstellungen der Überwachungskonsole der "`Speichern"'-Knopf gedrückt, löst dieses Ereignis die Methode \emph{handle()} in einer Instanz des \emph{SettingsSaveButtonHandlers} aus.
-Dort werden alle vom Benutzer getätigten Einstellungen über die \emph{SettingsViewFacade} ausgelesen und in den \emph{ClientSettingsWrapper} zum Speichern geschrieben, sowie bestimmte Änderungen über die \emph{MonitoringViewFacade} direkt in der Ansicht dargestellt.
+Dort werden alle vom Benutzer getätigten Einstellungen über die \emph{SettingsViewFacade} ausgelesen und in den \emph{ClientSettingsWrapper} zum Speichern geschrieben sowie bestimmte Änderungen über die \emph{MonitoringViewFacade} direkt in der Ansicht dargestellt.
 Beispielhaft wird das Auslesen und Setzen des Hostnamens für die OPC UA Server und eines Überlaufalarms gezeigt.
 
 \subsection{Funktionsweise der ViewFacades der Überwachungskonsole}
@@ -176,11 +176,11 @@ Jeder Aufruf einer Methode der \emph{MonitoringViewFacade} oder \emph{SettingsVi
 
 \subsection{\"Ubernommene Kann-Kriterien}
 Im Folgenden werden die Kann-Kriterien aus dem Pflichtenheft aufgelistet. Zu jedem der Kriterien wird
-kurz zusammengefasst, was genau es bedeutet. Es werden zunächst die implementierten und anschlie{\ss}end die nicht implementierten
-Kriterien gelistet.
+kurz zusammengefasst, was genau es bedeutet. Es werden zunächst die geplanten und anschlie{\ss}end die nicht eingeplanten
+Kriterien für die Implementierung gelistet.
 
-\subsubsection{Implementierte Kann-Kriterien}
-Die implementierten Kann-Kriterien sind wie folgt:
+\subsubsection{Geplante Kann-Kriterien für die Implementierung}
+Die geplanten Kann-Kriterien sind wie folgt:
 
 \begin{itemize}
     \item Sowohl in der \"Uberwachungskonsole als auch in der Fertigungssimulation werden Fehler bei der Programmausf\"uhrung
@@ -199,8 +199,8 @@ Die implementierten Kann-Kriterien sind wie folgt:
     \"Uberwachungskonsole protokolliert.
 \end{itemize}
 
-\subsubsection{Nicht implementierte Kann-Kriterien}
-Die nicht implementierten Kann-Kriterien sind wie folgt:
+\subsubsection{Nicht eingeplante Kann-Kriterien für die Implementierung}
+Die nicht eingeplanten Kann-Kriterien sind wie folgt:
 
 \begin{itemize}
     \item Es stehen keine verschiedenen Sprachoptionen f\"ur \"Uberwachungskonsole und Fertigungssimulation zur Verf\"ugung.
@@ -213,7 +213,7 @@ Die nicht implementierten Kann-Kriterien sind wie folgt:
 
 \section{Klassendiagramme und Paketstruktur}
 Das Klassendiagramm kann im Anhang dieses Dokuments gefunden werden. Dabei ist zu beachten, dass die Variable \$SIM\_STEP\_SIZE eine Konstante ist,
-die definiert wie granular die Simulation berechnet wird. Davon ist beispielsweise die Klasse \emph{Pipe} abhängig. Der genaue Wert dieser
+die definiert, wie granular die Simulation berechnet wird. Davon ist beispielsweise die Klasse \emph{Pipe} abhängig. Der genaue Wert dieser
 Konstanten ist noch unbekannt und wird während der Implementierung ermittelt. Zum besseren Verständnis des Diagramms ist im Folgenden
 eine grobe Übersicht über die entworfenen Pakete und ihre Anordnung im Klassendiagramm gegeben.
 
@@ -238,7 +238,7 @@ Darin sind Klassen enthalten, die nicht den Zustand der Produktionsanlage beschr
 
 Des Weiteren gibt es in \emph{core} ein Unterpaket \emph{io}, das das Einlesen und Parsen von Konfigurationsdateien für beide Programme enthält. Außerdem gibt
 es ein Unterpaket \emph{opcua}, das die Verwendung von Milo kapselt und vereinfacht, da das Interface von Milo für OSIP viel zu mächtig
-ist (siehe \ref{milo-wrapper-diagram}. Zuletzt gibt es ein Unterpaket \emph{utils}, das weitere gemeinsame Funktionalität wie Internationalisierung oder das Überprüfen von
+ist (siehe \ref{milo-wrapper-diagram}). Zuletzt gibt es ein Unterpaket \emph{utils}, das weitere gemeinsame Funktionalität wie Internationalisierung oder das Überprüfen von
 Formaten beinhaltet.
 
 \pagebreak
@@ -247,7 +247,7 @@ Formaten beinhaltet.
 \label{mvc}
 Die Fertigungssimulation ist nach dem Prinzip Model-View-Controller aufgebaut.
 Das Model beinhaltet dabei die interne Darstellung der Produktionsanlage sowie die interne Logik, nach der die Produktionsanlage funktioniert
-(Pakete \emph{core.model.base}, \emph{core.model.simulation} und \emph{core.model.behaviour}.
+(Pakete \emph{core.model.base}, \emph{core.model.simulation} und \emph{core.model.behavior}).
 Die View erh\"alt die Daten vom Model und stellt diese passend grafisch dar. Sie enth\"alt zudem die M\"oglichkeit f\"ur den Benutzer, Eingaben zu
 t\"atigen. Sofern Eingaben erfolgen, werden diese an den Controller weiter gereicht, sodass dieser darauf reagieren kann.
 Der Controller steuert das Programm und reagiert auf Benutzereingaben. Dazu veranlasst er einerseits, dass in regelm\"a{\ss}igen Intervallen der
@@ -255,13 +255,13 @@ n\"achste Simulationsschritt ausgef\"uhrt wird. Andererseits veranlasst er, je n
 und f\"ur die kommenden Simulationsschritte in der ge\"anderten Form verwendet werden. Der Controller steuert zudem die OPC UA Server an, die die
 Werte f\"ur die OPC UA Clients der \"Uberwachungskonsole bereitstellen.
 
-\subsection{Model View Controller f\"ur \"Uberwachungskonsole}
+\subsection{Model View Controller f\"ur die \"Uberwachungskonsole}
 Das Programm der \"Uberwachungskonsole ist ebenfalls nach dem Prinzip Model-View-Controller aufgebaut.
-Da es die Produktionsanlage nicht simulieren muss, besteht das Model nur aus den Paketen \emph{core.model.base} und \emph{core.model.behaviour}.
+Da es die Produktionsanlage nicht simulieren muss, besteht das Model nur aus den Paketen \emph{core.model.base} und \emph{core.model.behavior}.
 Die View benachrichtigt den Controller zu Benutzereingaben, sodass dieser darauf reagieren kann. Die Eingaben dienen hier der Steuerung und Konfiguration
 der \"Uberwachungskonsole, z.B. die Einstellung der anzuzeigenden Daten.
-Der Controller steuert das Programm und reagiert auf Benutzereingaben. Dazu veranlasst er einerseits, dass in regelm\"a{\ss}igen Intervallen die Daten der
-Fertigungssimulation abgefragt werden und steuert die OPC UA Clients an, die der Kommunikation mit der Fertigungssimulation dienen.
+Der Controller steuert das Programm und reagiert auf Benutzereingaben. Dazu veranlasst er, dass in regelm\"a{\ss}igen Intervallen die Daten der
+Fertigungssimulation abgefragt werden, und steuert die OPC UA Clients an, die der Kommunikation mit der Fertigungssimulation dienen.
 
 \pagebreak
 \subsection{Fassaden-Muster: UAServerWrapper, UAClientWrapper}
@@ -271,8 +271,8 @@ Fertigungssimulation abgefragt werden und steuert die OPC UA Clients an, die der
   \caption{Ausschnitt aus dem Klassendiagramm: Fassade in Milo-Wrappern}
 \end{figure}
 Milo besitzt eine sehr komplexe Schnittstelle, zu deren Benutzung man sich ausgiebig mit dem oft schlecht dokumentierten Code
-der Library beschäftigen muss (Zertifikate müssen manuell deaktiviert werden etc.). Des Weiteren unterstützt Milo mehr Funktionalität,
-als sie in unserem Kontext gebraucht wird (mehrere Namespaces etc.).
+der Library beschäftigen muss (Zertifikate müssen manuell deaktiviert werden, etc.). Des Weiteren unterstützt Milo mehr Funktionalität,
+als sie in unserem Kontext gebraucht wird (mehrere Namespaces, etc.).
 
 Das Fassaden-Muster ist dazu da, um Schnittstellen zu vereinfachen und vereinheitlichen.
 Der \emph{UAServerWrapper} erstellt automatisch einen Standard-Namespace und leitet Anfragen an
@@ -293,13 +293,13 @@ Milo intern zu benutzen ist - nicht mehr jeder, der Werte über OPC UA austausch
 \end{figure}
 In der Klasse \emph{AbstractTankSimulation} müssen Flüssigkeiten gemischt werden, wenn neue Flüssigkeiten in Tanks eingefügt werden.
 Dafür müssen Temperaturen und Farben gemischt werden. Zur Farbmischung gibt es unterschiedliche Algorithmen, wie subtraktive oder additive
-Farbmischung. Außerdem ist es denkbar, die Mischung der Temperaturen unterschiedlich zu implementieren (z.B. durch einen genauen und einen schnelleren,
+Farbmischung. Außerdem ist es denkbar, die Mischung der Temperaturen unterschiedlich zu implementieren (z.B. durch einen genauen oder einen schnelleren,
 approximativen Algorithmus).
 
 Um diese Algorithmen, falls in Zukunft andere implementiert werden, einfach austauschbar zu machen, wurde
 das Strategie-Muster angewandt. Dieses Muster hat das Ziel, eine Familie von Algorithmen zu definieren, zu kapseln und austauschbar zu machen.
 
-Dabei ist \emph{MixingStrategy} das Interface, dass die Strategie definiert, und \emph{AbstractTankSimulation} die Kontextklasse, die die Algorithmen
+Dabei ist \emph{MixingStrategy} das Interface, das die Strategie definiert, und \emph{AbstractTankSimulation} die Kontextklasse, die die Algorithmen
 benutzt. Momentan ist nur eine konkrete Strategie implementiert, und zwar die \emph{SubtractiveMixingStrategy}.
 
 \pagebreak
@@ -315,10 +315,10 @@ lassen können.
 
 Dazu haben wir das Beobachter (engl. Observer)-Muster verwendet. Dies definiert eine \emph{1 zu n}-Abhängigkeit zwischen dem Model und (z.B.) dem View.
 Dabei wird jedoch eine möglichst lose Kopplung aufrecht erhalten. Darum ist das Beobachter-Muster sehr allgemein gehalten. Dabei kann ein OPC UA Server (konkreter Beobachter)
-sich bei den relevanten Klassen (konkretes Subjekt) als Beobachter registrieren, und wird dann bei jeder Änderung informiert, in dem die Methode \emph{update()}
+sich bei den relevanten Klassen (konkretes Subjekt) als Beobachter registrieren, und wird dann bei jeder Änderung informiert, indem die Methode \emph{update()}
 vom Subjekt aufgerufen wird. Dazu muss der konkrete Beobachter nur ein sehr kleines Interface (\emph{java.util.Observer}) implementieren.
 
-Das Beobachter Muster wird verwendet, um die View oder die Steuerung über Änderungen in den Zuständen der Tanks, den Leitungen, dem Motor sowie über
+Das Beobachter-Muster wird verwendet, um die View oder die Steuerung über Änderungen in den Zuständen der Tanks, den Leitungen, dem Motor sowie über
 das Auslösen von Alarmen zu informieren. Deswegen ist die Klasse \emph{AbstractTank}, \emph{Pipe}, \emph{Motor} und \emph{TankAlarm} als Subjekt implementiert
 (d.h. sie erben von \emph{java.util.Observerable}). Damit können alle Teile der Anwendung sich über Veränderungen im Model informieren lassen.
 
@@ -327,7 +327,7 @@ das Auslösen von Alarmen zu informieren. Deswegen ist die Klasse \emph{Abstract
 \begin{figure}[H]
   \centering
   \includegraphics[scale=0.22]{design/pattern-screenshots/facade-SettingsView.png}
-  \caption{Ausschnitt aus dem Klassendiagramm: Fassade des Views der Überwachungskonsole}
+  \caption{Ausschnitt aus dem Klassendiagramm: Fassaden der Views der Überwachungskonsole}
 \end{figure}
 Jeder Zugriff auf das Haupt- oder Einstellungsfenster der Überwachungskonsole von außerhalb der Views erfolgt über jeweils eine eigene, konkrete Fassade:
 \emph{MonitoringViewFacade} für das Hauptfenster und \emph{SettingsViewFacade} für das Einstellungsfenster. Beide Fassaden leiten sich von den eigentlichen Fassaden, die in Form
