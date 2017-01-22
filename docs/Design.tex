@@ -40,15 +40,15 @@
 \section{Einleitung}
 Nachdem die Anforderungen an OSIP im Pflichtenheft ausführlich spezifiziert wurden, wird in diesem Dokument
 der softwaretechnische Entwurf von OSIP, insbesondere die Klasseneinteilung, erläutert. Makroskopisch wurde OSIP
-mit einer \emph{Model View Controller}-Architektur entworfen. Diese ermöglicht beispielsweise
-lose Kopplung zwischen Simulation und Anzeige der simulierten Anlage.
+mit einer \emph{Model View Controller}-Architektur entworfen. Diese ermöglicht
+lose Kopplung zwischen beispielsweise Simulation und Anzeige der simulierten Anlage.
 
 Um die Anwendung und Interaktion der entworfenen Klassen zu illustrieren, sind Ausschnitte aus dem Programmablauf
 in Form von Sequenzdiagrammen erläutert. Die meisten der Sequenzdiagramme zeigen eine Interaktion über die Grenzen
 des jeweiligen Paketes hinweg.
 
 In diesem Dokument ist auch beschrieben, welche der im Pflichtenheft genannten Kann-Kriterien nun tatsächlich
-umgesetzt werden und in welchem Umfang die Umsetzung stattfindet. Im Entwurf verwendete Entwurfsmuster werden
+umgesetzt werden und in welchem Umfang die Umsetzung stattfindet. In der Klasseneinteilung verwendete Entwurfsmuster werden
 ebenfalls in diesem Dokument beschrieben.
 
 \section{Klassenbeschreibungen}
@@ -59,15 +59,15 @@ Um die Anwendung und Interaktion der entworfenen Klassen zu illustrieren, sind i
 in Form von Sequenzdiagrammen erläutert. Die meisten der Sequenzdiagramme zeigen eine Interaktion über die Grenzen
 des jeweiligen Paketes hinweg. Es werden zentrale und komplexe Abläufe innerhalb von OSIP gezeigt und textuell beschrieben.
 
-Die Sequenzdiagramme sind insbesondere deshalb wichtig, weil dadurch genau die verwendeten Schnittstellen nachgedacht wird
-und somit Unklarheiten zwischen den verschiedenen Softwarearchitekten beseitigt werden können.
+Die Sequenzdiagramme sind insbesondere deshalb wichtig, weil dadurch erneut auf andere Weise über die verwendeten Schnittstellen
+nachgedacht wird und somit Unklarheiten zwischen den verschiedenen Softwarearchitekten beseitigt werden können.
 
 \subsection{Wrapper für OPC UA}
 OSIP verwendet Wrapper für Milo, da Milo eine zu komplexe Schnittstelle bereitstellt.
 Viele der angebotenen Funktionen (wie beispielsweise mehrere Namespaces) werden von uns nicht benötigt
-und werden durch die Wrapper verborgen. Für die Server-Seite und die Client-Seite wurde je eine Schnittstelle entworfen.
-Beide Seiten sollen nun kurz vorgestellt werden. Die komplexen Aufrufe an die Schnittstelle von Milo werden in den
-Sequenzdiagrammen gut sichtbar.
+und können somit durch die Wrapper verborgen werden. Für die Server-Seite und die Client-Seite wurde je ein Wrapper entworfen.
+Beide Seiten sollen nun im Folgenden kurz durch Sequenzdiagramme vorgestellt werden.
+Die komplexen Aufrufe an die Schnittstelle von Milo und die Vereinfachung durch die Wrapper werden in den Diagrammen gut sichtbar.
 
 \subsubsection{Server-Wrapper}
 \begin{figure}[H]
@@ -75,15 +75,13 @@ Sequenzdiagrammen gut sichtbar.
   \includegraphics[scale=0.38]{design/sequence-diagrams/sequence-set-server-value.png}
   \caption{Setzen von Werten über den UAServerWrapper}
 \end{figure}
-Beim Erstellen des Controllers werden auch der Simulator und die Server der Tanks erstellt.
-Dieser Server erbt von \emph{UAServerWrapper}, welcher Milo abstrahiert. Wie im Diagramm zu sehen,
-werden vom Wrapper Server und Namespace erstellt. Der Namespace wird beim Server registriert und
-im Namespace werden die Ordner und Variablen erstellt (hier exemplarisch der Füllstand).
+Beim Erstellen des Controllers werden auch der Simulator, sowie die Server der Tanks erstellt.
+Diese \emph{TankServer} erben von \emph{UAServerWrapper}, was eine grundlegende Abstraktion von Milo darstellt.
+Wie im Diagramm zu sehen, werden vom Wrapper automatisch Server und Namespace erstellt. Der Namespace wird beim Server
+registriert und im Namespace werden die Ordner und Variablen erstellt (hier exemplarisch der Füllstand).
 
-Beim Setzen des Füllstandes wird nur \emph{setFillLevel()} aufgerufen. Der \emph{UAServerWrapper} erstellt daraufhin
+Beim Setzen des Füllstandes wird von außen nur \emph{setFillLevel()} aufgerufen. Der \emph{UAServerWrapper} erstellt daraufhin
 ein entsprechendes \emph{DataValue}, das von Milo gebraucht wird, und übergibt es an den Standard-Namespace.
-Durch einen Aufruf von \emph{stop()} fährt der \emph{UAServerWrapper} den Server herunter und dereferenziert
-Server und Namspace.
 
 \subsubsection{Client-Wrapper}
 \label{milo-wrapper-diagram}
@@ -92,12 +90,12 @@ Server und Namspace.
   \includegraphics[scale=0.4]{design/sequence-diagrams/sequence-subscribe-client-value.png}
   \caption{Abonnieren von Werten über den UAClientWrapper}
 \end{figure}
-Der Controller ruft beim \emph{TankServer}, welcher von \emph{UAClientWrapper} erbt, die subscribe-Methode für den entsprechenden Parameter auf
-(hier exemplarisch \emph{subscribeFillLevel()}). Der \emph{UAClientWrapper} erstellt ein \emph{NodeId}-Objekt und damit die
+Der Controller ruft bei einem seiner \emph{TankClient}s, welcher von \emph{UAClientWrapper} erbt, die \emph{subscribe}-Methode für den entsprechenden Parameter auf
+(hier exemplarisch \emph{subscribeFillLevel()}). Der \emph{UAClientWrapper} erstellt daraufhin ein \emph{NodeId}-Objekt und damit die
 entsprechende \emph{ReadValueId}. Diese registriert er beim \emph{OpcUaClient}.
 Beim Empfang von Werten wird der entsprechende Listener aufgerufen. Der \emph{UAClientWrapper} übernimmt somit die
-komplette Interaktion mit Milo. Die obige Zeichnung ist nicht vollständig. Zum Erstellen einer Subscription bei Milo werden über 10
-Objekte erzeugt und gleich wieder dereferenziert, was diesen Rahmen sprengen würden. Die Zeichnung gibt nur einen groben Überblick.
+komplette Interaktion mit Milo. Anmerkung: Die obige Zeichnung ist nicht vollständig. Zum Erstellen einer Subscription bei Milo werden über 10
+Objekte erzeugt und sofort wieder dereferenziert, was diesen Rahmen sprengen würden. Die Zeichnung gibt nur einen groben Überblick.
 
 \subsection{Neuzeichnen der GUI der Simulation}
   Das Aktualisieren der GUI der Fertigungssimulation erfolgt in regelm\"a{\ss}igen Abst\"anden. Das Hauptfenster tr\"agt dazu seinen Komponenten auf,
@@ -109,13 +107,14 @@ Objekte erzeugt und gleich wieder dereferenziert, was diesen Rahmen sprengen wü
     \caption{Neuzeichnen der GUI der Simulation}
   \end{figure}
   Bei der Erzeugung des Hauptfensters instanziiert dieses einen neuen \emph{GraphicsContext}, der die Schnittstelle zum Canvas darstellt.
-  Anschlie{\ss}end werden die einzelnen Grafikkomponenten, die \emph{Drawer}, erstellt und mit Ihrer jeweiligen Position versehen.
+  Anschlie{\ss}end werden die einzelnen Grafikkomponenten, die \emph{Drawer}, erstellt und mit ihrer jeweiligen Position versehen.
   Daraufhin wird der \emph{UpdateThread} erzeugt und dessen \emph{start()} Methode aufgerufen. Diese l\"o{\ss}t periodisch das
-  Neuzeichnen der GUI aus.\\
+  Neuzeichnen der GUI aus.
+
   Das Neuzeichnen wird \"uber die Methode \emph{draw()} der einzelnen Komponenten ausgel\"o{\ss}t. Dabei veranlasst der \emph{UpdateThread}, dass sich jeder \emph{Drawer}
   selbst neu zeichnet. Als anonyme Klasse besitzt der \emph{UpdateThread} die M\"oglichkeit, die \emph{Drawer} anzusprechen. Im Falle der 
-  \emph{TankDrawer} fragen diese erst die aktuellen Werte vom jeweils zugeordneten \emph{Tank} der Fertigungssimulation ab, um anschlie{\ss}end
-  \"uber Aufrufe an den \emph{Context} die neue Darstellung zu veranlassen.
+  \emph{TankDrawer} fragen diese erst die aktuellen Werte vom jeweils zugeordneten \emph{Tank} des Models ab, um anschlie{\ss}end
+  \"uber Aufrufe an den \emph{GraphicsContext} die neue Darstellung zu veranlassen.
 
 \subsection{Berechnung der Tank-Simulation}
 \begin{figure}[H]
@@ -124,7 +123,7 @@ Objekte erzeugt und gleich wieder dereferenziert, was diesen Rahmen sprengen wü
   \caption{Berechnung der Tank-Simulation}
 \end{figure}
 Dies ist die Simulation eines der oberen Tanks. Für die vollständige Simulation muss \emph{simulateTank()} für jeden Tank aufgerufen
-und die Rückgabewerte zum Mixtank hinzugefügt werden. Zuerst erfragt die Simulation beim Tank die Leitung, die zum Tank hinführt, und ermittelt
+und die Rückgabewerte zum \emph{MixTank} hinzugefügt werden. Zuerst erfragt die Simulation beim Tank die Leitung, die zum Tank hinführt, und ermittelt
 mit \emph{getMaxInput()} die maximale Durchflussmenge. Anschließend muss berechnet werden, welche Farbe die Flüssigkeit haben soll, die in den Tank
 hinein fließt. Dazu wird der TankSelector Enum-Wert vom Tank geholt, und damit die Funktion \emph{getInitialColor()} aufgerufen, die die initiale Farbe der Tanks definiert.
 Dann kann ein neues \emph{Liquid} Objekt erstellt werden, das so groß ist, dass es gerade noch in die Leitung passt. Mittels \emph{putIn()} wird es
@@ -140,7 +139,7 @@ Tank herausgenommen und in diese Leitung hineingesteckt. Der Rückgabewert von \
   \includegraphics[scale=0.4]{design/sequence-diagrams/getting-networking-settings.png}
   \caption{Einstellungen aus der Datei erhalten und verwenden}
 \end{figure}
-Bei der Erstellung eines \emph{TankClient} werden Hostname und Port des zugehörigen Servers vom \emph{MonitoringController} mit \emph{getHostName()}
+Bei der Erstellung eines \emph{TankClient}s werden Hostname und Port des zugehörigen Servers vom \emph{MonitoringController} mit \emph{getHostName()}
 und \emph{getPort()} vom \emph{ClientSettingsWrapper} abgerufen. Eine Instanz des \emph{ClientSettingsWrapper}s
 ist im \emph{MonitoringController} zu finden. Es wird eine \emph{RemoteMachine} erstellt und mit Hostname und Port konfiguriert.
 Danach erstellt man einen \emph{TankClient}, der die \emph{RemoteMachine} übergeben bekommt und sich mit dem Server verbinden kann.
@@ -152,7 +151,7 @@ Danach erstellt man einen \emph{TankClient}, der die \emph{RemoteMachine} überg
 	\caption{Start der Überwachungskonsole}
 \end{figure}
 Beim Start der Überwachungskonsole wird über die \emph{main()} Methode die statische \emph{launch()} Methode der Oberklasse \emph{javafx.application.Application} von \emph{MonitoringController} aufgerufen. Diese ist für den eigentlichen Startvorgang verantwortlich und initialisiert unter anderem JavaFX.
-Im Laufe des Startvorgangs wird eine Instanz des \emph{MonitoringControllers} erstellt, die die Verbindung zwischen der Ansicht der Überwachungskonsole und dem Modell herstellt. Dazu erstellt es beispielsweise die Ansicht innerhalb der Methode \emph{setupUI()} über das \emph{MonitoringViewInterface} sowie alle Handler, wobei der \emph{MenuSettingsButtonHandler} als ein Beispiel dargestellt ist.
+Im Laufe des Startvorgangs wird eine Instanz des \emph{MonitoringControllers} erstellt, die die Verbindung zwischen der Ansicht der Überwachungskonsole und dem Model herstellt. Dazu erstellt es beispielsweise innerhalb der Methode \emph{setupUI()} die Ansicht über das \emph{MonitoringViewInterface} sowie alle Handler, wobei der \emph{MenuSettingsButtonHandler} als ein Beispiel dargestellt ist.
 
 \subsection{Speichern der Einstellungen}
 \begin{figure}[H]
@@ -170,14 +169,14 @@ Beispielhaft wird das Auslesen und Setzen des Hostnamens für die OPC UA Server 
 	\includegraphics[scale=0.4]{design/sequence-diagrams/functions-behind-the-facade.png}
 	\caption{Funktionsweise der ViewFacades der Überwachungskonsole}
 \end{figure}
-Jeder Aufruf einer Methode der \emph{MonitoringViewFacade()} oder \emph{SettingsViewFacade()} wird an die dahinter liegenden Objekte delegiert, um an den eigentlichen Wert zu kommen oder die eigentliche Operation auszuführen. Das beispielhafte Vorgehen der \emph{SettingsViewFacade} zeigt, wie der Hostname der OPC UA Server vom eigentlichen \emph{javafx.scene.control.TextField}, über den der Benutzer den Hostnamen eingestellt hat, an die \emph{SettingsViewFacade} zurückgereicht wird.
+Jeder Aufruf einer Methode der \emph{MonitoringViewFacade} oder \emph{SettingsViewFacade} wird an die dahinter liegenden Objekte delegiert, um an den eigentlichen Wert zu kommen oder die eigentliche Operation auszuführen. Das beispielhafte Vorgehen der \emph{SettingsViewFacade} zeigt, wie der Hostname der OPC UA Server vom eigentlichen \emph{javafx.scene.control.TextField}, über den der Benutzer den Hostnamen eingestellt hat, an die \emph{SettingsViewFacade} zurückgereicht wird.
 
 \pagebreak
 \section{Änderungen zum Pflichtenheft}
 
 \subsection{\"Ubernommene Kann-Kriterien}
-Im Folgenden werden die Kann-Kriterien aus dem Pflichtenheft noch einmal alle aufgelistet. Zu jedem der Kriterien wird
-kurz zusammengefasst, was genau es bedeutet. Es werden erst die implementierten und anschlie{\ss}end die nicht implementierten
+Im Folgenden werden die Kann-Kriterien aus dem Pflichtenheft aufgelistet. Zu jedem der Kriterien wird
+kurz zusammengefasst, was genau es bedeutet. Es werden zunächst die implementierten und anschlie{\ss}end die nicht implementierten
 Kriterien gelistet.
 
 \subsubsection{Implementierte Kann-Kriterien}
@@ -197,7 +196,7 @@ Die implementierten Kann-Kriterien sind wie folgt:
     aktivierten Alarme wird beim Beenden der \"Uberwachungskonsole persistiert. Beim n\"achsten Start der \"Uberwachungskonsole
     werden die gleichen Alarme automatisch wieder aktiviert.
     \item Die Alarme, die von der \"Uberwachungskonsole empfangen werden, werden in einem Textfenster innerhalb der
-    \"Uberwachungskonsole geloggt.
+    \"Uberwachungskonsole protokolliert.
 \end{itemize}
 
 \subsubsection{Nicht implementierte Kann-Kriterien}
@@ -207,7 +206,7 @@ Die nicht implementierten Kann-Kriterien sind wie folgt:
     \item Es stehen keine verschiedenen Sprachoptionen f\"ur \"Uberwachungskonsole und Fertigungssimulation zur Verf\"ugung.
     Die einzige vorhandene Sprache ist Englisch. Durch die Verwendung von \emph{java.util.ResourceBundle} ist die Anwendung allerdings leicht übersetzbar.
     \item Die vorgegebenen Alarme k\"onnen nicht ver\"andert werden. Insbesondere ist es nicht m\"oglich, eigene Alarme hinzuzuf\"ugen
-    oder die Schwellenwerte der vorgegebenen Alarme zu modifizieren.
+    oder die Schwellenwerte der vorgegebenen Alarme zu modifizieren. Die Alarme können allerdings aktiviert und deaktiviert werden.
     \item Der Jitter in den Simulationswerten ist fest vorgegeben und kann in seiner Intensit\"at nicht ver\"andert werden.
     \item Fehler bei der Programmausf\"uhrung werden nicht in eine Datei geschrieben.
 \end{itemize}
@@ -226,7 +225,7 @@ eine grobe Übersicht über die entworfenen Pakete und ihre Anordnung im Klassen
 
 Da die Fertigungssimulation und die Überwachungskonsole eigenständige Programme sind, ist es sinnvoll, diese in getrennten Paketen zu
 implementieren. Dazu haben wir die Pakete \emph{simulation} (für die Fertigungssimulation) und \emph{monitoring} (für die Überwachungskonsole)
-gewählt. Details zu diesen beiden Paketen gibt es in Kapitel \ref{mvc}. Da viele Funktionalitäten in beiden Programmen
+gewählt. Details zu diesen beiden Paketen sind in Kapitel \ref{mvc} spezifiziert. Da viele Funktionalitäten in beiden Programmen
 benötigt werden, gibt es außerdem ein Paket \emph{core}, das gemeinsame Funktionalität enthält.
 
 Darin gibt es ein Unterpaket für das Model
@@ -234,11 +233,11 @@ der Model-View-Controller Architektur (siehe \ref{mvc}), da für beide Programme
 drei Unterpakete unterteilt. Zum einen gibt es das Paket \emph{base}, das den Zustand der Produktionsanlage mit allen Tanks und Leitungen beschreibt.
 Eine Simulation ist aber in diesem Paket nicht enthalten, da die Überwachungskonsole dies nicht benötigt. So kann einem Tank beispielsweise keine Flüssigkeit hinzugefügt oder entnommen werden,
 sondern nur der komplette Inhalt auf einmal gesetzt werden. Da die Simulation diese Simulationskomponenten jedoch benötigt,
-gibt es das Paket \emph{simulation}, dass \emph{base} um solche Simulationskomponenten erweitert. Das dritte Unterpakt des Models ist \emph{behavior}.
+gibt es das Paket \emph{simulation}, das \emph{base} um solche Simulationskomponenten erweitert. Das dritte Unterpakt des Models ist \emph{behavior}.
 Darin sind Klassen enthalten, die nicht den Zustand der Produktionsanlage beschreiben, sondern Aktionen sind, z.B. Alarme und Szenarien.
 
-Außerdem gibt es in \emph{core} ein Unterpaket \emph{io}, dass das Einlesen und Parsen von Konfigurationsdateien für beide Programme enthält. Dann gibt
-es ein Unterpaket \emph{opcua}, dass die Verwendung von Milo kapselt und vereinfacht, da das Interface von Milo für OSIP viel zu mächtig
+Des Weiteren gibt es in \emph{core} ein Unterpaket \emph{io}, das das Einlesen und Parsen von Konfigurationsdateien für beide Programme enthält. Außerdem gibt
+es ein Unterpaket \emph{opcua}, das die Verwendung von Milo kapselt und vereinfacht, da das Interface von Milo für OSIP viel zu mächtig
 ist (siehe \ref{milo-wrapper-diagram}. Zuletzt gibt es ein Unterpaket \emph{utils}, das weitere gemeinsame Funktionalität wie Internationalisierung oder das Überprüfen von
 Formaten beinhaltet.
 
@@ -258,7 +257,7 @@ Werte f\"ur die OPC UA Clients der \"Uberwachungskonsole bereitstellen.
 
 \subsection{Model View Controller f\"ur \"Uberwachungskonsole}
 Das Programm der \"Uberwachungskonsole ist ebenfalls nach dem Prinzip Model-View-Controller aufgebaut.
-Da es die Produktionsanlage nicht simulieren muss, besteht das Model nur aus dem Paket \emph{core.model.base} und \emph{core.model.behaviour}.
+Da es die Produktionsanlage nicht simulieren muss, besteht das Model nur aus den Paketen \emph{core.model.base} und \emph{core.model.behaviour}.
 Die View benachrichtigt den Controller zu Benutzereingaben, sodass dieser darauf reagieren kann. Die Eingaben dienen hier der Steuerung und Konfiguration
 der \"Uberwachungskonsole, z.B. die Einstellung der anzuzeigenden Daten.
 Der Controller steuert das Programm und reagiert auf Benutzereingaben. Dazu veranlasst er einerseits, dass in regelm\"a{\ss}igen Intervallen die Daten der
@@ -268,18 +267,18 @@ Fertigungssimulation abgefragt werden und steuert die OPC UA Clients an, die der
 \subsection{Fassaden-Muster: UAServerWrapper, UAClientWrapper}
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=0.3]{design/pattern-screenshots/fascade-UAWrapper.png}
+  \includegraphics[scale=0.3]{design/pattern-screenshots/facade-UAWrapper.png}
   \caption{Ausschnitt aus dem Klassendiagramm: Fassade in Milo-Wrappern}
 \end{figure}
 Milo besitzt eine sehr komplexe Schnittstelle, zu deren Benutzung man sich ausgiebig mit dem oft schlecht dokumentierten Code
-der Library beschäftigen muss (Zertifikate manuell deaktivieren etc.). Des Weiteren unterstützt Milo mehr Funktionalität,
+der Library beschäftigen muss (Zertifikate müssen manuell deaktiviert werden etc.). Des Weiteren unterstützt Milo mehr Funktionalität,
 als sie in unserem Kontext gebraucht wird (mehrere Namespaces etc.).
 
 Das Fassaden-Muster ist dazu da, um Schnittstellen zu vereinfachen und vereinheitlichen.
 Der \emph{UAServerWrapper} erstellt automatisch einen Standard-Namespace und leitet Anfragen an
 diesen weiter. Zusätzlich wird das Starten des Servers durch Verstecken von Initialisierungen vereinfacht. Der \emph{UAClientWrapper}
-bietet Methoden, um Werte bestimmter Typen direkt und synchron vom Server abzurufen. Die Werte können hierbei direkt über ihren
-Namen angesprochen werden - die Umsetzung in \emph{NodeId}s entfällt über die Fassade.
+auf der anderen Seite bietet Methoden, um Werte bestimmter Typen direkt beim Server zu abonnieren. Die Werte können hierbei direkt über ihren
+Namen angesprochen werden - die Umsetzung in \emph{NodeId}s entfällt beim Verwenden der Fassade.
 
 Wir haben das Muster gewählt, um allen
 Beteiligten die Handhabung von Milo zu erleichtern. Durch die Fassade muss sich nur noch eine Person damit beschäftigen, wie
@@ -310,9 +309,8 @@ benutzt. Momentan ist nur eine konkrete Strategie implementiert, und zwar die \e
   \includegraphics[scale=0.35]{design/pattern-screenshots/observer-Model.png}
   \caption{Ausschnitt aus dem Klassendiagramm: Observer bei Elementen des Models}
 \end{figure}
-Das derzeit geplante View-Modul holt sich periodisch den neuen Zustand des Models. Es wäre aber auch denkbar, ein View-Modul zu implementieren,
-das sich nur aktualisiert, wenn sich Werte im Model geändert haben. Außerdem löst die Steuerung die Alarme der OPC UA Server immer dann aus, wenn die Alarme im Model
-ausgelöst werden. Es ist also nötig, einen Mechanismus zu verwenden, mit dem das View-Modul und die Steuerung sich über Änderungen im Model informieren
+Die Steuerung löst die Alarme der OPC UA Server immer dann aus, wenn die Alarme im Model
+ausgelöst werden. Es ist also nötig, einen Mechanismus zu verwenden, mit dem das \emph{View}-Modul und die Steuerung sich über Änderungen im Model informieren
 lassen können.
 
 Dazu haben wir das Beobachter (engl. Observer)-Muster verwendet. Dies definiert eine \emph{1 zu n}-Abhängigkeit zwischen dem Model und (z.B.) dem View.
@@ -328,7 +326,7 @@ das Auslösen von Alarmen zu informieren. Deswegen ist die Klasse \emph{Abstract
 \subsection{Fassaden-Muster: Views der Überwachungskonsole}
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=0.22]{design/pattern-screenshots/fascade-SettingsView.png}
+  \includegraphics[scale=0.22]{design/pattern-screenshots/facade-SettingsView.png}
   \caption{Ausschnitt aus dem Klassendiagramm: Fassade des Views der Überwachungskonsole}
 \end{figure}
 Jeder Zugriff auf das Haupt- oder Einstellungsfenster der Überwachungskonsole von außerhalb der Views erfolgt über jeweils eine eigene, konkrete Fassade:
@@ -369,10 +367,11 @@ Außerdem lässt sich leichter ein weiterer Handler hinzufügen oder ein bestehe
   \includegraphics[scale=0.4]{design/pattern-screenshots/singleton-Translator.png}
   \caption{Ausschnitt aus dem Klassendiagramm: Translator als Singleton}
 \end{figure}
-Translator hat die Aufgabe, Menütexte in verschiedenen Sprachen zu laden.
-Dabei lädt er zur gewählten Sprache eine Datei, in der Schlüssel zu Worten in der gewählten Sprache
+Der \emph{Translator} hat die Aufgabe, angezeigte Texte in verschiedenen Sprachen zu laden, sowie konkrete Formulierungen
+vom Quelltext zu trennen und über mehrere Orte wiederzuverwenden.
+Dabei lädt er zur gewählten Sprache eine Datei, in der Worte in der gewählten Sprache über Schlüssel
 zugeordnet werden. Jedes Mal, wenn ein Translator erzeugt wird, muss eine solche Datei
-für eine Sprache geladen werden. Um dieses wiederholte Laden zu verhindern, ist Translator ein Singleton.
+für eine Sprache geladen und interpretiert werden. Um dieses wiederholte Laden zu verhindern, ist der Translator ein Singleton.
 Es kann somit nur eine Translator-Instanz erzeugt werden und eine bereits geladene Datei
 wird nicht erneut geladen. Falls die Sprache gewechselt wird, muss allerdings eine andere Datei geladen werden.
 
@@ -386,7 +385,8 @@ wird nicht erneut geladen. Falls die Sprache gewechselt wird, muss allerdings ei
 Die Klassen \emph{TankDrawer} und \emph{MixTankDrawer} dienen der Visualisierung der Tanks in der Fertigungssimulation. Da sich die Tanks grunds\"atzlich
 sehr \"ahnlich sind und sich in der Darstellung nur in der Menge der Sensoren unterscheiden, wurde die \emph{draw()}-Methode als Schablonenmethode umgesetzt.
 Dazu wurde die Oberklasse \emph{AbstractTankDrawer} kreiert, die bereits Teile von \emph{draw()} implementiert und anschlie{\ss}end \emph{drawSensors()}
-aufruft. Die Methode \emph{drawSensors()} ist in AbstractTankDrawer abstrakt und wird erst von den Unterklassen implementiert.\\
+aufruft. Die Methode \emph{drawSensors()} ist in AbstractTankDrawer abstrakt und wird erst von den Unterklassen implementiert.
+
 So werden die gemeinsamen Teile des Algorithmus zur Darstellung in eine gemeinsame Klasse ausgelagert, um Code-Duplikationen zu vermeiden. Auch \"Anderungen
 werden so leichter umzusetzen, da der Code nur noch an einer statt an mehreren Stellen ge\"andert werden muss.
 
