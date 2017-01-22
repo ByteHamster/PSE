@@ -321,7 +321,7 @@
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="comment">
-        <dia:string>#An alarm which monitors whether the fill level breaks a given threshold#</dia:string>
+        <dia:string>#An alarm which monitors whether the fill level breaks a given threshold.#</dia:string>
       </dia:attribute>
       <dia:attribute name="abstract">
         <dia:boolean val="false"/>
@@ -417,7 +417,7 @@
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Constructs a new FillAlarm#</dia:string>
+            <dia:string>#Constructs a new FillAlarm.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -443,7 +443,7 @@
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The tank to monitor#</dia:string>
+                <dia:string>#The tank to monitor.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -460,7 +460,7 @@
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The fill level threshold in %#</dia:string>
+                <dia:string>#The fill level threshold in %.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -477,7 +477,7 @@
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#Whether the alarm should trigger if thefill level is above or below the threshold#</dia:string>
+                <dia:string>#Whether the alarm should trigger if thefill level is above or below the threshold.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -499,8 +499,8 @@
             <dia:enum val="2"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Returns the fill level
-@return the fill level#</dia:string>
+            <dia:string>#Returns the fill level.
+@return the fill level.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -546,7 +546,7 @@
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="comment">
-        <dia:string>#An Alarm which monitors whether the temperature breaks a given threshold#</dia:string>
+        <dia:string>#An Alarm which monitors whether the temperature breaks a given threshold.#</dia:string>
       </dia:attribute>
       <dia:attribute name="abstract">
         <dia:boolean val="false"/>
@@ -642,7 +642,7 @@
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Creates a new TemperatureAlarm#</dia:string>
+            <dia:string>#Creates a new TemperatureAlarm.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -668,7 +668,7 @@
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The tank to monitor the temperature#</dia:string>
+                <dia:string>#The tank to monitor the temperature.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -685,7 +685,7 @@
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The threshold in °K#</dia:string>
+                <dia:string>#The threshold in °K.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -702,7 +702,7 @@
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#Whether the alarm should trigger if the temperature is above or below to threshold#</dia:string>
+                <dia:string>#Whether the alarm should trigger if the temperature is above or below to threshold.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -750,19 +750,19 @@
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O8">
       <dia:attribute name="obj_pos">
-        <dia:point val="55.1748,-42.9555"/>
+        <dia:point val="55.1748,-44.6458"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="55.1248,-43.0055;66.8648,-32.9055"/>
+        <dia:rectangle val="55.1248,-44.6958;66.3698,-33.1958"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="55.1748,-42.9555"/>
+        <dia:point val="55.1748,-44.6458"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="11.640000000000001"/>
+        <dia:real val="11.145"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="10"/>
+        <dia:real val="11.4"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#AlarmBehavior#</dia:string>
@@ -863,7 +863,7 @@
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Alarm is triggered when the observed value gets greater than the given value#</dia:string>
+            <dia:string>#Alarm is triggered when the observed value gets greater than the given value.#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="3"/>
@@ -886,7 +886,7 @@
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Alarm is triggered when the observed value gets smaller than the given value#</dia:string>
+            <dia:string>#Alarm is triggered when the observed value gets smaller than the given value.#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="3"/>
@@ -908,19 +908,19 @@
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O9">
       <dia:attribute name="obj_pos">
-        <dia:point val="39.6766,-11.7818"/>
+        <dia:point val="39.6766,-12.218"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="39.6266,-11.8318;66.7916,6.2682"/>
+        <dia:rectangle val="39.6266,-12.268;66.7916,6.532"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="39.6766,-11.7818"/>
+        <dia:point val="39.6766,-12.218"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="27.064999999999998"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="18"/>
+        <dia:real val="18.699999999999999"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Scenario#</dia:string>
@@ -1025,7 +1025,7 @@
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Add a command to the Scenario. It gets executed after the last command or pause#</dia:string>
+            <dia:string>#Add a command to the Scenario. It gets executed after the last command or pause.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -1051,7 +1051,7 @@
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The command to run#</dia:string>
+                <dia:string>#The command to run.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -1073,7 +1073,7 @@
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Add a pause after the last command or last pause#</dia:string>
+            <dia:string>#Add a pause after the last command or last pause.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -1099,7 +1099,7 @@
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The length in ms#</dia:string>
+                <dia:string>#The length of the pause in ms.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -1121,8 +1121,8 @@
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Start the Scenario
-@throws IllegalStateException if the production site isn't set (@see setProductionSite)#</dia:string>
+            <dia:string>#Start the Scenario.
+@throws IllegalStateException if the production site isn't set (@see setProductionSite).#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -1152,7 +1152,7 @@
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Stop the Scenario#</dia:string>
+            <dia:string>#Stop the Scenario.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -1182,8 +1182,8 @@
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Report whether the Scenario is currently running
-@return true if the Scenario is running, false otherwise#</dia:string>
+            <dia:string>#Report whether the Scenario is currently running.
+@return true if the Scenario is running, false otherwise.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -1213,7 +1213,7 @@
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Set a production site which is needed to execute the runnables. This needs to be set before starting the scenario.#</dia:string>
+            <dia:string>#Set a production site which is needed to execute the runnables. This needs to be done before starting the scenario.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -1239,7 +1239,7 @@
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The production site which gets set#</dia:string>
+                <dia:string>#The production site which gets set.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -1373,7 +1373,7 @@
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Create a new tank#</dia:string>
+            <dia:string>#Create a new tank.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -1399,7 +1399,7 @@
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The size of the tank in cm³#</dia:string>
+                <dia:string>#The size of the tank in cm³.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -1416,7 +1416,7 @@
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#Specifies which tank it is. This is useful if you have access to the tank and need to get a unique identifier#</dia:string>
+                <dia:string>#Specifies which tank it is. This is useful if you have access to the tank and need to get a unique identifier.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -1433,7 +1433,7 @@
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#Default liquid#</dia:string>
+                <dia:string>#The default liquid of the tank.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -1450,7 +1450,7 @@
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The outgoing pipe#</dia:string>
+                <dia:string>#The outgoing pipe.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -1472,8 +1472,8 @@
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Get the fill level of the tank in %
-@return the fill level in %#</dia:string>
+            <dia:string>#Get the fill level of the tank in %.
+@return the fill level in %.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -1503,8 +1503,7 @@
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Set the liquid of the tank
-@throws OverfullFluidContainerException if you try to put in more liquid than the tank can hold because of its capacity#</dia:string>
+            <dia:string>#Set the liquid of the tank. It doesn't throw an exception if you put in more liquid than possible, so you can detect overflow conditions.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -1521,7 +1520,7 @@
           <dia:attribute name="parameters">
             <dia:composite type="umlparameter">
               <dia:attribute name="name">
-                <dia:string>#content#</dia:string>
+                <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
                 <dia:string>#Liquid#</dia:string>
@@ -1530,7 +1529,7 @@
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The liquid which should be in the tank afterwards#</dia:string>
+                <dia:string>#The liquid which should be in the tank afterwards.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -1552,8 +1551,8 @@
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Get the tank selector. This is useful if you have access to the tank and need to get a unique identifier
-@return the tank selecor#</dia:string>
+            <dia:string>#Get the tank selector. This is useful if you have access to the tank and need to get a unique identifier.
+@return the tank selecor.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -1583,8 +1582,8 @@
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Get the outgoing pipe of the tank
-@return the outgoing pipe#</dia:string>
+            <dia:string>#Get the outgoing pipe of the tank.
+@return the outgoing pipe.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -1614,7 +1613,8 @@
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Get the liquid of the tank#</dia:string>
+            <dia:string>#Get the liquid of the tank.
+@return the liquid of the tank.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -1642,13 +1642,13 @@
         <dia:point val="-12.752,-43.6284"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-12.802,-43.6784;10.2905,-18.9284"/>
+        <dia:rectangle val="-12.802,-43.6784;10.3305,-18.9284"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-12.752,-43.6284"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="22.9925"/>
+        <dia:real val="23.032499999999999"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
         <dia:real val="24.649999999999999"/>
@@ -1756,7 +1756,7 @@
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Construct a Pipe#</dia:string>
+            <dia:string>#Construct a Pipe.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -1782,7 +1782,7 @@
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#Crosssection of the pipe in cm²#</dia:string>
+                <dia:string>#Crosssection of the pipe in cm².#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -1799,7 +1799,7 @@
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#Length in cm#</dia:string>
+                <dia:string>#Length in cm.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -1821,9 +1821,9 @@
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Insert liquid into one $SIM_STEP_SIZE of the pipe and take out the liquid at the other side, which gets pushed out
-@throws OverfullFluidContainerException if the pipe is full and you need to take out some liquit first, or if you try to put more liquid into the pipe, than getMaxInput tells you
-@return the liquid which was pushed out at the other side#</dia:string>
+            <dia:string>#Insert liquid into one $SIM_STEP_SIZE of the pipe and take out the liquid at the other side, which gets pushed out.
+@throws OverfullLiquidContainerException if the pipe is full and you need to take out some liquit first, or if you try to put more liquid into the pipe, than getMaxInput tells you.
+@return the liquid which was pushed out at the other side.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -1849,7 +1849,7 @@
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The liquid to put into the pipe#</dia:string>
+                <dia:string>#The liquid to put into the pipe.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -1871,8 +1871,8 @@
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Set the threshold in %
-@throws IllegalArgumentException if threshold is not between 0 and 100#</dia:string>
+            <dia:string>#Set the threshold in %.
+@throws IllegalArgumentException if threshold is not between 0 and 100.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -1898,7 +1898,7 @@
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The threshold. It needs to be between 0 and 100#</dia:string>
+                <dia:string>#The threshold. It needs to be between 0 and 100.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -1920,8 +1920,8 @@
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Get the valve threshold in %
-@return the threshold, which is between 0 and 100#</dia:string>
+            <dia:string>#Get the valve threshold in %.
+@return the threshold, which is between 0 and 100.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -1953,8 +1953,8 @@
           <dia:attribute name="comment">
             <dia:string>#This tells you the maximal amount of liquid in cm³, which you can put into the pipe. It is calculated as:
 crosssection*$SIM_STEP_SIZE*threshold
-($SIM_STEP_SIZE, because you fill one $SIM_STEP_SIZE with every call to putIn)
-@return the maximum amout of liquid you can put into the pipe with one call to putIn()#</dia:string>
+($SIM_STEP_SIZE, because you fill one $SIM_STEP_SIZE with every call to putIn).
+@return the maximum amout of liquid you can put into the pipe with one call to putIn().#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -2000,7 +2000,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="comment">
-        <dia:string>#This is a mixtank. The difference to AbstractTank is the presence of the Motor, which mixes the liquids.#</dia:string>
+        <dia:string>#This is a mixtank. The difference to AbstractTank is the presence of the motor, which mixes the liquids.#</dia:string>
       </dia:attribute>
       <dia:attribute name="abstract">
         <dia:boolean val="false"/>
@@ -2096,7 +2096,7 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Create a new mix tank#</dia:string>
+            <dia:string>#Create a new mixtank.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -2122,7 +2122,7 @@ crosssection*$SIM_STEP_SIZE*threshold
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The capacity of the tank in cm³#</dia:string>
+                <dia:string>#The capacity of the tank in cm³.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -2139,7 +2139,7 @@ crosssection*$SIM_STEP_SIZE*threshold
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#Default content#</dia:string>
+                <dia:string>#The default content of the tank.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -2156,7 +2156,7 @@ crosssection*$SIM_STEP_SIZE*threshold
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The outgoing pipe#</dia:string>
+                <dia:string>#The outgoing pipe.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -2321,7 +2321,7 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Construct a new Liquid object#</dia:string>
+            <dia:string>#Construct a new Liquid object.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -2347,7 +2347,7 @@ crosssection*$SIM_STEP_SIZE*threshold
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The amout in cm³#</dia:string>
+                <dia:string>#The amout in cm³.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -2364,7 +2364,7 @@ crosssection*$SIM_STEP_SIZE*threshold
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The temperature in °K#</dia:string>
+                <dia:string>#The temperature in °K.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -2381,7 +2381,7 @@ crosssection*$SIM_STEP_SIZE*threshold
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The color#</dia:string>
+                <dia:string>#The color of the liquid.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -2403,8 +2403,8 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Get the color of the Liquid
-@return the color#</dia:string>
+            <dia:string>#Get the color of the Liquid.
+@return the color.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -2434,8 +2434,8 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Get the temperature of the liquid
-@return the temperature#</dia:string>
+            <dia:string>#Get the temperature of the liquid.
+@return the temperature.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -2465,8 +2465,8 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Get the amount of the liquid
-@return the amount#</dia:string>
+            <dia:string>#Get the amount of the liquid.
+@return the amount.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -2512,7 +2512,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:string>#enumeration#</dia:string>
       </dia:attribute>
       <dia:attribute name="comment">
-        <dia:string>#This enumeration defines all tanks including their default color value#</dia:string>
+        <dia:string>#This enumeration defines all tanks including their default color value.#</dia:string>
       </dia:attribute>
       <dia:attribute name="abstract">
         <dia:boolean val="false"/>
@@ -2604,7 +2604,7 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#the mix tank#</dia:string>
+            <dia:string>#the mixtank#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="3"/>
@@ -2701,7 +2701,7 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Get the initial color of a tank#</dia:string>
+            <dia:string>#Get the initial color of a tank.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -2731,7 +2731,7 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Return an array of all tanks, except for the mixtank#</dia:string>
+            <dia:string>#Return an array of all tanks, except for the mixtank.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -2762,7 +2762,7 @@ crosssection*$SIM_STEP_SIZE*threshold
           </dia:attribute>
           <dia:attribute name="comment">
             <dia:string>#Get the number of upper (non-mix) tanks in the production site. So the total number of tanks is getUpperTankCount()+1 because of the mixtank.
-@return the number of upper tanks#</dia:string>
+@return the number of upper tanks.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -2823,17 +2823,17 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="55.1243,-37.9555"/>
+        <dia:point val="55.1248,-38.9458"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="45.0798,-39.5604;55.1743,-37.1055"/>
+        <dia:rectangle val="45.0798,-39.7458;55.1748,-37.9604"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="55.1243,-37.9555"/>
-        <dia:point val="45.1298,-37.9555"/>
+        <dia:point val="55.1248,-38.9458"/>
+        <dia:point val="45.1298,-38.9458"/>
         <dia:point val="45.1298,-38.8104"/>
         <dia:point val="46.6811,-38.8104"/>
       </dia:attribute>
@@ -2933,19 +2933,19 @@ crosssection*$SIM_STEP_SIZE*threshold
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O17">
       <dia:attribute name="obj_pos">
-        <dia:point val="-72.4021,-43.0488"/>
+        <dia:point val="-73.1109,-43.0488"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-72.4521,-43.0988;-50.5371,-31.9488"/>
+        <dia:rectangle val="-73.1609,-43.0988;-49.7309,-31.2488"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="-72.4021,-43.0488"/>
+        <dia:point val="-73.1109,-43.0488"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="21.815000000000001"/>
+        <dia:real val="23.330000000000002"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="11.049999999999999"/>
+        <dia:real val="11.75"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#ProductionSite#</dia:string>
@@ -2954,7 +2954,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="comment">
-        <dia:string>#Group all tanks in the production site together. This is the single entrance point of the model, because you can get every tank and, through the tanks, every pipe in the production site.#</dia:string>
+        <dia:string>#Group all tanks in the production site together. This is the entrance point of the model, because you can get every tank and, through the tanks, every pipe in the production site.#</dia:string>
       </dia:attribute>
       <dia:attribute name="abstract">
         <dia:boolean val="false"/>
@@ -3050,8 +3050,8 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Get one of the upper tanks
-@return the requested tank#</dia:string>
+            <dia:string>#Get one of the upper tanks.
+@return the requested tank.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -3077,7 +3077,7 @@ crosssection*$SIM_STEP_SIZE*threshold
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#Specifies the tank#</dia:string>
+                <dia:string>#Specifies the tank.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -3099,7 +3099,8 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Get the mixtank#</dia:string>
+            <dia:string>#Get the mixtank.
+@return the mixtank of the production site.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -3175,7 +3176,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="comment">
-        <dia:string>#This is the motor which is installed in the mixtank#</dia:string>
+        <dia:string>#This is the motor which is installed in the mixtank.#</dia:string>
       </dia:attribute>
       <dia:attribute name="abstract">
         <dia:boolean val="false"/>
@@ -3271,8 +3272,8 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Set the RPM of the motor
-@throws IllegalArgumentException if rpm is negative or greater than 3000#</dia:string>
+            <dia:string>#Set the RPM of the motor.
+@throws IllegalArgumentException if rpm is negative or greater than 3000.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -3298,7 +3299,7 @@ crosssection*$SIM_STEP_SIZE*threshold
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The target RPM#</dia:string>
+                <dia:string>#The target RPM.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -3320,8 +3321,8 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Get the RPM
-@return the RPM#</dia:string>
+            <dia:string>#Get the RPM.
+@return the RPM.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -3367,7 +3368,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="comment">
-        <dia:string>#A color in the CMY (cyan, magenta, yellow) color space#</dia:string>
+        <dia:string>#A color in the CMY (cyan, magenta, yellow) color space.#</dia:string>
       </dia:attribute>
       <dia:attribute name="abstract">
         <dia:boolean val="false"/>
@@ -3463,8 +3464,8 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Construct a new Color object
-@throws IllegalArgumentException if cyan, yellow or magenta is smaller than 0 or greather than 255#</dia:string>
+            <dia:string>#Construct a new Color object.
+@throws IllegalArgumentException if cyan, yellow or magenta is smaller than 0 or greather than 255.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -3546,8 +3547,8 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Set the cyan percentage
-@throws IllegalArgumentException if cyan is smaller than 0 or greather than 255#</dia:string>
+            <dia:string>#Set the cyan percentage.
+@throws IllegalArgumentException if cyan is smaller than 0 or greather than 255.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -3595,8 +3596,8 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Set the magenta percentage
-@throws IllegalArgumentException if magenta is smaller than 0 or greather than 255#</dia:string>
+            <dia:string>#Set the magenta percentage.
+@throws IllegalArgumentException if magenta is smaller than 0 or greather than 255.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -3644,8 +3645,8 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Set the yellow percentage
-@throws IllegalArgumentException if yellow is smaller than 0 or greather than 255#</dia:string>
+            <dia:string>#Set the yellow percentage.
+@throws IllegalArgumentException if yellow is smaller than 0 or greather than 255.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -3693,8 +3694,8 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Get the cyan percentage
-@return the percentage of the cyan color#</dia:string>
+            <dia:string>#Get the cyan percentage.
+@return the percentage of the cyan color.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -3724,8 +3725,8 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Get the magenta percentage
-@return the percentage of the magenta color#</dia:string>
+            <dia:string>#Get the magenta percentage.
+@return the percentage of the magenta color.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -3755,8 +3756,8 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Get the yellow percentage
-@return the percentage of the yellow color#</dia:string>
+            <dia:string>#Get the yellow percentage.
+@return the percentage of the yellow color.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -3786,8 +3787,8 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Returns the r value when converting this color to RGB
-@return The r value#</dia:string>
+            <dia:string>#Returns the r value when converting this color to RGB.
+@return The r value.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -3817,8 +3818,8 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Returns the g value when converting this color to RGB
-@return The g value#</dia:string>
+            <dia:string>#Returns the g value when converting this color to RGB.
+@return The g value.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -3848,8 +3849,8 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Returns the b value when converting this color to RGB
-@return The b value#</dia:string>
+            <dia:string>#Returns the b value when converting this color to RGB.
+@return The b value.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -3879,9 +3880,9 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Mix two colors
-@throws IllegalArgumentException if ratio is &lt;= 0
-@return the new color#</dia:string>
+            <dia:string>#Mix two colors.
+@throws IllegalArgumentException if ratio is &lt;= 0.
+@return the new color.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -3907,7 +3908,7 @@ crosssection*$SIM_STEP_SIZE*threshold
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The first color to mix#</dia:string>
+                <dia:string>#The first color to mix.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -3924,7 +3925,7 @@ crosssection*$SIM_STEP_SIZE*threshold
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The second color to mix#</dia:string>
+                <dia:string>#The second color to mix.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -3941,7 +3942,7 @@ crosssection*$SIM_STEP_SIZE*threshold
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The ratio of color1/color2, e.g. "1" means that both colors have the same intensity#</dia:string>
+                <dia:string>#The ratio of color1/color2, e.g. "1" means that both colors have the same intensity.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -4076,7 +4077,7 @@ crosssection*$SIM_STEP_SIZE*threshold
       <dia:attribute name="orth_points">
         <dia:point val="-51.4306,-2.5714"/>
         <dia:point val="-57.3782,-2.5714"/>
-        <dia:point val="-57.3782,-2.45371"/>
+        <dia:point val="-57.3782,-2.4537"/>
         <dia:point val="-63.9567,-2.4537"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -4103,25 +4104,25 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:point val="-55.4198,10.1904"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-55.4698,10.1404;-26.3798,25.6904"/>
+        <dia:rectangle val="-55.4698,10.1404;-25.9948,25.6904"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-55.4198,10.1904"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="28.989999999999998"/>
+        <dia:real val="29.375"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
         <dia:real val="15.449999999999999"/>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#OverfullFluidContainerException#</dia:string>
+        <dia:string>#OverfullLiquidContainerException#</dia:string>
       </dia:attribute>
       <dia:attribute name="stereotype">
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="comment">
-        <dia:string>#Thrown to indicate that a too big Liquid got inserted into a Pipe or a Tank#</dia:string>
+        <dia:string>#Thrown to indicate that a too big liquid got inserted into a pipe or a tank.#</dia:string>
       </dia:attribute>
       <dia:attribute name="abstract">
         <dia:boolean val="false"/>
@@ -4205,7 +4206,7 @@ crosssection*$SIM_STEP_SIZE*threshold
       <dia:attribute name="operations">
         <dia:composite type="umloperation">
           <dia:attribute name="name">
-            <dia:string>#OverfullFluidContainerException#</dia:string>
+            <dia:string>#OverfullLiquidContainerException#</dia:string>
           </dia:attribute>
           <dia:attribute name="stereotype">
             <dia:string>#constructor#</dia:string>
@@ -4217,8 +4218,8 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Create a new OverfullFluidContainerException
-@throws IllegalArgumentException if maximumAmount or triedAmount is &lt; 0#</dia:string>
+            <dia:string>#Create a new OverfullLiquidContainerException
+@throws IllegalArgumentException if maximumAmount or triedAmount is &lt; 0.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -4244,7 +4245,7 @@ crosssection*$SIM_STEP_SIZE*threshold
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The error message#</dia:string>
+                <dia:string>#The error message.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -4261,7 +4262,7 @@ crosssection*$SIM_STEP_SIZE*threshold
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#How much one can insert at maximum#</dia:string>
+                <dia:string>#How much one can insert at maximum.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -4278,7 +4279,7 @@ crosssection*$SIM_STEP_SIZE*threshold
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#How much was tried to be inserted. This should be more than maximumAmount#</dia:string>
+                <dia:string>#How much was tried to be inserted. This should be more than maximumAmount.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -4331,8 +4332,8 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Returns the amount that was tried to input
-@return the tried amount#</dia:string>
+            <dia:string>#Returns the amount that was tried to input.
+@return the tried amount.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -4478,8 +4479,8 @@ crosssection*$SIM_STEP_SIZE*threshold
       <dia:attribute name="orth_points">
         <dia:point val="-40.9239,52.3394"/>
         <dia:point val="-40.9239,38.6151"/>
-        <dia:point val="-40.9248,38.6151"/>
-        <dia:point val="-40.9248,25.6909"/>
+        <dia:point val="-40.7323,38.6151"/>
+        <dia:point val="-40.7323,25.6909"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -4544,17 +4545,17 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:boolean val="true"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="22.2613,-35.3104"/>
+        <dia:point val="22.2613,-34.6104"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-26.7256,-36.0604;22.3113,-14.8714"/>
+        <dia:rectangle val="-26.7256,-35.3604;22.3113,-14.8714"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="22.2613,-35.3104"/>
-        <dia:point val="14.8379,-35.3104"/>
+        <dia:point val="22.2613,-34.6104"/>
+        <dia:point val="14.8379,-34.6104"/>
         <dia:point val="14.8379,-15.7214"/>
         <dia:point val="-26.6756,-15.7214"/>
       </dia:attribute>
@@ -4579,16 +4580,16 @@ crosssection*$SIM_STEP_SIZE*threshold
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O26">
       <dia:attribute name="obj_pos">
-        <dia:point val="34.4961,-28.0616"/>
+        <dia:point val="34.4961,-26.6611"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="33.6461,-28.1116;53.2012,-22.3452"/>
+        <dia:rectangle val="33.6461,-26.7111;53.2012,-22.3452"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="34.4961,-28.0616"/>
+        <dia:point val="34.4961,-26.6611"/>
         <dia:point val="34.4961,-24.8281"/>
         <dia:point val="53.1512,-24.8281"/>
         <dia:point val="53.1512,-22.3952"/>
@@ -4621,18 +4622,18 @@ crosssection*$SIM_STEP_SIZE*threshold
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O27">
       <dia:attribute name="obj_pos">
-        <dia:point val="34.4961,-28.06"/>
+        <dia:point val="34.4961,-26.6599"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="28.7006,-28.11;35.3461,-22.2183"/>
+        <dia:rectangle val="28.7006,-26.7099;35.3461,-22.2183"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="34.4961,-28.06"/>
-        <dia:point val="34.4961,-24.7641"/>
-        <dia:point val="28.7506,-24.7641"/>
+        <dia:point val="34.4961,-26.6599"/>
+        <dia:point val="34.4961,-24.0641"/>
+        <dia:point val="28.7506,-24.0641"/>
         <dia:point val="28.7506,-22.2683"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -4663,17 +4664,17 @@ crosssection*$SIM_STEP_SIZE*threshold
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O28">
       <dia:attribute name="obj_pos">
-        <dia:point val="6.43551,52.9614"/>
+        <dia:point val="6.44329,52.9614"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-19.3908,-26.611;7.28598,53.02"/>
+        <dia:rectangle val="-19.3908,-26.611;7.29345,53.0141"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="6.43551,52.9614"/>
-        <dia:point val="6.41122,50.5779"/>
+        <dia:point val="6.44329,52.9614"/>
+        <dia:point val="6.43551,50.5779"/>
         <dia:point val="-19.3408,50.5779"/>
         <dia:point val="-19.3408,-26.561"/>
       </dia:attribute>
@@ -4704,19 +4705,19 @@ crosssection*$SIM_STEP_SIZE*threshold
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O29">
       <dia:attribute name="obj_pos">
-        <dia:point val="6.43551,52.9618"/>
+        <dia:point val="6.44329,52.9618"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-1.30575,-19.0284;7.28598,53.0205"/>
+        <dia:rectangle val="-1.28575,-19.0284;7.29345,53.0146"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="6.43551,52.9618"/>
-        <dia:point val="6.41122,50.5793"/>
-        <dia:point val="-1.25575,50.5793"/>
-        <dia:point val="-1.25575,-18.9784"/>
+        <dia:point val="6.44329,52.9618"/>
+        <dia:point val="6.43551,50.5793"/>
+        <dia:point val="-1.23575,50.5793"/>
+        <dia:point val="-1.23575,-18.9784"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -4858,7 +4859,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:point val="65.5995,54.8496"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="46.6311,-33.6604;72.2078,55.6996"/>
+        <dia:rectangle val="46.6311,-32.9604;72.2078,55.6996"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -4866,8 +4867,8 @@ crosssection*$SIM_STEP_SIZE*threshold
       <dia:attribute name="orth_points">
         <dia:point val="65.5995,54.8496"/>
         <dia:point val="72.1078,54.8496"/>
-        <dia:point val="72.1078,-33.6104"/>
-        <dia:point val="46.6811,-33.6104"/>
+        <dia:point val="72.1078,-32.9104"/>
+        <dia:point val="46.6811,-32.9104"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -4899,7 +4900,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:point val="22.3111,-42.5104"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="22.2611,-43.2604;47.9111,-28.0604"/>
+        <dia:rectangle val="22.2611,-43.2604;47.9111,-26.6604"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="22.3111,-42.5104"/>
@@ -4908,7 +4909,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:real val="24.369999999999997"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="14.399999999999999"/>
+        <dia:real val="15.799999999999999"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#TankAlarm#</dia:string>
@@ -4917,7 +4918,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="comment">
-        <dia:string>#An abstract class which monitors some attribute of an AbstractTank#</dia:string>
+        <dia:string>#An abstract class which monitors some attribute of an AbstractTank.#</dia:string>
       </dia:attribute>
       <dia:attribute name="abstract">
         <dia:boolean val="true"/>
@@ -5013,7 +5014,7 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Creates a new TankAlarm#</dia:string>
+            <dia:string>#Creates a new TankAlarm.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -5039,7 +5040,7 @@ crosssection*$SIM_STEP_SIZE*threshold
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The tank wich has the property to monitor#</dia:string>
+                <dia:string>#The tank wich has the property to monitor.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -5056,7 +5057,7 @@ crosssection*$SIM_STEP_SIZE*threshold
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The threshold of the value#</dia:string>
+                <dia:string>#The threshold of the value.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -5073,7 +5074,7 @@ crosssection*$SIM_STEP_SIZE*threshold
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#Whether the alarm should trigger if the value is bigger or smaller than the threshold#</dia:string>
+                <dia:string>#Whether the alarm should trigger if the value is bigger or smaller than the threshold.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -5095,7 +5096,7 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="2"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Get the value of the tank, which is monitored by the alarm#</dia:string>
+            <dia:string>#Get the value of the tank, which is monitored by the alarm. This should be overriden by subclasses.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="true"/>
@@ -5125,7 +5126,7 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#The method called by the tank if something changes#</dia:string>
+            <dia:string>#The method called by the tank if something changes.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -5151,7 +5152,7 @@ crosssection*$SIM_STEP_SIZE*threshold
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#the observerable object#</dia:string>
+                <dia:string>#the observerable object.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -5168,7 +5169,7 @@ crosssection*$SIM_STEP_SIZE*threshold
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The changed value#</dia:string>
+                <dia:string>#The changed value.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -5190,8 +5191,8 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Whether the alarm is active
-@return true if the alarm is currently triggered#</dia:string>
+            <dia:string>#Return whether the alarm is active at the moment.
+@return true if the alarm is currently triggered.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -6331,7 +6332,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:point val="-121.477,-86.9532"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-121.527,-87.0032;-95.5168,-66.1532"/>
+        <dia:rectangle val="-121.527,-87.0032;-95.517,-66.1532"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-121.477,-86.9532"/>
@@ -6982,7 +6983,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="comment">
-        <dia:string>#Server for the mix tank. Contain the motor, in addition to the variables provided in the parent class.#</dia:string>
+        <dia:string>#Server for the mixtank. Contain the motor, in addition to the variables provided in the parent class.#</dia:string>
       </dia:attribute>
       <dia:attribute name="abstract">
         <dia:boolean val="false"/>
@@ -7078,7 +7079,7 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Creates a new server for a mix tank#</dia:string>
+            <dia:string>#Creates a new server for a mixtank#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -8243,7 +8244,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="comment">
-        <dia:string>#Client for reading the values of a mixTank. Contains a motor.#</dia:string>
+        <dia:string>#Client for reading the values of a mixtank. Contains a motor.#</dia:string>
       </dia:attribute>
       <dia:attribute name="abstract">
         <dia:boolean val="false"/>
@@ -8339,7 +8340,7 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Creates a new OPC UA client to allow reading the values of a mix tank#</dia:string>
+            <dia:string>#Creates a new OPC UA client to allow reading the values of a mixtank#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -8675,7 +8676,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:point val="139.444,-87.3385"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="138.594,-90.2106;151.13,-87.2885"/>
+        <dia:rectangle val="138.594,-90.2102;151.159,-87.2885"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -8683,8 +8684,8 @@ crosssection*$SIM_STEP_SIZE*threshold
       <dia:attribute name="orth_points">
         <dia:point val="139.444,-87.3385"/>
         <dia:point val="139.444,-89.1137"/>
-        <dia:point val="151.072,-89.1137"/>
-        <dia:point val="151.08,-90.1602"/>
+        <dia:point val="151.108,-89.1137"/>
+        <dia:point val="151.108,-90.1602"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -8716,7 +8717,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:point val="139.444,-87.3385"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="127.892,-89.9776;140.294,-87.2885"/>
+        <dia:rectangle val="127.896,-89.9776;140.294,-87.2885"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -8724,8 +8725,8 @@ crosssection*$SIM_STEP_SIZE*threshold
       <dia:attribute name="orth_points">
         <dia:point val="139.444,-87.3385"/>
         <dia:point val="139.444,-89.1137"/>
-        <dia:point val="127.942,-89.1137"/>
-        <dia:point val="127.947,-89.9274"/>
+        <dia:point val="127.947,-89.1137"/>
+        <dia:point val="127.95,-89.9274"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -12989,9 +12990,9 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Returns the motor speed of the mix tank
+            <dia:string>#Returns the motor speed of the mixtank
 
-@return the motor speed of the mix tank#</dia:string>
+@return the motor speed of the mixtank#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -13069,7 +13070,7 @@ crosssection*$SIM_STEP_SIZE*threshold
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Sets the listener that is notified of changes in the temperature. Listner gets the TankSelector of the actually modified tank#</dia:string>
+            <dia:string>#Sets the listener that is notified of changes in the temperature. Listener gets the TankSelector of the actually modified tank#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -13596,7 +13597,7 @@ crosssection*$SIM_STEP_SIZE*threshold
           <dia:attribute name="comment">
             <dia:string>#Gets the value of the motor rpm slider
 
-@return The rpm of the motor in the mix tank#</dia:string>
+@return The rpm of the motor in the mixtank#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -13696,7 +13697,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:point val="42.9602,-94.8408"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="28.9034,-97.8535;43.8102,-94.7908"/>
+        <dia:rectangle val="28.924,-97.8533;43.8102,-94.7908"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -13704,8 +13705,8 @@ crosssection*$SIM_STEP_SIZE*threshold
       <dia:attribute name="orth_points">
         <dia:point val="42.9602,-94.8408"/>
         <dia:point val="42.9602,-96.8712"/>
-        <dia:point val="28.9545,-96.8712"/>
-        <dia:point val="28.9749,-97.8024"/>
+        <dia:point val="28.9749,-96.8712"/>
+        <dia:point val="28.9915,-97.8024"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -13737,7 +13738,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:point val="42.9602,-94.8408"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="42.1102,-99.6161;49.8483,-94.7908"/>
+        <dia:rectangle val="42.1102,-99.6147;49.9325,-94.7908"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -13745,8 +13746,8 @@ crosssection*$SIM_STEP_SIZE*threshold
       <dia:attribute name="orth_points">
         <dia:point val="42.9602,-94.8408"/>
         <dia:point val="42.9602,-96.8712"/>
-        <dia:point val="49.7207,-96.8712"/>
-        <dia:point val="49.7969,-99.5647"/>
+        <dia:point val="49.8825,-96.8712"/>
+        <dia:point val="49.8825,-99.5647"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -13994,7 +13995,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="comment">
-        <dia:string>#This class visualizes a tank holding a colored fluid. It knows its position as well as the color of the content. The changing part of the visualization are the fill level of the tank and, possibly, the  color of the liquid.#</dia:string>
+        <dia:string>#This class visualizes a tank holding a colored liquid. It knows its position as well as the color of the content. The changing part of the visualization are the fill level of the tank and, possibly, the  color of the liquid.#</dia:string>
       </dia:attribute>
       <dia:attribute name="abstract">
         <dia:boolean val="true"/>
@@ -17239,7 +17240,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:point val="-25.6565,-129.004"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-26.5065,-129.054;5.06762,-121.155"/>
+        <dia:rectangle val="-26.5065,-129.054;5.09992,-121.155"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -17247,8 +17248,8 @@ crosssection*$SIM_STEP_SIZE*threshold
       <dia:attribute name="orth_points">
         <dia:point val="-25.6565,-129.004"/>
         <dia:point val="-25.6565,-125.409"/>
-        <dia:point val="4.9493,-125.409"/>
-        <dia:point val="5.01682,-121.206"/>
+        <dia:point val="5.01682,-125.409"/>
+        <dia:point val="5.04953,-121.206"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -17465,17 +17466,17 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="-57.9576,-90.9677"/>
+        <dia:point val="-57.9576,-90.968"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-58.7076,-106.722;-49.0241,-90.1177"/>
+        <dia:rectangle val="-58.7076,-106.722;-49.0241,-90.118"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-57.9576,-90.9677"/>
-        <dia:point val="-53.5298,-90.9677"/>
+        <dia:point val="-57.9576,-90.968"/>
+        <dia:point val="-53.5298,-90.968"/>
         <dia:point val="-53.5298,-105.972"/>
         <dia:point val="-49.0741,-105.972"/>
       </dia:attribute>
@@ -17537,17 +17538,17 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="-57.9576,-90.9677"/>
+        <dia:point val="-57.9576,-90.968"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-58.7076,-99.6594;-50.3264,-90.1177"/>
+        <dia:rectangle val="-58.7076,-99.6594;-50.3264,-90.118"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-57.9576,-90.9677"/>
-        <dia:point val="-53.5434,-90.9677"/>
+        <dia:point val="-57.9576,-90.968"/>
+        <dia:point val="-53.5434,-90.968"/>
         <dia:point val="-53.5434,-98.9094"/>
         <dia:point val="-50.3764,-98.9094"/>
       </dia:attribute>
@@ -19517,7 +19518,7 @@ crosssection*$SIM_STEP_SIZE*threshold
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="180.761,-161.593"/>
-        <dia:point val="180.758,-125.359"/>
+        <dia:point val="180.761,-125.359"/>
         <dia:point val="157.566,-125.359"/>
         <dia:point val="157.566,-113.292"/>
         <dia:point val="155.348,-113.292"/>
@@ -19560,7 +19561,7 @@ crosssection*$SIM_STEP_SIZE*threshold
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="180.761,-161.588"/>
-        <dia:point val="180.757,-131.284"/>
+        <dia:point val="180.761,-131.284"/>
         <dia:point val="181.922,-131.284"/>
         <dia:point val="181.922,-131.221"/>
       </dia:attribute>
@@ -19601,7 +19602,7 @@ crosssection*$SIM_STEP_SIZE*threshold
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="180.761,-161.593"/>
-        <dia:point val="180.758,-125.359"/>
+        <dia:point val="180.761,-125.359"/>
         <dia:point val="157.566,-125.359"/>
         <dia:point val="157.566,-104.494"/>
         <dia:point val="156.009,-104.494"/>
@@ -19644,7 +19645,7 @@ crosssection*$SIM_STEP_SIZE*threshold
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="180.761,-161.593"/>
-        <dia:point val="180.758,-125.359"/>
+        <dia:point val="180.761,-125.359"/>
         <dia:point val="157.566,-125.359"/>
         <dia:point val="157.566,-123.884"/>
         <dia:point val="160.722,-123.884"/>
@@ -21288,17 +21289,17 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="233.161,-139.347"/>
+        <dia:point val="233.199,-139.347"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="232.396,-140.113;241.406,-135.649"/>
+        <dia:rectangle val="232.44,-140.107;241.406,-135.649"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="233.161,-139.347"/>
-        <dia:point val="233.101,-136.484"/>
+        <dia:point val="233.199,-139.347"/>
+        <dia:point val="233.161,-136.484"/>
         <dia:point val="239.666,-136.484"/>
         <dia:point val="239.666,-135.699"/>
       </dia:attribute>
@@ -22140,7 +22141,7 @@ crosssection*$SIM_STEP_SIZE*threshold
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="comment">
-        <dia:string>#Visualisation for the mix tank.#</dia:string>
+        <dia:string>#Visualisation for the mixtank.#</dia:string>
       </dia:attribute>
       <dia:attribute name="abstract">
         <dia:boolean val="false"/>
@@ -25252,7 +25253,7 @@ the chart showing the progression.#</dia:string>
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="comment">
-        <dia:string>#Visualises the color of the mix tank.#</dia:string>
+        <dia:string>#Visualises the color of the mixtank.#</dia:string>
       </dia:attribute>
       <dia:attribute name="abstract">
         <dia:boolean val="false"/>
@@ -28622,17 +28623,17 @@ true if the logging of the temperature progression should be enabled for the spe
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O169">
       <dia:attribute name="obj_pos">
-        <dia:point val="390.749,-161.933"/>
+        <dia:point val="390.768,-161.933"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="382.315,-162.006;391.6,-146.729"/>
+        <dia:rectangle val="382.315,-161.993;391.618,-146.729"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="390.749,-161.933"/>
-        <dia:point val="390.704,-160.248"/>
+        <dia:point val="390.768,-161.933"/>
+        <dia:point val="390.749,-160.248"/>
         <dia:point val="382.365,-160.248"/>
         <dia:point val="382.365,-146.779"/>
       </dia:attribute>
@@ -28663,17 +28664,17 @@ true if the logging of the temperature progression should be enabled for the spe
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O170">
       <dia:attribute name="obj_pos">
-        <dia:point val="390.748,-161.936"/>
+        <dia:point val="390.767,-161.936"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="377.54,-162.009;400.01,-92.8335"/>
+        <dia:rectangle val="377.54,-161.995;400.01,-92.8335"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="390.748,-161.936"/>
-        <dia:point val="390.703,-160.292"/>
+        <dia:point val="390.767,-161.936"/>
+        <dia:point val="390.748,-160.292"/>
         <dia:point val="399.96,-160.292"/>
         <dia:point val="399.96,-92.8835"/>
         <dia:point val="377.59,-92.8835"/>
@@ -28706,17 +28707,17 @@ true if the logging of the temperature progression should be enabled for the spe
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O171">
       <dia:attribute name="obj_pos">
-        <dia:point val="390.748,-161.936"/>
+        <dia:point val="390.767,-161.936"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="389.897,-162.009;400.01,-116.231"/>
+        <dia:rectangle val="389.916,-161.995;400.01,-116.231"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="390.748,-161.936"/>
-        <dia:point val="390.703,-160.292"/>
+        <dia:point val="390.767,-161.936"/>
+        <dia:point val="390.748,-160.292"/>
         <dia:point val="399.96,-160.292"/>
         <dia:point val="399.96,-116.281"/>
         <dia:point val="396.484,-116.281"/>
@@ -28749,19 +28750,19 @@ true if the logging of the temperature progression should be enabled for the spe
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O172">
       <dia:attribute name="obj_pos">
-        <dia:point val="283.075,-166.891"/>
+        <dia:point val="283.081,-166.891"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="282.225,-166.946;293.116,-147.988"/>
+        <dia:rectangle val="282.231,-166.943;293.146,-147.988"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="283.075,-166.891"/>
-        <dia:point val="283.055,-163.39"/>
-        <dia:point val="292.975,-163.39"/>
-        <dia:point val="293.066,-148.038"/>
+        <dia:point val="283.081,-166.891"/>
+        <dia:point val="283.076,-163.39"/>
+        <dia:point val="293.066,-163.39"/>
+        <dia:point val="293.096,-148.038"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -28790,17 +28791,17 @@ true if the logging of the temperature progression should be enabled for the spe
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O173">
       <dia:attribute name="obj_pos">
-        <dia:point val="283.075,-166.891"/>
+        <dia:point val="283.081,-166.891"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="269.067,-166.946;283.926,-147.327"/>
+        <dia:rectangle val="269.067,-166.942;283.931,-147.327"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="283.075,-166.891"/>
-        <dia:point val="283.054,-163.406"/>
+        <dia:point val="283.081,-166.891"/>
+        <dia:point val="283.075,-163.406"/>
         <dia:point val="269.117,-163.406"/>
         <dia:point val="269.117,-147.377"/>
       </dia:attribute>
@@ -35063,7 +35064,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="11.2507,53.6846"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="11.2007,6.1682;53.2591,54.5346"/>
+        <dia:rectangle val="11.2007,6.432;53.2591,54.5346"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -35071,7 +35072,7 @@ true if the logging of the temperature progression should be enabled for the spe
       <dia:attribute name="orth_points">
         <dia:point val="11.2507,53.6846"/>
         <dia:point val="53.2091,53.6846"/>
-        <dia:point val="53.2091,6.2182"/>
+        <dia:point val="53.2091,6.482"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -35102,15 +35103,15 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="6.44696,52.9846"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-26.7256,-10.6714;7.29696,53.0346"/>
+        <dia:rectangle val="-26.7256,-11.3714;7.29696,53.0346"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="6.44696,52.9846"/>
-        <dia:point val="6.44696,-9.9214"/>
-        <dia:point val="-26.6756,-9.9214"/>
+        <dia:point val="6.44696,-10.6214"/>
+        <dia:point val="-26.6756,-10.6214"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -35141,7 +35142,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="11.2507,53.6846"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="11.2007,-28.1604;22.3611,54.5346"/>
+        <dia:rectangle val="11.2007,-26.7604;22.3611,54.5346"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -35149,8 +35150,8 @@ true if the logging of the temperature progression should be enabled for the spe
       <dia:attribute name="orth_points">
         <dia:point val="11.2507,53.6846"/>
         <dia:point val="16.2379,53.6846"/>
-        <dia:point val="16.2379,-28.1104"/>
-        <dia:point val="22.3111,-28.1104"/>
+        <dia:point val="16.2379,-26.7104"/>
+        <dia:point val="22.3111,-26.7104"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -36249,7 +36250,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="comment">
-        <dia:string>#The model of a tank, allowing to put in and take out liquid. Apart from this addition it is a normal tank.#</dia:string>
+        <dia:string>#The model of a tank, allowing to put in and take out liquid. Besides this addition, it is a normal tank.#</dia:string>
       </dia:attribute>
       <dia:attribute name="abstract">
         <dia:boolean val="false"/>
@@ -36345,7 +36346,7 @@ true if the logging of the temperature progression should be enabled for the spe
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Create a new tank#</dia:string>
+            <dia:string>#Create a new tank.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -36371,7 +36372,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The size of the tank in cm³#</dia:string>
+                <dia:string>#The size of the tank in cm³.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -36388,7 +36389,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#Specifies which tank it is. This is useful if you have access to the tank and need to get a unique identifier#</dia:string>
+                <dia:string>#Specifies which tank it is. This is useful if you have access to the tank and need to get a unique identifier.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -36405,7 +36406,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#Default content#</dia:string>
+                <dia:string>#The default content of the tank.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -36422,7 +36423,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The outgoing pipe#</dia:string>
+                <dia:string>#The outgoing pipe.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -36439,7 +36440,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The incoming pipe#</dia:string>
+                <dia:string>#The incoming pipe.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -36461,7 +36462,7 @@ true if the logging of the temperature progression should be enabled for the spe
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Add new liquid to the tank. The tank mixes the input with its current content and sets its values#</dia:string>
+            <dia:string>#Add new liquid to the tank. The tank mixes the input with its current content and sets its values.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -36487,7 +36488,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The liquid to put in#</dia:string>
+                <dia:string>#The liquid to put in.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -36509,8 +36510,8 @@ true if the logging of the temperature progression should be enabled for the spe
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Takes liquid out of the tank
-@return the liquid that was taken out#</dia:string>
+            <dia:string>#Takes liquid out of the tank.
+@return the liquid that was taken out.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -36536,7 +36537,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The amount of fluid to take out#</dia:string>
+                <dia:string>#The amount of liquid to take out.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -36669,9 +36670,9 @@ true if the logging of the temperature progression should be enabled for the spe
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Mixes the given liquids and generates a new one. Volume equals the sum of all others. Colors and temperatures get mixed pro rata
+            <dia:string>#Mixes the given liquids and generates a new one. Volume equals the sum of all others. Colors and temperatures get mixed pro rata.
 
-@return a single Liquid element containing a mixture of the given liquids#</dia:string>
+@return a single Liquid element containing a mixture of the given liquids.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -36697,7 +36698,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The different liquids to mix#</dia:string>
+                <dia:string>#The different liquids to mix.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -36752,7 +36753,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="-120.993,-6.20156"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-135.146,-28.1789;-120.793,-5.40156"/>
+        <dia:rectangle val="-135.115,-28.1788;-120.793,-5.40156"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -36760,8 +36761,8 @@ true if the logging of the temperature progression should be enabled for the spe
       <dia:attribute name="orth_points">
         <dia:point val="-120.993,-6.20156"/>
         <dia:point val="-120.993,-9.68101"/>
-        <dia:point val="-135.096,-9.68101"/>
-        <dia:point val="-135.07,-28.1288"/>
+        <dia:point val="-135.065,-9.68101"/>
+        <dia:point val="-135.065,-28.1288"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -36787,16 +36788,16 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="-146.388,-44.6564"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-146.438,-44.7064;-123.616,-37.9564"/>
+        <dia:rectangle val="-146.438,-44.7064;-124.483,-37.2564"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-146.388,-44.6564"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="22.7225"/>
+        <dia:real val="21.855"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="6.6500000000000004"/>
+        <dia:real val="7.3499999999999996"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#SubtractiveMixingStrategy#</dia:string>
@@ -36805,7 +36806,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="comment">
-        <dia:string>#Mixing liquids using subtractive color mixture#</dia:string>
+        <dia:string>#Mixing liquids using subtractive color mixture and richmann's formula for temperature mixing.#</dia:string>
       </dia:attribute>
       <dia:attribute name="abstract">
         <dia:boolean val="false"/>
@@ -36901,9 +36902,9 @@ true if the logging of the temperature progression should be enabled for the spe
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Mixes the given liquids and generates a new one. Volume equals the sum of all others. Colors and temperatures get mixed pro rata
+            <dia:string>#Mixes the given liquids and generates a new one. Colors are mixed using a substractive strategy and the temperatures are mixed using the richmann's formula.
 
-@return a single Liquid element containing a subtractive mixture of the given liquids#</dia:string>
+@return a single Liquid element containing a mixture of the given liquids#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -36929,7 +36930,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#Liquids to mix subtractive#</dia:string>
+                <dia:string>#Liquids to mix.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -36945,24 +36946,24 @@ true if the logging of the temperature progression should be enabled for the spe
     </dia:object>
     <dia:object type="UML - Realizes" version="1" id="O235">
       <dia:attribute name="obj_pos">
-        <dia:point val="-135.065,-35.6795"/>
+        <dia:point val="-146.476,-31.904"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-135.915,-38.006;-134.215,-35.6295"/>
+        <dia:rectangle val="-148.376,-41.0314;-146.388,-31.054"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-135.065,-35.6795"/>
-        <dia:point val="-135.065,-37.2177"/>
-        <dia:point val="-135.027,-37.2177"/>
-        <dia:point val="-135.027,-37.956"/>
+        <dia:point val="-146.476,-31.904"/>
+        <dia:point val="-148.326,-31.904"/>
+        <dia:point val="-148.326,-40.9814"/>
+        <dia:point val="-146.438,-40.9814"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
-        <dia:enum val="1"/>
         <dia:enum val="0"/>
         <dia:enum val="1"/>
+        <dia:enum val="0"/>
       </dia:attribute>
       <dia:attribute name="orth_autoroute">
         <dia:boolean val="true"/>
@@ -36989,13 +36990,13 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="-118.893,-41.7174"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-118.943,-41.7674;-99.478,-32.4674"/>
+        <dia:rectangle val="-118.943,-41.7674;-99.863,-32.4674"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-118.893,-41.7174"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="19.365000000000002"/>
+        <dia:real val="18.98"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
         <dia:real val="9.1999999999999993"/>
@@ -37103,8 +37104,8 @@ true if the logging of the temperature progression should be enabled for the spe
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Get a tank
-@return the requested tank that is simulatable#</dia:string>
+            <dia:string>#Get a tank which is extended to be simulatable.
+@return the requested tank that is simulatable.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -37130,7 +37131,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#Specifies the tank#</dia:string>
+                <dia:string>#Specifies the tank.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -37152,8 +37153,8 @@ true if the logging of the temperature progression should be enabled for the spe
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Get a tank
-@return the requested mixtank that is simulatable#</dia:string>
+            <dia:string>#Get the mixtank which is extended to be simulatable.
+@return the requested mixtank that is simulatable.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -37167,25 +37168,7 @@ true if the logging of the temperature progression should be enabled for the spe
           <dia:attribute name="class_scope">
             <dia:boolean val="false"/>
           </dia:attribute>
-          <dia:attribute name="parameters">
-            <dia:composite type="umlparameter">
-              <dia:attribute name="name">
-                <dia:string>#tank#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="type">
-                <dia:string>#TankSelector#</dia:string>
-              </dia:attribute>
-              <dia:attribute name="value">
-                <dia:string>##</dia:string>
-              </dia:attribute>
-              <dia:attribute name="comment">
-                <dia:string>##</dia:string>
-              </dia:attribute>
-              <dia:attribute name="kind">
-                <dia:enum val="0"/>
-              </dia:attribute>
-            </dia:composite>
-          </dia:attribute>
+          <dia:attribute name="parameters"/>
         </dia:composite>
       </dia:attribute>
       <dia:attribute name="template">
@@ -37195,19 +37178,19 @@ true if the logging of the temperature progression should be enabled for the spe
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O237">
       <dia:attribute name="obj_pos">
-        <dia:point val="-72.4021,-38.6488"/>
+        <dia:point val="-73.1109,-38.6488"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-99.578,-40.0581;-72.3521,-37.7988"/>
+        <dia:rectangle val="-99.963,-40.0581;-73.0609,-37.7988"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-72.4021,-38.6488"/>
-        <dia:point val="-86.365,-38.6488"/>
-        <dia:point val="-86.365,-39.9674"/>
-        <dia:point val="-99.528,-39.9674"/>
+        <dia:point val="-73.1109,-38.6488"/>
+        <dia:point val="-86.912,-38.6488"/>
+        <dia:point val="-86.912,-39.9674"/>
+        <dia:point val="-99.913,-39.9674"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -37276,7 +37259,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="-133.967,-74.9186"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-134.017,-74.9686;-103.62,-41.6674"/>
+        <dia:rectangle val="-134.017,-74.9686;-103.813,-41.6674"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -37284,8 +37267,8 @@ true if the logging of the temperature progression should be enabled for the spe
       <dia:attribute name="orth_points">
         <dia:point val="-133.967,-74.9186"/>
         <dia:point val="-133.967,-50.6564"/>
-        <dia:point val="-109.21,-50.6564"/>
-        <dia:point val="-109.21,-41.7174"/>
+        <dia:point val="-109.403,-50.6564"/>
+        <dia:point val="-109.403,-41.7174"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -37417,17 +37400,17 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="-50.5871,-31.9988"/>
+        <dia:point val="-49.7809,-31.2988"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-56.1114,-32.7488;-50.5371,1.12958"/>
+        <dia:rectangle val="-56.1114,-32.0488;-49.7309,1.12958"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-50.5871,-31.9988"/>
-        <dia:point val="-56.0614,-31.9988"/>
+        <dia:point val="-49.7809,-31.2988"/>
+        <dia:point val="-56.0614,-31.2988"/>
         <dia:point val="-56.0614,0.27958"/>
         <dia:point val="-51.3808,0.27958"/>
       </dia:attribute>
@@ -37489,17 +37472,17 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="obj_pos">
-        <dia:point val="-61.4946,-31.9988"/>
+        <dia:point val="-61.4459,-31.2988"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-61.7051,-32.7488;-49.2964,-29.493"/>
+        <dia:rectangle val="-61.7051,-32.0488;-49.2964,-29.493"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-61.4946,-31.9988"/>
-        <dia:point val="-61.6551,-31.9988"/>
+        <dia:point val="-61.4459,-31.2988"/>
+        <dia:point val="-61.6551,-31.2988"/>
         <dia:point val="-61.6551,-30.343"/>
         <dia:point val="-49.3464,-30.343"/>
       </dia:attribute>
@@ -41301,9 +41284,9 @@ true if the logging of the temperature progression should be enabled for the spe
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Returns the motor speed of the mix tank
+            <dia:string>#Returns the motor speed of the mixtank
 
-@return the motor speed of the mix tank#</dia:string>
+@return the motor speed of the mixtank#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -43249,7 +43232,7 @@ true if the logging of the temperature progression should be enabled for the spe
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Constructs a new Tank#</dia:string>
+            <dia:string>#Constructs a new Tank.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -43275,7 +43258,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The capacity of a tank in cm³#</dia:string>
+                <dia:string>#The capacity of a tank in cm³.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -43292,7 +43275,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#Specifies which tank it is#</dia:string>
+                <dia:string>#Specifies which tank it is. This is useful if you have access to the tank and need to get a unique identifier.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -43309,7 +43292,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#Default content#</dia:string>
+                <dia:string>#The default content of the tank.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -43326,7 +43309,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The outgoing pipe#</dia:string>
+                <dia:string>#The outgoing pipe.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -43343,7 +43326,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The incoming pipe#</dia:string>
+                <dia:string>#The incoming pipe.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -43365,8 +43348,8 @@ true if the logging of the temperature progression should be enabled for the spe
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Get the pipe which puts liquid into the tank
-@return the ingoing pipe#</dia:string>
+            <dia:string>#Get the pipe which puts liquid into the tank.
+@return the ingoing pipe.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -43391,17 +43374,17 @@ true if the logging of the temperature progression should be enabled for the spe
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O284">
       <dia:attribute name="obj_pos">
-        <dia:point val="-51.4306,-9.9214"/>
+        <dia:point val="-51.4306,-10.6214"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-53.3306,-10.7714;-51.3806,3.62958"/>
+        <dia:rectangle val="-53.3306,-11.4714;-51.3806,3.62958"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="-51.4306,-9.9214"/>
-        <dia:point val="-53.2806,-9.9214"/>
+        <dia:point val="-51.4306,-10.6214"/>
+        <dia:point val="-53.2806,-10.6214"/>
         <dia:point val="-53.2806,3.57958"/>
         <dia:point val="-51.4312,3.57958"/>
       </dia:attribute>
@@ -43436,7 +43419,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="204.945,-43.2181"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="139.394,-60.9887;205.794,-43.1681"/>
+        <dia:rectangle val="139.394,-60.9887;205.795,-43.1681"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -43905,7 +43888,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="-85.6258,-129.239"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-90.8656,-129.989;-72.3521,-42.1988"/>
+        <dia:rectangle val="-90.8656,-129.989;-73.0609,-42.1988"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -43914,7 +43897,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="-85.6258,-129.239"/>
         <dia:point val="-90.8156,-129.239"/>
         <dia:point val="-90.8156,-43.0488"/>
-        <dia:point val="-72.4021,-43.0488"/>
+        <dia:point val="-73.1109,-43.0488"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -44087,7 +44070,7 @@ true if the logging of the temperature progression should be enabled for the spe
         <dia:point val="204.945,-18.3181"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="204.894,-18.3681;230.631,52.2416"/>
+        <dia:rectangle val="204.895,-18.3681;230.631,52.2416"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -44236,7 +44219,7 @@ true if the logging of the temperature progression should be enabled for the spe
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Create a new mix tank#</dia:string>
+            <dia:string>#Create a new mixtank.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -44262,7 +44245,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The size of the tank in cm³#</dia:string>
+                <dia:string>#The size of the tank in cm³.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -44279,7 +44262,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#Default content#</dia:string>
+                <dia:string>#The default content of the tank.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -44296,7 +44279,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The outgoing pipe#</dia:string>
+                <dia:string>#The outgoing pipe.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -44318,7 +44301,7 @@ true if the logging of the temperature progression should be enabled for the spe
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Add new liquid to the tank. The tank mixes the input with its current content and sets its values#</dia:string>
+            <dia:string>#Add new liquid to the tank. The tank mixes the input with its current content and sets its values.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -44344,7 +44327,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The liquid to put in#</dia:string>
+                <dia:string>#The liquid to put in.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
@@ -44366,8 +44349,8 @@ true if the logging of the temperature progression should be enabled for the spe
             <dia:enum val="0"/>
           </dia:attribute>
           <dia:attribute name="comment">
-            <dia:string>#Takes liquid out of the tank
-@return the liquid that was taken out#</dia:string>
+            <dia:string>#Takes liquid out of the tank.
+@return the liquid that was taken out.#</dia:string>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -44393,7 +44376,7 @@ true if the logging of the temperature progression should be enabled for the spe
                 <dia:string>##</dia:string>
               </dia:attribute>
               <dia:attribute name="comment">
-                <dia:string>#The amount of fluid to take out#</dia:string>
+                <dia:string>#The amount of liquid to take out.#</dia:string>
               </dia:attribute>
               <dia:attribute name="kind">
                 <dia:enum val="0"/>
