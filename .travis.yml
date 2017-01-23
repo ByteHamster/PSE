@@ -12,7 +12,12 @@ script:
 - test `find . -not -type d -exec file "{}" ";" | grep CRLF | wc -l` -eq 0
 - cd src
 - mvn -U -B test
-- cd ../docs
+- cd ..
+- git fetch origin master
+- git diff --name-only FETCH_HEAD | { grep "\.java" || true; }
+- git diff --name-only FETCH_HEAD | grep "\.java" | xargs -r java -jar tools/checkstyle-7.4-all.jar -c src/checkstyle.xml
+- git diff --name-only FETCH_HEAD | grep "\.java" | xargs -r java -jar tools/checkstyle-7.4-all.jar -c src/checkstyle.xml | wc -l | xargs test 2 -ge
+- cd docs
 - export max_print_line=200
 - pdflatex -interaction=batchmode Pflichtenheft &> /dev/null
 - cat Pflichtenheft.log | grep -C 15 -i ERROR
