@@ -11,6 +11,7 @@ target
 .settings/
 .project
 .classpath
+.checkstyle
 
 ###########################################
 #              Intellij files             #
