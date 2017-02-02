@@ -1,12 +1,12 @@
 package edu.kit.pse.osip.core.io.files;
 
 /**
- * Basic parser class 
+ * Basic parser class
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
 public class BaseParser {
-    private int currentPosition = 0;
+    protected int currentPosition = 0;
     private final String toParse;
     
     /**
@@ -73,7 +73,7 @@ public class BaseParser {
      */
     protected final void check(char c) throws ParserException {
         if (peek() != c) {
-            die("Unexpected symbol: " + peek());
+            die("Unexpected symbol: '" + peek() + "'");
         }
         pop();
     }
@@ -91,11 +91,12 @@ public class BaseParser {
      * @throws ParserException If something goes wrong
      */
     public final void skipComments() throws ParserException {
-        check('/');
-        check('/');
-        while (available() && peek() != '\n') {
-            pop();
+        if (available() && peek() == '#') {
+            check('#');
+            while (available() && peek() != '\n') {
+                pop();
+            }
+            check('\n');
         }
-        check('\n');
     }
 }

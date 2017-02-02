@@ -77,7 +77,7 @@ public class BaseParserTest {
      */
     @Test
     public void testWhitespaceComments() throws ParserException {
-        BaseParser parser = new BaseParser("    a \t\n\t b// comment (/\"§&!)) \nc");
+        BaseParser parser = new BaseParser("    a \t\n\t b# comment (/\"§&!)) \nc");
         parser.skipWhitespaces();
         parser.check('a');
         parser.skipWhitespaces();

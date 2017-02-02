@@ -122,7 +122,7 @@ public class ExtendedParser extends edu.kit.pse.osip.core.io.files.BaseParser {
             check('-');
             return -readFactor();
         } else {
-            die("Unexpected symbol");
+            die("Expected mathematical expression.");
             return 0;
         }
     }
