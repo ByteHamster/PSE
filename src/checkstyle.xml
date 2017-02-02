@@ -4,6 +4,13 @@
   <property name="severity" value="warning"/>
   <module name="TreeWalker">
     <property name="tabWidth" value="4"/>
+    <module name="Indentation">
+      <property name="basicOffset" value="4"/>
+    </module>
+    <module name="RegexpMultiline">
+      <property name="format" value="(?s:(\r\n|\r).*)"/>
+      <property name="message" value="CRLF and CR line endings are prohibited, but this file uses them."/>
+    </module>
     <module name="JavadocType">
       <property name="scope" value="package"/>
     </module>
