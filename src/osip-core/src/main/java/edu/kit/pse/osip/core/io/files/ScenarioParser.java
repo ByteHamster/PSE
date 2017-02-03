@@ -9,11 +9,11 @@ import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.model.behavior.Scenario;
 
 /**
- * Parser for OSIP scenarios
+ * Parser for OSIP scenarios: LL(1) parser
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
-public class ScenarioParser extends edu.kit.pse.osip.core.io.files.ExtendedParser {
+public class ScenarioParser extends ExtendedParser {
     private HashMap<String, CommandAction> commands = new HashMap<>();    
     protected Scenario scenario = new Scenario();
     
@@ -103,7 +103,7 @@ public class ScenarioParser extends edu.kit.pse.osip.core.io.files.ExtendedParse
      */
     private String readAlphabetic() throws ParserException {
         String name = "";
-        while (available() && Character.isAlphabetic(peek())) {
+        while (available() && (Character.isAlphabetic(peek()) || peek() == '_')) {
             name += pop();
         }
         if (name.equals("")) {

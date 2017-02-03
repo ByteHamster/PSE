@@ -109,6 +109,10 @@ public class ExtendedParserTest {
         parser = new ExtendedParser("varname / varname");
         parser.variables.put("varname", 42f);
         TestUtils.assertFloat(parser.readTerm(), 1f);
+
+        parser = new ExtendedParser("var_name * 2");
+        parser.variables.put("var_name", 42f);
+        TestUtils.assertFloat(parser.readTerm(), 84f);
     }
     
     

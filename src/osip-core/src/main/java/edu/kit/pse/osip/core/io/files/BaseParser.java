@@ -1,7 +1,7 @@
 package edu.kit.pse.osip.core.io.files;
 
 /**
- * Basic parser class
+ * Basic parser class: LL(1) parser
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
@@ -93,10 +93,12 @@ public class BaseParser {
     public final void skipComments() throws ParserException {
         if (available() && peek() == '#') {
             check('#');
-            while (available() && peek() != '\n') {
+            while (available() && peek() != '\n' && peek() != '\r') {
                 pop();
             }
-            check('\n');
+            if (available()) {
+                pop();
+            }
         }
     }
 }

@@ -78,6 +78,9 @@ public class ScenarioParserTest {
         parser.readScenario();
         TestUtils.assertFloat(parser.variables.get("x"), 5f);
         TestUtils.assertFloat(parser.variables.get("y"), 10f);
+
+        parser = new ScenarioParser("# Comment");
+        parser.readScenario();
     }
     
     /**

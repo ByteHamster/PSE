@@ -3,11 +3,11 @@ package edu.kit.pse.osip.core.io.files;
 import java.util.HashMap;
 
 /**
- * Extended parser for more complex expressions
+ * Extended parser for more complex expressions: LL(1) parser
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
-public class ExtendedParser extends edu.kit.pse.osip.core.io.files.BaseParser {
+public class ExtendedParser extends BaseParser {
     protected HashMap<String, Float> variables = new HashMap<String, Float>();
     
     /**
@@ -98,7 +98,7 @@ public class ExtendedParser extends edu.kit.pse.osip.core.io.files.BaseParser {
             return readNumber();
         } else if (Character.isAlphabetic(peek())) {
             String variableName = "";
-            while (available() && Character.isAlphabetic(peek())) {
+            while (available() && (Character.isAlphabetic(peek()) || peek() == '_')) {
                 variableName += pop();
             }
             
