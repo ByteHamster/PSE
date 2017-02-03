@@ -11,5 +11,5 @@ public interface BooleanReceivedListener extends edu.kit.pse.osip.core.opcua.cli
      * A boolean was received from the server
      * @param value The received value
      */
-    public void onReceived(boolean value);
+    void onReceived(boolean value);
 }

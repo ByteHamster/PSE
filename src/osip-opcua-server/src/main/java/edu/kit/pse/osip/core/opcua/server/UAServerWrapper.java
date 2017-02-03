@@ -77,7 +77,7 @@ public abstract class UAServerWrapper {
             .setCertificateValidator(new DefaultCertificateValidator(Files.createTempDir()))
             .setIdentityValidator(AnonymousIdentityValidator.INSTANCE)
             .setProductUri(productUri)
-            .setServerName("OSIP server")
+            .setServerName("osip")
             .setSecurityPolicies(EnumSet.of(SecurityPolicy.None))
             .setUserTokenPolicies(
                 ImmutableList.of(

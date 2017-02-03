@@ -10,5 +10,5 @@ public interface ReceivedListener {
     /**
      * An error occurred while trying to fetch data from the server
      */
-    public void onError();
+    void onError();
 }

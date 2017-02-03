@@ -23,27 +23,25 @@ import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
  * @version 1.0
  */
 public abstract class UAClientWrapper {
-    private final OpcUaClient client;
+    private OpcUaClient client = null;
+    private String serverUrl;
+    private String namespace;
     
     /**
      * Wraps the milo client implementation to simplify process
-     * @param serverUrl The url of the server
+     * @param serverUrl The url of the server. Something like opc.tcp://localhost:12686/example
      * @param namespace Name of the expected default namespace. Will fail if the namespaces do not match
      */
     public UAClientWrapper(String serverUrl, String namespace) {
-        try {
-            client = createClient(serverUrl, namespace);
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Unable to create client");
-        }
+        this.serverUrl = serverUrl;
+        this.namespace = namespace;
     }
 
     /**
      * Creates the client
      * 
      * @return a client ready to be run
-     * @param serverUrl The url of the server to use. Something like opc.tcp://localhost:12686/example
+     * @param serverUrl The url of the server to use
      * @param namespace The default namespace to expect
      * @throws ExecutionException If creation of the client fails
      * @throws InterruptedException If creation of the client fails
@@ -73,6 +71,9 @@ public abstract class UAClientWrapper {
      * @throws InterruptedException If the connection fails
      */
     public final void connectClient() throws InterruptedException, ExecutionException {
+        if (client == null) {
+            client = createClient(serverUrl, namespace);
+        }
         client.connect().get();
     }
 

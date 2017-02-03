@@ -11,5 +11,5 @@ public interface IntReceivedListener extends edu.kit.pse.osip.core.opcua.client.
      * An int was received from the server
      * @param value The received value
      */
-    public void onReceived(int value);
+    void onReceived(int value);
 }

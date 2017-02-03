@@ -11,5 +11,5 @@ public interface FloatReceivedListener extends edu.kit.pse.osip.core.opcua.clien
      * A float was received from the server
      * @param value The received value
      */
-    public void onReceived(float value);
+    void onReceived(float value);
 }
