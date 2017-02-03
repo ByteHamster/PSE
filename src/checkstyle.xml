@@ -2,14 +2,14 @@
 <!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.3//EN" "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
 <module name="Checker">
   <property name="severity" value="warning"/>
+  <module name="RegexpMultiline">
+    <property name="format" value="(?s:(\r\n|\r).*)"/>
+    <property name="message" value="CRLF and CR line endings are prohibited, but this file uses them."/>
+  </module>
   <module name="TreeWalker">
     <property name="tabWidth" value="4"/>
     <module name="Indentation">
       <property name="basicOffset" value="4"/>
-    </module>
-    <module name="RegexpMultiline">
-      <property name="format" value="(?s:(\r\n|\r).*)"/>
-      <property name="message" value="CRLF and CR line endings are prohibited, but this file uses them."/>
     </module>
     <module name="JavadocType">
       <property name="scope" value="package"/>
