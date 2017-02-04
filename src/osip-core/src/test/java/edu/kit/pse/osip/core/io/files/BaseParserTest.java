@@ -6,7 +6,8 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 
 /**
- * Tests the basic parser class 
+ * Tests the basic parser class
+ *
  * @author Hans-Peter Lehmann
  * @version 1.0
  */

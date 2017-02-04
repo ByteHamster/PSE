@@ -135,7 +135,7 @@ public class ScenarioParser extends ExtendedParser {
         commands.put("setUpperInThreshold", (parameters) -> {
             checkArgumentCount(parameters, 2);
             if (Math.round(parameters.get(1)) > 100 || Math.round(parameters.get(1)) < 0
-                || Math.round(parameters.get(0)) >= TankSelector.valuesWithoutMix().length) {
+                || Math.round(parameters.get(0)) >= TankSelector.getUpperTankCount()) {
                 die("Argument out of range");
             }
             return (site) -> site.getUpperTank(TankSelector.valuesWithoutMix()[Math.round(parameters.get(0))])
@@ -144,7 +144,7 @@ public class ScenarioParser extends ExtendedParser {
         commands.put("setUpperOutThreshold", (parameters) -> {
             checkArgumentCount(parameters, 2);
             if (Math.round(parameters.get(1)) > 100 || Math.round(parameters.get(1)) < 0
-                || Math.round(parameters.get(0)) >= TankSelector.valuesWithoutMix().length) {
+                || Math.round(parameters.get(0)) >= TankSelector.getUpperTankCount()) {
                 die("Argument out of range");
             }
             return (site) -> site.getUpperTank(TankSelector.valuesWithoutMix()[Math.round(parameters.get(0))])
@@ -153,14 +153,14 @@ public class ScenarioParser extends ExtendedParser {
         commands.put("setMixOutThreshold", (parameters) -> {
             checkArgumentCount(parameters, 1);
             if (Math.round(parameters.get(0)) > 100 || Math.round(parameters.get(0)) < 0
-                || Math.round(parameters.get(0)) >= TankSelector.valuesWithoutMix().length) {
+                || Math.round(parameters.get(0)) >= TankSelector.getUpperTankCount()) {
                 die("Argument out of range");
             }
             return (site) -> site.getMixTank().getOutPipe().setValveThreshold((byte) Math.round(parameters.get(0)));
         });
         commands.put("setInputTemperature", (parameters) -> {
             checkArgumentCount(parameters, 2);
-            if (Math.round(parameters.get(0)) >= TankSelector.valuesWithoutMix().length) {
+            if (Math.round(parameters.get(0)) >= TankSelector.getUpperTankCount()) {
                 die("Argument out of range");
             }
             return (site) -> site.setInputTemperature(

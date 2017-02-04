@@ -5,7 +5,8 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 
 /**
- * Tests the extended parser class 
+ * Tests the extended parser class
+ *
  * @author Hans-Peter Lehmann
  * @version 1.0
  */

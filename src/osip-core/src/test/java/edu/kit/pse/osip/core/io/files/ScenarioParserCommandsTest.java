@@ -8,7 +8,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import edu.kit.pse.osip.core.model.behavior.Scenario;
 
 /**
- * Tests the extended parser class 
+ * Tests the extended parser class
+ *
  * @author Hans-Peter Lehmann
  * @version 1.0
  */

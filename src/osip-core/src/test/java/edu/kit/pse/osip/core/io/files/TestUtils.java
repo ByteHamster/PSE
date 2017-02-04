@@ -4,7 +4,9 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * Small utils to simplify testing process
+ *
  * @author Hans-Peter Lehmann
+ * @version 1.0
  */
 public final class TestUtils {
     private TestUtils() {

@@ -3,7 +3,8 @@ package edu.kit.pse.osip.core.io.files;
 import org.junit.Test;
 
 /**
- * Tests the extended parser class 
+ * Tests the extended parser class
+ *
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
@@ -47,7 +48,17 @@ public class ScenarioParserTest {
         ScenarioParser parser = new ScenarioParser("var x = 10 = 5;");
         parser.readStatement();
     }
-    
+
+    /**
+     * Tests if invalid assignments results in errors
+     * @throws ParserException If something goes wrong
+     */
+    @Test(expected = ParserException.class)
+    public void testInvalidAssignmentNumber() throws ParserException {
+        ScenarioParser parser = new ScenarioParser("var x = 12a3;");
+        parser.readStatement();
+    }
+
     /**
      * Tests if multiple variables can be assigned
      * @throws ParserException If something goes wrong
