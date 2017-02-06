@@ -2,7 +2,9 @@ package edu.kit.pse.osip.core.opcua.client;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.BiConsumer;
@@ -131,6 +133,17 @@ public abstract class UAClientWrapper {
             throw new UAClientException("Not connected");
         }
 
+        Iterator<Entry<ReceivedListener, Long>> it = listeners.entrySet().iterator();
+        while (it.hasNext()) {
+            try {
+                doUnsubscribe(it.next().getKey());
+            } catch (UAClientException e) {
+                e.printStackTrace();
+                // We want to disconnect the client. It unsubscribing fails, just ignore it.
+            }
+            it.remove();
+        }
+
         try {
             client.disconnect().get();
         } catch (InterruptedException | ExecutionException e) {
@@ -149,13 +162,20 @@ public abstract class UAClientWrapper {
             throw new UAClientException("Not connected");
         }
 
-        if (!listeners.containsKey(listener)) {
-            throw new UAClientException("Listener not subscribed");
+        if (listeners.containsKey(listener)) {
+            doUnsubscribe(listener);
+            listeners.remove(listener);
         }
+    }
 
+    /**
+     * Unsubscribes the listener from getting refreshed. Does not remove from subscriptions list
+     * @param listener The listener of the subscription to cancel
+     * @throws UAClientException If unsubscription fails
+     */
+    private void doUnsubscribe(ReceivedListener listener) throws UAClientException {
         try {
             client.getSubscriptionManager().deleteSubscription(Unsigned.uint(listeners.get(listener))).get();
-            listeners.remove(listener);
         } catch (NumberFormatException | InterruptedException | ExecutionException e) {
             e.printStackTrace();
             throw new UAClientException("Unable to delete subscription");
