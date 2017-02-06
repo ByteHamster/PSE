@@ -14,10 +14,12 @@ import org.eclipse.milo.opcua.sdk.client.api.config.OpcUaClientConfig;
 import org.eclipse.milo.opcua.sdk.client.api.identity.AnonymousProvider;
 import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaMonitoredItem;
 import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaSubscription;
+import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaSubscriptionManager.SubscriptionListener;
 import org.eclipse.milo.opcua.sdk.client.model.nodes.objects.ServerNode;
 import org.eclipse.milo.opcua.stack.client.UaTcpStackClient;
 import org.eclipse.milo.opcua.stack.core.AttributeId;
 import org.eclipse.milo.opcua.stack.core.Identifiers;
+import org.eclipse.milo.opcua.stack.core.UaException;
 import org.eclipse.milo.opcua.stack.core.security.SecurityPolicy;
 import org.eclipse.milo.opcua.stack.core.types.builtin.LocalizedText;
 import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
@@ -121,6 +123,17 @@ public abstract class UAClientWrapper {
             throw new UAClientException("Unable to start server");
         }
 
+        client.getSubscriptionManager().addSubscriptionListener(new SubscriptionListener() {
+            @Override
+            public void onPublishFailure(UaException exception) {
+                Iterator<Entry<ReceivedListener, Long>> it = listeners.entrySet().iterator();
+                while (it.hasNext()) {
+                    it.next().getKey().onError();
+                    it.remove();
+                }
+            }
+        });
+
         connected = true;
     }
 
@@ -177,8 +190,8 @@ public abstract class UAClientWrapper {
         try {
             client.getSubscriptionManager().deleteSubscription(Unsigned.uint(listeners.get(listener))).get();
         } catch (NumberFormatException | InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-            throw new UAClientException("Unable to delete subscription");
+            // Well, this subscription is not registered on the server.
+            // We don't need to remove it.
         }
     }
 
@@ -256,6 +269,9 @@ public abstract class UAClientWrapper {
 
             MonitoredItemCreateRequest request = new MonitoredItemCreateRequest(
                 readValueId, MonitoringMode.Reporting, parameters);
+            
+
+            listeners.put(listener, clientHandle);
 
             // when creating items in MonitoringMode.Reporting this callback is where each item needs to have its
             // value/event consumer hooked up. The alternative is to create the item in sampling mode, hook up the
@@ -270,6 +286,7 @@ public abstract class UAClientWrapper {
                         if (!dataTypeMatch) {
                             System.err.println("Data type missmatch");
                             listener.onError();
+                            listeners.remove(listener);
                         } else {
                             if (varType == Identifiers.Int32) {
                                 ((IntReceivedListener) listener).onReceived((int) value.getValue().getValue());
@@ -280,6 +297,7 @@ public abstract class UAClientWrapper {
                             } else {
                                 System.err.println("Unknown data type");
                                 listener.onError();
+                                listeners.remove(listener);
                             }
                         }
                     });
@@ -295,7 +313,6 @@ public abstract class UAClientWrapper {
                     throw new UAClientException("Failed to create monitored item. Status " + item.getStatusCode());
                 }
             }
-            listeners.put(listener, clientHandle);
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
             throw new UAClientException("Unable to subscribe");

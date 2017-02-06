@@ -53,6 +53,7 @@ public class ServerClientTest {
         } catch (UAClientException e) {
             // Not connected
         }
+
         server.stop();
     }
 
@@ -174,9 +175,10 @@ public class ServerClientTest {
      * Tests if client notices stopped server
      * @throws Exception If something goes wrong
      */
-    @Test(timeout = 5000)
+    @Test(timeout = 30000)
     public void testConnectionLost() throws Exception  {
-        CompletableFuture<Boolean> received = new CompletableFuture<>();
+        CompletableFuture<Integer> received = new CompletableFuture<>();
+        CompletableFuture<Boolean> receivedErr = new CompletableFuture<>();
 
         server.addFolderTest("testFolder", "Test folder");
         server.addVariableTest("testFolder/testVar", "Variable", Identifiers.Int32);
@@ -184,16 +186,17 @@ public class ServerClientTest {
 
         IntReceivedListener listener = new IntReceivedListener() {
             public void onError() {
-                received.complete(true);
+                receivedErr.complete(true);
             }
             public void onReceived(int value) {
-                received.complete(false);
+                received.complete(value);
             }
         };
 
         client.subscribeIntTest("testFolder/testVar", 1000, listener);
+        assertEquals(new Integer(42), received.get());
         server.stop();
-        assertTrue(received.get());
+        assertTrue(receivedErr.get());
     }
 
     /**
