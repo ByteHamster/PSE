@@ -6,6 +6,7 @@ package edu.kit.pse.osip.core.opcua.client;
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
+@FunctionalInterface
 public interface IntReceivedListener extends edu.kit.pse.osip.core.opcua.client.ReceivedListener {
     /**
      * An int was received from the server

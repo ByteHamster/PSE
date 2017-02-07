@@ -44,6 +44,19 @@ import com.google.common.collect.Lists;
  * @version 1.0
  */
 public abstract class UAClientWrapper {
+    /**
+     * The client disconnected from the server. Can only be received if there is at least one subscription.
+     */
+    public static final int ERROR_DISCONNECT = 1;
+    /**
+     * The data type found on the server does not match the one you requested
+     */
+    public static final int ERROR_DATA_TYPE_MISSMATCH = 2;
+    /**
+     * The server returned an unsupported data type
+     */
+    public static final int ERROR_DATA_TYPE_UNSUPPORTED = 3;
+
     private OpcUaClient client = null;
     private String serverUrl;
     private String namespace;
@@ -51,6 +64,7 @@ public abstract class UAClientWrapper {
     private final AtomicLong clientHandles = new AtomicLong(1L);
     private boolean connected = false;
     private HashMap<ReceivedListener, Long> listeners = new HashMap<>();
+    private ErrorListener errorListener;
     
     /**
      * Wraps the milo client implementation to simplify process
@@ -103,6 +117,14 @@ public abstract class UAClientWrapper {
     }
 
     /**
+     * Sets the listener to be called on error states
+     * @param listener The listener
+     */
+    public final void setErrorListener(ErrorListener listener) {
+        errorListener = listener;
+    }
+
+    /**
      * Connects the client to the server
      * @throws UAClientException If the connection fails
      */
@@ -126,10 +148,8 @@ public abstract class UAClientWrapper {
         client.getSubscriptionManager().addSubscriptionListener(new SubscriptionListener() {
             @Override
             public void onPublishFailure(UaException exception) {
-                Iterator<Entry<ReceivedListener, Long>> it = listeners.entrySet().iterator();
-                while (it.hasNext()) {
-                    it.next().getKey().onError();
-                    it.remove();
+                if (errorListener != null) {
+                    errorListener.onError(ERROR_DISCONNECT);
                 }
             }
         });
@@ -284,8 +304,9 @@ public abstract class UAClientWrapper {
                                 .orElse(false);
 
                         if (!dataTypeMatch) {
-                            System.err.println("Data type missmatch");
-                            listener.onError();
+                            if (errorListener != null) {
+                                errorListener.onError(ERROR_DATA_TYPE_MISSMATCH);
+                            }
                             listeners.remove(listener);
                         } else {
                             if (varType == Identifiers.Int32) {
@@ -295,8 +316,9 @@ public abstract class UAClientWrapper {
                             } else if (varType == Identifiers.Boolean) {
                                 ((BooleanReceivedListener) listener).onReceived((boolean) value.getValue().getValue());
                             } else {
-                                System.err.println("Unknown data type");
-                                listener.onError();
+                                if (errorListener != null) {
+                                    errorListener.onError(ERROR_DATA_TYPE_UNSUPPORTED);
+                                }
                                 listeners.remove(listener);
                             }
                         }

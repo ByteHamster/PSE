@@ -1,7 +1,6 @@
 package edu.kit.pse.osip.core.opcua;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -14,8 +13,6 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.kit.pse.osip.core.opcua.client.BooleanReceivedListener;
-import edu.kit.pse.osip.core.opcua.client.FloatReceivedListener;
 import edu.kit.pse.osip.core.opcua.client.IntReceivedListener;
 import edu.kit.pse.osip.core.opcua.client.UAClientException;
 
@@ -84,10 +81,7 @@ public class ServerClientTest {
     public void testNotRunning() throws UAClientException {
         client.disconnectClient();
         client = new TestUaClientWrapper("opc.tcp://localhost:12686/osip", "not-test") { };
-        client.subscribeIntTest("testFolder/testVar1", 1000, new IntReceivedListener() {
-            public void onError() { }
-            public void onReceived(int value) { }
-        });
+        client.subscribeIntTest("testFolder/testVar1", 1000, (value) -> { });
     }
 
     /**
@@ -111,14 +105,7 @@ public class ServerClientTest {
         server.addVariableTest("testFolder/testVar", "Variable", Identifiers.Int32);
         server.setVariableTest("testFolder/testVar", new DataValue(new Variant(42)));
 
-        IntReceivedListener listener = new IntReceivedListener() {
-            public void onError() {
-                received.complete(-1);
-            }
-            public void onReceived(int value) {
-                received.complete(value);
-            }
-        };
+        IntReceivedListener listener = (value) -> received.complete(value);
 
         client.subscribeIntTest("testFolder/testVar", 1000, listener);
         assertEquals(Integer.valueOf(42), received.get());
@@ -142,30 +129,9 @@ public class ServerClientTest {
         server.addVariableTest("testFolder/testVar3", "Variable 3", Identifiers.Boolean);
         server.setVariableTest("testFolder/testVar3", new DataValue(new Variant(true)));
 
-        client.subscribeIntTest("testFolder/testVar1", 1000, new IntReceivedListener() {
-            public void onError() {
-                received1.complete(-1);
-            }
-            public void onReceived(int value) {
-                received1.complete(value);
-            }
-        });
-        client.subscribeFloatTest("testFolder/testVar2", 1000, new FloatReceivedListener() {
-            public void onError() {
-                received2.complete(-1f);
-            }
-            public void onReceived(float value) {
-                received2.complete(value);
-            }
-        });
-        client.subscribeBooleanTest("testFolder/testVar3", 1000, new BooleanReceivedListener() {
-            public void onError() {
-                received3.complete(false);
-            }
-            public void onReceived(boolean value) {
-                received3.complete(value);
-            }
-        });
+        client.subscribeIntTest("testFolder/testVar1", 1000, (value) -> received1.complete(value));
+        client.subscribeFloatTest("testFolder/testVar2", 1000, (value) -> received2.complete(value));
+        client.subscribeBooleanTest("testFolder/testVar3", 1000, (value) -> received3.complete(value));
         assertEquals(Integer.valueOf(10), received1.get());
         assertEquals(Float.valueOf(25.3f), received2.get());
         assertEquals(Boolean.valueOf(true), received3.get());
@@ -175,28 +141,22 @@ public class ServerClientTest {
      * Tests if client notices stopped server
      * @throws Exception If something goes wrong
      */
-    @Test(timeout = 30000)
+    @Test(timeout = 60000)
     public void testConnectionLost() throws Exception  {
         CompletableFuture<Integer> received = new CompletableFuture<>();
-        CompletableFuture<Boolean> receivedErr = new CompletableFuture<>();
+        CompletableFuture<Integer> receivedErr = new CompletableFuture<>();
 
         server.addFolderTest("testFolder", "Test folder");
         server.addVariableTest("testFolder/testVar", "Variable", Identifiers.Int32);
         server.setVariableTest("testFolder/testVar", new DataValue(new Variant(42)));
 
-        IntReceivedListener listener = new IntReceivedListener() {
-            public void onError() {
-                receivedErr.complete(true);
-            }
-            public void onReceived(int value) {
-                received.complete(value);
-            }
-        };
+        IntReceivedListener listener = (value) -> received.complete(value);
 
+        client.setErrorListener((code) -> receivedErr.complete(code));
         client.subscribeIntTest("testFolder/testVar", 1000, listener);
         assertEquals(new Integer(42), received.get());
         server.stop();
-        assertTrue(receivedErr.get());
+        assertEquals(TestUaClientWrapper.ERROR_DISCONNECT, receivedErr.get().intValue());
     }
 
     /**
@@ -209,10 +169,7 @@ public class ServerClientTest {
         server.addVariableTest("testFolder/testVar", "Variable", Identifiers.Int32);
         server.setVariableTest("testFolder/testVar", new DataValue(new Variant(42)));
 
-        IntReceivedListener listener = new IntReceivedListener() {
-            public void onError() { }
-            public void onReceived(int value) { }
-        };
+        IntReceivedListener listener = (value) -> { };
 
         client.subscribeIntTest("testFolder/testVar", 1000, listener);
         client.unsubscribe(listener);

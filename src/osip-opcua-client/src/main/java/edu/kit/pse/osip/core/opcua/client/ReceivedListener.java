@@ -7,8 +7,5 @@ package edu.kit.pse.osip.core.opcua.client;
  * @version 1.0
  */
 public interface ReceivedListener {
-    /**
-     * An error occurred while trying to fetch data from the server
-     */
-    void onError();
+
 }
