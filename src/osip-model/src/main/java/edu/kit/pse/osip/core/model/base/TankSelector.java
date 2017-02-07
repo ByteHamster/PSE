@@ -1,5 +1,7 @@
 package edu.kit.pse.osip.core.model.base;
 
+import java.util.Arrays;
+
 /**
  * This enumeration defines all tanks including their default color value.
  */
@@ -22,19 +24,31 @@ public enum TankSelector {
     MAGENTA;
 
     /**
+     * This array defines the initial colors in the same order as the tanks are defined above.
+     */
+    private static Color[] initialColors = {
+        new Color(1, 1, 1),
+        new Color(0, 1, 0),
+        new Color(1, 0, 0),
+        new Color(0, 0, 1),
+    };
+
+    /**
      * Get the initial color of a tank.
      * @return The initial color of a tank.
      */
-    public Color getInitialColor () {
-        throw new RuntimeException("Not implemented!");
+    public Color getInitialColor() {
+        return initialColors[this.ordinal()];
     }
     
     /**
      * Return an array of all tanks, except for the mixtank.
      * @return Array of all tanks, except for the mixtank.
      */
-    public TankSelector[] valuesWithoutMix () {
-        throw new RuntimeException("Not implemented!");
+    public static TankSelector[] valuesWithoutMix() {
+        TankSelector[] values = values();
+        assert (values[0] == MIX);
+        return Arrays.copyOfRange(values, 1, values.length);
     }
     
     /**
@@ -42,7 +56,7 @@ public enum TankSelector {
      * getUpperTankCount()+1 because of the mixtank.
      * @return the number of upper tanks.
      */
-    public int getUpperTankCount () {
-        throw new RuntimeException("Not implemented!");
+    public static int getUpperTankCount() {
+        return values().length - 1;
     }
 };
