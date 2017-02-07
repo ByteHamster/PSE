@@ -1,5 +1,7 @@
 package edu.kit.pse.osip.core.io.files;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 /**
@@ -17,16 +19,16 @@ public class ScenarioParserTest {
     public void testVariableAssignments() throws ParserException {
         ScenarioParser parser = new ScenarioParser("var x = 15;");
         parser.readStatement();
-        TestUtils.assertFloat(parser.variables.get("x"), 15f);
+        assertEquals(15f, parser.variables.get("x"), 0.0001);
         
         parser = new ScenarioParser("var myVariable = -(3+3);");
         parser.readStatement();
-        TestUtils.assertFloat(parser.variables.get("myVariable"), -6f);
+        assertEquals(-6f, parser.variables.get("myVariable"), 0.0001);
         
         parser = new ScenarioParser("var var = -var;");
         parser.variables.put("var", 42f);
         parser.readStatement();
-        TestUtils.assertFloat(parser.variables.get("var"), -42f);
+        assertEquals(-42f, parser.variables.get("var"), 0.0001);
     }
     
     /**
@@ -67,13 +69,13 @@ public class ScenarioParserTest {
     public void testMultipleVariableAssignments() throws ParserException {
         ScenarioParser parser = new ScenarioParser("var x = 15;var y = 16;");
         parser.readScenario();
-        TestUtils.assertFloat(parser.variables.get("x"), 15f);
-        TestUtils.assertFloat(parser.variables.get("y"), 16f);
+        assertEquals(15f, parser.variables.get("x"), 0.0001);
+        assertEquals(16f, parser.variables.get("y"), 0.0001);
         
         parser = new ScenarioParser("var x = 15;var y = x + 3;");
         parser.readScenario();
-        TestUtils.assertFloat(parser.variables.get("x"), 15f);
-        TestUtils.assertFloat(parser.variables.get("y"), 18f);
+        assertEquals(15f, parser.variables.get("x"), 0.0001);
+        assertEquals(18f, parser.variables.get("y"), 0.0001);
     }
     
     /**
@@ -87,8 +89,8 @@ public class ScenarioParserTest {
             + "\n\n"
             + "var y = 10;");
         parser.readScenario();
-        TestUtils.assertFloat(parser.variables.get("x"), 5f);
-        TestUtils.assertFloat(parser.variables.get("y"), 10f);
+        assertEquals(5f, parser.variables.get("x"), 0.0001);
+        assertEquals(10f, parser.variables.get("y"), 0.0001);
 
         parser = new ScenarioParser("# Comment");
         parser.readScenario();

@@ -1,5 +1,6 @@
 package edu.kit.pse.osip.core.io.files;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
@@ -18,16 +19,16 @@ public class ExtendedParserTest {
     @Test
     public void testNumber() throws ParserException {
         ExtendedParser parser = new ExtendedParser("0");
-        TestUtils.assertFloat(parser.readNumber(), 0f);
+        assertEquals(0f, parser.readNumber(), 0.0001);
         
         parser = new ExtendedParser("424242");
-        TestUtils.assertFloat(parser.readNumber(), 424242f);
+        assertEquals(424242f, parser.readNumber(), 0.0001);
         
         parser = new ExtendedParser("0.05");
-        TestUtils.assertFloat(parser.readNumber(), 0.05f);
+        assertEquals(0.05f, parser.readNumber(), 0.0001);
 
         parser = new ExtendedParser("45.67");
-        TestUtils.assertFloat(parser.readNumber(), 45.67f);
+        assertEquals(45.67f, parser.readNumber(), 0.0001);
     }
     
     /**
@@ -37,21 +38,21 @@ public class ExtendedParserTest {
     @Test
     public void testFactor() throws ParserException {
         ExtendedParser parser = new ExtendedParser("-5");
-        TestUtils.assertFloat(parser.readFactor(), -5f);
+        assertEquals(-5f, parser.readFactor(), 0.0001);
         
         parser = new ExtendedParser("--3");
-        TestUtils.assertFloat(parser.readFactor(), 3f);
+        assertEquals(3f, parser.readFactor(), 0.0001);
         
         parser = new ExtendedParser("10");
-        TestUtils.assertFloat(parser.readFactor(), 10f);
+        assertEquals(10f, parser.readFactor(), 0.0001);
         
         parser = new ExtendedParser("varname");
         parser.variables.put("varname", 42f);
-        TestUtils.assertFloat(parser.readFactor(), 42f);
+        assertEquals(42f, parser.readFactor(), 0.0001);
 
         parser = new ExtendedParser("-varname");
         parser.variables.put("varname", 42f);
-        TestUtils.assertFloat(parser.readFactor(), -42f);
+        assertEquals(-42f, parser.readFactor(), 0.0001);
     }
     
     /**
@@ -95,25 +96,25 @@ public class ExtendedParserTest {
     @Test
     public void testTerm() throws ParserException {
         ExtendedParser parser = new ExtendedParser("5 * 5");
-        TestUtils.assertFloat(parser.readTerm(), 25f);
+        assertEquals(25f, parser.readTerm(), 0.0001);
         
         parser = new ExtendedParser("1 * -1 * +3");
-        TestUtils.assertFloat(parser.readTerm(), -3f);
+        assertEquals(-3f, parser.readTerm(), 0.0001);
         
         parser = new ExtendedParser("10");
-        TestUtils.assertFloat(parser.readTerm(), 10f);
+        assertEquals(10f, parser.readTerm(), 0.0001);
         
         parser = new ExtendedParser("3 / -varname");
         parser.variables.put("varname", 42f);
-        TestUtils.assertFloat(parser.readTerm(), 3f / -42f);
+        assertEquals(3f / -42f, parser.readTerm(), 0.0001);
 
         parser = new ExtendedParser("varname / varname");
         parser.variables.put("varname", 42f);
-        TestUtils.assertFloat(parser.readTerm(), 1f);
+        assertEquals(1f, parser.readTerm(), 0.0001);
 
         parser = new ExtendedParser("var_name * 2");
         parser.variables.put("var_name", 42f);
-        TestUtils.assertFloat(parser.readTerm(), 84f);
+        assertEquals(84f, parser.readTerm(), 0.0001);
     }
     
     
@@ -124,13 +125,13 @@ public class ExtendedParserTest {
     @Test
     public void testExpression() throws ParserException {
         ExtendedParser parser = new ExtendedParser("5 * (2+3)");
-        TestUtils.assertFloat(parser.readExpression(), 25f);
+        assertEquals(25f, parser.readExpression(), 0.0001);
 
         parser = new ExtendedParser(" (2)+((( (( ( ((7)))*1 ))) + 1)) * 3");
-        TestUtils.assertFloat(parser.readExpression(), 26f);
+        assertEquals(26f, parser.readExpression(), 0.0001);
         
         parser = new ExtendedParser("1 + 2 * 3 + 3");
-        TestUtils.assertFloat(parser.readExpression(), 10f);
+        assertEquals(10f, parser.readExpression(), 0.0001);
     }
     
     /**
