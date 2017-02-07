@@ -12,6 +12,7 @@ public class InvalidPercentageException extends java.lang.IllegalArgumentExcepti
      * @param reason Explains why the check failed
      */
     public InvalidPercentageException (String tried, String reason) {
-        throw new RuntimeException("Not implemented!");
+        //throw new RuntimeException("Not implemented!");
+        super(tried + " " + reason);
     }
 }

@@ -12,6 +12,7 @@ public class InvalidPortException extends java.lang.IllegalArgumentException {
      * @param reason The reason why parsing went wrong
      */
     public InvalidPortException (String tried, String reason) {
-        throw new RuntimeException("Not implemented!");
+        //throw new RuntimeException("Not implemented!");
+    	super(tried + " " + reason);
     }
 }
