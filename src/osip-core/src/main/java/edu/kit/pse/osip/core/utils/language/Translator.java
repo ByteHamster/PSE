@@ -5,7 +5,6 @@ package edu.kit.pse.osip.core.utils.language;
  */
 public final class Translator {
     private java.util.ResourceBundle bundle;
-    //public java.util.Locale locale;
     
     private static Translator singleton;
     
@@ -37,8 +36,12 @@ public final class Translator {
     /**
      * Sets the locale to be used when translating
      * @param bundle The locale to set
+     * @throws TranslatorNullException Exception for null bundle
      */
-    public void setLocaleBundle(java.util.ResourceBundle bundle) {
+    public void setLocaleBundle(java.util.ResourceBundle bundle) throws TranslatorNullException {
+        if (bundle == null) {
+            throw new TranslatorNullException("The input bundle is null");
+        }
         singleton.bundle = bundle;
     }
 
