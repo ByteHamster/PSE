@@ -1,6 +1,8 @@
 package edu.kit.pse.osip.core.model.base;
 
 import edu.kit.pse.osip.core.SimulationConstants;
+import java.util.Observable;
+import java.util.Observer;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,12 +17,14 @@ import static org.junit.Assert.assertTrue;
  * @author David Kahles
  * @version 1.0
  */
-public class PipeTest {
+public class PipeTest implements Observer {
     Pipe pipe = null;
+    boolean changed;
 
     @Before
     public void init() {
         pipe = new Pipe(5, 5);
+        changed = false;
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -96,5 +100,20 @@ public class PipeTest {
     @Test(expected = NullPointerException.class)
     public void testNull() {
         pipe.putIn(null);
+    }
+
+    @Test
+    public void testObserver() {
+        pipe.addObserver(this);
+        pipe.putIn(new Liquid(1, SimulationConstants.MAX_TEMPERATURE, new Color(0)));
+        assertTrue(changed);
+        changed = false;
+        pipe.setValveThreshold((byte) 23);
+        assertTrue(changed);
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+        changed = true;
     }
 }

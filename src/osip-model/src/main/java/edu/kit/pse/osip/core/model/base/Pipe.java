@@ -38,11 +38,15 @@ public class Pipe extends java.util.Observable {
                     getMaxInput(), liquid.getAmount());
         }
         queue.add(liquid);
+        setChanged();
         if (queue.size() <= length) {
+            notifyObservers();
             /* Pipe not filled */
             return new Liquid(0, SimulationConstants.MIN_TEMPERATURE, new Color(0));
         } else {
-            return queue.remove();
+            Liquid ret = queue.remove();
+            notifyObservers();
+            return ret;
         }
     }
 
@@ -56,6 +60,8 @@ public class Pipe extends java.util.Observable {
             throw new IllegalArgumentException("Valve threshold needs to be in range 0 to 100");
         }
         this.threshold = threshold;
+        setChanged();
+        notifyObservers();
     }
     /**
      * Get the valve threshold in %.
