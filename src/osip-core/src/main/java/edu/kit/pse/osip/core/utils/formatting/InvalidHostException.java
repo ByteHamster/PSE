@@ -8,11 +8,14 @@ public class InvalidHostException extends java.lang.IllegalArgumentException {
 
     /**
      * Creates a new InvalidHostException
+     * 
      * @param tried The value that was tried to parse
-     * @param reason The reason for the failture
+     *          
+     * @param reason The reason for the failure
+     *           
      */
-    public InvalidHostException (String tried, String reason) {
-        //throw new RuntimeException("Not implemented!");
+    public InvalidHostException(String tried, String reason) {
+
         super(tried + " " + reason);
     }
 }

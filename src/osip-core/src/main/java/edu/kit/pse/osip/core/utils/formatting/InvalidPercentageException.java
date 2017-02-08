@@ -11,8 +11,8 @@ public class InvalidPercentageException extends java.lang.IllegalArgumentExcepti
      * @param tried The string that was tried to be parsed
      * @param reason Explains why the check failed
      */
-    public InvalidPercentageException (String tried, String reason) {
-        //throw new RuntimeException("Not implemented!");
+    public InvalidPercentageException(String tried, String reason) {
+
         super(tried + " " + reason);
     }
 }
