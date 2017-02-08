@@ -1,0 +1,31 @@
+#############################################
+# Scenario definition that tests the parser #
+#############################################
+
+var TANK_YELLOW  = 0;
+var TANK_CYAN    = 1;
+var TANK_MAGENTA = 2;
+
+setInputTemperature(TANK_YELLOW,  37.5);
+setInputTemperature(TANK_CYAN,    30.2);
+setInputTemperature(TANK_MAGENTA, 21.0);
+
+setUpperInThreshold(TANK_YELLOW, 10);
+setUpperInThreshold(TANK_CYAN,    5);
+setUpperInThreshold(TANK_MAGENTA, 8);
+
+setUpperOutThreshold(TANK_YELLOW, 10);
+setUpperOutThreshold(TANK_CYAN,    5);
+setUpperOutThreshold(TANK_MAGENTA, 8);
+
+setMixOutThreshold(23);
+setMotorRpm(500);
+
+delay(5000); # Should be stable
+
+setUpperOutThreshold(TANK_YELLOW,  5);
+setUpperOutThreshold(TANK_CYAN,   10);
+setUpperOutThreshold(TANK_MAGENTA, 8);
+setMixOutThreshold(15);
+
+delay(10000); # Should generate an overflow
