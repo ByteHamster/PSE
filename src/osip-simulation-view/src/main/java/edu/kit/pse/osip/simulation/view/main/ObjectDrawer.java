@@ -12,23 +12,26 @@ public abstract class ObjectDrawer implements edu.kit.pse.osip.simulation.view.m
      * @param pos 
      */
     public ObjectDrawer (Point2D pos) {
-        throw new RuntimeException("Not implemented!");
+        this.position = pos;
     }
+
     /**
      * Sets the position of this element
      * @param position The upper left corner
      */
     public final void setPosition (Point2D position) {
-        throw new RuntimeException("Not implemented!");
+        this.position = position;
     }
+
     /**
      * Returns the position of this element
      * 
      * @return The position
      */
     public final Point2D getPosition () {
-        throw new RuntimeException("Not implemented!");
+        return position;
     }
+
     /**
      * The Drawer draws itself onto the GraphicsContext at its position.
      * @param context The context that the object draws itself onto
