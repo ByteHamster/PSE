@@ -3,35 +3,51 @@ package edu.kit.pse.osip.core.utils.language;
 /**
  * This class is the interface to load menu texts in different languages.
  */
-public class Translator {
-    public java.util.ResourceBundle bundle;
-    public java.util.Locale locale;
+public final class Translator {
+    private java.util.ResourceBundle bundle;
+    //public java.util.Locale locale;
+    
+    private static Translator singleton;
+    
     /**
      * Creates a new translator. Private because it is a singleton
      */
-    private Translator () {
-        throw new RuntimeException("Not implemented!");
+    private Translator() {
+        //throw new RuntimeException("Not implemented!");
     }
     /**
      * Gets the single Instance of the Translator. It is newly created at the first call of the method.
      * @return The single Instance of Translator.
      */
-    public final static Translator getInstance () {
-        throw new RuntimeException("Not implemented!");
+    public static Translator getInstance() {
+        if (singleton == null) {
+            singleton = new Translator();
+        }
+        return singleton;
     }
     /**
      * Gets the word that is associated with key in the current locale.
      * @return The translation for key.
      * @param key The key to use for translation lookup
      */
-    public final String getString (String key) {
-        throw new RuntimeException("Not implemented!");
+    public String getString(String key) {
+        return singleton.getLocaleBundle().getString(key);
+        
     }
     /**
      * Sets the locale to be used when translating
-     * @param locale The locale to set
+     * @param bundle The locale to set
      */
-    public final void setLocale (java.util.Locale locale) {
-        throw new RuntimeException("Not implemented!");
+    public void setLocaleBundle(java.util.ResourceBundle bundle) {
+        singleton.bundle = bundle;
     }
+
+    /**
+     * Getter method for bundle
+     * @return bundle of instance
+     */
+    public java.util.ResourceBundle getLocaleBundle() {
+        return bundle;
+    }
+    
 }
