@@ -1,5 +1,7 @@
 package edu.kit.pse.osip.core.model.base;
 
+import edu.kit.pse.osip.core.SimulationConstants;
+
 /**
  * A readonly data type for liquids. This is the liquid which flows through the tanks and pipes. It has attributes
  * for the color, the temperature and the amount.
@@ -14,8 +16,8 @@ public class Liquid {
     /**
      * Construct a new Liquid object.
      *
-     * @throws IllegalArgumentException if the amount is smaller than zero, the temperature is smaller than zero or
-     * the color is null.
+     * @throws IllegalArgumentException if the amount is smaller than zero, the temperature is smaller than
+     * SimulationConstants.MIN_TEMPERATURE or greather than SimulationConstants.MAX_TEMPERATURE or the color is null.
      * @param amount      The amout in cm³.
      * @param temperature The temperature in °K.
      * @param color       The color of the liquid.
@@ -24,8 +26,13 @@ public class Liquid {
         if (amount < 0) {
             throw new IllegalArgumentException("The amount of a liquid needs to be >= 0");
         }
-        if (temperature < 0) {
-            throw new IllegalArgumentException("The temperature of a liquid in Kelvin needs to be >= 0");
+        if (temperature < SimulationConstants.MIN_TEMPERATURE) {
+            throw new IllegalArgumentException("The temperature of a liquid in Kelvin needs to be >= "
+                + SimulationConstants.MIN_TEMPERATURE);
+        }
+        if (temperature > SimulationConstants.MAX_TEMPERATURE) {
+            throw new IllegalArgumentException("The temperature of a liquid in Kelvin needs to be <= "
+                + SimulationConstants.MAX_TEMPERATURE);
         }
         if (color == null) {
             throw new IllegalArgumentException("The color of a liquid can't be null");
