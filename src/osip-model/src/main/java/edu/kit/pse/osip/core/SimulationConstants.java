@@ -34,4 +34,14 @@ public final class SimulationConstants {
      * The maximum temperature in kelvin one can set as tank input temperature
      */
     public static final float MAX_TEMPERATURE = 500;
+
+    /**
+     * The default pipe crosssection
+     */
+    public static final float PIPE_CROSSSECTION = 25;
+
+    /**
+     * The default pipe length
+     */
+    public static final int PIPE_LENGTH = 50;
 }
