@@ -75,8 +75,8 @@ public class Liquid {
             return false;
         }
         Liquid otherLiquid = (Liquid) other;
-        return (otherLiquid.amount == amount && otherLiquid.temperature == temperature 
-                && otherLiquid.color.equals(color));
+        return (Math.abs(otherLiquid.amount - amount) < 0.000001
+            && Math.abs(otherLiquid.temperature - temperature) < 0.000001 && otherLiquid.color.equals(color));
     }
 
     @Override
