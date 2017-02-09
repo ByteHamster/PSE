@@ -21,15 +21,12 @@ public class TankSimulationTest {
      */
     @Test
     public void testPutIn() {
-        Liquid content = new Liquid(100, 50, new Color(0x004000));
-        Pipe pipe = new Pipe(10, 10);
-        TankSimulation tank = new TankSimulation(1000, TankSelector.valuesWithoutMix()[0], content, pipe, pipe);
+        Liquid content = new Liquid(100, 350, new Color(0x004000));
+        TankSimulation tank = new TankSimulation(1000,
+                TankSelector.valuesWithoutMix()[0], content, new Pipe(10, 10), new Pipe(10, 10));
 
-        tank.putIn(new Liquid(100,  150, new Color(0x800020)));
-
-        assertEquals(200, tank.getLiquid().getAmount(), 0.0001);
-        assertEquals(100, tank.getLiquid().getTemperature(), 0.0001);
-        assertEquals(0x402010, tank.getLiquid().getColor());
+        tank.putIn(new Liquid(100,  310, new Color(0x800020)));
+        assertEquals(new Liquid(200, 330, new Color(0x402010)), tank.getLiquid());
     }
 
     /**
@@ -37,18 +34,13 @@ public class TankSimulationTest {
      */
     @Test
     public void testTakeOut() {
-        Liquid content = new Liquid(100, 50, new Color(0x421337));
-        Pipe pipe = new Pipe(10, 10);
-        TankSimulation tank = new TankSimulation(1000, TankSelector.valuesWithoutMix()[0], content, pipe, pipe);
+        Liquid content = new Liquid(100, 350, new Color(0x421337));
+        TankSimulation tank = new TankSimulation(1000,
+                TankSelector.valuesWithoutMix()[0], content, new Pipe(10, 10), new Pipe(10, 10));
 
         Liquid out = tank.takeOut(33);
-        assertEquals(33, out.getAmount(), 0.0001);
-        assertEquals(50, out.getTemperature(), 0.0001);
-        assertEquals(0x421337, out.getColor());
-
+        assertEquals(new Liquid(33, 350, new Color(0x421337)), out);
         out = tank.takeOut(500);
-        assertEquals(67, out.getAmount(), 0.0001);
-        assertEquals(50, out.getTemperature(), 0.0001);
-        assertEquals(0x421337, out.getColor());
+        assertEquals(new Liquid(67, 350, new Color(0x421337)), out);
     }
 }

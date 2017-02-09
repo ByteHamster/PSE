@@ -17,18 +17,28 @@ import edu.kit.pse.osip.core.model.base.Liquid;
  */
 public class SubtractiveMixingStrategyTest {
     /**
+     * Verify that one liquid stays the same
+     */
+    @Test
+    public void testSingleLiquid() {
+        Liquid liquid = new Liquid(100, 350, new Color(0x000000));
+        LinkedList<Liquid> liquids = new LinkedList<>();
+        liquids.add(liquid);
+
+        assertEquals(liquid, new SubtractiveMixingStrategy().mixLiquids(liquids));
+    }
+
+    /**
      * Tests colors, amounts and temperatures of two liquids
      */
     @Test
     public void testMixingTwoLiquids() {
         LinkedList<Liquid> liquids = new LinkedList<>();
-        liquids.add(new Liquid(100, 50, new Color(0x000000)));
-        liquids.add(new Liquid(100,  0, new Color(0xfefefe)));
+        liquids.add(new Liquid(100, 350, new Color(0x000000)));
+        liquids.add(new Liquid(100, 300, new Color(0xfefefe)));
 
         Liquid result = new SubtractiveMixingStrategy().mixLiquids(liquids);
-        assertEquals(200, result.getAmount(), 0.0001);
-        assertEquals(25,  result.getTemperature(), 0.0001);
-        assertEquals(0x7f7f7f, result.getColor().getRGB());
+        assertEquals(new Liquid(200, 325, new Color(0x7f7f7f)), result);
     }
 
     /**
@@ -37,16 +47,14 @@ public class SubtractiveMixingStrategyTest {
     @Test
     public void testMixingMultipleLiquids() {
         LinkedList<Liquid> liquids = new LinkedList<>();
-        liquids.add(new Liquid(100, 50, new Color(0x000000)));
-        liquids.add(new Liquid(100,  0, new Color(0x000005)));
-        liquids.add(new Liquid(100,  0, new Color(0x000000)));
-        liquids.add(new Liquid(100,  0, new Color(0x00a000)));
-        liquids.add(new Liquid(100,  0, new Color(0x500000)));
+        liquids.add(new Liquid(100, 350, new Color(0x000000)));
+        liquids.add(new Liquid(100, 300, new Color(0x000005)));
+        liquids.add(new Liquid(100, 300, new Color(0x000000)));
+        liquids.add(new Liquid(100, 300, new Color(0x00a000)));
+        liquids.add(new Liquid(100, 300, new Color(0x500000)));
 
         Liquid result = new SubtractiveMixingStrategy().mixLiquids(liquids);
-        assertEquals(500, result.getAmount(), 0.0001);
-        assertEquals(10,  result.getTemperature(), 0.0001);
-        assertEquals(0x102001, result.getColor().getRGB());
+        assertEquals(new Liquid(500, 310, new Color(0x102001)), result);
     }
 
     /**
@@ -64,5 +72,18 @@ public class SubtractiveMixingStrategyTest {
     @Test(expected = IllegalArgumentException.class)
     public void testMixingNullListOfLiquids() {
         new SubtractiveMixingStrategy().mixLiquids(null);
+    }
+
+    /**
+     * Tests mixing liquids which have no amount
+     */
+    @Test
+    public void testNoAmount() {
+        LinkedList<Liquid> liquids = new LinkedList<>();
+        liquids.add(new Liquid(0, 300, new Color(0x000000)));
+        liquids.add(new Liquid(0, 300, new Color(0xfefefe)));
+
+        Liquid result = new SubtractiveMixingStrategy().mixLiquids(liquids);
+        assertEquals(0, result.getAmount(), 0.00001);
     }
 }
