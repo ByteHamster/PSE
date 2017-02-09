@@ -2,6 +2,8 @@ package edu.kit.pse.osip.core.utils.formatting;
 
 /**
  * This class provides static methods to check input formats.
+ * @author Maximilian Schwarzmann
+ * @version 1.0
  */
 public final class FormatChecker {
     
@@ -18,7 +20,6 @@ public final class FormatChecker {
      *            
      */
     public static int checkPort(String port) {
-
         int result;
         if (port == null) {
             throw new InvalidPortException(port, "is null");
@@ -42,12 +43,11 @@ public final class FormatChecker {
      * @param host The host to check
      */
     public static void checkHost(String host) {
-
         boolean validHostname;
         if (host == null) {
             throw new InvalidHostException(host, "is null");
         }
-        String hostnamePattern = "[0-9a-zA-Z\\-_.]+";
+        String hostnamePattern = "[0-9a-zA-Z\\-_\\.\\\\]+";
         validHostname = host.matches(hostnamePattern);
         if (!validHostname) {
             throw new InvalidHostException(host, "is neither an ip nor a hostname");
@@ -64,7 +64,6 @@ public final class FormatChecker {
      *            
      */
     public static int checkPercentage(String percentage) {
-
         int result;
         if (percentage == null) {
             throw new InvalidPercentageException(percentage, "is null");

@@ -2,6 +2,8 @@ package edu.kit.pse.osip.core.utils.formatting;
 
 /**
  * This exception signifies that a percentage is invalid.
+ * @author Maximilian Schwarzmann
+ * @version 1.0
  */
 public class InvalidPercentageException extends java.lang.IllegalArgumentException {
     private static final long serialVersionUID = 6133492534710708929L;
