@@ -165,7 +165,8 @@ public class Color {
             return false;
         }
         Color otherColor = (Color) other;
-        return (otherColor.cyan == cyan && otherColor.magenta == magenta && otherColor.yellow == yellow);
+        return (Math.abs(otherColor.cyan - cyan) < 0.000001 && Math.abs(otherColor.magenta - magenta) < 0.000001
+            && Math.abs(otherColor.yellow - yellow) < 0.000001);
     }
 
     @Override
