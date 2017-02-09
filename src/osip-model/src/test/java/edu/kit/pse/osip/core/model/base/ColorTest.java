@@ -199,4 +199,17 @@ public class ColorTest {
         assertEquals(148 / 255f, color.getB(), 0.01);
     }
 
+    /**
+     * Test whether clone() works correctly
+     * @throws CloneNotSupportedException if clone() is implemented wrong.
+     */
+    @Test
+    public void testClone() throws CloneNotSupportedException {
+        Color color = new Color(0.54, 0.76, 0.42);
+        assertTrue(color.equals(color.clone()));
+        assertFalse(color == color.clone());
+        assertTrue(color.getClass() == color.clone().getClass());
+
+    }
+
 }
