@@ -1,5 +1,6 @@
 package edu.kit.pse.osip.core.model.base;
 
+import edu.kit.pse.osip.core.SimulationConstants;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,7 +28,7 @@ public class MotorTest {
      */
     @Test(expected = IllegalArgumentException.class)
     public void testTooBig() {
-        motor.setRPM(3001);
+        motor.setRPM(SimulationConstants.MAX_MOTOR_SPEED + 1);
     }
 
     /**
@@ -45,7 +46,7 @@ public class MotorTest {
     public void testSet() {
         motor.setRPM(0);
         assertEquals(0, motor.getRPM());
-        motor.setRPM(3000);
-        assertEquals(3000, motor.getRPM());
+        motor.setRPM(SimulationConstants.MAX_MOTOR_SPEED);
+        assertEquals(SimulationConstants.MAX_MOTOR_SPEED, motor.getRPM());
     }
 }

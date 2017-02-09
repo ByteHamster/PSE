@@ -1,5 +1,7 @@
 package edu.kit.pse.osip.core.model.base;
 
+import edu.kit.pse.osip.core.SimulationConstants;
+
 /**
  * This is the motor which is installed in the mixtank.
  * @author David Kahles
@@ -10,11 +12,11 @@ public class Motor extends java.util.Observable {
 
     /**
      * Set the RPM of the motor.
-     * @throws IllegalArgumentException if rpm is negative or greater than 3000.
+     * @throws IllegalArgumentException if rpm is negative or greater than SimulationConstants.MAX_MOTOR_SPEED.
      * @param rpm The target RPM.
      */
     public final void setRPM(int rpm) {
-        if (rpm < 0 || rpm > 3000) {
+        if (rpm < 0 || rpm > SimulationConstants.MAX_MOTOR_SPEED) {
             throw new IllegalArgumentException("Motor RPM needs to be in range 0 to 3000");
         }
         this.rpm = rpm;
