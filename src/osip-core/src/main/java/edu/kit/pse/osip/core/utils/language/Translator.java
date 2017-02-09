@@ -2,17 +2,18 @@ package edu.kit.pse.osip.core.utils.language;
 
 /**
  * This class is the interface to load menu texts in different languages.
+ * @author Maximilian Schwarzmann 
+ * @version 1.0
  */
 public final class Translator {
-    private java.util.ResourceBundle bundle;
     
+    private java.util.ResourceBundle bundle; 
     private static Translator singleton;
     
     /**
      * Creates a new translator. Private because it is a singleton
      */
     private Translator() {
-        //throw new RuntimeException("Not implemented!");
     }
     /**
      * Gets the single Instance of the Translator. It is newly created at the first call of the method.
@@ -30,8 +31,7 @@ public final class Translator {
      * @param key The key to use for translation lookup
      */
     public String getString(String key) {
-        return singleton.getLocaleBundle().getString(key);
-        
+        return singleton.getLocaleBundle().getString(key);       
     }
     /**
      * Sets the locale to be used when translating
@@ -51,6 +51,5 @@ public final class Translator {
      */
     public java.util.ResourceBundle getLocaleBundle() {
         return bundle;
-    }
-    
+    }    
 }

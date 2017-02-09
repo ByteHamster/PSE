@@ -10,21 +10,14 @@ import java.util.ResourceBundle;
 /**
  * Test class for Translator
  * @author Maximilian Schwarzmann
- *
+ * @version 1.0
  */
 public class TranslatorTest {
 
-    String language;
-    String country;
-    String output;
-    Locale loc;
-    ResourceBundle bundle;
     Translator trans;
     
-
     /**
      * Create a new translator instance
-     * @throws Exception
      */
     @Before
     public void setUp() {
@@ -36,12 +29,12 @@ public class TranslatorTest {
      */
     @Test
     public void testStd() {
-        language = "en";
-        country = "US";
-        loc = new Locale(language, country);
-        bundle = ResourceBundle.getBundle("Bundle", loc);
+        String language = "en";
+        String country = "US";
+        Locale loc = new Locale(language, country);
+        ResourceBundle bundle = ResourceBundle.getBundle("Bundle", loc);
         trans.setLocaleBundle(bundle);
-        output = trans.getString("greet");
+        String output = trans.getString("greet");
         assertEquals("hi", output);
     }
 
@@ -50,12 +43,12 @@ public class TranslatorTest {
      */
     @Test
     public void testGerman() {
-        language = "ge";
-        country = "GE";
-        loc = new Locale(language, country);
-        bundle = ResourceBundle.getBundle("Bundle", loc);
+        String language = "ge";
+        String country = "GE";
+        Locale loc = new Locale(language, country);
+        ResourceBundle bundle = ResourceBundle.getBundle("Bundle", loc);
         trans.setLocaleBundle(bundle);
-        output = trans.getString("greet");
+        String output = trans.getString("greet");
         assertEquals("hallo", output);
     }
 }
