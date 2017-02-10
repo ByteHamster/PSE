@@ -6,7 +6,7 @@ import javafx.scene.paint.Color;
  * Constants for the monitoring view, appearing in more than one class.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.1
  */
 final class MonitoringViewConstants {
     /**
@@ -23,6 +23,11 @@ final class MonitoringViewConstants {
      * The font size in pixels. 
      */
     static final int FONT_SIZE = 17;
+    
+    /**
+     * The preferred height for any type of a bar.
+     */
+    static final int PREF_HEIGHT_FOR_BARS = FONT_SIZE * 20;
     
     /**
      * Color when an alarm is enabled, but not activated.

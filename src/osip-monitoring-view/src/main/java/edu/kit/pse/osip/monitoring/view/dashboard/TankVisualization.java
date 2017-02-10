@@ -9,7 +9,7 @@ public class TankVisualization extends edu.kit.pse.osip.monitoring.view.dashboar
     /**
      * Visualization of the supply pipe.
      */
-    private BarVisualization supply;
+    private GaugeVisualization supply;
     /**
      * Creates a new visualization.
      * @param tank The tank to display
