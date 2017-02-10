@@ -2,6 +2,8 @@ package edu.kit.pse.osip.core.utils.formatting;
 
 /**
  * This exception signifies that a percentage is invalid.
+ * @author Maximilian Schwarzmann
+ * @version 1.0
  */
 public class InvalidPercentageException extends java.lang.IllegalArgumentException {
     private static final long serialVersionUID = 6133492534710708929L;
@@ -11,7 +13,8 @@ public class InvalidPercentageException extends java.lang.IllegalArgumentExcepti
      * @param tried The string that was tried to be parsed
      * @param reason Explains why the check failed
      */
-    public InvalidPercentageException (String tried, String reason) {
-        throw new RuntimeException("Not implemented!");
+    public InvalidPercentageException(String tried, String reason) {
+
+        super(tried + " " + reason);
     }
 }
