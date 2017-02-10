@@ -2,18 +2,52 @@ package edu.kit.pse.osip.core.model.behavior;
 
 import edu.kit.pse.osip.core.model.base.ProductionSite;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.function.Consumer;
+
+import static java.lang.Thread.sleep;
+
 /**
  * A sequence of automated changes to parameters of the simulation.
  * It is used to have changes in the simulation (so it looks more interesting)
  * without the need to adjust parameters all the time.
+ *
+ * @author David Kahles
+ * @version 1.0
  */
-public class Scenario extends java.util.Observable {
+public class Scenario extends java.util.Observable implements Runnable {
+    private List<ThrowingConsumer<ProductionSite>> commands = new LinkedList<>();
+    private Thread thread;
+    private ProductionSite productionSite;
+    private boolean stop = false;
+
+    @Override
+    public void run() {
+        assert (null != productionSite);
+        for (ThrowingConsumer<ProductionSite> c: commands) {
+            try {
+                c.accept(productionSite);
+            } catch (InterruptedException ex) {
+                System.err.println("Scenario: sleep command failed: " + ex.getMessage());
+            }
+            if (stop) {
+                return;
+            }
+        }
+    }
+
+    @FunctionalInterface
+    private interface ThrowingConsumer<T> {
+        void accept(T t) throws InterruptedException;
+    }
+
     /**
      * Add a command to the Scenario. It gets executed after the last command or pause.
      * @param runnable The command to run.
      */
-    public void appendRunnable(java.util.function.Consumer<ProductionSite> runnable) {
-        throw new RuntimeException("Not implemented!");
+    public void appendRunnable(Consumer<ProductionSite> runnable) {
+        commands.add(runnable::accept);
     }
 
     /**
@@ -21,7 +55,7 @@ public class Scenario extends java.util.Observable {
      * @param length The length of the pause in ms.
      */
     public void addPause(int length) {
-        throw new RuntimeException("Not implemented!");
+        commands.add(productionSite1 -> sleep(length));
     }
 
     /**
@@ -29,14 +63,22 @@ public class Scenario extends java.util.Observable {
      * @throws IllegalStateException if the production site isn't set (@see setProductionSite).
      */
     public void startScenario() {
-        throw new RuntimeException("Not implemented!");
+        if (null == productionSite) {
+            throw new IllegalStateException("Before running a scenario, the production site needs to be set");
+        }
+        thread = new Thread(this);
+        stop = false;
+        thread.start();
     }
 
     /**
      * Stop the Scenario.
      */
     public void cancelScenario() {
-        throw new RuntimeException("Not implemented!");
+        stop = true;
+        if (null == thread) {
+            throw new IllegalStateException("Scenario has not been started yet");
+        }
     }
 
     /**
@@ -44,7 +86,7 @@ public class Scenario extends java.util.Observable {
      * @return true if the Scenario is running, false otherwise.
      */
     public boolean isRunning() {
-        throw new RuntimeException("Not implemented!");
+        return (null != thread && thread.isAlive());
     }
 
     /**
@@ -53,6 +95,6 @@ public class Scenario extends java.util.Observable {
      * @param productionSite The production site which gets set.
      */
     public void setProductionSite(ProductionSite productionSite) {
-        throw new RuntimeException("Not implemented!");
+        this.productionSite = productionSite;
     }
 }
