@@ -47,7 +47,7 @@ public final class FormatChecker {
         if (host == null) {
             throw new InvalidHostException(host, "is null");
         }
-        String hostnamePattern = "[0-9a-zA-Z\\-_\\.\\\\]+";
+        String hostnamePattern = "[0-9a-zA-Z\\-_\\.]+";
         validHostname = host.matches(hostnamePattern);
         if (!validHostname) {
             throw new InvalidHostException(host, "is neither an ip nor a hostname");

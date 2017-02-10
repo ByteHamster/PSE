@@ -79,7 +79,7 @@ public class FormattingTest {
     /**
      * Test valid port
      */
-    @Test
+    @Test (expected = InvalidHostException.class)
     public void testHostName() {
         //String input = "wekfpk.wekfpkp.wefkopg.00";
         String input = "\\";
