@@ -1,6 +1,5 @@
 package edu.kit.pse.osip.core.io.files;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -16,7 +15,6 @@ public class ScenarioFileTest {
      * @throws ParserException If something goes wrong
      */
     @Test
-    @Ignore
     public void testReadingFile() throws ParserException {
         String path = Thread.currentThread().getContextClassLoader()
                 .getResource("test.scenario.txt").getPath();

@@ -152,8 +152,7 @@ public class ScenarioParser extends ExtendedParser {
         });
         commands.put("setMixOutThreshold", (parameters) -> {
             checkArgumentCount(parameters, 1);
-            if (Math.round(parameters.get(0)) > 100 || Math.round(parameters.get(0)) < 0
-                || Math.round(parameters.get(0)) >= TankSelector.getUpperTankCount()) {
+            if (Math.round(parameters.get(0)) > 100 || Math.round(parameters.get(0)) < 0) {
                 die("Argument out of range");
             }
             return (site) -> site.getMixTank().getOutPipe().setValveThreshold((byte) Math.round(parameters.get(0)));

@@ -8,6 +8,7 @@ package edu.kit.pse.osip.core.io.files;
 public class BaseParser {
     protected int currentPosition = 0;
     private final String toParse;
+    private int currentLine = 0;
     
     /**
      * Constructor of BaseParser
@@ -28,7 +29,8 @@ public class BaseParser {
      * @throws ParserException Always.
      */
     protected final void die(String message) throws ParserException {
-        throw new ParserException(message, 0, currentPosition);
+        String line = toParse.split("\n")[currentLine];
+        throw new ParserException(message + " - " + line, currentLine + 1, currentPosition);
     }
     /**
      * Look at next char and remove it
@@ -37,6 +39,9 @@ public class BaseParser {
      */
     protected final char pop() throws ParserException {
         if (available()) {
+            if (toParse.charAt(currentPosition) == '\n') {
+                currentLine++;
+            }
             return toParse.charAt(currentPosition++);
         } else {
             die("Unexpected EOF");
