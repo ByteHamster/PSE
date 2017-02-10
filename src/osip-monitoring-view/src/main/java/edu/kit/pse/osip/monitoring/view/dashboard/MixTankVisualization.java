@@ -9,7 +9,7 @@ public class MixTankVisualization extends edu.kit.pse.osip.monitoring.view.dashb
     /**
      * Visualization of the motor speed.
      */
-    private BarVisualization motorSpeed;
+    private GaugeVisualization motorSpeed;
     /**
      * Visualization of the mixed color.
      */

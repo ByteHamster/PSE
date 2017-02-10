@@ -23,7 +23,7 @@ public abstract class AbstractTankVisualization extends javafx.scene.layout.Pane
     /**
      * Visualization for the drain pipe.
      */
-    protected BarVisualization drain;
+    protected GaugeVisualization drain;
     /**
      * Visualization of the fill level.
      */
