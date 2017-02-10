@@ -15,7 +15,7 @@ class GaugeVisualization extends BarLayout implements Observer {
     /**
      * The gauge shows the current value.
      */
-    private SimpleMetroArcGauge gauge;
+    protected SimpleMetroArcGauge gauge;
     
     /**
      * Creates and initializes a new visualization.
