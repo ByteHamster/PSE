@@ -86,7 +86,7 @@ public class SettingsViewFacade implements edu.kit.pse.osip.monitoring.controlle
      * @return true if the overflow alarm for the temperature should be enabled for a specified tank and false otherwise.
      * @param tank The specified tank.
      */
-    public final boolean isTemperatureOverflowAlarmEnabled (TankSelector tank) {
+    public final boolean isTemperatureOverheatingAlarmEnabled (TankSelector tank) {
         throw new RuntimeException("Not implemented!");
     }
     /**
@@ -94,7 +94,7 @@ public class SettingsViewFacade implements edu.kit.pse.osip.monitoring.controlle
      * @return true if the underflow alarm for the temperature should be enabled for a specified tank and false otherwise.
      * @param tank The specified tank.
      */
-    public final boolean isTemperatureUnderflowAlarmEnabled (TankSelector tank) {
+    public final boolean isTemperatureUndercoolingAlarmEnabled (TankSelector tank) {
         throw new RuntimeException("Not implemented!");
     }
     /**

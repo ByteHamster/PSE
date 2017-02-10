@@ -38,7 +38,7 @@ public class MonitoringViewFacade implements edu.kit.pse.osip.monitoring.control
      * @param tank The tank which alarm will be enabled or disabled.
      * @param alarmEnabled true when the alarm should be enabled. false otherwise.
      */
-    public final void setTemperatureOverflowAlarmEnabled (TankSelector tank, boolean alarmEnabled) {
+    public final void setTemperatureOverheatingAlarmEnabled (TankSelector tank, boolean alarmEnabled) {
         throw new RuntimeException("Not implemented!");
     }
     /**
@@ -46,7 +46,7 @@ public class MonitoringViewFacade implements edu.kit.pse.osip.monitoring.control
      * @param tank The tank which alarm will be turned on or off.
      * @param alarmEnabled true when the alarm should be enabled. false otherwise.
      */
-    public final void setTemperatureUnderflowAlarmEnabled (TankSelector tank, boolean alarmEnabled) {
+    public final void setTemperatureUndercoolingAlarmEnabled (TankSelector tank, boolean alarmEnabled) {
         throw new RuntimeException("Not implemented!");
     }
     /**
