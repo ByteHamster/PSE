@@ -1,5 +1,8 @@
 package edu.kit.pse.osip.core.utils.language;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 /**
  * This class is the interface to load menu texts in different languages.
  * @author Maximilian Schwarzmann 
@@ -7,13 +10,16 @@ package edu.kit.pse.osip.core.utils.language;
  */
 public final class Translator {
     
-    private java.util.ResourceBundle bundle; 
+    private ResourceBundle bundle;
+    private Locale loc;
     private static Translator singleton;
     
     /**
      * Creates a new translator. Private because it is a singleton
      */
     private Translator() {
+        loc = new Locale("en", "US");
+        bundle = ResourceBundle.getBundle("Bundle", loc);
     }
     /**
      * Gets the single Instance of the Translator. It is newly created at the first call of the method.
@@ -31,25 +37,18 @@ public final class Translator {
      * @param key The key to use for translation lookup
      */
     public String getString(String key) {
-        return singleton.getLocaleBundle().getString(key);       
+        return bundle.getString(key);       
     }
     /**
      * Sets the locale to be used when translating
-     * @param bundle The locale to set
+     * @param locale The locale to set
      * @throws TranslatorNullException Exception for null bundle
      */
-    public void setLocaleBundle(java.util.ResourceBundle bundle) throws TranslatorNullException {
-        if (bundle == null) {
-            throw new TranslatorNullException("The input bundle is null");
+    public void setLocale(Locale locale) throws TranslatorNullException {
+        if (locale == null) {
+            throw new TranslatorNullException("The input locale is null");
         }
-        singleton.bundle = bundle;
-    }
-
-    /**
-     * Getter method for bundle
-     * @return bundle of instance
-     */
-    public java.util.ResourceBundle getLocaleBundle() {
-        return bundle;
+        loc = locale;
+        bundle = ResourceBundle.getBundle("Bundle", loc);
     }    
 }

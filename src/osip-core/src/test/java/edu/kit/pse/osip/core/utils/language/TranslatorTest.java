@@ -2,10 +2,10 @@ package edu.kit.pse.osip.core.utils.language;
 
 import static org.junit.Assert.assertEquals;
 
+
 import org.junit.Before;
 import org.junit.Test;
 import java.util.Locale;
-import java.util.ResourceBundle;
 
 /**
  * Test class for Translator
@@ -29,11 +29,6 @@ public class TranslatorTest {
      */
     @Test
     public void testStd() {
-        String language = "en";
-        String country = "US";
-        Locale loc = new Locale(language, country);
-        ResourceBundle bundle = ResourceBundle.getBundle("Bundle", loc);
-        trans.setLocaleBundle(bundle);
         String output = trans.getString("greet");
         assertEquals("hi", output);
     }
@@ -46,8 +41,7 @@ public class TranslatorTest {
         String language = "ge";
         String country = "GE";
         Locale loc = new Locale(language, country);
-        ResourceBundle bundle = ResourceBundle.getBundle("Bundle", loc);
-        trans.setLocaleBundle(bundle);
+        trans.setLocale(loc);
         String output = trans.getString("greet");
         assertEquals("hallo", output);
     }
