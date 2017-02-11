@@ -12,13 +12,13 @@ import javafx.scene.chart.XYChart;
  * Visualizes a progression.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.1
  */
 final class ProgressVisualization implements Observer {
     /**
      * Stores the amount of milliseconds per second.
      */
-    private final int msPerSec = 1000;
+    private static final int MS_PER_SEC = 1000;
     
     /**
      * Saves the creation time of this instance in milliseconds.
@@ -59,6 +59,7 @@ final class ProgressVisualization implements Observer {
         NumberAxis y = new NumberAxis();
         y.setLabel(Translator.getInstance().getString("monitoring.tank.progress.y"));
         progressChart = new LineChart<Number, Number>(x, y);
+        progressChart.setPrefHeight(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS * 1.25);
         progressSeries = new XYChart.Series<Number, Number>();
         progressSeries.setName(Translator.getInstance().getString("monitoring.tank.progress.legend"));
         progressChart.getData().add(progressSeries);
@@ -102,7 +103,7 @@ final class ProgressVisualization implements Observer {
             return;
         }
         AbstractTank tank = (AbstractTank) observable;
-        long x = (System.currentTimeMillis() - creationTime) / msPerSec;
+        long x = (System.currentTimeMillis() - creationTime) / MS_PER_SEC;
         XYChart.Data<Number, Number> newDataPoint;
         if (progressName.equals(Translator.getInstance().getString("monitoring.tank.progress.temperature"))) {
             newDataPoint = new XYChart.Data<Number, Number>(x, tank.getLiquid().getTemperature());
