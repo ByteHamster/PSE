@@ -45,4 +45,13 @@ public class TranslatorTest {
         String output = trans.getString("greet");
         assertEquals("hallo", output);
     }
+
+    /**
+     * Test null as input
+     */
+    @Test(expected = NullPointerException.class)
+    public void testNullException() {
+        Locale loc = null;
+        trans.setLocale(loc);
+    }
 }

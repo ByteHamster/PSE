@@ -44,9 +44,9 @@ public final class Translator {
      * @param locale The locale to set
      * @throws TranslatorNullException Exception for null bundle
      */
-    public void setLocale(Locale locale) throws TranslatorNullException {
+    public void setLocale(Locale locale) throws NullPointerException {
         if (locale == null) {
-            throw new TranslatorNullException("The input locale is null");
+            throw new NullPointerException();
         }
         loc = locale;
         bundle = ResourceBundle.getBundle("Bundle", loc);
