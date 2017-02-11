@@ -42,7 +42,7 @@ public final class Translator {
     /**
      * Sets the locale to be used when translating
      * @param locale The locale to set
-     * @throws TranslatorNullException Exception for null bundle
+     * @throws NullPointerException Exception for null bundle
      */
     public void setLocale(Locale locale) throws NullPointerException {
         if (locale == null) {
