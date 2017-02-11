@@ -8,9 +8,9 @@ import javafx.scene.paint.Color;
  * Visualization for a normal tank.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.1
  */
-final class TankVisualization extends AbstractTankVisualization {
+class TankVisualization extends AbstractTankVisualization {
     /**
      * Visualization of the supply pipe.
      */
@@ -20,6 +20,7 @@ final class TankVisualization extends AbstractTankVisualization {
      * Creates a new visualization.
      * 
      * @param tank The tank to display
+     * @throws NullPointerException when the tank is null.
      */
     protected TankVisualization(Tank tank) {
         super(tank);

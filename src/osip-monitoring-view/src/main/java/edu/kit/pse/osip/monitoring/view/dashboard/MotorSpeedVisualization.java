@@ -9,9 +9,9 @@ import java.util.Observable;
  * Visualizes the motor speed.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.1
  */
-final class MotorSpeedVisualization extends GaugeVisualization {
+class MotorSpeedVisualization extends GaugeVisualization {
     /**
      * Creates a new visualization for the motor speed.
      */

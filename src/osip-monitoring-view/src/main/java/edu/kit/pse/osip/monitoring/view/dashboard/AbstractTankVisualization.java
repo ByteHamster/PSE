@@ -17,13 +17,13 @@ import javafx.scene.paint.Color;
  * Visualizes a general tank.
  * 
  * @author Martin Armbruster
- * @version 1.2
+ * @version 1.3
  */
 abstract class AbstractTankVisualization extends GridPane {
     /**
      * Visualization for the overflow alarm.
      */
-    protected AlarmVisualization overflowAlarm;
+    private AlarmVisualization overflowAlarm;
     
     /**
      * The actual overflow alarm that triggers the visualization.
@@ -33,7 +33,7 @@ abstract class AbstractTankVisualization extends GridPane {
     /**
      * Visualization for the underflow alarm.
      */
-    protected AlarmVisualization underflowAlarm;
+    private AlarmVisualization underflowAlarm;
     
     /**
      * The actual underflow alarm that triggers the visualization.
@@ -43,7 +43,7 @@ abstract class AbstractTankVisualization extends GridPane {
     /**
      * Alarm when the temperature becomes too high.
      */
-    protected AlarmVisualization temperatureOverheatingAlarm;
+    private AlarmVisualization temperatureOverheatingAlarm;
     
     /**
      * The actual alarm when the temperature becomes too high that triggers the visualization.
@@ -53,7 +53,7 @@ abstract class AbstractTankVisualization extends GridPane {
     /**
      * Alarm when a temperature becomes too low.
      */
-    protected AlarmVisualization temperatureUndercoolingAlarm;
+    private AlarmVisualization temperatureUndercoolingAlarm;
     
     /**
      * The actual alarm when the temperature becomes too low that triggers the visualization.
@@ -85,8 +85,12 @@ abstract class AbstractTankVisualization extends GridPane {
      * except the progresses and adds the alarms.
      * 
      * @param tank this visualization is connected to that tank.
+     * @throws NullPointerException when the tank is null.
      */
     protected AbstractTankVisualization(AbstractTank tank) {
+        if (tank == null) {
+            throw new NullPointerException("Tank is null.");
+        }
         this.setVgap(MonitoringViewConstants.ELEMENTS_GAP);
         this.setHgap(MonitoringViewConstants.ELEMENTS_GAP);
         this.setPadding(new Insets(MonitoringViewConstants.ELEMENTS_GAP));
@@ -231,7 +235,7 @@ abstract class AbstractTankVisualization extends GridPane {
      * @param progressionEnabled true if the temperature should be logged.
      *        false otherwise.
      */
-    protected final void setTemperatureProgressionEnabled(boolean progressionEnabled) {
+    protected void setTemperatureProgressionEnabled(boolean progressionEnabled) {
         progresses.setTemperatureProgressEnabled(progressionEnabled);
     }
     
@@ -240,7 +244,7 @@ abstract class AbstractTankVisualization extends GridPane {
      * 
      * @param progressionEnabled true if the fill level progression should be logged. false otherwise.
      */
-    protected final void setFillLevelProgressionEnabled(boolean progressionEnabled) {
+    protected void setFillLevelProgressionEnabled(boolean progressionEnabled) {
         progresses.setFillLevelProgressEnabled(progressionEnabled);
     }
 }

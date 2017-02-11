@@ -7,9 +7,9 @@ import javafx.scene.paint.Color;
  * Visualization for the mixtank.
  * 
  * @author Martin Armbruster
- * @version 1.1
+ * @version 1.2
  */
-final class MixTankVisualization extends AbstractTankVisualization {
+class MixTankVisualization extends AbstractTankVisualization {
     /**
      * Visualization of the motor speed.
      */
@@ -24,6 +24,7 @@ final class MixTankVisualization extends AbstractTankVisualization {
      * Creates a new visualization.
      * 
      * @param tank The tank to display
+     * @throws NullPointerException when the tank is null.
      */
     protected MixTankVisualization(MixTank tank) {
         super(tank);
