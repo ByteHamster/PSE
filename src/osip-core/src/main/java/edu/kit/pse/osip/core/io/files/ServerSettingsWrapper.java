@@ -11,6 +11,8 @@ import edu.kit.pse.osip.core.model.base.TankSelector;
 
 /**
  * Wrapper for server settings file where ports of tanks are stored
+ * @author Maximilian Schwarzmann
+ * @version 1.0
  */
 public class ServerSettingsWrapper {
     
