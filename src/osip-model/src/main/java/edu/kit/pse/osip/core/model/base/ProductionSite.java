@@ -63,6 +63,15 @@ public class ProductionSite {
       * @param temperature Temperature to set.
       */
     public void setInputTemperature(TankSelector tank, float temperature) {
+        if (temperature > SimulationConstants.MAX_TEMPERATURE) {
+            throw new IllegalArgumentException("Tank input temperature must not be grather than "
+                + SimulationConstants.MAX_TEMPERATURE);
+        }
+        if (temperature < SimulationConstants.MIN_TEMPERATURE) {
+            throw new IllegalArgumentException("Tank input temperature must not be smaller than "
+                    + SimulationConstants.MIN_TEMPERATURE);
+        }
+
         inputTemperature.put(tank, temperature);
     }
 
