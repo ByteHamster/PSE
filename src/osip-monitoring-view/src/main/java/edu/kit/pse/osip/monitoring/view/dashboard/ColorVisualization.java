@@ -11,9 +11,9 @@ import javafx.scene.shape.Rectangle;
  * Visualizes the color of the mixtank.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.1
  */
-final class ColorVisualization extends BarLayout implements Observer {
+class ColorVisualization extends BarLayout implements Observer {
     /**
      * Rectangle contains the color.
      */

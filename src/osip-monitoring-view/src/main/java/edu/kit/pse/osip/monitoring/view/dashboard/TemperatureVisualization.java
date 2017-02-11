@@ -12,9 +12,9 @@ import javafx.scene.control.Slider;
  * Visualizes the current temperature.
  * 
  * @author Martin Armbruster
- * @version 1.1
+ * @version 1.2
  */
-final class TemperatureVisualization extends BarLayout implements Observer {
+class TemperatureVisualization extends BarLayout implements Observer {
     /**
      * The number of all major ticks on the temperature bar with a label.
      */

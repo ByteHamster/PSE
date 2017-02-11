@@ -9,7 +9,7 @@ import jfxtras.scene.control.gauge.linear.SimpleMetroArcGauge;
  * Visualizes the amount of liquid flowing through a pipe with a simple gauge.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.2
  */
 class GaugeVisualization extends BarLayout implements Observer {
     /**
@@ -34,9 +34,13 @@ class GaugeVisualization extends BarLayout implements Observer {
      * 
      * @param name The name of the represented bar.
      * @param connectedPipe The pipe, the bar is connected to.
+     * @throws NullPointerException when the pipe is null.
      */
     protected GaugeVisualization(String name, Pipe connectedPipe) {
         this(name);
+        if (connectedPipe == null) {
+            throw new NullPointerException("Pipe is null.");
+        }
         gauge.setMaxValue(connectedPipe.getMaxInput());
         connectedPipe.addObserver(this);
     }
@@ -49,6 +53,6 @@ class GaugeVisualization extends BarLayout implements Observer {
      */
     public void update(Observable observable, Object object) {
         Pipe pipe = (Pipe) observable;
-        gauge.setValue(pipe.getMaxInput() * pipe.getValveThreshold());
+        gauge.setValue(pipe.getMaxInput());
     }
 }

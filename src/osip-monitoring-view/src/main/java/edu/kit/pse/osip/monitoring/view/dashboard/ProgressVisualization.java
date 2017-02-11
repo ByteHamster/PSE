@@ -12,9 +12,9 @@ import javafx.scene.chart.XYChart;
  * Visualizes a progression.
  * 
  * @author Martin Armbruster
- * @version 1.1
+ * @version 1.2
  */
-final class ProgressVisualization implements Observer {
+class ProgressVisualization implements Observer {
     /**
      * Stores the amount of milliseconds per second.
      */
@@ -70,7 +70,7 @@ final class ProgressVisualization implements Observer {
      * 
      * @return the progression name.
      */
-    protected String getProgressName() {
+    protected final String getProgressName() {
         return progressName;
     }
     
@@ -79,7 +79,7 @@ final class ProgressVisualization implements Observer {
      * 
      * @return the chart showing the progression.
      */
-    protected LineChart<Number, Number> getProgressChart() {
+    protected final LineChart<Number, Number> getProgressChart() {
         return progressChart;
     }
     

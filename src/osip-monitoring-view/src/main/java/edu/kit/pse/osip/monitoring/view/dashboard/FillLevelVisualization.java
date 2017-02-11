@@ -11,9 +11,9 @@ import jfxtras.scene.control.gauge.linear.BasicRoundDailGauge;
  * Visualizes a fill level.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.1s
  */
-final class FillLevelVisualization extends BarLayout implements Observer {
+class FillLevelVisualization extends BarLayout implements Observer {
     /**
      * The gauge shows the actual fill level.
      */

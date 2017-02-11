@@ -9,9 +9,9 @@ import javafx.scene.control.TabPane;
  * Provides access to and all controls for the temperature and fill level progressions.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.1
  */
-final class ProgressOverview extends TabPane {
+class ProgressOverview extends TabPane {
     /**
      * Tab contains the temperature progression.
      */
@@ -36,8 +36,12 @@ final class ProgressOverview extends TabPane {
      * Creates and initializes all controls for the progressions.
      * 
      * @param tank The progressions are assigned to this tank.
+     * @throws NullPointerException when the tank is null.
      */
     protected ProgressOverview(AbstractTank tank) {
+        if (tank == null) {
+            throw new NullPointerException("Tank is null.");
+        }
         this.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
         fillLevel = new ProgressVisualization(Translator.getInstance().getString("monitoring.tank.progress.fillLevel"));
         tabFillLevel = new Tab(fillLevel.getProgressName());
@@ -57,7 +61,7 @@ final class ProgressOverview extends TabPane {
      * 
      * @param progressEnabled true if the fill level progression should be enabled and false otherwise.
      */
-    protected void setFillLevelProgressEnabled(boolean progressEnabled) {
+    protected final void setFillLevelProgressEnabled(boolean progressEnabled) {
         fillLevel.setProgressEnabled(progressEnabled);
     }
     
@@ -66,7 +70,7 @@ final class ProgressOverview extends TabPane {
      * 
      * @param progressEnabled true if the temperature progression should be enabled and false otherwise.
      */
-    protected void setTemperatureProgressEnabled(boolean progressEnabled) {
+    protected final void setTemperatureProgressEnabled(boolean progressEnabled) {
         temperature.setProgressEnabled(progressEnabled);
     }
 }
