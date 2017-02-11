@@ -12,7 +12,7 @@ import javafx.stage.Stage;
  * Provides one single access point to the monitoring view.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.1
  */
 public final class MonitoringViewFacade implements MonitoringViewInterface {
     /**
@@ -56,7 +56,7 @@ public final class MonitoringViewFacade implements MonitoringViewInterface {
      * @param tank The tank which alarm will be enabled or disabled.
      * @param alarmEnabled true when the alarm should be enabled. false otherwise.
      */
-    public final void setTemperatureOverheatingAlarmEnabled(TankSelector tank, boolean alarmEnabled) {
+    public void setTemperatureOverheatingAlarmEnabled(TankSelector tank, boolean alarmEnabled) {
         mainWindow.getTank(tank).setTemperatureOverheatingAlarmEnabled(alarmEnabled);
     }
     
