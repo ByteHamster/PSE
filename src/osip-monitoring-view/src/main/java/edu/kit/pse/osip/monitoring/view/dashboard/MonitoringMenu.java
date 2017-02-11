@@ -1,58 +1,86 @@
 package edu.kit.pse.osip.monitoring.view.dashboard;
 
+import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.monitoring.controller.MenuAboutButtonHandler;
 import edu.kit.pse.osip.monitoring.controller.MenuHelpButtonHandler;
 import edu.kit.pse.osip.monitoring.controller.MenuSettingsButtonHandler;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 
 /**
  * Contains all controls for the menu bar.
+ * 
+ * @author Martin Armbruster
+ * @version 1.0
  */
-public class MonitoringMenu extends javafx.scene.control.MenuBar {
+final class MonitoringMenu extends MenuBar {
     /**
      * Menu containing all menu buttons for file interaction.
      */
-    private javafx.scene.control.Menu menuFile;
+    private Menu menuFile;
+    
     /**
      * Menu button in the files menu for displaying the settings.
      */
-    private javafx.scene.control.MenuButton menuButtonSettings;
+    private MenuItem menuButtonSettings;
+    
     /**
      * Menu containing all buttons for help.
      */
-    private javafx.scene.control.Menu menuHelp;
+    private Menu menuHelp;
+    
     /**
      * Button in the help menu for showing the help dialog.
      */
-    private javafx.scene.control.MenuButton menuButtonHelp;
+    private MenuItem menuButtonHelp;
+    
     /**
      * Button in the help menu for showing the about dialog.
      */
-    private javafx.scene.control.MenuButton menuButtonAbout;
+    private MenuItem menuButtonAbout;
+    
     /**
      * Creates and initializes the menu for the monitoring view.
      */
-    protected MonitoringMenu () {
-        throw new RuntimeException("Not implemented!");
+    protected MonitoringMenu() {
+        menuFile = new Menu(Translator.getInstance().getString("monitoring.menu.file"));
+        menuButtonSettings = new MenuItem(Translator.getInstance().getString("monitoring.menu.file.settings"));
+        menuFile.getItems().add(menuButtonSettings);
+        
+        menuHelp = new Menu(Translator.getInstance().getString("monitoring.menu.help"));
+        menuButtonHelp = new MenuItem(Translator.getInstance().getString("monitoring.menu.help.help"));
+        menuHelp.getItems().add(menuButtonHelp);
+        menuButtonAbout = new MenuItem(Translator.getInstance().getString("monitoring.menu.help.about"));
+        menuHelp.getItems().add(menuButtonAbout);
+        
+        this.getMenus().addAll(menuFile, menuHelp);
     }
+    
     /**
      * Sets the handler for the settings menu button.
+     * 
      * @param handler The handler for the settings menu button.
      */
-    protected final void setMenuSettingsButtonHandler (MenuSettingsButtonHandler handler) {
-        throw new RuntimeException("Not implemented!");
+    protected void setMenuSettingsButtonHandler(MenuSettingsButtonHandler handler) {
+        menuButtonSettings.setOnAction(handler);
     }
+    
     /**
      * Sets the handler for the about menu button.
+     * 
      * @param handler The handler for the about menu button.
      */
-    protected final void setMenuAboutButtonHandler (MenuAboutButtonHandler handler) {
-        throw new RuntimeException("Not implemented!");
+    protected void setMenuAboutButtonHandler(MenuAboutButtonHandler handler) {
+        menuButtonAbout.setOnAction(handler);
     }
+    
     /**
      * Sets the handler for the help menu button.
+     * 
      * @param handler The handler for the help menu button.
      */
-    protected final void setMenuHelpButtonHandler (MenuHelpButtonHandler handler) {
-        throw new RuntimeException("Not implemented!");
+    protected void setMenuHelpButtonHandler(MenuHelpButtonHandler handler) {
+        menuButtonHelp.setOnAction(handler);
     }
 }
