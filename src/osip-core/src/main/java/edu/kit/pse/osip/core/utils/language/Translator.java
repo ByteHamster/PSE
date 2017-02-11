@@ -42,9 +42,8 @@ public final class Translator {
     /**
      * Sets the locale to be used when translating
      * @param locale The locale to set
-     * @throws NullPointerException Exception for null bundle
      */
-    public void setLocale(Locale locale) throws NullPointerException {
+    public void setLocale(Locale locale) {
         if (locale == null) {
             throw new NullPointerException();
         }

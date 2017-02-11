@@ -14,14 +14,14 @@ import java.util.Locale;
  */
 public class TranslatorTest {
 
-    Translator trans;
+    Translator translator;
     
     /**
      * Create a new translator instance
      */
     @Before
     public void setUp() {
-        trans = Translator.getInstance(); 
+        translator = Translator.getInstance(); 
     }
 
     /**
@@ -29,7 +29,7 @@ public class TranslatorTest {
      */
     @Test
     public void testStd() {
-        String output = trans.getString("greet");
+        String output = translator.getString("greet");
         assertEquals("hi", output);
     }
 
@@ -41,8 +41,8 @@ public class TranslatorTest {
         String language = "ge";
         String country = "GE";
         Locale loc = new Locale(language, country);
-        trans.setLocale(loc);
-        String output = trans.getString("greet");
+        translator.setLocale(loc);
+        String output = translator.getString("greet");
         assertEquals("hallo", output);
     }
 
@@ -52,6 +52,6 @@ public class TranslatorTest {
     @Test(expected = NullPointerException.class)
     public void testNullException() {
         Locale loc = null;
-        trans.setLocale(loc);
+        translator.setLocale(loc);
     }
 }
