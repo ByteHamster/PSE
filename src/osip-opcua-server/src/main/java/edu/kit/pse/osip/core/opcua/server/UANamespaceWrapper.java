@@ -68,11 +68,11 @@ public class UANamespaceWrapper implements Namespace {
      * @param displayName Name that is displayed to the user
      * @throws UaException If folder can not be added
      */
-    protected final void addFolder(String path, String displayName) throws UaException {
+    protected void addFolder(String path, String displayName) throws UaException {
         NodeId folderNodeId = new NodeId(namespaceIndex, path);
         UaFolderNode folderNode = new UaFolderNode(server.getNodeMap(), folderNodeId,
                 new QualifiedName(namespaceIndex, path), LocalizedText.english(displayName));
-        server.getNodeMap().addNode(folderNode);        
+        server.getNodeMap().addNode(folderNode);
         server.getUaNamespace().addReference(Identifiers.ObjectsFolder, Identifiers.Organizes, true,
                 folderNodeId.expanded(), NodeClass.Object);
         folderNodes.put(path, folderNode);
@@ -84,10 +84,10 @@ public class UANamespaceWrapper implements Namespace {
      * @param displayName Name that is displayed to the user
      * @param type The variable type, for example Identifiers.Float
      */
-    protected final void addVariable(String path, String displayName, NodeId type) {
+    protected void addVariable(String path, String displayName, NodeId type) {
         UaVariableNode newNode = new UaVariableNode.UaVariableNodeBuilder(server.getNodeMap())
             .setNodeId(new NodeId(namespaceIndex, path))
-            .setAccessLevel(Unsigned.ubyte(AccessLevel.getMask(AccessLevel.READ_WRITE)))
+            .setAccessLevel(Unsigned.ubyte(AccessLevel.getMask(AccessLevel.READ_ONLY)))
             .setBrowseName(new QualifiedName(namespaceIndex, displayName))
             .setDisplayName(LocalizedText.english(displayName)).setDataType(type)
             .setTypeDefinition(Identifiers.BaseDataVariableType).build();
@@ -103,7 +103,7 @@ public class UANamespaceWrapper implements Namespace {
      * @param path The path of the variable to update
      * @param value Name that is displayed to the user
      */
-    protected final void updateValue(String path, DataValue value) {
+    protected void updateValue(String path, DataValue value) {
         variableNodes.get(path).setValue(value);
     }
 
@@ -112,7 +112,7 @@ public class UANamespaceWrapper implements Namespace {
      * 
      * @return The index of this namespace
      */
-    public final UShort getNamespaceIndex() {
+    public UShort getNamespaceIndex() {
         return namespaceIndex;
     }
 
@@ -123,7 +123,7 @@ public class UANamespaceWrapper implements Namespace {
      * @param context The context to write the values back
      * @param nodeId The id of the element to bowse
      */
-    public final CompletableFuture<List<Reference>> browse(AccessContext context, NodeId nodeId) {
+    public CompletableFuture<List<Reference>> browse(AccessContext context, NodeId nodeId) {
         ServerNode node = server.getNodeMap().get(nodeId);
 
         if (node != null) {
@@ -140,7 +140,7 @@ public class UANamespaceWrapper implements Namespace {
      * @param timestamps The value from which time to return
      * @param readValueIds The ids of the values that should be read
      */
-    public final void read(ReadContext context, Double maxAge, 
+    public void read(ReadContext context, Double maxAge,
             TimestampsToReturn timestamps, List<ReadValueId> readValueIds) {
         List<DataValue> results = Lists.newArrayListWithCapacity(readValueIds.size());
 
@@ -162,7 +162,7 @@ public class UANamespaceWrapper implements Namespace {
      * @param context The calling context
      * @param values The values to write
      */
-    public final void write(WriteContext context, List<WriteValue> values) {
+    public void write(WriteContext context, List<WriteValue> values) {
         List<StatusCode> results = Lists.newArrayListWithCapacity(values.size());
 
         for (WriteValue writeValue : values) {
@@ -188,7 +188,7 @@ public class UANamespaceWrapper implements Namespace {
      * Needed by milo. Gets called when the data inside the server are created
      * @param dataItems The created items
      */
-    public final void onDataItemsCreated(List<DataItem> dataItems) {
+    public void onDataItemsCreated(List<DataItem> dataItems) {
         subscriptionModel.onDataItemsCreated(dataItems);
     }
 
@@ -196,7 +196,7 @@ public class UANamespaceWrapper implements Namespace {
      * Needed by milo. Called when the data inside the server is modified
      * @param dataItems The modified data items
      */
-    public final void onDataItemsModified(List<DataItem> dataItems) {
+    public void onDataItemsModified(List<DataItem> dataItems) {
         subscriptionModel.onDataItemsModified(dataItems);
     }
 
@@ -204,7 +204,7 @@ public class UANamespaceWrapper implements Namespace {
      * Needed by milo. Called when items inside the server are deleted
      * @param dataItems The deleted items
      */
-    public final void onDataItemsDeleted(List<DataItem> dataItems) {
+    public void onDataItemsDeleted(List<DataItem> dataItems) {
         subscriptionModel.onDataItemsDeleted(dataItems);
     }
 
@@ -212,7 +212,7 @@ public class UANamespaceWrapper implements Namespace {
      * Needed by milo. Called when the method changes how the client gets its data
      * @param monitoredItems The changed items
      */
-    public final void onMonitoringModeChanged(List<MonitoredItem> monitoredItems) {
+    public void onMonitoringModeChanged(List<MonitoredItem> monitoredItems) {
         subscriptionModel.onMonitoringModeChanged(monitoredItems);
     }
 
@@ -220,7 +220,7 @@ public class UANamespaceWrapper implements Namespace {
      * Returns the identifier for this namespace
      * @return the identifying string
      */
-    public final String getNamespaceUri() {
+    public String getNamespaceUri() {
         return namespaceUri;
     }
 }

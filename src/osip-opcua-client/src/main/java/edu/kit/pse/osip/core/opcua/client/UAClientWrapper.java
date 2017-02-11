@@ -1,14 +1,6 @@
 package edu.kit.pse.osip.core.opcua.client;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.function.BiConsumer;
-
+import com.google.common.collect.Lists;
 import org.eclipse.milo.opcua.sdk.client.OpcUaClient;
 import org.eclipse.milo.opcua.sdk.client.api.config.OpcUaClientConfig;
 import org.eclipse.milo.opcua.sdk.client.api.identity.AnonymousProvider;
@@ -24,6 +16,7 @@ import org.eclipse.milo.opcua.stack.core.security.SecurityPolicy;
 import org.eclipse.milo.opcua.stack.core.types.builtin.LocalizedText;
 import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 import org.eclipse.milo.opcua.stack.core.types.builtin.QualifiedName;
+import org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.UInteger;
 import org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.Unsigned;
 import org.eclipse.milo.opcua.stack.core.types.enumerated.MonitoringMode;
 import org.eclipse.milo.opcua.stack.core.types.enumerated.TimestampsToReturn;
@@ -32,7 +25,14 @@ import org.eclipse.milo.opcua.stack.core.types.structured.MonitoredItemCreateReq
 import org.eclipse.milo.opcua.stack.core.types.structured.MonitoringParameters;
 import org.eclipse.milo.opcua.stack.core.types.structured.ReadValueId;
 
-import com.google.common.collect.Lists;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.BiConsumer;
 
 /**
  * Simplifies the interface of Milo.
@@ -51,11 +51,20 @@ public abstract class UAClientWrapper {
     /**
      * The data type found on the server does not match the one you requested
      */
-    public static final int ERROR_DATA_TYPE_MISSMATCH = 2;
+    public static final int ERROR_DATA_TYPE_MISMATCH = 2;
     /**
      * The server returned an unsupported data type
      */
     public static final int ERROR_DATA_TYPE_UNSUPPORTED = 3;
+
+    /**
+     * Maximum size of the subscription queue
+     */
+    private static final UInteger SUBSCRIPTION_QUEUE_SIZE = Unsigned.uint(1);
+    /**
+     * Timeout when connecting
+     */
+    private static final UInteger CONNECTION_TIMEOUT = Unsigned.uint(5000);
 
     private OpcUaClient client = null;
     private String serverUrl;
@@ -98,8 +107,10 @@ public abstract class UAClientWrapper {
 
         OpcUaClientConfig config = OpcUaClientConfig.builder()
                 .setApplicationName(LocalizedText.english("OSIP client"))
-                .setApplicationUri("urn:edu:kit:pse:osip:client:" + namespace).setEndpoint(endpoint)
-                .setIdentityProvider(new AnonymousProvider()).setRequestTimeout(Unsigned.uint(5000))
+                .setApplicationUri("urn:edu:kit:pse:osip:client:" + namespace)
+                .setEndpoint(endpoint)
+                .setIdentityProvider(new AnonymousProvider())
+                .setRequestTimeout(CONNECTION_TIMEOUT)
                 .build();
 
         OpcUaClient client = new OpcUaClient(config);
@@ -120,7 +131,7 @@ public abstract class UAClientWrapper {
      * Sets the listener to be called on error states
      * @param listener The listener
      */
-    public final void setErrorListener(ErrorListener listener) {
+    public void setErrorListener(ErrorListener listener) {
         errorListener = listener;
     }
 
@@ -128,13 +139,12 @@ public abstract class UAClientWrapper {
      * Connects the client to the server
      * @throws UAClientException If the connection fails
      */
-    public final void connectClient() throws UAClientException {
+    public void connectClient() throws UAClientException {
         if (client == null) {
             try {
                 client = createClient(serverUrl, namespace);
             } catch (InterruptedException | ExecutionException e) {
-                e.printStackTrace();
-                throw new UAClientException("Unable to create server");
+                throw new UAClientException("Unable to create server: " + e.getMessage());
             }
         }
 
@@ -161,7 +171,7 @@ public abstract class UAClientWrapper {
      * Disconnects the client from the server
      * @throws UAClientException If the client can not be stopped
      */
-    public final void disconnectClient() throws UAClientException {
+    public void disconnectClient() throws UAClientException {
         if (!connected) {
             throw new UAClientException("Not connected");
         }
@@ -171,7 +181,7 @@ public abstract class UAClientWrapper {
             try {
                 doUnsubscribe(it.next().getKey());
             } catch (UAClientException e) {
-                e.printStackTrace();
+                System.err.println("Unsubscribing OPC UA Listener failed. Continuing.");
                 // We want to disconnect the client. It unsubscribing fails, just ignore it.
             }
             it.remove();
@@ -190,7 +200,7 @@ public abstract class UAClientWrapper {
      * @param listener The listener of the subscription to cancel
      * @throws UAClientException If unsubscription fails
      */
-    public final void unsubscribe(ReceivedListener listener) throws UAClientException {
+    public void unsubscribe(ReceivedListener listener) throws UAClientException {
         if (!connected) {
             throw new UAClientException("Not connected");
         }
@@ -198,6 +208,8 @@ public abstract class UAClientWrapper {
         if (listeners.containsKey(listener)) {
             doUnsubscribe(listener);
             listeners.remove(listener);
+        } else {
+            throw new UAClientException("Listener not subscribed.");
         }
     }
 
@@ -210,8 +222,7 @@ public abstract class UAClientWrapper {
         try {
             client.getSubscriptionManager().deleteSubscription(Unsigned.uint(listeners.get(listener))).get();
         } catch (NumberFormatException | InterruptedException | ExecutionException e) {
-            // Well, this subscription is not registered on the server.
-            // We don't need to remove it.
+            throw new UAClientException("Unsubscribing OPC UA Listener failed.");
         }
     }
 
@@ -223,7 +234,7 @@ public abstract class UAClientWrapper {
      * @param listener Callback function that is called when the value was changed
      * @throws UAClientException If subscription fails
      */
-    protected final void subscribeFloat(String nodeName, int interval, FloatReceivedListener listener)
+    protected void subscribeFloat(String nodeName, int interval, FloatReceivedListener listener)
             throws UAClientException {
         subscribe(nodeName, interval, listener, Identifiers.Float);
     }
@@ -236,7 +247,7 @@ public abstract class UAClientWrapper {
      * @param listener Callback function that is called when the value was changed
      * @throws UAClientException If subscription fails
      */
-    protected final void subscribeBoolean(String nodeName, int interval, BooleanReceivedListener listener)
+    protected void subscribeBoolean(String nodeName, int interval, BooleanReceivedListener listener)
             throws UAClientException {
         subscribe(nodeName, interval, listener, Identifiers.Boolean);
     }
@@ -249,7 +260,7 @@ public abstract class UAClientWrapper {
      * @param listener Callback function that is called when the value was changed
      * @throws UAClientException If subscription fails
      */
-    protected final void subscribeInt(String nodeName, int interval, IntReceivedListener listener)
+    protected void subscribeInt(String nodeName, int interval, IntReceivedListener listener)
             throws UAClientException {
         subscribe(nodeName, interval, listener, Identifiers.Int32);
     }
@@ -282,9 +293,9 @@ public abstract class UAClientWrapper {
             MonitoringParameters parameters = new MonitoringParameters(
                 Unsigned.uint(clientHandle), // Unique client handle
                 (double) interval,
-                null,             // filter, null means use default
-                Unsigned.uint(2), // queue size
-                true              // discard oldest
+                null,                  // filter, null means use default
+                SUBSCRIPTION_QUEUE_SIZE,
+                true            // discard oldest
             );
 
             MonitoredItemCreateRequest request = new MonitoredItemCreateRequest(
@@ -305,7 +316,7 @@ public abstract class UAClientWrapper {
 
                         if (!dataTypeMatch) {
                             if (errorListener != null) {
-                                errorListener.onError(ERROR_DATA_TYPE_MISSMATCH);
+                                errorListener.onError(ERROR_DATA_TYPE_MISMATCH);
                             }
                             listeners.remove(listener);
                         } else {

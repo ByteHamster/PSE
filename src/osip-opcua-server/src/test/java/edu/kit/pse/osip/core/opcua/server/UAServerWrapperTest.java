@@ -14,13 +14,14 @@ import org.junit.Test;
  */
 public class UAServerWrapperTest {
     private UAServerWrapper server;
+    private static final int PORT = 12686;
 
     /**
      * Initialize server
      */
     @Before
     public void setup() {
-        server = new UAServerWrapper("test-server", 12686) { };
+        server = new UAServerWrapper("test-server", PORT) { };
     }
 
     /**
@@ -31,6 +32,19 @@ public class UAServerWrapperTest {
     public void startStopServer() throws Exception {
         server.start();
         server.stop();
+    }
+
+    /**
+     * Tests if multiple servers can be started
+     * @throws Exception If something goes wrong
+     */
+    @Test
+    public void startMultiple() throws Exception {
+        server.start();
+        UAServerWrapper server2 = new UAServerWrapper("test-server", PORT + 1) { };
+        server2.start();
+        server.stop();
+        server2.stop();
     }
 
     /**

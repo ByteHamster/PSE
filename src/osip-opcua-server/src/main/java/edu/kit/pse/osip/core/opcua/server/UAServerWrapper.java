@@ -15,8 +15,6 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.DateTime;
 import org.eclipse.milo.opcua.stack.core.types.builtin.LocalizedText;
 import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 import org.eclipse.milo.opcua.stack.core.types.structured.BuildInfo;
-import org.eclipse.milo.opcua.stack.core.util.CryptoRestrictions;
-
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.io.Files;
@@ -60,16 +58,16 @@ public abstract class UAServerWrapper {
      */
     private OpcUaServer createServer(String namespaceName, int port) {
         String productUri = "urn:edu:kit:pse:osip:product:" + namespaceName;
-        CryptoRestrictions.remove();
+
         OpcUaServerConfig serverConfig = OpcUaServerConfig.builder()
             .setApplicationUri("urn:edu:kit:pse:osip:application:" + namespaceName)
             .setApplicationName(LocalizedText.english("OSIP Tank server"))
             .setBindAddresses(Lists.newArrayList("0.0.0.0"))
-            .setBindPort(12686)
+            .setBindPort(port)
             .setBuildInfo(
                 new BuildInfo(
                     productUri,
-                    "KinkyDonut",
+                    "OSIP",
                     "OSIP server",
                     OpcUaServer.SDK_VERSION,
                     "1.0", DateTime.now()))
@@ -93,7 +91,7 @@ public abstract class UAServerWrapper {
      * @throws ExecutionException If Milo has problems connecting to the remote machine
      * @throws InterruptedException If Milo has problems connecting to the remote machine
      */
-    public final void start() throws InterruptedException, ExecutionException {
+    public void start() throws InterruptedException, ExecutionException {
         server.startup().get();
     }
 
@@ -102,7 +100,7 @@ public abstract class UAServerWrapper {
      * @throws ExecutionException If Milo has problems stopping the server
      * @throws InterruptedException If Milo has problems stopping the server
      */
-    public final void stop() throws InterruptedException, ExecutionException {
+    public void stop() throws InterruptedException, ExecutionException {
         server.shutdown().get();
     }
 
@@ -112,7 +110,7 @@ public abstract class UAServerWrapper {
      * @param displayName Name of the folder that is displayed to users
      * @throws UaException If folder can not be added
      */
-    protected final void addFolder(String path, String displayName) throws UaException {
+    protected void addFolder(String path, String displayName) throws UaException {
         namespace.addFolder(path, displayName);
     }
 
@@ -122,7 +120,7 @@ public abstract class UAServerWrapper {
      * @param displayName Name of the variable that is displayed to users
      * @param type The variable type, for example Identifiers.Float
      */
-    protected final void addVariable(String path, String displayName, NodeId type) {
+    protected void addVariable(String path, String displayName, NodeId type) {
         namespace.addVariable(path, displayName, type);
     }
 
@@ -131,7 +129,7 @@ public abstract class UAServerWrapper {
      * @param path Slash separated path of the folder
      * @param value Value of the variable
      */
-    protected final void setVariable(String path, DataValue value) {
+    protected void setVariable(String path, DataValue value) {
         namespace.updateValue(path, value);
     }
 }

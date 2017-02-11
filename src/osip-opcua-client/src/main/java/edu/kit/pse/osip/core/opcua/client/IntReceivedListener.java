@@ -7,7 +7,7 @@ package edu.kit.pse.osip.core.opcua.client;
  * @version 1.0
  */
 @FunctionalInterface
-public interface IntReceivedListener extends edu.kit.pse.osip.core.opcua.client.ReceivedListener {
+public interface IntReceivedListener extends ReceivedListener {
     /**
      * An int was received from the server
      * @param value The received value
