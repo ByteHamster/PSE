@@ -1,24 +1,28 @@
 package edu.kit.pse.osip.monitoring.view.dashboard;
 
+import javafx.scene.control.TextArea;
+
 /**
  * The graphical console to show all logged events.
+ * 
+ * @author Martin Armbruster
+ * @version 1.0
  */
-public class LoggingConsole extends javafx.scene.control.ScrollPane {
-    /**
-     * The actual area in which all logged events will be shown.
-     */
-    private javafx.scene.control.TextArea console;
+final class LoggingConsole extends TextArea {
     /**
      * Creates and initializes the console.
      */
-    protected LoggingConsole () {
-        throw new RuntimeException("Not implemented!");
+    protected LoggingConsole() {
+        this.setEditable(false);
+        this.setWrapText(true);
     }
+    
     /**
      * Logs an event.
+     * 
      * @param message The logging message for the occured event.
      */
-    public final void log (String message) {
-        throw new RuntimeException("Not implemented!");
+    public void log(String message) {
+        this.appendText(message + "\n");
     }
 }
