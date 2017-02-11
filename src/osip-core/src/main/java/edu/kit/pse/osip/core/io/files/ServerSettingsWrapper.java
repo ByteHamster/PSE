@@ -11,6 +11,7 @@ import edu.kit.pse.osip.core.model.base.TankSelector;
 
 /**
  * Wrapper for server settings file where ports of tanks are stored
+ * Key consists of parameterType_TankSelector
  * @author Maximilian Schwarzmann
  * @version 1.0
  */
@@ -41,16 +42,18 @@ public class ServerSettingsWrapper {
      * @param port The port to save
      */
     public final void setServerPort(TankSelector tank, int port) {
-        String portString = tank.name();
-        String tankString = String.valueOf(port);
-        properties.setProperty(portString, tankString);
+        String tankString = tank.name();
+        String portString = String.valueOf(port);
+        properties.setProperty("serverPort_" + tankString, portString);
     }
     /**
-     * Getter method of server port @return The saved port
+     * Getter method of server port 
+     * @return The saved port or null if the tank does not exist
      * @param tank The tank to get the value for
+     * @throws NumberFormatException Is thrown when param tank is not in settings file
      */
-    public final int getServerPort(TankSelector tank) {
-        String port = properties.getProperty(tank.name());
+    public final int getServerPort(TankSelector tank) throws NumberFormatException {
+        String port = properties.getProperty("serverPort_" + tank.name());
         return Integer.parseInt(port);
     }
     /**
