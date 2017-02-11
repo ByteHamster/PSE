@@ -17,7 +17,7 @@ import javafx.scene.paint.Color;
  * Visualizes a general tank.
  * 
  * @author Martin Armbruster
- * @version 1.1
+ * @version 1.2
  */
 abstract class AbstractTankVisualization extends GridPane {
     /**
@@ -170,7 +170,7 @@ abstract class AbstractTankVisualization extends GridPane {
      */
     protected final void setBorderColor(Color borderColor) {
         BorderStroke bStroke = new BorderStroke(borderColor, BorderStrokeStyle.SOLID, null,
-                new BorderWidths(MonitoringViewConstants.ELEMENTS_GAP));
+                new BorderWidths(MonitoringViewConstants.TANK_BORDER_WIDTH));
         Border newBorder = new Border(new BorderStroke[]{bStroke});
         this.setBorder(newBorder);
     }
