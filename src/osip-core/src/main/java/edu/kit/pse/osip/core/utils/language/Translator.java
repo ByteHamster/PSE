@@ -37,9 +37,12 @@ public final class Translator {
      */
     public String getString(String key) {
         String value;
+        if (key == null) {
+            throw new NullPointerException("Key is null");
+        }
         try {
             value = bundle.getString(key);
-        } catch (MissingResourceException | NullPointerException e) {
+        } catch (MissingResourceException e) {
             return key;
         } 
         return value;
@@ -50,7 +53,7 @@ public final class Translator {
      */
     public void setLocale(Locale locale) {
         if (locale == null) {
-            throw new NullPointerException();
+            throw new NullPointerException("Locale is null");
         } 
         try {
             bundle = ResourceBundle.getBundle("Bundle", locale);
