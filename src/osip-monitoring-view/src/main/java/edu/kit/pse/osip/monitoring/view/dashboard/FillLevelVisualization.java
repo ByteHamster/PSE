@@ -11,7 +11,7 @@ import jfxtras.scene.control.gauge.linear.BasicRoundDailGauge;
  * Visualizes a fill level.
  * 
  * @author Martin Armbruster
- * @version 1.1s
+ * @version 1.2
  */
 class FillLevelVisualization extends BarLayout implements Observer {
     /**
@@ -25,9 +25,10 @@ class FillLevelVisualization extends BarLayout implements Observer {
     protected FillLevelVisualization() {
         super(Translator.getInstance().getString("monitoring.tank.fillLevel"));
         levelBar = new BasicRoundDailGauge();
-        levelBar.setPrefHeight(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS);
+        levelBar.setPrefSize(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS,
+                MonitoringViewConstants.PREF_HEIGHT_FOR_BARS);
         levelBar.setMaxValue(SimulationConstants.TANK_SIZE);
-        this.getChildren().add(levelBar);
+        this.getChildren().add(0, levelBar);
     }
     
     /**
