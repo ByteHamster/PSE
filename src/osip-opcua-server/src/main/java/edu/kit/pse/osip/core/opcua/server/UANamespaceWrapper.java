@@ -1,5 +1,6 @@
 package edu.kit.pse.osip.core.opcua.server;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -31,8 +32,6 @@ import org.eclipse.milo.opcua.stack.core.types.enumerated.TimestampsToReturn;
 import org.eclipse.milo.opcua.stack.core.types.structured.ReadValueId;
 import org.eclipse.milo.opcua.stack.core.types.structured.WriteValue;
 import org.eclipse.milo.opcua.stack.core.util.FutureUtils;
-
-import com.google.common.collect.Lists;
 
 /**
  * Implements a namespace needed by Milo.
@@ -142,7 +141,7 @@ public class UANamespaceWrapper implements Namespace {
      */
     public void read(ReadContext context, Double maxAge,
             TimestampsToReturn timestamps, List<ReadValueId> readValueIds) {
-        List<DataValue> results = Lists.newArrayListWithCapacity(readValueIds.size());
+        List<DataValue> results = new ArrayList<>(readValueIds.size());
 
         for (ReadValueId readValueId : readValueIds) {
             ServerNode node = server.getNodeMap().get(readValueId.getNodeId());
@@ -163,7 +162,7 @@ public class UANamespaceWrapper implements Namespace {
      * @param values The values to write
      */
     public void write(WriteContext context, List<WriteValue> values) {
-        List<StatusCode> results = Lists.newArrayListWithCapacity(values.size());
+        List<StatusCode> results = new ArrayList<>(values.size());
 
         for (WriteValue writeValue : values) {
             ServerNode node = server.getNodeMap().get(writeValue.getNodeId());
