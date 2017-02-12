@@ -105,10 +105,15 @@ public class ClientSettingsWrapper {
     }
     /**
      * Getter method of fetch interval
-     * @return fetch interval in ms
+     * @return fetch interval in ms or -1 on error
      */
     public final int getFetchInterval() {
-        return  Integer.parseInt(properties.getProperty("fetchInterval"));
+        String entry = properties.getProperty("fetchInterval");
+        if (entry == null) {
+            return -1;
+        } else {
+            return  Integer.parseInt(entry);
+        }        
     }
     /**
      * Getter method of overflow alarm
@@ -117,7 +122,12 @@ public class ClientSettingsWrapper {
      */
     public final boolean getOverflowAlarm(TankSelector tank) {
         String tankString = tank.name();
-        return Boolean.parseBoolean(properties.getProperty("overflowAlarm_" + tankString));        
+        String entry = properties.getProperty("overflowAlarm_" + tankString);
+        if (entry == null) {
+            return null;
+        }
+        boolean result = Boolean.parseBoolean(entry);        
+        
     }
     /**
      * Getter method of underflow alarm
@@ -146,21 +156,27 @@ public class ClientSettingsWrapper {
     }
     /**
      * Get the hostname or IP adress
-     * @return the hostname of IP adress
+     * @return the hostname of IP adress or null on error
      * @param tank The tank to get the hostname
      */
     public final String getHostname(TankSelector tank) {
         String tankString = tank.name();
-        return properties.getProperty("serverHostname_" + tankString); 
+        String entry = properties.getProperty("serverHostname_" + tankString); 
+        return entry;         
     }
     /**
      * get the port
-     * @return the port number
+     * @return the port number or -1 on error
      * @param tank The tank to get the port of
      */
     public final int getPort(TankSelector tank) {
         String tankString = tank.name();
-        return Integer.parseInt(properties.getProperty("serverPort_" + tankString)); 
+        String entry = properties.getProperty("serverPort_" + tankString); 
+        if (entry == null) {
+            return -1;
+        } else {
+            return Integer.parseInt(entry);
+        }         
     }
     /**
      * Saves settings in file
