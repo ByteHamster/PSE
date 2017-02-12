@@ -1,6 +1,7 @@
 package edu.kit.pse.osip.core.utils.language;
 
 import java.util.Locale;
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 /**
@@ -33,11 +34,17 @@ public final class Translator {
     }
     /**
      * Gets the word that is associated with key in the current locale.
-     * @return The translation for key.
+     * @return The translation for key or key if there is no such entry or key is null
      * @param key The key to use for translation lookup
      */
     public String getString(String key) {
-        return bundle.getString(key);       
+        String value;
+        try {
+            value = bundle.getString(key);
+        } catch(MissingResourceException | NullPointerException e) {
+            return key;
+        } 
+        return value;
     }
     /**
      * Sets the locale to be used when translating
@@ -46,8 +53,8 @@ public final class Translator {
     public void setLocale(Locale locale) {
         if (locale == null) {
             throw new NullPointerException();
-        }
+        }        
+        bundle = ResourceBundle.getBundle("Bundle", locale);
         loc = locale;
-        bundle = ResourceBundle.getBundle("Bundle", loc);
     }    
 }
