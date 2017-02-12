@@ -20,6 +20,7 @@
 		<module>osip-monitoring-view</module>
 		<module>osip-monitoring-view-interface</module>
 		<module>osip-simulation-view-interface</module>
+		<module>osip-opcua-test</module>
 	</modules>
 
 	<properties>
