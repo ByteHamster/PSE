@@ -10,5 +10,5 @@ public interface FlowRateListener {
      * Alerts the Controller that the flow changed.
      * @param tank The tank that was updated
      */
-    public void onFlowRateUpdated (TankSelector tank);
+    void onFlowRateUpdated(TankSelector tank);
 }
