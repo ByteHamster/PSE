@@ -72,8 +72,8 @@ public class ServerSettingsWrapperTest {
      */
     @Test
     public void testGetServerPortNull() {
-         int result = wrapper.getServerPort(TankSelector.MIX);
-         assertEquals(result, -1);
+        int result = wrapper.getServerPort(TankSelector.MIX);
+        assertEquals(result, -1);
     }
     
     /**
