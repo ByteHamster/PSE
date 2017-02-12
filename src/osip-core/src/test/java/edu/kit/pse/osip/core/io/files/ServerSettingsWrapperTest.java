@@ -70,9 +70,10 @@ public class ServerSettingsWrapperTest {
     /**
      * Test getting tank that is not in properties file
      */
-    @Test(expected = NumberFormatException.class)
+    @Test
     public void testGetServerPortNull() {
-        wrapper.getServerPort(TankSelector.MIX);
+         int result = wrapper.getServerPort(TankSelector.MIX);
+         assertEquals(result, -1);
     }
     
     /**

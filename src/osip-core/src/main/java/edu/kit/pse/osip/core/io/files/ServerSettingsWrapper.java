@@ -50,11 +50,14 @@ public class ServerSettingsWrapper {
      * Getter method of server port 
      * @return The saved port 
      * @param tank The tank to get the value for
-     * @throws NumberFormatException Is thrown when param tank is not in settings file
      */
-    public final int getServerPort(TankSelector tank) throws NumberFormatException {
+    public final int getServerPort(TankSelector tank) {
         String port = properties.getProperty("serverPort_" + tank.name());
-        return Integer.parseInt(port);
+        if (port == null) {
+            return -1;
+        } else {
+            return Integer.parseInt(port);
+        }
     }
     /**
      * Saves settings in file
