@@ -1,6 +1,7 @@
 package edu.kit.pse.osip.core.utils.language;
 
 import java.util.Locale;
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 /**
@@ -11,15 +12,13 @@ import java.util.ResourceBundle;
 public final class Translator {
     
     private ResourceBundle bundle;
-    private Locale loc;
     private static Translator singleton;
     
     /**
      * Creates a new translator. Private because it is a singleton
      */
     private Translator() {
-        loc = new Locale("en", "US");
-        bundle = ResourceBundle.getBundle("Bundle", loc);
+        setLocale(new Locale("en", "US"));
     }
     /**
      * Gets the single Instance of the Translator. It is newly created at the first call of the method.
@@ -33,11 +32,24 @@ public final class Translator {
     }
     /**
      * Gets the word that is associated with key in the current locale.
-     * @return The translation for key.
+     * @return The translation for key or key if there is no such entry.
+     * Also returns key if bundle is null.
      * @param key The key to use for translation lookup
      */
     public String getString(String key) {
-        return bundle.getString(key);       
+        String value;
+        if (key == null) {
+            throw new NullPointerException("Key is null");
+        }
+        if (bundle == null) {
+            return key;
+        }
+        try {
+            value = bundle.getString(key);
+        } catch (MissingResourceException e) {
+            return key;
+        } 
+        return value;
     }
     /**
      * Sets the locale to be used when translating
@@ -45,9 +57,13 @@ public final class Translator {
      */
     public void setLocale(Locale locale) {
         if (locale == null) {
-            throw new NullPointerException();
+            throw new NullPointerException("Locale is null");
+        } 
+        try {
+            bundle = ResourceBundle.getBundle("Bundle", locale);
+        } catch (MissingResourceException e) {
+            System.err.println();
+            bundle = null;
         }
-        loc = locale;
-        bundle = ResourceBundle.getBundle("Bundle", loc);
     }    
 }

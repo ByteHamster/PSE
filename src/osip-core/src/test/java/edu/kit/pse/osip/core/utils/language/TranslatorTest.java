@@ -49,6 +49,15 @@ public class TranslatorTest {
     /**
      * Test null as input
      */
+    @Test
+    public void testMissingKey() {
+        String output = translator.getString("branch");
+        assertEquals(output, "branch");
+    }
+      
+    /**
+     * Test null as input
+     */
     @Test(expected = NullPointerException.class)
     public void testNullException() {
         Locale loc = null;
