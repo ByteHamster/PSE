@@ -12,7 +12,7 @@ import javafx.scene.control.Slider;
  * Visualizes the current temperature.
  * 
  * @author Martin Armbruster
- * @version 1.2
+ * @version 1.3
  */
 class TemperatureVisualization extends BarLayout implements Observer {
     /**
@@ -46,7 +46,7 @@ class TemperatureVisualization extends BarLayout implements Observer {
                 / NUMBER_OF_MAJOR_TICKS);
         temperatureBar.setOrientation(Orientation.VERTICAL);
         temperatureBar.setPrefHeight(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS);
-        this.getChildren().add(temperatureBar);
+        this.getChildren().add(0, temperatureBar);
     }
 
     /**
