@@ -32,13 +32,17 @@ public final class Translator {
     }
     /**
      * Gets the word that is associated with key in the current locale.
-     * @return The translation for key or key if there is no such entry or key is null
+     * @return The translation for key or key if there is no such entry.
+     * Also returns key if bundle is null.
      * @param key The key to use for translation lookup
      */
     public String getString(String key) {
         String value;
         if (key == null) {
             throw new NullPointerException("Key is null");
+        }
+        if (bundle == null) {
+            return key;
         }
         try {
             value = bundle.getString(key);
@@ -58,7 +62,7 @@ public final class Translator {
         try {
             bundle = ResourceBundle.getBundle("Bundle", locale);
         } catch (MissingResourceException e) {
-            e.printStackTrace();
+            System.err.println();
             bundle = null;
         }
     }    
