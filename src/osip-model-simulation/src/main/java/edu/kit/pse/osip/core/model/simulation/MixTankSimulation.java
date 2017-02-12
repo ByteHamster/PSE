@@ -3,6 +3,7 @@ package edu.kit.pse.osip.core.model.simulation;
 import java.util.LinkedList;
 
 import edu.kit.pse.osip.core.model.base.Liquid;
+import edu.kit.pse.osip.core.model.base.MixTank;
 import edu.kit.pse.osip.core.model.base.Pipe;
 
 /**
@@ -11,7 +12,7 @@ import edu.kit.pse.osip.core.model.base.Pipe;
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
-public class MixTankSimulation extends edu.kit.pse.osip.core.model.base.MixTank {
+public class MixTankSimulation extends MixTank {
     private MixingStrategy mixingStrategy;
 
     /**

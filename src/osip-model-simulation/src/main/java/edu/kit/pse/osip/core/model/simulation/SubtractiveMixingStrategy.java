@@ -12,7 +12,7 @@ import edu.kit.pse.osip.core.model.base.Liquid;
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
-public class SubtractiveMixingStrategy implements edu.kit.pse.osip.core.model.simulation.MixingStrategy {
+public class SubtractiveMixingStrategy implements MixingStrategy {
     /**
      * Mixes the given liquids and generates a new one. Colors are mixed using a substractive strategy
      * and the temperatures are mixed using the richmann's formula.
@@ -21,7 +21,7 @@ public class SubtractiveMixingStrategy implements edu.kit.pse.osip.core.model.si
      * @param inflow Liquids to mix.
      */
     public Liquid mixLiquids(LinkedList<Liquid> inflow) {
-        if (inflow == null || inflow.size() < 1) {
+        if (inflow == null || inflow.isEmpty()) {
             throw new IllegalArgumentException("Must at least mix one liquid");
         }
 

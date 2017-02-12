@@ -3,6 +3,7 @@ package edu.kit.pse.osip.core.model.simulation;
 
 import edu.kit.pse.osip.core.model.base.Liquid;
 import edu.kit.pse.osip.core.model.base.Pipe;
+import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.model.base.MixTank;
@@ -14,7 +15,7 @@ import edu.kit.pse.osip.core.model.base.MixTank;
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
-public class ProductionSiteSimulation extends edu.kit.pse.osip.core.model.base.ProductionSite {
+public class ProductionSiteSimulation extends ProductionSite {
 
     /**
      * Creates a production site that allows simulating the contained tanks

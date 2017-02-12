@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 import edu.kit.pse.osip.core.model.base.Liquid;
 import edu.kit.pse.osip.core.model.base.Pipe;
+import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
 
 /**
@@ -12,7 +13,7 @@ import edu.kit.pse.osip.core.model.base.TankSelector;
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
-public class TankSimulation extends edu.kit.pse.osip.core.model.base.Tank {
+public class TankSimulation extends Tank {
     private MixingStrategy mixingStrategy;
 
     /**

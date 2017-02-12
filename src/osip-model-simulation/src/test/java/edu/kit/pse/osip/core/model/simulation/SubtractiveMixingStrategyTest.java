@@ -42,6 +42,19 @@ public class SubtractiveMixingStrategyTest {
     }
 
     /**
+     * Tests colors, amounts and temperatures of two liquids which have different amounts
+     */
+    @Test
+    public void testMixingTwoLiquidsDifferentAmounts() {
+        LinkedList<Liquid> liquids = new LinkedList<>();
+        liquids.add(new Liquid(300, 340, new Color(0x880000)));
+        liquids.add(new Liquid(100, 300, new Color(0x440000)));
+
+        Liquid result = new SubtractiveMixingStrategy().mixLiquids(liquids);
+        assertEquals(new Liquid(400, 330, new Color(0x770000)), result);
+    }
+
+    /**
      * Tests colors, amounts and temperatures of multiple liquids
      */
     @Test
