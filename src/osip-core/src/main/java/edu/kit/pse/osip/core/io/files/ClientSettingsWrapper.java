@@ -11,7 +11,7 @@ import edu.kit.pse.osip.core.model.base.TankSelector;
 
 /**
  * Wrapper for client settings file where settings of networking and monitoring are stored
- * Keys consist of TankSelector-Parametertype
+ * Keys consist of parameterType_TankSelector
  * @author Maximlian Schwarzmann
  * @version 1.0
  */
@@ -43,7 +43,7 @@ public class ClientSettingsWrapper {
      */
     public final void setServerHostname(TankSelector tank, String hostname) {
         String tankString = tank.name();
-        properties.setProperty(tankString + "-ServerHostname", hostname);
+        properties.setProperty("serverHostname_" + tankString, hostname);
     }
     /**
      * Setter method of server port
@@ -53,7 +53,7 @@ public class ClientSettingsWrapper {
     public final void setServerPort(TankSelector tank, int portServer) {
         String tankString = tank.name();
         String portString = String.valueOf(portServer);
-        properties.setProperty(tankString + "-ServerPort", portString);
+        properties.setProperty("serverPort_" + tankString, portString);
     }
     /**
      * Setter method of fetch interval
@@ -61,7 +61,7 @@ public class ClientSettingsWrapper {
      */
     public final void setFetchInterval(int intervalMs) {
         String intervallString = String.valueOf(intervalMs);
-        properties.setProperty("FetchInterval", intervallString);
+        properties.setProperty("fetchInterval", intervallString);
     }
     /**
      * Setter method of overflow alarm
@@ -71,7 +71,7 @@ public class ClientSettingsWrapper {
     public final void setOverflowAlarm(TankSelector tank, boolean enabled) {
         String tankString = tank.name();
         String enabledString = String.valueOf(enabled);
-        properties.setProperty(tankString + "-OverflowAlarm", enabledString);
+        properties.setProperty("overflowAlarm_" + tankString, enabledString);
     }
     /**
      * Setter method of underflow alarm
@@ -81,7 +81,7 @@ public class ClientSettingsWrapper {
     public final void setUnderflowAlarm(TankSelector tank, boolean enabled) {
         String tankString = tank.name();
         String enabledString = String.valueOf(enabled);
-        properties.setProperty(tankString + "-UnderflowAlarm", enabledString);
+        properties.setProperty("underflowAlarm_" + tankString, enabledString);
     }
     /**
      * Setter method of temperature diagram
@@ -91,7 +91,7 @@ public class ClientSettingsWrapper {
     public final void setTempDiagram(TankSelector tank, boolean enabled) {
         String tankString = tank.name();
         String enabledString = String.valueOf(enabled);
-        properties.setProperty(tankString + "-TempDiagram", enabledString);
+        properties.setProperty("tempDiagram_" + tankString, enabledString);
     }
     /**
      * Setter method of fill level diagram
@@ -101,14 +101,14 @@ public class ClientSettingsWrapper {
     public final void setFillLevelDiagram(TankSelector tank, boolean enabled) {
         String tankString = tank.name();
         String enabledString = String.valueOf(enabled);
-        properties.setProperty(tankString + "-FillLevelDiagram", enabledString);
+        properties.setProperty("fillLevelDiagram_" + tankString, enabledString);
     }
     /**
      * Getter method of fetch interval
      * @return fetch interval in ms
      */
     public final int getFetchInterval() {
-        return  Integer.parseInt(properties.getProperty("FetchInterval"));
+        return  Integer.parseInt(properties.getProperty("fetchInterval"));
     }
     /**
      * Getter method of overflow alarm
@@ -117,7 +117,7 @@ public class ClientSettingsWrapper {
      */
     public final boolean getOverflowAlarm(TankSelector tank) {
         String tankString = tank.name();
-        return Boolean.parseBoolean(properties.getProperty(tankString + "-OverflowAlarm"));        
+        return Boolean.parseBoolean(properties.getProperty("overflowAlarm_" + tankString));        
     }
     /**
      * Getter method of underflow alarm
@@ -126,7 +126,7 @@ public class ClientSettingsWrapper {
      */
     public final boolean getUnderflowAlarm(TankSelector tank) {
         String tankString = tank.name();
-        return Boolean.parseBoolean(properties.getProperty(tankString + "-UnderflowAlarm")); 
+        return Boolean.parseBoolean(properties.getProperty("underflowAlarm_" + tankString)); 
     }
     /**
      * Getter method of temperature diagram @return true if diagram is enabled
@@ -134,7 +134,7 @@ public class ClientSettingsWrapper {
      */
     public final boolean getTempDiagram(TankSelector tank) {
         String tankString = tank.name();
-        return Boolean.parseBoolean(properties.getProperty(tankString + "-TempDiagram")); 
+        return Boolean.parseBoolean(properties.getProperty("tempDiagram_" + tankString)); 
     }
     /**
      * Getter method of fill level diagram @return true if diagram is enabled
@@ -142,7 +142,7 @@ public class ClientSettingsWrapper {
      */
     public final boolean getFillLevelDiagram(TankSelector tank) {
         String tankString = tank.name();
-        return Boolean.parseBoolean(properties.getProperty(tankString + "-FillLevelDiagram")); 
+        return Boolean.parseBoolean(properties.getProperty("fillLevelDiagram_" + tankString)); 
     }
     /**
      * Get the hostname or IP adress
@@ -151,7 +151,7 @@ public class ClientSettingsWrapper {
      */
     public final String getHostname(TankSelector tank) {
         String tankString = tank.name();
-        return properties.getProperty(tankString + "-ServerHostname"); 
+        return properties.getProperty("serverHostname_" + tankString); 
     }
     /**
      * get the port
@@ -160,7 +160,7 @@ public class ClientSettingsWrapper {
      */
     public final int getPort(TankSelector tank) {
         String tankString = tank.name();
-        return Integer.parseInt(properties.getProperty(tankString + "-ServerPort")); 
+        return Integer.parseInt(properties.getProperty("serverPort_" + tankString)); 
     }
     /**
      * Saves settings in file
