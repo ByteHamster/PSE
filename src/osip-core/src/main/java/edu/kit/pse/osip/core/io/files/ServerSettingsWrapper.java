@@ -48,7 +48,7 @@ public class ServerSettingsWrapper {
     }
     /**
      * Getter method of server port 
-     * @return The saved port or null if the tank does not exist
+     * @return The saved port 
      * @param tank The tank to get the value for
      * @throws NumberFormatException Is thrown when param tank is not in settings file
      */
