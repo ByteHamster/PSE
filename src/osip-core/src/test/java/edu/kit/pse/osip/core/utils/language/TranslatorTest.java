@@ -51,16 +51,10 @@ public class TranslatorTest {
      */
     @Test
     public void testMissingKey() {
-       String output = translator.getString("branch");
-       assertEquals(output, "branch");
-    }
-    
-    @Test
-    public void testNullKey() {
         String output = translator.getString("branch");
         assertEquals(output, "branch");
     }
-    
+      
     /**
      * Test null as input
      */

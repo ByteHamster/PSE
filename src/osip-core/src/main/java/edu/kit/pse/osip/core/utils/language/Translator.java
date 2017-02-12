@@ -12,15 +12,13 @@ import java.util.ResourceBundle;
 public final class Translator {
     
     private ResourceBundle bundle;
-    private Locale loc;
     private static Translator singleton;
     
     /**
      * Creates a new translator. Private because it is a singleton
      */
     private Translator() {
-        loc = new Locale("en", "US");
-        bundle = ResourceBundle.getBundle("Bundle", loc);
+        setLocale(new Locale("en", "US"));
     }
     /**
      * Gets the single Instance of the Translator. It is newly created at the first call of the method.
@@ -41,7 +39,7 @@ public final class Translator {
         String value;
         try {
             value = bundle.getString(key);
-        } catch(MissingResourceException | NullPointerException e) {
+        } catch (MissingResourceException | NullPointerException e) {
             return key;
         } 
         return value;
@@ -53,8 +51,12 @@ public final class Translator {
     public void setLocale(Locale locale) {
         if (locale == null) {
             throw new NullPointerException();
-        }        
-        bundle = ResourceBundle.getBundle("Bundle", locale);
-        loc = locale;
+        } 
+        try {
+            bundle = ResourceBundle.getBundle("Bundle", locale);
+        } catch (MissingResourceException e) {
+            e.printStackTrace();
+            bundle = null;
+        }
     }    
 }
