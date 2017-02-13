@@ -1,7 +1,8 @@
 package edu.kit.pse.osip.simulation.view.main;
 
 /**
- * This class represents a simple Point in 2D space. It is a simple wrapper for the data and does not support arithmetic operations on points.
+ * This class represents a simple Point in 2D space. It is a simple wrapper for the
+ * data and does not support arithmetic operations on points.
  */
 public class Point2D {
 
@@ -10,10 +11,10 @@ public class Point2D {
 
     /**
      * Creates a new point on a 2D surface
-     * @param x 
-     * @param y 
+     * @param x The x coordinate of the point
+     * @param y The y coordinate of the point
      */
-    public Point2D (double x, double y) {
+    public Point2D(double x, double y) {
         this.x = x;
         this.y = y;
     }
@@ -22,7 +23,7 @@ public class Point2D {
      * Gets the value of x.
      * @return The value of x.
      */
-    public final double getX () {
+    public final double getX() {
         return x;
     }
 
@@ -30,7 +31,7 @@ public class Point2D {
      * Gets the value of y.
      * @return The value of y.
      */
-    public final double getY () {
+    public final double getY() {
         return y;
     }
 
@@ -38,7 +39,7 @@ public class Point2D {
      * Sets the value of x.
      * @param x The x coordinate
      */
-    public final void setX (double x) {
+    public final void setX(double x) {
         this.x = x;
     }
 
@@ -46,7 +47,7 @@ public class Point2D {
      * Sets the value of y.
      * @param y The y coordinate
      */
-    public final void setY (double y) {
+    public final void setY(double y) {
         this.y = y;
     }
 }
