@@ -31,11 +31,9 @@ public class ServerSettingsWrapperTest {
     @Before
     public void setUp() throws Exception {
         tempTestFile = File.createTempFile("testServerSettingsTemp", ".properties");        
-        PrintWriter outStream = new PrintWriter(tempTestFile);
-        for (int i = 0; i < 2; i++) {
-            outStream.print("serverPort_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "1000");
-            outStream.println();
-        }
+        PrintWriter outStream = new PrintWriter(tempTestFile);        
+        outStream.print("serverPort_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "1000");
+        outStream.println();
         outStream.close();
         wrapper = new ServerSettingsWrapper(tempTestFile);
     }
