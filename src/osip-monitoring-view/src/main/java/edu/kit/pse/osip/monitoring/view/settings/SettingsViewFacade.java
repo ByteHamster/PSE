@@ -2,8 +2,8 @@ package edu.kit.pse.osip.monitoring.view.settings;
 
 import edu.kit.pse.osip.core.io.files.ClientSettingsWrapper;
 import edu.kit.pse.osip.core.model.base.TankSelector;
-import edu.kit.pse.osip.monitoring.controller.SettingsCancelButtonHandler;
-import edu.kit.pse.osip.monitoring.controller.SettingsSaveButtonHandler;
+import edu.kit.pse.osip.monitoring.controller.AbstractSettingsCancelButtonHandler;
+import edu.kit.pse.osip.monitoring.controller.AbstractSettingsSaveButtonHandler;
 import edu.kit.pse.osip.monitoring.controller.SettingsViewInterface;
 
 /**
@@ -32,7 +32,7 @@ public final class SettingsViewFacade implements SettingsViewInterface {
      * 
      * @param handler The handler for the cancel button in the settings view.
      */
-    public void setSettingsCancelButtonHandler(SettingsCancelButtonHandler handler) {
+    public void setSettingsCancelButtonHandler(AbstractSettingsCancelButtonHandler handler) {
         throw new RuntimeException("Not implemented!");
     }
     
@@ -41,7 +41,7 @@ public final class SettingsViewFacade implements SettingsViewInterface {
      * 
      * @param handler The handler for the save button in the settings view.
      */
-    public void setSettingsSaveButtonHandler(SettingsSaveButtonHandler handler) {
+    public void setSettingsSaveButtonHandler(AbstractSettingsSaveButtonHandler handler) {
         throw new RuntimeException("Not implemented!");
     }
     
