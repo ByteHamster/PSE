@@ -113,7 +113,11 @@ public class ClientSettingsWrapper {
         if (entry == null) {
             return defaultValue;
         }
-        return  Integer.parseInt(entry);               
+        try {
+            return  Integer.parseInt(entry);               
+        } catch (NumberFormatException e) {
+            return defaultValue;
+        }
     }
     /**
      * Getter method of overflow alarm
@@ -124,7 +128,7 @@ public class ClientSettingsWrapper {
     public final boolean getOverflowAlarm(TankSelector tank, boolean defaultValue) {
         String tankString = tank.name();
         String entry = properties.getProperty("overflowAlarm_" + tankString);
-        if (entry == null) {
+        if (entry == null || (!entry.equals("true") && !entry.equals("false"))) {
             return defaultValue;
         }
         return Boolean.parseBoolean(entry);        
@@ -138,7 +142,7 @@ public class ClientSettingsWrapper {
     public final boolean getUnderflowAlarm(TankSelector tank, boolean defaultValue) {
         String tankString = tank.name();
         String entry = properties.getProperty("underflowAlarm_" + tankString);
-        if (entry == null) {
+        if (entry == null || (!entry.equals("true") && !entry.equals("false"))) {
             return defaultValue;
         }
         return Boolean.parseBoolean(entry); 
@@ -153,7 +157,7 @@ public class ClientSettingsWrapper {
     public final boolean getTempDiagram(TankSelector tank, boolean defaultValue) {
         String tankString = tank.name();
         String entry = properties.getProperty("tempDiagram_" + tankString);
-        if (entry == null) {
+        if (entry == null || (!entry.equals("true") && !entry.equals("false"))) {
             return defaultValue;
         }
         return Boolean.parseBoolean(entry); 
@@ -167,7 +171,7 @@ public class ClientSettingsWrapper {
     public final boolean getFillLevelDiagram(TankSelector tank, boolean defaultValue) {
         String tankString = tank.name();
         String entry = properties.getProperty("fillLevelDiagram_" + tankString);
-        if (entry == null) {
+        if (entry == null || (!entry.equals("true") && !entry.equals("false"))) {
             return defaultValue;
         }
         return Boolean.parseBoolean(entry); 
@@ -198,7 +202,11 @@ public class ClientSettingsWrapper {
         if (entry == null) {
             return defaultValue;
         }
-        return Integer.parseInt(entry);      
+        try {
+            return Integer.parseInt(entry);      
+        } catch (NumberFormatException e) {
+            return defaultValue;
+        }
     }
     /**
      * Saves settings in file
