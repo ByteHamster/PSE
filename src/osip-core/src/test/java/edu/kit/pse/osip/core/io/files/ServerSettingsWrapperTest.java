@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.URL;
 
 import org.junit.After;
 import org.junit.Before;
@@ -23,8 +22,6 @@ import edu.kit.pse.osip.core.model.base.TankSelector;
 public class ServerSettingsWrapperTest {
 
     private ServerSettingsWrapper wrapper;
-    private URL url;
-    private File propertiesFile;
     private File tempTestFile;
     
     /**
@@ -33,11 +30,7 @@ public class ServerSettingsWrapperTest {
      */
     @Before
     public void setUp() throws Exception {
-        url = Thread.currentThread().getContextClassLoader().getResource("testServerSettings.properties");
-        propertiesFile = new File(url.getPath());
-        File resourceDir = propertiesFile.getParentFile();
-        tempTestFile = File.createTempFile("testServerSettingsTemp", ".properties", resourceDir);
-        
+        tempTestFile = File.createTempFile("testServerSettingsTemp", ".properties");        
         PrintWriter outStream = new PrintWriter(tempTestFile);
         for (int i = 0; i < 2; i++) {
             outStream.print("serverPort_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "1000");
