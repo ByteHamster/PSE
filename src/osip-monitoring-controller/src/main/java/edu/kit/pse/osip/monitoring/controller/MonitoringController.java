@@ -40,7 +40,7 @@ public final class MonitoringController extends Application {
      */
     public MonitoringController() {
         currentProductionSite = new ProductionSite();
-        currentSettings = new ClientSettingsWrapper();
+//        currentSettings = new ClientSettingsWrapper();
         currentView = new MonitoringViewFacade();
         currentSettingsView = new SettingsViewFacade();
     }

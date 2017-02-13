@@ -1,9 +1,9 @@
 package edu.kit.pse.osip.monitoring.view.dashboard;
 
 import edu.kit.pse.osip.core.utils.language.Translator;
-import edu.kit.pse.osip.monitoring.controller.MenuAboutButtonHandler;
-import edu.kit.pse.osip.monitoring.controller.MenuHelpButtonHandler;
-import edu.kit.pse.osip.monitoring.controller.MenuSettingsButtonHandler;
+import edu.kit.pse.osip.monitoring.controller.AbstractMenuAboutButtonHandler;
+import edu.kit.pse.osip.monitoring.controller.AbstractMenuHelpButtonHandler;
+import edu.kit.pse.osip.monitoring.controller.AbstractMenuSettingsButtonHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -62,7 +62,7 @@ class MonitoringMenu extends MenuBar {
      * 
      * @param handler The handler for the settings menu button.
      */
-    protected void setMenuSettingsButtonHandler(MenuSettingsButtonHandler handler) {
+    protected void setMenuSettingsButtonHandler(AbstractMenuSettingsButtonHandler handler) {
         menuButtonSettings.setOnAction(handler);
     }
     
@@ -71,7 +71,7 @@ class MonitoringMenu extends MenuBar {
      * 
      * @param handler The handler for the about menu button.
      */
-    protected void setMenuAboutButtonHandler(MenuAboutButtonHandler handler) {
+    protected void setMenuAboutButtonHandler(AbstractMenuAboutButtonHandler handler) {
         menuButtonAbout.setOnAction(handler);
     }
     
@@ -80,7 +80,7 @@ class MonitoringMenu extends MenuBar {
      * 
      * @param handler The handler for the help menu button.
      */
-    protected void setMenuHelpButtonHandler(MenuHelpButtonHandler handler) {
+    protected void setMenuHelpButtonHandler(AbstractMenuHelpButtonHandler handler) {
         menuButtonHelp.setOnAction(handler);
     }
 }

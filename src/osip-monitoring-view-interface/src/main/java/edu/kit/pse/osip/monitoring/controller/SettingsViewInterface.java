@@ -27,14 +27,14 @@ public interface SettingsViewInterface {
      * 
      * @param handler The handler for the cancel button in the settings view.
      */
-    void setSettingsCancelButtonHandler(SettingsCancelButtonHandler handler);
+    void setSettingsCancelButtonHandler(AbstractSettingsCancelButtonHandler handler);
     
     /**
      * Sets the handler for the save button in the settings view.
      * 
      * @param handler The handler for the save button in the settings view.
      */
-    void setSettingsSaveButtonHandler(SettingsSaveButtonHandler handler);
+    void setSettingsSaveButtonHandler(AbstractSettingsSaveButtonHandler handler);
 
     /**
      * Returns the host name for the servers.

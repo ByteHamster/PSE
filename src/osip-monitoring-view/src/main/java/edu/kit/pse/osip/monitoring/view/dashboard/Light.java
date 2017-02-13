@@ -39,6 +39,7 @@ class Light extends VBox implements Observer {
      */
     protected Light() {
         triggeredAlarms = 0;
+        this.setSpacing(MonitoringViewConstants.ELEMENTS_GAP);
         redLight = new Circle();
         redLight.setStrokeWidth(MonitoringViewConstants.STROKE_WIDTH);
         this.getChildren().add(redLight);
