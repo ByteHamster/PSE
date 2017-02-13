@@ -18,8 +18,10 @@ public class FillSensorDrawer extends edu.kit.pse.osip.simulation.view.main.Obje
     /**
      * Generates a new drawer for fill sensors		
      * @param pos The center of the drawer
+     * @param rows The number of rows in which the tanks are ordered
+     * @param cols The number of columns in which the tanks are ordered
      */
-    public FillSensorDrawer (Point2D pos, int rows, int cols) {
+    public FillSensorDrawer(Point2D pos, int rows, int cols) {
         super(pos);
         this.rows = rows;
         this.cols = cols;
@@ -29,10 +31,11 @@ public class FillSensorDrawer extends edu.kit.pse.osip.simulation.view.main.Obje
      * The Drawer draws itself onto the GraphicsContext at its position.
      * @param context The context that the object draws itself onto
      */
-    public final void draw (GraphicsContext context) {
-        context.setFill( Color.BLACK );
-        context.setStroke( Color.BLACK );
-        context.setLineWidth( 2 );
+    @Override
+    public final void draw(GraphicsContext context, long time) {
+        context.setFill(Color.BLACK);
+        context.setStroke(Color.BLACK);
+        context.setLineWidth(2);
 
         Canvas canvas = context.getCanvas();
         double totalWidth = canvas.getWidth();
@@ -41,16 +44,16 @@ public class FillSensorDrawer extends edu.kit.pse.osip.simulation.view.main.Obje
         double compWidth = totalWidth / rows;
         double compHeight = totalHeight / cols;
 
-        double rectXPos = (position.getX() + 1.0/4.0 * WIDTH / cols) * totalWidth;
-        double rectYPos = (position.getY() - 1.0/2.0 * HEIGHT / rows) * totalHeight;
-        double rectWidth = compWidth * WIDTH/2.0;
+        double rectXPos = (getPosition().getX() + 1.0 / 4.0 * WIDTH / cols) * totalWidth;
+        double rectYPos = (getPosition().getY() - 1.0 / 2.0 * HEIGHT / rows) * totalHeight;
+        double rectWidth = compWidth * WIDTH / 2.0;
         double rectHeight = compHeight * HEIGHT;
 
-        double leftEndX = (position.getX() - 1/4.0 * WIDTH / cols) * totalWidth;
+        double leftEndX = (getPosition().getX() - 1 / 4.0 * WIDTH / cols) * totalWidth;
 
         // Draw a rectangle and a line going into the tank
-        context.fillRect( rectXPos, rectYPos, rectWidth, rectHeight );
-        context.strokeLine( leftEndX, position.getY() * totalHeight, rectXPos, position.getY() * totalHeight );
+        context.fillRect(rectXPos, rectYPos, rectWidth, rectHeight);
+        context.strokeLine(leftEndX, getPosition().getY() * totalHeight, rectXPos, getPosition().getY() * totalHeight);
 
     }
 }
