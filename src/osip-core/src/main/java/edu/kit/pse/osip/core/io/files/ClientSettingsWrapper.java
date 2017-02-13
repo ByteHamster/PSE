@@ -105,78 +105,100 @@ public class ClientSettingsWrapper {
     }
     /**
      * Getter method of fetch interval
-     * @return fetch interval in ms or -1 on error
+     * @return fetch interval in ms or or default on error
+     * @param defaultValue value on error
      */
-    public final int getFetchInterval() {
+    public final int getFetchInterval(int defaultValue) {
         String entry = properties.getProperty("fetchInterval");
         if (entry == null) {
-            return -1;
-        } else {
-            return  Integer.parseInt(entry);
-        }        
+            return defaultValue;
+        }
+        return  Integer.parseInt(entry);               
     }
     /**
      * Getter method of overflow alarm
-     * @return true if alarm is enabled
+     * @return true if alarm is enabled or default on error
      * @param tank The tank to get the value for
+     * @param defaultValue value on error
      */
-    public final boolean getOverflowAlarm(TankSelector tank) {
+    public final boolean getOverflowAlarm(TankSelector tank, boolean defaultValue) {
         String tankString = tank.name();
         String entry = properties.getProperty("overflowAlarm_" + tankString);
         if (entry == null) {
-            return null;
+            return defaultValue;
         }
-        boolean result = Boolean.parseBoolean(entry);        
-        
+        return Boolean.parseBoolean(entry);        
     }
     /**
      * Getter method of underflow alarm
-     * @return true if alarm is enabled
+     * @return true if alarm is enabled or default on error
      * @param tank The tank to get the value for
+     * @param defaultValue value on error
      */
-    public final boolean getUnderflowAlarm(TankSelector tank) {
+    public final boolean getUnderflowAlarm(TankSelector tank, boolean defaultValue) {
         String tankString = tank.name();
-        return Boolean.parseBoolean(properties.getProperty("underflowAlarm_" + tankString)); 
+        String entry = properties.getProperty("underflowAlarm_" + tankString);
+        if (entry == null) {
+            return defaultValue;
+        }
+        return Boolean.parseBoolean(entry); 
+    
     }
     /**
-     * Getter method of temperature diagram @return true if diagram is enabled
+     * Getter method of temperature diagram
+     * @return true if diagram is enabled or default on error
      * @param tank The tank to get the value for
+     * @param defaultValue value on error
      */
-    public final boolean getTempDiagram(TankSelector tank) {
+    public final boolean getTempDiagram(TankSelector tank, boolean defaultValue) {
         String tankString = tank.name();
-        return Boolean.parseBoolean(properties.getProperty("tempDiagram_" + tankString)); 
+        String entry = properties.getProperty("tempDiagram_" + tankString);
+        if (entry == null) {
+            return defaultValue;
+        }
+        return Boolean.parseBoolean(entry); 
     }
     /**
-     * Getter method of fill level diagram @return true if diagram is enabled
+     * Getter method of fill level diagram
+     * @return true if diagram is enabled or default on error
      * @param tank The tank to get the value for
+     * @param defaultValue value on error
      */
-    public final boolean getFillLevelDiagram(TankSelector tank) {
+    public final boolean getFillLevelDiagram(TankSelector tank, boolean defaultValue) {
         String tankString = tank.name();
-        return Boolean.parseBoolean(properties.getProperty("fillLevelDiagram_" + tankString)); 
+        String entry = properties.getProperty("fillLevelDiagram_" + tankString);
+        if (entry == null) {
+            return defaultValue;
+        }
+        return Boolean.parseBoolean(entry); 
     }
     /**
      * Get the hostname or IP adress
-     * @return the hostname of IP adress or null on error
+     * @return the hostname of IP adress or default on error
      * @param tank The tank to get the hostname
+     * @param defaultValue value on error
      */
-    public final String getHostname(TankSelector tank) {
+    public final String getHostname(TankSelector tank, String defaultValue) {
         String tankString = tank.name();
         String entry = properties.getProperty("serverHostname_" + tankString); 
+        if (entry == null) {
+            return defaultValue;
+        }
         return entry;         
     }
     /**
      * get the port
-     * @return the port number or -1 on error
+     * @return the port number or default on error
      * @param tank The tank to get the port of
+     * @param defaultValue value on error
      */
-    public final int getPort(TankSelector tank) {
+    public final int getPort(TankSelector tank, int defaultValue) {
         String tankString = tank.name();
         String entry = properties.getProperty("serverPort_" + tankString); 
         if (entry == null) {
-            return -1;
-        } else {
-            return Integer.parseInt(entry);
-        }         
+            return defaultValue;
+        }
+        return Integer.parseInt(entry);      
     }
     /**
      * Saves settings in file
