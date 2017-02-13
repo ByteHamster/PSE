@@ -72,19 +72,19 @@ public interface MonitoringViewInterface {
      * 
      * @param handler The handler for the settings menu button.
      */
-    void setMenuSettingsButtonHandler(MenuSettingsButtonHandler handler);
+    void setMenuSettingsButtonHandler(AbstractMenuSettingsButtonHandler handler);
     
     /**
      * Sets the handler for the about menu button.
      * 
      * @param handler The handler for the about menu button.
      */
-    void setMenuAboutButtonHandler(MenuAboutButtonHandler handler);
+    void setMenuAboutButtonHandler(AbstractMenuAboutButtonHandler handler);
     
     /**
      * Sets the handler for the help menu button.
      * 
      * @param handler The handler handles a click on the help menu button.
      */
-    void setMenuHelpButtonHandler(MenuHelpButtonHandler handler);
+    void setMenuHelpButtonHandler(AbstractMenuHelpButtonHandler handler);
 }

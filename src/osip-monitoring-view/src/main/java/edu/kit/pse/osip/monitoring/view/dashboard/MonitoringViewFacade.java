@@ -2,9 +2,9 @@ package edu.kit.pse.osip.monitoring.view.dashboard;
 
 import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.core.model.base.TankSelector;
-import edu.kit.pse.osip.monitoring.controller.MenuAboutButtonHandler;
-import edu.kit.pse.osip.monitoring.controller.MenuHelpButtonHandler;
-import edu.kit.pse.osip.monitoring.controller.MenuSettingsButtonHandler;
+import edu.kit.pse.osip.monitoring.controller.AbstractMenuAboutButtonHandler;
+import edu.kit.pse.osip.monitoring.controller.AbstractMenuHelpButtonHandler;
+import edu.kit.pse.osip.monitoring.controller.AbstractMenuSettingsButtonHandler;
 import edu.kit.pse.osip.monitoring.controller.MonitoringViewInterface;
 import javafx.stage.Stage;
 
@@ -95,7 +95,7 @@ public final class MonitoringViewFacade implements MonitoringViewInterface {
      * 
      * @param handler The handler for the settings menu button.
      */
-    public void setMenuSettingsButtonHandler(MenuSettingsButtonHandler handler) {
+    public void setMenuSettingsButtonHandler(AbstractMenuSettingsButtonHandler handler) {
         mainWindow.getMonitoringMenu().setMenuSettingsButtonHandler(handler);
     }
     
@@ -104,7 +104,7 @@ public final class MonitoringViewFacade implements MonitoringViewInterface {
      * 
      * @param handler The handler for the about menu button.
      */
-    public void setMenuAboutButtonHandler(MenuAboutButtonHandler handler) {
+    public void setMenuAboutButtonHandler(AbstractMenuAboutButtonHandler handler) {
         mainWindow.getMonitoringMenu().setMenuAboutButtonHandler(handler);
     }
     
@@ -113,7 +113,7 @@ public final class MonitoringViewFacade implements MonitoringViewInterface {
      * 
      * @param handler The handler handles a click on the help menu button.
      */
-    public void setMenuHelpButtonHandler(MenuHelpButtonHandler handler) {
+    public void setMenuHelpButtonHandler(AbstractMenuHelpButtonHandler handler) {
         mainWindow.getMonitoringMenu().setMenuHelpButtonHandler(handler);
     }
 }
