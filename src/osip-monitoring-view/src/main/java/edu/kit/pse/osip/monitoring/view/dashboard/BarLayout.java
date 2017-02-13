@@ -9,7 +9,7 @@ import javafx.scene.layout.VBox;
  * The general layout and the label naming the bar are concentrated here.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.1
  */
 abstract class BarLayout extends VBox {
     /**
@@ -23,7 +23,7 @@ abstract class BarLayout extends VBox {
      * @param labelString The name of the bar.
      */
     protected BarLayout(String labelString) {
-        this.setAlignment(Pos.CENTER);
+        this.setAlignment(Pos.BOTTOM_CENTER);
         this.setSpacing(MonitoringViewConstants.ELEMENTS_GAP);
         label = new Label(labelString);
         this.getChildren().add(label);

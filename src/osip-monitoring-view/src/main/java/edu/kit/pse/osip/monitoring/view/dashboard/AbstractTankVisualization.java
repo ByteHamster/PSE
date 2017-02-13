@@ -11,13 +11,15 @@ import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 /**
  * Visualizes a general tank.
  * 
  * @author Martin Armbruster
- * @version 1.3
+ * @version 1.4
  */
 abstract class AbstractTankVisualization extends GridPane {
     /**
@@ -59,6 +61,11 @@ abstract class AbstractTankVisualization extends GridPane {
      * The actual alarm when the temperature becomes too low that triggers the visualization.
      */
     private TemperatureAlarm undercooling;
+    
+    /**
+     * The layout of the row in which the alarms are.
+     */
+    protected HBox alarmPane;
     
     /**
      * Visualization for the drain pipe.
@@ -104,15 +111,19 @@ abstract class AbstractTankVisualization extends GridPane {
      */
     private void setupElements(AbstractTank tank) {
         overflowAlarm = new AlarmVisualization(Translator.getInstance().getString("monitoring.tank.overflowAlarm"));
-        add(overflowAlarm, 0, 0, 2, 1);
         underflowAlarm = new AlarmVisualization(Translator.getInstance().getString("monitoring.tank.underflowAlarm"));
-        add(underflowAlarm, 0, 1, 2, 1);
         temperatureOverheatingAlarm = new AlarmVisualization(
                 Translator.getInstance().getString("monitoring.tank.temperatureOverheatingAlarm"));
-        add(temperatureOverheatingAlarm, 0, 2, 2, 1);
         temperatureUndercoolingAlarm = new AlarmVisualization(
                 Translator.getInstance().getString("monitoring.tank.temperatureUndercoolingAlarm"));
-        add(temperatureUndercoolingAlarm, 0, 3, 2, 1);
+        VBox box = new VBox();
+        box.setSpacing(MonitoringViewConstants.ELEMENTS_GAP);
+        box.getChildren().addAll(overflowAlarm, underflowAlarm, temperatureOverheatingAlarm,
+                temperatureUndercoolingAlarm);
+        alarmPane = new HBox();
+        alarmPane.setSpacing(MonitoringViewConstants.ELEMENTS_GAP);
+        alarmPane.getChildren().add(box);
+        this.add(alarmPane, 0, 0, 2, 1);
         drain = new GaugeVisualization(Translator.getInstance().getString("monitoring.tank.drain"), tank.getOutPipe());
         fillLevel = new FillLevelVisualization();
         temperature = new TemperatureVisualization();

@@ -12,7 +12,7 @@ import javafx.scene.control.Slider;
  * Visualizes the current temperature.
  * 
  * @author Martin Armbruster
- * @version 1.3
+ * @version 1.4
  */
 class TemperatureVisualization extends BarLayout implements Observer {
     /**
@@ -24,6 +24,8 @@ class TemperatureVisualization extends BarLayout implements Observer {
      * The number of minor ticks between two major ticks.
      */
     private static final int NUMBER_OF_MINOR_TICKS = 10;
+    
+    private static final double DIFFERENCE_KELVIN_CELSIUS = 273.15;
     
     /**
      * The slider for showing the current temperature.
@@ -38,8 +40,8 @@ class TemperatureVisualization extends BarLayout implements Observer {
         temperatureBar = new Slider();
         temperatureBar.setDisable(true);
         temperatureBar.setShowTickLabels(true);
-        temperatureBar.setMin(SimulationConstants.MIN_TEMPERATURE);
-        temperatureBar.setMax(SimulationConstants.MAX_TEMPERATURE);
+        temperatureBar.setMin(SimulationConstants.MIN_TEMPERATURE - DIFFERENCE_KELVIN_CELSIUS);
+        temperatureBar.setMax(SimulationConstants.MAX_TEMPERATURE - DIFFERENCE_KELVIN_CELSIUS);
         temperatureBar.setShowTickMarks(true);
         temperatureBar.setMinorTickCount(NUMBER_OF_MINOR_TICKS);
         temperatureBar.setMajorTickUnit((SimulationConstants.MAX_TEMPERATURE - SimulationConstants.MIN_TEMPERATURE)
@@ -57,6 +59,6 @@ class TemperatureVisualization extends BarLayout implements Observer {
      */
     public void update(Observable observable, Object object) {
         AbstractTank tank = (AbstractTank) observable;
-        temperatureBar.setValue(tank.getLiquid().getTemperature());
+        temperatureBar.setValue(tank.getLiquid().getTemperature() - DIFFERENCE_KELVIN_CELSIUS);
     }
 }
