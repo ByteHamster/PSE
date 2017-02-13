@@ -11,9 +11,9 @@ import javafx.scene.shape.Circle;
  * Visualizes a traffic light.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.1
  */
-final class Light extends VBox implements Observer {
+class Light extends VBox implements Observer {
     /**
      * Stores the current state of all alarms: The light is enabled when at least one other alarm is enabled.
      */
@@ -51,14 +51,10 @@ final class Light extends VBox implements Observer {
     
     @Override
     protected void layoutChildren() {
+        double radius = Math.min(this.getWidth(), this.getHeight() / 2 - MonitoringViewConstants.ELEMENTS_GAP) / 2;
+        redLight.setRadius(radius);
+        greenLight.setRadius(radius);
         super.layoutChildren();
-        double width = this.getWidth();
-        redLight.setLayoutX(width / 2);
-        redLight.setLayoutY(width / 2);
-        redLight.setRadius(width / 2);
-        greenLight.setLayoutX(width / 2);
-        greenLight.setLayoutY(1.5 * width + MonitoringViewConstants.ELEMENTS_GAP);
-        greenLight.setRadius(width / 2);
     }
     
     /**

@@ -12,9 +12,9 @@ import javafx.scene.control.MenuItem;
  * Contains all controls for the menu bar.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.1
  */
-final class MonitoringMenu extends MenuBar {
+class MonitoringMenu extends MenuBar {
     /**
      * Menu containing all menu buttons for file interaction.
      */
