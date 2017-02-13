@@ -8,7 +8,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  * A pipe, where you can insert and take out liquid. It is a queue, so if you put in liquid, you can take it out in
  * @see length steps. It has a valve attached, so you can limit the throughput. If you limit the throughput or put in
  * less liquid than possible, the liquid of takeOut will be smaller when the put in liquid reaches the other end. You
- * can put in the liquid of SimulationConstants.SIMULATION_STEP milimeter of the pipe at once.
+ * can put in the liquid of SimulationConstants.SIMULATION_STEP millimeter of the pipe at once.
  */
 public class Pipe extends java.util.Observable {
     private float crosssection;
@@ -78,9 +78,18 @@ public class Pipe extends java.util.Observable {
      * This tells you the maximal amount of liquid in cm³, which you can put into the pipe. It is calculated as:
      * crosssection * SimulationConstants.SIMULATION_STEP * threshold
      * (SimulationConstants.SIMULATION_STEP, because you fill in so much liquid with every call to putIn).
-     * @return the maximum amout of liquid you can put into the pipe with one call to putIn().
+     * @return the maximum amount of liquid you can put into the pipe with one call to putIn().
      */
     public float getMaxInput() {
         return crosssection * SimulationConstants.SIMULATION_STEP * (threshold / 100f);
+    }
+    
+    /**
+     * This tells you the maximal amount of liquid in cm³ which you can put into the pipe with a fully opened valve.
+     * 
+     * @return the maximum amount of liquid you can put into the pipe with a fully opened valve.
+     */
+    public float getMaxInputWithFullyOpenedValve() {
+        return crosssection * SimulationConstants.SIMULATION_STEP;
     }
 }
