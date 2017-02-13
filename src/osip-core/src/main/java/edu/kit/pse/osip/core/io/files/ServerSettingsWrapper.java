@@ -28,7 +28,7 @@ public class ServerSettingsWrapper {
      */
     public ServerSettingsWrapper(File propFile) throws IOException, FileNotFoundException  {
         if (propFile == null) {
-            throw new NullPointerException();
+            throw new NullPointerException("File parameter is null");
         }
         this.propFile = propFile;
         properties = new Properties();
@@ -48,13 +48,14 @@ public class ServerSettingsWrapper {
     }
     /**
      * Getter method of server port 
-     * @return The saved port 
+     * @return The saved port or defaultPort if the tank does not exist
      * @param tank The tank to get the value for
+     * @param defaultPort default output on error
      */
-    public final int getServerPort(TankSelector tank) {
+    public final int getServerPort(TankSelector tank, int defaultPort) {
         String port = properties.getProperty("serverPort_" + tank.name());
         if (port == null) {
-            return -1;
+            return defaultPort;
         } else {
             return Integer.parseInt(port);
         }

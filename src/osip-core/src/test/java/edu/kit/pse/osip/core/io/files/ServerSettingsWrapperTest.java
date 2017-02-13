@@ -42,7 +42,7 @@ public class ServerSettingsWrapperTest {
     @Test
     public void testSetServerPort() {
         wrapper.setServerPort(TankSelector.MAGENTA, 1042);        
-        assertEquals(wrapper.getServerPort(TankSelector.MAGENTA), 1042);
+        assertEquals(wrapper.getServerPort(TankSelector.MAGENTA, -1), 1042);
     }
 
     /**
@@ -50,7 +50,7 @@ public class ServerSettingsWrapperTest {
      */
     @Test
     public void testGetServerPort() {
-        int result = wrapper.getServerPort(TankSelector.MAGENTA);
+        int result = wrapper.getServerPort(TankSelector.MAGENTA, -1);
         assertEquals(result, 1000);
     }
 
@@ -64,7 +64,7 @@ public class ServerSettingsWrapperTest {
         wrapper.setServerPort(TankSelector.YELLOW, 1122);
         wrapper.saveSettings();
         wrapper = new ServerSettingsWrapper(propertiesFile);
-        assertEquals(wrapper.getServerPort(TankSelector.YELLOW), 1122);
+        assertEquals(wrapper.getServerPort(TankSelector.YELLOW, -1), 1122);
     }
 
     /**
@@ -72,7 +72,7 @@ public class ServerSettingsWrapperTest {
      */
     @Test
     public void testGetServerPortNull() {
-        int result = wrapper.getServerPort(TankSelector.MIX);
+        int result = wrapper.getServerPort(TankSelector.MIX, -1);
         assertEquals(result, -1);
     }
     
