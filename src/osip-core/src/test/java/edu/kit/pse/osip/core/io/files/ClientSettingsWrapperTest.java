@@ -41,7 +41,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testSetServerPort() {
         wrapper.setServerPort(TankSelector.MAGENTA, 1042);        
-        assertEquals(wrapper.getPort(TankSelector.MAGENTA), 1042);
+        assertEquals(wrapper.getPort(TankSelector.MAGENTA, -1), 1042);
     }
 
     /**
@@ -50,7 +50,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testSetFetchInterval() {
         wrapper.setFetchInterval(52);        
-        assertEquals(wrapper.getFetchInterval(), 52);
+        assertEquals(wrapper.getFetchInterval(-1), 52);
     }
     
     /**
@@ -59,7 +59,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testSetOverflowAlarm() {
         wrapper.setOverflowAlarm(TankSelector.YELLOW, true);        
-        assertEquals(wrapper.getOverflowAlarm(TankSelector.YELLOW), true);
+        assertEquals(wrapper.getOverflowAlarm(TankSelector.YELLOW, false), true);
     }
     
     /**
@@ -68,7 +68,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testSetTempDiagram() {
         wrapper.setTempDiagram(TankSelector.YELLOW, true);        
-        assertEquals(wrapper.getTempDiagram(TankSelector.YELLOW), true);
+        assertEquals(wrapper.getTempDiagram(TankSelector.YELLOW, false), true);
     }
     
     /**
@@ -77,7 +77,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testSetServerHostname() {
         wrapper.setServerHostname(TankSelector.MAGENTA, "123.123");        
-        assertEquals(wrapper.getHostname(TankSelector.MAGENTA), "123.123");
+        assertEquals(wrapper.getHostname(TankSelector.MAGENTA, "ERROR"), "123.123");
     }
     
     /**
@@ -86,7 +86,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testSetUnderflowAlarm() {
         wrapper.setUnderflowAlarm(TankSelector.YELLOW, true);        
-        assertEquals(wrapper.getUnderflowAlarm(TankSelector.YELLOW), true);
+        assertEquals(wrapper.getUnderflowAlarm(TankSelector.YELLOW, false), true);
     }
     
     /**
@@ -95,7 +95,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testSetFillLevelDiagram() {
         wrapper.setFillLevelDiagram(TankSelector.YELLOW, true);        
-        assertEquals(wrapper.getFillLevelDiagram(TankSelector.YELLOW), true);
+        assertEquals(wrapper.getFillLevelDiagram(TankSelector.YELLOW, false), true);
     }
     
     /**
@@ -103,7 +103,7 @@ public class ClientSettingsWrapperTest {
      */
     @Test
     public void testGetFetchInterval() {
-        int result = wrapper.getFetchInterval();
+        int result = wrapper.getFetchInterval(-1);
         assertEquals(result, 80);
     }
     
@@ -112,7 +112,7 @@ public class ClientSettingsWrapperTest {
      */
     @Test
     public void testGetOverflowAlarm() {
-        boolean result = wrapper.getOverflowAlarm(TankSelector.YELLOW);
+        boolean result = wrapper.getOverflowAlarm(TankSelector.YELLOW, false);
         assertEquals(result, false);
     }
     
@@ -121,7 +121,7 @@ public class ClientSettingsWrapperTest {
      */
     @Test
     public void testGetUnderflowAlarm() {
-        boolean result = wrapper.getUnderflowAlarm(TankSelector.YELLOW);
+        boolean result = wrapper.getUnderflowAlarm(TankSelector.YELLOW, false);
         assertEquals(result, false);
     }
     
@@ -130,7 +130,7 @@ public class ClientSettingsWrapperTest {
      */
     @Test
     public void testGetTempDiagram() {
-        boolean result = wrapper.getTempDiagram(TankSelector.YELLOW);
+        boolean result = wrapper.getTempDiagram(TankSelector.YELLOW, false);
         assertEquals(result, false);
     }
     
@@ -139,7 +139,7 @@ public class ClientSettingsWrapperTest {
      */
     @Test
     public void testGetFillLevelDiagram() {
-        boolean result = wrapper.getFillLevelDiagram(TankSelector.YELLOW);
+        boolean result = wrapper.getFillLevelDiagram(TankSelector.YELLOW, false);
         assertEquals(result, false);
     }
     
@@ -148,7 +148,7 @@ public class ClientSettingsWrapperTest {
      */
     @Test
     public void testGetHostname() {
-        String result = wrapper.getHostname(TankSelector.MAGENTA);
+        String result = wrapper.getHostname(TankSelector.MAGENTA, "ERROR");
         assertEquals(result, "hostNAME");
     }
     
@@ -157,8 +157,17 @@ public class ClientSettingsWrapperTest {
      */
     @Test
     public void testGetPort() {
-        int result = wrapper.getPort(TankSelector.MAGENTA);
+        int result = wrapper.getPort(TankSelector.MAGENTA, -1);
         assertEquals(result, 4242);
+    }
+    
+    /**
+     * Test getter for non existent entry
+     */
+    @Test
+    public void testNonExistentTankPort() {
+        int result = wrapper.getPort(TankSelector.MIX, -1);
+        assertEquals(result, -1);
     }
     
     /**
@@ -171,7 +180,7 @@ public class ClientSettingsWrapperTest {
         wrapper.setServerPort(TankSelector.MAGENTA, 424299);
         wrapper.saveSettings();
         ClientSettingsWrapper helpWrapper = new ClientSettingsWrapper(propertiesFile);
-        int helpPort = helpWrapper.getPort(TankSelector.MAGENTA);
+        int helpPort = helpWrapper.getPort(TankSelector.MAGENTA, -1);
         wrapper.setServerPort(TankSelector.MAGENTA, 4242);
         wrapper.saveSettings();
         assertEquals(helpPort, 424299);
