@@ -28,7 +28,7 @@ public class ClientSettingsWrapper {
      */        
     public ClientSettingsWrapper(File settingsFile) throws IOException, FileNotFoundException {
         if (settingsFile == null) {
-            throw new NullPointerException();
+            throw new NullPointerException("File parameter is null");
         }
         this.settingsFile = settingsFile;
         properties = new Properties();
