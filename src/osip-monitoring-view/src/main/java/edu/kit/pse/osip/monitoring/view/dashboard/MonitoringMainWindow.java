@@ -15,9 +15,9 @@ import javafx.stage.Stage;
  * The entry point for the monitoring view. It shows all sensor datas graphically.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.1
  */
-final class MonitoringMainWindow {
+class MonitoringMainWindow {
     /**
      * The menu bar for the monitoring.
      */
@@ -59,6 +59,7 @@ final class MonitoringMainWindow {
         log = new LoggingConsole();
         light = new Light();
         makeLayout(primaryStage);
+        registerAlarms();
     }
     
     /**
@@ -96,9 +97,24 @@ final class MonitoringMainWindow {
         primaryStage.show();
         
         log.setPrefWidth(0.95 * mainPane.getWidth());
-        log.setPrefHeight(0.2 * mainPane.getHeight());
-        light.setPrefWidth(0.05 * mainPane.getWidth());
+        light.setMinWidth(0.05 * mainPane.getWidth());
         light.setPrefHeight(log.getPrefHeight());
+    }
+    
+    /**
+     * Registers all alarms to the light.
+     */
+    private void registerAlarms() {
+        for (TankVisualization tank : tanks.values()) {
+            tank.getOverflowAlarm().addObserver(light);
+            tank.getUnderflowAlarm().addObserver(light);
+            tank.getTemperatureOverheatingAlarm().addObserver(light);
+            tank.getTemperatureUndercoolingAlarm().addObserver(light);
+        }
+        mixTank.getOverflowAlarm().addObserver(light);
+        mixTank.getUnderflowAlarm().addObserver(light);
+        mixTank.getTemperatureOverheatingAlarm().addObserver(light);
+        mixTank.getTemperatureUndercoolingAlarm().addObserver(light);
     }
     
     /**

@@ -6,9 +6,9 @@ import javafx.scene.control.TextArea;
  * The graphical console to show all logged events.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.1
  */
-final class LoggingConsole extends TextArea {
+class LoggingConsole extends TextArea {
     /**
      * Creates and initializes the console.
      */
