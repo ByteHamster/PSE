@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
  * Visualization for a normal tank.
  * 
  * @author Martin Armbruster
- * @version 1.1
+ * @version 1.2
  */
 class TankVisualization extends AbstractTankVisualization {
     /**
@@ -25,11 +25,11 @@ class TankVisualization extends AbstractTankVisualization {
     protected TankVisualization(Tank tank) {
         super(tank);
         supply = new GaugeVisualization(Translator.getInstance().getString("monitoring.tank.supply"), tank.getInPipe());
-        this.add(supply, 0, 4);
-        this.add(drain, 1, 4);
-        this.add(fillLevel, 0, 5);
-        this.add(temperature, 1, 5);
-        this.add(progresses, 0, 6, 2, 1);        
+        this.add(supply, 0, 1);
+        this.add(drain, 1, 1);
+        this.add(fillLevel, 0, 2);
+        this.add(temperature, 1, 2);
+        this.add(progresses, 0, 3, 2, 1);        
         edu.kit.pse.osip.core.model.base.Color currentColor = tank.getLiquid().getColor();
         Color convertedColor = new Color(currentColor.getR(), currentColor.getG(), currentColor.getB(), 1.0);
         this.setBorderColor(convertedColor);

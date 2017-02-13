@@ -12,7 +12,7 @@ import javafx.scene.shape.Circle;
  * Visualizes an alarm with a name and the current state.
  * 
  * @author Martin Armbruster
- * @version 1.1
+ * @version 1.2
  */
 class AlarmVisualization extends HBox implements Observer {
     /**
@@ -48,11 +48,9 @@ class AlarmVisualization extends HBox implements Observer {
     
     @Override
     protected void layoutChildren() {
-        super.layoutChildren();
-        double radius = this.getHeight() / 2.0;
-        alarmState.setLayoutX(radius);
-        alarmState.setLayoutY(radius);        
+        double radius = this.getHeight() / 2.0;       
         alarmState.setRadius(radius);
+        super.layoutChildren();
     }
     
     /**
