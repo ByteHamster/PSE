@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 
 import org.junit.After;
@@ -22,18 +23,28 @@ import edu.kit.pse.osip.core.model.base.TankSelector;
 public class ServerSettingsWrapperTest {
 
     private ServerSettingsWrapper wrapper;
-    URL url;
-    File propertiesFile;
+    private URL url;
+    private File propertiesFile;
+    private File tempTestFile;
     
     /**
      * Set up 
-     * @throws Exception Exception in file loading
+     * @throws Exception Exception in file loading or IO errors
      */
     @Before
     public void setUp() throws Exception {
         url = Thread.currentThread().getContextClassLoader().getResource("testServerSettings.properties");
         propertiesFile = new File(url.getPath());
-        wrapper = new ServerSettingsWrapper(propertiesFile);
+        File resourceDir = propertiesFile.getParentFile();
+        tempTestFile = File.createTempFile("testServerSettingsTemp", ".properties", resourceDir);
+        
+        PrintWriter outStream = new PrintWriter(tempTestFile);
+        for (int i = 0; i < 2; i++) {
+            outStream.print("serverPort_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "1000");
+            outStream.println();
+        }
+        outStream.close();
+        wrapper = new ServerSettingsWrapper(tempTestFile);
     }
 
     /**
@@ -41,8 +52,8 @@ public class ServerSettingsWrapperTest {
      */
     @Test
     public void testSetServerPort() {
-        wrapper.setServerPort(TankSelector.MAGENTA, 1042);        
-        assertEquals(wrapper.getServerPort(TankSelector.MAGENTA, -1), 1042);
+        wrapper.setServerPort(TankSelector.valuesWithoutMix()[0], 1042);        
+        assertEquals(wrapper.getServerPort(TankSelector.valuesWithoutMix()[0], -1), 1042);
     }
 
     /**
@@ -50,7 +61,7 @@ public class ServerSettingsWrapperTest {
      */
     @Test
     public void testGetServerPort() {
-        int result = wrapper.getServerPort(TankSelector.MAGENTA, -1);
+        int result = wrapper.getServerPort(TankSelector.valuesWithoutMix()[0], -1);
         assertEquals(result, 1000);
     }
 
@@ -61,10 +72,10 @@ public class ServerSettingsWrapperTest {
      */
     @Test
     public void testSaveSettings() throws FileNotFoundException, IOException {
-        wrapper.setServerPort(TankSelector.YELLOW, 1122);
+        wrapper.setServerPort(TankSelector.valuesWithoutMix()[0], 1122);
         wrapper.saveSettings();
-        wrapper = new ServerSettingsWrapper(propertiesFile);
-        assertEquals(wrapper.getServerPort(TankSelector.YELLOW, -1), 1122);
+        wrapper = new ServerSettingsWrapper(tempTestFile);
+        assertEquals(wrapper.getServerPort(TankSelector.valuesWithoutMix()[0], -1), 1122);
     }
 
     /**
@@ -72,7 +83,7 @@ public class ServerSettingsWrapperTest {
      */
     @Test
     public void testGetServerPortNull() {
-        int result = wrapper.getServerPort(TankSelector.MIX, -1);
+        int result = wrapper.getServerPort(TankSelector.valuesWithoutMix()[1], -1);
         assertEquals(result, -1);
     }
     
@@ -83,8 +94,6 @@ public class ServerSettingsWrapperTest {
      */
     @After
     public void tearDown() throws FileNotFoundException, IOException {
-        wrapper.setServerPort(TankSelector.YELLOW, 1100);
-        wrapper.setServerPort(TankSelector.MAGENTA, 1000);
-        wrapper.saveSettings();
+        tempTestFile.delete();
     }        
 }
