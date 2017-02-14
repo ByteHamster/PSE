@@ -12,10 +12,16 @@ import edu.kit.pse.osip.core.model.base.Liquid;
  * @version 1.0 
  */
 public abstract class TankAlarm <T extends Comparable<T>> extends java.util.Observable implements java.util.Observer {
+    /**
+     * tank must be protected so that all alarms  can get information from it
+     */
     protected AbstractTank tank;
     private T threshold;
     private AlarmBehavior behavior;
     private boolean triggered = false;
+    /**
+     * liquid must be protected so that all alarms can interact with it
+     */
     protected Liquid liquid;
     
     /**
@@ -43,19 +49,23 @@ public abstract class TankAlarm <T extends Comparable<T>> extends java.util.Obse
         assert (object instanceof Liquid);
         liquid = (Liquid) object;
         if (behavior == AlarmBehavior.GREATER_THAN) {
-            if (this.getNotifiedValue().compareTo(threshold) > 0) {
+            if (this.getNotifiedValue().compareTo(threshold) > 0 && !triggered) {
                 triggered = true;
-            } else {
+                setChanged();
+            } else if (triggered) {
                 triggered = false;
+                setChanged();
             }
         } else {
-            if (this.getNotifiedValue().compareTo(threshold) < 0) {
+            if (this.getNotifiedValue().compareTo(threshold) < 0 && !triggered) {
                 triggered = true;
-            } else {
+                setChanged();
+            } else if (triggered) {
                 triggered = false;
+                setChanged();
             }
-        }
-        
+        }        
+        notifyObservers(triggered);
     }
     /**
      * Return whether the alarm is active at the moment.
