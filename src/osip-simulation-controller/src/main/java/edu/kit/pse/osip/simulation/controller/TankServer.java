@@ -13,7 +13,7 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
-public class TankServer extends edu.kit.pse.osip.simulation.controller.AbstractTankServer {
+public class TankServer extends AbstractTankServer {
     /**
      * Creates a new server for a tank
      * @param port The port to add the server

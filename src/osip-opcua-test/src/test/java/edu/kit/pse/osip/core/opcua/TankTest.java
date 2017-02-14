@@ -40,7 +40,7 @@ public class TankTest {
      */
     @After
     public void cleanup() throws Exception {
-        client.connectClient();
+        client.disconnectClient();
         server.stop();
     }
 

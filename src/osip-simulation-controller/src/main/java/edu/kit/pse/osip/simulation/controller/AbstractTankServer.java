@@ -1,6 +1,7 @@
 package edu.kit.pse.osip.simulation.controller;
 
 import edu.kit.pse.osip.core.io.networking.UAIdentifiers;
+import edu.kit.pse.osip.core.opcua.server.UAServerWrapper;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import org.eclipse.milo.opcua.stack.core.Identifiers;
 import org.eclipse.milo.opcua.stack.core.UaException;
@@ -14,7 +15,7 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
-public abstract class AbstractTankServer extends edu.kit.pse.osip.core.opcua.server.UAServerWrapper {
+public abstract class AbstractTankServer extends UAServerWrapper {
     /**
      * Represents a tank inside an OPC UA server
      * @param namespaceName The name of the namespace

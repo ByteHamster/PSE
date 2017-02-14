@@ -13,7 +13,7 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
-public class MixTankServer extends edu.kit.pse.osip.simulation.controller.AbstractTankServer {
+public class MixTankServer extends AbstractTankServer {
     /**
      * Creates a new server for a mixtank
      * @param port The port to start the server on
