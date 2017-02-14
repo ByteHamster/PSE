@@ -26,6 +26,7 @@ public abstract class AbstractTankServer extends UAServerWrapper {
         super(namespaceName, port);
 
         Translator t = Translator.getInstance();
+        addFolder(UAIdentifiers.FOLDER_TANK, t.getString("opcua.tank"));
         addFolder(UAIdentifiers.FOLDER_LIQUID, t.getString("opcua.liquid"));
         addFolder(UAIdentifiers.FOLDER_LIQUID_ALARMS, t.getString("opcua.alarms"));
         addFolder(UAIdentifiers.FOLDER_PIPE, t.getString("opcua.pipe"));

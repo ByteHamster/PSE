@@ -35,13 +35,17 @@ public final class UAIdentifiers {
     public static final String TANK = "tank";
 
     /**
+     * Folder identifier of a tank
+     */
+    public static final String FOLDER_TANK = "Tank";
+    /**
      * Folder identifier of a pipe
      */
-    public static final String FOLDER_PIPE = "Pipes";
+    public static final String FOLDER_PIPE = FOLDER_TANK + "/Pipes";
     /**
      * Folder identifier of the motor
      */
-    public static final String FOLDER_MOTOR = "Motor";
+    public static final String FOLDER_MOTOR = FOLDER_TANK + "/Motor";
     /**
      * Folder identifier of the incoming pipe
      */
@@ -53,7 +57,7 @@ public final class UAIdentifiers {
     /**
      * Folder identifier of the tank content
      */
-    public static final String FOLDER_LIQUID = "Liquid";
+    public static final String FOLDER_LIQUID = FOLDER_TANK + "/Liquid";
     /**
      * Folder identifier of the alarms related to liquids
      */
