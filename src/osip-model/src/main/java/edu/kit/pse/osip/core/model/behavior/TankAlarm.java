@@ -34,6 +34,8 @@ public abstract class TankAlarm <T extends Comparable<T>> extends java.util.Obse
         this.tank = tank;
         this.threshold = threshold;
         this.behavior = behavior;
+        tank.addObserver(this);
+        update(this, tank.getLiquid());
     }
     /**
      * Get the value of the tank, which is monitored by the alarm. This should be overriden by subclasses.
