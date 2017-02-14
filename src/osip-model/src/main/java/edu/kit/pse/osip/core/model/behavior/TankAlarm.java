@@ -15,7 +15,7 @@ public abstract class TankAlarm <T extends Comparable<T>> extends java.util.Obse
     protected AbstractTank tank;
     private T threshold;
     private AlarmBehavior behavior;
-    private boolean triggered = false;
+    private boolean triggered = true;
     protected Liquid liquid;
     
     /**
@@ -45,10 +45,14 @@ public abstract class TankAlarm <T extends Comparable<T>> extends java.util.Obse
         if (behavior == AlarmBehavior.GREATER_THAN) {
             if (this.getNotifiedValue().compareTo(threshold) > 0) {
                 triggered = true;
+            } else {
+                triggered = false;
             }
         } else {
             if (this.getNotifiedValue().compareTo(threshold) < 0) {
                 triggered = true;
+            } else {
+                triggered = false;
             }
         }
         

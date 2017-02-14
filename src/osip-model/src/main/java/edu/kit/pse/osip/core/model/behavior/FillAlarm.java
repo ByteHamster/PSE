@@ -22,6 +22,6 @@ public class FillAlarm extends edu.kit.pse.osip.core.model.behavior.TankAlarm<Fl
      * @return the fill level.
      */
     protected final Float getNotifiedValue() {
-        return tank.getFillLevel();
+        return tank.getFillLevel() * 100f; 
     }
 }
