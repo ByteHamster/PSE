@@ -7,7 +7,9 @@ import edu.kit.pse.osip.core.model.base.Liquid;
 
 /**
  * An abstract class which monitors some attribute of an AbstractTank.
- * @param <T> The type of notified value 
+ * @param <T> The type of notified value
+ * @author Maximilian Schwarzmann
+ * @version 1.0 
  */
 public abstract class TankAlarm <T extends Comparable<T>> extends java.util.Observable implements java.util.Observer {
     protected AbstractTank tank;
