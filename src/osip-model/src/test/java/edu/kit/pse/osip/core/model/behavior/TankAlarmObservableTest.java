@@ -40,7 +40,7 @@ public class TankAlarmObservableTest {
          * Getter for notified 
          * @return true if notified
          */
-        public boolean getNotified() {
+        public boolean wasNotified() {
             return wasNotified;
         }
     
@@ -62,10 +62,8 @@ public class TankAlarmObservableTest {
         alarm = new FillAlarm(tank, 50f, AlarmBehavior.GREATER_THAN);        
         TestObserver tObserver = new TestObserver();
         alarm.addObserver(tObserver);
-        tank.addObserver(alarm);
         tank.setLiquid(testLiquid);
-        assertEquals(true, tObserver.getNotified());
-        
+        assertEquals(true, tObserver.wasNotified());        
     }
 
     /**
@@ -78,14 +76,13 @@ public class TankAlarmObservableTest {
         alarm = new FillAlarm(tank, 50f, AlarmBehavior.GREATER_THAN);        
         TestObserver tObserver = new TestObserver();
         alarm.addObserver(tObserver);
-        tank.addObserver(alarm);
         Liquid alteredLiquid = new Liquid(80f, 300f, new Color(0.5, 0.5, 0.5));
         tank.setLiquid(alteredLiquid);
-        assertEquals(false, tObserver.getNotified());
+        assertEquals(false, tObserver.wasNotified());
     }    
 
     /**
-     * Test if alarm gives notification on changes
+     * Test if alarm gives notification on changes 
      */
     @Test
     public void testObservableNotifyMultiple() {       
@@ -96,14 +93,13 @@ public class TankAlarmObservableTest {
         alarm = new FillAlarm(tank, 50f, AlarmBehavior.GREATER_THAN);        
         TestObserver tObserver = new TestObserver();
         alarm.addObserver(tObserver);
-        tank.addObserver(alarm);
         tank.setLiquid(testLiquidA);
-        assertEquals(false, tObserver.getNotified());
+        assertEquals(false, tObserver.wasNotified());
         tObserver.resetNotified();
         tank.setLiquid(testLiquidB);
-        assertEquals(true, tObserver.getNotified());
+        assertEquals(true, tObserver.wasNotified());
         tObserver.resetNotified();
         tank.setLiquid(testLiquidC);
-        assertEquals(true, tObserver.getNotified());        
+        assertEquals(true, tObserver.wasNotified());        
     }
 }

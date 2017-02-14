@@ -30,8 +30,7 @@ public class TemperatureAlarmTest {
         testLiquid = new Liquid(20f, 300f, new Color(0.5, 0.5, 0.5));
         tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquid, new Pipe(200f, 30), new Pipe(200f, 30));
         alarm = new TemperatureAlarm(tank, 400f, AlarmBehavior.GREATER_THAN);
-        tank.addObserver(alarm);
-        tank.setLiquid(testLiquid);
+        //tank.setLiquid(testLiquid);
         assertEquals(false, alarm.isAlarmTriggered());
     }
 
@@ -43,8 +42,7 @@ public class TemperatureAlarmTest {
         testLiquid = new Liquid(20f, 300f, new Color(0.5, 0.5, 0.5));
         tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquid, new Pipe(200f, 30), new Pipe(200f, 30));
         alarm = new TemperatureAlarm(tank, 200f, AlarmBehavior.GREATER_THAN);
-        tank.addObserver(alarm);
-        tank.setLiquid(testLiquid);
+        //tank.setLiquid(testLiquid);
         assertEquals(true, alarm.isAlarmTriggered());
     }
     
