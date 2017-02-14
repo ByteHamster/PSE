@@ -1,37 +1,69 @@
 package edu.kit.pse.osip.core.utils.language;
 
+import java.util.Locale;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
+
 /**
  * This class is the interface to load menu texts in different languages.
+ * @author Maximilian Schwarzmann 
+ * @version 1.0
  */
-public class Translator {
-    public java.util.ResourceBundle bundle;
-    public java.util.Locale locale;
+public final class Translator {
+    
+    private ResourceBundle bundle;
+    private static Translator singleton;
+    
     /**
      * Creates a new translator. Private because it is a singleton
      */
-    private Translator () {
-        throw new RuntimeException("Not implemented!");
+    private Translator() {
+        setLocale(new Locale("en", "US"));
     }
     /**
      * Gets the single Instance of the Translator. It is newly created at the first call of the method.
      * @return The single Instance of Translator.
      */
-    public final static Translator getInstance () {
-        throw new RuntimeException("Not implemented!");
+    public static Translator getInstance() {
+        if (singleton == null) {
+            singleton = new Translator();
+        }
+        return singleton;
     }
     /**
      * Gets the word that is associated with key in the current locale.
-     * @return The translation for key.
+     * @return The translation for key or key if there is no such entry.
+     * Also returns key if bundle is null.
      * @param key The key to use for translation lookup
      */
-    public final String getString (String key) {
-        throw new RuntimeException("Not implemented!");
+    public String getString(String key) {
+        String value;
+        if (key == null) {
+            throw new NullPointerException("Key is null");
+        }
+        if (bundle == null) {
+            return key;
+        }
+        try {
+            value = bundle.getString(key);
+        } catch (MissingResourceException e) {
+            return key;
+        } 
+        return value;
     }
     /**
      * Sets the locale to be used when translating
      * @param locale The locale to set
      */
-    public final void setLocale (java.util.Locale locale) {
-        throw new RuntimeException("Not implemented!");
-    }
+    public void setLocale(Locale locale) {
+        if (locale == null) {
+            throw new NullPointerException("Locale is null");
+        } 
+        try {
+            bundle = ResourceBundle.getBundle("Bundle", locale);
+        } catch (MissingResourceException e) {
+            System.err.println();
+            bundle = null;
+        }
+    }    
 }

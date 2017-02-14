@@ -1,43 +1,64 @@
 package edu.kit.pse.osip.monitoring.view.dashboard;
 
+import edu.kit.pse.osip.core.SimulationConstants;
+import edu.kit.pse.osip.core.model.base.AbstractTank;
+import edu.kit.pse.osip.core.utils.language.Translator;
+import java.util.Observable;
+import java.util.Observer;
+import javafx.geometry.Orientation;
+import javafx.scene.control.Slider;
+
 /**
- * Visualises the current temperature.
+ * Visualizes the current temperature.
+ * 
+ * @author Martin Armbruster
+ * @version 1.4
  */
-public class TemperatureVisualization implements java.util.Observer {
+class TemperatureVisualization extends BarLayout implements Observer {
     /**
-     * The Label shows the temperature section.
+     * The number of all major ticks on the temperature bar with a label.
      */
-    private javafx.scene.control.Label temperatureLabel;
+    private static final int NUMBER_OF_MAJOR_TICKS = 10;
+    
+    /**
+     * The number of minor ticks between two major ticks.
+     */
+    private static final int NUMBER_OF_MINOR_TICKS = 10;
+    
+    private static final double DIFFERENCE_KELVIN_CELSIUS = 273.15;
+    
     /**
      * The slider for showing the current temperature.
      */
     private javafx.scene.control.Slider temperatureBar;
+    
     /**
      * Creates and initializes a new temperature visualization.
      */
-    protected TemperatureVisualization () {
-        throw new RuntimeException("Not implemented!");
+    protected TemperatureVisualization() {
+        super(Translator.getInstance().getString("monitoring.tank.temperature"));
+        temperatureBar = new Slider();
+        temperatureBar.setDisable(true);
+        temperatureBar.setShowTickLabels(true);
+        temperatureBar.setMin(SimulationConstants.MIN_TEMPERATURE - DIFFERENCE_KELVIN_CELSIUS);
+        temperatureBar.setMax(SimulationConstants.MAX_TEMPERATURE - DIFFERENCE_KELVIN_CELSIUS);
+        temperatureBar.setShowTickMarks(true);
+        temperatureBar.setMinorTickCount(NUMBER_OF_MINOR_TICKS);
+        temperatureBar.setMajorTickUnit((SimulationConstants.MAX_TEMPERATURE - SimulationConstants.MIN_TEMPERATURE)
+                / NUMBER_OF_MAJOR_TICKS);
+        temperatureBar.setOrientation(Orientation.VERTICAL);
+        temperatureBar.setPrefHeight(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS);
+        this.getChildren().add(0, temperatureBar);
     }
-    /**
-     * Returns the label for showing the temperature section.
-     * @return the label showing the temperature section.
-     */
-    protected final javafx.scene.control.Label getTemperatureLabel () {
-        throw new RuntimeException("Not implemented!");
-    }
-    /**
-     * Slider for showing the actual temperature.
-     * @return the slider showing the actual temperature.
-     */
-    protected final javafx.scene.control.Slider getTemperatureBar () {
-        throw new RuntimeException("Not implemented!");
-    }
+
     /**
      * Called when the observed object is updated.
+     * 
      * @param observable The observed object.
      * @param object The new value.
      */
-    public final void update (java.util.Observable observable, Object object) {
-        throw new RuntimeException("Not implemented!");
+    public void update(Observable observable, Object object) {
+        AbstractTank tank = (AbstractTank) observable;
+        temperatureBar.setValue(tank.getLiquid().getTemperature() - DIFFERENCE_KELVIN_CELSIUS);
     }
 }

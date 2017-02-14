@@ -1,43 +1,50 @@
 package edu.kit.pse.osip.monitoring.view.dashboard;
 
+import edu.kit.pse.osip.core.model.base.AbstractTank;
+import edu.kit.pse.osip.core.utils.language.Translator;
+import java.util.Observable;
+import java.util.Observer;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+
 /**
- * Visualises the color of the mixtank.
+ * Visualizes the color of the mixtank.
+ * 
+ * @author Martin Armbruster
+ * @version 1.3
  */
-public class ColorVisualization implements java.util.Observer {
+class ColorVisualization extends BarLayout implements Observer {
     /**
-     * Label for showing the color section.
+     * Circle contains the color.
      */
-    private javafx.scene.control.Label colorLabel;
-    /**
-     * Rectangle contains the color.
-     */
-    private javafx.scene.shape.Rectangle colorRectangle;
+    private Circle colorCircle;
+    
     /**
      * Creates and initializes all controls for the color visualization.
      */
-    protected ColorVisualization () {
-        throw new RuntimeException("Not implemented!");
+    protected ColorVisualization() {
+        super(Translator.getInstance().getString("monitoring.mixTank.color"));
+        colorCircle = new Circle();
+        this.getChildren().add(0, colorCircle);
     }
-    /**
-     * Returns the label showing the color section.
-     * @return the label showing the color section.
-     */
-    protected final javafx.scene.control.Label getColorLabel () {
-        throw new RuntimeException("Not implemented!");
+    
+    @Override
+    protected void layoutChildren() {
+        double radius = (Math.min(this.getHeight(), this.getWidth()) - MonitoringViewConstants.ELEMENTS_GAP * 2
+                - MonitoringViewConstants.FONT_SIZE) / 2;
+        colorCircle.setRadius(radius);
+        super.layoutChildren();
     }
-    /**
-     * Returns the rectangle containing the current color.
-     * @return the rectangle containing the current color.
-     */
-    protected final javafx.scene.shape.Rectangle getColorRectangle () {
-        throw new RuntimeException("Not implemented!");
-    }
+
     /**
      * Called when the observed object changed.
+     * 
      * @param observable The observed object.
      * @param object The new value.
      */
-    public final void update (java.util.Observable observable, Object object) {
-        throw new RuntimeException("Not implemented!");
+    public void update(Observable observable, Object object) {
+        edu.kit.pse.osip.core.model.base.Color col = ((AbstractTank) observable).getLiquid().getColor();
+        Color currentColor = new Color(col.getR(), col.getG(), col.getB(), 1.0);
+        colorCircle.setFill(currentColor);
     }
 }
