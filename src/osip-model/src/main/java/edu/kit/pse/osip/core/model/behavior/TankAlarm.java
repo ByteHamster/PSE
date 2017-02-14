@@ -15,7 +15,7 @@ public abstract class TankAlarm <T extends Comparable<T>> extends java.util.Obse
     protected AbstractTank tank;
     private T threshold;
     private AlarmBehavior behavior;
-    private boolean triggered = true;
+    private boolean triggered = false;
     protected Liquid liquid;
     
     /**
