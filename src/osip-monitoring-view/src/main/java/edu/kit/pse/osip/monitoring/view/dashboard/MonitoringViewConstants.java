@@ -31,6 +31,16 @@ public final class MonitoringViewConstants {
     public static final Float TEMPERATURE_UNDERCOOLING_THRESHOLD = Float.valueOf(291.5f);
     
     /**
+     * The minimum update interval in milliseconds.
+     */
+    public static final int MIN_UPDATE_INTERVAL = 500;
+    
+    /**
+     * The maximum update interval in milliseconds.
+     */
+    public static final int MAX_UPDATE_INTERVAL = 4000;
+    
+    /**
      * The gap between ui elements.
      */
     public static final int ELEMENTS_GAP = 5;

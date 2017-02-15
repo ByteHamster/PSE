@@ -15,7 +15,7 @@ import javafx.scene.layout.VBox;
  * @author Martin Armbruster
  * @version 1.0
  */
-final class AlarmSettings extends ScrollPane {
+class AlarmSettings extends ScrollPane {
     /**
      * All check boxes for disabling / enabling underflow alarms.
      */
