@@ -6,7 +6,7 @@ package edu.kit.pse.osip.simulation.controller;
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
-public abstract class MenuSettingsButtonInterface {
+public abstract class AbstractMenuSettingsButton {
     /**
      * The current simulation settings window to be shown
      */
@@ -16,13 +16,13 @@ public abstract class MenuSettingsButtonInterface {
      * Creates a new handler.
      * @param settingsWindow The current control window
      */
-    protected MenuSettingsButtonInterface(SimulationSettingsInterface settingsWindow) {
+    protected AbstractMenuSettingsButton(SimulationSettingsInterface settingsWindow) {
         this.settingsWindow = settingsWindow;
     }
 
     /**
-     * Handles a click on the settings menu button in the monitoring view.
-     * @param event The occured event.
+     * Handles a click on the settings menu button in the simulation view.
+     * @param event The occurred event.
      */
     public abstract void handle(javafx.event.ActionEvent event);
 }

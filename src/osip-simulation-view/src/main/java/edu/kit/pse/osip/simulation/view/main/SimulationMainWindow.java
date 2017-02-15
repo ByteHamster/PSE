@@ -6,7 +6,7 @@ import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.simulation.controller.MenuAboutButtonHandler;
 import edu.kit.pse.osip.simulation.controller.MenuHelpButtonHandler;
 import edu.kit.pse.osip.simulation.controller.MenuControlButtonHandler;
-import edu.kit.pse.osip.simulation.controller.MenuSettingsButtonInterface;
+import edu.kit.pse.osip.simulation.controller.AbstractMenuSettingsButton;
 import edu.kit.pse.osip.simulation.controller.SimulationViewInterface;
 
 /**
@@ -56,7 +56,7 @@ public class SimulationMainWindow implements SimulationViewInterface, java.util.
      * Sets the handler for pressing the settings entry in the menu
      * @param settingsButtonHandler The handler to be called when the settings button is pressed
      */
-    public final void setSettingsButtonHandler(MenuSettingsButtonInterface settingsButtonHandler) {
+    public final void setSettingsButtonHandler(AbstractMenuSettingsButton settingsButtonHandler) {
         throw new RuntimeException("Not implemented!");
     }
     /**

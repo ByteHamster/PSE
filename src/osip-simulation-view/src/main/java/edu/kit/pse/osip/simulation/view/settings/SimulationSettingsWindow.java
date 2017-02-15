@@ -2,7 +2,6 @@ package edu.kit.pse.osip.simulation.view.settings;
 
 import edu.kit.pse.osip.core.io.files.ServerSettingsWrapper;
 import edu.kit.pse.osip.core.model.base.TankSelector;
-import edu.kit.pse.osip.core.utils.formatting.InvalidPortException;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.controller.SettingsChangedListener;
 import edu.kit.pse.osip.simulation.controller.SimulationSettingsInterface;
@@ -11,21 +10,28 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 /**
  * This class is the main window of the OSIP simulation settings.
+ *
+ * @author Hans-Peter
+ * @version 1.0
  */
 public class SimulationSettingsWindow implements SimulationSettingsInterface {
     private ServerSettingsWrapper settings;
     private Stage settingsStage;
-    private Map<TankSelector, PortTextField> portTextFields = new HashMap<>();
+    private EnumMap<TankSelector, PortTextField> portTextFields;
     private SettingsChangedListener listener;
+    private static final int SPACING = 10;
+    private static final int MAX_HEIGHT = 400;
 
     /**
      * Generates a new window that shows the simulation settings
@@ -33,10 +39,10 @@ public class SimulationSettingsWindow implements SimulationSettingsInterface {
      */
     public SimulationSettingsWindow(ServerSettingsWrapper settings) {
         this.settings = settings;
+        this.portTextFields = new EnumMap<>(TankSelector.class);
 
         settingsStage = new Stage();
         Scene scene = new Scene(createRootLayout());
-        settingsStage.setResizable(false);
         settingsStage.setScene(scene);
         settingsStage.setTitle(Translator.getInstance().getString("simulation.settings.title"));
 
@@ -47,24 +53,30 @@ public class SimulationSettingsWindow implements SimulationSettingsInterface {
      * Creates the settings main layout
      * @return The layout
      */
-    private VBox createRootLayout() {
+    private BorderPane createRootLayout() {
         Translator t = Translator.getInstance();
 
-        HBox portsRow = new HBox(10);
-        portsRow.setAlignment(Pos.CENTER);
+        GridPane portBoxes = new GridPane();
+        portBoxes.setHgap(SPACING);
+        portBoxes.setVgap(SPACING);
+        portBoxes.setAlignment(Pos.CENTER);
 
+        int row = 0;
         for (TankSelector tank : TankSelector.values()) {
             Label portLabel = new Label(t.getString("simulation.settings.port." + tank.name()));
             PortTextField portText = new PortTextField();
             portTextFields.put(tank, portText);
-            portsRow.getChildren().add(portLabel);
-            portsRow.getChildren().add(portText);
+            portBoxes.add(portLabel, 0, row);
+            portBoxes.add(portText, 1, row);
+            row++;
         }
 
         Label portHeading = new Label(t.getString("simulation.settings.port"));
+        portHeading.setPadding(new Insets(0, 0, SPACING, 0));
 
-        HBox buttons = new HBox(10);
+        HBox buttons = new HBox(SPACING);
         buttons.setAlignment(Pos.BOTTOM_RIGHT);
+        buttons.setPadding(new Insets(SPACING, 0, 0, 0));
 
         Button btnSave = new Button(t.getString("simulation.settings.save"));
         btnSave.setDefaultButton(true);
@@ -86,11 +98,17 @@ public class SimulationSettingsWindow implements SimulationSettingsInterface {
         buttons.getChildren().add(btnSave);
         buttons.getChildren().add(btnCancel);
 
-        VBox rootLayout = new VBox(10);
-        rootLayout.setPadding(new Insets(10));
-        rootLayout.getChildren().add(portHeading);
-        rootLayout.getChildren().add(portsRow);
-        rootLayout.getChildren().add(buttons);
+        ScrollPane scrollPortBoxes = new ScrollPane();
+        scrollPortBoxes.setPadding(new Insets(SPACING));
+        scrollPortBoxes.setContent(portBoxes);
+        scrollPortBoxes.setFitToWidth(true);
+        scrollPortBoxes.setMaxHeight(MAX_HEIGHT);
+
+        BorderPane rootLayout = new BorderPane();
+        rootLayout.setPadding(new Insets(SPACING));
+        rootLayout.setTop(portHeading);
+        rootLayout.setCenter(scrollPortBoxes);
+        rootLayout.setBottom(buttons);
         return rootLayout;
     }
 
@@ -104,21 +122,12 @@ public class SimulationSettingsWindow implements SimulationSettingsInterface {
         }
     }
 
-    /**
-     * Gets the port number in PortTextField id.
-     * @throws InvalidPortException Thrown if the current value in port is not valid
-     * (see FormatChecker.parsePort(String port).
-     * @return The port number in PortTextField id.
-     * @param tank The tankto get the port for
-     */
+    @Override
     public final int getPort(TankSelector tank) {
         return portTextFields.get(tank).getPort();
     }
 
-    /**
-     * Sets the listener that gets notified as soon as the settings change
-     * @param listener The listener to be called when the settings are changed
-     */
+    @Override
     public final void setSettingsChangedListener(SettingsChangedListener listener) {
         this.listener = listener;
     }

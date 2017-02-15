@@ -11,10 +11,10 @@ import edu.kit.pse.osip.core.utils.formatting.InvalidPortException;
  */
 public interface SimulationSettingsInterface {
     /**
-     * Gets the port number in Porttextfield id.
-     * @throws InvalidPortException Thrown if the current value in port
+     * Gets the port number in Porttextfield of the given tank
+     * @throws InvalidPortException Thrown if the current value in the text field
      * is not valid (see FormatChecker.parsePort(String port).
-     * @return The port number in Porttextfield id.
+     * @return The port number in Porttextfield of the given tank
      * @param tank The tank to get the port from
      */
     int getPort(TankSelector tank);

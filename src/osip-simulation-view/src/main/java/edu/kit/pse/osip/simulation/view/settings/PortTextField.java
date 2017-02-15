@@ -1,5 +1,6 @@
 package edu.kit.pse.osip.simulation.view.settings;
 
+import edu.kit.pse.osip.core.utils.formatting.FormatChecker;
 import javafx.application.Platform;
 import javafx.scene.control.TextField;
 
@@ -11,15 +12,13 @@ import javafx.scene.control.TextField;
  * @version 1.0
  */
 class PortTextField extends TextField {
-
     /**
      * Modified text field that only accepts valid ports
      */
     protected PortTextField() {
-        setPrefWidth(80);
         setText("0");
         textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!isValidPort(newValue)) {
+            if (!newValue.matches("\\d+")) {
                 setText(oldValue);
             }
         });
@@ -30,24 +29,12 @@ class PortTextField extends TextField {
         });
     }
 
-    /**
-     * Checks if the given string is a valid port
-     * @param s The string
-     * @return true if the string is a valid port
-     */
-    private boolean isValidPort(String s) {
-        if (!s.matches("\\d+")) {
-            return false;
-        }
-        int val = Integer.parseInt(s);
-        return val < 61000 && val > 1024;
-    }
 
     /**
      * Gets the port number in the textField.
      * @return The port number in the textField.
      */
     protected final int getPort() {
-        return Integer.parseInt(getText());
+        return FormatChecker.checkPort(getText());
     }
 }
