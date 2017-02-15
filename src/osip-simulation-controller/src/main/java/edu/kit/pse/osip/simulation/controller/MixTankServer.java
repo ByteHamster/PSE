@@ -8,7 +8,7 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.DataValue;
 import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
 
 /**
- * Server for the mixtank. Contain the motor, in addition to the variables provided in the parent class.
+ * Server for the mixtank. Contains the motor, in addition to the variables provided in the parent class.
  *
  * @author Hans-Peter Lehmann
  * @version 1.0

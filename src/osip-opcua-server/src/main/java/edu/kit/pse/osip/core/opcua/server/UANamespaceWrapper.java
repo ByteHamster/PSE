@@ -130,9 +130,9 @@ public class UANamespaceWrapper implements Namespace {
     /**
      * Needed by milo. Allows browsing the nodes inside this namespace
      * 
-     * @return a list of references tto nodes on the server
+     * @return a list of references to nodes on the server
      * @param context The context to write the values back
-     * @param nodeId The id of the element to bowse
+     * @param nodeId The id of the element to browse
      */
     public CompletableFuture<List<Reference>> browse(AccessContext context, NodeId nodeId) {
         ServerNode node = server.getNodeMap().get(nodeId);

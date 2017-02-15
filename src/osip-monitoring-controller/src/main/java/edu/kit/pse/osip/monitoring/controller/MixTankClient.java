@@ -2,7 +2,7 @@ package edu.kit.pse.osip.monitoring.controller;
 
 import edu.kit.pse.osip.core.io.networking.RemoteMachine;
 import edu.kit.pse.osip.core.io.networking.UAIdentifiers;
-import edu.kit.pse.osip.core.opcua.client.FloatReceivedListener;
+import edu.kit.pse.osip.core.opcua.client.IntReceivedListener;
 import edu.kit.pse.osip.core.opcua.client.UAClientException;
 
 /**
@@ -27,7 +27,7 @@ public class MixTankClient extends AbstractTankClient {
      * @param listener The callback function to be called as soon as the subscribed value was received
      * @throws UAClientException If adding the subscription fails
      */
-    public void subscribeMotorSpeed(int interval, FloatReceivedListener listener) throws UAClientException {
-        subscribeFloat(UAIdentifiers.MOTOR_RPM, interval, listener);
+    public void subscribeMotorSpeed(int interval, IntReceivedListener listener) throws UAClientException {
+        subscribeInt(UAIdentifiers.MOTOR_RPM, interval, listener);
     }
 }

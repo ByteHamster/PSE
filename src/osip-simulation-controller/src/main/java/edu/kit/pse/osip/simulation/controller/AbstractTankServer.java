@@ -41,37 +41,41 @@ public abstract class AbstractTankServer extends UAServerWrapper {
         addVariable(UAIdentifiers.ALARM_OVERHEAT, t.getString("opcua.tank.overheatAlarm"), Identifiers.Boolean);
         addVariable(UAIdentifiers.ALARM_UNDERCOOL, t.getString("opcua.tank.undercoolAlarm"), Identifiers.Boolean);
 
-        addVariable(UAIdentifiers.ALARM_UNDERCOOL, t.getString("opcua.pipe.flowRate"), Identifiers.Boolean);
-
+        addVariable(UAIdentifiers.PIPE_OUT_FLOW_RATE, t.getString("opcua.pipe.flowRate"), Identifiers.Boolean);
     }
+
     /**
-     * Set the color of the liquid in this tank
+     * Sets the color of the liquid in this tank
      * @param color The color of the tank infill
      */
     public final void setColor(int color) {
         setVariable(UAIdentifiers.COLOR, new DataValue(new Variant(color)));
     }
+
     /**
-     * Set the fill level of the tank
+     * Sets the fill level of the tank
      * @param filled The fill level of the tank
      */
     public final void setFillLevel(float filled) {
         setVariable(UAIdentifiers.FILL_LEVEL, new DataValue(new Variant(filled)));
     }
+
     /**
-     * Set the flow rate of the outgoing valve
+     * Sets the flow rate of the outgoing valve
      * @param rate The flow rate of the outgoing valve
      */
     public final void setOutputFlowRate(float rate) {
         setVariable(UAIdentifiers.PIPE_OUT_FLOW_RATE, new DataValue(new Variant(rate)));
     }
+
     /**
-     * Set temperature of the contained liquid
+     * Sets temperature of the contained liquid
      * @param temperature Temperature of the tank content
      */
     public final void setTemperature(float temperature) {
         setVariable(UAIdentifiers.TEMPERATURE, new DataValue(new Variant(temperature)));
     }
+
     /**
      * Sets the overflow alarm state
      * @param overflow true if the tank is overflowing
@@ -79,6 +83,7 @@ public abstract class AbstractTankServer extends UAServerWrapper {
     public final void setOverflowAlarm(boolean overflow) {
         setVariable(UAIdentifiers.ALARM_OVERFLOW, new DataValue(new Variant(overflow)));
     }
+
     /**
      * Sets the underflow alarm state
      * @param underflow true if the tank is underflowing
@@ -86,6 +91,7 @@ public abstract class AbstractTankServer extends UAServerWrapper {
     public final void setUnderflowAlarm(boolean underflow) {
         setVariable(UAIdentifiers.ALARM_UNDERFLOW, new DataValue(new Variant(underflow)));
     }
+
     /**
      * Sets the overheat alarm state
      * @param overheat true if the tank is overheating
@@ -93,6 +99,7 @@ public abstract class AbstractTankServer extends UAServerWrapper {
     public final void setOverheatAlarm(boolean overheat) {
         setVariable(UAIdentifiers.ALARM_OVERHEAT, new DataValue(new Variant(overheat)));
     }
+
     /**
      * Sets the undercool alarm state
      * @param undercool true if the tank is undercooling

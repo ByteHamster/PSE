@@ -14,7 +14,7 @@ import edu.kit.pse.osip.core.opcua.client.UAClientException;
 public class TankClient extends AbstractTankClient {
     /**
      * Creates a new OPC UA client to allow reading the values of an input tank
-     * @param machine The machine to connnect to
+     * @param machine The machine to connect to
      */
     public TankClient(RemoteMachine machine) {
         super(machine, UAIdentifiers.TANK);

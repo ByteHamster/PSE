@@ -1,8 +1,8 @@
 package edu.kit.pse.osip.core.opcua;
 
 import edu.kit.pse.osip.core.io.networking.RemoteMachine;
-import edu.kit.pse.osip.monitoring.controller.TankClient;
-import edu.kit.pse.osip.simulation.controller.TankServer;
+import edu.kit.pse.osip.monitoring.controller.MixTankClient;
+import edu.kit.pse.osip.simulation.controller.MixTankServer;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,15 +14,15 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Tests the tank servers and clients
+ * Tests the mix tank servers and clients
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
-public class TankTest {
+public class MixTankTest {
     private static final int PORT = 12686;
     private static final int INTERVAL = 500;
-    private TankServer server;
-    private TankClient client;
+    private MixTankServer server;
+    private MixTankClient client;
 
     /**
      * Initializes server and client
@@ -30,8 +30,8 @@ public class TankTest {
      */
     @Before
     public void setup() throws Exception {
-        server = new TankServer(PORT);
-        client = new TankClient(new RemoteMachine("127.0.0.1", PORT));
+        server = new MixTankServer(PORT);
+        client = new MixTankClient(new RemoteMachine("127.0.0.1", PORT));
         server.start();
         client.connectClient();
     }
@@ -73,16 +73,16 @@ public class TankTest {
     }
 
     /**
-     * Tests if the input flow rate can be read correctly
+     * Tests if the motor rpm can be read correctly
      * @throws Exception If something goes wrong
      */
     @Test
-    public void testInFlowRate() throws Exception {
-        final float rate = 123.523f;
-        CompletableFuture<Float> received = new CompletableFuture<>();
-        server.setInputFlowRate(rate);
-        client.subscribeInputFlowRate(INTERVAL, received::complete);
-        assertEquals(rate, received.get(), 0.00001);
+    public void testMotorRPM() throws Exception {
+        final int speed = 1500;
+        CompletableFuture<Integer> received = new CompletableFuture<>();
+        server.setMotorSpeed(speed);
+        client.subscribeMotorSpeed(INTERVAL, received::complete);
+        assertEquals(new Integer(speed), received.get());
     }
 
     /**
