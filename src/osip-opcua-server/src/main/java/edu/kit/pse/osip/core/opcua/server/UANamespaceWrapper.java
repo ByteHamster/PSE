@@ -71,9 +71,18 @@ public class UANamespaceWrapper implements Namespace {
         NodeId folderNodeId = new NodeId(namespaceIndex, path);
         UaFolderNode folderNode = new UaFolderNode(server.getNodeMap(), folderNodeId,
                 new QualifiedName(namespaceIndex, path), LocalizedText.english(displayName));
-        server.getNodeMap().addNode(folderNode);
-        server.getUaNamespace().addReference(Identifiers.ObjectsFolder, Identifiers.Organizes, true,
+
+        if (path.contains("/")) {
+            String parentFolder = path.substring(0, path.lastIndexOf("/"));
+            if (!folderNodes.containsKey(parentFolder)) {
+                throw new IllegalStateException("Parent folder not found");
+            }
+            folderNodes.get(parentFolder).addOrganizes(folderNode);
+        } else {
+            server.getNodeMap().addNode(folderNode);
+            server.getUaNamespace().addReference(Identifiers.ObjectsFolder, Identifiers.Organizes, true,
                 folderNodeId.expanded(), NodeClass.Object);
+        }
         folderNodes.put(path, folderNode);
     }
 
@@ -94,6 +103,9 @@ public class UANamespaceWrapper implements Namespace {
         variableNodes.put(path, newNode);
 
         String folderPath = path.substring(0, path.lastIndexOf("/"));
+        if (!folderNodes.containsKey(folderPath)) {
+            throw new IllegalStateException("Parent folder not found");
+        }
         folderNodes.get(folderPath).addOrganizes(newNode);
     }
 
@@ -118,9 +130,9 @@ public class UANamespaceWrapper implements Namespace {
     /**
      * Needed by milo. Allows browsing the nodes inside this namespace
      * 
-     * @return a list of references tto nodes on the server
+     * @return a list of references to nodes on the server
      * @param context The context to write the values back
-     * @param nodeId The id of the element to bowse
+     * @param nodeId The id of the element to browse
      */
     public CompletableFuture<List<Reference>> browse(AccessContext context, NodeId nodeId) {
         ServerNode node = server.getNodeMap().get(nodeId);

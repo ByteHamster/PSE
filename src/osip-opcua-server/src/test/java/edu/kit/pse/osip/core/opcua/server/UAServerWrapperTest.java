@@ -61,6 +61,28 @@ public class UAServerWrapperTest {
     }
 
     /**
+     * Tests if a folder can be created even if the parent folder does not exist
+     * @throws Exception Expected
+     */
+    @Test(expected = IllegalStateException.class)
+    public void createNoParentFolder() throws Exception {
+        server.start();
+        server.addFolder("testfolder/folder2", "My folder");
+        server.stop();
+    }
+
+    /**
+     * Tests if a variable can be created even if the parent folder does not exist
+     * @throws Exception Expected
+     */
+    @Test(expected = IllegalStateException.class)
+    public void createNoParentVariable() throws Exception {
+        server.start();
+        server.addVariable("testfolder/testvar", "My variable", Identifiers.Float);
+        server.stop();
+    }
+
+    /**
      * Tests if multiple folders can be added
      * @throws Exception If something goes wrong
      */
