@@ -15,6 +15,7 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.DateTime;
 import org.eclipse.milo.opcua.stack.core.types.builtin.LocalizedText;
 import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 import org.eclipse.milo.opcua.stack.core.types.structured.BuildInfo;
+
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.io.Files;
@@ -51,7 +52,7 @@ public abstract class UAServerWrapper {
 
     /**
      * Creates a new server that can be used to publish data over OPC UA
-     * 
+     *
      * @return a server that can directly be started.
      * @param namespaceName The name of the default namespace
      * @param port The port to listen to
@@ -108,7 +109,7 @@ public abstract class UAServerWrapper {
      * Adds a folder to the default namespace
      * @param path Slash separated path of the folder
      * @param displayName Name of the folder that is displayed to users
-     * @throws UaException If folder can not be added
+     * @throws UaException If the folder can not be added
      */
     protected void addFolder(String path, String displayName) throws UaException {
         namespace.addFolder(path, displayName);
@@ -119,8 +120,9 @@ public abstract class UAServerWrapper {
      * @param path Slash separated path of the folder
      * @param displayName Name of the variable that is displayed to users
      * @param type The variable type, for example Identifiers.Float
+     * @throws UaException If the variable can not be added
      */
-    protected void addVariable(String path, String displayName, NodeId type) {
+    protected void addVariable(String path, String displayName, NodeId type) throws UaException {
         namespace.addVariable(path, displayName, type);
     }
 
