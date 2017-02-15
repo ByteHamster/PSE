@@ -4,6 +4,8 @@ import edu.kit.pse.osip.core.model.base.AbstractTank;
 
 /**
  * An Alarm which monitors whether the temperature breaks a given threshold.
+ * @author Maximilian Schwarzmann
+ * @version 1.0
  */
 public class TemperatureAlarm extends edu.kit.pse.osip.core.model.behavior.TankAlarm<Float> {
     /**
@@ -14,13 +16,12 @@ public class TemperatureAlarm extends edu.kit.pse.osip.core.model.behavior.TankA
      */
     public TemperatureAlarm(AbstractTank tank, Float threshold, AlarmBehavior behavior) {
         super(tank, threshold, behavior);
-        throw new RuntimeException("Not implemented!");
     }
     /**
      * Returns the temperature of the tank
      * @return the temperature
      */
     protected final Float getNotifiedValue() {
-        throw new RuntimeException("Not implemented!");
+        return liquid.getTemperature();
     }
 }

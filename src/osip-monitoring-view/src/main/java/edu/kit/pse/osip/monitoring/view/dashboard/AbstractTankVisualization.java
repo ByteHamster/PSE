@@ -128,12 +128,12 @@ abstract class AbstractTankVisualization extends GridPane {
         fillLevel = new FillLevelVisualization();
         temperature = new TemperatureVisualization();
         progresses = new ProgressOverview(tank);
-        overflow = new FillAlarm(tank, MonitoringViewConstants.OVERFLOW_ALARM_THRESHOLD, AlarmBehavior.GREATHER_THAN);
+        overflow = new FillAlarm(tank, MonitoringViewConstants.OVERFLOW_ALARM_THRESHOLD, AlarmBehavior.GREATER_THAN);
         overflow.addObserver(overflowAlarm);
         underflow = new FillAlarm(tank, MonitoringViewConstants.UNDERFLOW_ALARM_THRESHOLD, AlarmBehavior.SMALLER_THAN);
         underflow.addObserver(underflowAlarm);
         overheating = new TemperatureAlarm(tank, MonitoringViewConstants.TEMPERATURE_OVERHEATING_THRESHOLD,
-                AlarmBehavior.GREATHER_THAN);
+                AlarmBehavior.GREATER_THAN);
         overheating.addObserver(temperatureOverheatingAlarm);
         undercooling = new TemperatureAlarm(tank, MonitoringViewConstants.TEMPERATURE_UNDERCOOLING_THRESHOLD,
                 AlarmBehavior.SMALLER_THAN);

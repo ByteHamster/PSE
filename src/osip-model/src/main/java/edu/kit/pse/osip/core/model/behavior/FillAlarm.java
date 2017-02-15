@@ -4,6 +4,8 @@ import edu.kit.pse.osip.core.model.base.AbstractTank;
 
 /**
  * An alarm which monitors whether the fill level breaks a given threshold.
+ * @author Maximilian Schwarzmann
+ * @version 1.0
  */
 public class FillAlarm extends edu.kit.pse.osip.core.model.behavior.TankAlarm<Float> {
     /**
@@ -14,13 +16,12 @@ public class FillAlarm extends edu.kit.pse.osip.core.model.behavior.TankAlarm<Fl
      */
     public FillAlarm(AbstractTank tank, Float threshold, AlarmBehavior behavior) {
         super(tank, threshold, behavior);
-        throw new RuntimeException("Not implemented!");
     }
     /**
      * Returns the fill level.
      * @return the fill level.
      */
     protected final Float getNotifiedValue() {
-        throw new RuntimeException("Not implemented!");
+        return tank.getFillLevel() * 100f; 
     }
 }
