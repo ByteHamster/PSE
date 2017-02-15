@@ -1,11 +1,13 @@
 package edu.kit.pse.osip.simulation.controller;
 
 import edu.kit.pse.osip.simulation.view.control.SimulationControlWindow;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 /**
  * Handles a click on the control menu button
  */
-public class MenuControlButtonHandler {
+public class MenuControlButtonHandler implements EventHandler<ActionEvent> {
     /**
      * Creates a new handler.
      * @param controlWindow The current control window
