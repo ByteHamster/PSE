@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  * The entry point for the monitoring view. It shows all sensor datas graphically.
  * 
  * @author Martin Armbruster
- * @version 1.1
+ * @version 1.2
  */
 class MonitoringMainWindow {
     /**
@@ -26,7 +26,7 @@ class MonitoringMainWindow {
     /**
      * The visualizations for the tanks.
      */
-    private EnumMap<TankSelector, TankVisualization> tanks;
+    private EnumMap<TankSelector, TankVisualization> tankVisualizations;
     
     /**
      * The visualization for the mixtank.
@@ -51,9 +51,9 @@ class MonitoringMainWindow {
      */
     protected MonitoringMainWindow(Stage primaryStage, ProductionSite currentModel) {
         menu = new MonitoringMenu();
-        tanks = new EnumMap<TankSelector, TankVisualization>(TankSelector.class);
+        tankVisualizations = new EnumMap<TankSelector, TankVisualization>(TankSelector.class);
         for (TankSelector selector : TankSelector.valuesWithoutMix()) {
-            tanks.put(selector, new TankVisualization(currentModel.getUpperTank(selector)));
+            tankVisualizations.put(selector, new TankVisualization(currentModel.getUpperTank(selector)));
         }
         mixTank = new MixTankVisualization(currentModel.getMixTank());
         log = new LoggingConsole();
@@ -68,44 +68,50 @@ class MonitoringMainWindow {
      * @param primaryStage stage on which all elements will be shown.
      */
     private void makeLayout(Stage primaryStage) {
-        BorderPane mainPane = new BorderPane();
-        mainPane.setStyle("-fx-font-size: " + MonitoringViewConstants.FONT_SIZE + "px;");
-        mainPane.setTop(menu);
-        
         GridPane tankPane = new GridPane();
         tankPane.setVgap(MonitoringViewConstants.ELEMENTS_GAP);
         tankPane.setHgap(MonitoringViewConstants.ELEMENTS_GAP);
         tankPane.setPadding(new Insets(MonitoringViewConstants.ELEMENTS_GAP));
         int currentColumn = 0;
-        for (TankVisualization tank : tanks.values()) {
+        for (TankVisualization tank : tankVisualizations.values()) {
             tankPane.add(tank, currentColumn, 0);
             currentColumn++;
         }
         tankPane.add(mixTank, currentColumn, 0);
-        mainPane.setCenter(tankPane);
         
         HBox hbox = new HBox();
         hbox.setSpacing(MonitoringViewConstants.ELEMENTS_GAP);
-        hbox.setPadding(new Insets(MonitoringViewConstants.ELEMENTS_GAP));
         hbox.getChildren().addAll(log, light);
-        mainPane.setBottom(hbox);
+        tankPane.add(hbox, 0, 1, currentColumn + 1, 1);
+        
+        BorderPane mainPane = new BorderPane() {
+            @Override
+            public void resize(double width, double height) {
+                log.setPrefWidth(width);
+                log.setPrefHeight(0.2 * height);
+                double prefMinWidth = 0.1 * width;
+                double prefMinHeight = (0.2 * height) / 2;
+                double realSize = Math.min(prefMinWidth, prefMinHeight);
+                light.setMinSize(realSize, realSize * 2);
+                super.resize(width, height);
+            }
+        };
+        mainPane.setStyle("-fx-font-size: " + MonitoringViewConstants.FONT_SIZE + "px;");
+        mainPane.setTop(menu);
+        mainPane.setCenter(tankPane);
         
         Scene scene = new Scene(mainPane);
         primaryStage.setMaximized(true);
         primaryStage.setTitle(Translator.getInstance().getString("monitoring.title"));
         primaryStage.setScene(scene);
         primaryStage.show();
-        
-        log.setPrefWidth(0.95 * mainPane.getWidth());
-        light.setMinWidth(0.05 * mainPane.getWidth());
-        light.setPrefHeight(log.getPrefHeight());
     }
     
     /**
      * Registers all alarms to the light.
      */
     private void registerAlarms() {
-        for (TankVisualization tank : tanks.values()) {
+        for (TankVisualization tank : tankVisualizations.values()) {
             tank.getOverflowAlarm().addObserver(light);
             tank.getUnderflowAlarm().addObserver(light);
             tank.getTemperatureOverheatingAlarm().addObserver(light);
@@ -124,7 +130,7 @@ class MonitoringMainWindow {
      * @param tank The tank whose current used visualization should be returned.
      */
     protected AbstractTankVisualization getTank(TankSelector tank) {
-        return tanks.get(tank);
+        return tankVisualizations.get(tank);
     }
     
     /**

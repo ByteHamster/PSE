@@ -10,7 +10,7 @@ import edu.kit.pse.osip.monitoring.controller.SettingsViewInterface;
  * Provides a single access point to the user-set settings.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.1
  */
 public final class SettingsViewFacade implements SettingsViewInterface {
     /**
@@ -76,7 +76,7 @@ public final class SettingsViewFacade implements SettingsViewInterface {
      * 
      * @return the update time interval.
      */
-    public int getTime() {
+    public int getUpdateInterval() {
         throw new RuntimeException("Not implemented!");
     }
     
