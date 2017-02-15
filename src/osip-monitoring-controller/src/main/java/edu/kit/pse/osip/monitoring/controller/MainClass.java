@@ -1,10 +1,12 @@
 package edu.kit.pse.osip.monitoring.controller;
 
+import javafx.application.Application;
+
 /**
  * The main class as entry point for the whole monitoring.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.1
  */
 public final class MainClass {
     /**
@@ -19,6 +21,6 @@ public final class MainClass {
      * @param args Command line arguments.
      */
     public static void main(String[] args) {
-        MonitoringController.launch(MonitoringController.class, args);
+        Application.launch(MonitoringController.class, args);
     }
 }

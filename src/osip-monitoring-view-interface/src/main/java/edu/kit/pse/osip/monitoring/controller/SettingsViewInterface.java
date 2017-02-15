@@ -7,7 +7,7 @@ import edu.kit.pse.osip.core.model.base.TankSelector;
  * Provides abstraction from the view and a single interface for accessing the user-set settings.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.1
  */
 public interface SettingsViewInterface {
     /**
@@ -56,7 +56,7 @@ public interface SettingsViewInterface {
      * 
      * @return the update time interval.
      */
-    int getTime();
+    int getUpdateInterval();
     
     /**
      * Returns true if the underflow alarm should be enabled for a specified tank and false otherwise.
