@@ -35,7 +35,7 @@ public abstract class TankAlarm <T extends Comparable<T>> extends java.util.Obse
         this.threshold = threshold;
         this.behavior = behavior;
         tank.addObserver(this);
-        update(this, tank.getLiquid());
+        update(tank, tank.getLiquid());
     }
     /**
      * Get the value of the tank, which is monitored by the alarm. This should be overriden by subclasses.
@@ -54,7 +54,7 @@ public abstract class TankAlarm <T extends Comparable<T>> extends java.util.Obse
             if (this.getNotifiedValue().compareTo(threshold) > 0 && !triggered) {
                 triggered = true;
                 setChanged();
-            } else if (triggered) {
+            } else if (this.getNotifiedValue().compareTo(threshold) <= 0 && triggered) {
                 triggered = false;
                 setChanged();
             }
@@ -62,7 +62,7 @@ public abstract class TankAlarm <T extends Comparable<T>> extends java.util.Obse
             if (this.getNotifiedValue().compareTo(threshold) < 0 && !triggered) {
                 triggered = true;
                 setChanged();
-            } else if (triggered) {
+            } else if (this.getNotifiedValue().compareTo(threshold) >= 0 && triggered) {
                 triggered = false;
                 setChanged();
             }

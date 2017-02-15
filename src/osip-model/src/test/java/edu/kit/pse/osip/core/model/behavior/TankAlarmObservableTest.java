@@ -62,7 +62,8 @@ public class TankAlarmObservableTest {
         alarm = new FillAlarm(tank, 50f, AlarmBehavior.GREATER_THAN);        
         TestObserver tObserver = new TestObserver();
         alarm.addObserver(tObserver);
-        tank.setLiquid(testLiquid);
+        Liquid alteredLiquid = new Liquid(50f, 300f, new Color(0.5, 0.5, 0.5));
+        tank.setLiquid(alteredLiquid);
         assertEquals(true, tObserver.wasNotified());        
     }
 
@@ -93,7 +94,6 @@ public class TankAlarmObservableTest {
         alarm = new FillAlarm(tank, 50f, AlarmBehavior.GREATER_THAN);        
         TestObserver tObserver = new TestObserver();
         alarm.addObserver(tObserver);
-        tank.setLiquid(testLiquidA);
         assertEquals(false, tObserver.wasNotified());
         tObserver.resetNotified();
         tank.setLiquid(testLiquidB);
@@ -102,4 +102,26 @@ public class TankAlarmObservableTest {
         tank.setLiquid(testLiquidC);
         assertEquals(true, tObserver.wasNotified());        
     }
+
+    /**
+     * Test if alarm gives no nofification on multiple new liquid inputs, which all trigger alarms
+     */
+    @Test
+    public void testObservbleNotifyMultipleConstant() {
+        Liquid testLiquidA = new Liquid(50f, 300f, new Color(0.5, 0.5, 0.5));
+        Liquid testLiquidB = new Liquid(150f, 300f, new Color(0.5, 0.5, 0.5));
+        Liquid testLiquidC = new Liquid(160f, 300f, new Color(0.5, 0.5, 0.5));
+        tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquidA, new Pipe(200f, 30), new Pipe(200f, 30));
+        alarm = new FillAlarm(tank, 50f, AlarmBehavior.GREATER_THAN);        
+        TestObserver tObserver = new TestObserver();
+        alarm.addObserver(tObserver);
+        assertEquals(false, tObserver.wasNotified());
+        tObserver.resetNotified();
+        tank.setLiquid(testLiquidB);
+        assertEquals(true, tObserver.wasNotified());
+        tObserver.resetNotified();
+        tank.setLiquid(testLiquidC);
+        assertEquals(false, tObserver.wasNotified());       
+    }
+
 }
