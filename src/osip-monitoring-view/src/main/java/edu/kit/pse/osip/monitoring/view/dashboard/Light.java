@@ -3,6 +3,7 @@ package edu.kit.pse.osip.monitoring.view.dashboard;
 import edu.kit.pse.osip.core.model.behavior.TankAlarm;
 import java.util.Observable;
 import java.util.Observer;
+import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -11,7 +12,7 @@ import javafx.scene.shape.Circle;
  * Visualizes a traffic light.
  * 
  * @author Martin Armbruster
- * @version 1.1
+ * @version 1.2
  */
 class Light extends VBox implements Observer {
     /**
@@ -40,6 +41,7 @@ class Light extends VBox implements Observer {
     protected Light() {
         triggeredAlarms = 0;
         this.setSpacing(MonitoringViewConstants.ELEMENTS_GAP);
+        this.setAlignment(Pos.TOP_RIGHT);
         redLight = new Circle();
         redLight.setStrokeWidth(MonitoringViewConstants.STROKE_WIDTH);
         this.getChildren().add(redLight);
