@@ -5,7 +5,7 @@ package edu.kit.pse.osip.simulation.view.main;
  * It provides private methods for rotation of the shapes making up the visualization, depending
  * on the given speed.
  */
-public abstract class RotatingControlDrawer extends edu.kit.pse.osip.simulation.view.main.ObjectDrawer {
+public abstract class RotatingControlDrawer extends ObjectDrawer {
 
     private int speed;
 

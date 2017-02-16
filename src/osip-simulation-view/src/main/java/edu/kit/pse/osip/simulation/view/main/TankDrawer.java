@@ -7,7 +7,7 @@ import javafx.scene.canvas.GraphicsContext;
  * The class visualizes the tanks during which liquid first enters the simulation.
  * As they have only one input only the fill level is variable, the color remains fixed.
  */
-public class TankDrawer extends edu.kit.pse.osip.simulation.view.main.AbstractTankDrawer {
+public class TankDrawer extends AbstractTankDrawer {
 
     private FillSensorDrawer topSensor;
     private FillSensorDrawer botSensor;
