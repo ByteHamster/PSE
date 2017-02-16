@@ -19,7 +19,7 @@ import javafx.scene.paint.Color;
  * Visualizes a general tank.
  * 
  * @author Martin Armbruster
- * @version 1.4
+ * @version 1.5
  */
 abstract class AbstractTankVisualization extends GridPane {
     /**
@@ -118,8 +118,8 @@ abstract class AbstractTankVisualization extends GridPane {
                 Translator.getInstance().getString("monitoring.tank.temperatureUndercoolingAlarm"));
         VBox box = new VBox();
         box.setSpacing(MonitoringViewConstants.ELEMENTS_GAP);
-        box.getChildren().addAll(overflowAlarm, underflowAlarm, temperatureOverheatingAlarm,
-                temperatureUndercoolingAlarm);
+        box.getChildren().addAll(overflowAlarm.getLayout(), underflowAlarm.getLayout(),
+                temperatureOverheatingAlarm.getLayout(), temperatureUndercoolingAlarm.getLayout());
         alarmPane = new HBox();
         alarmPane.setSpacing(MonitoringViewConstants.ELEMENTS_GAP);
         alarmPane.getChildren().add(box);
@@ -143,36 +143,36 @@ abstract class AbstractTankVisualization extends GridPane {
     }
     
     /**
-     * Returns the actual overflow alarm used to track the alarm.
+     * Returns the visualization of the overflow alarm.
      * 
-     * @return the actual overflow alarm.
+     * @return the visualization of the overflow alarm.
      */
-    protected FillAlarm getOverflowAlarm() {
-        return overflow;
+    protected AlarmVisualization getOverflowAlarm() {
+        return overflowAlarm;
     }
     
     /**
-     * Returns the actual underflow alarm used to track the alarm.
+     * Returns the visualization of the underflow alarm.
      * 
-     * @return the actual underflow alarm.
+     * @return the visualization of the underflow alarm.
      */
-    protected FillAlarm getUnderflowAlarm() {
-        return underflow;
+    protected AlarmVisualization getUnderflowAlarm() {
+        return underflowAlarm;
     }
     
     /**
-     * Returns the actual overheating alarm for the temperature used to tack the alarm.
+     * Returns the visualization of the overheating alarm.
      * 
-     * @return the actual overheating alarm.
+     * @return the visualization of the overheating alarm.
      */
     protected TemperatureAlarm getTemperatureOverheatingAlarm() {
         return overheating;
     }
     
     /**
-     * Returns the actual undercooling alarm for the temperature used to track the alarm.
+     * Returns the visualization of the undercooling alarm.
      * 
-     * @return the actual undercooling alarm.
+     * @return the visualization of the undercooling alarm.
      */
     protected TemperatureAlarm getTemperatureUndercoolingAlarm() {
         return undercooling;

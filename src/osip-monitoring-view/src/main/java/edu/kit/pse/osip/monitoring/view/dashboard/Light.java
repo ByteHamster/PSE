@@ -1,6 +1,6 @@
 package edu.kit.pse.osip.monitoring.view.dashboard;
 
-import edu.kit.pse.osip.core.model.behavior.TankAlarm;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import javafx.geometry.Pos;
@@ -12,34 +12,46 @@ import javafx.scene.shape.Circle;
  * Visualizes a traffic light.
  * 
  * @author Martin Armbruster
- * @version 1.2
+ * @version 1.3
  */
 class Light extends VBox implements Observer {
     /**
-     * Stores the current state of all alarms: The light is enabled when at least one other alarm is enabled.
+     * Number of all available alarms.
      */
-    private AlarmState state = AlarmState.ALARM_ENABLED;
+    private int numberAlarms;
     
     /**
-     * Counter for all triggered alarms. If it's above zero, at least one alarm is triggered.
+     * List of all triggered alarms. If its count is above zero, at least one alarm is triggered.
      */
-    private int triggeredAlarms;
+    private ArrayList<AlarmVisualization> triggeredAlarms;
+    
+    /**
+     * List of all enabled alarms.
+     */
+    private ArrayList<AlarmVisualization> enabledAlarms;
+    
+    /**
+     * List of all disabled alarms. If its count is equals to the number of available alarms, all alarms are disabled. 
+     */
+    private ArrayList<AlarmVisualization> disabledAlarms;
     
     /**
      * The circle for the red light.
      */
-    private javafx.scene.shape.Circle redLight;
+    private Circle redLight;
     
     /**
      * The circle for the green light.
      */
-    private javafx.scene.shape.Circle greenLight;
+    private Circle greenLight;
     
     /**
      * Creates a new light.
      */
     protected Light() {
-        triggeredAlarms = 0;
+        triggeredAlarms = new ArrayList<>();
+        enabledAlarms = new ArrayList<>();
+        disabledAlarms = new ArrayList<>();
         this.setSpacing(MonitoringViewConstants.ELEMENTS_GAP);
         this.setAlignment(Pos.TOP_RIGHT);
         redLight = new Circle();
@@ -48,7 +60,6 @@ class Light extends VBox implements Observer {
         greenLight = new Circle();
         greenLight.setStrokeWidth(MonitoringViewConstants.STROKE_WIDTH);
         this.getChildren().add(greenLight);
-        state = AlarmState.ALARM_ENABLED;
         enableWithColor();
     }
     
@@ -61,19 +72,12 @@ class Light extends VBox implements Observer {
     }
     
     /**
-     * Sets the alarm state.
+     * Sets the number of all alarms.
      * 
-     * @param newState The new alarm state.
+     * @param count the number of all alarms.
      */
-    protected void setAlarmState(AlarmState newState) {
-        state = newState;
-        if (newState == AlarmState.ALARM_DISABLED) {
-            disableWithColor();
-        } else if (triggeredAlarms == 0) {
-            triggerWithColor();
-        } else {
-            enableWithColor();
-        }
+    protected void setAlarmCount(int count) {
+        numberAlarms = count;
     }
     
     /**
@@ -83,20 +87,27 @@ class Light extends VBox implements Observer {
      * @param object The new value.
      */
     public void update(Observable observable, Object object) {
-        TankAlarm<?> alarm = (TankAlarm<?>) observable;
-        if (alarm.isAlarmTriggered()) {
-            triggeredAlarms++;
+        AlarmVisualization alarm = (AlarmVisualization) observable;
+        boolean triggered = (boolean) object;
+        if (alarm.getAlarmState() == AlarmState.ALARM_DISABLED) {
+            triggeredAlarms.remove(alarm);
+            enabledAlarms.remove(alarm);
+            disabledAlarms.add(alarm);
+        } else if (triggered) {
+            enabledAlarms.remove(alarm);
+            disabledAlarms.remove(alarm);
+            triggeredAlarms.add(alarm);
         } else {
-            // It's assumed that the light receives a notification about an alarm that isn't triggered
-            // after this alarm was triggered. 
-            triggeredAlarms--;
+            triggeredAlarms.remove(alarm);
+            disabledAlarms.remove(alarm);
+            enabledAlarms.add(alarm);
         }
-        if (state == AlarmState.ALARM_ENABLED) {
-            if (triggeredAlarms == 0) {
-                enableWithColor();
-            } else {
-                triggerWithColor();
-            }
+        if (disabledAlarms.size() == numberAlarms) {
+            disableWithColor();
+        } else if (triggeredAlarms.size() > 0) {
+            triggerWithColor();
+        } else {
+            enableWithColor();
         }
     }
     
