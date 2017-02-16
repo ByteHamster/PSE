@@ -11,7 +11,7 @@ import javafx.scene.shape.Circle;
  * Visualizes the color of the mixtank.
  * 
  * @author Martin Armbruster
- * @version 1.3
+ * @version 1.4
  */
 class ColorVisualization extends BarLayout implements Observer {
     /**
@@ -26,6 +26,7 @@ class ColorVisualization extends BarLayout implements Observer {
         super(Translator.getInstance().getString("monitoring.mixTank.color"));
         colorCircle = new Circle();
         this.getChildren().add(0, colorCircle);
+        this.setPrefWidth(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS * 0.8);
     }
     
     @Override
