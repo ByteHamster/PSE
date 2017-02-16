@@ -7,7 +7,7 @@ import javafx.stage.Screen;
  * Constants for the monitoring view, appearing in more than one class.
  * 
  * @author Martin Armbruster
- * @version 1.3
+ * @version 1.4
  */
 public final class MonitoringViewConstants {
     /**
@@ -36,9 +36,34 @@ public final class MonitoringViewConstants {
     public static final int MIN_UPDATE_INTERVAL = 500;
     
     /**
+     * The default update interval in milliseconds.
+     */
+    public static final int DEFAULT_UPDATE_INTERVAL = 1000;
+    
+    /**
      * The maximum update interval in milliseconds.
      */
     public static final int MAX_UPDATE_INTERVAL = 4000;
+    
+    /**
+     * The minimum server port.
+     */
+    public static final int MIN_PORT = 1024;
+    
+    /**
+     * The maximum server port.
+     */
+    public static final int MAX_PORT = 61000;
+    
+    /**
+     * The number of major ticks for a slider.
+     */
+    public static final int NUMBER_OF_MAJOR_TICKS = 7;
+    
+    /**
+     * The number of minor ticks between two major ticks.
+     */
+    public static final int NUMBER_OF_MINOR_TICKS = 8;
     
     /**
      * The gap between ui elements.
@@ -63,8 +88,8 @@ public final class MonitoringViewConstants {
     /**
      * The preferred height for any type of a bar, relative to the absolute screen height.
      */
-    public static final int PREF_HEIGHT_FOR_BARS = (int) Math.round(0.27778 * Screen.getPrimary().getBounds().
-        getHeight());
+    public static final int PREF_HEIGHT_FOR_BARS = (int)
+            Math.round(0.27778 * Screen.getPrimary().getBounds().getHeight());
     
     /**
      * Color when an alarm is enabled, but not activated.
