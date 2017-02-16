@@ -7,16 +7,16 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 /**
- * This class visualizes a temperature sensor.
+ * This class visualizes a temperature sensor
  */
-public class TemperatureSensorDrawer extends edu.kit.pse.osip.simulation.view.main.ObjectDrawer {
+public class TemperatureSensorDrawer extends ObjectDrawer {
 
     private int rows;
     private int cols;
     private AbstractTank tank;
 
     /**
-     * Generates a new drawer for temperature sensors		
+     * Generates a new drawer for temperature sensors
      * @param pos The center of the drawer
      * @param tank The tank to get the attributes from
      * @param rows The number of rows in which the Tanks are ordered.
