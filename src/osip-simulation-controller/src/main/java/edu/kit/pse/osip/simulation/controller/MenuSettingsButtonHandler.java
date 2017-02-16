@@ -2,8 +2,12 @@ package edu.kit.pse.osip.simulation.controller;
 
 /**
  * Handles a click on the settings menu button
+ *
+ * @version 0.1
+ * @author Niko Wilhelm
  */
 public class MenuSettingsButtonHandler extends AbstractMenuSettingsButton {
+
     /**
      * Creates a new handler.
      * @param settingsWindow The current control window
