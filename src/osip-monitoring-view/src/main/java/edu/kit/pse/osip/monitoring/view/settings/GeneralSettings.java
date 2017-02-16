@@ -6,11 +6,13 @@ import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.monitoring.view.dashboard.MonitoringViewConstants;
 import java.util.EnumMap;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -18,7 +20,7 @@ import javafx.scene.layout.VBox;
  * Contains all controls for setting the general settings.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.1
  */
 class GeneralSettings extends ScrollPane {
     /**
@@ -39,7 +41,7 @@ class GeneralSettings extends ScrollPane {
     /**
      * Shows the update interval as a number.
      */
-    private Spinner<Integer> timeBox;
+    private Spinner<Number> timeBox;
     
     /**
      * Creates a new tab that holds the general settings.
@@ -62,39 +64,53 @@ class GeneralSettings extends ScrollPane {
         Label generalLabel;
         Translator translator = Translator.getInstance();
         
-        HBox box = new HBox(MonitoringViewConstants.ELEMENTS_GAP);
+        HBox box = new HBox(MonitoringViewConstants.ELEMENTS_GAP * 1.5);
+        box.setAlignment(Pos.CENTER_LEFT);
         generalLabel = new Label(translator.getString("monitoring.settings.generalSettings.updateInterval"));
         timeSlider = new Slider(MonitoringViewConstants.MIN_UPDATE_INTERVAL,
                 MonitoringViewConstants.MAX_UPDATE_INTERVAL,
                 currentSettings.getFetchInterval(MonitoringViewConstants.MIN_UPDATE_INTERVAL));
-        timeBox = new Spinner<Integer>(MonitoringViewConstants.MIN_UPDATE_INTERVAL,
-                MonitoringViewConstants.MAX_UPDATE_INTERVAL, currentSettings.getFetchInterval(500));
+        timeSlider.setMajorTickUnit((MonitoringViewConstants.MAX_UPDATE_INTERVAL
+                - MonitoringViewConstants.MIN_UPDATE_INTERVAL) / MonitoringViewConstants.NUMBER_OF_MAJOR_TICKS);
+        timeSlider.setMinorTickCount(MonitoringViewConstants.NUMBER_OF_MINOR_TICKS);
+        timeSlider.setShowTickMarks(true);
+        timeSlider.setShowTickLabels(true);
+        timeSlider.setSnapToTicks(true);
+        timeSlider.setPrefWidth(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS);
+        timeBox = new Spinner<Number>((double) MonitoringViewConstants.MIN_UPDATE_INTERVAL,
+                MonitoringViewConstants.MAX_UPDATE_INTERVAL,
+                currentSettings.getFetchInterval(MonitoringViewConstants.DEFAULT_UPDATE_INTERVAL));
         timeBox.setEditable(true);
-        timeSlider.valueProperty().bind(timeBox.valueProperty());
+        timeBox.getValueFactory().valueProperty().bindBidirectional(timeSlider.valueProperty());
         box.getChildren().addAll(generalLabel, timeSlider, timeBox);
         generalLabel = new Label(translator.getString("monitoring.settings.generalSettings.milliseconds"));
         box.getChildren().add(generalLabel);
         layout.getChildren().add(box);
         
-        box = new HBox(MonitoringViewConstants.ELEMENTS_GAP);
+        GridPane servers = new GridPane();
+        servers.setHgap(MonitoringViewConstants.ELEMENTS_GAP);
+        servers.setVgap(MonitoringViewConstants.ELEMENTS_GAP);
         generalLabel = new Label(translator.getString("monitoring.settings.generalSettings.serverHost"));
         serverHostname = new TextField(currentSettings.getHostname(TankSelector.MIX, ""));
-        box.getChildren().addAll(generalLabel, serverHostname);
-        layout.getChildren().add(box);
+        servers.add(generalLabel, 0, 0);
+        servers.add(serverHostname, 1, 0);
         
         Spinner<Integer> currentField;
         int defaultPort = 12868;
+        int row = 1;
         for (TankSelector tank : TankSelector.values()) {
-            box = new HBox(MonitoringViewConstants.ELEMENTS_GAP);
             generalLabel = new Label(String.format(
                     translator.getString("monitoring.settings.generalSettings.serverPort"), tank.toString()));
-            currentField = new Spinner<Integer>(1024, 61000, currentSettings.getPort(tank, defaultPort++));
+            currentField = new Spinner<Integer>(MonitoringViewConstants.MIN_PORT, MonitoringViewConstants.MAX_PORT,
+                    currentSettings.getPort(tank, defaultPort++));
             currentField.setEditable(true);
+            currentField.setPrefWidth(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS);
             serverPorts.put(tank, currentField);
-            box.getChildren().addAll(generalLabel, currentField);
-            layout.getChildren().add(box);
+            servers.add(generalLabel, 0, row);
+            servers.add(currentField, 1, row++);
         }
         
+        layout.getChildren().add(servers);
         this.setContent(layout);
     }
     
@@ -123,6 +139,6 @@ class GeneralSettings extends ScrollPane {
      * @return the update interval.
      */
     protected int getUpdateInterval() {
-        return timeBox.getValue();
+        return timeBox.getValue().intValue();
     }
 }

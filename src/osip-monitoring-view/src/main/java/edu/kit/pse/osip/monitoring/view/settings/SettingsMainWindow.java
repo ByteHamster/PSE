@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TabPane.TabClosingPolicy;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -20,7 +21,7 @@ import javafx.stage.Stage;
  * The main entry point for the settings view. Within, the user can set all available parameters for his needs.
  * 
  * @author Martin Armbruster
- * @version 1.1
+ * @version 1.2
  */
 class SettingsMainWindow {
     /**
@@ -94,6 +95,7 @@ class SettingsMainWindow {
         
         tabsPane = new TabPane();
         tabsPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
+        tabsPane.setMaxHeight(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS * 1.5);
         tabGeneralSettings = new Tab(translator.getString("monitoring.settings.tab.generalSettings"));
         tabGeneralSettings.setContent(generalSettingsTab);
         tabAlarms = new Tab(translator.getString("monitoring.settings.tab.alarms"));
@@ -110,8 +112,11 @@ class SettingsMainWindow {
         buttons.getChildren().addAll(buttonCancel, buttonSave);
         
         VBox generalLayout = new VBox(MonitoringViewConstants.ELEMENTS_GAP);
+        generalLayout.setStyle("-fx-font-size: " + MonitoringViewConstants.FONT_SIZE + "px;");
         generalLayout.getChildren().addAll(tabsPane, buttons);
         Scene scene = new Scene(generalLayout);
+        window.setTitle(translator.getString("monitoring.settings.title"));
+        window.getIcons().add(new Image("icon.png"));
         window.setScene(scene);
     }
     

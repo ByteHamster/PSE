@@ -5,6 +5,7 @@ import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.monitoring.view.dashboard.MonitoringViewConstants;
 import java.util.EnumMap;
+import javafx.geometry.Insets;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
@@ -13,7 +14,7 @@ import javafx.scene.layout.VBox;
  * Contains all controls for enabling / disabling the alarms in the monitoring view.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.1
  */
 class AlarmSettings extends ScrollPane {
     /**
@@ -57,6 +58,7 @@ class AlarmSettings extends ScrollPane {
     private void createLayout(ClientSettingsWrapper currentSettings) {
         Translator translator = Translator.getInstance();
         VBox layout = new VBox(MonitoringViewConstants.ELEMENTS_GAP);
+        layout.setPadding(new Insets(MonitoringViewConstants.ELEMENTS_GAP));
         CheckBox currentBox;
         for (TankSelector tank : TankSelector.values()) {
             currentBox = new CheckBox(String.format(translator.getString("monitoring.settings.alarms.liquidUnderflow"),
