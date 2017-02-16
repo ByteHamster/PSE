@@ -34,4 +34,28 @@ public abstract class RotatingControlDrawer extends ObjectDrawer {
     public void setSpeed(int speed) {
         this.speed = speed;
     }
+
+    /**
+     * This rotates the x coordinate of the point described by (xPos,yPos) around the point
+     * (centerX, centerY) by degree degrees.
+     * @param degrees The number of degrees by which should be rotated. This parameter is expected to be in
+     *                degrees, not radians.
+     * @return
+     */
+    public double rotateX(double xPos, double centerX, double yPos, double centerY, double degrees) {
+        double angle = degrees * (Math.PI / 180);
+        return Math.cos(angle) * (xPos - centerX) - Math.sin(angle) * (yPos - centerY) + centerX;
+    }
+
+    /**
+     * This rotates the y coordinate of the point described by (xPos,yPos) around the point
+     * (centerX, centerY) by degree degrees.
+     * @param degrees The number of degrees by which should be rotated. This parameter is expected to be in
+     *                degrees, not radians.
+     * @return
+     */
+    public double rotateY(double xPos, double centerX, double yPos, double centerY, double degrees) {
+        double angle = degrees * (Math.PI / 180);
+        return Math.sin(angle) * (xPos - centerX) + Math.cos(angle) * (yPos - centerY) + centerY;
+    }
 }
