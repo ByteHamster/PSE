@@ -1,18 +1,26 @@
 package edu.kit.pse.osip.monitoring.view.settings;
 
 import edu.kit.pse.osip.core.io.files.ClientSettingsWrapper;
+import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.monitoring.controller.AbstractSettingsCancelButtonHandler;
 import edu.kit.pse.osip.monitoring.controller.AbstractSettingsSaveButtonHandler;
+import edu.kit.pse.osip.monitoring.view.dashboard.MonitoringViewConstants;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TabPane.TabClosingPolicy;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
  * The main entry point for the settings view. Within, the user can set all available parameters for his needs.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.1
  */
 class SettingsMainWindow {
     /**
@@ -71,7 +79,40 @@ class SettingsMainWindow {
      * @param currentSettings The current settings used for displaying.
      */
     protected SettingsMainWindow(ClientSettingsWrapper currentSettings) {
-        throw new RuntimeException("Not implemented!");
+        generalSettingsTab = new GeneralSettings(currentSettings);
+        alarmsTab = new AlarmSettings(currentSettings);
+        progressionsTab = new Progressions(currentSettings);
+        createLayout();
+    }
+    
+    /**
+     * Creates the layout for the settings view.
+     */
+    private void createLayout() {
+        window = new Stage();
+        Translator translator = Translator.getInstance();
+        
+        tabsPane = new TabPane();
+        tabsPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
+        tabGeneralSettings = new Tab(translator.getString("monitoring.settings.tab.generalSettings"));
+        tabGeneralSettings.setContent(generalSettingsTab);
+        tabAlarms = new Tab(translator.getString("monitoring.settings.tab.alarms"));
+        tabAlarms.setContent(alarmsTab);
+        tabProgressions = new Tab(translator.getString("monitoring.settings.tab.progressions"));
+        tabProgressions.setContent(progressionsTab);
+        tabsPane.getTabs().addAll(tabGeneralSettings, tabAlarms, tabProgressions);
+        
+        HBox buttons = new HBox(MonitoringViewConstants.ELEMENTS_GAP);
+        buttons.setPadding(new Insets(MonitoringViewConstants.ELEMENTS_GAP));
+        buttons.setAlignment(Pos.BOTTOM_RIGHT);
+        buttonCancel = new Button(translator.getString("monitoring.settings.button.cancel"));
+        buttonSave = new Button(translator.getString("monitoring.settings.button.save"));
+        buttons.getChildren().addAll(buttonCancel, buttonSave);
+        
+        VBox generalLayout = new VBox(MonitoringViewConstants.ELEMENTS_GAP);
+        generalLayout.getChildren().addAll(tabsPane, buttons);
+        Scene scene = new Scene(generalLayout);
+        window.setScene(scene);
     }
     
     /**
@@ -80,7 +121,7 @@ class SettingsMainWindow {
      * @return the current used window.
      */
     protected Stage getStage() {
-        throw new RuntimeException("Not implemented!");
+        return window;
     }
     
     /**
@@ -89,7 +130,7 @@ class SettingsMainWindow {
      * @return the current used GeneralSettings object.
      */
     protected GeneralSettings getGeneralSettings() {
-        throw new RuntimeException("Not implemented!");
+        return generalSettingsTab;
     }
     
     /**
@@ -98,7 +139,7 @@ class SettingsMainWindow {
      * @return the current used Progressions object.
      */
     protected Progressions getProgressions() {
-        throw new RuntimeException("Not implemented!");
+        return progressionsTab;
     }
     
     /**
@@ -107,7 +148,7 @@ class SettingsMainWindow {
      * @return the current used AlarmSettings object.
      */
     protected AlarmSettings getAlarmSettings() {
-        throw new RuntimeException("Not implemented!");
+        return alarmsTab;
     }
     
     /**
@@ -116,7 +157,7 @@ class SettingsMainWindow {
      * @param handler The handler for the cancel button in the settings view.
      */
     protected void setSettingsCancelButtonHandler(AbstractSettingsCancelButtonHandler handler) {
-        throw new RuntimeException("Not implemented!");
+        buttonCancel.setOnAction(handler);
     }
     
     /**
@@ -125,6 +166,6 @@ class SettingsMainWindow {
      * @param handler The handler for the save button int eh settings view.
      */
     protected void setSettingsSaveButtonHandler(AbstractSettingsSaveButtonHandler handler) {
-        throw new RuntimeException("Not implemented!");
+        buttonSave.setOnAction(handler);
     }
 }
