@@ -6,6 +6,7 @@ import edu.kit.pse.osip.core.utils.language.Translator;
 import java.util.EnumMap;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -15,7 +16,7 @@ import javafx.stage.Stage;
  * The entry point for the monitoring view. It shows all sensor datas graphically.
  * 
  * @author Martin Armbruster
- * @version 1.3
+ * @version 1.4
  */
 class MonitoringMainWindow {
     /**
@@ -103,6 +104,7 @@ class MonitoringMainWindow {
         Scene scene = new Scene(mainPane);
         primaryStage.setMaximized(true);
         primaryStage.setTitle(Translator.getInstance().getString("monitoring.title"));
+        primaryStage.getIcons().add(new Image("/icon.png"));
         primaryStage.setScene(scene);
         primaryStage.show();
     }
