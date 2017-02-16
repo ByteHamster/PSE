@@ -19,7 +19,7 @@ import javafx.scene.paint.Color;
  * Visualizes a general tank.
  * 
  * @author Martin Armbruster
- * @version 1.5
+ * @version 1.6
  */
 abstract class AbstractTankVisualization extends GridPane {
     /**
@@ -116,18 +116,19 @@ abstract class AbstractTankVisualization extends GridPane {
                 Translator.getInstance().getString("monitoring.tank.temperatureOverheatingAlarm"));
         temperatureUndercoolingAlarm = new AlarmVisualization(
                 Translator.getInstance().getString("monitoring.tank.temperatureUndercoolingAlarm"));
-        VBox box = new VBox();
-        box.setSpacing(MonitoringViewConstants.ELEMENTS_GAP);
+        
+        VBox box = new VBox(MonitoringViewConstants.ELEMENTS_GAP);
         box.getChildren().addAll(overflowAlarm.getLayout(), underflowAlarm.getLayout(),
                 temperatureOverheatingAlarm.getLayout(), temperatureUndercoolingAlarm.getLayout());
-        alarmPane = new HBox();
-        alarmPane.setSpacing(MonitoringViewConstants.ELEMENTS_GAP);
+        alarmPane = new HBox(MonitoringViewConstants.ELEMENTS_GAP);
         alarmPane.getChildren().add(box);
         this.add(alarmPane, 0, 0, 2, 1);
+        
         drain = new GaugeVisualization(Translator.getInstance().getString("monitoring.tank.drain"), tank.getOutPipe());
         fillLevel = new FillLevelVisualization();
         temperature = new TemperatureVisualization();
         progresses = new ProgressOverview(tank);
+        
         overflow = new FillAlarm(tank, MonitoringViewConstants.OVERFLOW_ALARM_THRESHOLD, AlarmBehavior.GREATER_THAN);
         overflow.addObserver(overflowAlarm);
         underflow = new FillAlarm(tank, MonitoringViewConstants.UNDERFLOW_ALARM_THRESHOLD, AlarmBehavior.SMALLER_THAN);

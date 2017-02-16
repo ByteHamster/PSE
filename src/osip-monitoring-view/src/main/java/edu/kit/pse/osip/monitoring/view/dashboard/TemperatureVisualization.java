@@ -12,7 +12,7 @@ import javafx.scene.control.Slider;
  * Visualizes the current temperature.
  * 
  * @author Martin Armbruster
- * @version 1.4
+ * @version 1.5
  */
 class TemperatureVisualization extends BarLayout implements Observer {
     /**
@@ -25,6 +25,9 @@ class TemperatureVisualization extends BarLayout implements Observer {
      */
     private static final int NUMBER_OF_MINOR_TICKS = 10;
     
+    /**
+     * Difference between °K and °C to calculate values from one to another.
+     */
     private static final double DIFFERENCE_KELVIN_CELSIUS = 273.15;
     
     /**
@@ -40,8 +43,8 @@ class TemperatureVisualization extends BarLayout implements Observer {
         temperatureBar = new Slider();
         temperatureBar.setDisable(true);
         temperatureBar.setShowTickLabels(true);
-        temperatureBar.setMin(SimulationConstants.MIN_TEMPERATURE - DIFFERENCE_KELVIN_CELSIUS);
-        temperatureBar.setMax(SimulationConstants.MAX_TEMPERATURE - DIFFERENCE_KELVIN_CELSIUS);
+        temperatureBar.setMin(Math.round(SimulationConstants.MIN_TEMPERATURE - DIFFERENCE_KELVIN_CELSIUS));
+        temperatureBar.setMax(Math.round(SimulationConstants.MAX_TEMPERATURE - DIFFERENCE_KELVIN_CELSIUS));
         temperatureBar.setShowTickMarks(true);
         temperatureBar.setMinorTickCount(NUMBER_OF_MINOR_TICKS);
         temperatureBar.setMajorTickUnit((SimulationConstants.MAX_TEMPERATURE - SimulationConstants.MIN_TEMPERATURE)
