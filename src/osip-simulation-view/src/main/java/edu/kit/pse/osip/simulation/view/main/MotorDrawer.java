@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 /**
  * This class visualizes the mixing motor in the MixTank.
  */
-public class MotorDrawer extends edu.kit.pse.osip.simulation.view.main.RotatingControlDrawer {
+public class MotorDrawer extends RotatingControlDrawer {
 
     private Point2D position;
     private Motor motor;
