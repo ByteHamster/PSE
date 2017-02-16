@@ -1,32 +1,43 @@
 package edu.kit.pse.osip.simulation.view.main;
 
-import java.util.*;
-
-import edu.kit.pse.osip.core.model.base.*;
+import edu.kit.pse.osip.core.model.base.MixTank;
+import edu.kit.pse.osip.core.model.base.ProductionSite;
+import edu.kit.pse.osip.core.model.base.Tank;
+import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.simulation.controller.MenuAboutButtonHandler;
 import edu.kit.pse.osip.simulation.controller.MenuHelpButtonHandler;
 import edu.kit.pse.osip.simulation.controller.MenuControlButtonHandler;
 import edu.kit.pse.osip.simulation.controller.AbstractMenuSettingsButton;
 import edu.kit.pse.osip.simulation.controller.SimulationViewInterface;
 import javafx.animation.AnimationTimer;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.stage.Screen;
+import javafx.stage.Stage;
+import java.util.Collection;
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Observable;
 
 /**
+<<<<<<< Updated upstream
  * The main window for visualizing the OSIP simulation.
  * It regularly updates itself with current information from the model and posesses an update() method for alarms.
  * If an overflow occurs in the model it is be displayed by an overlay.
  */
 public class SimulationMainWindow implements SimulationViewInterface, java.util.Observer {
     private ProductionSite productionSite;
-    public Collection<Drawer> element;
+    private Collection<Drawer> element;
+    private Canvas canvas;
 
     /**
-     * Creates a new SimulationMainWindow
+     * Creates a new SimulationMainWindow. It is assumed that there will only ever be two rows of tanks.
      * @param productionSite The ProductionSite object, so that the view can access the model
      */
     public SimulationMainWindow(ProductionSite productionSite) {
@@ -66,23 +77,25 @@ public class SimulationMainWindow implements SimulationViewInterface, java.util.
         // Get screen dimensions of the primary screen (minus taskbars etc)
         Rectangle2D screenDimensions = Screen.getPrimary().getVisualBounds();
 
+        // Set the dimensions of Stage and Canvas to the screen size
         primaryStage.setX(screenDimensions.getMinX());
         primaryStage.setY(screenDimensions.getMinY());
         primaryStage.setWidth(screenDimensions.getWidth());
         primaryStage.setHeight(screenDimensions.getHeight());
 
-        Canvas canvas = new Canvas(screenDimensions.getWidth(), screenDimensions.getHeight());
+        canvas = new Canvas(primaryStage.getWidth(), primaryStage.getHeight());
 
         root.getChildren().add(canvas);
-        //TODO: make sure Stage/ Scene/ Canvas is maximized
 
         GraphicsContext context = canvas.getGraphicsContext2D();
 
+        setResizeListeners(primaryStage);
+
+        // The AnimationTimer tries to update the window as fast as possible with a maximum of 60 fps.
         new AnimationTimer() {
             @Override
             public void handle(long currentTime) {
-                // TODO: clear whole canvas
-
+                context.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
                 for (Drawer d : element) {
                     d.draw(context, currentTime);
                 }
@@ -139,5 +152,41 @@ public class SimulationMainWindow implements SimulationViewInterface, java.util.
      */
     public final void setHelpButtonHandler(MenuHelpButtonHandler helpButtonHandler) {
         throw new RuntimeException("Not implemented!");
+    }
+
+    private void setResizeListeners(Stage primaryStage) {
+
+        final ChangeListener<Number> listener = new ChangeListener<Number>() {
+            final Timer timer = new Timer();
+            TimerTask task = null;
+            final long delayTime = 50;
+
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, final Number newValue) {
+                if (task != null) { // there was already a task scheduled from the previous operation
+                    task.cancel(); // cancel it, we have a new size to consider
+                }
+
+                task = new TimerTask() {
+                    @Override
+                    public void run() {
+                        synchronized (canvas) {
+
+                            double newWidth = primaryStage.getWidth();
+                            double newHeight = primaryStage.getHeight();
+
+                            canvas.setWidth(newWidth);
+                            canvas.setHeight(newHeight);
+                            canvas.getGraphicsContext2D().clearRect(0, 0, newWidth, newHeight);
+                        }
+                    }
+                };
+
+                timer.schedule(task, delayTime);
+            }
+        };
+
+        primaryStage.widthProperty().addListener(listener);
+        primaryStage.heightProperty().addListener(listener);
     }
 }
