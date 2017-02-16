@@ -14,11 +14,16 @@ import javafx.scene.shape.Circle;
  * @author Martin Armbruster
  * @version 1.2
  */
-class AlarmVisualization extends HBox implements Observer {
+class AlarmVisualization extends Observable implements Observer {
     /**
      * Saves the current alarm state.
      */
     private AlarmState currentState;
+    
+    /**
+     * The layout for this visualizations.
+     */
+    private HBox layout;
     
     /**
      * Label containing the name of the alarm.
@@ -42,15 +47,33 @@ class AlarmVisualization extends HBox implements Observer {
         alarmState.setStrokeWidth(MonitoringViewConstants.STROKE_WIDTH);
         alarmState.setFill(MonitoringViewConstants.ALARM_ENABLED);
         currentState = AlarmState.ALARM_ENABLED;
-        this.setSpacing(MonitoringViewConstants.ELEMENTS_GAP);
-        this.getChildren().addAll(alarmState, this.alarmName);
+        layout = new HBox(MonitoringViewConstants.ELEMENTS_GAP) {
+            @Override
+            protected void layoutChildren() {
+                double radius = this.getHeight() / 2.0;       
+                alarmState.setRadius(radius);
+                super.layoutChildren();
+            }
+        };
+        layout.getChildren().addAll(alarmState, this.alarmName);
     }
     
-    @Override
-    protected void layoutChildren() {
-        double radius = this.getHeight() / 2.0;       
-        alarmState.setRadius(radius);
-        super.layoutChildren();
+    /**
+     * Returns the layout for this visualization.
+     * 
+     * @return the layout for this visualization.
+     */
+    protected HBox getLayout() {
+        return layout;
+    }
+    
+    /**
+     * Returns the current state of the alarm.
+     * 
+     * @return the current state of the alarm.
+     */
+    protected AlarmState getAlarmState() {
+        return currentState;
     }
     
     /**
@@ -65,6 +88,7 @@ class AlarmVisualization extends HBox implements Observer {
         } else if (newState == AlarmState.ALARM_DISABLED) {
             alarmState.setFill(MonitoringViewConstants.ALARM_DISABLED);
         }
+        super.notifyObservers(false);
     }
     
     /**
@@ -74,13 +98,15 @@ class AlarmVisualization extends HBox implements Observer {
      * @param object The new value.
      */
     public void update(Observable observable, Object object) {
-        if (currentState == AlarmState.ALARM_ENABLED) {
-            TankAlarm<?> actualAlarm = (TankAlarm<?>) observable;
-            if (actualAlarm.isAlarmTriggered()) {
-                alarmState.setFill(MonitoringViewConstants.ALARM_TRIGGERED);
-            } else {
-                alarmState.setFill(MonitoringViewConstants.ALARM_ENABLED);
-            }
+        TankAlarm<?> actualAlarm = (TankAlarm<?>) observable;
+        super.notifyObservers(actualAlarm.isAlarmTriggered());
+        if (currentState == AlarmState.ALARM_DISABLED) {
+            return;
+        }
+        if (actualAlarm.isAlarmTriggered()) {
+            alarmState.setFill(MonitoringViewConstants.ALARM_TRIGGERED);
+        } else {
+            alarmState.setFill(MonitoringViewConstants.ALARM_ENABLED);
         }
     }
 }

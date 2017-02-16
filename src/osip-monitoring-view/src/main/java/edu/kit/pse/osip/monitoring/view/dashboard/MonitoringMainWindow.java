@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  * The entry point for the monitoring view. It shows all sensor datas graphically.
  * 
  * @author Martin Armbruster
- * @version 1.2
+ * @version 1.3
  */
 class MonitoringMainWindow {
     /**
@@ -121,6 +121,7 @@ class MonitoringMainWindow {
         mixTank.getUnderflowAlarm().addObserver(light);
         mixTank.getTemperatureOverheatingAlarm().addObserver(light);
         mixTank.getTemperatureUndercoolingAlarm().addObserver(light);
+        light.setAlarmCount(tankVisualizations.size() + 1);
     }
     
     /**
