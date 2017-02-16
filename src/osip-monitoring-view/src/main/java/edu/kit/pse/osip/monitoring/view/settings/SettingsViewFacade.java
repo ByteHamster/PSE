@@ -10,141 +10,77 @@ import edu.kit.pse.osip.monitoring.controller.SettingsViewInterface;
  * Provides a single access point to the user-set settings.
  * 
  * @author Martin Armbruster
- * @version 1.1
+ * @version 1.2
  */
-public final class SettingsViewFacade implements SettingsViewInterface {
+public class SettingsViewFacade implements SettingsViewInterface {
     /**
-     * The current settings view contaning the user-set settings.
+     * The current settings view containing the user-set settings.
      */
     private SettingsMainWindow currentSettingsWindow;
     
-    /**
-     * Shows the settings view with the current settings.
-     * 
-     * @param currentSettings The current settings used for displaying them.
-     */
+    @Override
     public void showSettingsWindow(ClientSettingsWrapper currentSettings) {
-        throw new RuntimeException("Not implemented!");
+        currentSettingsWindow = new SettingsMainWindow(currentSettings);
+        currentSettingsWindow.getStage().show();
     }
     
-    /**
-     * Sets the handler for the cancel button in the settings view.
-     * 
-     * @param handler The handler for the cancel button in the settings view.
-     */
+    @Override
     public void setSettingsCancelButtonHandler(AbstractSettingsCancelButtonHandler handler) {
-        throw new RuntimeException("Not implemented!");
+        currentSettingsWindow.setSettingsCancelButtonHandler(handler);
     }
     
-    /**
-     * Sets the handler for the save button in the settings view.
-     * 
-     * @param handler The handler for the save button in the settings view.
-     */
+    @Override
     public void setSettingsSaveButtonHandler(AbstractSettingsSaveButtonHandler handler) {
-        throw new RuntimeException("Not implemented!");
+        currentSettingsWindow.setSettingsSaveButtonHandler(handler);
     }
     
-    /**
-     * Hides the settings view.
-     */
+    @Override
     public void hideSettingsWindow() {
-        throw new RuntimeException("Not implemented!");
+        currentSettingsWindow.getStage().hide();
     }
     
-    /**
-     * Returns the host name for the servers.
-     * 
-     * @return the host name for the servers.
-     */
+    @Override
     public String getServerHostname() {
-        throw new RuntimeException("Not implemented!");
+        return currentSettingsWindow.getGeneralSettings().getServerHost();
     }
     
-    /**
-     * Returns the port number for a specified server.
-     * 
-     * @return the port number of a specified server.
-     * @param serverNumber Number of the server whose port number will be returned.
-     */
-    public int getServerPort(int serverNumber) {
-        throw new RuntimeException("Not implemented!");
+    @Override
+    public int getServerPort(TankSelector tank) {
+        return currentSettingsWindow.getGeneralSettings().getServerPort(tank);
     }
     
-    /**
-     * Returns the update time interval.
-     * 
-     * @return the update time interval.
-     */
+    @Override
     public int getUpdateInterval() {
-        throw new RuntimeException("Not implemented!");
+        return currentSettingsWindow.getGeneralSettings().getUpdateInterval();
     }
     
-    /**
-     * Returns true if the underflow alarm should be enabled for a specified tank and false otherwise.
-     * 
-     * @return true if the underflow alarm should be enabled for the specified tank. false otherwise.
-     * @param tank Tank whose value will be looked up.
-     */
+    @Override
     public boolean isUnderflowAlarmEnabled(TankSelector tank) {
-        throw new RuntimeException("Not implemented!");
+        return currentSettingsWindow.getAlarmSettings().isUnderflowEnabled(tank);
     }
     
-    /**
-     * Returns true if the overflow alarm should be enabled for a specified tank and false otherwise.
-     * 
-     * @return true if the overflow alarm should be enabled for a specified tank. false otherwise.
-     * @param tank The tank whose overflow alarm should be enabled or disabled.
-     */
+    @Override
     public boolean isOverflowAlarmEnabled(TankSelector tank) {
-        throw new RuntimeException("Not implemented!");
+        return currentSettingsWindow.getAlarmSettings().isOverflowEnabled(tank);
     }
     
-    /**
-     * Returns true if the overheating alarm for the temperature should be enabled for a specified tank
-     * and false otherwise.
-     * 
-     * @return true if the overheating alarm for the temperature should be enabled for a specified tank
-     * and false otherwise.
-     * @param tank The specified tank.
-     */
+    @Override
     public boolean isTemperatureOverheatingAlarmEnabled(TankSelector tank) {
-        throw new RuntimeException("Not implemented!");
+        return currentSettingsWindow.getAlarmSettings().isTemperatureOverheatingEnabled(tank);
     }
     
-    /**
-     * Returns true if the undercooling alarm for the temperature should be enabled for a specified tank
-     * and false otherwise.
-     * 
-     * @return true if the undercooling alarm for the temperature should be enabled for a specified tank
-     * and false otherwise.
-     * @param tank The specified tank.
-     */
+    @Override
     public boolean isTemperatureUndercoolingAlarmEnabled(TankSelector tank) {
-        throw new RuntimeException("Not implemented!");
+        return currentSettingsWindow.getAlarmSettings().isTemperatureUndercoolingEnabled(tank);
     }
     
-    /**
-     * Returns true if the logging of the fill level progression should be enabled for a specified tank
-     * and false otherwise.
-     * 
-     * @return true if the logging of the fill level progression should be enabled for the specified tank
-     * or false otherwise.
-     * @param tank The tank whose fill level progression should be enabled or disabled.
-     */
+    @Override
     public boolean isFillLevelProgressionEnabled(TankSelector tank) {
-        throw new RuntimeException("Not implemented!");
+        return currentSettingsWindow.getProgressions().isFillLevelEnabled(tank);
     }
     
-    /**
-     * Returns true if the logging of the temperature progression should be enabled for the specified tank
-     * and false otherwise.
-     * 
-     * @return true if the logging of the temperature progression should be enabled for the specified tank.
-     * false otherwise.
-     * @param tank The tank whose temperature progression will be set.
-     */
+    @Override
     public boolean isTemperatureProgressionEnabled(TankSelector tank) {
-        throw new RuntimeException("Not implemented!");
+        return currentSettingsWindow.getProgressions().isTemperatureEnabled(tank);
     }
 }

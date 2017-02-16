@@ -7,7 +7,7 @@ import edu.kit.pse.osip.core.model.base.TankSelector;
  * Provides abstraction from the view and a single interface for accessing the user-set settings.
  * 
  * @author Martin Armbruster
- * @version 1.1
+ * @version 1.2
  */
 public interface SettingsViewInterface {
     /**
@@ -47,9 +47,9 @@ public interface SettingsViewInterface {
      * Returns the port number for a specified server.
      * 
      * @return the port number of a specified server.
-     * @param serverNumber Number of the server whose port number will be returned.
+     * @param tank Selector of the tank / server whose port number will be returned.
      */
-    int getServerPort(int serverNumber);
+    int getServerPort(TankSelector tank);
     
     /**
      * Returns the update time interval.
