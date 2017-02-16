@@ -4,9 +4,9 @@ import edu.kit.pse.osip.core.model.base.MixTank;
 import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
-import edu.kit.pse.osip.simulation.controller.MenuAboutButtonHandler;
-import edu.kit.pse.osip.simulation.controller.MenuHelpButtonHandler;
-import edu.kit.pse.osip.simulation.controller.MenuControlButtonHandler;
+import edu.kit.pse.osip.simulation.controller.AbstractMenuAboutButton;
+import edu.kit.pse.osip.simulation.controller.AbstractMenuHelpButton;
+import edu.kit.pse.osip.simulation.controller.AbstractMenuControlButton;
 import edu.kit.pse.osip.simulation.controller.AbstractMenuSettingsButton;
 import edu.kit.pse.osip.simulation.controller.SimulationViewInterface;
 import javafx.animation.AnimationTimer;
@@ -17,6 +17,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import java.util.Collection;
@@ -26,13 +27,21 @@ import java.util.TimerTask;
 import java.util.Observable;
 
 /**
-<<<<<<< Updated upstream
  * The main window for visualizing the OSIP simulation.
  * It regularly updates itself with current information from the model and posesses an update() method for alarms.
  * If an overflow occurs in the model it is be displayed by an overlay.
+ *
+ * @version 0.4
+ * @author Niko Wilhelm
  */
 public class SimulationMainWindow implements SimulationViewInterface, java.util.Observer {
-    private ProductionSite productionSite;
+
+    /**
+     * It is assumed, that the tanks and mixtank are always ordered in two rows.
+     */
+    private final int ROWS = 2;
+
+    private SimulationMenu menu;
     private Collection<Drawer> element;
     private Canvas canvas;
 
@@ -42,7 +51,6 @@ public class SimulationMainWindow implements SimulationViewInterface, java.util.
      */
     public SimulationMainWindow(ProductionSite productionSite) {
         element = new ArrayList<Drawer>();
-        this.productionSite = productionSite;
 
         int tankCount = TankSelector.getUpperTankCount();
         TankSelector[] topTanks = TankSelector.valuesWithoutMix();
@@ -50,7 +58,7 @@ public class SimulationMainWindow implements SimulationViewInterface, java.util.
             double xPos = i * (1.0 / tankCount);
             Point2D position = new Point2D(xPos, 0.0);
             Tank tank = productionSite.getUpperTank(topTanks[i]);
-            element.add(new TankDrawer(position, tank, 2, tankCount));
+            element.add(new TankDrawer(position, tank, ROWS, tankCount));
         }
 
         // get all the tanks from the productionsite
@@ -59,7 +67,7 @@ public class SimulationMainWindow implements SimulationViewInterface, java.util.
         //Assuming there are only ever two rows of tanks
         double yPos = 0.5;
         Point2D mixPos = new Point2D(xPos, yPos);
-        element.add(new MixTankDrawer(mixPos, mix, 2, tankCount));
+        element.add(new MixTankDrawer(mixPos, mix, ROWS, tankCount));
         throw new RuntimeException("Not implemented!");
     }
 
@@ -83,17 +91,48 @@ public class SimulationMainWindow implements SimulationViewInterface, java.util.
         primaryStage.setWidth(screenDimensions.getWidth());
         primaryStage.setHeight(screenDimensions.getHeight());
 
-        canvas = new Canvas(primaryStage.getWidth(), primaryStage.getHeight());
+        setResizeListeners(primaryStage);
 
+        makeLayOut(primaryStage);
+
+        primaryStage.show();
+    }
+
+    private void makeLayOut(Stage primaryStage) {
+        BorderPane mainPane = new BorderPane();
+
+        //TODO: figure out a constant for this
+        mainPane.setStyle("-fx-font-size: 10px;");
+
+        menu = new SimulationMenu();
+        mainPane.setTop(menu);
+
+        canvas = setCanvas(primaryStage);
+
+        mainPane.setCenter(canvas);
+
+        Scene scene = new Scene(mainPane);
+        primaryStage.setScene(scene);
+    }
+
+    private Canvas setCanvas(Stage primaryStage) {
+        Rectangle2D screenDimensions = Screen.getPrimary().getVisualBounds();
+
+        double totalWidth = screenDimensions.getWidth();
+        double totalHeight = screenDimensions.getHeight();
+
+        Group root = new Group();
+        Scene theScene = new Scene(root);
+        primaryStage.setScene(theScene);
+
+        canvas = new Canvas(totalWidth, totalHeight);
         root.getChildren().add(canvas);
 
         GraphicsContext context = canvas.getGraphicsContext2D();
 
-        setResizeListeners(primaryStage);
+        setResizeListeners( primaryStage );
 
-        // The AnimationTimer tries to update the window as fast as possible with a maximum of 60 fps.
         new AnimationTimer() {
-            @Override
             public void handle(long currentTime) {
                 context.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
                 for (Drawer d : element) {
@@ -102,8 +141,7 @@ public class SimulationMainWindow implements SimulationViewInterface, java.util.
             }
         }.start();
 
-        primaryStage.show();
-        throw new RuntimeException("Not implemented!");
+        return canvas;
     }
 
     /**
@@ -126,8 +164,8 @@ public class SimulationMainWindow implements SimulationViewInterface, java.util.
      * Sets the handler for pressing the control entry in the menu
      * @param controlButtonHandler The handler to execute
      */
-    public final void setControlButtonHandler(MenuControlButtonHandler controlButtonHandler) {
-        throw new RuntimeException("Not implemented!");
+    public final void setControlButtonHandler(AbstractMenuControlButton controlButtonHandler) {
+        menu.setControlButtonHandler(controlButtonHandler);
     }
 
     /**
@@ -135,25 +173,29 @@ public class SimulationMainWindow implements SimulationViewInterface, java.util.
      * @param settingsButtonHandler The handler to be called when the settings button is pressed
      */
     public final void setSettingsButtonHandler(AbstractMenuSettingsButton settingsButtonHandler) {
-        throw new RuntimeException("Not implemented!");
+        menu.setSettingsButtonHandler(settingsButtonHandler);
     }
 
     /**
      * Sets the handler for pressing the about entry in the menu
      * @param aboutButtonHandler The handler to be called when the about button is pressed
      */
-    public final void setAboutButtonHandler(MenuAboutButtonHandler aboutButtonHandler) {
-        throw new RuntimeException("Not implemented!");
+    public final void setAboutButtonHandler(AbstractMenuAboutButton aboutButtonHandler) {
+        menu.setAboutButtonHandler(aboutButtonHandler);
     }
 
     /**
      * Sets the handler for pressing the help entry in the menu
      * @param helpButtonHandler The handler to be called when the help button is pressed
      */
-    public final void setHelpButtonHandler(MenuHelpButtonHandler helpButtonHandler) {
-        throw new RuntimeException("Not implemented!");
+    public final void setHelpButtonHandler(AbstractMenuHelpButton helpButtonHandler) {
+        menu.setHelpButtonHandler(helpButtonHandler);
     }
 
+    /**
+     * This method creates two ChangeListeners that keep track of the window width and height
+     * and, if it changes, change the canvas size accordingly
+     */
     private void setResizeListeners(Stage primaryStage) {
 
         final ChangeListener<Number> listener = new ChangeListener<Number>() {
