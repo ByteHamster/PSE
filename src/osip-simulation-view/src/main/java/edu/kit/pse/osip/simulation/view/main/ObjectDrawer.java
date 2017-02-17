@@ -6,7 +6,7 @@ import javafx.scene.canvas.GraphicsContext;
  * The parent class for all non-moving objects of the simulation. The only data it needs
  * is a position where to draw itself.
  */
-public abstract class ObjectDrawer implements edu.kit.pse.osip.simulation.view.main.Drawer {
+public abstract class ObjectDrawer implements Drawer {
 
     private Point2D position;
 
