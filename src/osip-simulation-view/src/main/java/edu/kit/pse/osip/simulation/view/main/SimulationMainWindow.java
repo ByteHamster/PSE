@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Font;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -28,7 +29,7 @@ import java.util.*;
  * It regularly updates itself with current information from the model and posesses an update() method for alarms.
  * If an overflow occurs in the model it is be displayed by an overlay.
  *
- * @version 0.4
+ * @version 0.5
  * @author Niko Wilhelm
  */
 public class SimulationMainWindow implements SimulationViewInterface, java.util.Observer {
@@ -64,14 +65,18 @@ public class SimulationMainWindow implements SimulationViewInterface, java.util.
         MixTankDrawer mtDrawer = new MixTankDrawer(mixPos, mix, ROWS, tankCount);
         element.add(mtDrawer);
 
+        //Add a pipe leading out of the mixtank.
         Point2D mtStart = mtDrawer.getPipeStartPoint();
         Point2D mtEnd = new Point2D(mtStart.getX(), 1);
         Point2D mtMid = new Point2D(mtStart.getX(), (mtStart.getY() + mtEnd.getY()) / 2);
         Point2D[] mtWayPoints = {mtStart, mtMid, mtEnd};
         PipeDrawer mtPipe = new PipeDrawer(mtWayPoints, mix.getOutPipe(), TankSelector.getUpperTankCount());
+        pipes.add(mtPipe);
 
         TankSelector[] topTanks = TankSelector.valuesWithoutMix();
+
         for (int i = 0; i < tankCount; i++) {
+            //Add a new TankDrawer
             double xPos = i * (1.0 / tankCount);
             Point2D position = new Point2D(xPos, 0.0);
             Tank tank = productionSite.getUpperTank(topTanks[i]);
