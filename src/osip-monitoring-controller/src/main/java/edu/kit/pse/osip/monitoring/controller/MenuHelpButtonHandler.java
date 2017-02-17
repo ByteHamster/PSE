@@ -1,5 +1,6 @@
 package edu.kit.pse.osip.monitoring.controller;
 
+import edu.kit.pse.osip.monitoring.view.dialogs.HelpDialog;
 import javafx.event.ActionEvent;
 
 /**
@@ -11,6 +12,7 @@ import javafx.event.ActionEvent;
 public class MenuHelpButtonHandler extends AbstractMenuHelpButtonHandler {
     @Override
     public void handle(ActionEvent event) {
-        throw new RuntimeException("Not implemented!");
+        HelpDialog d = new HelpDialog();
+        d.show();
     }
 }
