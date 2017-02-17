@@ -13,6 +13,9 @@ import javafx.stage.Stage;
 
 /**
  * This window shows a short description of OSIP and how to use it.
+ *
+ * @author David Kahles
+ * @version 1.0
  */
 public class HelpDialog extends Stage {
     private Font sectionFont = new Font(20);
