@@ -72,5 +72,5 @@ public final class ViewConstants {
     /**
      * The width of a pipe relative to the width of a tank compartment.
      */
-    protected static final double PIPE_WIDTH = 0.1;
+    protected static final double PIPE_WIDTH = 0.025;
 }
