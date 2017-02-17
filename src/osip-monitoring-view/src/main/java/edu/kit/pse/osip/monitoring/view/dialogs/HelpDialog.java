@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -18,6 +19,7 @@ public class HelpDialog extends Stage {
 
     public HelpDialog() {
         setTitle(Translator.getInstance().getString("monitoring.helpdialog.title"));
+        getIcons().add(new Image("/icon.png"));
 
         TabPane tabPane = new TabPane();
 
