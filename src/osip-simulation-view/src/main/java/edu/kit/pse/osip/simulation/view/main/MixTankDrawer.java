@@ -7,7 +7,7 @@ import javafx.scene.canvas.GraphicsContext;
  * The class visualizes a tank that is connected to several inputs. Due to this the fill level as
  * well as the color of the contained liquid might change with time.
  */
-public class MixTankDrawer extends edu.kit.pse.osip.simulation.view.main.AbstractTankDrawer {
+public class MixTankDrawer extends AbstractTankDrawer {
 
     private FillSensorDrawer topSensor;
     private FillSensorDrawer botSensor;

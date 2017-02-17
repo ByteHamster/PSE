@@ -7,7 +7,7 @@ import javafx.scene.paint.Color;
 /**
  * This class visualizes a fill level sensor.
  */
-public class FillSensorDrawer extends edu.kit.pse.osip.simulation.view.main.ObjectDrawer {
+public class FillSensorDrawer extends ObjectDrawer {
 
     private static final double WIDTH = 0.05;
     private static final double HEIGHT = 0.05;
@@ -16,7 +16,7 @@ public class FillSensorDrawer extends edu.kit.pse.osip.simulation.view.main.Obje
     private int cols;
 
     /**
-     * Generates a new drawer for fill sensors		
+     * Generates a new drawer for fill sensors
      * @param pos The center of the drawer
      * @param rows The number of rows in which the tanks are ordered
      * @param cols The number of columns in which the tanks are ordered
@@ -39,7 +39,7 @@ public class FillSensorDrawer extends edu.kit.pse.osip.simulation.view.main.Obje
 
         Canvas canvas = context.getCanvas();
         double totalWidth = canvas.getWidth();
-        double totalHeight = canvas.getHeight() - 25;
+        double totalHeight = canvas.getHeight();
 
         double compWidth = totalWidth / rows;
         double compHeight = totalHeight / cols;

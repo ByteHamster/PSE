@@ -61,7 +61,7 @@ public class SimulationMainWindow implements SimulationViewInterface, java.util.
             element.add(new TankDrawer(position, tank, ROWS, tankCount));
         }
 
-        // get all the tanks from the productionsite
+        // get all the tanks from the productionSite
         MixTank mix = productionSite.getMixTank();
         double xPos = ((double) (tankCount - 1)) / (tankCount * 2);
         //Assuming there are only ever two rows of tanks
@@ -130,7 +130,7 @@ public class SimulationMainWindow implements SimulationViewInterface, java.util.
 
         GraphicsContext context = canvas.getGraphicsContext2D();
 
-        setResizeListeners( primaryStage );
+        setResizeListeners(primaryStage);
 
         new AnimationTimer() {
             public void handle(long currentTime) {
@@ -215,7 +215,7 @@ public class SimulationMainWindow implements SimulationViewInterface, java.util.
                         synchronized (canvas) {
 
                             double newWidth = primaryStage.getWidth();
-                            double newHeight = primaryStage.getHeight();
+                            double newHeight = primaryStage.getHeight() - 50;
 
                             canvas.setWidth(newWidth);
                             canvas.setHeight(newHeight);

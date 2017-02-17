@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 /**
  * This class visualizes the mixing motor in the MixTank.
  */
-public class MotorDrawer extends edu.kit.pse.osip.simulation.view.main.RotatingControlDrawer {
+public class MotorDrawer extends RotatingControlDrawer {
 
     private Point2D position;
     private Motor motor;
@@ -45,7 +45,7 @@ public class MotorDrawer extends edu.kit.pse.osip.simulation.view.main.RotatingC
 
         Canvas canvas = context.getCanvas();
         double totalWidth = canvas.getWidth();
-        double totalHeight = canvas.getHeight() - 25;
+        double totalHeight = canvas.getHeight();
 
         // Points 1 and 3 make up the first line inside the motor.
         double point1xPos = (position.getX() - relRadius) * totalWidth;
