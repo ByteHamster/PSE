@@ -111,6 +111,7 @@ public class ScenarioTest {
 
         try {
             assertEquals(true, future2.get(300, TimeUnit.MILLISECONDS));
+            sleep(50);
             assertFalse(scenario.isRunning());
         } catch (InterruptedException | ExecutionException | TimeoutException ex) {
             fail("CompletableFuture.get() failed: " + ex.getMessage());
