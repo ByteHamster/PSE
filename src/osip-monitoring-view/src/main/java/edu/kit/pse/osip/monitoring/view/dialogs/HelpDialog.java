@@ -41,6 +41,8 @@ public class HelpDialog extends Stage {
         textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.alarmText", null));
         textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.gaugeSection", sectionFont));
         textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.gaugeText", null));
+        textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.progressSection", sectionFont));
+        textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.progressText", null));
 
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setContent(textFlow);
