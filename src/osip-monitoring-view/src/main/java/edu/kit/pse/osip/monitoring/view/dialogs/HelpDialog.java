@@ -15,7 +15,6 @@ import javafx.stage.Stage;
  */
 public class HelpDialog extends Stage {
     private Font sectionFont = new Font(20);
-    private Font textFont = new Font(12);
 
     public HelpDialog() {
         setTitle(Translator.getInstance().getString("monitoring.helpdialog.title"));
@@ -35,13 +34,13 @@ public class HelpDialog extends Stage {
 
         TextFlow textFlow = new TextFlow();
 
-        textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.introduction", textFont));
+        textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.introduction", null));
         textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.layoutSection", sectionFont));
-        textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.layoutText", textFont));
+        textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.layoutText", null));
         textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.alarmSection", sectionFont));
-        textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.alarmText", textFont));
+        textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.alarmText", null));
         textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.gaugeSection", sectionFont));
-        textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.gaugeText", textFont));
+        textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.gaugeText", null));
 
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setContent(textFlow);
@@ -56,9 +55,10 @@ public class HelpDialog extends Stage {
 
     private Text getText(String id, Font font) {
         Text text = new Text();
-        text.setText(id);
-        text.setText(id + "\n");
-        text.setFont(font);
+        text.setText(Translator.getInstance().getString(id) + "\n");
+        if (font != null) {
+            text.setFont(font);
+        }
         return text;
     }
 
