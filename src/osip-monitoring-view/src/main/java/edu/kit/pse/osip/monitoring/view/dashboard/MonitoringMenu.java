@@ -49,7 +49,7 @@ class MonitoringMenu extends MenuBar {
         menuFile.getItems().add(menuButtonSettings);
         
         menuHelp = new Menu(Translator.getInstance().getString("monitoring.menu.help"));
-        menuButtonHelp = new MenuItem(Translator.getInstance().getString("monitoring.menu.help.help"));
+        menuButtonHelp = new MenuItem(Translator.getInstance().getString("monitoring.helpdialog.title"));
         menuHelp.getItems().add(menuButtonHelp);
         menuButtonAbout = new MenuItem(Translator.getInstance().getString("monitoring.menu.help.about"));
         menuHelp.getItems().add(menuButtonAbout);
