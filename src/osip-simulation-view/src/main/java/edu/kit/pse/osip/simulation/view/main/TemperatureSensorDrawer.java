@@ -40,7 +40,7 @@ public class TemperatureSensorDrawer extends ObjectDrawer {
         double temp = (tank.getLiquid().getTemperature() - SimulationConstants.MIN_TEMPERATURE)
                 / (SimulationConstants.MAX_TEMPERATURE - SimulationConstants.MIN_TEMPERATURE);
 
-        double totalHeight = canvas.getHeight() - 25;
+        double totalHeight = canvas.getHeight();
         double totalWidth = canvas.getWidth();
 
         context.setFill(Color.WHITE);

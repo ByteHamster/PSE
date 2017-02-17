@@ -97,7 +97,7 @@ public abstract class AbstractTankDrawer extends edu.kit.pse.osip.simulation.vie
         // get the ouside values
         Canvas canvas = context.getCanvas();
         double totalWidth = canvas.getWidth();
-        double totalHeight = canvas.getHeight() - 25;
+        double totalHeight = canvas.getHeight();
 
         double fillLevel = tank.getFillLevel() / SimulationConstants.TANK_SIZE;
         Color fluidColor = getTankColor();

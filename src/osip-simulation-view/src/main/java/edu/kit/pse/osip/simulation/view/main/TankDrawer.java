@@ -48,6 +48,7 @@ public class TankDrawer extends AbstractTankDrawer {
      * @param context The GraphicsContext belonging to the canvas on which everything is drawn
      * @param time The current time in nanoseconds
      */
+    @Override
     public final void drawSensors(GraphicsContext context, long time) {
         topSensor.draw(context, time);
         botSensor.draw(context, time);
