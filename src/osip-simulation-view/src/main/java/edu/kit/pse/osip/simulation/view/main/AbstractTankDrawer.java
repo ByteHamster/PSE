@@ -180,12 +180,13 @@ public abstract class AbstractTankDrawer extends edu.kit.pse.osip.simulation.vie
     }
 
     /**
-     * Gets the point number pointnum at the top of the tank. There are as many slots as there
-     * are tanks in the upper row, all slots are evenly spaced.
+     * Gets the point number pointnum at the top of the tank, assuming pointCount points
+     * are wanted. All points are evenly spaced.
      * @param pointNum The number of the point that is wanted.
+     * @param pointCount The number of pipes that have to fit onto the Tank
      * @return The Point2D that sits at the top of the tank at (pointNum/ (tankCount + 1))
      */
-    public Point2D getPipeEndPoint(int pointNum) {
+    public Point2D getPipeEndPoint(int pointNum, int pointCount) {
         double xPos = getPosition().getX() + inBoxHorPadding
                 + (relInBoxWidth * pointNum / (TankSelector.getUpperTankCount() + 1));
         double yPos = getPosition().getY() + inBoxVertPadding;

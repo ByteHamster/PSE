@@ -20,11 +20,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import java.util.Collection;
-import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.Observable;
+
+import java.util.*;
 
 /**
  * The main window for visualizing the OSIP simulation.
@@ -52,23 +49,54 @@ public class SimulationMainWindow implements SimulationViewInterface, java.util.
     public SimulationMainWindow(ProductionSite productionSite) {
         element = new ArrayList<Drawer>();
 
+        // PipeDrawers are first stored in a separate list to make sure they are at the end
+        // of the element list, as they need to draw over other Drawers
+        List<Drawer> pipes = new ArrayList();
+
         int tankCount = TankSelector.getUpperTankCount();
+
+        // get all the tanks from the productionSite
+        MixTank mix = productionSite.getMixTank();
+        double mixXPos = ((double) (tankCount - 1)) / (tankCount * 2);
+        //Assuming there are only ever two rows of tanks
+        double mixYPos = 0.5;
+        Point2D mixPos = new Point2D(mixXPos, mixYPos);
+        MixTankDrawer mtDrawer = new MixTankDrawer(mixPos, mix, ROWS, tankCount);
+        element.add(mtDrawer);
+
+        Point2D mtStart = mtDrawer.getPipeStartPoint();
+        Point2D mtEnd = new Point2D(mtStart.getX(), 1);
+        Point2D mtMid = new Point2D(mtStart.getX(), (mtStart.getY() + mtEnd.getY()) / 2);
+        Point2D[] mtWayPoints = {mtStart, mtMid, mtEnd};
+        PipeDrawer mtPipe = new PipeDrawer(mtWayPoints, mix.getOutPipe(), TankSelector.getUpperTankCount());
+
         TankSelector[] topTanks = TankSelector.valuesWithoutMix();
         for (int i = 0; i < tankCount; i++) {
             double xPos = i * (1.0 / tankCount);
             Point2D position = new Point2D(xPos, 0.0);
             Tank tank = productionSite.getUpperTank(topTanks[i]);
-            element.add(new TankDrawer(position, tank, ROWS, tankCount));
+            TankDrawer tankDrawer = new TankDrawer(position, tank, ROWS, tankCount);
+            element.add(tankDrawer);
+
+            //Create a pipe leading from the top to the tank
+            Point2D topEnd = tankDrawer.getPipeEndPoint(1, 1);
+            Point2D topStart = new Point2D(topEnd.getX(), 0);
+            //Point in line with start and end where the valve will sit
+            Point2D topMid = new Point2D(topStart.getX(), (topStart.getY() + topEnd.getY()) / 2);
+            Point2D[] topWayPoints = {topStart, topMid, topEnd};
+            pipes.add(new PipeDrawer(topWayPoints, tank.getInPipe(), 3));
+
+            //Create a pipe leading from the tank to the mixTank
+            Point2D botStart = tankDrawer.getPipeStartPoint();
+            Point2D botEnd = mtDrawer.getPipeEndPoint(i++, TankSelector.getUpperTankCount());
+            Point2D botMid1 = new Point2D(botStart.getX(), (botStart.getY() + botEnd.getY()) / 2);
+            Point2D botMid2 = new Point2D(botEnd.getX(), (botStart.getY() + botEnd.getY()) / 2);
+            Point2D[] botWayPoints = {botStart, botMid1, botMid2, botEnd};
+            pipes.add(new PipeDrawer(botWayPoints, tank.getOutPipe(), 3));
+
         }
 
-        // get all the tanks from the productionSite
-        MixTank mix = productionSite.getMixTank();
-        double xPos = ((double) (tankCount - 1)) / (tankCount * 2);
-        //Assuming there are only ever two rows of tanks
-        double yPos = 0.5;
-        Point2D mixPos = new Point2D(xPos, yPos);
-        element.add(new MixTankDrawer(mixPos, mix, ROWS, tankCount));
-        throw new RuntimeException("Not implemented!");
+        element.addAll(pipes);
     }
 
     /**
