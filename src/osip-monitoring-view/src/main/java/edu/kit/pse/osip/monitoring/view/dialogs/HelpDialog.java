@@ -25,10 +25,7 @@ public class HelpDialog extends Stage {
         getIcons().add(new Image("/icon.png"));
 
         TabPane tabPane = new TabPane();
-
-        tabPane.getTabs().add(createMainTab());
-        tabPane.getTabs().add(createSettingsTab());
-
+        tabPane.getTabs().addAll(createMainTab(), createSettingsTab());
         setScene(new Scene(tabPane));
         sizeToScene();
     }
