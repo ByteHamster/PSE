@@ -68,6 +68,26 @@ public class HelpDialog extends Stage {
 
     private Tab createSettingsTab() {
         Tab tab = new Tab();
+        tab.setText(Translator.getInstance().getString("monitoring.helpdialog.mainTab.header"));
+
+        TextFlow textFlow = new TextFlow();
+
+        textFlow.getChildren().add(getText("monitoring.helpdialog.settingsTab.introduction", null));
+        textFlow.getChildren().add(getText("monitoring.helpdialog.settingsTab.generalSection", sectionFont));
+        textFlow.getChildren().add(getText("monitoring.helpdialog.settingsTab.generalText", null));
+        textFlow.getChildren().add(getText("monitoring.helpdialog.settingsTab.progressSection", sectionFont));
+        textFlow.getChildren().add(getText("monitoring.helpdialog.settingsTab.progressText", null));
+        textFlow.getChildren().add(getText("monitoring.helpdialog.settingsTab.alarmSection", sectionFont));
+        textFlow.getChildren().add(getText("monitoring.helpdialog.settingsTab.alarmText", null));
+
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setContent(textFlow);
+        scrollPane.setPrefViewportHeight(textFlow.prefHeight(-1));
+        scrollPane.setPrefViewportWidth(textFlow.prefWidth(-1));
+
+        tab.setContent(scrollPane);
+        tab.setClosable(false);
+
         return tab;
     }
 }
