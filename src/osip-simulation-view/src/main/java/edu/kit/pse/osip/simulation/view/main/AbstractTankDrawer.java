@@ -2,6 +2,7 @@ package edu.kit.pse.osip.simulation.view.main;
 
 import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.model.base.AbstractTank;
+import edu.kit.pse.osip.core.model.base.TankSelector;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -166,4 +167,28 @@ public abstract class AbstractTankDrawer extends edu.kit.pse.osip.simulation.vie
      * @param time The time passed
      */
     public abstract void drawSensors(GraphicsContext context, long time);
+
+    /**
+     * Gets the point where pipes can attach to the bottom of the tank. This point lies in the
+     * middle of the tank horizontally and and the lowest point of the bottom oval vertically
+     * @return The Point2D sitting at the bottom middle of the tank.
+     */
+    public Point2D getPipeStartPoint() {
+        double xPos = getPosition().getX() + inBoxHorPadding + relInBoxWidth / 2;
+        double yPos = getPosition().getY() + inBoxVertPadding + relInBoxHeight + relOvalHeight / 2;
+        return new Point2D(xPos, yPos);
+    }
+
+    /**
+     * Gets the point number pointnum at the top of the tank. There are as many slots as there
+     * are tanks in the upper row, all slots are evenly spaced.
+     * @param pointNum The number of the point that is wanted.
+     * @return The Point2D that sits at the top of the tank at (pointNum/ (tankCount + 1))
+     */
+    public Point2D getPipeEndPoint(int pointNum) {
+        double xPos = getPosition().getX() + inBoxHorPadding
+                + (relInBoxWidth * pointNum / (TankSelector.getUpperTankCount() + 1));
+        double yPos = getPosition().getY() + inBoxVertPadding;
+        return new Point2D(xPos, yPos);
+    }
 }
