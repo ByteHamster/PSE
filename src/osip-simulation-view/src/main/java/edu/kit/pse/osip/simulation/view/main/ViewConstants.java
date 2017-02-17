@@ -73,4 +73,21 @@ public final class ViewConstants {
      * The width of a pipe relative to the width of a tank compartment.
      */
     protected static final double PIPE_WIDTH = 0.025;
+
+    /**
+     * The width of a valve relative to the width of a tank compartment.
+     * This constant should always be chosen lower than VALVE_HEIGHT
+     */
+    protected static final double VALVE_WIDTH = 0.08;
+
+    /**
+     * The height of a valve relative to the height of a tank compartment.
+     * This constant should always be chosen higher than VALVE_WIDTH.
+     */
+    protected static final double VALVE_HEIGHT = 0.12;
+
+    /**
+     * The width of the lines making up the valves.
+     */
+    protected static final double VALVE_LINE_WIDTH = 2;
 }
