@@ -3,9 +3,11 @@ package edu.kit.pse.osip.simulation.view.main;
 import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.model.base.AbstractTank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
+import edu.kit.pse.osip.core.utils.language.Translator;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 
 /**
@@ -13,7 +15,7 @@ import javafx.scene.paint.Color;
  * of the content. The changing part of the visualization are the fill level of the tank and, possibly,
  * the  color of the liquid.
  */
-public abstract class AbstractTankDrawer extends edu.kit.pse.osip.simulation.view.main.ObjectDrawer {
+public abstract class AbstractTankDrawer extends ObjectDrawer {
 
     private AbstractTank tank;
     private double width;
@@ -147,6 +149,13 @@ public abstract class AbstractTankDrawer extends edu.kit.pse.osip.simulation.vie
             context.setLineWidth(1);
             context.strokeOval(inBoxXPos, fluidTopOvalYPos, inBoxWidth, totalOvalHeight);
         }
+
+        context.setFill(Color.BLACK);
+        //TODO: Figure out dynamic font size
+        context.setFont(Font.font("Arial", 25));
+        double textYPos = (getPosition().getY() + outBoxVertPadding) * totalHeight + outBoxHeight;
+        String name = Translator.getInstance().getString("simulation.serverName." + tank.getName());
+        context.fillText(name, outBoxXPos, textYPos);
 
         context.setLineWidth(3);
         context.strokeOval(inBoxXPos, topOvalYPos, inBoxWidth, totalOvalHeight);
