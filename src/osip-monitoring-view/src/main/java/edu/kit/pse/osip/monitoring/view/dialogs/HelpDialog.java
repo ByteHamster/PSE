@@ -41,12 +41,16 @@ public class HelpDialog extends Stage {
         TextFlow textFlow = new TextFlow();
 
         textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.introduction", null));
+        textFlow.getChildren().add(newLine());
         textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.layoutSection", sectionFont));
         textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.layoutText", null));
+        textFlow.getChildren().add(newLine());
         textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.alarmSection", sectionFont));
         textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.alarmText", null));
+        textFlow.getChildren().add(newLine());
         textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.gaugeSection", sectionFont));
         textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.gaugeText", null));
+        textFlow.getChildren().add(newLine());
         textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.progressSection", sectionFont));
         textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.progressText", null));
 
@@ -61,6 +65,10 @@ public class HelpDialog extends Stage {
         tab.setClosable(false);
 
         return tab;
+    }
+
+    private Text newLine() {
+        return new Text("\n");
     }
 
     private Text getText(String id, Font font) {
@@ -79,10 +87,13 @@ public class HelpDialog extends Stage {
         TextFlow textFlow = new TextFlow();
 
         textFlow.getChildren().add(getText("monitoring.helpdialog.settingsTab.introduction", null));
+        textFlow.getChildren().add(newLine());
         textFlow.getChildren().add(getText("monitoring.helpdialog.settingsTab.generalSection", sectionFont));
         textFlow.getChildren().add(getText("monitoring.helpdialog.settingsTab.generalText", null));
+        textFlow.getChildren().add(newLine());
         textFlow.getChildren().add(getText("monitoring.helpdialog.settingsTab.progressSection", sectionFont));
         textFlow.getChildren().add(getText("monitoring.helpdialog.settingsTab.progressText", null));
+        textFlow.getChildren().add(newLine());
         textFlow.getChildren().add(getText("monitoring.helpdialog.settingsTab.alarmSection", sectionFont));
         textFlow.getChildren().add(getText("monitoring.helpdialog.settingsTab.alarmText", null));
 
