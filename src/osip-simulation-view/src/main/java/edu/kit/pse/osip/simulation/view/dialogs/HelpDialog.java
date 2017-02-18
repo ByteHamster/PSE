@@ -62,6 +62,7 @@ public class HelpDialog extends Stage {
         TextFlow textFlow = new TextFlow();
 
         textFlow.getChildren().add(getText("controller.helpdialog.mainTab.introduction", null));
+        textFlow.getChildren().add(newLine());
         textFlow.getChildren().add(getText("controller.helpdialog.mainTab.layoutSection", sectionFont));
         textFlow.getChildren().add(getText("controller.helpdialog.mainTab.layoutText", null));
 
@@ -77,6 +78,10 @@ public class HelpDialog extends Stage {
         tab.setClosable(false);
 
         return tab;
+    }
+
+    private Text newLine() {
+        return new Text("\n");
     }
 
     private Text getText(String id, Font font) {
@@ -95,8 +100,10 @@ public class HelpDialog extends Stage {
         TextFlow textFlow = new TextFlow();
 
         textFlow.getChildren().add(getText("controller.helpdialog.controlTab.introduction", null));
+        textFlow.getChildren().add(newLine());
         textFlow.getChildren().add(getText("controller.helpdialog.controlTab.generalSection", sectionFont));
         textFlow.getChildren().add(getText("controller.helpdialog.controlTab.generalText", null));
+        textFlow.getChildren().add(newLine());
         textFlow.getChildren().add(getText("controller.helpdialog.controlTab.mixTankSection", sectionFont));
         textFlow.getChildren().add(getText("controller.helpdialog.controlTab.mixTankText", null));
 
