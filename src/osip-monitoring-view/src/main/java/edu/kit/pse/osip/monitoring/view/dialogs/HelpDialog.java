@@ -1,6 +1,7 @@
 package edu.kit.pse.osip.monitoring.view.dialogs;
 
 import edu.kit.pse.osip.core.utils.language.Translator;
+import edu.kit.pse.osip.monitoring.view.dashboard.MonitoringViewConstants;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -52,6 +53,7 @@ public class HelpDialog extends Stage {
         BorderPane pane = new BorderPane();
         pane.setCenter(tabPane);
         pane.setBottom(close);
+        pane.setPadding(new Insets(0, 0, MonitoringViewConstants.ELEMENTS_GAP, 0));
         pane.setAlignment(close, Pos.CENTER);
         setScene(new Scene(pane));
         setHeight(WINDOW_HEIGHT);
