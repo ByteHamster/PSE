@@ -21,6 +21,8 @@ public class PipeDrawer implements Drawer {
     /**
      * Create a new pipe along the wayPoints 1 to n.
      * @param wayPoints The points that the pipe goes along
+     * @param pipe The pipe that is drawn
+     * @param cols The number of columns in which the Tanks are ordered
      */
     public PipeDrawer(Point2D[] wayPoints, Pipe pipe, int cols) {
         // There need to be at least two wayPoints
