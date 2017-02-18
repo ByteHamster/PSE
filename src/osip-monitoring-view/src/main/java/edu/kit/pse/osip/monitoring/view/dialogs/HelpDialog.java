@@ -51,6 +51,7 @@ public class HelpDialog extends Stage {
         textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.progressText", null));
 
         ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setFitToWidth(true);
         scrollPane.setContent(textFlow);
         scrollPane.setPrefViewportHeight(textFlow.prefHeight(-1));
         scrollPane.setPrefViewportWidth(textFlow.prefWidth(-1));
@@ -86,6 +87,7 @@ public class HelpDialog extends Stage {
         textFlow.getChildren().add(getText("monitoring.helpdialog.settingsTab.alarmText", null));
 
         ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setFitToWidth(true);
         scrollPane.setContent(textFlow);
         scrollPane.setPrefViewportHeight(textFlow.prefHeight(-1));
         scrollPane.setPrefViewportWidth(textFlow.prefWidth(-1));
