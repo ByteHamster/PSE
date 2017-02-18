@@ -1,28 +1,48 @@
 package edu.kit.pse.osip.simulation.controller;
 
-import edu.kit.pse.osip.core.model.base.Pipe;
 import edu.kit.pse.osip.core.model.base.TankSelector;
-
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 
 /**
  * Provides abstraction from the view
  */
 public interface SimulationControlInterface {
     /**
-     * Sets the listener that is notified of changes to valve thresholds.
-     * @param listener The Consumer that gets all changes to valve thresholds.
+     * Gets the value of inFlow of tank.
+     * @return The value of inFlow of tank
+     * @param tank The tank to get the inflow from
      */
-    void setValveListener(BiConsumer<Pipe, Byte> listener);
+    public int getInFlow (TankSelector tank);
     /**
-     * Sets the listener that is notified of changes in the temperature.
-     * @param listener The Consumer that gets all changes to Tank temperatures
+     * 		Gets the value of outFlow of the tank.
+     * @return The value of outFlow of the tank
+     * @param tank The tank to get the outflow from
      */
-    void setTemperatureListener(BiConsumer<TankSelector, Float> listener);
+    public int getOutFlow (TankSelector tank);
+    /**
+     * Gets the value of temp of the tank
+     * @return The value of temp the tank.
+     * @param tank The tank to get the temperature from
+     */
+    public int getTemperature (TankSelector tank);
+    /**
+     * Returns the motor speed of the mixtank
+     * 
+     * @return the motor speed of the mixtank
+     */
+    public int getMotorSpeed ();
+    /**
+     * Sets the listener that is notified of changes in the flow rate. Listner gets the TankSelector of the actually modified tank
+     * @param listener The listener to be called on changes
+     */
+    public void setFlowRateListener (FlowRateListener listener);
+    /**
+     * Sets the listener that is notified of changes in the temperature. Listner gets the TankSelector of the actually modified tank
+     * @param listener The listener to be called on changes
+     */
+    public void setTemperatureListener (TemperatureListener listener);
     /**
      * Sets the listener that is notified of changes in motor speed.
-     * @param listener The Consumer that gets all to the motorSpeed
+     * @param listener The listener to be called on changes
      */
-    void setMotorListener(Consumer<Integer> listener);
+    public void setMotorListener (MotorListener listener);
 }
