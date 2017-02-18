@@ -7,7 +7,7 @@ import javafx.event.ActionEvent;
  * Handles a click on the settings menu button in the monitoring view.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.1
  */
 public class MenuSettingsButtonHandler extends AbstractMenuSettingsButtonHandler {
     /**
@@ -23,6 +23,6 @@ public class MenuSettingsButtonHandler extends AbstractMenuSettingsButtonHandler
     
     @Override
     public void handle(ActionEvent event) {
-        throw new RuntimeException("Not implemented!");
+        currentSettingsViewInterface.showSettingsWindow(currentSettings);
     }
 }
