@@ -95,7 +95,7 @@ public class HelpDialog extends Stage {
 
     private Tab createControlTab() {
         Tab tab = new Tab();
-        tab.setText(Translator.getInstance().getString("controller.helpdialog.mainTab.header"));
+        tab.setText(Translator.getInstance().getString("controller.helpdialog.controlTab.header"));
 
         TextFlow textFlow = new TextFlow();
 
@@ -122,7 +122,7 @@ public class HelpDialog extends Stage {
 
     private Tab createSettingsTab() {
         Tab tab = new Tab();
-        tab.setText(Translator.getInstance().getString("controller.helpdialog.mainTab.header"));
+        tab.setText(Translator.getInstance().getString("controller.helpdialog.settingsTab.header"));
 
         TextFlow textFlow = new TextFlow();
 
