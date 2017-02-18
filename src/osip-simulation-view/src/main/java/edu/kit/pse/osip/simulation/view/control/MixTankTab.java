@@ -1,7 +1,6 @@
 package edu.kit.pse.osip.simulation.view.control;
 
 import edu.kit.pse.osip.core.SimulationConstants;
-import edu.kit.pse.osip.core.model.base.AbstractTank;
 import edu.kit.pse.osip.core.model.base.MixTank;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import javafx.scene.control.Label;
