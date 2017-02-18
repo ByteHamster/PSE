@@ -3,6 +3,7 @@ package edu.kit.pse.osip.simulation.view.dialogs;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -68,6 +69,8 @@ public class HelpDialog extends Stage {
         scrollPane.setContent(textFlow);
         scrollPane.setPrefViewportHeight(textFlow.prefHeight(-1));
         scrollPane.setPrefViewportWidth(textFlow.prefWidth(-1));
+        scrollPane.setPadding(new Insets(5));
+
 
         tab.setContent(scrollPane);
         tab.setClosable(false);
@@ -100,6 +103,7 @@ public class HelpDialog extends Stage {
         scrollPane.setContent(textFlow);
         scrollPane.setPrefViewportHeight(textFlow.prefHeight(-1));
         scrollPane.setPrefViewportWidth(textFlow.prefWidth(-1));
+        scrollPane.setPadding(new Insets(5));
 
         tab.setContent(scrollPane);
         tab.setClosable(false);
@@ -119,6 +123,7 @@ public class HelpDialog extends Stage {
         scrollPane.setContent(textFlow);
         scrollPane.setPrefViewportHeight(textFlow.prefHeight(-1));
         scrollPane.setPrefViewportWidth(textFlow.prefWidth(-1));
+        scrollPane.setPadding(new Insets(5));
 
         tab.setContent(scrollPane);
         tab.setClosable(false);
