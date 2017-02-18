@@ -66,6 +66,7 @@ public class HelpDialog extends Stage {
         textFlow.getChildren().add(getText("controller.helpdialog.mainTab.layoutText", null));
 
         ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setFitToWidth(true);
         scrollPane.setContent(textFlow);
         scrollPane.setPrefViewportHeight(textFlow.prefHeight(-1));
         scrollPane.setPrefViewportWidth(textFlow.prefWidth(-1));
@@ -100,6 +101,7 @@ public class HelpDialog extends Stage {
         textFlow.getChildren().add(getText("controller.helpdialog.controlTab.mixTankText", null));
 
         ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setFitToWidth(true);
         scrollPane.setContent(textFlow);
         scrollPane.setPrefViewportHeight(textFlow.prefHeight(-1));
         scrollPane.setPrefViewportWidth(textFlow.prefWidth(-1));
@@ -120,6 +122,7 @@ public class HelpDialog extends Stage {
         textFlow.getChildren().add(getText("controller.helpdialog.settingslTab.generalText", null));
 
         ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setFitToWidth(true);
         scrollPane.setContent(textFlow);
         scrollPane.setPrefViewportHeight(textFlow.prefHeight(-1));
         scrollPane.setPrefViewportWidth(textFlow.prefWidth(-1));
