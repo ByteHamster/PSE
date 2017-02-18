@@ -52,6 +52,7 @@ public class HelpDialog extends Stage {
         });
 
         BorderPane pane = new BorderPane();
+        pane.setStyle("-fx-font-size: " + MonitoringViewConstants.FONT_SIZE + "px;");
         pane.setCenter(tabPane);
         pane.setBottom(close);
         pane.setPadding(new Insets(0, 0, MonitoringViewConstants.ELEMENTS_GAP, 0));
