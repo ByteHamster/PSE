@@ -1,11 +1,16 @@
 package edu.kit.pse.osip.simulation.view.dialogs;
 
 import edu.kit.pse.osip.core.utils.language.Translator;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -28,7 +33,23 @@ public class HelpDialog extends Stage {
 
         TabPane tabPane = new TabPane();
         tabPane.getTabs().addAll(createMainTab(), createControlTab(), createSettingsTab());
-        setScene(new Scene(tabPane));
+
+        Button close = new Button(Translator.getInstance().getString("monitoring.helpdialog.closeButton"));
+        close.setDefaultButton(true);
+        close.setCancelButton(true);
+        close.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Stage stage = (Stage) close.getScene().getWindow();
+                stage.close();
+            }
+        });
+
+        BorderPane pane = new BorderPane();
+        pane.setCenter(tabPane);
+        pane.setBottom(close);
+        pane.setAlignment(close, Pos.CENTER);
+        setScene(new Scene(pane));
         setHeight(WINDOW_HEIGHT);
         setWidth(WINDOW_WIDTH);
     }
