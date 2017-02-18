@@ -1,5 +1,6 @@
 package edu.kit.pse.osip.simulation.view.control;
 
+import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
 
 /**
@@ -7,8 +8,8 @@ import edu.kit.pse.osip.core.model.base.TankSelector;
  */
 public class TankTab extends AbstractTankTab {
 
-    public TankTab(TankSelector tank) {
-        super(tank.name());
+    public TankTab(String name, Tank tank) {
+        super(name);
     }
 
     /**

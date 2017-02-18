@@ -1,11 +1,13 @@
 package edu.kit.pse.osip.simulation.view.control;
 
+import edu.kit.pse.osip.core.model.base.MixTank;
+
 /**
  * This class has controls specific to the tanks in which several inputs are mixed.
  */
 public class MixTankTab extends AbstractTankTab {
 
-    public MixTankTab(String name) {
+    public MixTankTab(String name, MixTank mixTank) {
         super(name);
     }
 

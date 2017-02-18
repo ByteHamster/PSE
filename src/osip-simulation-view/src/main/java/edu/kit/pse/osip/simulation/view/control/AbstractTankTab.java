@@ -9,6 +9,7 @@ public abstract class AbstractTankTab extends Tab {
 
     public AbstractTankTab(String name) {
         super(name);
+        this.setClosable(false);
     }
 
     /**
