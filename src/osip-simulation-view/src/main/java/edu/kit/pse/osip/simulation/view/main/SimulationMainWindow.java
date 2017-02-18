@@ -4,6 +4,7 @@ import edu.kit.pse.osip.core.model.base.MixTank;
 import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
+import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.controller.AbstractMenuAboutButton;
 import edu.kit.pse.osip.simulation.controller.AbstractMenuHelpButton;
 import edu.kit.pse.osip.simulation.controller.AbstractMenuControlButton;
@@ -48,11 +49,11 @@ public class SimulationMainWindow implements SimulationViewInterface, java.util.
      * @param productionSite The ProductionSite object, so that the view can access the model
      */
     public SimulationMainWindow(ProductionSite productionSite) {
-        element = new ArrayList<Drawer>();
+        element = new ArrayList<>();
 
         // PipeDrawers are first stored in a separate list to make sure they are at the end
         // of the element list, as they need to draw over other Drawers
-        List<Drawer> pipes = new ArrayList();
+        List<Drawer> pipes = new ArrayList<>();
 
         int tankCount = TankSelector.getUpperTankCount();
 
@@ -108,8 +109,8 @@ public class SimulationMainWindow implements SimulationViewInterface, java.util.
      * The stage that is provided by JavaFx
      * @param primaryStage The stage to draw the window on
      */
-    public final void start(javafx.stage.Stage primaryStage) {
-        primaryStage.setTitle("OSIP Simulation");
+    public final void start(Stage primaryStage) {
+        primaryStage.setTitle(Translator.getInstance().getString("simulation.title"));
 
         Group root = new Group();
         Scene theScene = new Scene(root);
