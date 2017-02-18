@@ -25,9 +25,12 @@ import javafx.stage.Stage;
  */
 public class HelpDialog extends Stage {
     private Font sectionFont = new Font(20);
-    private final double WINDOW_HEIGHT = 400;
-    private final double WINDOW_WIDTH = 600;
+    private static final double WINDOW_HEIGHT = 400;
+    private static final double WINDOW_WIDTH = 600;
 
+    /**
+     * Creates a new HelpDialog
+     */
     public HelpDialog() {
         setTitle(Translator.getInstance().getString("monitoring.helpdialog.title"));
         getIcons().add(new Image("/icon.png"));
