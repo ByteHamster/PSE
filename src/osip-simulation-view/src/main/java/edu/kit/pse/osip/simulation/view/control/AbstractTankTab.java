@@ -3,6 +3,7 @@ package edu.kit.pse.osip.simulation.view.control;
 import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.model.base.AbstractTank;
 import edu.kit.pse.osip.core.utils.language.Translator;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Tab;
@@ -51,12 +52,15 @@ public abstract class AbstractTankTab extends Tab {
         temperatureSlider.setMinorTickCount(9);
         temperatureSlider.setSnapToTicks(true);
         pane.add(temperatureSlider, 0, row);
+        GridPane.setMargin(temperatureSlider, new Insets(10, 5, 10, 5));
 
         //Labels to show the current value and unit
         Label temperatureValue = new Label("" + tank.getLiquid().getTemperature());
         pane.add(temperatureValue, 1, row);
+        GridPane.setMargin(temperatureValue, new Insets(10, 5, 10, 5));
         Label temperatureSign = new Label(t.getString("simulation.view.temperatureUnit"));
         pane.add(temperatureSign, 2, row);
+        GridPane.setMargin(temperatureSign, new Insets(10, 5, 10, 5));
 
         //Listener to update the Label
         temperatureSlider.valueProperty().addListener((ov, oldVal, newVal)->
@@ -75,12 +79,15 @@ public abstract class AbstractTankTab extends Tab {
         outFlowSlider.setMinorTickCount(9);
         outFlowSlider.setSnapToTicks(true);
         pane.add(outFlowSlider, 0, row);
+        GridPane.setMargin(outFlowSlider, new Insets(10, 5, 10, 5));
 
         //Labels to show the current value and unit
         Label outFlowValue = new Label("" + tank.getOutPipe().getValveThreshold());
         pane.add(outFlowValue, 1, row);
+        GridPane.setMargin(outFlowValue, new Insets(10, 5, 10, 5));
         Label outFlowSign = new Label(t.getString("simulation.view.flowUnit"));
         pane.add(outFlowSign, 2, row);
+        GridPane.setMargin(outFlowSign, new Insets(10, 5, 10, 5));
 
         //Listener to update the Label
         outFlowSlider.valueProperty().addListener((ov, oldVal, newVal) ->

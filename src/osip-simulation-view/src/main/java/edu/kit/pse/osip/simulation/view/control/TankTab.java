@@ -3,6 +3,7 @@ package edu.kit.pse.osip.simulation.view.control;
 import edu.kit.pse.osip.core.model.base.AbstractTank;
 import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.utils.language.Translator;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.GridPane;
@@ -46,16 +47,19 @@ public class TankTab extends AbstractTankTab {
         inFlowSlider.setMinorTickCount(9);
         inFlowSlider.setSnapToTicks(true);
         pane.add(inFlowSlider, 0, row);
+        GridPane.setMargin(inFlowSlider, new Insets(10, 5, 10, 5));
 
         //Labels to show the current value and unit
-        Label outFlowValue = new Label("" + tank.getOutPipe().getValveThreshold());
-        pane.add(outFlowValue, 1, row);
-        Label outFlowSign = new Label(t.getString("simulation.view.flowUnit"));
-        pane.add(outFlowSign, 2, row);
+        Label inFlowValue = new Label("" + tank.getOutPipe().getValveThreshold());
+        pane.add(inFlowValue, 1, row);
+        GridPane.setMargin(inFlowValue, new Insets(10, 5, 10, 5));
+        Label inFlowSign = new Label(t.getString("simulation.view.flowUnit"));
+        pane.add(inFlowSign, 2, row);
+        GridPane.setMargin(inFlowSign, new Insets(10, 5, 10, 5));
 
         //Listener to update the Label
         inFlowSlider.valueProperty().addListener((ov, oldVal, newVal) ->
-                outFlowValue.setText(String.format("%02d", newVal.intValue()))
+                inFlowValue.setText(String.format("%02d", newVal.intValue()))
         );
         row++;
     }

@@ -3,6 +3,7 @@ package edu.kit.pse.osip.simulation.view.control;
 import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.model.base.MixTank;
 import edu.kit.pse.osip.core.utils.language.Translator;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.GridPane;
@@ -47,12 +48,15 @@ public class MixTankTab extends AbstractTankTab {
         motorSlider.setMinorTickCount((SimulationConstants.MAX_MOTOR_SPEED / 10) - 1);
         motorSlider.setSnapToTicks(true);
         pane.add(motorSlider, 0, row);
+        GridPane.setMargin(motorSlider, new Insets(10, 5, 10, 5));
 
         //Labels to show the current value and unit
         Label motorValue = new Label("" + tank.getMotor().getRPM());
         pane.add(motorValue, 1, row);
+        GridPane.setMargin(motorValue, new Insets(10, 5, 10, 5));
         Label motorSign = new Label(t.getString("simulation.view.motorUnit"));
         pane.add(motorSign, 2, row);
+        GridPane.setMargin(motorSign, new Insets(10, 5, 10, 5));
 
         //Listener to update the Label
         motorSlider.valueProperty().addListener((ov, oldVal, newVal)->
