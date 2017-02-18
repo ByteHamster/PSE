@@ -28,6 +28,9 @@ public class HelpDialog extends Stage {
     private static final double WINDOW_HEIGHT = 400;
     private static final double WINDOW_WIDTH = 600;
 
+    /**
+     * Creates a new HelpDialog.
+     */
     public HelpDialog() {
         setTitle(Translator.getInstance().getString("controller.helpdialog.title"));
         getIcons().add(new Image("/icon.png"));

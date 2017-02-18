@@ -10,7 +10,7 @@ public class MenuHelpButtonHandler {
      * Handles a click on the help menu button in the simulation view.
      * @param event The ocurred event.
      */
-    public final void handle (javafx.event.ActionEvent event) {
+    public final void handle(javafx.event.ActionEvent event) {
         HelpDialog d = new HelpDialog();
         d.show();
     }
