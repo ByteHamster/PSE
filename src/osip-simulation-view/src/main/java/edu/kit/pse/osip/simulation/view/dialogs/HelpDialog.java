@@ -19,6 +19,8 @@ import javafx.stage.Stage;
  */
 public class HelpDialog extends Stage {
     private Font sectionFont = new Font(20);
+    private static final double WINDOW_HEIGHT = 400;
+    private static final double WINDOW_WIDTH = 600;
 
     public HelpDialog() {
         setTitle(Translator.getInstance().getString("controller.helpdialog.title"));
@@ -27,7 +29,8 @@ public class HelpDialog extends Stage {
         TabPane tabPane = new TabPane();
         tabPane.getTabs().addAll(createMainTab(), createControlTab(), createSettingsTab());
         setScene(new Scene(tabPane));
-        sizeToScene();
+        setHeight(WINDOW_HEIGHT);
+        setWidth(WINDOW_WIDTH);
     }
 
     private Tab createMainTab() {
