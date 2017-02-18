@@ -37,6 +37,7 @@ public class HelpDialog extends Stage {
         getIcons().add(new Image("/icon.png"));
 
         TabPane tabPane = new TabPane();
+        tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
         tabPane.getTabs().addAll(createMainTab(), createSettingsTab());
 
         Button close = new Button(Translator.getInstance().getString("monitoring.helpdialog.closeButton"));
@@ -54,7 +55,7 @@ public class HelpDialog extends Stage {
         pane.setCenter(tabPane);
         pane.setBottom(close);
         pane.setPadding(new Insets(0, 0, MonitoringViewConstants.ELEMENTS_GAP, 0));
-        pane.setAlignment(close, Pos.CENTER);
+        BorderPane.setAlignment(close, Pos.CENTER);
         setScene(new Scene(pane));
         setHeight(WINDOW_HEIGHT);
         setWidth(WINDOW_WIDTH);
@@ -83,12 +84,11 @@ public class HelpDialog extends Stage {
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setFitToWidth(true);
         scrollPane.setContent(textFlow);
-        scrollPane.setPrefViewportHeight(textFlow.prefHeight(-1));
-        scrollPane.setPrefViewportWidth(textFlow.prefWidth(-1));
-        scrollPane.setPadding(new Insets(5));
+        scrollPane.setPrefViewportHeight(textFlow.getPrefHeight());
+        scrollPane.setPrefViewportWidth(textFlow.getPrefWidth());
+        scrollPane.setPadding(new Insets(MonitoringViewConstants.ELEMENTS_GAP));
 
         tab.setContent(scrollPane);
-        tab.setClosable(false);
 
         return tab;
     }
@@ -126,12 +126,11 @@ public class HelpDialog extends Stage {
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setFitToWidth(true);
         scrollPane.setContent(textFlow);
-        scrollPane.setPrefViewportHeight(textFlow.prefHeight(-1));
-        scrollPane.setPrefViewportWidth(textFlow.prefWidth(-1));
-        scrollPane.setPadding(new Insets(5));
+        scrollPane.setPrefViewportHeight(textFlow.getPrefHeight());
+        scrollPane.setPrefViewportWidth(textFlow.getPrefWidth());
+        scrollPane.setPadding(new Insets(MonitoringViewConstants.ELEMENTS_GAP));
 
         tab.setContent(scrollPane);
-        tab.setClosable(false);
 
         return tab;
     }
