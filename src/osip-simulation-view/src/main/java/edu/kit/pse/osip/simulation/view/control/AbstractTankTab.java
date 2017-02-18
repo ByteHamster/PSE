@@ -38,7 +38,6 @@ public abstract class AbstractTankTab extends Tab {
 
         createTemperatureSlider(pane, tank);
         createOutFlowSlider(pane, tank);
-
     }
 
     private void createTemperatureSlider(GridPane pane, AbstractTank tank) {
