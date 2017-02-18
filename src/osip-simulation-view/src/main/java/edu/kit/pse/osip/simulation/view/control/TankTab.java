@@ -1,16 +1,14 @@
 package edu.kit.pse.osip.simulation.view.control;
 
+import edu.kit.pse.osip.core.model.base.TankSelector;
+
 /**
  * This class has controls specific to the input tanks.
  */
 public class TankTab extends AbstractTankTab {
 
-    /**
-     * Gets the value of temperature.
-     * @return The value of temperature.
-     */
-    public final int getTemperature() {
-        throw new RuntimeException("Not implemented!");
+    public TankTab(TankSelector tank) {
+        super(tank.name());
     }
 
     /**
