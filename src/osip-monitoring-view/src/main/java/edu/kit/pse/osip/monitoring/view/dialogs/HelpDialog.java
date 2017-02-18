@@ -82,7 +82,7 @@ public class HelpDialog extends Stage {
 
     private Tab createSettingsTab() {
         Tab tab = new Tab();
-        tab.setText(Translator.getInstance().getString("monitoring.helpdialog.mainTab.header"));
+        tab.setText(Translator.getInstance().getString("monitoring.helpdialog.settingsTab.header"));
 
         TextFlow textFlow = new TextFlow();
 
