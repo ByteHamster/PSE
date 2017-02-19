@@ -70,11 +70,10 @@ public class SimulationMainWindow implements SimulationViewInterface, Observer {
         MixTankDrawer mtDrawer = new MixTankDrawer(mixPos, mix, ROWS, tankCount);
         element.add(mtDrawer);
 
-        //Add a pipe leading out of the mixtank.
+        //Add a pipe leading out of the mixTank.
         Point2D mtStart = mtDrawer.getPipeStartPoint();
         Point2D mtEnd = new Point2D(mtStart.getX(), 1);
-        Point2D mtMid = new Point2D(mtStart.getX(), (mtStart.getY() + mtEnd.getY()) / 2);
-        Point2D[] mtWayPoints = {mtStart, mtMid, mtEnd};
+        Point2D[] mtWayPoints = {mtStart, mtEnd};
         PipeDrawer mtPipe = new PipeDrawer(mtWayPoints, mix.getOutPipe(), TankSelector.getUpperTankCount());
         pipes.add(mtPipe);
 
@@ -90,17 +89,15 @@ public class SimulationMainWindow implements SimulationViewInterface, Observer {
 
             //Create a pipe leading from the top to the tank
             Point2D topEnd = tankDrawer.getPipeEndPoint(1, 1);
-            Point2D topStart = new Point2D(topEnd.getX(), 0);
-            //Point in line with start and end where the valve will sit
-            Point2D topMid = new Point2D(topStart.getX(), (topStart.getY() + topEnd.getY()) / 2);
-            Point2D[] topWayPoints = {topStart, topMid, topEnd};
+            Point2D topStart = tankDrawer.getPipeTopEntry();
+            Point2D[] topWayPoints = {topStart, topEnd};
             pipes.add(new PipeDrawer(topWayPoints, tank.getInPipe(), 3));
 
             //Create a pipe leading from the tank to the mixTank
             Point2D botStart = tankDrawer.getPipeStartPoint();
             Point2D botEnd = mtDrawer.getPipeEndPoint(i++, TankSelector.getUpperTankCount());
-            Point2D botMid1 = new Point2D(botStart.getX(), (botStart.getY() + botEnd.getY()) / 2);
-            Point2D botMid2 = new Point2D(botEnd.getX(), (botStart.getY() + botEnd.getY()) / 2);
+            Point2D botMid1 = new Point2D(botStart.getX(), 0.5);
+            Point2D botMid2 = new Point2D(botEnd.getX(), 0.5);
             Point2D[] botWayPoints = {botStart, botMid1, botMid2, botEnd};
             pipes.add(new PipeDrawer(botWayPoints, tank.getOutPipe(), 3));
 

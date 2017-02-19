@@ -17,7 +17,6 @@ public class PipeDrawer implements Drawer {
     private ValveDrawer valve;
     private double relPipeWidth;
 
-
     /**
      * Create a new pipe along the wayPoints 1 to n.
      * @param wayPoints The points that the pipe goes along
@@ -40,7 +39,13 @@ public class PipeDrawer implements Drawer {
 
         this.wayPoints = wayPoints;
         relPipeWidth = ViewConstants.PIPE_WIDTH / cols;
-        valve = new ValveDrawer(wayPoints[1], pipe, cols);
+
+        //Set the valve p*100 % of the way along the way connecting the first two wayPoints
+        double p = 0.3;
+        double valveX = ((1-p) * wayPoints[0].getX() + p * wayPoints[1].getX());
+        double valveY = ((1-p) * wayPoints[0].getY() + p * wayPoints[1].getY());
+
+        valve = new ValveDrawer(new Point2D(valveX, valveY), pipe, cols);
     }
 
     /**
