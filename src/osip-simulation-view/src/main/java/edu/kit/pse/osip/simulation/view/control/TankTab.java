@@ -65,10 +65,10 @@ public class TankTab extends AbstractTankTab {
     }
 
     /**
-     * Gets the value of inFlow.
-     * @return The value of inFlow.
+     * Returns a reference to the InFlowSlider
+     * @return A reference to the InFlowSlider
      */
-    public final int getInFlow() {
-        return (int) inFlowSlider.getValue();
+    protected Slider getInFlowSlider() {
+        return inFlowSlider;
     }
 }

@@ -18,12 +18,13 @@ import java.util.EnumMap;
  * This is the main window for controlling the OSIP simulation. It provides scroll bars in
  * different tabs for all tanks to adjust their values, like outflow, temperature and motor speed.
  *
- * @version 0.1
+ * @version 1.0
  * @author Niko Wilhelm
  */
 public class SimulationControlWindow extends Stage implements SimulationControlInterface {
 
     private EnumMap<TankSelector, AbstractTankTab> tankTabs;
+    private ProductionSite productionSite;
 
     /**
      * Constructs a new SimulationControlWindow
@@ -31,6 +32,7 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
      */
     public SimulationControlWindow(ProductionSite productionSite) {
         Translator t = Translator.getInstance();
+        this.productionSite = productionSite;
 
         this.setTitle(t.getString("simulation.control.title"));
         this.setResizable(false);
@@ -50,7 +52,6 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
             layout.getTabs().add(tab);
         }
 
-        // TODO: is there another way to get TankSelector.MIX separately?
         TankSelector mixTankSelector = TankSelector.MIX;
         MixTank mixTank = productionSite.getMixTank();
         MixTankTab mtTab = new MixTankTab(mixTankSelector.name(), mixTank);
@@ -65,7 +66,20 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
      * @param listener The Consumer that gets all changes to valve thresholds.
      */
     public void setValveListener(BiConsumer<Pipe, Byte> listener) {
-        throw new RuntimeException("Not implemented");
+        // Inflow listeners for all upper tanks
+        for (TankSelector t : TankSelector.valuesWithoutMix()) {
+            Pipe inPipe = productionSite.getUpperTank(t).getInPipe();
+            TankTab tab = (TankTab) tankTabs.get(t);
+            tab.getInFlowSlider().valueProperty().addListener((ov, oldVal, newVal) ->
+                listener.accept(inPipe, (byte) newVal));
+        }
+
+        // Outflow listeners for all tanks
+        for (TankSelector t : TankSelector.values()) {
+            Pipe inPipe = productionSite.getUpperTank(t).getInPipe();
+            tankTabs.get(t).getOutFlowSlider().valueProperty().addListener((ov, oldVal, newVal) ->
+                listener.accept(inPipe, (byte) newVal));
+        }
     }
 
     /**
@@ -73,7 +87,10 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
      * @param listener The Consumer that gets all changes to Tank temperatures
      */
     public void setTemperatureListener(BiConsumer<TankSelector, Float> listener) {
-        throw new RuntimeException("Not implemented");
+        for (TankSelector t : TankSelector.values()) {
+            tankTabs.get(t).getTemperatureSlider().valueProperty().addListener((ov, oldVal, newVal) ->
+                listener.accept(t, (float) newVal));
+        }
     }
 
     /**
@@ -81,6 +98,8 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
      * @param listener The Consumer that gets all to the motorSpeed
      */
     public void setMotorListener(Consumer<Integer> listener) {
-        throw new RuntimeException("Not implemented");
+        MixTankTab tab = (MixTankTab) tankTabs.get(TankSelector.MIX);
+        tab.getMotorSlider().valueProperty().addListener((ov, oldVal, newVal) ->
+            listener.accept((int) newVal));
     }
 }

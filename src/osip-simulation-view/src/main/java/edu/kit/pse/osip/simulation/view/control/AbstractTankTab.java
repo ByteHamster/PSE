@@ -97,19 +97,19 @@ public abstract class AbstractTankTab extends Tab {
     }
 
     /**
-     * Gets the value of outFlow.
-     * @return The value of outFlow.
+     * Gets a reference to the outFlowSlider
+     * @return A reference to the outFlowSlider
      */
-    public final int getOutFlow() {
-        return (int) outFlowSlider.getValue();
+    protected Slider getOutFlowSlider() {
+        return outFlowSlider;
     }
 
     /**
-     * Gets the value of temperature.
-     * @return The value of temperature.
+     * Gets a reference to the temperatureSlider
+     * @return A reference to the temperatureSlider
      */
-    public final int getTemperature() {
-        return (int) temperatureSlider.getValue();
+    protected Slider getTemperatureSlider() {
+        return temperatureSlider;
     }
 
     /**

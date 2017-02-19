@@ -66,11 +66,10 @@ public class MixTankTab extends AbstractTankTab {
     }
 
     /**
-     * Gets the value of the motor rpm slider
-     * 
-     * @return The rpm of the motor in the mixtank
+     * Returns a reference to the motorSlider
+     * @return A reference to the motorSlider
      */
-    public final int getMotorRPM() {
-        return (int) motorSlider.getValue();
+    protected Slider getMotorSlider() {
+        return motorSlider;
     }
 }
