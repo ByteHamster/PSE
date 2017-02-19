@@ -4,11 +4,12 @@ import edu.kit.pse.osip.core.model.base.Pipe;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 /**
  * This class visualizes the valve that is part of every pipe.
  *
- * @version 0.1
+ * @version 1.0
  * @author Niko Wilhelm
  */
 public class ValveDrawer extends RotatingControlDrawer {
@@ -84,5 +85,10 @@ public class ValveDrawer extends RotatingControlDrawer {
                 rotateX(point4xPos, centerX, point4yPos, centerY, degrees),
                 rotateY(point4xPos, centerX, point4yPos, centerY, degrees));
         context.strokeOval(point1xPos, point2yPos, radius * 2 * totalWidth, radius * 2 * totalWidth);
+
+        context.setFont(Font.font("Arial", (relValveHeight - relValveWidth) * totalWidth));
+        context.setFill(Color.BLUE);
+        context.fillText(String.valueOf(pipe.getValveThreshold()), point1xPos,
+                point2yPos + valveHeight - ViewConstants.VALVE_LINE_WIDTH);
     }
 }

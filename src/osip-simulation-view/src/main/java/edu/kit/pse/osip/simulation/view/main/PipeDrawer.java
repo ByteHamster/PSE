@@ -54,7 +54,7 @@ public class PipeDrawer implements Drawer {
      */
     @Override
     public final void draw(GraphicsContext context, long time) {
-        context.setFill(Color.BLACK);
+        context.setStroke(Color.BLACK);
         Canvas canvas = context.getCanvas();
         double totalWidth = canvas.getWidth();
         double totalHeight = canvas.getHeight();
