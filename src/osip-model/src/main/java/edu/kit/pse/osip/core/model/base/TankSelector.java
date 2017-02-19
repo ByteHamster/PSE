@@ -24,6 +24,11 @@ public enum TankSelector {
     MAGENTA;
 
     /**
+     * Key prefix to use when retrieving a tank name from the translator
+     */
+    public static final String TRANSLATOR_LABEL_PREFIX = "label.tank.";
+
+    /**
      * This array defines the initial colors in the same order as the tanks are defined above.
      */
     private static Color[] initialColors = {
@@ -59,4 +64,4 @@ public enum TankSelector {
     public static int getUpperTankCount() {
         return values().length - 1;
     }
-};
+}
