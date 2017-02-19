@@ -9,6 +9,7 @@ import java.util.function.Consumer;
  * Provides abstraction from the view
  */
 public interface SimulationControlInterface {
+
     /**
      * Sets the listener that is notified of changes to valve thresholds.
      * @param listener The Consumer that gets all changes to valve thresholds.
