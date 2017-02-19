@@ -72,9 +72,8 @@ public class ValveDrawer extends RotatingControlDrawer {
         double valveHeight = relValveHeight * totalWidth;
         double valveWidth = relValveWidth * totalWidth;
 
-        double valveTopY = point2yPos - (relValveHeight - relValveWidth) * totalWidth;
-        context.fillRect(point1xPos, valveTopY, valveWidth, valveHeight);
-        context.strokeRect(point1xPos, valveTopY, valveWidth, valveHeight);
+        context.fillRect(point1xPos, point2yPos, valveWidth, valveHeight);
+        context.strokeRect(point1xPos, point2yPos, valveWidth, valveHeight);
 
         context.strokeLine(rotateX(point1xPos, centerX, point1yPos, centerY, degrees),
                 rotateY(point1xPos, centerX, point1yPos, centerY, degrees),

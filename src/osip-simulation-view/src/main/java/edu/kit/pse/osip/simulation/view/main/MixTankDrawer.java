@@ -47,6 +47,7 @@ public class MixTankDrawer extends AbstractTankDrawer {
         Point2D motorPos = new Point2D(motorX, motorY);
         motor = new MotorDrawer(motorPos, tank.getMotor(), cols);
     }
+
     /**
      * Add Temperature- and Fillsensors as well as a motor visualization to the tank.
      * @param context The GraphicsContext on which the sensors are drawn.
