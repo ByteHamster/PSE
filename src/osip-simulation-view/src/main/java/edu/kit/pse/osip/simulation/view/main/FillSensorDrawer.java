@@ -41,8 +41,8 @@ public class FillSensorDrawer extends ObjectDrawer {
         double totalWidth = canvas.getWidth();
         double totalHeight = canvas.getHeight();
 
-        double compWidth = totalWidth / rows;
-        double compHeight = totalHeight / cols;
+        double compWidth = totalWidth / cols;
+        double compHeight = totalHeight / rows;
 
         double rectXPos = (getPosition().getX() + 1.0 / 4.0 * WIDTH / cols) * totalWidth;
         double rectYPos = (getPosition().getY() - 1.0 / 2.0 * HEIGHT / rows) * totalHeight;
