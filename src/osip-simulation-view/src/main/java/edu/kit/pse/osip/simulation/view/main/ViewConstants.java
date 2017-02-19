@@ -90,4 +90,14 @@ public final class ViewConstants {
      * The width of the lines making up the valves.
      */
     protected static final double VALVE_LINE_WIDTH = 2;
+
+    /**
+     * The width of a FillSensorDrawer relative to the height of a tank compartment.
+     */
+    public static final double FILLSENSOR_WIDTH = 0.1;
+
+    /**
+     * The height of a FillSensorDrawer relative to the height of a tank compartment.
+     */
+    public static final double FILLSENSOR_HEIGHT = 0.07;
 }
