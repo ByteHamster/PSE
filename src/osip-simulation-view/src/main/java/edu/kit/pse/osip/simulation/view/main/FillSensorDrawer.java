@@ -9,9 +9,6 @@ import javafx.scene.paint.Color;
  */
 public class FillSensorDrawer extends ObjectDrawer {
 
-    private static final double WIDTH = 0.05;
-    private static final double HEIGHT = 0.05;
-
     private int rows;
     private int cols;
 
@@ -44,12 +41,12 @@ public class FillSensorDrawer extends ObjectDrawer {
         double compWidth = totalWidth / cols;
         double compHeight = totalHeight / rows;
 
-        double rectXPos = (getPosition().getX() + 1.0 / 4.0 * WIDTH / cols) * totalWidth;
-        double rectYPos = (getPosition().getY() - 1.0 / 2.0 * HEIGHT / rows) * totalHeight;
-        double rectWidth = compWidth * WIDTH / 2.0;
-        double rectHeight = compHeight * HEIGHT;
+        double rectXPos = (getPosition().getX() + 1.0 / 4.0 * ViewConstants.FILLSENSOR_WIDTH / cols) * totalWidth;
+        double rectYPos = (getPosition().getY() - 1.0 / 2.0 * ViewConstants.FILLSENSOR_HEIGHT / rows) * totalHeight;
+        double rectWidth = compWidth * ViewConstants.FILLSENSOR_WIDTH / 2.0;
+        double rectHeight = compHeight * ViewConstants.FILLSENSOR_HEIGHT;
 
-        double leftEndX = (getPosition().getX() - 1 / 4.0 * WIDTH / cols) * totalWidth;
+        double leftEndX = (getPosition().getX() - 1 / 4.0 * ViewConstants.FILLSENSOR_WIDTH / cols) * totalWidth;
 
         // Draw a rectangle and a line going into the tank
         context.fillRect(rectXPos, rectYPos, rectWidth, rectHeight);
