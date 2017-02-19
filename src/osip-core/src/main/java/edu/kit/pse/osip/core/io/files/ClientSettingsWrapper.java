@@ -85,14 +85,25 @@ public class ClientSettingsWrapper {
     }
     
     /**
-     * Setter method of temperature alarm
+     * Setter method of temperature high alarm
      * @param tank The tank to save the value for
      * @param enabled true if alarm is enabled
      */
-    public final void setTempAlarm(TankSelector tank, boolean enabled) {
+    public final void setTempHighAlarm(TankSelector tank, boolean enabled) {
         String tankString = tank.name();
         String enabledString = String.valueOf(enabled);
-        properties.setProperty("tempAlarm_" + tankString, enabledString);
+        properties.setProperty("tempHighAlarm_" + tankString, enabledString);
+    }
+    
+    /**
+     * Setter method of temperature low alarm
+     * @param tank The tank to save the value for
+     * @param enabled true if alarm is enabled
+     */
+    public final void setTempLowAlarm(TankSelector tank, boolean enabled) {
+        String tankString = tank.name();
+        String enabledString = String.valueOf(enabled);
+        properties.setProperty("tempLowAlarm_" + tankString, enabledString);
     }
     
     /**
@@ -133,14 +144,29 @@ public class ClientSettingsWrapper {
     }
     
     /**
-     * Getter method of temp alarm
+     * Getter method of temp high alarm
      * @return true if alarm is enabled or default on error
      * @param tank The tank to get the value for
      * @param defaultValue value on error
      */
-    public final boolean getTempAlarm(TankSelector tank, boolean defaultValue) {
+    public final boolean getTempHighAlarm(TankSelector tank, boolean defaultValue) {
         String tankString = tank.name();
-        String entry = properties.getProperty("tempAlarm_" + tankString);
+        String entry = properties.getProperty("tempHighAlarm_" + tankString);
+        if (entry == null || (!entry.equals("true") && !entry.equals("false"))) {
+            return defaultValue;
+        }
+        return Boolean.parseBoolean(entry);        
+    }
+    
+    /**
+     * Getter method of temp low alarm
+     * @return true if alarm is enabled or default on error
+     * @param tank The tank to get the value for
+     * @param defaultValue value on error
+     */
+    public final boolean getTempLowAlarm(TankSelector tank, boolean defaultValue) {
+        String tankString = tank.name();
+        String entry = properties.getProperty("tempLowAlarm_" + tankString);
         if (entry == null || (!entry.equals("true") && !entry.equals("false"))) {
             return defaultValue;
         }

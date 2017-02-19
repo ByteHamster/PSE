@@ -38,7 +38,9 @@ public class ClientSettingsWrapperTest {
         outStream.println();
         outStream.print("underflowAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
         outStream.println();
-        outStream.print("tempAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
+        outStream.print("tempHighAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
+        outStream.println();
+        outStream.print("tempLowAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
         outStream.println();
         outStream.print("tempDiagram_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
         outStream.println();
@@ -124,12 +126,21 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test setting temp alarm status
+     * Test setting temp high alarm status
      */
     @Test
-    public void testTempAlarm() {
-        wrapper.setTempAlarm(TankSelector.valuesWithoutMix()[0], true);        
-        assertEquals(wrapper.getTempAlarm(TankSelector.valuesWithoutMix()[0], false), true);
+    public void testSetTempHighAlarm() {
+        wrapper.setTempHighAlarm(TankSelector.valuesWithoutMix()[0], true);        
+        assertEquals(wrapper.getTempHighAlarm(TankSelector.valuesWithoutMix()[0], false), true);
+    }
+    
+    /**
+     * Test setting temp low alarm status
+     */
+    @Test
+    public void testSetTempLowAlarm() {
+        wrapper.setTempLowAlarm(TankSelector.valuesWithoutMix()[0], true);        
+        assertEquals(wrapper.getTempLowAlarm(TankSelector.valuesWithoutMix()[0], false), true);
     }
     
     /**
@@ -199,8 +210,17 @@ public class ClientSettingsWrapperTest {
      * Test getting temp alarm
      */
     @Test
-    public void testGetTempAlarm() {
-        boolean result = wrapper.getTempAlarm(TankSelector.valuesWithoutMix()[0], false);
+    public void testGetTempHighAlarm() {
+        boolean result = wrapper.getTempHighAlarm(TankSelector.valuesWithoutMix()[0], false);
+        assertEquals(result, false);
+    }
+    
+    /**
+     * Test getting temp low alarm
+     */
+    @Test
+    public void testGetTempLowAlarm() {
+        boolean result = wrapper.getTempLowAlarm(TankSelector.valuesWithoutMix()[0], false);
         assertEquals(result, false);
     }
     
