@@ -19,11 +19,15 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.text.Font;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-
-import java.util.*;
+import java.util.Collection;
+import java.util.Observer;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * The main window for visualizing the OSIP simulation.
@@ -33,7 +37,7 @@ import java.util.*;
  * @version 0.5
  * @author Niko Wilhelm
  */
-public class SimulationMainWindow implements SimulationViewInterface, java.util.Observer {
+public class SimulationMainWindow implements SimulationViewInterface, Observer {
 
     /**
      * It is assumed, that the tanks and mixtank are always ordered in two rows.
