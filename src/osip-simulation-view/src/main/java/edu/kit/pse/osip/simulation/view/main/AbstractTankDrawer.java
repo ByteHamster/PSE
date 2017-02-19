@@ -197,7 +197,7 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
      */
     public Point2D getPipeEndPoint(int pointNum, int pointCount) {
         double xPos = getPosition().getX() + inBoxHorPadding
-                + (relInBoxWidth * pointNum / (TankSelector.getUpperTankCount() + 1));
+                + (relInBoxWidth * pointNum / (pointCount + 1));
         double yPos = getPosition().getY() + inBoxVertPadding;
         return new Point2D(xPos, yPos);
     }

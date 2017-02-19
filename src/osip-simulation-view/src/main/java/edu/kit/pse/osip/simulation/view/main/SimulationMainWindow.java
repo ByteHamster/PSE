@@ -90,12 +90,13 @@ public class SimulationMainWindow implements SimulationViewInterface, Observer {
             //Create a pipe leading from the top to the tank
             Point2D topEnd = tankDrawer.getPipeEndPoint(1, 1);
             Point2D topStart = tankDrawer.getPipeTopEntry();
+            System.out.println("botX: " + topEnd.getX() + ", botY: " + topEnd.getY() + ", topX: " + topStart.getX() + ", topY: " + topStart.getY());
             Point2D[] topWayPoints = {topStart, topEnd};
             pipes.add(new PipeDrawer(topWayPoints, tank.getInPipe(), 3));
 
             //Create a pipe leading from the tank to the mixTank
             Point2D botStart = tankDrawer.getPipeStartPoint();
-            Point2D botEnd = mtDrawer.getPipeEndPoint(i++, TankSelector.getUpperTankCount());
+            Point2D botEnd = mtDrawer.getPipeEndPoint(i + 1, TankSelector.getUpperTankCount());
             Point2D botMid1 = new Point2D(botStart.getX(), 0.5);
             Point2D botMid2 = new Point2D(botEnd.getX(), 0.5);
             Point2D[] botWayPoints = {botStart, botMid1, botMid2, botEnd};

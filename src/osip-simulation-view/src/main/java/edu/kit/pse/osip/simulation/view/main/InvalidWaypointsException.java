@@ -11,6 +11,6 @@ public class InvalidWaypointsException extends IllegalArgumentException {
      * @param waypoints The invalid waypoints
      */
     public InvalidWaypointsException(Point2D[] waypoints) {
-        throw new RuntimeException("Not implemented!");
+
     }
 }
