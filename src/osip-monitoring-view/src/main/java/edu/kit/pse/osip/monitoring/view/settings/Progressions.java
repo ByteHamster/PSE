@@ -8,13 +8,14 @@ import java.util.EnumMap;
 import javafx.geometry.Insets;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Separator;
 import jfxtras.scene.layout.VBox;
 
 /**
  * Controls all controls for disabling / enabling the progressions in the monitoring view.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.1
  */
 class Progressions extends ScrollPane {
     /**
@@ -47,16 +48,18 @@ class Progressions extends ScrollPane {
         VBox root = new VBox(MonitoringViewConstants.ELEMENTS_GAP);
         root.setPadding(new Insets(MonitoringViewConstants.ELEMENTS_GAP));
         CheckBox currentBox;
+        String tankName;
         for (TankSelector tank : TankSelector.values()) {
+            tankName = Translator.getInstance().getString(TankSelector.TRANSLATOR_LABEL_PREFIX + tank.name())
+                    .toLowerCase();
             currentBox = new CheckBox(String.format(
-                    Translator.getInstance().getString("monitoring.settings.progressions.fillLevel"), tank.toString()));
+                    Translator.getInstance().getString("monitoring.settings.progressions.fillLevel"), tankName));
             currentBox.setSelected(currentSettings.getFillLevelDiagram(tank, true));
             root.getChildren().add(currentBox);
             currentBox = new CheckBox(String.format(
-                    Translator.getInstance().getString("monitoring.settings.progressions.temperature"),
-                    tank.toString()));
+                    Translator.getInstance().getString("monitoring.settings.progressions.temperature"), tankName));
             currentBox.setSelected(currentSettings.getTempDiagram(tank, true));
-            root.getChildren().add(currentBox);
+            root.getChildren().addAll(currentBox, new Separator());
         }
         this.setContent(root);
     }
