@@ -38,6 +38,8 @@ public class ClientSettingsWrapperTest {
         outStream.println();
         outStream.print("underflowAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
         outStream.println();
+        outStream.print("tempAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
+        outStream.println();
         outStream.print("tempDiagram_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
         outStream.println();
         outStream.print("fillLevelDiagram_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
@@ -122,6 +124,15 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
+     * Test setting temp alarm status
+     */
+    @Test
+    public void testTempAlarm() {
+        wrapper.setTempAlarm(TankSelector.valuesWithoutMix()[0], true);        
+        assertEquals(wrapper.getTempAlarm(TankSelector.valuesWithoutMix()[0], false), true);
+    }
+    
+    /**
      * Test getting fetchinterval
      */
     @Test
@@ -182,6 +193,15 @@ public class ClientSettingsWrapperTest {
     public void testGetPort() {
         int result = wrapper.getPort(TankSelector.valuesWithoutMix()[0], -1);
         assertEquals(result, 4242);
+    }
+    
+    /**
+     * Test getting temp alarm
+     */
+    @Test
+    public void testGetTempAlarm() {
+        boolean result = wrapper.getTempAlarm(TankSelector.valuesWithoutMix()[0], false);
+        assertEquals(result, false);
     }
     
     /**

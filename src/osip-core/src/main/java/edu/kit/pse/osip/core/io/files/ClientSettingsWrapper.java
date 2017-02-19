@@ -83,6 +83,18 @@ public class ClientSettingsWrapper {
         String enabledString = String.valueOf(enabled);
         properties.setProperty("underflowAlarm_" + tankString, enabledString);
     }
+    
+    /**
+     * Setter method of temperature alarm
+     * @param tank The tank to save the value for
+     * @param enabled true if alarm is enabled
+     */
+    public final void setTempAlarm(TankSelector tank, boolean enabled) {
+        String tankString = tank.name();
+        String enabledString = String.valueOf(enabled);
+        properties.setProperty("tempAlarm_" + tankString, enabledString);
+    }
+    
     /**
      * Setter method of temperature diagram
      * @param tank The tank to save the value for
@@ -119,6 +131,22 @@ public class ClientSettingsWrapper {
             return defaultValue;
         }
     }
+    
+    /**
+     * Getter method of temp alarm
+     * @return true if alarm is enabled or default on error
+     * @param tank The tank to get the value for
+     * @param defaultValue value on error
+     */
+    public final boolean getTempAlarm(TankSelector tank, boolean defaultValue) {
+        String tankString = tank.name();
+        String entry = properties.getProperty("tempAlarm_" + tankString);
+        if (entry == null || (!entry.equals("true") && !entry.equals("false"))) {
+            return defaultValue;
+        }
+        return Boolean.parseBoolean(entry);        
+    }
+    
     /**
      * Getter method of overflow alarm
      * @return true if alarm is enabled or default on error
@@ -145,8 +173,7 @@ public class ClientSettingsWrapper {
         if (entry == null || (!entry.equals("true") && !entry.equals("false"))) {
             return defaultValue;
         }
-        return Boolean.parseBoolean(entry); 
-    
+        return Boolean.parseBoolean(entry);     
     }
     /**
      * Getter method of temperature diagram
