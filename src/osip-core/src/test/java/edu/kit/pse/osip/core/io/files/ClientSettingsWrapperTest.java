@@ -38,9 +38,9 @@ public class ClientSettingsWrapperTest {
         outStream.println();
         outStream.print("underflowAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
         outStream.println();
-        outStream.print("tempHighAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
+        outStream.print("overheatingAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
         outStream.println();
-        outStream.print("tempLowAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
+        outStream.print("undercoolingAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
         outStream.println();
         outStream.print("tempDiagram_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
         outStream.println();
@@ -126,21 +126,21 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test setting temp high alarm status
+     * Test setting overheating alarm status
      */
     @Test
-    public void testSetTempHighAlarm() {
-        wrapper.setTempHighAlarm(TankSelector.valuesWithoutMix()[0], true);        
-        assertEquals(wrapper.getTempHighAlarm(TankSelector.valuesWithoutMix()[0], false), true);
+    public void testSetOverheatingAlarm() {
+        wrapper.setOverheatingAlarm(TankSelector.valuesWithoutMix()[0], true);        
+        assertEquals(wrapper.getOverheatingAlarm(TankSelector.valuesWithoutMix()[0], false), true);
     }
     
     /**
-     * Test setting temp low alarm status
+     * Test setting undercooling alarm status
      */
     @Test
     public void testSetTempLowAlarm() {
-        wrapper.setTempLowAlarm(TankSelector.valuesWithoutMix()[0], true);        
-        assertEquals(wrapper.getTempLowAlarm(TankSelector.valuesWithoutMix()[0], false), true);
+        wrapper.setUndercoolingAlarm(TankSelector.valuesWithoutMix()[0], true);        
+        assertEquals(wrapper.getUndercoolingAlarm(TankSelector.valuesWithoutMix()[0], false), true);
     }
     
     /**
@@ -207,20 +207,20 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting temp alarm
+     * Test getting overheating alarm
      */
     @Test
-    public void testGetTempHighAlarm() {
-        boolean result = wrapper.getTempHighAlarm(TankSelector.valuesWithoutMix()[0], false);
+    public void testGetOverheatingAlarm() {
+        boolean result = wrapper.getOverheatingAlarm(TankSelector.valuesWithoutMix()[0], false);
         assertEquals(result, false);
     }
     
     /**
-     * Test getting temp low alarm
+     * Test getting undercooling alarm
      */
     @Test
     public void testGetTempLowAlarm() {
-        boolean result = wrapper.getTempLowAlarm(TankSelector.valuesWithoutMix()[0], false);
+        boolean result = wrapper.getUndercoolingAlarm(TankSelector.valuesWithoutMix()[0], false);
         assertEquals(result, false);
     }
     

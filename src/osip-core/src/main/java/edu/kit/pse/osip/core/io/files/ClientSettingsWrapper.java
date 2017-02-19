@@ -85,25 +85,25 @@ public class ClientSettingsWrapper {
     }
     
     /**
-     * Setter method of temperature high alarm
+     * Setter method of overheating alarm
      * @param tank The tank to save the value for
      * @param enabled true if alarm is enabled
      */
-    public final void setTempHighAlarm(TankSelector tank, boolean enabled) {
+    public final void setOverheatingAlarm(TankSelector tank, boolean enabled) {
         String tankString = tank.name();
         String enabledString = String.valueOf(enabled);
-        properties.setProperty("tempHighAlarm_" + tankString, enabledString);
+        properties.setProperty("overheatingAlarm_" + tankString, enabledString);
     }
     
     /**
-     * Setter method of temperature low alarm
+     * Setter method of undercooling alarm
      * @param tank The tank to save the value for
      * @param enabled true if alarm is enabled
      */
-    public final void setTempLowAlarm(TankSelector tank, boolean enabled) {
+    public final void setUndercoolingAlarm(TankSelector tank, boolean enabled) {
         String tankString = tank.name();
         String enabledString = String.valueOf(enabled);
-        properties.setProperty("tempLowAlarm_" + tankString, enabledString);
+        properties.setProperty("undercoolingAlarm_" + tankString, enabledString);
     }
     
     /**
@@ -144,14 +144,14 @@ public class ClientSettingsWrapper {
     }
     
     /**
-     * Getter method of temp high alarm
+     * Getter method of overheating alarm
      * @return true if alarm is enabled or default on error
      * @param tank The tank to get the value for
      * @param defaultValue value on error
      */
-    public final boolean getTempHighAlarm(TankSelector tank, boolean defaultValue) {
+    public final boolean getOverheatingAlarm(TankSelector tank, boolean defaultValue) {
         String tankString = tank.name();
-        String entry = properties.getProperty("tempHighAlarm_" + tankString);
+        String entry = properties.getProperty("overheatingAlarm_" + tankString);
         if (entry == null || (!entry.equals("true") && !entry.equals("false"))) {
             return defaultValue;
         }
@@ -159,14 +159,14 @@ public class ClientSettingsWrapper {
     }
     
     /**
-     * Getter method of temp low alarm
+     * Getter method of undercooling alarm
      * @return true if alarm is enabled or default on error
      * @param tank The tank to get the value for
      * @param defaultValue value on error
      */
-    public final boolean getTempLowAlarm(TankSelector tank, boolean defaultValue) {
+    public final boolean getUndercoolingAlarm(TankSelector tank, boolean defaultValue) {
         String tankString = tank.name();
-        String entry = properties.getProperty("tempLowAlarm_" + tankString);
+        String entry = properties.getProperty("undercoolingAlarm_" + tankString);
         if (entry == null || (!entry.equals("true") && !entry.equals("false"))) {
             return defaultValue;
         }
