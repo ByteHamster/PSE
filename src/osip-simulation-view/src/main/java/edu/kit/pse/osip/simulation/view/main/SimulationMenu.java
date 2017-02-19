@@ -5,9 +5,11 @@ import edu.kit.pse.osip.simulation.controller.AbstractMenuSettingsButton;
 import edu.kit.pse.osip.simulation.controller.AbstractMenuAboutButton;
 import edu.kit.pse.osip.simulation.controller.AbstractMenuControlButton;
 import edu.kit.pse.osip.simulation.controller.AbstractMenuHelpButton;
+import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.GridPane;
 
 /**
  * This class is the MenuBar at the top of the simulation view. It provides options to control the
@@ -16,42 +18,27 @@ import javafx.scene.control.MenuItem;
  * @author Niko Wilhelm
  * @version 1.0
  */
-public class SimulationMenu extends MenuBar {
+public class SimulationMenu extends GridPane {
 
     /**
      * Menu containing all buttons leading to ways to conrol the simulation.
      */
-    private Menu menuControl;
-
-    /**
-     * Menu button in the control menu for displaying the control window.
-     */
-    private MenuItem menuButtonControl;
+    private Button buttonControl;
 
     /**
      * Menu containing all buttons leading to ways to change the settings of the simulation.
      */
-    private Menu menuSettings;
-
-    /**
-     * Menu button in the settings menu for displaying the settings window.
-     */
-    private MenuItem menuButtonSettings;
+    private Button buttonSettings;
 
     /**
      * Menu containing all buttons for help.
      */
-    private Menu menuHelp;
+    private Menu menuOther;
 
     /**
      * Button in the help menu for showing the help dialog.
      */
     private MenuItem menuButtonHelp;
-
-    /**
-     * Menu containg the button leading to the about dialog.
-     */
-    private Menu menuAbout;
 
     /**
      * Button in the about menu for showing the about dialog.
@@ -63,23 +50,21 @@ public class SimulationMenu extends MenuBar {
      */
     protected SimulationMenu() {
         Translator trans = Translator.getInstance();
-        menuControl = new Menu(trans.getString("simulation.view.menu.control"));
-        menuButtonControl = new MenuItem(trans.getString("simulation.view.menu.control.control"));
-        menuControl.getItems().add(menuButtonControl);
+        buttonControl = new Button(trans.getString("simulation.view.menu.control"));
 
-        menuSettings = new Menu(trans.getString("simulation.view.menu.settings"));
-        menuButtonSettings = new Menu(trans.getString("simulation.view.menu.settings.settings)"));
-        menuSettings.getItems().add(menuButtonSettings);
+        buttonSettings = new Button(trans.getString("simulation.view.menu.settings"));
 
-        menuHelp = new Menu(trans.getString("simulation.view.menu.help"));
+        menuOther = new Menu(trans.getString("simulation.view.menu.help"));
         menuButtonHelp = new Menu(trans.getString("simulation.view.menu.help.help"));
-        menuHelp.getItems().add(menuButtonHelp);
-
-        menuAbout = new Menu(trans.getString("simulation.view.menu.about"));
         menuButtonAbout = new Menu(trans.getString("simulation.view.menu.about.about"));
-        menuAbout.getItems().add(menuButtonAbout);
+        menuOther.getItems().addAll(menuButtonHelp, menuButtonAbout);
+        MenuBar bar = new MenuBar();
+        bar.getMenus().addAll(menuOther);
 
-        this.getMenus().addAll(menuControl, menuSettings, menuHelp, menuAbout);
+        this.add(buttonControl, 0, 0);
+        this.add(buttonSettings, 1, 0);
+
+        this.add(bar, 2, 0);
     }
 
     /**
@@ -87,7 +72,7 @@ public class SimulationMenu extends MenuBar {
      * @param controlButtonHandler The handler to execute
      */
     public final void setControlButtonHandler(AbstractMenuControlButton controlButtonHandler) {
-        menuButtonControl.setOnAction(controlButtonHandler);
+        buttonControl.setOnAction(controlButtonHandler);
     }
 
     /**
@@ -95,7 +80,7 @@ public class SimulationMenu extends MenuBar {
      * @param settingsButtonHandler The handler to be called when the settings button is pressed
      */
     public final void setSettingsButtonHandler(AbstractMenuSettingsButton settingsButtonHandler) {
-        menuButtonSettings.setOnAction(settingsButtonHandler);
+        buttonSettings.setOnAction(settingsButtonHandler);
     }
 
     /**
