@@ -21,7 +21,7 @@ import javafx.stage.Stage;
  * The main entry point for the settings view. Within, the user can set all available parameters for his needs.
  * 
  * @author Martin Armbruster
- * @version 1.2
+ * @version 1.3
  */
 class SettingsMainWindow {
     /**
@@ -108,7 +108,9 @@ class SettingsMainWindow {
         buttons.setPadding(new Insets(MonitoringViewConstants.ELEMENTS_GAP));
         buttons.setAlignment(Pos.BOTTOM_RIGHT);
         buttonCancel = new Button(translator.getString("monitoring.settings.button.cancel"));
+        buttonCancel.setCancelButton(true);
         buttonSave = new Button(translator.getString("monitoring.settings.button.save"));
+        buttonSave.setDefaultButton(true);
         buttons.getChildren().addAll(buttonCancel, buttonSave);
         
         VBox generalLayout = new VBox(MonitoringViewConstants.ELEMENTS_GAP);

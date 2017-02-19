@@ -6,21 +6,19 @@ import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.monitoring.view.dashboard.MonitoringViewConstants;
 import java.util.EnumMap;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 /**
  * Contains all controls for setting the general settings.
  * 
  * @author Martin Armbruster
- * @version 1.1
+ * @version 1.2
  */
 class GeneralSettings extends ScrollPane {
     /**
@@ -59,17 +57,18 @@ class GeneralSettings extends ScrollPane {
      * @param currentSettings The current settings.
      */
     private void createLayout(ClientSettingsWrapper currentSettings) {
-        VBox layout = new VBox(MonitoringViewConstants.ELEMENTS_GAP);
-        layout.setPadding(new Insets(MonitoringViewConstants.ELEMENTS_GAP));
         Label generalLabel;
         Translator translator = Translator.getInstance();
         
-        HBox box = new HBox(MonitoringViewConstants.ELEMENTS_GAP * 1.5);
-        box.setAlignment(Pos.CENTER_LEFT);
+        GridPane layout = new GridPane();
+        layout.setHgap(MonitoringViewConstants.ELEMENTS_GAP);
+        layout.setVgap(MonitoringViewConstants.ELEMENTS_GAP);
+        layout.setPadding(new Insets(MonitoringViewConstants.ELEMENTS_GAP));
+        
         generalLabel = new Label(translator.getString("monitoring.settings.generalSettings.updateInterval"));
         timeSlider = new Slider(MonitoringViewConstants.MIN_UPDATE_INTERVAL,
                 MonitoringViewConstants.MAX_UPDATE_INTERVAL,
-                currentSettings.getFetchInterval(MonitoringViewConstants.MIN_UPDATE_INTERVAL));
+                currentSettings.getFetchInterval(MonitoringViewConstants.DEFAULT_UPDATE_INTERVAL));
         timeSlider.setMajorTickUnit((MonitoringViewConstants.MAX_UPDATE_INTERVAL
                 - MonitoringViewConstants.MIN_UPDATE_INTERVAL) / MonitoringViewConstants.NUMBER_OF_MAJOR_TICKS);
         timeSlider.setMinorTickCount(MonitoringViewConstants.NUMBER_OF_MINOR_TICKS);
@@ -77,40 +76,48 @@ class GeneralSettings extends ScrollPane {
         timeSlider.setShowTickLabels(true);
         timeSlider.setSnapToTicks(true);
         timeSlider.setPrefWidth(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS);
+        layout.add(generalLabel, 0, 0);
+        layout.add(timeSlider, 1, 0);
+        
         timeBox = new Spinner<Number>((double) MonitoringViewConstants.MIN_UPDATE_INTERVAL,
                 MonitoringViewConstants.MAX_UPDATE_INTERVAL,
                 currentSettings.getFetchInterval(MonitoringViewConstants.DEFAULT_UPDATE_INTERVAL));
         timeBox.setEditable(true);
+        timeBox.setPrefWidth(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS);
         timeBox.getValueFactory().valueProperty().bindBidirectional(timeSlider.valueProperty());
-        box.getChildren().addAll(generalLabel, timeSlider, timeBox);
+        // ** Solution for: When the timeBox loses focus, the typed-in value will be taken.
+        // Based on http://stackoverflow.com/questions/32340476
+        //          /manually-typing-in-text-in-javafx-spinner-is-not-updating-the-value-unless-user
+        TextFormatter<Number> formatter = new TextFormatter<>(timeBox.getValueFactory().getConverter(),
+                timeBox.getValueFactory().getValue());
+        timeBox.getEditor().setTextFormatter(formatter);
+        formatter.valueProperty().bindBidirectional(timeBox.getValueFactory().valueProperty());
+        // **
         generalLabel = new Label(translator.getString("monitoring.settings.generalSettings.milliseconds"));
-        box.getChildren().add(generalLabel);
-        layout.getChildren().add(box);
+        layout.add(timeBox, 1, 1);
+        layout.add(generalLabel, 2, 1);
         
-        GridPane servers = new GridPane();
-        servers.setHgap(MonitoringViewConstants.ELEMENTS_GAP);
-        servers.setVgap(MonitoringViewConstants.ELEMENTS_GAP);
         generalLabel = new Label(translator.getString("monitoring.settings.generalSettings.serverHost"));
-        serverHostname = new TextField(currentSettings.getHostname(TankSelector.MIX, ""));
-        servers.add(generalLabel, 0, 0);
-        servers.add(serverHostname, 1, 0);
+        serverHostname = new TextField(currentSettings.getHostname(TankSelector.MIX, "localhost"));
+        layout.add(generalLabel, 0, 2);
+        layout.add(serverHostname, 1, 2);
         
         Spinner<Integer> currentField;
         int defaultPort = 12868;
-        int row = 1;
+        int row = 3;
         for (TankSelector tank : TankSelector.values()) {
             generalLabel = new Label(String.format(
-                    translator.getString("monitoring.settings.generalSettings.serverPort"), tank.toString()));
+                    translator.getString("monitoring.settings.generalSettings.serverPort"),
+                    translator.getString(TankSelector.TRANSLATOR_LABEL_PREFIX + tank.name()).toLowerCase()));
             currentField = new Spinner<Integer>(MonitoringViewConstants.MIN_PORT, MonitoringViewConstants.MAX_PORT,
                     currentSettings.getPort(tank, defaultPort++));
             currentField.setEditable(true);
             currentField.setPrefWidth(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS);
             serverPorts.put(tank, currentField);
-            servers.add(generalLabel, 0, row);
-            servers.add(currentField, 1, row++);
+            layout.add(generalLabel, 0, row);
+            layout.add(currentField, 1, row++);
         }
         
-        layout.getChildren().add(servers);
         this.setContent(layout);
     }
     

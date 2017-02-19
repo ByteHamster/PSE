@@ -8,13 +8,14 @@ import java.util.EnumMap;
 import javafx.geometry.Insets;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Separator;
 import javafx.scene.layout.VBox;
 
 /**
  * Contains all controls for enabling / disabling the alarms in the monitoring view.
  * 
  * @author Martin Armbruster
- * @version 1.1
+ * @version 1.2
  */
 class AlarmSettings extends ScrollPane {
     /**
@@ -60,27 +61,29 @@ class AlarmSettings extends ScrollPane {
         VBox layout = new VBox(MonitoringViewConstants.ELEMENTS_GAP);
         layout.setPadding(new Insets(MonitoringViewConstants.ELEMENTS_GAP));
         CheckBox currentBox;
+        String tankName;
         for (TankSelector tank : TankSelector.values()) {
+            tankName = translator.getString(TankSelector.TRANSLATOR_LABEL_PREFIX + tank.name()).toLowerCase();
             currentBox = new CheckBox(String.format(translator.getString("monitoring.settings.alarms.liquidUnderflow"),
-                    tank.toString()));
+                    tankName));
             currentBox.setSelected(currentSettings.getUnderflowAlarm(tank, true));
             underflowEnabled.put(tank, currentBox);
             layout.getChildren().add(currentBox);
             currentBox = new CheckBox(String.format(translator.getString("monitoring.settings.alarms.liquidOverflow"),
-                    tank.toString()));
+                    tankName));
             currentBox.setSelected(currentSettings.getOverflowAlarm(tank, true));
             overflowEnabled.put(tank, currentBox);
             layout.getChildren().add(currentBox);
             currentBox = new CheckBox(String.format(
-                    translator.getString("monitoring.settings.alarms.temperatureOverheating"), tank.toString()));
-//            currentBox.setSelected(currentSettings.getTempOverheatAlarm(tank, true));
+                    translator.getString("monitoring.settings.alarms.temperatureOverheating"), tankName));
+            currentBox.setSelected(currentSettings.getOverheatingAlarm(tank, true));
             temperatureOverheatingEnabled.put(tank, currentBox);
             layout.getChildren().add(currentBox);
             currentBox = new CheckBox(String.format(
-                    translator.getString("monitoring.settings.alarms.temperatureUndercooling"), tank.toString()));
-//            currentBox.setSelected(currentSettings.getTempUndercoolAlarm(tank, true));
+                    translator.getString("monitoring.settings.alarms.temperatureUndercooling"), tankName));
+            currentBox.setSelected(currentSettings.getUndercoolingAlarm(tank, true));
             temperatureUndercoolingEnabled.put(tank, currentBox);
-            layout.getChildren().add(currentBox);
+            layout.getChildren().addAll(currentBox, new Separator());
         }
         this.setContent(layout);
     }
