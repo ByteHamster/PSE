@@ -63,7 +63,7 @@ public class SimulationSettingsWindow implements SimulationSettingsInterface {
 
         int row = 0;
         for (TankSelector tank : TankSelector.values()) {
-            Label portLabel = new Label(t.getString("simulation.settings.port." + tank.name()));
+            Label portLabel = new Label(t.getString(TankSelector.TRANSLATOR_LABEL_PREFIX + tank.name()));
             PortTextField portText = new PortTextField();
             portTextFields.put(tank, portText);
             portBoxes.add(portLabel, 0, row);
