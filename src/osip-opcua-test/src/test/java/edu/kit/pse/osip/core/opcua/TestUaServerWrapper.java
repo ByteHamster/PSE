@@ -27,8 +27,9 @@ public class TestUaServerWrapper extends UAServerWrapper {
      * @param path Same as for addVariable
      * @param displayName Same as for addVariable
      * @param type Same as for addVariable
+     * @throws UaException If the variable can not be added
      */
-    public void addVariableTest(String path, String displayName, NodeId type) {
+    public void addVariableTest(String path, String displayName, NodeId type) throws UaException {
         this.addVariable(path, displayName, type);
     }
 
@@ -45,13 +46,9 @@ public class TestUaServerWrapper extends UAServerWrapper {
      * Allows public access to addFolder
      * @param path Same as for addFolder
      * @param displayName Same as for addFolder
+     * @throws UaException If the folder can not be added
      */
-    public void addFolderTest(String path, String displayName) {
-        try {
-            this.addFolder(path, displayName);
-        } catch (UaException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Error adding folder");
-        }
+    public void addFolderTest(String path, String displayName) throws UaException {
+        this.addFolder(path, displayName);
     }
 }
