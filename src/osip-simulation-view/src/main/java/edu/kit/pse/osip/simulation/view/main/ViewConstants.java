@@ -19,10 +19,16 @@ public final class ViewConstants {
     protected static final double OUTBOX_PERCENT = 0.9;
 
     /**
-     * Percentage of width and height of a tank compartment that is
+     * Percentage of height of a tank compartment that is
      * occupied by the inner box, the "real" tank.
      */
-    protected static final double INBOX_PERCENT = 0.3;
+    protected static final double INBOX_HEIGHT = 0.35;
+
+    /**
+     * Percentage of width of a tank compartment that is
+     * occupied by the inner box, the "real" tank.
+     */
+    protected static final double INBOX_WIDTH = 0.45;
 
     /**
      * The height of the oval marking top and bottom of the actual tank as well

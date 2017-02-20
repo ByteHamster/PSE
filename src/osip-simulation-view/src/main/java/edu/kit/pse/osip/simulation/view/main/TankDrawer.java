@@ -23,10 +23,10 @@ public class TankDrawer extends AbstractTankDrawer {
     public TankDrawer(Point2D pos, Tank tank, int rows, int cols) {
         super(pos, tank, rows, cols);
 
-        double inBoxHorPadding = (1 - ViewConstants.INBOX_PERCENT) / 2 / cols;
-        double relInBoxWidth = ViewConstants.INBOX_PERCENT / cols;
-        double inBoxVertPadding = (1 - ViewConstants.INBOX_PERCENT) / 2 / rows;
-        double relInBoxHeight = ViewConstants.INBOX_PERCENT / rows;
+        double inBoxHorPadding = (1 - ViewConstants.INBOX_WIDTH) / 2 / cols;
+        double relInBoxWidth = ViewConstants.INBOX_WIDTH / cols;
+        double inBoxVertPadding = (1 - ViewConstants.INBOX_HEIGHT) / 2 / rows;
+        double relInBoxHeight = ViewConstants.INBOX_HEIGHT / rows;
 
         double topXPos = getPosition().getX() + inBoxHorPadding + relInBoxWidth;
         double topYPos = getPosition().getY() + inBoxVertPadding + 0.1 * relInBoxHeight;

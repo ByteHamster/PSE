@@ -44,13 +44,13 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
         width = 1.0 / cols;
         height = 1.0 / rows;
 
-        relInBoxHeight = ViewConstants.INBOX_PERCENT / rows;
-        relInBoxWidth = ViewConstants.INBOX_PERCENT / cols;
+        relInBoxHeight = ViewConstants.INBOX_HEIGHT / rows;
+        relInBoxWidth = ViewConstants.INBOX_WIDTH / cols;
         relOutBoxHeight = ViewConstants.OUTBOX_PERCENT / rows;
         relOutBoxWidth = ViewConstants.OUTBOX_PERCENT / cols;
 
-        inBoxHorPadding = (1 - ViewConstants.INBOX_PERCENT) / 2 / cols;
-        inBoxVertPadding = (1 - ViewConstants.INBOX_PERCENT) / 2 / rows;
+        inBoxHorPadding = (1 - ViewConstants.INBOX_WIDTH) / 2 / cols;
+        inBoxVertPadding = (1 - ViewConstants.INBOX_HEIGHT) / 2 / rows;
         outBoxHorPadding = (1 - ViewConstants.OUTBOX_PERCENT) / 2 / cols;
         outBoxVertPadding = (1 - ViewConstants.OUTBOX_PERCENT) / 2 / rows;
 
