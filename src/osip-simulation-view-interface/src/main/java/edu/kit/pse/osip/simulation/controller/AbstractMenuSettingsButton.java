@@ -1,12 +1,16 @@
 package edu.kit.pse.osip.simulation.controller;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+
 /**
  * Handles a click on the settings menu button
  *
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
-public abstract class AbstractMenuSettingsButton {
+public abstract class AbstractMenuSettingsButton implements EventHandler<ActionEvent> {
+
     /**
      * The current simulation settings window to be shown
      */
@@ -24,5 +28,6 @@ public abstract class AbstractMenuSettingsButton {
      * Handles a click on the settings menu button in the simulation view.
      * @param event The occurred event.
      */
-    public abstract void handle(javafx.event.ActionEvent event);
+    @Override
+    public abstract void handle(ActionEvent event);
 }

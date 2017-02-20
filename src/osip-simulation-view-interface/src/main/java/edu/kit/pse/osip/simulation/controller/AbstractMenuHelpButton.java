@@ -1,14 +1,19 @@
 package edu.kit.pse.osip.simulation.controller;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+
 /**
  * Handles a click on the help menu button in the simulation view.
+ *
+ * @author Niko Wilhelm
+ * @version 1.0
  */
-public class MenuHelpButtonHandler {
+public abstract class AbstractMenuHelpButton implements EventHandler<ActionEvent> {
+
     /**
      * Handles a click on the help menu button in the simulation view.
      * @param event The ocurred event.
      */
-    public final void handle (javafx.event.ActionEvent event) {
-        throw new RuntimeException("Not implemented!");
-    }
+    public abstract void handle(ActionEvent event);
 }
