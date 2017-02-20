@@ -125,7 +125,7 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
 
         double fluidTopOvalYPos = fluidTopYPos - totalOvalHeight / 2;
 
-        context.setFill(Color.WHEAT);
+        context.setFill(Color.LIGHTGREY);
         context.setLineWidth(3);
         context.fillRect(outBoxXPos, outBoxYPos, outBoxWidth, outBoxHeight);
 
