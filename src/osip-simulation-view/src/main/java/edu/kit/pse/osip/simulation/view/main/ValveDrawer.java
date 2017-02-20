@@ -88,7 +88,8 @@ public class ValveDrawer extends RotatingControlDrawer {
 
         context.setFont(Font.font("Arial", (relValveHeight - relValveWidth) * totalWidth));
         context.setFill(Color.BLUE);
+        //Offset of 1 to avoid writing over the valve outline
         context.fillText(String.valueOf(pipe.getValveThreshold()), point1xPos,
-                point2yPos + valveHeight - ViewConstants.VALVE_LINE_WIDTH);
+                point2yPos + valveHeight - 1);
     }
 }
