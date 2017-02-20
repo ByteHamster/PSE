@@ -205,7 +205,7 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
     /**
      * Gets the Point2D where a new pipe, marking an input into the production, starts at a Tank.
      * This Point2D marks the top middle of the outer box.
-     * @return The Point2D sitting at the bottom middle of the tank.
+     * @return The Point2D sitting at the top middle of the tank.
      */
     public Point2D getPipeTopEntry() {
         double xPos = getPosition().getX() + inBoxHorPadding + relInBoxWidth / 2;
@@ -213,7 +213,15 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
         return new Point2D(xPos, yPos);
     }
 
-
-
-
+    /**
+     * Gets the Point2D where a pipe, marking an output of the production, leaves the simulation after
+     * coming from the tank..
+     * This Point2D marks the bottom middle of the outer box.
+     * @return The Point2D sitting at the bottom middle of the tank compartment
+     */
+    public Point2D getPipeBotExit() {
+        double xPos = getPosition().getX() + inBoxHorPadding + relInBoxWidth / 2;
+        double yPos = getPosition().getY() + outBoxVertPadding + relOutBoxHeight;
+        return new Point2D(xPos, yPos);
+    }
 }

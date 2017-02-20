@@ -68,11 +68,15 @@ public class PipeDrawer implements Drawer {
             double y1 = wayPoints[i].getY() * totalHeight;
             double x2 = wayPoints[i + 1].getX() * totalWidth;
             double y2 = wayPoints[i + 1].getY() * totalHeight;
+
             // First and last point get an offset to the y position as the thickness of the line makes it go beyond the wanted
             // destination. The offset is not applied in the constructor as it depends on the screen dimensions.
-            if (i == 0) {
+            if (i == 0 && wayPoints.length == 2) {
                 y1 += rectWidth / 2;
-            }   else if (i == wayPoints.length - 2) {
+                y2 -= rectWidth / 2;
+            } else if (i == 0) {
+                y1 += rectWidth / 2;
+            } else if (i == wayPoints.length - 2) {
                 y2 -= rectWidth / 2;
             }
             context.strokeLine(x1, y1, x2, y2);
