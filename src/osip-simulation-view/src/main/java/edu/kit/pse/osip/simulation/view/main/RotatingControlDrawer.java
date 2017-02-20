@@ -4,6 +4,9 @@ package edu.kit.pse.osip.simulation.view.main;
  * The parent for all rotating gui elements. It needs a position and a rotational speed.
  * It provides private methods for rotation of the shapes making up the visualization, depending
  * on the given speed.
+ *
+ * @version 1.0
+ * @author Niko Wilhelm
  */
 public abstract class RotatingControlDrawer extends ObjectDrawer {
 
@@ -46,7 +49,7 @@ public abstract class RotatingControlDrawer extends ObjectDrawer {
      *                degrees, not radians.
      * @return The x coordinate of the point (xPos, yPos) rotated around (centerX, centerY) by degrees degrees
      */
-    public double rotateX(double xPos, double centerX, double yPos, double centerY, double degrees) {
+    protected static double rotateX(double xPos, double centerX, double yPos, double centerY, double degrees) {
         double angle = degrees * (Math.PI / 180);
         return Math.cos(angle) * (xPos - centerX) - Math.sin(angle) * (yPos - centerY) + centerX;
     }
@@ -62,8 +65,9 @@ public abstract class RotatingControlDrawer extends ObjectDrawer {
      *                degrees, not radians.
      * @return The y coordinate of the point (xPos, yPos) rotated around (centerX, centerY) by degrees degrees
      */
-    public double rotateY(double xPos, double centerX, double yPos, double centerY, double degrees) {
+    protected static double rotateY(double xPos, double centerX, double yPos, double centerY, double degrees) {
         double angle = degrees * (Math.PI / 180);
         return Math.sin(angle) * (xPos - centerX) + Math.cos(angle) * (yPos - centerY) + centerY;
     }
+
 }

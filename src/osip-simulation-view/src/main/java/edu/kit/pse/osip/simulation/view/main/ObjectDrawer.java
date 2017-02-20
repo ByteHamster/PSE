@@ -5,6 +5,9 @@ import javafx.scene.canvas.GraphicsContext;
 /**
  * The parent class for all non-moving objects of the simulation. The only data it needs
  * is a position where to draw itself.
+ *
+ * @version 1.0
+ * @author Niko Wilhelm
  */
 public abstract class ObjectDrawer implements Drawer {
 
@@ -40,5 +43,5 @@ public abstract class ObjectDrawer implements Drawer {
      * @param context The context that the object draws itself onto
      * @param time The current time in nanoseconds
      */
-    public abstract void draw(GraphicsContext context, long time);
+    public abstract void draw(GraphicsContext context, double time);
 }

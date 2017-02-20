@@ -9,7 +9,7 @@ import javafx.scene.text.Font;
 /**
  * This class visualizes the valve that is part of every pipe.
  *
- * @version 1.0
+ * @version 1.1
  * @author Niko Wilhelm
  */
 public class ValveDrawer extends RotatingControlDrawer {
@@ -23,58 +23,59 @@ public class ValveDrawer extends RotatingControlDrawer {
      * Generates a new drawer object for valves
      * @param pos The center of the drawer
      * @param pipe The pipe to which the valve is attached
-     * @param cols The number of columns in which the Tanks are ordered
+     * @param rows The number of rows in which the Tanks are ordered
      */
-    public ValveDrawer(Point2D pos, Pipe pipe, int cols) {
-        super(pos, 10);
+    public ValveDrawer(Point2D pos, Pipe pipe, int rows) {
+        super(pos, pipe.getValveThreshold());
 
         this.pipe = pipe;
-        radius = ViewConstants.VALVE_WIDTH / cols / 2;
-        relValveWidth = ViewConstants.VALVE_WIDTH / cols;
-        relValveHeight = ViewConstants.VALVE_HEIGHT / cols;
+        radius = ViewConstants.VALVE_WIDTH / rows / 2;
+        relValveWidth = ViewConstants.VALVE_WIDTH / rows;
+        relValveHeight = ViewConstants.VALVE_HEIGHT / rows;
     }
 
     /**
      * The Drawer draws itself onto the GraphicsContext at its position.
      * @param context The context that the object draws itself onto
+     * @param time
      */
     @Override
-    public final void draw(GraphicsContext context, long time) {
-        // The total time is taken, not the difference to the last execution. It does not matter
-        // what the start rotation is and this way there is no bookkeeping with last time
-        // and difference in rotation to the last execution while achieving the same look.
-        double elapsedMins = ((double) time) / (1000000000.0 * 60);
+    public final void draw(GraphicsContext context, double time) {
+        setSpeed(pipe.getValveThreshold());
         // Convert the minutes to degrees to be turned in total
-        double degrees = elapsedMins * getSpeed() * 360;
+        double degrees = time * getSpeed() / 2 * 360;
 
         Canvas canvas = context.getCanvas();
         double totalWidth = canvas.getWidth();
         double totalHeight = canvas.getHeight();
 
-        double point1xPos = (getPosition().getX() - radius) * totalWidth;
-        double point1yPos = (getPosition().getY() + radius) * totalHeight - 2 * ViewConstants.VALVE_LINE_WIDTH;
-        double point3xPos = (getPosition().getX() + radius) * totalWidth;
-        double point3yPos = point1yPos;
+        double valveHeight = relValveHeight * totalHeight;
+        double valveWidth = relValveWidth * totalHeight;
 
+        double valveTopLeftX = (getPosition().getX() - radius) * totalWidth
+                - (totalHeight - totalWidth) * radius;
+        double valveTopLeftY = getPosition().getY() * totalHeight;
+
+        double point1xPos = (getPosition().getX() - radius) * totalWidth
+                - (totalHeight - totalWidth) * radius + ViewConstants.VALVE_CIRCLE_DIST * valveWidth;
+        double point1yPos = (getPosition().getY() + radius) * totalHeight;
+        double point3xPos = point1xPos + valveWidth - 2 * ViewConstants.VALVE_CIRCLE_DIST * valveWidth;
+        double point3yPos = point1yPos;
         double point2xPos = getPosition().getX() * totalWidth;
-        double point2yPos = getPosition().getY() * totalHeight
-                - (totalWidth - totalHeight) * radius - 2 * ViewConstants.VALVE_LINE_WIDTH;
+        double point2yPos = getPosition().getY() * totalHeight + ViewConstants.VALVE_CIRCLE_DIST * valveWidth;
         double point4xPos = point2xPos;
-        double point4yPos = (getPosition().getY() + 2 * radius) * totalHeight
-                + (totalWidth - totalHeight) * radius - 2 * ViewConstants.VALVE_LINE_WIDTH;
+        //Width, not height, as we only want to increase by the circle diameter
+        double point4yPos = point2yPos + valveWidth - 2 * ViewConstants.VALVE_CIRCLE_DIST * valveWidth;
 
         double centerX = getPosition().getX() * totalWidth;
-        double centerY = (getPosition().getY() + radius) * totalHeight - 2 * ViewConstants.VALVE_LINE_WIDTH;
+        double centerY = (getPosition().getY() + radius) * totalHeight;
 
         context.setStroke(Color.BLACK);
         context.setLineWidth(ViewConstants.VALVE_LINE_WIDTH);
         context.setFill(Color.WHITE);
 
-        double valveHeight = relValveHeight * totalWidth;
-        double valveWidth = relValveWidth * totalWidth;
-
-        context.fillRect(point1xPos, point2yPos, valveWidth, valveHeight);
-        context.strokeRect(point1xPos, point2yPos, valveWidth, valveHeight);
+        context.fillRect(valveTopLeftX, valveTopLeftY, valveWidth, valveHeight);
+        context.strokeRect(valveTopLeftX, valveTopLeftY, valveWidth, valveHeight);
 
         context.strokeLine(rotateX(point1xPos, centerX, point1yPos, centerY, degrees),
                 rotateY(point1xPos, centerX, point1yPos, centerY, degrees),
@@ -84,12 +85,14 @@ public class ValveDrawer extends RotatingControlDrawer {
                 rotateY(point2xPos, centerX, point2yPos, centerY, degrees),
                 rotateX(point4xPos, centerX, point4yPos, centerY, degrees),
                 rotateY(point4xPos, centerX, point4yPos, centerY, degrees));
-        context.strokeOval(point1xPos, point2yPos, radius * 2 * totalWidth, radius * 2 * totalWidth);
+        context.strokeOval(point1xPos, point2yPos,
+                radius * 2 * totalHeight - 2 * ViewConstants.VALVE_CIRCLE_DIST * valveWidth,
+                radius * 2 * totalHeight - 2 * ViewConstants.VALVE_CIRCLE_DIST * valveWidth);
 
-        context.setFont(Font.font("Arial", (relValveHeight - relValveWidth) * totalWidth));
+        context.setFont(Font.font("Arial", (relValveHeight - relValveWidth) * totalHeight * 0.95));
         context.setFill(Color.BLUE);
         //Offset of 1 to avoid writing over the valve outline
-        context.fillText(String.valueOf(pipe.getValveThreshold()), point1xPos,
-                point2yPos + valveHeight - 1);
+        context.fillText(String.valueOf(pipe.getValveThreshold()), valveTopLeftX + 1,
+                valveTopLeftY + valveHeight - 2);
     }
 }

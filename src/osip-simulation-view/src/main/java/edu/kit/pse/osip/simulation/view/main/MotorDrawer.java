@@ -7,6 +7,9 @@ import javafx.scene.paint.Color;
 
 /**
  * This class visualizes the mixing motor in the MixTank.
+ *
+ * @version 1.0
+ * @author Niko Wilhelm
  */
 public class MotorDrawer extends RotatingControlDrawer {
 
@@ -31,17 +34,14 @@ public class MotorDrawer extends RotatingControlDrawer {
     /**
      * The Drawer draws itself onto the GraphicsContext at its position.
      * @param context The context that the object draws itself onto
+     * @param time
      */
     @Override
-    public final void draw(GraphicsContext context, long time) {
+    public final void draw(GraphicsContext context, double time) {
         setSpeed(motor.getRPM());
 
-        // The total time is taken, not the difference to the last execution. It does not matter
-        // what the start rotation is and this way there is no bookkeeping with last time
-        // and difference in rotation to the last execution while achieving the same look.
-        double elapsedMins = ((double) time) / (1000000000.0 * 60);
         // Convert the minutes to degrees to be turned in total
-        double degrees = elapsedMins * getSpeed() * 360;
+        double degrees = time * getSpeed() * 360;
 
         Canvas canvas = context.getCanvas();
         double totalWidth = canvas.getWidth();
@@ -97,4 +97,5 @@ public class MotorDrawer extends RotatingControlDrawer {
         context.strokeOval(point1xPos, point2yPos, relRadius * 2 * totalWidth, relRadius * 2 * totalWidth);
 
     }
+
 }

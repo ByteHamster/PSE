@@ -6,6 +6,9 @@ import javafx.scene.paint.Color;
 
 /**
  * This class visualizes a fill level sensor.
+ *
+ * @version 1.0
+ * @author Niko Wilhelm
  */
 public class FillSensorDrawer extends ObjectDrawer {
 
@@ -27,9 +30,10 @@ public class FillSensorDrawer extends ObjectDrawer {
     /**
      * The Drawer draws itself onto the GraphicsContext at its position.
      * @param context The context that the object draws itself onto
+     * @param time
      */
     @Override
-    public final void draw(GraphicsContext context, long time) {
+    public final void draw(GraphicsContext context, double time) {
         context.setFill(Color.BLACK);
         context.setStroke(Color.BLACK);
         context.setLineWidth(2);
@@ -39,18 +43,19 @@ public class FillSensorDrawer extends ObjectDrawer {
         double totalHeight = canvas.getHeight();
 
         double compWidth = totalWidth / cols;
-        double compHeight = totalHeight / rows;
 
         double rectXPos = (getPosition().getX() + 1.0 / 4.0 * ViewConstants.FILLSENSOR_WIDTH / cols) * totalWidth;
-        double rectYPos = (getPosition().getY() - 1.0 / 2.0 * ViewConstants.FILLSENSOR_HEIGHT / rows) * totalHeight;
+        double rectYPos = (getPosition().getY()  * totalHeight
+                - 1.0 / 2.0 * ViewConstants.FILLSENSOR_HEIGHT * compWidth);
         double rectWidth = compWidth * ViewConstants.FILLSENSOR_WIDTH / 2.0;
-        double rectHeight = compHeight * ViewConstants.FILLSENSOR_HEIGHT;
+        double rectHeight = compWidth * ViewConstants.FILLSENSOR_HEIGHT;
 
         double leftEndX = (getPosition().getX() - 1 / 4.0 * ViewConstants.FILLSENSOR_WIDTH / cols) * totalWidth;
 
         // Draw a rectangle and a line going into the tank
         context.fillRect(rectXPos, rectYPos, rectWidth, rectHeight);
-        context.strokeLine(leftEndX, getPosition().getY() * totalHeight, rectXPos, getPosition().getY() * totalHeight);
+        context.strokeLine(leftEndX, getPosition().getY() * totalHeight,
+                rectXPos, getPosition().getY() * totalHeight);
 
     }
 }

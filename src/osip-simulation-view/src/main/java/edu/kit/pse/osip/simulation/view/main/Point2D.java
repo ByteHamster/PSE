@@ -3,6 +3,9 @@ package edu.kit.pse.osip.simulation.view.main;
 /**
  * This class represents a simple Point in 2D space. It is a simple wrapper for the
  * data and does not support arithmetic operations on points.
+ *
+ * @version 1.0
+ * @author Niko Wilhelm
  */
 public class Point2D {
 

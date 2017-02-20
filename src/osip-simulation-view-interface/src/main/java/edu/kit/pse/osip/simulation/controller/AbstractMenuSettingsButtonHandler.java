@@ -9,7 +9,7 @@ import javafx.event.EventHandler;
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
-public abstract class AbstractMenuSettingsButton implements EventHandler<ActionEvent> {
+public abstract class AbstractMenuSettingsButtonHandler implements EventHandler<ActionEvent> {
 
     /**
      * The current simulation settings window to be shown
@@ -20,7 +20,7 @@ public abstract class AbstractMenuSettingsButton implements EventHandler<ActionE
      * Creates a new handler.
      * @param settingsWindow The current control window
      */
-    protected AbstractMenuSettingsButton(SimulationSettingsInterface settingsWindow) {
+    protected AbstractMenuSettingsButtonHandler(SimulationSettingsInterface settingsWindow) {
         this.settingsWindow = settingsWindow;
     }
 

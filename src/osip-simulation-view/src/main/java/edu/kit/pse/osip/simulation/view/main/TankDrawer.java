@@ -6,6 +6,9 @@ import javafx.scene.canvas.GraphicsContext;
 /**
  * The class visualizes the tanks during which liquid first enters the simulation.
  * As they have only one input only the fill level is variable, the color remains fixed.
+ *
+ * @version 1.0
+ * @author Niko Wilhelm
  */
 public class TankDrawer extends AbstractTankDrawer {
 
@@ -23,10 +26,10 @@ public class TankDrawer extends AbstractTankDrawer {
     public TankDrawer(Point2D pos, Tank tank, int rows, int cols) {
         super(pos, tank, rows, cols);
 
-        double inBoxHorPadding = (1 - ViewConstants.INBOX_PERCENT) / 2 / cols;
-        double relInBoxWidth = ViewConstants.INBOX_PERCENT / cols;
-        double inBoxVertPadding = (1 - ViewConstants.INBOX_PERCENT) / 2 / rows;
-        double relInBoxHeight = ViewConstants.INBOX_PERCENT / rows;
+        double inBoxHorPadding = (1 - ViewConstants.INBOX_WIDTH) / 2 / cols;
+        double relInBoxWidth = ViewConstants.INBOX_WIDTH / cols;
+        double inBoxVertPadding = (1 - ViewConstants.INBOX_HEIGHT) / 2 / rows;
+        double relInBoxHeight = ViewConstants.INBOX_HEIGHT / rows;
 
         double topXPos = getPosition().getX() + inBoxHorPadding + relInBoxWidth;
         double topYPos = getPosition().getY() + inBoxVertPadding + 0.1 * relInBoxHeight;
@@ -49,7 +52,7 @@ public class TankDrawer extends AbstractTankDrawer {
      * @param time The current time in nanoseconds
      */
     @Override
-    public final void drawSensors(GraphicsContext context, long time) {
+    public final void drawSensors(GraphicsContext context, double time) {
         topSensor.draw(context, time);
         botSensor.draw(context, time);
         tempSensor.draw(context, time);

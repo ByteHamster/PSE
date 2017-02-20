@@ -2,17 +2,20 @@ package edu.kit.pse.osip.simulation.view.main;
 
 import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.model.base.AbstractTank;
+import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-
 /**
  * This class visualizes a tank holding a colored liquid. It knows its position as well as the color
  * of the content. The changing part of the visualization are the fill level of the tank and, possibly,
  * the  color of the liquid.
+ *
+ * @version 1.0
+ * @author Niko Wilhelm
  */
 public abstract class AbstractTankDrawer extends ObjectDrawer {
 
@@ -44,13 +47,13 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
         width = 1.0 / cols;
         height = 1.0 / rows;
 
-        relInBoxHeight = ViewConstants.INBOX_PERCENT / rows;
-        relInBoxWidth = ViewConstants.INBOX_PERCENT / cols;
+        relInBoxHeight = ViewConstants.INBOX_HEIGHT / rows;
+        relInBoxWidth = ViewConstants.INBOX_WIDTH / cols;
         relOutBoxHeight = ViewConstants.OUTBOX_PERCENT / rows;
         relOutBoxWidth = ViewConstants.OUTBOX_PERCENT / cols;
 
-        inBoxHorPadding = (1 - ViewConstants.INBOX_PERCENT) / 2 / cols;
-        inBoxVertPadding = (1 - ViewConstants.INBOX_PERCENT) / 2 / rows;
+        inBoxHorPadding = (1 - ViewConstants.INBOX_WIDTH) / 2 / cols;
+        inBoxVertPadding = (1 - ViewConstants.INBOX_HEIGHT) / 2 / rows;
         outBoxHorPadding = (1 - ViewConstants.OUTBOX_PERCENT) / 2 / cols;
         outBoxVertPadding = (1 - ViewConstants.OUTBOX_PERCENT) / 2 / rows;
 
@@ -93,9 +96,10 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
     /**
      * Contains the main calls necessary to draw the tank. Uses the abstract method drawSensors() for detail.
      * @param context The GraphicsContext on which the tank is drawn
+     * @param time
      */
     @Override
-    public final void draw(GraphicsContext context, long time) {
+    public final void draw(GraphicsContext context, double time) {
         // get the ouside values
         Canvas canvas = context.getCanvas();
         double totalWidth = canvas.getWidth();
@@ -150,11 +154,12 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
         }
 
         context.setFill(Color.BLACK);
-        //TODO: Figure out dynamic font size
-        context.setFont(Font.font("Arial", 25));
+        double fontSize = totalWidth * ViewConstants.ABSTRACT_TANK_FONT_SIZE;
+        context.setFont(Font.font("Arial", fontSize));
         double textYPos = (getPosition().getY() + outBoxVertPadding) * totalHeight + outBoxHeight;
-        String name = Translator.getInstance().getString("simulation.serverName." + tank.getName());
-        context.fillText(name, outBoxXPos, textYPos);
+        String name = Translator.getInstance().getString(
+                TankSelector.TRANSLATOR_LABEL_PREFIX + tank.getTankSelector().name());
+        context.fillText(name, outBoxXPos + 2, textYPos - 3);
 
         context.setLineWidth(3);
         context.strokeOval(inBoxXPos, topOvalYPos, inBoxWidth, totalOvalHeight);
@@ -174,7 +179,7 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
      * @param context The GraphicsContext on which the sensors are drawn
      * @param time The time passed
      */
-    public abstract void drawSensors(GraphicsContext context, long time);
+    public abstract void drawSensors(GraphicsContext context, double time);
 
     /**
      * Gets the point where pipes can attach to the bottom of the tank. This point lies in the

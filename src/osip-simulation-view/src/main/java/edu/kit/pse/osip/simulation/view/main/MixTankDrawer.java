@@ -6,6 +6,9 @@ import javafx.scene.canvas.GraphicsContext;
 /**
  * The class visualizes a tank that is connected to several inputs. Due to this the fill level as
  * well as the color of the contained liquid might change with time.
+ *
+ * @version 1.0
+ * @author Niko Wilhelm
  */
 public class MixTankDrawer extends AbstractTankDrawer {
 
@@ -23,10 +26,10 @@ public class MixTankDrawer extends AbstractTankDrawer {
     public MixTankDrawer(Point2D pos, MixTank tank, int rows, int cols) {
         super(pos, tank, rows, cols);
 
-        double inBoxHorPadding = (1 - ViewConstants.INBOX_PERCENT) / 2 / cols;
-        double relInBoxWidth = ViewConstants.INBOX_PERCENT / cols;
-        double inBoxVertPadding = (1 - ViewConstants.INBOX_PERCENT) / 2 / rows;
-        double relInBoxHeight = ViewConstants.INBOX_PERCENT / rows;
+        double inBoxHorPadding = (1 - ViewConstants.INBOX_WIDTH) / 2 / cols;
+        double relInBoxWidth = ViewConstants.INBOX_WIDTH / cols;
+        double inBoxVertPadding = (1 - ViewConstants.INBOX_HEIGHT) / 2 / rows;
+        double relInBoxHeight = ViewConstants.INBOX_HEIGHT / rows;
 
         double topXPos = getPosition().getX() + inBoxHorPadding + relInBoxWidth;
         double topYPos = getPosition().getY() + inBoxVertPadding + 0.1 * relInBoxHeight;
@@ -51,9 +54,10 @@ public class MixTankDrawer extends AbstractTankDrawer {
     /**
      * Add Temperature- and Fillsensors as well as a motor visualization to the tank.
      * @param context The GraphicsContext on which the sensors are drawn.
+     * @param time
      */
     @Override
-    public final void drawSensors(GraphicsContext context, long time) {
+    public final void drawSensors(GraphicsContext context, double time) {
         topSensor.draw(context, time);
         botSensor.draw(context, time);
         tempSensor.draw(context, time);

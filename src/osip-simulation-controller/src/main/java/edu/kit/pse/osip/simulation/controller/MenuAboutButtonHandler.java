@@ -8,7 +8,7 @@ import javafx.event.ActionEvent;
  * @version 0.1
  * @author Niko Wilhelm
  */
-public class MenuAboutButtonHandler extends AbstractMenuAboutButton {
+public class MenuAboutButtonHandler extends AbstractMenuAboutButtonHandler {
 
     /**
      * Handles a click on the about menu button in the simulation view.

@@ -9,13 +9,13 @@ import javafx.event.EventHandler;
  * @author Niko Wilhelm
  * @version 1.0
  */
-public abstract class AbstractMenuControlButton implements EventHandler<ActionEvent> {
+public abstract class AbstractMenuControlButtonHandler implements EventHandler<ActionEvent> {
 
     /**
      * Creates a new handler.
      * @param controlWindow The current control window
      */
-    protected AbstractMenuControlButton(SimulationControlWindow controlWindow) {
+    protected AbstractMenuControlButtonHandler(SimulationControlWindow controlWindow) {
         throw new RuntimeException("Not implemented!");
     }
 

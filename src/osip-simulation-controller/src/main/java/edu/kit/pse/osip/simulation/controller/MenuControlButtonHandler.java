@@ -9,7 +9,7 @@ import javafx.event.ActionEvent;
  * @version 0.1
  * @author Niko Wilhelm
  */
-public class MenuControlButtonHandler extends AbstractMenuControlButton {
+public class MenuControlButtonHandler extends AbstractMenuControlButtonHandler {
 
     /**
      * Creates a new handler.

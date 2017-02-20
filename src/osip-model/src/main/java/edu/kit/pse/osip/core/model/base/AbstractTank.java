@@ -78,11 +78,4 @@ public abstract class AbstractTank extends java.util.Observable {
     public Liquid getLiquid() {
         return liquid;
     }
-    /**
-     * Gets the name of the tank.
-     * @return The name of the tank
-     */
-    public String getName() {
-        throw new RuntimeException("Not implemented yet");
-    }
 }

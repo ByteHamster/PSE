@@ -6,7 +6,7 @@ package edu.kit.pse.osip.simulation.controller;
  * @version 0.1
  * @author Niko Wilhelm
  */
-public class MenuSettingsButtonHandler extends AbstractMenuSettingsButton {
+public class MenuSettingsButtonHandler extends AbstractMenuSettingsButtonHandler {
 
     /**
      * Creates a new handler.

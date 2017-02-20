@@ -22,9 +22,9 @@ public class PipeDrawer implements Drawer {
      * Create a new pipe along the wayPoints 1 to n.
      * @param wayPoints The points that the pipe goes along
      * @param pipe The pipe that is drawn
-     * @param cols The number of columns in which the Tanks are ordered
+     * @param rows The number of rows in which the Tanks are ordered
      */
-    public PipeDrawer(Point2D[] wayPoints, Pipe pipe, int cols) {
+    public PipeDrawer(Point2D[] wayPoints, Pipe pipe, int rows) {
         // There need to be at least two wayPoints
         if (wayPoints.length < 2) {
             throw new InvalidWaypointsException(wayPoints);
@@ -39,22 +39,23 @@ public class PipeDrawer implements Drawer {
         }
 
         this.wayPoints = wayPoints;
-        relPipeWidth = ViewConstants.PIPE_WIDTH / cols;
+        relPipeWidth = ViewConstants.PIPE_WIDTH / rows;
 
         //Set the valve p*100 % of the way along the way connecting the first two wayPoints
-        double p = 0.3;
+        double p = 0.15;
         double valveX = ((1 - p) * wayPoints[0].getX() + p * wayPoints[1].getX());
         double valveY = ((1 - p) * wayPoints[0].getY() + p * wayPoints[1].getY());
 
-        valve = new ValveDrawer(new Point2D(valveX, valveY), pipe, cols);
+        valve = new ValveDrawer(new Point2D(valveX, valveY), pipe, rows);
     }
 
     /**
      * The Drawer draws itself onto the GraphicsContext at its position.
      * @param context The context that the object draws itself onto
+     * @param time
      */
     @Override
-    public final void draw(GraphicsContext context, long time) {
+    public final void draw(GraphicsContext context, double time) {
         context.setStroke(Color.BLACK);
         Canvas canvas = context.getCanvas();
         double totalWidth = canvas.getWidth();

@@ -1,15 +1,13 @@
 package edu.kit.pse.osip.simulation.view.main;
 
 import edu.kit.pse.osip.core.utils.language.Translator;
-import edu.kit.pse.osip.simulation.controller.AbstractMenuSettingsButton;
-import edu.kit.pse.osip.simulation.controller.AbstractMenuAboutButton;
-import edu.kit.pse.osip.simulation.controller.AbstractMenuControlButton;
-import edu.kit.pse.osip.simulation.controller.AbstractMenuHelpButton;
-import javafx.scene.control.Button;
+import edu.kit.pse.osip.simulation.controller.AbstractMenuSettingsButtonHandler;
+import edu.kit.pse.osip.simulation.controller.AbstractMenuAboutButtonHandler;
+import edu.kit.pse.osip.simulation.controller.AbstractMenuControlButtonHandler;
+import edu.kit.pse.osip.simulation.controller.AbstractMenuHelpButtonHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.GridPane;
 
 /**
  * This class is the MenuBar at the top of the simulation view. It provides options to control the
@@ -18,17 +16,19 @@ import javafx.scene.layout.GridPane;
  * @author Niko Wilhelm
  * @version 1.0
  */
-public class SimulationMenu extends GridPane {
+public class SimulationMenu extends MenuBar {
 
     /**
      * Menu containing all buttons leading to ways to conrol the simulation.
      */
-    private Button buttonControl;
+    private Menu menuButtonView;
+    private MenuItem menuItemControl;
 
     /**
      * Menu containing all buttons leading to ways to change the settings of the simulation.
      */
-    private Button buttonSettings;
+    private Menu menuButtonFile;
+    private MenuItem menuItemSettings;
 
     /**
      * Menu containing all buttons for help.
@@ -38,64 +38,66 @@ public class SimulationMenu extends GridPane {
     /**
      * Button in the help menu for showing the help dialog.
      */
-    private MenuItem menuButtonHelp;
+    private MenuItem menuItemHelp;
 
     /**
      * Button in the about menu for showing the about dialog.
      */
-    private MenuItem menuButtonAbout;
+    private MenuItem menuItemAbout;
 
     /**
      * Creates and initializes the menu for the simulation view.
      */
     protected SimulationMenu() {
+        this.setStyle("-fx-font-size:" + ViewConstants.FONT_SIZE + "px;");
         Translator trans = Translator.getInstance();
-        buttonControl = new Button(trans.getString("simulation.view.menu.control"));
 
-        buttonSettings = new Button(trans.getString("simulation.view.menu.settings"));
+        menuButtonFile = new Menu(trans.getString("simulation.view.menu.file"));
+        menuItemSettings = new MenuItem(trans.getString("simulation.view.menu.file.settings"));
+        menuButtonFile.getItems().add(menuItemSettings);
 
-        menuOther = new Menu(trans.getString("simulation.view.menu.help"));
-        menuButtonHelp = new Menu(trans.getString("simulation.view.menu.help.help"));
-        menuButtonAbout = new Menu(trans.getString("simulation.view.menu.about.about"));
-        menuOther.getItems().addAll(menuButtonHelp, menuButtonAbout);
-        MenuBar bar = new MenuBar();
-        bar.getMenus().addAll(menuOther);
+        menuButtonView = new Menu(trans.getString("simulation.view.menu.view"));
+        menuItemControl = new MenuItem(trans.getString("simulation.view.menu.view.control"));
+        menuButtonView.getItems().add(menuItemControl);
 
-        this.add(buttonControl, 0, 0);
-        this.add(buttonSettings, 1, 0);
+        menuOther = new Menu(trans.getString("simulation.view.menu.other"));
+        menuItemHelp = new MenuItem(trans.getString("simulation.view.menu.other.help"));
+        menuItemAbout = new MenuItem(trans.getString("simulation.view.menu.other.about"));
+        menuOther.getItems().add(menuItemHelp);
+        menuOther.getItems().add(menuItemAbout);
 
-        this.add(bar, 2, 0);
+        this.getMenus().addAll(menuButtonFile, menuButtonView, menuOther);
     }
 
     /**
      * Sets the handler for pressing the control entry in the menu
      * @param controlButtonHandler The handler to execute
      */
-    public final void setControlButtonHandler(AbstractMenuControlButton controlButtonHandler) {
-        buttonControl.setOnAction(controlButtonHandler);
+    public final void setControlButtonHandler(AbstractMenuControlButtonHandler controlButtonHandler) {
+        menuItemControl.setOnAction(controlButtonHandler);
     }
 
     /**
      * Sets the handler for pressing the settings entry in the menu
      * @param settingsButtonHandler The handler to be called when the settings button is pressed
      */
-    public final void setSettingsButtonHandler(AbstractMenuSettingsButton settingsButtonHandler) {
-        buttonSettings.setOnAction(settingsButtonHandler);
+    public final void setSettingsButtonHandler(AbstractMenuSettingsButtonHandler settingsButtonHandler) {
+        menuItemSettings.setOnAction(settingsButtonHandler);
     }
 
     /**
      * Sets the handler for pressing the about entry in the menu
      * @param aboutButtonHandler The handler to be called when the about button is pressed
      */
-    public final void setAboutButtonHandler(AbstractMenuAboutButton aboutButtonHandler) {
-        menuButtonAbout.setOnAction(aboutButtonHandler);
+    public final void setAboutButtonHandler(AbstractMenuAboutButtonHandler aboutButtonHandler) {
+        menuItemAbout.setOnAction(aboutButtonHandler);
     }
 
     /**
      * Sets the handler for pressing the help entry in the menu
      * @param helpButtonHandler The handler to be called when the help button is pressed
      */
-    public final void setHelpButtonHandler(AbstractMenuHelpButton helpButtonHandler) {
-        menuButtonHelp.setOnAction(helpButtonHandler);
+    public final void setHelpButtonHandler(AbstractMenuHelpButtonHandler helpButtonHandler) {
+        menuItemHelp.setOnAction(helpButtonHandler);
     }
 }
