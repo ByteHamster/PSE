@@ -6,7 +6,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 /**
- * This class visualizes a pipe connecting two tanks. It is specified by the wayPoints during which the pipe leads. It needs at least two wayPoints to exist.
+ * This class visualizes a pipe connecting two tanks. It is specified by the wayPoints through
+ * which the pipe leads. It needs at least two wayPoints to exist.
  *
  * @version 1.0
  * @author Niko Wilhelm
@@ -31,7 +32,7 @@ public class PipeDrawer implements Drawer {
         // Lines between consecutive wayPoints have to be either horizontal or vertical
         // (they are same in one or both coordinates)
         for (int i = 0; i < wayPoints.length - 1; i++) {
-            if(wayPoints[i].getX() != wayPoints[i + 1].getX()
+            if (wayPoints[i].getX() != wayPoints[i + 1].getX()
                     && wayPoints[i].getY() != wayPoints[i + 1].getY()) {
                 throw new InvalidWaypointsException(this.wayPoints);
             }
@@ -42,8 +43,8 @@ public class PipeDrawer implements Drawer {
 
         //Set the valve p*100 % of the way along the way connecting the first two wayPoints
         double p = 0.3;
-        double valveX = ((1-p) * wayPoints[0].getX() + p * wayPoints[1].getX());
-        double valveY = ((1-p) * wayPoints[0].getY() + p * wayPoints[1].getY());
+        double valveX = ((1 - p) * wayPoints[0].getX() + p * wayPoints[1].getX());
+        double valveY = ((1 - p) * wayPoints[0].getY() + p * wayPoints[1].getY());
 
         valve = new ValveDrawer(new Point2D(valveX, valveY), pipe, cols);
     }
@@ -64,13 +65,14 @@ public class PipeDrawer implements Drawer {
             double rectWidth = relPipeWidth * totalWidth;
             context.setLineWidth(rectWidth);
 
-            double x1 = wayPoints[i].getX() * totalWidth;//
+            double x1 = wayPoints[i].getX() * totalWidth;
             double y1 = wayPoints[i].getY() * totalHeight;
             double x2 = wayPoints[i + 1].getX() * totalWidth;
             double y2 = wayPoints[i + 1].getY() * totalHeight;
 
-            // First and last point get an offset to the y position as the thickness of the line makes it go beyond the wanted
-            // destination. The offset is not applied in the constructor as it depends on the screen dimensions.
+            // First and last point get an offset to the y position as the thickness of the line makes
+            // it go beyond the wanted destination. The offset is not applied in the constructor as it
+            // depends on the screen dimensions.
             if (i == 0 && wayPoints.length == 2) {
                 y1 += rectWidth / 2;
                 y2 -= rectWidth / 2;
