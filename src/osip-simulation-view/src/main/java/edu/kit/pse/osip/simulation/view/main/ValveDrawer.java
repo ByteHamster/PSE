@@ -23,7 +23,7 @@ public class ValveDrawer extends RotatingControlDrawer {
      * Generates a new drawer object for valves
      * @param pos The center of the drawer
      * @param pipe The pipe to which the valve is attached
-     * @cols The number of columns in which the Tanks are ordered
+     * @param cols The number of columns in which the Tanks are ordered
      */
     public ValveDrawer(Point2D pos, Pipe pipe, int cols) {
         super(pos, 10);

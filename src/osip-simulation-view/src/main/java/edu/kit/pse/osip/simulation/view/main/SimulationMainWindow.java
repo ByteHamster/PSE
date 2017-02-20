@@ -42,7 +42,7 @@ public class SimulationMainWindow implements SimulationViewInterface, Observer {
     /**
      * It is assumed, that the tanks and mixtank are always ordered in two rows.
      */
-    private final int ROWS = 2;
+    private static final int ROWS = 2;
 
     private SimulationMenu menu;
     private Collection<Drawer> element;
@@ -71,11 +71,7 @@ public class SimulationMainWindow implements SimulationViewInterface, Observer {
         element.add(mtDrawer);
 
         //Add a pipe leading out of the mixTank.
-        Point2D mtStart = mtDrawer.getPipeStartPoint();
-        Point2D mtEnd = mtDrawer.getPipeBotExit();
-        Point2D[] mtWayPoints = {mtStart, mtEnd};
-        PipeDrawer mtPipe = new PipeDrawer(mtWayPoints, mix.getOutPipe(), TankSelector.getUpperTankCount());
-        pipes.add(mtPipe);
+        pipes.add(createMixTankOutPipe(mix, mtDrawer));
 
         TankSelector[] topTanks = TankSelector.valuesWithoutMix();
 
@@ -88,22 +84,45 @@ public class SimulationMainWindow implements SimulationViewInterface, Observer {
             element.add(tankDrawer);
 
             //Create a pipe leading from the top to the tank
-            Point2D topEnd = tankDrawer.getPipeEndPoint(1, 1);
-            Point2D topStart = tankDrawer.getPipeTopEntry();
-            Point2D[] topWayPoints = {topStart, topEnd};
-            pipes.add(new PipeDrawer(topWayPoints, tank.getInPipe(), 3));
+            pipes.add(createTopPipe(tank, tankDrawer));
 
             //Create a pipe leading from the tank to the mixTank
-            Point2D botStart = tankDrawer.getPipeStartPoint();
-            Point2D botEnd = mtDrawer.getPipeEndPoint(i + 1, TankSelector.getUpperTankCount());
-            Point2D botMid1 = new Point2D(botStart.getX(), 0.5);
-            Point2D botMid2 = new Point2D(botEnd.getX(), 0.5);
-            Point2D[] botWayPoints = {botStart, botMid1, botMid2, botEnd};
-            pipes.add(new PipeDrawer(botWayPoints, tank.getOutPipe(), 3));
-
+            pipes.add(createMixPipe(tank, tankDrawer, mtDrawer, i + 1));
         }
 
         element.addAll(pipes);
+    }
+
+    /**
+     * Creates a PipeDrawer entering the simulation and leading to the TanKDrawer
+     */
+    private PipeDrawer createTopPipe(Tank tank, TankDrawer tankDrawer) {
+        Point2D topEnd = tankDrawer.getPipeEndPoint(1, 1);
+        Point2D topStart = tankDrawer.getPipeTopEntry();
+        Point2D[] topWayPoints = {topStart, topEnd};
+        return new PipeDrawer(topWayPoints, tank.getInPipe(), 3);
+    }
+
+    /**
+     * Creates a PipeDrawer leading from the TankDrawer to the MixTankDrawer
+     */
+    private PipeDrawer createMixPipe(Tank tank, TankDrawer tankDrawer, MixTankDrawer mixTankDrawer, int pipeNum) {
+        Point2D botStart = tankDrawer.getPipeStartPoint();
+        Point2D botEnd = mixTankDrawer.getPipeEndPoint(pipeNum, TankSelector.getUpperTankCount());
+        Point2D botMid1 = new Point2D(botStart.getX(), 0.5);
+        Point2D botMid2 = new Point2D(botEnd.getX(), 0.5);
+        Point2D[] botWayPoints = {botStart, botMid1, botMid2, botEnd};
+        return new PipeDrawer(botWayPoints, tank.getOutPipe(), 3);
+    }
+
+    /**
+     * Creates a PipeDrawer leaving the MixTankDrawer and exiting the simulation
+     */
+    private PipeDrawer createMixTankOutPipe(MixTank mixTank, MixTankDrawer mixTankDrawer) {
+        Point2D mtStart = mixTankDrawer.getPipeStartPoint();
+        Point2D mtEnd = mixTankDrawer.getPipeBotExit();
+        Point2D[] mtWayPoints = {mtStart, mtEnd};
+        return new PipeDrawer(mtWayPoints, mixTank.getOutPipe(), TankSelector.getUpperTankCount());
     }
 
     /**

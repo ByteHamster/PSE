@@ -38,9 +38,13 @@ public abstract class RotatingControlDrawer extends ObjectDrawer {
     /**
      * This rotates the x coordinate of the point described by (xPos,yPos) around the point
      * (centerX, centerY) by degree degrees.
+     * @param xPos The x coordinate of the point to be rotated
+     * @param yPos The y coordinate of the point to be rotated
+     * @param centerX The x coordinate of the point around which is rotated
+     * @param centerY The y coordinate of the point around which is rotated
      * @param degrees The number of degrees by which should be rotated. This parameter is expected to be in
      *                degrees, not radians.
-     * @return
+     * @return The x coordinate of the point (xPos, yPos) rotated around (centerX, centerY) by degrees degrees
      */
     public double rotateX(double xPos, double centerX, double yPos, double centerY, double degrees) {
         double angle = degrees * (Math.PI / 180);
@@ -50,9 +54,13 @@ public abstract class RotatingControlDrawer extends ObjectDrawer {
     /**
      * This rotates the y coordinate of the point described by (xPos,yPos) around the point
      * (centerX, centerY) by degree degrees.
+     * @param xPos The x coordinate of the point to be rotated
+     * @param yPos The y coordinate of the point to be rotated
+     * @param centerX The x coordinate of the point around which is rotated
+     * @param centerY The y coordinate of the point around which is rotated
      * @param degrees The number of degrees by which should be rotated. This parameter is expected to be in
      *                degrees, not radians.
-     * @return
+     * @return The y coordinate of the point (xPos, yPos) rotated around (centerX, centerY) by degrees degrees
      */
     public double rotateY(double xPos, double centerX, double yPos, double centerY, double degrees) {
         double angle = degrees * (Math.PI / 180);

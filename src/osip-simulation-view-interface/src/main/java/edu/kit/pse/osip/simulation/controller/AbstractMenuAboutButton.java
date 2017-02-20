@@ -9,7 +9,7 @@ import javafx.event.EventHandler;
  * @author Niko Wilhelm
  * @version 1.0
  */
-public abstract class AbstractMenuAboutButton implements EventHandler<ActionEvent>{
+public abstract class AbstractMenuAboutButton implements EventHandler<ActionEvent> {
 
     /**
      * Handles a click on the about menu button in the simulation view.
