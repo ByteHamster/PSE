@@ -65,7 +65,7 @@ public class UANamespaceWrapper implements Namespace {
      * Add a folder to the server
      * @param path The path of the folder to add
      * @param displayName Name that is displayed to the user
-     * @throws UaException If folder can not be added
+     * @throws UaException If the folder can not be added
      */
     protected void addFolder(String path, String displayName) throws UaException {
         NodeId folderNodeId = new NodeId(namespaceIndex, path);
@@ -79,10 +79,10 @@ public class UANamespaceWrapper implements Namespace {
             }
             folderNodes.get(parentFolder).addOrganizes(folderNode);
         } else {
-            server.getNodeMap().addNode(folderNode);
             server.getUaNamespace().addReference(Identifiers.ObjectsFolder, Identifiers.Organizes, true,
                 folderNodeId.expanded(), NodeClass.Object);
         }
+        server.getNodeMap().addNode(folderNode);
         folderNodes.put(path, folderNode);
     }
 
@@ -91,22 +91,28 @@ public class UANamespaceWrapper implements Namespace {
      * @param path The path of the variable to add
      * @param displayName Name that is displayed to the user
      * @param type The variable type, for example Identifiers.Float
+     * @throws UaException If the variable can not be added
      */
-    protected void addVariable(String path, String displayName, NodeId type) {
+    protected void addVariable(String path, String displayName, NodeId type) throws UaException {
         UaVariableNode newNode = new UaVariableNode.UaVariableNodeBuilder(server.getNodeMap())
             .setNodeId(new NodeId(namespaceIndex, path))
             .setAccessLevel(Unsigned.ubyte(AccessLevel.getMask(AccessLevel.READ_ONLY)))
             .setBrowseName(new QualifiedName(namespaceIndex, displayName))
             .setDisplayName(LocalizedText.english(displayName)).setDataType(type)
             .setTypeDefinition(Identifiers.BaseDataVariableType).build();
+
+        if (path.contains("/")) {
+            String folderPath = path.substring(0, path.lastIndexOf("/"));
+            if (!folderNodes.containsKey(folderPath)) {
+                throw new IllegalStateException("Parent folder not found");
+            }
+            folderNodes.get(folderPath).addOrganizes(newNode);
+        } else {
+            server.getUaNamespace().addReference(Identifiers.ObjectsFolder, Identifiers.Organizes, true,
+                newNode.getNodeId().expanded(), NodeClass.Variable);
+        }
         server.getNodeMap().addNode(newNode);
         variableNodes.put(path, newNode);
-
-        String folderPath = path.substring(0, path.lastIndexOf("/"));
-        if (!folderNodes.containsKey(folderPath)) {
-            throw new IllegalStateException("Parent folder not found");
-        }
-        folderNodes.get(folderPath).addOrganizes(newNode);
     }
 
     /**
@@ -120,7 +126,7 @@ public class UANamespaceWrapper implements Namespace {
 
     /**
      * Needed by milo: Returns the namespace index of this namespace
-     * 
+     *
      * @return The index of this namespace
      */
     public UShort getNamespaceIndex() {
@@ -129,7 +135,7 @@ public class UANamespaceWrapper implements Namespace {
 
     /**
      * Needed by milo. Allows browsing the nodes inside this namespace
-     * 
+     *
      * @return a list of references to nodes on the server
      * @param context The context to write the values back
      * @param nodeId The id of the element to browse

@@ -72,7 +72,7 @@ public abstract class UAClientWrapper {
     private int namespaceIndex = -1;
     private final AtomicLong clientHandles = new AtomicLong(1L);
     private boolean connected = false;
-    private HashMap<ReceivedListener, Long> listeners = new HashMap<>();
+    private HashMap<ReceivedListener, UInteger> listeners = new HashMap<>();
     private ErrorListener errorListener;
     
     /**
@@ -176,7 +176,7 @@ public abstract class UAClientWrapper {
             throw new UAClientException("Not connected");
         }
 
-        Iterator<Entry<ReceivedListener, Long>> it = listeners.entrySet().iterator();
+        Iterator<Entry<ReceivedListener, UInteger>> it = listeners.entrySet().iterator();
         while (it.hasNext()) {
             try {
                 doUnsubscribe(it.next().getKey());
@@ -220,7 +220,7 @@ public abstract class UAClientWrapper {
      */
     private void doUnsubscribe(ReceivedListener listener) throws UAClientException {
         try {
-            client.getSubscriptionManager().deleteSubscription(Unsigned.uint(listeners.get(listener))).get();
+            client.getSubscriptionManager().deleteSubscription(listeners.get(listener)).get();
         } catch (NumberFormatException | InterruptedException | ExecutionException e) {
             throw new UAClientException("Unsubscribing OPC UA Listener failed.");
         }
@@ -281,6 +281,9 @@ public abstract class UAClientWrapper {
         if (listener == null) {
             throw new IllegalArgumentException("Listener must not be null");
         }
+        if (listeners.containsKey(listener)) {
+            unsubscribe(listener); // Allows changing the interval
+        }
 
         try {
             UaSubscription subscription = client.getSubscriptionManager().createSubscription(interval).get();
@@ -289,9 +292,8 @@ public abstract class UAClientWrapper {
                 new NodeId(namespaceIndex, nodeName),
                 AttributeId.Value.uid(), null, QualifiedName.NULL_VALUE);
 
-            long clientHandle = clientHandles.getAndIncrement();
             MonitoringParameters parameters = new MonitoringParameters(
-                Unsigned.uint(clientHandle), // Unique client handle
+                Unsigned.uint(clientHandles.getAndIncrement()), // Unique client handle
                 (double) interval,
                 null,                  // filter, null means use default
                 SUBSCRIPTION_QUEUE_SIZE,
@@ -300,9 +302,8 @@ public abstract class UAClientWrapper {
 
             MonitoredItemCreateRequest request = new MonitoredItemCreateRequest(
                 readValueId, MonitoringMode.Reporting, parameters);
-            
 
-            listeners.put(listener, clientHandle);
+            listeners.put(listener, subscription.getSubscriptionId());
 
             // when creating items in MonitoringMode.Reporting this callback is where each item needs to have its
             // value/event consumer hooked up. The alternative is to create the item in sampling mode, hook up the
