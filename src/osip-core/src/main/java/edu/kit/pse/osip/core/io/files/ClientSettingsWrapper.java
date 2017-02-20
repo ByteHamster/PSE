@@ -83,6 +83,29 @@ public class ClientSettingsWrapper {
         String enabledString = String.valueOf(enabled);
         properties.setProperty("underflowAlarm_" + tankString, enabledString);
     }
+    
+    /**
+     * Setter method of overheating alarm
+     * @param tank The tank to save the value for
+     * @param enabled true if alarm is enabled
+     */
+    public final void setOverheatingAlarm(TankSelector tank, boolean enabled) {
+        String tankString = tank.name();
+        String enabledString = String.valueOf(enabled);
+        properties.setProperty("overheatingAlarm_" + tankString, enabledString);
+    }
+    
+    /**
+     * Setter method of undercooling alarm
+     * @param tank The tank to save the value for
+     * @param enabled true if alarm is enabled
+     */
+    public final void setUndercoolingAlarm(TankSelector tank, boolean enabled) {
+        String tankString = tank.name();
+        String enabledString = String.valueOf(enabled);
+        properties.setProperty("undercoolingAlarm_" + tankString, enabledString);
+    }
+    
     /**
      * Setter method of temperature diagram
      * @param tank The tank to save the value for
@@ -119,6 +142,37 @@ public class ClientSettingsWrapper {
             return defaultValue;
         }
     }
+    
+    /**
+     * Getter method of overheating alarm
+     * @return true if alarm is enabled or default on error
+     * @param tank The tank to get the value for
+     * @param defaultValue value on error
+     */
+    public final boolean getOverheatingAlarm(TankSelector tank, boolean defaultValue) {
+        String tankString = tank.name();
+        String entry = properties.getProperty("overheatingAlarm_" + tankString);
+        if (entry == null || (!entry.equals("true") && !entry.equals("false"))) {
+            return defaultValue;
+        }
+        return Boolean.parseBoolean(entry);        
+    }
+    
+    /**
+     * Getter method of undercooling alarm
+     * @return true if alarm is enabled or default on error
+     * @param tank The tank to get the value for
+     * @param defaultValue value on error
+     */
+    public final boolean getUndercoolingAlarm(TankSelector tank, boolean defaultValue) {
+        String tankString = tank.name();
+        String entry = properties.getProperty("undercoolingAlarm_" + tankString);
+        if (entry == null || (!entry.equals("true") && !entry.equals("false"))) {
+            return defaultValue;
+        }
+        return Boolean.parseBoolean(entry);        
+    }
+    
     /**
      * Getter method of overflow alarm
      * @return true if alarm is enabled or default on error
@@ -145,8 +199,7 @@ public class ClientSettingsWrapper {
         if (entry == null || (!entry.equals("true") && !entry.equals("false"))) {
             return defaultValue;
         }
-        return Boolean.parseBoolean(entry); 
-    
+        return Boolean.parseBoolean(entry);     
     }
     /**
      * Getter method of temperature diagram
