@@ -87,11 +87,11 @@ public class ServerClientTest {
     }
 
     /**
-     * Tests if client can receive values from the server
+     * Tests if client can subscribe to values on the server
      * @throws Exception If something goes wrong
      */
     @Test(timeout = 20000)
-    public void testReceiveValue() throws Exception  {
+    public void testSubscribeValue() throws Exception  {
         CompletableFuture<Integer> received = new CompletableFuture<>();
 
         server.addFolderTest("testFolder", "Test folder");
@@ -100,6 +100,32 @@ public class ServerClientTest {
 
         client.subscribeIntTest("testFolder/testVar", 1000, received::complete);
         assertEquals(Integer.valueOf(42), received.get());
+    }
+
+    /**
+     * Tests if client can read values from the server
+     * @throws Exception If something goes wrong
+     */
+    @Test(timeout = 20000)
+    public void testReadValue() throws Exception  {
+        CompletableFuture<Integer> received = new CompletableFuture<>();
+
+        server.addFolderTest("testFolder", "Test folder");
+        server.addVariableTest("testFolder/testVar", "Variable", Identifiers.Int32);
+        server.setVariableTest("testFolder/testVar", new DataValue(new Variant(42)));
+
+        client.subscribeIntTest("testFolder/testVar", -1, received::complete);
+        assertEquals(Integer.valueOf(42), received.get());
+    }
+
+    /**
+     * Tests if negative subscription intervals lead to an IllegalArgumentException
+     * @throws Exception If something goes wrong
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testSubscribeNegativeInterval() throws Exception  {
+        CompletableFuture<Integer> received = new CompletableFuture<>();
+        client.subscribeIntTest("testFolder/testVar", -15, received::complete);
     }
 
     /**
