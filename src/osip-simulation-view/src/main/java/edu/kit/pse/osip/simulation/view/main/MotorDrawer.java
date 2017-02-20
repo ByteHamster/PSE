@@ -65,6 +65,21 @@ public class MotorDrawer extends RotatingControlDrawer {
         double centerX = position.getX() * totalWidth;
         double centerY = position.getY() * totalHeight - 2 * ViewConstants.MOTOR_LINE_WIDTH;
 
+        //First draw the motor in white, slightly thicker than the result is supposed to be.
+        //This leads to a white outline and visibility in all cases.
+        context.setStroke(Color.WHITE);
+        context.setLineWidth(ViewConstants.MOTOR_LINE_WIDTH + 2);
+        context.strokeLine(rotateX(point1xPos, centerX, point1yPos, centerY, degrees),
+                rotateY(point1xPos, centerX, point1yPos, centerY, degrees),
+                rotateX(point3xPos, centerX, point3yPos, centerY, degrees),
+                rotateY(point3xPos, centerX, point3yPos, centerY, degrees));
+        context.strokeLine(rotateX(point2xPos, centerX, point2yPos, centerY, degrees),
+                rotateY(point2xPos, centerX, point2yPos, centerY, degrees),
+                rotateX(point4xPos, centerX, point4yPos, centerY, degrees),
+                rotateY(point4xPos, centerX, point4yPos, centerY, degrees));
+
+        context.strokeOval(point1xPos, point2yPos, relRadius * 2 * totalWidth, relRadius * 2 * totalWidth);
+
         context.setStroke(Color.BLACK);
         context.setLineWidth(ViewConstants.MOTOR_LINE_WIDTH);
 
