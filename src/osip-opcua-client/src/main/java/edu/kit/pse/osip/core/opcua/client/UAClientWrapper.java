@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import org.eclipse.milo.opcua.sdk.client.OpcUaClient;
 import org.eclipse.milo.opcua.sdk.client.api.config.OpcUaClientConfig;
 import org.eclipse.milo.opcua.sdk.client.api.identity.AnonymousProvider;
+import org.eclipse.milo.opcua.sdk.client.api.nodes.VariableNode;
 import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaMonitoredItem;
 import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaSubscription;
 import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaSubscriptionManager.SubscriptionListener;
@@ -13,6 +14,7 @@ import org.eclipse.milo.opcua.stack.core.AttributeId;
 import org.eclipse.milo.opcua.stack.core.Identifiers;
 import org.eclipse.milo.opcua.stack.core.UaException;
 import org.eclipse.milo.opcua.stack.core.security.SecurityPolicy;
+import org.eclipse.milo.opcua.stack.core.types.builtin.DataValue;
 import org.eclipse.milo.opcua.stack.core.types.builtin.LocalizedText;
 import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 import org.eclipse.milo.opcua.stack.core.types.builtin.QualifiedName;
@@ -229,62 +231,103 @@ public abstract class UAClientWrapper {
     /**
      * Subscribes to a float from the server.
      * Subscribe again with same listener and other interval to change interval.
-     * @param nodeName The path of the node to subscribe
-     * @param interval Fetch interval in ms
+     * @param nodeName The path of the node to subscribe or read
+     * @param interval Fetch interval in ms. Single, immediate read when providing -1.
      * @param listener Callback function that is called when the value was changed
      * @throws UAClientException If subscription fails
      */
     protected void subscribeFloat(String nodeName, int interval, FloatReceivedListener listener)
             throws UAClientException {
-        subscribe(nodeName, interval, listener, Identifiers.Float);
+        subscribeOrRead(nodeName, interval, listener, Identifiers.Float);
     }
 
     /**
      * Subscribes to a boolean from the server.
      * Subscribe again with same listener and other interval to change interval.
-     * @param nodeName The path of the node to subscribe
-     * @param interval Fetch interval in ms
+     * @param nodeName The path of the node to subscribe or read
+     * @param interval Fetch interval in ms. Single, immediate read when providing -1.
      * @param listener Callback function that is called when the value was changed
      * @throws UAClientException If subscription fails
      */
     protected void subscribeBoolean(String nodeName, int interval, BooleanReceivedListener listener)
             throws UAClientException {
-        subscribe(nodeName, interval, listener, Identifiers.Boolean);
+        subscribeOrRead(nodeName, interval, listener, Identifiers.Boolean);
     }
 
     /**
      * Subscribes to an int from the server.
      * Subscribe again with same listener and other interval to change interval.
-     * @param nodeName The path of the node to subscribe
-     * @param interval Fetch interval in ms
+     * @param nodeName The path of the node to subscribe or read
+     * @param interval Fetch interval in ms. Single, immediate read when providing -1.
      * @param listener Callback function that is called when the value was changed
      * @throws UAClientException If subscription fails
      */
     protected void subscribeInt(String nodeName, int interval, IntReceivedListener listener)
             throws UAClientException {
-        subscribe(nodeName, interval, listener, Identifiers.Int32);
+        subscribeOrRead(nodeName, interval, listener, Identifiers.Int32);
     }
 
     /**
      * Subscribes to a value from the server.
      * Subscribe again with same listener and other interval to change interval.
-     * @param nodeName The path of the node to subscribe
-     * @param interval Fetch interval in ms
+     * @param nodeName The path of the node to subscribe or read
+     * @param interval Fetch interval in ms. Single, immediate read when providing -1.
      * @param listener Callback function that is called when the value was changed
+     * @param varType The type of the variable to be read
      * @throws UAClientException If subscription fails
      */
-    private void subscribe(String nodeName, int interval, ReceivedListener listener, NodeId varType)
+    private void subscribeOrRead(String nodeName, int interval, ReceivedListener listener, NodeId varType)
             throws UAClientException {
         if (!connected) {
             throw new UAClientException("Not connected");
         }
+
         if (listener == null) {
             throw new IllegalArgumentException("Listener must not be null");
         }
+
         if (listeners.containsKey(listener)) {
             unsubscribe(listener); // Allows changing the interval
         }
 
+        if (interval == -1) {
+            doRead(nodeName, listener, varType);
+        } else if (interval > 0) {
+            doSubscribe(nodeName, interval, listener, varType);
+        } else {
+            throw new IllegalArgumentException("Interval must be > 0 or -1");
+        }
+    }
+
+    /**
+     * Asynchronously reads a value from the server, creating a new thread
+     * @param nodeName Name of the value to read
+     * @param listener The listener to be called as soon as the value is received
+     * @param varType The type of the variable to be read
+     */
+    private void doRead(String nodeName, ReceivedListener listener, NodeId varType) {
+        new Thread(() -> {
+            try {
+                VariableNode readNode = client.getAddressSpace()
+                        .getVariableNode(new NodeId(namespaceIndex, nodeName)).get();
+                DataValue value = readNode.readValue().get();
+                callReceivedListener(value, listener, varType);
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
+    /**
+     * Subscribes to a value from the server.
+     * @param nodeName The path of the node to subscribe or read
+     * @param interval Fetch interval in ms. Single, immediate read when providing -1.
+     * @param listener Callback function that is called when the value was changed
+     * @param varType The type of the variable to be read
+     * @throws UAClientException If subscription fails
+     */
+    private void doSubscribe(String nodeName, int interval, ReceivedListener listener, NodeId varType)
+            throws UAClientException {
         try {
             UaSubscription subscription = client.getSubscriptionManager().createSubscription(interval).get();
 
@@ -305,35 +348,10 @@ public abstract class UAClientWrapper {
 
             listeners.put(listener, subscription.getSubscriptionId());
 
-            // when creating items in MonitoringMode.Reporting this callback is where each item needs to have its
-            // value/event consumer hooked up. The alternative is to create the item in sampling mode, hook up the
-            // consumer after the creation call completes, and then change the mode for all items to reporting.
             BiConsumer<UaMonitoredItem, Integer> onItemCreated =
                 (item, id) ->
                     item.setValueConsumer((monitoredItem, value) -> {
-                        boolean dataTypeMatch = value.getValue().getDataType()
-                                .map(type -> type.equals(varType))
-                                .orElse(false);
-
-                        if (!dataTypeMatch) {
-                            if (errorListener != null) {
-                                errorListener.onError(ERROR_DATA_TYPE_MISMATCH);
-                            }
-                            listeners.remove(listener);
-                        } else {
-                            if (varType == Identifiers.Int32) {
-                                ((IntReceivedListener) listener).onReceived((int) value.getValue().getValue());
-                            } else if (varType == Identifiers.Float) {
-                                ((FloatReceivedListener) listener).onReceived((float) value.getValue().getValue());
-                            } else if (varType == Identifiers.Boolean) {
-                                ((BooleanReceivedListener) listener).onReceived((boolean) value.getValue().getValue());
-                            } else {
-                                if (errorListener != null) {
-                                    errorListener.onError(ERROR_DATA_TYPE_UNSUPPORTED);
-                                }
-                                listeners.remove(listener);
-                            }
-                        }
+                        callReceivedListener(value, listener, varType);
                     });
 
             List<UaMonitoredItem> items = subscription.createMonitoredItems(
@@ -350,6 +368,38 @@ public abstract class UAClientWrapper {
         } catch (ExecutionException | InterruptedException e) {
             e.printStackTrace();
             throw new UAClientException("Unable to subscribe");
+        }
+    }
+
+    /**
+     * Calls the correct function of the given receivedListener
+     * @param value The value to be sent to the listener
+     * @param listener The listener. Listener type must match varType
+     * @param varType The type of the variable to send
+     */
+    private void callReceivedListener(DataValue value, ReceivedListener listener, NodeId varType) {
+        boolean dataTypeMatch = value.getValue().getDataType()
+                .map(type -> type.equals(varType))
+                .orElse(false);
+
+        if (!dataTypeMatch) {
+            if (errorListener != null) {
+                errorListener.onError(ERROR_DATA_TYPE_MISMATCH);
+            }
+            listeners.remove(listener);
+        } else {
+            if (varType == Identifiers.Int32) {
+                ((IntReceivedListener) listener).onReceived((int) value.getValue().getValue());
+            } else if (varType == Identifiers.Float) {
+                ((FloatReceivedListener) listener).onReceived((float) value.getValue().getValue());
+            } else if (varType == Identifiers.Boolean) {
+                ((BooleanReceivedListener) listener).onReceived((boolean) value.getValue().getValue());
+            } else {
+                if (errorListener != null) {
+                    errorListener.onError(ERROR_DATA_TYPE_UNSUPPORTED);
+                }
+                listeners.remove(listener);
+            }
         }
     }
 }

@@ -28,7 +28,7 @@ public abstract class AbstractTankClient extends UAClientWrapper {
     /**
      * Subscribes the color of the tank at the given interval.
      * Can be called again with the same listener to change interval.
-     * @param interval The interval to use when subscribing to the value
+     * @param interval The interval to use when subscribing to the value. Single, immediate read when providing -1.
      * @param listener The callback function to be called as soon as the subscribed value was received
      * @throws UAClientException If adding the subscription fails
      */
@@ -39,7 +39,7 @@ public abstract class AbstractTankClient extends UAClientWrapper {
     /**
      * Subscribes the temperature of the tank at the given interval.
      * Can be called again with the same listener to change interval.
-     * @param interval The interval to use when subscribing to the value
+     * @param interval The interval to use when subscribing to the value. Single, immediate read when providing -1.
      * @param listener The callback function to be called as soon as the subscribed value was received
      * @throws UAClientException If adding the subscription fails
      */
@@ -50,7 +50,7 @@ public abstract class AbstractTankClient extends UAClientWrapper {
     /**
      * Subscribes the output flow rate of the tank at the given interval.
      * Can be called again with the same listener to change interval.
-     * @param interval The interval to use when subscribing to the value
+     * @param interval The interval to use when subscribing to the value. Single, immediate read when providing -1.
      * @param listener The callback function to be called as soon as the subscribed value was received
      * @throws UAClientException If adding the subscription fails
      */
@@ -61,7 +61,7 @@ public abstract class AbstractTankClient extends UAClientWrapper {
     /**
      * Subscribes the fill level of the tank at the given interval.
      * Can be called again with the same listener to change interval.
-     * @param interval The interval to use when subscribing to the value
+     * @param interval The interval to use when subscribing to the value. Single, immediate read when providing -1.
      * @param listener The callback function to be called as soon as the subscribed value was received
      * @throws UAClientException If adding the subscription fails
      */
@@ -72,7 +72,7 @@ public abstract class AbstractTankClient extends UAClientWrapper {
     /**
      * Subscribes the underflow sensor of the tank at the given interval.
      * Can be called again with the same listener to change interval.
-     * @param interval The interval to use when subscribing to the value
+     * @param interval The interval to use when subscribing to the value. Single, immediate read when providing -1.
      * @param listener The callback function to be called as soon as the subscribed value was received
      * @throws UAClientException If adding the subscription fails
      */
@@ -83,7 +83,7 @@ public abstract class AbstractTankClient extends UAClientWrapper {
     /**
      * Subscribes the overflow sensor of the tank at the given interval.
      * Can be called again with the same listener to change interval.
-     * @param interval The interval to use when subscribing to the value
+     * @param interval The interval to use when subscribing to the value. Single, immediate read when providing -1.
      * @param listener The callback function to be called as soon as the subscribed value was received
      * @throws UAClientException If adding the subscription fails
      */
@@ -94,7 +94,7 @@ public abstract class AbstractTankClient extends UAClientWrapper {
     /**
      * Subscribes the overheat sensor of the tank at the given interval.
      * Can be called again with the same listener to change interval.
-     * @param interval The interval to use when subscribing to the value
+     * @param interval The interval to use when subscribing to the value. Single, immediate read when providing -1.
      * @param listener The callback function to be called as soon as the subscribed value was received
      * @throws UAClientException If adding the subscription fails
      */
@@ -105,7 +105,7 @@ public abstract class AbstractTankClient extends UAClientWrapper {
     /**
      * Subscribes the undercool sensor of the tank at the given interval.
      * Can be called again with the same listener to change interval.
-     * @param interval The interval to use when subscribing to the value
+     * @param interval The interval to use when subscribing to the value. Single, immediate read when providing -1.
      * @param listener The callback function to be called as soon as the subscribed value was received
      * @throws UAClientException If adding the subscription fails
      */
