@@ -1,6 +1,7 @@
 package edu.kit.pse.osip.simulation.view.dialogs;
 
 import edu.kit.pse.osip.core.utils.language.Translator;
+import edu.kit.pse.osip.simulation.view.main.ViewConstants;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -53,6 +54,7 @@ public class HelpDialog extends Stage {
         });
 
         BorderPane pane = new BorderPane();
+        pane.setStyle("-fx-font-size: " + ViewConstants.FONT_SIZE + "px;");
         pane.setCenter(tabPane);
         pane.setBottom(close);
         BorderPane.setAlignment(close, Pos.CENTER);
@@ -72,15 +74,7 @@ public class HelpDialog extends Stage {
         textFlow.getChildren().add(getText("controller.helpdialog.mainTab.layoutSection", sectionFont));
         textFlow.getChildren().add(getText("controller.helpdialog.mainTab.layoutText", null));
 
-        ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setFitToWidth(true);
-        scrollPane.setContent(textFlow);
-        scrollPane.setPrefViewportHeight(textFlow.getPrefHeight());
-        scrollPane.setPrefViewportWidth(textFlow.getPrefWidth());
-        scrollPane.setPadding(new Insets(5));
-
-
-        tab.setContent(scrollPane);
+        tab.setContent(setupScrollPane(textFlow));
 
         return tab;
     }
@@ -98,6 +92,16 @@ public class HelpDialog extends Stage {
         return text;
     }
 
+    private ScrollPane setupScrollPane(TextFlow textFlow) {
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setFitToWidth(true);
+        scrollPane.setContent(textFlow);
+        scrollPane.setPrefViewportHeight(textFlow.getPrefHeight());
+        scrollPane.setPrefViewportWidth(textFlow.getPrefWidth());
+        scrollPane.setPadding(new Insets(ViewConstants.ELEMENTS_GAP));
+        return scrollPane;
+    }
+
     private Tab createControlTab() {
         Tab tab = new Tab();
         tab.setText(Translator.getInstance().getString("controller.helpdialog.controlTab.header"));
@@ -112,14 +116,7 @@ public class HelpDialog extends Stage {
         textFlow.getChildren().add(getText("controller.helpdialog.controlTab.mixTankSection", sectionFont));
         textFlow.getChildren().add(getText("controller.helpdialog.controlTab.mixTankText", null));
 
-        ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setFitToWidth(true);
-        scrollPane.setContent(textFlow);
-        scrollPane.setPrefViewportHeight(textFlow.getPrefHeight());
-        scrollPane.setPrefViewportWidth(textFlow.getPrefWidth());
-        scrollPane.setPadding(new Insets(5));
-
-        tab.setContent(scrollPane);
+        tab.setContent(setupScrollPane(textFlow));
 
         return tab;
     }
@@ -132,14 +129,7 @@ public class HelpDialog extends Stage {
 
         textFlow.getChildren().add(getText("controller.helpdialog.settingslTab.generalText", null));
 
-        ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setFitToWidth(true);
-        scrollPane.setContent(textFlow);
-        scrollPane.setPrefViewportHeight(textFlow.getPrefHeight());
-        scrollPane.setPrefViewportWidth(textFlow.getPrefWidth());
-        scrollPane.setPadding(new Insets(5));
-
-        tab.setContent(scrollPane);
+        tab.setContent(setupScrollPane(textFlow));
 
         return tab;
     }
