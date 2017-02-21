@@ -1,21 +1,18 @@
 package edu.kit.pse.osip.monitoring.controller;
 
-import edu.kit.pse.osip.core.io.files.ClientSettingsWrapper;
 import edu.kit.pse.osip.core.model.base.TankSelector;
 
 /**
  * Provides abstraction from the view and a single interface for accessing the user-set settings.
  * 
  * @author Martin Armbruster
- * @version 1.2
+ * @version 1.3
  */
 public interface SettingsViewInterface {
     /**
-     * Shows the settings view with the current settings.
-     * 
-     * @param currentSettings The current settings used for displaying them.
+     * Shows the settings view.
      */
-    void showSettingsWindow(ClientSettingsWrapper currentSettings);
+    void showSettingsWindow();
     
      /**
      * Hides the settings view.

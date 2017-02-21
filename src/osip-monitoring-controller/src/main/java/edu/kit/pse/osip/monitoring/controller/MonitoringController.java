@@ -12,7 +12,7 @@ import javafx.stage.Stage;
  * It is also responsible for the communication between the view and model.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.1
  */
 public final class MonitoringController extends Application {
     /**
@@ -40,9 +40,13 @@ public final class MonitoringController extends Application {
      */
     public MonitoringController() {
         currentProductionSite = new ProductionSite();
-//        currentSettings = new ClientSettingsWrapper();
+//        try {
+//            currentSettings = new ClientSettingsWrapper(new File(".properties"));
+//        } catch (IOException ioExc) {
+//            ioExc.printStackTrace();
+//        }
         currentView = new MonitoringViewFacade();
-        currentSettingsView = new SettingsViewFacade();
+        currentSettingsView = new SettingsViewFacade(currentSettings);
     }
     
     /**
@@ -68,7 +72,7 @@ public final class MonitoringController extends Application {
      */
     private void setupUI(Stage stage) {
         currentView.showMonitoringView(stage, currentProductionSite);
-        currentView.setMenuSettingsButtonHandler(new MenuSettingsButtonHandler(currentSettings, currentSettingsView));
+        currentView.setMenuSettingsButtonHandler(new MenuSettingsButtonHandler(currentSettingsView));
         currentView.setMenuHelpButtonHandler(new MenuHelpButtonHandler());
         currentView.setMenuAboutButtonHandler(new MenuAboutButtonHandler());
         currentSettingsView.setSettingsCancelButtonHandler(new SettingsCancelButtonHandler(currentSettingsView));
