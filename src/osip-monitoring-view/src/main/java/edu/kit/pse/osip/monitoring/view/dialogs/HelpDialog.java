@@ -82,14 +82,7 @@ public class HelpDialog extends Stage {
         textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.progressSection", sectionFont));
         textFlow.getChildren().add(getText("monitoring.helpdialog.mainTab.progressText", null));
 
-        ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setFitToWidth(true);
-        scrollPane.setContent(textFlow);
-        scrollPane.setPrefViewportHeight(textFlow.getPrefHeight());
-        scrollPane.setPrefViewportWidth(textFlow.getPrefWidth());
-        scrollPane.setPadding(new Insets(MonitoringViewConstants.ELEMENTS_GAP));
-
-        tab.setContent(scrollPane);
+        tab.setContent(setupScrollPane(textFlow));
 
         return tab;
     }
@@ -105,6 +98,16 @@ public class HelpDialog extends Stage {
             text.setFont(font);
         }
         return text;
+    }
+
+    private ScrollPane setupScrollPane(TextFlow textFlow) {
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setFitToWidth(true);
+        scrollPane.setContent(textFlow);
+        scrollPane.setPrefViewportHeight(textFlow.getPrefHeight());
+        scrollPane.setPrefViewportWidth(textFlow.getPrefWidth());
+        scrollPane.setPadding(new Insets(MonitoringViewConstants.ELEMENTS_GAP));
+        return scrollPane;
     }
 
     private Tab createSettingsTab() {
@@ -124,14 +127,7 @@ public class HelpDialog extends Stage {
         textFlow.getChildren().add(getText("monitoring.helpdialog.settingsTab.alarmSection", sectionFont));
         textFlow.getChildren().add(getText("monitoring.helpdialog.settingsTab.alarmText", null));
 
-        ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setFitToWidth(true);
-        scrollPane.setContent(textFlow);
-        scrollPane.setPrefViewportHeight(textFlow.getPrefHeight());
-        scrollPane.setPrefViewportWidth(textFlow.getPrefWidth());
-        scrollPane.setPadding(new Insets(MonitoringViewConstants.ELEMENTS_GAP));
-
-        tab.setContent(scrollPane);
+        tab.setContent(setupScrollPane(textFlow));
 
         return tab;
     }
