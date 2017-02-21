@@ -10,7 +10,7 @@ import edu.kit.pse.osip.monitoring.controller.SettingsViewInterface;
  * Provides a single access point to the user-set settings.
  * 
  * @author Martin Armbruster
- * @version 1.2
+ * @version 1.3
  */
 public class SettingsViewFacade implements SettingsViewInterface {
     /**
@@ -18,9 +18,17 @@ public class SettingsViewFacade implements SettingsViewInterface {
      */
     private SettingsMainWindow currentSettingsWindow;
     
-    @Override
-    public void showSettingsWindow(ClientSettingsWrapper currentSettings) {
+    /**
+     * Creates a new facade for accessing the settings in the settings view.
+     * 
+     * @param currentSettings The current settings used to initialize the settings window.
+     */
+    public SettingsViewFacade(ClientSettingsWrapper currentSettings) {
         currentSettingsWindow = new SettingsMainWindow(currentSettings);
+    }
+    
+    @Override
+    public void showSettingsWindow() {
         currentSettingsWindow.getStage().show();
     }
     
