@@ -1,43 +1,56 @@
 package edu.kit.pse.osip.simulation.view.main;
 
 /**
- * This class represents a simple Point in 2D space. It is a simple wrapper for the data and does not support arithmetic operations on points.
+ * This class represents a simple Point in 2D space. It is a simple wrapper for the
+ * data and does not support arithmetic operations on points.
+ *
+ * @version 1.0
+ * @author Niko Wilhelm
  */
 public class Point2D {
+
+    private double x;
+    private double y;
+
     /**
      * Creates a new point on a 2D surface
-     * @param x 
-     * @param y 
+     * @param x The x coordinate of the point
+     * @param y The y coordinate of the point
      */
-    public Point2D (double x, double y) {
-        throw new RuntimeException("Not implemented!");
+    public Point2D(double x, double y) {
+        this.x = x;
+        this.y = y;
     }
+
     /**
      * Gets the value of x.
      * @return The value of x.
      */
-    public final double getX () {
-        throw new RuntimeException("Not implemented!");
+    public final double getX() {
+        return x;
     }
+
     /**
      * Gets the value of y.
      * @return The value of y.
      */
-    public final double getY () {
-        throw new RuntimeException("Not implemented!");
+    public final double getY() {
+        return y;
     }
+
     /**
      * Sets the value of x.
      * @param x The x coordinate
      */
-    public final void setX (double x) {
-        throw new RuntimeException("Not implemented!");
+    public final void setX(double x) {
+        this.x = x;
     }
+
     /**
      * Sets the value of y.
      * @param y The y coordinate
      */
-    public final void setY (double y) {
-        throw new RuntimeException("Not implemented!");
+    public final void setY(double y) {
+        this.y = y;
     }
 }
