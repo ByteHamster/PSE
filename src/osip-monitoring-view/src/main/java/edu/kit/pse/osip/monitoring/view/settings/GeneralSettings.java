@@ -18,7 +18,7 @@ import javafx.scene.layout.GridPane;
  * Contains all controls for setting the general settings.
  * 
  * @author Martin Armbruster
- * @version 1.2
+ * @version 1.3
  */
 class GeneralSettings extends ScrollPane {
     /**
@@ -74,8 +74,11 @@ class GeneralSettings extends ScrollPane {
         timeSlider.setMinorTickCount(MonitoringViewConstants.NUMBER_OF_MINOR_TICKS);
         timeSlider.setShowTickMarks(true);
         timeSlider.setShowTickLabels(true);
-        timeSlider.setSnapToTicks(true);
         timeSlider.setPrefWidth(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS);
+        // ** Solution for: Slider doesn't show integer-only values.
+        // Based on: http://stackoverflow.com/questions/38681664/javafx-slider-integer-only
+        timeSlider.valueProperty().addListener((obs, oldval, newVal) -> timeSlider.setValue(newVal.intValue()));
+        // **
         layout.add(generalLabel, 0, 0);
         layout.add(timeSlider, 1, 0);
         
