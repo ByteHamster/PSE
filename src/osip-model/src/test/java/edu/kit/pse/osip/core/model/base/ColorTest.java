@@ -95,71 +95,6 @@ public class ColorTest {
     }
 
     /**
-     * Check whether the setters reject illegal arguments.
-     */
-    @Test
-    public void testWrongArgumentsSetter() {
-        Color color = new Color(1, 1, 1);
-        try {
-            color.setCyan(-1);
-            fail("Expected IllegalArgumentException");
-        } catch (IllegalArgumentException e) {
-            // Expected
-        }
-        try {
-            color.setCyan(2);
-            fail("Expected IllegalArgumentException");
-        } catch (IllegalArgumentException e) {
-            // Expected
-        }
-        try {
-            color.setMagenta(-1);
-            fail("Expected IllegalArgumentException");
-        } catch (IllegalArgumentException e) {
-            // Expected
-        }
-        try {
-            color.setMagenta(2);
-            fail("Expected IllegalArgumentException");
-        } catch (IllegalArgumentException e) {
-            // Expected
-        }
-        try {
-            color.setYellow(-1);
-            fail("Expected IllegalArgumentException");
-        } catch (IllegalArgumentException e) {
-            // Expected
-        }
-        try {
-            color.setYellow(2);
-            fail("Expected IllegalArgumentException");
-        } catch (IllegalArgumentException e) {
-            // Expected
-        }
-    }
-
-    /**
-     * Check whether the setters accept correct arguments.
-     */
-    @Test
-    public void testSetter() {
-        Color color = new Color(0.5, 0.5, 0.5);
-        color.setCyan(0);
-        assertEquals(0, color.getCyan(), epsilon);
-        color.setMagenta(0);
-        assertEquals(0, color.getMagenta(), epsilon);
-        color.setYellow(0);
-        assertEquals(0, color.getYellow(), epsilon);
-
-        color.setCyan(1);
-        assertEquals(1, color.getCyan(), epsilon);
-        color.setMagenta(1);
-        assertEquals(1, color.getMagenta(), epsilon);
-        color.setYellow(1);
-        assertEquals(1, color.getYellow(), epsilon);
-    }
-
-    /**
      * Check whether the equals method works as expected.
      */
     @Test
@@ -170,7 +105,7 @@ public class ColorTest {
         assertTrue(color2.equals(color1));
         assertFalse(color1.equals(null));
         assertFalse(color1.equals(new String("test")));
-        color2.setYellow(0.6);
+        color2 = new Color(0.5, 0.5, 0.6);
         assertFalse(color1.equals(color2));
         assertFalse(color2.equals(color1));
     }
@@ -183,7 +118,7 @@ public class ColorTest {
         Color color1 = new Color(0.5, 0.5, 0.5);
         Color color2 = new Color(0.5, 0.5, 0.5);
         assertEquals(color1.hashCode(), color2.hashCode());
-        color2.setYellow(0.2);
+        color2 = new Color(0.5, 0.5, 0.6);
         assertNotEquals(color1.hashCode(), color2.hashCode());
     }
 

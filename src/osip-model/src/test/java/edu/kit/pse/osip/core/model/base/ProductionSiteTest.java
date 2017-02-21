@@ -148,9 +148,9 @@ public class ProductionSiteTest {
     }
 
     private Liquid modifyLiquid(Liquid l) {
-        Color newColor = l.getColor();
-        newColor.setCyan(0.8);
-        return new Liquid(l.getAmount() + 1, l.getTemperature() + 2, newColor);
+        Color c = l.getColor();
+        return new Liquid(l.getAmount() + 1, l.getTemperature() + 2, new Color(c.getCyan(),
+            c.getMagenta(), c.getYellow()));
     }
 
     /**
