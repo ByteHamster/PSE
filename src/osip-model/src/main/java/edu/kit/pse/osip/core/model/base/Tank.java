@@ -35,4 +35,10 @@ public class Tank extends AbstractTank {
     public Pipe getInPipe() {
         return inPipe;
     }
+
+    @Override
+    public void reset() {
+        super.reset();
+        inPipe.reset();
+    }
 }

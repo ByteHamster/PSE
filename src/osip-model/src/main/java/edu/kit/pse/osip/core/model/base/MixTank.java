@@ -26,4 +26,11 @@ public class MixTank extends edu.kit.pse.osip.core.model.base.AbstractTank {
     public Motor getMotor() {
         return motor;
     }
+
+    @Override
+    public void reset() {
+        super.reset();
+        motor.reset();
+    }
+
 }

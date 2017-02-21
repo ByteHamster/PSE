@@ -11,6 +11,7 @@ public abstract class AbstractTank extends java.util.Observable {
     private float capacity;
     private TankSelector selector;
     private Pipe outPipe;
+    private Liquid initialLiquid;
 
     /**
      * Create a new tank.
@@ -29,6 +30,7 @@ public abstract class AbstractTank extends java.util.Observable {
         }
         this.capacity = capacity;
         this.selector = tankSelector;
+        this.initialLiquid = liquid;
         this.liquid = liquid;
         this.outPipe = outPipe;
     }
@@ -77,5 +79,13 @@ public abstract class AbstractTank extends java.util.Observable {
      */
     public Liquid getLiquid() {
         return liquid;
+    }
+
+    /**
+     * Resets the tank and all attached units like pipes or motors.
+     */
+    public void reset() {
+        setLiquid(initialLiquid);
+        outPipe.reset();
     }
 }
