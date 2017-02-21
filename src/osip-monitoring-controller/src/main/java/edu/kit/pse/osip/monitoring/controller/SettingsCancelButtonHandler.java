@@ -6,7 +6,7 @@ import javafx.event.ActionEvent;
  * Handles a click on the cancel button in the settings view.
  * 
  * @author Martin Armbruster
- * @version 1.0
+ * @version 1.1
  */
 public class SettingsCancelButtonHandler extends AbstractSettingsCancelButtonHandler {
     /**
@@ -20,6 +20,6 @@ public class SettingsCancelButtonHandler extends AbstractSettingsCancelButtonHan
     
     @Override
     public void handle(ActionEvent event) {
-        throw new RuntimeException("Not implemented!");
+        super.currentSettingsViewInterface.hideSettingsWindow();
     }
 }
