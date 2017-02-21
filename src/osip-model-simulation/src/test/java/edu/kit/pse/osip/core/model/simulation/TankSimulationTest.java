@@ -23,7 +23,8 @@ public class TankSimulationTest {
     public void testPutIn() {
         Liquid content = new Liquid(100, 350, new Color(0x004000));
         TankSimulation tank = new TankSimulation(1000,
-                TankSelector.valuesWithoutMix()[0], content, new Pipe(10, 10), new Pipe(10, 10));
+                TankSelector.valuesWithoutMix()[0], content, new Pipe(10, 10, (byte) 100), new Pipe(
+                    10, 10, (byte) 100));
 
         tank.putIn(new Liquid(100,  310, new Color(0x800020)));
         assertEquals(new Liquid(200, 330, new Color(0x402010)), tank.getLiquid());
@@ -36,7 +37,8 @@ public class TankSimulationTest {
     public void testTakeOut() {
         Liquid content = new Liquid(100, 350, new Color(0x421337));
         TankSimulation tank = new TankSimulation(1000,
-                TankSelector.valuesWithoutMix()[0], content, new Pipe(10, 10), new Pipe(10, 10));
+                TankSelector.valuesWithoutMix()[0], content, new Pipe(10, 10, (byte) 100), new Pipe(
+                    10, 10, (byte) 100));
 
         Liquid out = tank.takeOut(33);
         assertEquals(new Liquid(33, 350, new Color(0x421337)), out);

@@ -23,7 +23,8 @@ public class MixTankSimulationTest {
     @Test
     public void testPutIn() {
         Liquid content = new Liquid(100, 350, new Color(0x003000));
-        MixTankSimulation tank = new MixTankSimulation(1000, content, new Pipe(10, 10));
+        MixTankSimulation tank = new MixTankSimulation(1000, content, new Pipe(10, 10,
+            (byte) 100));
 
         LinkedList<Liquid> input = new LinkedList<>();
         input.add(new Liquid(100, 375, new Color(0x000000)));
@@ -39,7 +40,8 @@ public class MixTankSimulationTest {
     @Test
     public void testTakeOut() {
         Liquid content = new Liquid(100, 350, new Color(0x421337));
-        MixTankSimulation tank = new MixTankSimulation(1000, content, new Pipe(10, 10));
+        MixTankSimulation tank = new MixTankSimulation(1000, content, new Pipe(10, 10,
+            (byte) 100));
 
         Liquid out = tank.takeOut(33);
         assertEquals(new Liquid(33, 350, new Color(0x421337)), out);

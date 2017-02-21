@@ -21,21 +21,6 @@ public class Pipe extends java.util.Observable {
      * Construct a Pipe.
      * @param crosssection Crosssection of the pipe in cm².
      * @param length Length in cm.
-     * @throws IllegalArgumentException if crosssection or length are negative or zero.
-     */
-    public Pipe(float crosssection, int length) {
-        if (crosssection <= 0 || length <= 0) {
-            throw new IllegalArgumentException("Crosssection and length of a pipe need to be greather than zero");
-        }
-        this.crosssection = crosssection;
-        this.length = length;
-        defaultThreshold = (byte) 100;
-    }
-
-    /**
-     * Construct a Pipe.
-     * @param crosssection Crosssection of the pipe in cm².
-     * @param length Length in cm.
      * @param defaultThreshold The default threshold
      * @throws IllegalArgumentException if crosssection or length are negative or zero.
      */
