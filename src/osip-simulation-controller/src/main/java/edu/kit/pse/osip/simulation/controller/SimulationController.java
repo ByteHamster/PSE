@@ -1,6 +1,7 @@
 package edu.kit.pse.osip.simulation.controller;
 
 import edu.kit.pse.osip.core.io.files.ServerSettingsWrapper;
+import edu.kit.pse.osip.core.model.base.AbstractTank;
 import edu.kit.pse.osip.core.model.base.MixTank;
 import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
@@ -120,18 +121,25 @@ public class SimulationController extends javafx.application.Application impleme
      * @param object New value
      */
     public final void update (Observable observable, Object object) {
+        AbstractTank tank = (AbstractTank) object;
+        if (tank.getFillLevel() > 1) {
+            overflow = true;
+            currentSimulationView.showOverflow();
+        }
+
+        if (! overflow)
+            return;
+
+        /* Check whether the overflow is still present */
         for (TankSelector selector: TankSelector.valuesWithoutMix()) {
-            Tank tank = productionSite.getUpperTank(selector);
+            tank = productionSite.getUpperTank(selector);
             if (tank.getFillLevel() > 1) {
-                overflow = true;
-                currentSimulationView.showOverflow();
                 return;
             }
         }
+
         MixTank mixTank = productionSite.getMixTank();
         if (mixTank.getFillLevel() > 1) {
-            overflow = true;
-            currentSimulationView.showOverflow();
             return;
         }
         overflow = false;
