@@ -33,9 +33,9 @@ public enum TankSelector {
      */
     private static Color[] initialColors = {
         new Color(1, 1, 1),
-        new Color(0, 1, 0),
-        new Color(1, 0, 0),
         new Color(0, 0, 1),
+        new Color(1, 0, 0),
+        new Color(0, 1, 0),
     };
 
     /**

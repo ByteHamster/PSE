@@ -39,8 +39,8 @@ public class TankSelectorTest {
     @Test
     public void testGetInitialColor() {
         assertEquals(TankSelector.MIX.getInitialColor(), new Color(1, 1, 1));
-        assertEquals(TankSelector.YELLOW.getInitialColor(), new Color(0, 1, 0));
-        assertEquals(TankSelector.MAGENTA.getInitialColor(), new Color(0, 0, 1));
+        assertEquals(TankSelector.YELLOW.getInitialColor(), new Color(0, 0, 1));
+        assertEquals(TankSelector.MAGENTA.getInitialColor(), new Color(0, 1, 0));
         assertEquals(TankSelector.CYAN.getInitialColor(), new Color(1, 0, 0));
     }
 }
