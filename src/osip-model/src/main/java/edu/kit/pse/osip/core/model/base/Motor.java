@@ -28,4 +28,11 @@ public class Motor extends java.util.Observable {
     public final int getRPM() {
         return rpm;
     }
+
+    /**
+     * Resets the Motor.
+     */
+    public void reset() {
+        setRPM(0);
+    }
 }
