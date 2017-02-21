@@ -16,5 +16,11 @@ public interface SimulationViewInterface {
     /**
      * The simulation is replaced by the OverflowOverlay.
      */
-    void showOverflow();
+    public void showOverflow ();
+
+    /**
+     * Set a handler which gets called if the users closes the overflow dialog
+     * @param handler The handler to set.
+     */
+    public void setOverflowClosedHandler(OverflowClosedHandler handler);
 }
