@@ -12,8 +12,8 @@ import java.util.EnumMap;
  */
 public class ProductionSite {
     protected MixTank mixTank;
-    protected EnumMap<TankSelector, Tank> tanks;
-    protected EnumMap<TankSelector, Float> inputTemperature;
+    protected EnumMap<TankSelector, Tank> tanks = new EnumMap<>(TankSelector.class);;
+    protected EnumMap<TankSelector, Float> inputTemperature = new EnumMap<TankSelector, Float>(TankSelector.class);
 
     /**
      * Template method to allow subclasses to create objects of subclasses of Tank. The parameters are the same
@@ -83,7 +83,6 @@ public class ProductionSite {
                 new Pipe(SimulationConstants.PIPE_CROSSSECTION, SimulationConstants.PIPE_LENGTH));
 
         boolean specialPipeAssigned = false;  /* One of the pipes needs to be set to 34 instead of 33 */
-        tanks = new EnumMap<>(TankSelector.class);
         for (TankSelector selector: TankSelector.valuesWithoutMix()) {
             Liquid l = new Liquid(halfFull, SimulationConstants.MIN_TEMPERATURE, selector.getInitialColor());
             Pipe inPipe = new Pipe(SimulationConstants.PIPE_CROSSSECTION, SimulationConstants.PIPE_LENGTH);
