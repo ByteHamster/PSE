@@ -79,9 +79,8 @@ public class ProductionSite {
         int halfFull = SimulationConstants.TANK_SIZE / 2;
 
         mixTank = instantiateMixTank(SimulationConstants.TANK_SIZE, new Liquid(halfFull,
-                SimulationConstants.MIN_TEMPERATURE, TankSelector.MIX.getInitialColor()),
+                TankSelector.MIX.getInitialTemperature(), TankSelector.MIX.getInitialColor()),
                 new Pipe(SimulationConstants.PIPE_CROSSSECTION, SimulationConstants.PIPE_LENGTH, (byte) 100));
-        inputTemperature.put(TankSelector.MIX, TankSelector.MIX.getInitialTemperature());
 
         boolean specialPipeAssigned = false;  /* One of the pipes needs to be set to 34 instead of 33 */
         for (TankSelector selector: TankSelector.valuesWithoutMix()) {
@@ -92,14 +91,16 @@ public class ProductionSite {
             } else {
                 threshold = (byte) 33;
             }
-            Liquid l = new Liquid(halfFull, SimulationConstants.MIN_TEMPERATURE, selector.getInitialColor());
+            Liquid l = new Liquid(halfFull, selector.getInitialTemperature(), selector.getInitialColor());
             Pipe inPipe = new Pipe(SimulationConstants.PIPE_CROSSSECTION, SimulationConstants.PIPE_LENGTH, threshold);
             Pipe outPipe = new Pipe(SimulationConstants.PIPE_CROSSSECTION, SimulationConstants.PIPE_LENGTH, threshold);
 
 
             tanks.put(selector, instantiateTank(SimulationConstants.TANK_SIZE, selector, l, outPipe, inPipe));
-            inputTemperature.put(selector, selector.getInitialTemperature());
         }
+
+        /* Make sure we're in the correct state */
+        reset();
     }
 
     /**
