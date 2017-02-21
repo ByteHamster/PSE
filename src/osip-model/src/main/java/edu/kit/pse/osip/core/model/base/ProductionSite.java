@@ -80,24 +80,25 @@ public class ProductionSite {
 
         mixTank = instantiateMixTank(SimulationConstants.TANK_SIZE, new Liquid(halfFull,
                 SimulationConstants.MIN_TEMPERATURE, TankSelector.MIX.getInitialColor()),
-                new Pipe(SimulationConstants.PIPE_CROSSSECTION, SimulationConstants.PIPE_LENGTH));
+                new Pipe(SimulationConstants.PIPE_CROSSSECTION, SimulationConstants.PIPE_LENGTH, (byte) 100));
+        inputTemperature.put(TankSelector.MIX, TankSelector.MIX.getInitialTemperature());
 
         boolean specialPipeAssigned = false;  /* One of the pipes needs to be set to 34 instead of 33 */
         for (TankSelector selector: TankSelector.valuesWithoutMix()) {
-            Liquid l = new Liquid(halfFull, SimulationConstants.MIN_TEMPERATURE, selector.getInitialColor());
-            Pipe inPipe = new Pipe(SimulationConstants.PIPE_CROSSSECTION, SimulationConstants.PIPE_LENGTH);
-            Pipe outPipe = new Pipe(SimulationConstants.PIPE_CROSSSECTION, SimulationConstants.PIPE_LENGTH);
-
+            byte threshold;
             if (!specialPipeAssigned) {
-                inPipe.setValveThreshold((byte) 34);
-                outPipe.setValveThreshold((byte) 34);
+                threshold = (byte) 34;
                 specialPipeAssigned = true;
             } else {
-                inPipe.setValveThreshold((byte) 33);
-                outPipe.setValveThreshold((byte) 33);
+                threshold = (byte) 33;
             }
+            Liquid l = new Liquid(halfFull, SimulationConstants.MIN_TEMPERATURE, selector.getInitialColor());
+            Pipe inPipe = new Pipe(SimulationConstants.PIPE_CROSSSECTION, SimulationConstants.PIPE_LENGTH, threshold);
+            Pipe outPipe = new Pipe(SimulationConstants.PIPE_CROSSSECTION, SimulationConstants.PIPE_LENGTH, threshold);
+
 
             tanks.put(selector, instantiateTank(SimulationConstants.TANK_SIZE, selector, l, outPipe, inPipe));
+            inputTemperature.put(selector, selector.getInitialTemperature());
         }
     }
 
@@ -123,6 +124,11 @@ public class ProductionSite {
      * a stable state.
      */
     public void reset() {
-        initTanks();
+        for (TankSelector selector: TankSelector.valuesWithoutMix()) {
+            tanks.get(selector).reset();
+            inputTemperature.put(selector, selector.getInitialTemperature());
+        }
+        mixTank.reset();
+        inputTemperature.put(TankSelector.MIX, TankSelector.MIX.getInitialTemperature());
     }
 }
