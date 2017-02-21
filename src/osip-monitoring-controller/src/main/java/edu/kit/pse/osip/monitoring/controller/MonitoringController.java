@@ -74,8 +74,8 @@ public final class MonitoringController extends Application {
         currentSettingsView.setSettingsCancelButtonHandler(new SettingsCancelButtonHandler(currentSettingsView));
         currentSettingsView.setSettingsSaveButtonHandler(new SettingsSaveButtonHandler(currentSettings,
                 currentView, currentSettingsView));
-    }    
-    
+    }
+
     /**
      * Called when the last window is closed.
      */
