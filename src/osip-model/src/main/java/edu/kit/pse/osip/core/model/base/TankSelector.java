@@ -42,10 +42,10 @@ public enum TankSelector {
      * This array defines the initial temperatures in the same order as the tanks are defined above.
      */
     private static float[] initialTemperatures = {
-            300,
-            300,
-            300,
-            300,
+        300,
+        300,
+        300,
+        300,
     };
 
     /**
