@@ -17,7 +17,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
-import edu.kit.pse.osip.core.SimulationConstants;
 
 
 /**
@@ -57,6 +56,7 @@ public class HelpDialog extends Stage {
         pane.setStyle("-fx-font-size: " + ViewConstants.FONT_SIZE + "px;");
         pane.setCenter(tabPane);
         pane.setBottom(close);
+        pane.setPadding(new Insets(0, 0, ViewConstants.ELEMENTS_GAP, 0));
         BorderPane.setAlignment(close, Pos.CENTER);
         setScene(new Scene(pane));
         setHeight(WINDOW_HEIGHT);
