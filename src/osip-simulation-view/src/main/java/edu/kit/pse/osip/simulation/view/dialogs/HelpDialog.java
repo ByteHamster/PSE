@@ -16,6 +16,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
+import edu.kit.pse.osip.core.SimulationConstants;
+
 
 /**
  * This window shows a short description of OSIP and how to use it.
@@ -37,6 +39,7 @@ public class HelpDialog extends Stage {
 
         TabPane tabPane = new TabPane();
         tabPane.getTabs().addAll(createMainTab(), createControlTab(), createSettingsTab());
+        tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
         Button close = new Button(Translator.getInstance().getString("monitoring.helpdialog.closeButton"));
         close.setDefaultButton(true);
@@ -52,7 +55,7 @@ public class HelpDialog extends Stage {
         BorderPane pane = new BorderPane();
         pane.setCenter(tabPane);
         pane.setBottom(close);
-        pane.setAlignment(close, Pos.CENTER);
+        BorderPane.setAlignment(close, Pos.CENTER);
         setScene(new Scene(pane));
         setHeight(WINDOW_HEIGHT);
         setWidth(WINDOW_WIDTH);
@@ -72,13 +75,12 @@ public class HelpDialog extends Stage {
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setFitToWidth(true);
         scrollPane.setContent(textFlow);
-        scrollPane.setPrefViewportHeight(textFlow.prefHeight(-1));
-        scrollPane.setPrefViewportWidth(textFlow.prefWidth(-1));
+        scrollPane.setPrefViewportHeight(textFlow.getPrefHeight());
+        scrollPane.setPrefViewportWidth(textFlow.getPrefWidth());
         scrollPane.setPadding(new Insets(5));
 
 
         tab.setContent(scrollPane);
-        tab.setClosable(false);
 
         return tab;
     }
@@ -113,12 +115,11 @@ public class HelpDialog extends Stage {
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setFitToWidth(true);
         scrollPane.setContent(textFlow);
-        scrollPane.setPrefViewportHeight(textFlow.prefHeight(-1));
-        scrollPane.setPrefViewportWidth(textFlow.prefWidth(-1));
+        scrollPane.setPrefViewportHeight(textFlow.getPrefHeight());
+        scrollPane.setPrefViewportWidth(textFlow.getPrefWidth());
         scrollPane.setPadding(new Insets(5));
 
         tab.setContent(scrollPane);
-        tab.setClosable(false);
 
         return tab;
     }
@@ -134,12 +135,11 @@ public class HelpDialog extends Stage {
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setFitToWidth(true);
         scrollPane.setContent(textFlow);
-        scrollPane.setPrefViewportHeight(textFlow.prefHeight(-1));
-        scrollPane.setPrefViewportWidth(textFlow.prefWidth(-1));
+        scrollPane.setPrefViewportHeight(textFlow.getPrefHeight());
+        scrollPane.setPrefViewportWidth(textFlow.getPrefWidth());
         scrollPane.setPadding(new Insets(5));
 
         tab.setContent(scrollPane);
-        tab.setClosable(false);
 
         return tab;
     }
