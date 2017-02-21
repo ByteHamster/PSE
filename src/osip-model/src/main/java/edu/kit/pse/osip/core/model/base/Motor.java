@@ -20,6 +20,8 @@ public class Motor extends java.util.Observable {
             throw new IllegalArgumentException("Motor RPM needs to be in range 0 to 3000");
         }
         this.rpm = rpm;
+        setChanged();
+        notifyObservers();
     }
     /**
      * Get the RPM.
