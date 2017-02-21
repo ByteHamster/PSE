@@ -38,6 +38,10 @@ public class ClientSettingsWrapperTest {
         outStream.println();
         outStream.print("underflowAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
         outStream.println();
+        outStream.print("overheatingAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
+        outStream.println();
+        outStream.print("undercoolingAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
+        outStream.println();
         outStream.print("tempDiagram_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
         outStream.println();
         outStream.print("fillLevelDiagram_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
@@ -122,6 +126,24 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
+     * Test setting overheating alarm status
+     */
+    @Test
+    public void testSetOverheatingAlarm() {
+        wrapper.setOverheatingAlarm(TankSelector.valuesWithoutMix()[0], true);        
+        assertEquals(wrapper.getOverheatingAlarm(TankSelector.valuesWithoutMix()[0], false), true);
+    }
+    
+    /**
+     * Test setting undercooling alarm status
+     */
+    @Test
+    public void testSetTempLowAlarm() {
+        wrapper.setUndercoolingAlarm(TankSelector.valuesWithoutMix()[0], true);        
+        assertEquals(wrapper.getUndercoolingAlarm(TankSelector.valuesWithoutMix()[0], false), true);
+    }
+    
+    /**
      * Test getting fetchinterval
      */
     @Test
@@ -182,6 +204,24 @@ public class ClientSettingsWrapperTest {
     public void testGetPort() {
         int result = wrapper.getPort(TankSelector.valuesWithoutMix()[0], -1);
         assertEquals(result, 4242);
+    }
+    
+    /**
+     * Test getting overheating alarm
+     */
+    @Test
+    public void testGetOverheatingAlarm() {
+        boolean result = wrapper.getOverheatingAlarm(TankSelector.valuesWithoutMix()[0], false);
+        assertEquals(result, false);
+    }
+    
+    /**
+     * Test getting undercooling alarm
+     */
+    @Test
+    public void testGetTempLowAlarm() {
+        boolean result = wrapper.getUndercoolingAlarm(TankSelector.valuesWithoutMix()[0], false);
+        assertEquals(result, false);
     }
     
     /**
