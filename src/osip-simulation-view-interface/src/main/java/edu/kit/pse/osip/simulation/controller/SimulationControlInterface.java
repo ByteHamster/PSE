@@ -7,6 +7,9 @@ import java.util.function.Consumer;
 
 /**
  * Provides abstraction from the view
+ *
+ * @version 1.1
+ * @author Niko Wihelm
  */
 public interface SimulationControlInterface {
 
