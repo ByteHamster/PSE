@@ -53,7 +53,7 @@ public enum TankSelector {
      * @return The initial color of a tank.
      */
     public Color getInitialColor() {
-        return initialColors[this.ordinal()].clone();
+        return initialColors[this.ordinal()];
     }
 
     /**

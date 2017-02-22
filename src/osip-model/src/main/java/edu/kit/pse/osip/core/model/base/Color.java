@@ -5,7 +5,7 @@ package edu.kit.pse.osip.core.model.base;
  * @author David Kahles
  * @version 1.0
  */
-public class Color implements Cloneable {
+public class Color {
     private double cyan;
     private double yellow;
     private double magenta;
@@ -134,20 +134,5 @@ public class Color implements Cloneable {
         result = 31 * result + (int) Math.round(magenta * 10000);
         result = 31 * result + (int) Math.round(yellow * 10000);
         return result;
-    }
-
-    @Override
-    public Color clone() {
-        Color tmp;
-        try {
-            tmp = (Color) super.clone();
-        } catch (CloneNotSupportedException ex) {
-            /* Should never happen */
-            throw new RuntimeException("Error in Color.clone()");
-        }
-        tmp.cyan = cyan;
-        tmp.magenta = magenta;
-        tmp.yellow = yellow;
-        return tmp;
     }
 }
