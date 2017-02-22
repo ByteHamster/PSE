@@ -88,7 +88,9 @@ public class SimulationController extends javafx.application.Application impleme
     }
 
     private void updateSettings() {
-        // TODO: implement
+        for (TankSelector selector: TankSelector.values()) {
+            settingsWrapper.setServerPort(selector, settingsInterface.getPort(selector));
+        }
     }
 
     /**
