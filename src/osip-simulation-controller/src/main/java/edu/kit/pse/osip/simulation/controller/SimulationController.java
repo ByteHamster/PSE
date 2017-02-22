@@ -55,23 +55,7 @@ public class SimulationController extends javafx.application.Application impleme
             System.exit(1);
         }
 
-        currentSimulationView = new SimulationMainWindow(productionSite);
-        Stage help = new HelpDialog();
-        Stage about = new AboutDialog();
-        settingsInterface = new SimulationSettingsWindow(settingsWrapper);
-        SimulationControlWindow control = new SimulationControlWindow(productionSite);
-
-        currentSimulationView.setHelpButtonHandler(actionEvent -> help.show());
-        currentSimulationView.setAboutButtonHandler(actionEvent -> about.show());
-        currentSimulationView.setOverflowClosedHandler(actionEvent -> productionSite.reset());
-        currentSimulationView.setSettingsButtonHandler(actionEvent -> settingsInterface.show());
-        currentSimulationView.setControlButtonHandler(actionEvent -> control.show());
-
-        control.setValveListener((pipe, number) -> pipe.setValveThreshold(number.byteValue()));
-        control.setTemperatureListener((tankSelector, number) ->
-            productionSite.setInputTemperature(tankSelector, number.byteValue()));
-        control.setMotorListener(rpm -> productionSite.getMixTank().getMotor().setRPM(rpm.intValue()));
-        settingsInterface.setSettingsChangedListener(this::updateSettings);
+        initView();
 
         simulator = new PhysicsSimulator(productionSite);
 
@@ -91,6 +75,26 @@ public class SimulationController extends javafx.application.Application impleme
         for (TankSelector selector: TankSelector.values()) {
             settingsWrapper.setServerPort(selector, settingsInterface.getPort(selector));
         }
+    }
+
+    private void initView() {
+        currentSimulationView = new SimulationMainWindow(productionSite);
+        Stage help = new HelpDialog();
+        Stage about = new AboutDialog();
+        settingsInterface = new SimulationSettingsWindow(settingsWrapper);
+        SimulationControlWindow control = new SimulationControlWindow(productionSite);
+
+        currentSimulationView.setHelpButtonHandler(actionEvent -> help.show());
+        currentSimulationView.setAboutButtonHandler(actionEvent -> about.show());
+        currentSimulationView.setOverflowClosedHandler(actionEvent -> productionSite.reset());
+        currentSimulationView.setSettingsButtonHandler(actionEvent -> settingsInterface.show());
+        currentSimulationView.setControlButtonHandler(actionEvent -> control.show());
+
+        control.setValveListener((pipe, number) -> pipe.setValveThreshold(number.byteValue()));
+        control.setTemperatureListener((tankSelector, number) ->
+                productionSite.setInputTemperature(tankSelector, number.byteValue()));
+        control.setMotorListener(rpm -> productionSite.getMixTank().getMotor().setRPM(rpm.intValue()));
+        settingsInterface.setSettingsChangedListener(this::updateSettings);
     }
 
     /**
