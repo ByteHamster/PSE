@@ -5,6 +5,8 @@ import edu.kit.pse.osip.core.model.base.MixTank;
 import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
+import edu.kit.pse.osip.simulation.view.main.ViewConstants;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -34,6 +36,8 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
         Translator t = Translator.getInstance();
         this.productionSite = productionSite;
 
+        this.getIcons().add(new Image("/icon.png"));
+
         this.setTitle(t.getString("simulation.control.title"));
         this.setResizable(false);
         this.tankTabs = new EnumMap<>(TankSelector.class);
@@ -44,6 +48,7 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
 
     private TabPane makeLayout(ProductionSite productionSite) {
         TabPane layout = new TabPane();
+        layout.setStyle("-fx-font-size:" + ViewConstants.FONT_SIZE + "px;");
 
         for (TankSelector tankSelector : TankSelector.valuesWithoutMix()) {
             Tank tank = productionSite.getUpperTank(tankSelector);
