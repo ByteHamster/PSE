@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Observable;
 
 import edu.kit.pse.osip.core.model.simulation.ProductionSiteSimulation;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
 import org.eclipse.milo.opcua.stack.core.UaException;
 
@@ -29,6 +31,7 @@ public class SimulationController extends javafx.application.Application impleme
     private ServerSettingsWrapper settingsWrapper;
     private final static int DEFAULT_PORT = 253625;
     private boolean overflow = false;
+    private Timer stepTimer = new Timer(true);
 
     /**
      * Responsible for controlling the display windows and simulating the production
@@ -40,9 +43,6 @@ public class SimulationController extends javafx.application.Application impleme
         }
         productionSite.getMixTank().addObserver(this);
 
-        currentSimulationView = new SimulationMainWindow(productionSite);
-
-        currentSimulationView.setOverflowClosedHandler(new OverflowClosedHandler(productionSite));
         simulator = new PhysicsSimulator(productionSite);
 
         try {
@@ -73,10 +73,15 @@ public class SimulationController extends javafx.application.Application impleme
     }
 
     /**
-     * Show windows and start loop that updates the values
+     * Start loop that updates the values
      */
     public final void startMainLoop () {
-        throw new RuntimeException("Not implemented!");
+        stepTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                simulator.tick();
+            }
+        }, 500);
     }
 
     /**
