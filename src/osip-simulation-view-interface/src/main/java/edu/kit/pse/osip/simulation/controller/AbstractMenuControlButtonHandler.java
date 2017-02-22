@@ -15,7 +15,7 @@ public abstract class AbstractMenuControlButtonHandler implements EventHandler<A
      * Creates a new handler.
      * @param controlWindow The current control window
      */
-    protected AbstractMenuControlButtonHandler(SimulationControlWindow controlWindow) {
+    protected AbstractMenuControlButtonHandler(SimulationControlInterface controlWindow) {
         throw new RuntimeException("Not implemented!");
     }
 
