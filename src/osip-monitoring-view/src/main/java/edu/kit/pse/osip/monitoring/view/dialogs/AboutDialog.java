@@ -20,6 +20,8 @@ import javafx.scene.layout.Priority;
  */
 public class AboutDialog extends javafx.stage.Stage {    
     private static final int FONT_SIZE = MonitoringViewConstants.FONT_SIZE;
+    private static final int MIN_WINDOW_WIDTH = 600;
+    private static final int MIN_WINDOW_HEIGHT = 400;
     
     /**
      * Constructor of AboutDialog
@@ -29,15 +31,13 @@ public class AboutDialog extends javafx.stage.Stage {
     }
 
     private void setDialogSize() {
-        this.setMinWidth(600);
-        //this.setMaxWidth(800);
-        this.setMinHeight(400);
-        //this.setMaxHeight(700);
+        this.setMinWidth(MIN_WINDOW_WIDTH);
+        this.setMinHeight(MIN_WINDOW_HEIGHT);
     }
 
     private void configureIcon(Image image, ImageView icon) {
         icon.setImage(image);
-        icon.setFitWidth(110);
+        icon.setFitWidth(120);
         icon.setPreserveRatio(true);
         icon.setSmooth(true);
     }
@@ -45,7 +45,6 @@ public class AboutDialog extends javafx.stage.Stage {
     private void configureScrollPane(ScrollPane scrollPane, Text text) {
         scrollPane.setFitToWidth(true);
         scrollPane.setContent(text);
-        //scrollPane.setPadding(new Insets(10, 10, 10, 10));
         scrollPane.setPadding(new Insets(MonitoringViewConstants.ELEMENTS_GAP));
     }
 
@@ -54,31 +53,28 @@ public class AboutDialog extends javafx.stage.Stage {
         Image imageIcon = new Image(getClass().getClassLoader().getResourceAsStream("icon.png"));
         this.getIcons().add(imageIcon);
         GridPane grid = new GridPane();
-        //grid.setPadding(new Insets(10, 10, 10, 10));
-        grid.setPadding(new Insets(0, 0,  MonitoringViewConstants.ELEMENTS_GAP, 0));
+        grid.setPadding(new Insets(MonitoringViewConstants.ELEMENTS_GAP));
         
         ImageView aboutIcon = new ImageView();
-        configureIcon(imageIcon, aboutIcon);
-        //aboutIcon.setCache(true);  // use if slow image loading        
+        configureIcon(imageIcon, aboutIcon);      
         GridPane.setConstraints(aboutIcon, 0, 0);       
         
         String aboutString = Translator.getInstance().getString("monitoring.aboutdialog.aboutIntroduction");
         Text aboutText = new Text(aboutString);
         aboutText.setFont(new Font(FONT_SIZE));
-        aboutText.setWrappingWidth(800);  
+        aboutText.setWrappingWidth(500);  
         GridPane.setConstraints(aboutText, 0, 1);        
         
         String licenseString = Translator.getInstance().getString("monitoring.aboutdialog.license");
         Text licenseText = new Text(licenseString);
-        aboutText.setFont(new Font(FONT_SIZE));
-        aboutText.setWrappingWidth(300);
+        licenseText.setFont(new Font(FONT_SIZE));
         
         ScrollPane scrollPane = new ScrollPane();
         configureScrollPane(scrollPane, licenseText);
         GridPane.setConstraints(scrollPane, 0, 2);
                         
         grid.getChildren().addAll(aboutIcon, aboutText, scrollPane);        
-        Scene scene = new Scene(grid, 600, 400);
+        Scene scene = new Scene(grid, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
         
         grid.setHgrow(scrollPane, Priority.ALWAYS);
         grid.setHgrow(aboutText, Priority.ALWAYS);
