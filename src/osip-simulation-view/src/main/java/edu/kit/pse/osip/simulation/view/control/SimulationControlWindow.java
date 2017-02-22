@@ -76,6 +76,10 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
         throw new RuntimeException("Not implemented");
     }
 
+    /**
+     * Sets the listener that is notified of changes in motor speed.
+     * @param listener The Consumer that gets all to the motorSpeed
+     */
     public void setMotorListener(Consumer<Integer> listener) {
         throw new RuntimeException("Not implemented");
     }
