@@ -12,8 +12,9 @@ import java.util.EnumMap;
  */
 public class ProductionSite {
     protected MixTank mixTank;
-    final protected EnumMap<TankSelector, Tank> tanks = new EnumMap<>(TankSelector.class);;
-    final protected EnumMap<TankSelector, Float> inputTemperature = new EnumMap<TankSelector, Float>(TankSelector.class);
+    protected final EnumMap<TankSelector, Tank> tanks = new EnumMap<>(TankSelector.class);;
+    protected final EnumMap<TankSelector, Float> inputTemperature
+        = new EnumMap<TankSelector, Float>(TankSelector.class);
 
     /**
      * Template method to allow subclasses to create objects of subclasses of Tank. The parameters are the same
