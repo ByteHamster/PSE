@@ -28,7 +28,7 @@ public class MixTank extends edu.kit.pse.osip.core.model.base.AbstractTank {
     }
 
     @Override
-    public void reset() {
+    public synchronized void reset() {
         super.reset();
         motor.reset();
     }

@@ -125,7 +125,7 @@ public class ProductionSite {
      * Reset the whole production site to its default values: Every tank with 50% infill, valves putting the site to
      * a stable state.
      */
-    public void reset() {
+    public synchronized void reset() {
         for (TankSelector selector: TankSelector.valuesWithoutMix()) {
             tanks.get(selector).reset();
             inputTemperature.put(selector, selector.getInitialTemperature());

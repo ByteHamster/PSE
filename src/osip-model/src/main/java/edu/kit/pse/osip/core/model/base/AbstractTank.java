@@ -84,7 +84,7 @@ public abstract class AbstractTank extends java.util.Observable {
     /**
      * Resets the tank and all attached units like pipes or motors.
      */
-    public void reset() {
+    public synchronized void reset() {
         setLiquid(initialLiquid);
         outPipe.reset();
     }

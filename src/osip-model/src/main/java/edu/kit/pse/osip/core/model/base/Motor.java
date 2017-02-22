@@ -15,7 +15,7 @@ public class Motor extends java.util.Observable {
      * @throws IllegalArgumentException if rpm is negative or greater than SimulationConstants.MAX_MOTOR_SPEED.
      * @param rpm The target RPM.
      */
-    public final void setRPM(int rpm) {
+    public synchronized void setRPM(int rpm) {
         if (rpm < 0 || rpm > SimulationConstants.MAX_MOTOR_SPEED) {
             throw new IllegalArgumentException("Motor RPM needs to be in range 0 to 3000");
         }
@@ -27,14 +27,14 @@ public class Motor extends java.util.Observable {
      * Get the RPM.
      * @return the RPM.
      */
-    public final int getRPM() {
+    public int getRPM() {
         return rpm;
     }
 
     /**
      * Resets the Motor.
      */
-    public void reset() {
+    public synchronized void reset() {
         setRPM(0);
     }
 }

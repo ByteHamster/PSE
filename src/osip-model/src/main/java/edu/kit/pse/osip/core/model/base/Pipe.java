@@ -101,7 +101,7 @@ public class Pipe extends java.util.Observable {
     /**
      * Resets the Pipe.
      */
-    public void reset() {
+    public synchronized void reset() {
         threshold = defaultThreshold;
         queue.clear();
         setChanged();

@@ -46,7 +46,7 @@ public class TankSelectorTest {
     }
 
     /**
-     * Check whether getIntialColor() and getInitialTemperatue/( returns a value for every tank. Should not throw an
+     * Check whether getIntialColor() and getInitialTemperatue() returns a value for every tank. Should not throw an
      * ArrayIndexOutOfBoundsException.
      */
     @Test
