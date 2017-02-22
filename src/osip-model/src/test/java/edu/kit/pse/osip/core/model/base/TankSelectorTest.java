@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * A class to test the TankSelector class.
@@ -34,13 +35,25 @@ public class TankSelectorTest {
     }
 
     /**
-     * Check whether getIntialColor() is correct. This test uses hardcoded tanks and color values.
+     * Check whether there are at least two tanks defined, one of them being the mix tank.
      */
     @Test
-    public void testGetInitialColor() {
-        assertEquals(TankSelector.MIX.getInitialColor(), new Color(1, 1, 1));
-        assertEquals(TankSelector.YELLOW.getInitialColor(), new Color(0, 0, 1));
-        assertEquals(TankSelector.MAGENTA.getInitialColor(), new Color(0, 1, 0));
-        assertEquals(TankSelector.CYAN.getInitialColor(), new Color(1, 0, 0));
+    public void testGEnoughTanks() {
+        /* TankSelector.MIX exists */
+        TankSelector testSelector = TankSelector.MIX;
+        assertTrue(TankSelector.valuesWithoutMix().length >= 1);
+        assertTrue(TankSelector.values().length >= 2);
+    }
+
+    /**
+     * Check whether getIntialColor() and getInitialTemperatue/( returns a value for every tank. Should not throw an
+     * ArrayIndexOutOfBoundsException.
+     */
+    @Test
+    public void testGetInitialColorTemperature() {
+        for (TankSelector selector: TankSelector.values()) {
+            selector.getInitialColor();
+            selector.getInitialTemperature();
+        }
     }
 }
