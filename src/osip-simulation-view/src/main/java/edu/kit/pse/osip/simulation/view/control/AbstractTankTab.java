@@ -27,7 +27,7 @@ public abstract class AbstractTankTab extends Tab {
 
     /**
      * Creates a new AbstractTankTab with Sliders to control outFlow and Temperature
-     * @param name The name of the AbstractTanktab
+     * @param name The name of the AbstractTankTab
      * @param tank The AbstractTank which is controlled through the AbstractTankTab.
      */
     public AbstractTankTab(String name, AbstractTank tank) {
@@ -64,7 +64,7 @@ public abstract class AbstractTankTab extends Tab {
 
         //Listener to update the Label
         temperatureSlider.valueProperty().addListener((ov, oldVal, newVal)->
-                temperatureValue.setText(String.format("%03d", newVal.intValue()))
+                temperatureValue.setText(String.format("%.1f", newVal))
         );
         row++;
     }
