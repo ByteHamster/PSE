@@ -3,9 +3,12 @@ package edu.kit.pse.osip.simulation.controller;
 import edu.kit.pse.osip.core.io.files.ServerSettingsWrapper;
 import edu.kit.pse.osip.core.model.base.AbstractTank;
 import edu.kit.pse.osip.core.model.base.MixTank;
-import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
+import edu.kit.pse.osip.simulation.view.control.SimulationControlWindow;
+import edu.kit.pse.osip.simulation.view.dialogs.AboutDialog;
+import edu.kit.pse.osip.simulation.view.dialogs.HelpDialog;
 import edu.kit.pse.osip.simulation.view.main.SimulationMainWindow;
+import edu.kit.pse.osip.simulation.view.settings.SimulationSettingsWindow;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -15,6 +18,7 @@ import edu.kit.pse.osip.core.model.simulation.ProductionSiteSimulation;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
+import javafx.stage.Stage;
 import org.eclipse.milo.opcua.stack.core.UaException;
 
 /**
@@ -25,6 +29,7 @@ import org.eclipse.milo.opcua.stack.core.UaException;
 public class SimulationController extends javafx.application.Application implements java.util.Observer {
     private SimulationViewInterface currentSimulationView;
     private ProductionSiteSimulation productionSite;
+    private SimulationSettingsInterface settingsInterface;
     private PhysicsSimulator simulator;
     private List<TankServer> inputServers;
     private MixTankServer mixServer;
@@ -43,14 +48,32 @@ public class SimulationController extends javafx.application.Application impleme
         }
         productionSite.getMixTank().addObserver(this);
 
-        simulator = new PhysicsSimulator(productionSite);
-
         try {
             settingsWrapper = new ServerSettingsWrapper(new File("/Bundle.properties"));
         } catch (IOException ex) {
             System.err.println("Couldn't open settings file: " + ex.getMessage());
             System.exit(1);
         }
+
+        currentSimulationView = new SimulationMainWindow(productionSite);
+        Stage help = new HelpDialog();
+        Stage about = new AboutDialog();
+        settingsInterface = new SimulationSettingsWindow(settingsWrapper);
+        SimulationControlWindow control = new SimulationControlWindow(productionSite);
+
+        currentSimulationView.setHelpButtonHandler(actionEvent -> help.show());
+        currentSimulationView.setAboutButtonHandler(actionEvent -> about.show());
+        currentSimulationView.setOverflowClosedHandler(actionEvent -> productionSite.reset());
+        currentSimulationView.setSettingsButtonHandler(actionEvent -> settingsInterface.show());
+        currentSimulationView.setControlButtonHandler(actionEvent -> control.show());
+
+        control.setValveListener((pipe, number) -> pipe.setValveThreshold(number.byteValue()));
+        control.setTemperatureListener((tankSelector, number) ->
+            productionSite.setInputTemperature(tankSelector, number.byteValue()));
+        control.setMotorListener(rpm -> productionSite.getMixTank().getMotor().setRPM(rpm.intValue()));
+        settingsInterface.setSettingsChangedListener(this::updateSettings);
+
+        simulator = new PhysicsSimulator(productionSite);
 
         int defaultPort = DEFAULT_PORT;
         try {
@@ -62,6 +85,10 @@ public class SimulationController extends javafx.application.Application impleme
             System.err.println("Couldn't start OPC UA server on port " + (defaultPort - 1) + " : " + ex.getMessage());
             System.exit(1);
         }
+    }
+
+    private void updateSettings() {
+        // TODO: implement
     }
 
     /**
