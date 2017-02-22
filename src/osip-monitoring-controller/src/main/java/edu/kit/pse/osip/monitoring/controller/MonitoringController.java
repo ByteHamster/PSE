@@ -39,7 +39,7 @@ public final class MonitoringController extends Application {
      * Creates a new controller instance.
      */
     public MonitoringController() {
-//        currentProductionSite = new ProductionSite();
+        currentProductionSite = new ProductionSite();
 //        try {
 //            currentSettings = new ClientSettingsWrapper(new File(".properties"));
 //        } catch (IOException ioExc) {
