@@ -1,13 +1,19 @@
 package edu.kit.pse.osip.simulation.view.control;
 
-import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.model.base.AbstractTank;
 import edu.kit.pse.osip.core.utils.language.Translator;
-import javafx.geometry.Insets;
+import edu.kit.pse.osip.simulation.view.main.ViewConstants;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.StringProperty;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
+import javafx.util.StringConverter;
+import javafx.util.converter.NumberStringConverter;
 
 /**
  * This class contains the controls for a single tank in the simulation.
@@ -17,13 +23,11 @@ import javafx.scene.layout.GridPane;
  */
 public abstract class AbstractTankTab extends Tab {
 
-    private int row;
+    protected int row;
 
     private GridPane pane;
 
     private Slider outFlowSlider;
-
-    private Slider temperatureSlider;
 
     /**
      * Creates a new AbstractTankTab with Sliders to control outFlow and Temperature
@@ -35,64 +39,50 @@ public abstract class AbstractTankTab extends Tab {
         this.setClosable(false);
 
         pane = new GridPane();
+        pane.setPrefWidth(ViewConstants.CONTROL_WIDTH);
         row = 0;
 
-        createTemperatureSlider(pane, tank);
         createOutFlowSlider(pane, tank);
-    }
-
-    private void createTemperatureSlider(GridPane pane, AbstractTank tank) {
-        Translator t = Translator.getInstance();
-
-        temperatureSlider = new Slider(SimulationConstants.MIN_TEMPERATURE,
-                SimulationConstants.MAX_TEMPERATURE, tank.getLiquid().getTemperature());
-        temperatureSlider.setShowTickLabels(true);
-        temperatureSlider.setShowTickMarks(true);
-        temperatureSlider.setMajorTickUnit(10);
-        temperatureSlider.setMinorTickCount(9);
-        temperatureSlider.setSnapToTicks(true);
-        pane.add(temperatureSlider, 0, row);
-        GridPane.setMargin(temperatureSlider, new Insets(10, 5, 10, 5));
-
-        //Labels to show the current value and unit
-        Label temperatureValue = new Label("" + tank.getLiquid().getTemperature());
-        pane.add(temperatureValue, 1, row);
-        GridPane.setMargin(temperatureValue, new Insets(10, 5, 10, 5));
-        Label temperatureSign = new Label(t.getString("simulation.view.temperatureUnit"));
-        pane.add(temperatureSign, 2, row);
-        GridPane.setMargin(temperatureSign, new Insets(10, 5, 10, 5));
-
-        //Listener to update the Label
-        temperatureSlider.valueProperty().addListener((ov, oldVal, newVal)->
-                temperatureValue.setText(String.format("%.1f", newVal))
-        );
-        row++;
     }
 
     private void createOutFlowSlider(GridPane pane, AbstractTank tank) {
         Translator t = Translator.getInstance();
+        int col = 0;
+
+        Label outFlowLabel = new Label(t.getString("simulation.view.outFlowLabel"));
+        pane.add(outFlowLabel, col++, row);
+        GridPane.setMargin(outFlowLabel, ViewConstants.CONTROL_PADDING);
 
         outFlowSlider = new Slider(0, 100, tank.getOutPipe().getValveThreshold());
         outFlowSlider.setShowTickLabels(true);
         outFlowSlider.setShowTickMarks(true);
-        outFlowSlider.setMajorTickUnit(10);
-        outFlowSlider.setMinorTickCount(9);
+        int majorTick = 100 / ViewConstants.SLIDER_LABEL_COUNT;
+        outFlowSlider.setMajorTickUnit(majorTick);
+        outFlowSlider.setMinorTickCount(majorTick - 1);
         outFlowSlider.setSnapToTicks(true);
-        pane.add(outFlowSlider, 0, row);
-        GridPane.setMargin(outFlowSlider, new Insets(10, 5, 10, 5));
+        outFlowSlider.setPrefWidth(ViewConstants.CONTROL_SLIDER_WIDTH);
+        GridPane.setHgrow(outFlowSlider, Priority.ALWAYS);
 
-        //Labels to show the current value and unit
-        Label outFlowValue = new Label("" + tank.getOutPipe().getValveThreshold());
-        pane.add(outFlowValue, 1, row);
-        GridPane.setMargin(outFlowValue, new Insets(10, 5, 10, 5));
-        Label outFlowSign = new Label(t.getString("simulation.view.flowUnit"));
-        pane.add(outFlowSign, 2, row);
-        GridPane.setMargin(outFlowSign, new Insets(10, 5, 10, 5));
-
-        //Listener to update the Label
         outFlowSlider.valueProperty().addListener((ov, oldVal, newVal) ->
-                outFlowValue.setText(String.format("%02d", newVal.intValue()))
-        );
+            outFlowSlider.setValue(newVal.intValue()));
+
+        pane.add(outFlowSlider, col++, row);
+        GridPane.setMargin(outFlowSlider, ViewConstants.CONTROL_PADDING);
+
+        //TextField and Label to show the current value and unit
+        TextField outFlowValue = new TextField("" + tank.getOutPipe().getValveThreshold());
+        outFlowValue.setMaxWidth(ViewConstants.CONTROL_INPUT_WIDTH);
+        pane.add(outFlowValue, col++, row);
+        GridPane.setMargin(outFlowValue, ViewConstants.CONTROL_PADDING);
+        Label outFlowSign = new Label(t.getString("simulation.view.flowUnit"));
+        pane.add(outFlowSign, col++, row);
+        GridPane.setMargin(outFlowSign, ViewConstants.CONTROL_PADDING);
+
+        StringProperty sp = outFlowValue.textProperty();
+        DoubleProperty dp = outFlowSlider.valueProperty();
+        StringConverter<Number> converter = new NumberStringConverter();
+        Bindings.bindBidirectional(sp, dp, converter);
+
         row++;
     }
 
@@ -102,22 +92,6 @@ public abstract class AbstractTankTab extends Tab {
      */
     protected Slider getOutFlowSlider() {
         return outFlowSlider;
-    }
-
-    /**
-     * Gets a reference to the temperatureSlider
-     * @return A reference to the temperatureSlider
-     */
-    protected Slider getTemperatureSlider() {
-        return temperatureSlider;
-    }
-
-    /**
-     * Get the number of rows that have already been filled in the GridPane
-     * @return The value of rows.
-     */
-    protected int getUsedRows() {
-        return row;
     }
 
     /**

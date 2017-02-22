@@ -1,5 +1,6 @@
 package edu.kit.pse.osip.simulation.view.control;
 
+import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.model.base.Pipe;
 import edu.kit.pse.osip.core.model.base.MixTank;
 import edu.kit.pse.osip.core.model.base.ProductionSite;
@@ -39,7 +40,6 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
         this.getIcons().add(new Image("/icon.png"));
 
         this.setTitle(t.getString("simulation.control.title"));
-        this.setResizable(false);
         this.tankTabs = new EnumMap<>(TankSelector.class);
 
         Scene scene = new Scene(makeLayout(productionSite));
@@ -47,19 +47,23 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
     }
 
     private TabPane makeLayout(ProductionSite productionSite) {
+        Translator t = Translator.getInstance();
+
         TabPane layout = new TabPane();
         layout.setStyle("-fx-font-size:" + ViewConstants.FONT_SIZE + "px;");
 
         for (TankSelector tankSelector : TankSelector.valuesWithoutMix()) {
             Tank tank = productionSite.getUpperTank(tankSelector);
-            TankTab tab = new TankTab(tankSelector.name(), tank);
+            TankTab tab = new TankTab(t.getString(
+                    TankSelector.TRANSLATOR_LABEL_PREFIX + tank.getTankSelector().name()), tank);
             tankTabs.put(tankSelector, tab);
             layout.getTabs().add(tab);
         }
 
         TankSelector mixTankSelector = TankSelector.MIX;
         MixTank mixTank = productionSite.getMixTank();
-        MixTankTab mtTab = new MixTankTab(mixTankSelector.name(), mixTank);
+        MixTankTab mtTab = new MixTankTab(t.getString(
+                TankSelector.TRANSLATOR_LABEL_PREFIX + mixTank.getTankSelector().name()), mixTank);
         tankTabs.put(mixTankSelector, mtTab);
         layout.getTabs().add(mtTab);
 
@@ -92,9 +96,10 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
      * @param listener The Consumer that gets all changes to Tank temperatures
      */
     public void setTemperatureListener(BiConsumer<TankSelector, Float> listener) {
-        for (TankSelector t : TankSelector.values()) {
-            tankTabs.get(t).getTemperatureSlider().valueProperty().addListener((ov, oldVal, newVal) ->
-                listener.accept(t, (float) newVal));
+        for (TankSelector t : TankSelector.valuesWithoutMix()) {
+            TankTab tab = (TankTab) tankTabs.get(t);
+            tab.getTemperatureSlider().valueProperty().addListener((ov, oldVal, newVal) ->
+                listener.accept(t, (float) newVal + SimulationConstants.CELCIUS_OFFSET));
         }
     }
 

@@ -1,5 +1,6 @@
 package edu.kit.pse.osip.simulation.view.main;
 
+import javafx.geometry.Insets;
 import javafx.stage.Screen;
 
 /**
@@ -19,6 +20,26 @@ public final class ViewConstants {
     }
 
     /**
+     * The insets used as padding in the control window.
+     */
+    public static final Insets CONTROL_PADDING = new Insets(10, 5, 10, 5);
+
+    /**
+     * The width of the SimulationControlWindow
+     */
+    public static final double CONTROL_WIDTH = Screen.getPrimary().getBounds().getWidth() * 0.3;
+
+    /**
+     * The width of a slider in the Simulation control window
+     */
+    public static final double CONTROL_SLIDER_WIDTH = CONTROL_WIDTH * 0.3;
+
+    /**
+     * The number of labels on a Slider
+     */
+    public static final int SLIDER_LABEL_COUNT = 10;
+
+    /**
      * The gap between ui elements.
      */
     public static final int ELEMENTS_GAP = 5;
@@ -27,6 +48,11 @@ public final class ViewConstants {
      * The font size in pixels, relative to the absolute screen height.
      */
     public static final int FONT_SIZE = (int) Math.round(0.01389 * Screen.getPrimary().getBounds().getHeight());
+
+    /**
+     * The width of the input TextFields in pixel.
+     */
+    public static final double CONTROL_INPUT_WIDTH = FONT_SIZE * 6;
 
     /**
      * Percentage of width and height of a tank compartment that is
