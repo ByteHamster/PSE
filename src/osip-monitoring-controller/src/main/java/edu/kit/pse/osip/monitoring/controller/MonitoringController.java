@@ -74,18 +74,12 @@ public final class MonitoringController extends Application {
      */
     private void setupUI(Stage stage) {
         currentView.showMonitoringView(stage, currentProductionSite);
-        //currentView.setMenuSettingsButtonHandler(new MenuSettingsButtonHandler(currentSettingsView));
-        currentView.setMenuSettingsButtonHandler(EventHandler->currentSettingsView.showSettingsWindow());
-        //currentView.setMenuHelpButtonHandler(new MenuHelpButtonHandler());
+        currentView.setMenuSettingsButtonHandler(Event -> currentSettingsView.showSettingsWindow());
         HelpDialog helpDialog = new HelpDialog();
-        currentView.setMenuHelpButtonHandler(EventHandler->helpDialog.show());
+        currentView.setMenuHelpButtonHandler(Event -> helpDialog.show());
         AboutDialog aboutDialog = new AboutDialog();
-        //currentView.setMenuAboutButtonHandler(new MenuAboutButtonHandler());
-        currentView.setMenuAboutButtonHandler(EventHandler->aboutDialog.show());
-        //currentSettingsView.setSettingsCancelButtonHandler(new SettingsCancelButtonHandler(currentSettingsView));
-        currentSettingsView.setSettingsCancelButtonHandler(EventHandler->currentSettingsView.hideSettingsWindow());
-//        currentSettingsView.setSettingsSaveButtonHandler(new SettingsSaveButtonHandler(currentSettings,
-//                currentView, currentSettingsView));
+        currentView.setMenuAboutButtonHandler(Event -> aboutDialog.show());
+        currentSettingsView.setSettingsCancelButtonHandler(Event -> currentSettingsView.hideSettingsWindow());
 //        currentSettingsView.setSettingsSaveButtonHandler(new SettingsSaveButtonHandler(currentSettings,
 //                currentView, currentSettingsView));
     }
