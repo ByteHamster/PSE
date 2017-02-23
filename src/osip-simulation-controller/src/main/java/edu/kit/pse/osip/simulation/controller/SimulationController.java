@@ -37,7 +37,7 @@ public class SimulationController extends Application implements Observer {
     private ServerSettingsWrapper settingsWrapper;
     private final static int DEFAULT_PORT = 25325;
     private boolean overflow = false;
-    private Timer stepTimer = new Timer(true);
+    private final Timer stepTimer = new Timer(true);
 
     /**
      * Responsible for controlling the display windows and simulating the production
