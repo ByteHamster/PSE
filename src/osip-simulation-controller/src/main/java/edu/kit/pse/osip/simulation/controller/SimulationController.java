@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Observable;
 
 import edu.kit.pse.osip.core.model.simulation.ProductionSiteSimulation;
+import java.util.Observer;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
@@ -26,7 +27,7 @@ import org.eclipse.milo.opcua.stack.core.UaException;
  * @author David Kahles
  * @version 1.0
  */
-public class SimulationController extends javafx.application.Application implements java.util.Observer {
+public class SimulationController extends Application implements Observer {
     private SimulationViewInterface currentSimulationView;
     private ProductionSiteSimulation productionSite;
     private SimulationSettingsInterface settingsInterface;
@@ -101,7 +102,7 @@ public class SimulationController extends javafx.application.Application impleme
      * Called bx JavaFx to start drawing the UI
      * @param primaryStage The stage to draw the main window on
      */
-    public final void start (javafx.stage.Stage primaryStage) {
+    public final void start (Stage primaryStage) {
         setupUI(primaryStage);
     }
 
@@ -149,7 +150,7 @@ public class SimulationController extends javafx.application.Application impleme
      * Initialize the UI
      * @param stage The javafx stage
      */
-    private final void setupUI (javafx.stage.Stage stage) {
+    private final void setupUI (Stage stage) {
         currentSimulationView.start(stage);
     }
 
