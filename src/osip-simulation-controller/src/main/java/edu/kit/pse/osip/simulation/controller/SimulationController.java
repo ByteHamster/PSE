@@ -35,7 +35,7 @@ public class SimulationController extends Application implements Observer {
     private List<TankServer> inputServers;
     private MixTankServer mixServer;
     private ServerSettingsWrapper settingsWrapper;
-    private final static int DEFAULT_PORT = 253625;
+    private final static int DEFAULT_PORT = 25325;
     private boolean overflow = false;
     private Timer stepTimer = new Timer(true);
 
