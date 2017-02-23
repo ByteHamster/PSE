@@ -2,10 +2,9 @@ package edu.kit.pse.osip.monitoring.view.dashboard;
 
 import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.core.model.base.TankSelector;
-import edu.kit.pse.osip.monitoring.controller.AbstractMenuAboutButtonHandler;
-import edu.kit.pse.osip.monitoring.controller.AbstractMenuHelpButtonHandler;
-import edu.kit.pse.osip.monitoring.controller.AbstractMenuSettingsButtonHandler;
 import edu.kit.pse.osip.monitoring.controller.MonitoringViewInterface;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
 /**
@@ -56,17 +55,17 @@ public final class MonitoringViewFacade implements MonitoringViewInterface {
     }
     
     @Override
-    public void setMenuSettingsButtonHandler(AbstractMenuSettingsButtonHandler handler) {
+    public void setMenuSettingsButtonHandler(EventHandler<ActionEvent> handler) {
         mainWindow.getMonitoringMenu().setMenuSettingsButtonHandler(handler);
     }
     
     @Override
-    public void setMenuAboutButtonHandler(AbstractMenuAboutButtonHandler handler) {
+    public void setMenuAboutButtonHandler(EventHandler<ActionEvent> handler) {
         mainWindow.getMonitoringMenu().setMenuAboutButtonHandler(handler);
     }
     
     @Override
-    public void setMenuHelpButtonHandler(AbstractMenuHelpButtonHandler handler) {
+    public void setMenuHelpButtonHandler(EventHandler<ActionEvent> handler) {
         mainWindow.getMonitoringMenu().setMenuHelpButtonHandler(handler);
     }
 }

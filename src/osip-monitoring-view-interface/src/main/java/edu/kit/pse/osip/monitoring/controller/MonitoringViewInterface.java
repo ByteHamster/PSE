@@ -3,6 +3,8 @@ package edu.kit.pse.osip.monitoring.controller;
 import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.core.model.base.TankSelector;
 import javafx.stage.Stage;
+import javafx.event.EventHandler;
+import javafx.event.ActionEvent;
 
 /**
  * Provides abstraction from the UI and a single interface to configure the monitoring view.
@@ -72,19 +74,19 @@ public interface MonitoringViewInterface {
      * 
      * @param handler The handler for the settings menu button.
      */
-    void setMenuSettingsButtonHandler(AbstractMenuSettingsButtonHandler handler);
+    void setMenuSettingsButtonHandler(EventHandler<ActionEvent> handler);
     
     /**
      * Sets the handler for the about menu button.
      * 
      * @param handler The handler for the about menu button.
      */
-    void setMenuAboutButtonHandler(AbstractMenuAboutButtonHandler handler);
+    void setMenuAboutButtonHandler(EventHandler<ActionEvent> handler);
     
     /**
      * Sets the handler for the help menu button.
      * 
      * @param handler The handler handles a click on the help menu button.
      */
-    void setMenuHelpButtonHandler(AbstractMenuHelpButtonHandler handler);
+    void setMenuHelpButtonHandler(EventHandler<ActionEvent> handler);
 }

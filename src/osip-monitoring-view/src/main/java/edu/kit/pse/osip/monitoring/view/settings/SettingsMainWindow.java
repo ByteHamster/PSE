@@ -2,9 +2,9 @@ package edu.kit.pse.osip.monitoring.view.settings;
 
 import edu.kit.pse.osip.core.io.files.ClientSettingsWrapper;
 import edu.kit.pse.osip.core.utils.language.Translator;
-import edu.kit.pse.osip.monitoring.controller.AbstractSettingsCancelButtonHandler;
-import edu.kit.pse.osip.monitoring.controller.AbstractSettingsSaveButtonHandler;
 import edu.kit.pse.osip.monitoring.view.dashboard.MonitoringViewConstants;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -163,7 +163,7 @@ class SettingsMainWindow {
      * 
      * @param handler The handler for the cancel button in the settings view.
      */
-    protected void setSettingsCancelButtonHandler(AbstractSettingsCancelButtonHandler handler) {
+    protected void setSettingsCancelButtonHandler(EventHandler<ActionEvent> handler) {
         buttonCancel.setOnAction(handler);
     }
     
@@ -172,7 +172,7 @@ class SettingsMainWindow {
      * 
      * @param handler The handler for the save button int eh settings view.
      */
-    protected void setSettingsSaveButtonHandler(AbstractSettingsSaveButtonHandler handler) {
+    protected void setSettingsSaveButtonHandler(EventHandler<ActionEvent> handler) {
         buttonSave.setOnAction(handler);
     }
 }

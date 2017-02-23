@@ -1,6 +1,8 @@
 package edu.kit.pse.osip.monitoring.controller;
 
 import edu.kit.pse.osip.core.model.base.TankSelector;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 /**
  * Provides abstraction from the view and a single interface for accessing the user-set settings.
@@ -24,14 +26,14 @@ public interface SettingsViewInterface {
      * 
      * @param handler The handler for the cancel button in the settings view.
      */
-    void setSettingsCancelButtonHandler(AbstractSettingsCancelButtonHandler handler);
+    void setSettingsCancelButtonHandler(EventHandler<ActionEvent> handler);
     
     /**
      * Sets the handler for the save button in the settings view.
      * 
      * @param handler The handler for the save button in the settings view.
      */
-    void setSettingsSaveButtonHandler(AbstractSettingsSaveButtonHandler handler);
+    void setSettingsSaveButtonHandler(EventHandler<ActionEvent> handler);
 
     /**
      * Returns the host name for the servers.

@@ -1,9 +1,8 @@
 package edu.kit.pse.osip.monitoring.view.dashboard;
 
 import edu.kit.pse.osip.core.utils.language.Translator;
-import edu.kit.pse.osip.monitoring.controller.AbstractMenuAboutButtonHandler;
-import edu.kit.pse.osip.monitoring.controller.AbstractMenuHelpButtonHandler;
-import edu.kit.pse.osip.monitoring.controller.AbstractMenuSettingsButtonHandler;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -62,7 +61,7 @@ class MonitoringMenu extends MenuBar {
      * 
      * @param handler The handler for the settings menu button.
      */
-    protected void setMenuSettingsButtonHandler(AbstractMenuSettingsButtonHandler handler) {
+    protected void setMenuSettingsButtonHandler(EventHandler<ActionEvent> handler) {
         menuButtonSettings.setOnAction(handler);
     }
     
@@ -71,7 +70,7 @@ class MonitoringMenu extends MenuBar {
      * 
      * @param handler The handler for the about menu button.
      */
-    protected void setMenuAboutButtonHandler(AbstractMenuAboutButtonHandler handler) {
+    protected void setMenuAboutButtonHandler(EventHandler<ActionEvent> handler) {
         menuButtonAbout.setOnAction(handler);
     }
     
@@ -80,7 +79,7 @@ class MonitoringMenu extends MenuBar {
      * 
      * @param handler The handler for the help menu button.
      */
-    protected void setMenuHelpButtonHandler(AbstractMenuHelpButtonHandler handler) {
+    protected void setMenuHelpButtonHandler(EventHandler<ActionEvent> handler) {
         menuButtonHelp.setOnAction(handler);
     }
 }
