@@ -33,9 +33,19 @@ public enum TankSelector {
      */
     private static Color[] initialColors = {
         new Color(1, 1, 1),
-        new Color(0, 1, 0),
-        new Color(1, 0, 0),
         new Color(0, 0, 1),
+        new Color(1, 0, 0),
+        new Color(0, 1, 0),
+    };
+
+    /**
+     * This array defines the initial temperatures in the same order as the tanks are defined above.
+     */
+    private static float[] initialTemperatures = {
+        300,
+        300,
+        300,
+        300,
     };
 
     /**
@@ -43,7 +53,15 @@ public enum TankSelector {
      * @return The initial color of a tank.
      */
     public Color getInitialColor() {
-        return initialColors[this.ordinal()].clone();
+        return initialColors[this.ordinal()];
+    }
+
+    /**
+     * Get the initial temperature of a tank.
+     * @return The initial temperature of a tank.
+     */
+    public float getInitialTemperature() {
+        return initialTemperatures[this.ordinal()];
     }
     
     /**

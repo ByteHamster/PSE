@@ -2,6 +2,7 @@ package edu.kit.pse.osip.core.model.behavior;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import edu.kit.pse.osip.core.model.base.Color;
@@ -21,6 +22,17 @@ public class TemperatureAlarmTest {
     private Liquid testLiquid;
     private Tank tank;
     private TemperatureAlarm alarm;
+    private Pipe pipe1;
+    private Pipe pipe2;
+
+    /**
+     * Intialize pipes
+     */
+    @Before
+    public void init() {
+        pipe1 = new Pipe(200f, 30, (byte) 100);
+        pipe2 = new Pipe(200f, 30, (byte) 100);
+    }
     
     /**
      * Test configuration where alarm is not triggered
@@ -28,7 +40,7 @@ public class TemperatureAlarmTest {
     @Test
     public void testAlarmIsNotTriggered() {
         testLiquid = new Liquid(20f, 300f, new Color(0.5, 0.5, 0.5));
-        tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquid, new Pipe(200f, 30), new Pipe(200f, 30));
+        tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquid, pipe1, pipe2);
         alarm = new TemperatureAlarm(tank, 400f, AlarmBehavior.GREATER_THAN);
         assertEquals(false, alarm.isAlarmTriggered());
     }
@@ -39,7 +51,7 @@ public class TemperatureAlarmTest {
     @Test
     public void testAlarmIsTriggered() {
         testLiquid = new Liquid(20f, 300f, new Color(0.5, 0.5, 0.5));
-        tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquid, new Pipe(200f, 30), new Pipe(200f, 30));
+        tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquid, pipe1, pipe2);
         alarm = new TemperatureAlarm(tank, 200f, AlarmBehavior.GREATER_THAN);
         assertEquals(true, alarm.isAlarmTriggered());
     }

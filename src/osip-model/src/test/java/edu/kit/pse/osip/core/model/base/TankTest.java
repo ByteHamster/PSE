@@ -18,8 +18,8 @@ import static org.junit.Assert.assertTrue;
  */
 public class TankTest implements Observer {
     private Liquid liquid = new Liquid(1, SimulationConstants.MIN_TEMPERATURE, new Color(0));
-    private Pipe inPipe = new Pipe(5, 5);
-    private Pipe outPipe = new Pipe(5, 5);
+    private Pipe inPipe = new Pipe(5, 5, (byte) 100);
+    private Pipe outPipe = new Pipe(5, 5, (byte) 100);
     private boolean changed;
 
     /**

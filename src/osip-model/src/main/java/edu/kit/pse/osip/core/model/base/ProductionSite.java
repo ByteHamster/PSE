@@ -12,8 +12,9 @@ import java.util.EnumMap;
  */
 public class ProductionSite {
     protected MixTank mixTank;
-    protected EnumMap<TankSelector, Tank> tanks;
-    protected EnumMap<TankSelector, Float> inputTemperature;
+    protected final EnumMap<TankSelector, Tank> tanks = new EnumMap<>(TankSelector.class);;
+    protected final EnumMap<TankSelector, Float> inputTemperature
+        = new EnumMap<TankSelector, Float>(TankSelector.class);
 
     /**
      * Template method to allow subclasses to create objects of subclasses of Tank. The parameters are the same
@@ -79,27 +80,28 @@ public class ProductionSite {
         int halfFull = SimulationConstants.TANK_SIZE / 2;
 
         mixTank = instantiateMixTank(SimulationConstants.TANK_SIZE, new Liquid(halfFull,
-                SimulationConstants.MIN_TEMPERATURE, TankSelector.MIX.getInitialColor()),
-                new Pipe(SimulationConstants.PIPE_CROSSSECTION, SimulationConstants.PIPE_LENGTH));
+                TankSelector.MIX.getInitialTemperature(), TankSelector.MIX.getInitialColor()),
+                new Pipe(SimulationConstants.PIPE_CROSSSECTION, SimulationConstants.PIPE_LENGTH, (byte) 100));
 
         boolean specialPipeAssigned = false;  /* One of the pipes needs to be set to 34 instead of 33 */
-        tanks = new EnumMap<>(TankSelector.class);
         for (TankSelector selector: TankSelector.valuesWithoutMix()) {
-            Liquid l = new Liquid(halfFull, SimulationConstants.MIN_TEMPERATURE, selector.getInitialColor());
-            Pipe inPipe = new Pipe(SimulationConstants.PIPE_CROSSSECTION, SimulationConstants.PIPE_LENGTH);
-            Pipe outPipe = new Pipe(SimulationConstants.PIPE_CROSSSECTION, SimulationConstants.PIPE_LENGTH);
-
+            byte threshold;
             if (!specialPipeAssigned) {
-                inPipe.setValveThreshold((byte) 34);
-                outPipe.setValveThreshold((byte) 34);
+                threshold = (byte) 34;
                 specialPipeAssigned = true;
             } else {
-                inPipe.setValveThreshold((byte) 33);
-                outPipe.setValveThreshold((byte) 33);
+                threshold = (byte) 33;
             }
+            Liquid l = new Liquid(halfFull, selector.getInitialTemperature(), selector.getInitialColor());
+            Pipe inPipe = new Pipe(SimulationConstants.PIPE_CROSSSECTION, SimulationConstants.PIPE_LENGTH, threshold);
+            Pipe outPipe = new Pipe(SimulationConstants.PIPE_CROSSSECTION, SimulationConstants.PIPE_LENGTH, threshold);
+
 
             tanks.put(selector, instantiateTank(SimulationConstants.TANK_SIZE, selector, l, outPipe, inPipe));
         }
+
+        /* Make sure we're in the correct state */
+        reset();
     }
 
     /**
@@ -123,7 +125,12 @@ public class ProductionSite {
      * Reset the whole production site to its default values: Every tank with 50% infill, valves putting the site to
      * a stable state.
      */
-    public void reset() {
-        initTanks();
+    public synchronized void reset() {
+        for (TankSelector selector: TankSelector.valuesWithoutMix()) {
+            tanks.get(selector).reset();
+            inputTemperature.put(selector, selector.getInitialTemperature());
+        }
+        mixTank.reset();
+        inputTemperature.put(TankSelector.MIX, TankSelector.MIX.getInitialTemperature());
     }
 }

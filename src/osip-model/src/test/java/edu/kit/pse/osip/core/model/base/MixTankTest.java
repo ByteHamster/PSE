@@ -19,7 +19,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class MixTankTest implements Observer {
     private Liquid liquid = new Liquid(1, SimulationConstants.MIN_TEMPERATURE, new Color(0));
-    private Pipe outPipe = new Pipe(5, 5);
+    private Pipe outPipe = new Pipe(5, 5, (byte) 100);
     private boolean changed;
 
     /**

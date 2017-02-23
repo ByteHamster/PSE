@@ -16,15 +16,15 @@ import static org.junit.Assert.assertTrue;
  * @version 1.0
  */
 public class PipeTest implements Observer {
-    Pipe pipe = null;
-    boolean changed;
+    private Pipe pipe = null;
+    private boolean changed;
 
     /**
      * Initialize the pipe and the changed boolean.
      */
     @Before
     public void init() {
-        pipe = new Pipe(5, 5);
+        pipe = new Pipe(5, 5, (byte) 100);
         changed = false;
     }
 
@@ -33,7 +33,7 @@ public class PipeTest implements Observer {
      */
     @Test(expected = IllegalArgumentException.class)
     public void wrongCrosssection() {
-        new Pipe(0, 5);
+        new Pipe(0, 5, (byte) 100);
     }
 
     /**
@@ -41,7 +41,7 @@ public class PipeTest implements Observer {
      */
     @Test(expected = IllegalArgumentException.class)
     public void wrongLength() {
-        new Pipe(5, 0);
+        new Pipe(5, 0, (byte) 100);
     }
 
     /**
@@ -111,7 +111,7 @@ public class PipeTest implements Observer {
      */
     @Test
     public void testPutInSmallPipe() {
-        pipe = new Pipe(1, 1);
+        pipe = new Pipe(1, 1, (byte) 100);
 
         Liquid empty = new Liquid(0, SimulationConstants.MIN_TEMPERATURE, new Color(0));
         Liquid l1 = new Liquid(pipe.getMaxInput() / 2, SimulationConstants.MIN_TEMPERATURE, new Color(0));

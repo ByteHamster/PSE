@@ -5,7 +5,7 @@ package edu.kit.pse.osip.core.model.base;
  * @author David Kahles
  * @version 1.0
  */
-public class Color implements Cloneable {
+public class Color {
     private double cyan;
     private double yellow;
     private double magenta;
@@ -55,20 +55,6 @@ public class Color implements Cloneable {
     }
 
     /**
-     * Set the cyan percentage.
-     *
-     * @param cyan The percentage of the cyan color. It needs to be between 0 and 1.
-     * @throws IllegalArgumentException if cyan is smaller than 0 or greather than 1.
-     */
-    public final synchronized void setCyan(double cyan) {
-        if (cyan < 0 || cyan > 1) {
-            throw new IllegalArgumentException("cyan argument needs to be in range 0 to 1, but is " + cyan);
-        }
-
-        this.cyan = cyan;
-    }
-
-    /**
      * Get the magenta percentage.
      *
      * @return the percentage of the magenta color.
@@ -78,40 +64,12 @@ public class Color implements Cloneable {
     }
 
     /**
-     * Set the magenta percentage.
-     *
-     * @param magenta The percentage of the magenta color. It needs to be between 0 and 1.
-     * @throws IllegalArgumentException if magenta is smaller than 0 or greather than 1.
-     */
-    public final synchronized void setMagenta(double magenta) {
-        if (magenta < 0 || magenta > 1) {
-            throw new IllegalArgumentException("magenta argument needs to be in range 0 to 1, but is " + magenta);
-        }
-
-        this.magenta = magenta;
-    }
-
-    /**
      * Get the yellow percentage.
      *
      * @return the percentage of the yellow color.
      */
     public final double getYellow() {
         return yellow;
-    }
-
-    /**
-     * Set the yellow percentage.
-     *
-     * @param yellow The percentage of the yellow color. It needs to be between 0 and 1.
-     * @throws IllegalArgumentException if yellow is smaller than 0 or greather than 1.
-     */
-    public final synchronized void setYellow(double yellow) {
-        if (yellow < 0 || yellow > 1) {
-            throw new IllegalArgumentException("yellow argument needs to be in range 0 to 1, but is " + yellow);
-        }
-
-        this.yellow = yellow;
     }
 
     /**
@@ -176,20 +134,5 @@ public class Color implements Cloneable {
         result = 31 * result + (int) Math.round(magenta * 10000);
         result = 31 * result + (int) Math.round(yellow * 10000);
         return result;
-    }
-
-    @Override
-    public Color clone() {
-        Color tmp;
-        try {
-            tmp = (Color) super.clone();
-        } catch (CloneNotSupportedException ex) {
-            /* Should never happen */
-            throw new RuntimeException("Error in Color.clone()");
-        }
-        tmp.setCyan(cyan);
-        tmp.setMagenta(magenta);
-        tmp.setYellow(yellow);
-        return tmp;
     }
 }

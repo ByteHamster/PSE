@@ -15,20 +15,25 @@ public class Pipe extends java.util.Observable {
     private int length;
     private Queue<Liquid> queue = new LinkedBlockingQueue<>();
     private byte threshold = 100; /* in percent */
+    private byte defaultThreshold;
 
     /**
      * Construct a Pipe.
      * @param crosssection Crosssection of the pipe in cm².
      * @param length Length in cm.
+     * @param defaultThreshold The default threshold
      * @throws IllegalArgumentException if crosssection or length are negative or zero.
      */
-    public Pipe(float crosssection, int length) {
+    public Pipe(float crosssection, int length, byte defaultThreshold) {
         if (crosssection <= 0 || length <= 0) {
             throw new IllegalArgumentException("Crosssection and length of a pipe need to be greather than zero");
         }
         this.crosssection = crosssection;
+        this.defaultThreshold = defaultThreshold;
+        this.threshold = defaultThreshold;
         this.length = length;
     }
+
     /**
      * Insert liquid into one SimulationConstants.SIMULATION_STEP of the pipe and take out the liquid at the other side,
      * which gets pushed out.
@@ -91,5 +96,15 @@ public class Pipe extends java.util.Observable {
      */
     public float getMaxInputWithFullyOpenedValve() {
         return crosssection * SimulationConstants.SIMULATION_STEP;
+    }
+
+    /**
+     * Resets the Pipe.
+     */
+    public synchronized void reset() {
+        threshold = defaultThreshold;
+        queue.clear();
+        setChanged();
+        notifyObservers();
     }
 }

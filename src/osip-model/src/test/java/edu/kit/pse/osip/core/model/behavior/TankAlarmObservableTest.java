@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.Observable;
 import java.util.Observer;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import edu.kit.pse.osip.core.model.base.Color;
@@ -23,6 +24,9 @@ public class TankAlarmObservableTest {
     private Liquid testLiquid;
     private Tank tank;
     private FillAlarm alarm;
+    private Pipe pipe1;
+    private Pipe pipe2;
+    private Color defaultColor = new Color(0.5, 0.5, 0.5);
     
    /**
     * Helper observer for tests
@@ -31,10 +35,11 @@ public class TankAlarmObservableTest {
     */
     class TestObserver implements Observer {
         private boolean wasNotified = false;
+
         @Override
         public void update(Observable o, Object arg) {
-            wasNotified = true;                
-        }            
+            wasNotified = true;
+        }
     
         /**
          * Getter for notified 
@@ -49,20 +54,29 @@ public class TankAlarmObservableTest {
          */
         public void resetNotified() {
             wasNotified = false;
-        }       
-    }    
+        }
+    }
+
+    /**
+     * Intialize pipes
+     */
+    @Before
+    public void init() {
+        pipe1 = new Pipe(200f, 30, (byte) 100);
+        pipe2 = new Pipe(200f, 30, (byte) 100);
+    }
     
     /**
      * Test if alarm gives notification on changes
      */
     @Test
     public void testObservableNotify() {       
-        testLiquid = new Liquid(150f, 300f, new Color(0.5, 0.5, 0.5));
-        tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquid, new Pipe(200f, 30), new Pipe(200f, 30));
+        testLiquid = new Liquid(150f, 300f, defaultColor);
+        tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquid, pipe1, pipe2);
         alarm = new FillAlarm(tank, 50f, AlarmBehavior.GREATER_THAN);        
         TestObserver tObserver = new TestObserver();
         alarm.addObserver(tObserver);
-        Liquid alteredLiquid = new Liquid(50f, 300f, new Color(0.5, 0.5, 0.5));
+        Liquid alteredLiquid = new Liquid(50f, 300f, defaultColor);
         tank.setLiquid(alteredLiquid);
         assertEquals(true, tObserver.wasNotified());        
     }
@@ -72,12 +86,12 @@ public class TankAlarmObservableTest {
      */
     @Test
     public void testObservableNoNotify() {
-        testLiquid = new Liquid(50f, 300f, new Color(0.5, 0.5, 0.5));
-        tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquid, new Pipe(200f, 30), new Pipe(200f, 30));
+        testLiquid = new Liquid(50f, 300f, defaultColor);
+        tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquid, pipe1, pipe2);
         alarm = new FillAlarm(tank, 50f, AlarmBehavior.GREATER_THAN);        
         TestObserver tObserver = new TestObserver();
         alarm.addObserver(tObserver);
-        Liquid alteredLiquid = new Liquid(80f, 300f, new Color(0.5, 0.5, 0.5));
+        Liquid alteredLiquid = new Liquid(80f, 300f, defaultColor);
         tank.setLiquid(alteredLiquid);
         assertEquals(false, tObserver.wasNotified());
     }    
@@ -87,10 +101,10 @@ public class TankAlarmObservableTest {
      */
     @Test
     public void testObservableNotifyMultiple() {       
-        Liquid testLiquidA = new Liquid(50f, 300f, new Color(0.5, 0.5, 0.5));
-        Liquid testLiquidB = new Liquid(150f, 300f, new Color(0.5, 0.5, 0.5));
-        Liquid testLiquidC = new Liquid(60f, 300f, new Color(0.5, 0.5, 0.5));
-        tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquidA, new Pipe(200f, 30), new Pipe(200f, 30));
+        Liquid testLiquidA = new Liquid(50f, 300f, defaultColor);
+        Liquid testLiquidB = new Liquid(150f, 300f, defaultColor);
+        Liquid testLiquidC = new Liquid(60f, 300f, defaultColor);
+        tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquidA, pipe1, pipe2);
         alarm = new FillAlarm(tank, 50f, AlarmBehavior.GREATER_THAN);        
         TestObserver tObserver = new TestObserver();
         alarm.addObserver(tObserver);
@@ -108,10 +122,10 @@ public class TankAlarmObservableTest {
      */
     @Test
     public void testObservbleNotifyMultipleConstant() {
-        Liquid testLiquidA = new Liquid(50f, 300f, new Color(0.5, 0.5, 0.5));
-        Liquid testLiquidB = new Liquid(150f, 300f, new Color(0.5, 0.5, 0.5));
-        Liquid testLiquidC = new Liquid(160f, 300f, new Color(0.5, 0.5, 0.5));
-        tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquidA, new Pipe(200f, 30), new Pipe(200f, 30));
+        Liquid testLiquidA = new Liquid(50f, 300f, defaultColor);
+        Liquid testLiquidB = new Liquid(150f, 300f, defaultColor);
+        Liquid testLiquidC = new Liquid(160f, 300f, defaultColor);
+        tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquidA, pipe1, pipe2);
         alarm = new FillAlarm(tank, 50f, AlarmBehavior.GREATER_THAN);        
         TestObserver tObserver = new TestObserver();
         alarm.addObserver(tObserver);

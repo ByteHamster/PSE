@@ -1,5 +1,6 @@
 package edu.kit.pse.osip.core.model.base;
 
+import edu.kit.pse.osip.core.SimulationConstants;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -147,8 +148,33 @@ public class ProductionSiteTest {
     }
 
     private Liquid modifyLiquid(Liquid l) {
-        Color newColor = l.getColor();
-        newColor.setCyan(0.8);
-        return new Liquid(l.getAmount() + 1, l.getTemperature() + 2, newColor);
+        Color c = l.getColor();
+        return new Liquid(l.getAmount() + 1, l.getTemperature() + 2, new Color(c.getCyan(),
+            c.getMagenta(), c.getYellow()));
+    }
+
+    /**
+     * Test that the ProductionSite remembers temperatures
+     */
+    @Test
+    public void testInputTemperature() {
+        prodSite.setInputTemperature(TankSelector.MIX, SimulationConstants.MIN_TEMPERATURE);
+        assertEquals(SimulationConstants.MIN_TEMPERATURE, prodSite.getInputTemperature(TankSelector.MIX), 0.0001);
+    }
+
+    /**
+     * Test that the ProductionSite rejects too low temperatures
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testTooLowInputTemperature() {
+        prodSite.setInputTemperature(TankSelector.MIX, SimulationConstants.MIN_TEMPERATURE - 1);
+    }
+
+    /**
+     * Test that the ProductionSite rejects too high temperatures
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testTooHighInputTemperature() {
+        prodSite.setInputTemperature(TankSelector.MIX, SimulationConstants.MAX_TEMPERATURE + 1);
     }
 }
