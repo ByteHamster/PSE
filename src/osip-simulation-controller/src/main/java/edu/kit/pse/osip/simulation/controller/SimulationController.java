@@ -29,7 +29,7 @@ import org.eclipse.milo.opcua.stack.core.UaException;
  */
 public class SimulationController extends Application implements Observer {
     private SimulationViewInterface currentSimulationView;
-    private ProductionSiteSimulation productionSite;
+    private final ProductionSiteSimulation productionSite = new ProductionSiteSimulation();
     private SimulationSettingsInterface settingsInterface;
     private PhysicsSimulator simulator;
     private List<TankServer> inputServers;
@@ -43,7 +43,6 @@ public class SimulationController extends Application implements Observer {
      * Responsible for controlling the display windows and simulating the production
      */
     public SimulationController () {
-        productionSite = new ProductionSiteSimulation();
         for (TankSelector selector: TankSelector.valuesWithoutMix()) {
             productionSite.getUpperTank(selector).addObserver(this);
         }
