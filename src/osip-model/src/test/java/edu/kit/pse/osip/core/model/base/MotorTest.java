@@ -24,7 +24,7 @@ public class MotorTest implements Observer {
      */
     @Before
     public void initMotor() {
-        motor = new Motor();
+        motor = new Motor(0);
         observed = false;
     }
 
@@ -51,8 +51,11 @@ public class MotorTest implements Observer {
     public void testSet() {
         motor.setRPM(0);
         assertEquals(0, motor.getRPM());
+        motor = new Motor(SimulationConstants.MAX_MOTOR_SPEED - 1);
         motor.setRPM(SimulationConstants.MAX_MOTOR_SPEED);
         assertEquals(SimulationConstants.MAX_MOTOR_SPEED, motor.getRPM());
+        motor.reset();
+        assertEquals(SimulationConstants.MAX_MOTOR_SPEED - 1, motor.getRPM());
     }
 
     /**

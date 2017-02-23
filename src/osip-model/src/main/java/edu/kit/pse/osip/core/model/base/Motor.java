@@ -9,6 +9,15 @@ import edu.kit.pse.osip.core.SimulationConstants;
  */
 public class Motor extends java.util.Observable {
     private int rpm;
+    private int initialRpm;
+
+    /**
+     * Constructs a new Motor
+     * @param initialRpm The initial motor speed, which is also set when the motor gets reseted.
+     */
+    public Motor(int initialRpm) {
+        this.initialRpm = initialRpm;
+    }
 
     /**
      * Set the RPM of the motor.
@@ -32,9 +41,9 @@ public class Motor extends java.util.Observable {
     }
 
     /**
-     * Resets the Motor.
+     * Resets the Motor to @see initialRpm.
      */
     public synchronized void reset() {
-        setRPM(0);
+        setRPM(initialRpm);
     }
 }

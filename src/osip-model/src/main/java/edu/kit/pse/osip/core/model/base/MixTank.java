@@ -16,7 +16,7 @@ public class MixTank extends edu.kit.pse.osip.core.model.base.AbstractTank {
      */
     public MixTank(float capacity, Liquid liquid, Pipe outPipe) {
         super(capacity, TankSelector.MIX, liquid, outPipe);
-        motor = new Motor();
+        motor = new Motor(0);
     }
 
     /**
@@ -32,5 +32,4 @@ public class MixTank extends edu.kit.pse.osip.core.model.base.AbstractTank {
         super.reset();
         motor.reset();
     }
-
 }
