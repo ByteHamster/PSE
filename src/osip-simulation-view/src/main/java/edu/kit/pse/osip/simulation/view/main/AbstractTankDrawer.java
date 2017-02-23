@@ -105,7 +105,7 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
         double totalWidth = canvas.getWidth();
         double totalHeight = canvas.getHeight();
 
-        double fillLevel = tank.getFillLevel() / SimulationConstants.TANK_SIZE;
+        double fillLevel = tank.getFillLevel();
         Color fluidColor = getTankColor();
 
         // start the calculated values
