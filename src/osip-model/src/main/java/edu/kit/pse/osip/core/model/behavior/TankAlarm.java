@@ -76,4 +76,11 @@ public abstract class TankAlarm <T extends Comparable<T>> extends java.util.Obse
     public final boolean isAlarmTriggered() {
         return triggered;
     }
+
+    /**
+     * Get the tank of the alarm
+     */
+    public AbstractTank getTank() {
+        return tank;
+    }
 }
