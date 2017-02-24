@@ -26,7 +26,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.jfxtras</groupId>
-			<artifactId>jfxtras-all</artifactId>
+			<artifactId>jfxtras-gauge-linear</artifactId>
 			<version>8.0-r6-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
