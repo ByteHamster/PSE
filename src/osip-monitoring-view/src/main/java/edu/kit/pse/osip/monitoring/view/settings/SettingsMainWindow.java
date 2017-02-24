@@ -13,8 +13,8 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TabPane.TabClosingPolicy;
 import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -95,7 +95,7 @@ class SettingsMainWindow {
         
         tabsPane = new TabPane();
         tabsPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
-        tabsPane.setMaxHeight(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS * 1.5);
+        tabsPane.setPrefHeight(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS * 1.5);
         tabGeneralSettings = new Tab(translator.getString("monitoring.settings.tab.generalSettings"));
         tabGeneralSettings.setContent(generalSettingsTab);
         tabAlarms = new Tab(translator.getString("monitoring.settings.tab.alarms"));
@@ -113,9 +113,10 @@ class SettingsMainWindow {
         buttonSave.setDefaultButton(true);
         buttons.getChildren().addAll(buttonCancel, buttonSave);
         
-        VBox generalLayout = new VBox(MonitoringViewConstants.ELEMENTS_GAP);
+        BorderPane generalLayout = new BorderPane();
         generalLayout.setStyle("-fx-font-size: " + MonitoringViewConstants.FONT_SIZE + "px;");
-        generalLayout.getChildren().addAll(tabsPane, buttons);
+        generalLayout.setCenter(tabsPane);
+        generalLayout.setBottom(buttons);
         Scene scene = new Scene(generalLayout);
         window.setTitle(translator.getString("monitoring.settings.title"));
         window.getIcons().add(new Image("icon.png"));
