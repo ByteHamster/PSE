@@ -2,9 +2,9 @@ package edu.kit.pse.osip.monitoring.view.settings;
 
 import edu.kit.pse.osip.core.io.files.ClientSettingsWrapper;
 import edu.kit.pse.osip.core.model.base.TankSelector;
-import edu.kit.pse.osip.monitoring.controller.AbstractSettingsCancelButtonHandler;
-import edu.kit.pse.osip.monitoring.controller.AbstractSettingsSaveButtonHandler;
 import edu.kit.pse.osip.monitoring.controller.SettingsViewInterface;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 /**
  * Provides a single access point to the user-set settings.
@@ -33,12 +33,12 @@ public class SettingsViewFacade implements SettingsViewInterface {
     }
     
     @Override
-    public void setSettingsCancelButtonHandler(AbstractSettingsCancelButtonHandler handler) {
+    public void setSettingsCancelButtonHandler(EventHandler<ActionEvent> handler) {
         currentSettingsWindow.setSettingsCancelButtonHandler(handler);
     }
     
     @Override
-    public void setSettingsSaveButtonHandler(AbstractSettingsSaveButtonHandler handler) {
+    public void setSettingsSaveButtonHandler(EventHandler<ActionEvent> handler) {
         currentSettingsWindow.setSettingsSaveButtonHandler(handler);
     }
     

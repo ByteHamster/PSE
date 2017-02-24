@@ -3,6 +3,8 @@ package edu.kit.pse.osip.monitoring.controller;
 import edu.kit.pse.osip.core.io.files.ClientSettingsWrapper;
 import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.monitoring.view.dashboard.MonitoringViewFacade;
+import edu.kit.pse.osip.monitoring.view.dialogs.AboutDialog;
+import edu.kit.pse.osip.monitoring.view.dialogs.HelpDialog;
 import edu.kit.pse.osip.monitoring.view.settings.SettingsViewFacade;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -44,7 +46,7 @@ public final class MonitoringController extends Application {
 //            currentSettings = new ClientSettingsWrapper(new File(".properties"));
 //        } catch (IOException ioExc) {
 //            ioExc.printStackTrace();
-//        }
+//      }
         currentView = new MonitoringViewFacade();
         currentSettingsView = new SettingsViewFacade(currentSettings);
     }
@@ -72,12 +74,14 @@ public final class MonitoringController extends Application {
      */
     private void setupUI(Stage stage) {
         currentView.showMonitoringView(stage, currentProductionSite);
-        currentView.setMenuSettingsButtonHandler(new MenuSettingsButtonHandler(currentSettingsView));
-        currentView.setMenuHelpButtonHandler(new MenuHelpButtonHandler());
-        currentView.setMenuAboutButtonHandler(new MenuAboutButtonHandler());
-        currentSettingsView.setSettingsCancelButtonHandler(new SettingsCancelButtonHandler(currentSettingsView));
-        currentSettingsView.setSettingsSaveButtonHandler(new SettingsSaveButtonHandler(currentSettings,
-                currentView, currentSettingsView));
+        currentView.setMenuSettingsButtonHandler(event -> currentSettingsView.showSettingsWindow());
+        HelpDialog helpDialog = new HelpDialog();
+        currentView.setMenuHelpButtonHandler(event -> helpDialog.show());
+        AboutDialog aboutDialog = new AboutDialog();
+        currentView.setMenuAboutButtonHandler(event -> aboutDialog.show());
+        currentSettingsView.setSettingsCancelButtonHandler(event -> currentSettingsView.hideSettingsWindow());
+//        currentSettingsView.setSettingsSaveButtonHandler(new SettingsSaveButtonHandler(currentSettings,
+//                currentView, currentSettingsView));
     }
 
     /**
