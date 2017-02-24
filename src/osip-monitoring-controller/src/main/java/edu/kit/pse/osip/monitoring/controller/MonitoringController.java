@@ -1,12 +1,7 @@
 package edu.kit.pse.osip.monitoring.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
-
 import edu.kit.pse.osip.core.io.files.ClientSettingsWrapper;
 import edu.kit.pse.osip.core.model.base.ProductionSite;
-import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.monitoring.view.dashboard.MonitoringViewFacade;
 import edu.kit.pse.osip.monitoring.view.dialogs.AboutDialog;
 import edu.kit.pse.osip.monitoring.view.dialogs.HelpDialog;
@@ -47,32 +42,11 @@ public final class MonitoringController extends Application {
      */
     public MonitoringController() {
         currentProductionSite = new ProductionSite();
-        try {
-            File tempTestFile = File.createTempFile("testClientSettingsTemp", ".properties");        
-            PrintWriter outStream = new PrintWriter(tempTestFile);        
-            outStream.print("fetchInterval=80");
-            outStream.println();
-            outStream.print("overflowAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
-            outStream.println();
-            outStream.print("underflowAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
-            outStream.println();
-            outStream.print("overheatingAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
-            outStream.println();
-            outStream.print("undercoolingAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
-            outStream.println();
-            outStream.print("tempDiagram_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
-            outStream.println();
-            outStream.print("fillLevelDiagram_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
-            outStream.println();
-            outStream.print("serverHostname_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "hostNAME");
-            outStream.println();
-            outStream.print("serverPort_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "4242");
-            outStream.println();
-            outStream.close();
-            currentSettings = new ClientSettingsWrapper(tempTestFile);
-        } catch (IOException ioExc) {
-            ioExc.printStackTrace();
-      }
+//        try {
+//            currentSettings = new ClientSettingsWrapper(new File(".properties"));
+//        } catch (IOException ioExc) {
+//            ioExc.printStackTrace();
+//      }
         currentView = new MonitoringViewFacade();
         currentSettingsView = new SettingsViewFacade(currentSettings);
     }
@@ -81,7 +55,7 @@ public final class MonitoringController extends Application {
      * Initializes all necessary objects.
      */
     public void init() {
-        //throw new RuntimeException("Not implemented!");
+        throw new RuntimeException("Not implemented!");
     }
     
     /**
