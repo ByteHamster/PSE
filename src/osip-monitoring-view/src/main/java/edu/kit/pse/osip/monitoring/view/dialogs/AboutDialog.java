@@ -84,12 +84,10 @@ public class AboutDialog extends javafx.stage.Stage {
         iconText.setFont(iconFont);
         
         hbox.getChildren().addAll(aboutIcon, iconText);
-        
-        String aboutString = Translator.getInstance().getString("monitoring.aboutdialog.aboutIntroduction");
-        Text aboutText = new Text(aboutString);
-        aboutText.setFont(new Font(FONT_SIZE));
-        aboutText.setWrappingWidth(500);  
-        GridPane.setConstraints(aboutText, 0, 1);        
+                    
+        TextFlow introductionFlow = new TextFlow();
+        introductionFlow.getChildren().add(getText("monitoring.aboutdialog.aboutIntroduction", null));
+        GridPane.setConstraints(introductionFlow, 0, 1); 
         
         TextFlow licenseFlow = new TextFlow();
         licenseFlow.getChildren().add(getText("monitoring.aboutdialog.license.head", null));
@@ -110,13 +108,15 @@ public class AboutDialog extends javafx.stage.Stage {
         ScrollPane scrollPane = new ScrollPane();
         configureScrollPane(scrollPane, licenseFlow);
         GridPane.setConstraints(scrollPane, 0, 2);
+        GridPane.setMargin(scrollPane, new Insets(2 * MonitoringViewConstants.ELEMENTS_GAP, 0, 0, 0));
                         
-        grid.getChildren().addAll(hbox, aboutText, scrollPane);
+        grid.getChildren().addAll(hbox, introductionFlow, scrollPane);
         Scene scene = new Scene(grid, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
         
         grid.setHgrow(scrollPane, Priority.ALWAYS);
-        grid.setHgrow(aboutText, Priority.ALWAYS);
-                
+        grid.setHgrow(introductionFlow, Priority.ALWAYS);
+        grid.setVgrow(scrollPane, Priority.ALWAYS);        
+        
         this.setScene(scene);        
         this.setDialogSize();
     }
