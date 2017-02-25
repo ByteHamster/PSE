@@ -20,18 +20,18 @@ public class PhysicsSimulator {
      * Initializes a new simulator for the given plant
      * @param productionSite The production site to simulate the values on
      */
-    public PhysicsSimulator (ProductionSiteSimulation productionSite) {
+    public PhysicsSimulator(ProductionSiteSimulation productionSite) {
         this.productionSite = productionSite;
     }
 
     /**
      * Executes one simulation step. Needs to be called regularly.
      */
-    public final void tick () {
+    public void tick() {
         MixTankSimulation mixTank = productionSite.getMixTank();
         LinkedList<Liquid> mixInput = new LinkedList<>();
 
-        for(TankSelector selector: TankSelector.valuesWithoutMix()) {
+        for (TankSelector selector: TankSelector.valuesWithoutMix()) {
             TankSimulation tank = productionSite.getUpperTank(selector);
             mixInput.add(simulateTank(tank));
         }
@@ -45,7 +45,7 @@ public class PhysicsSimulator {
      * @return The outflowing liquid used to fill the MixTank
      * @param tank The tank to put the liquid in (add to fill value)
      */
-    private final Liquid simulateTank (TankSimulation tank) {
+    private Liquid simulateTank(TankSimulation tank) {
         Pipe inPipe = tank.getInPipe();
         Pipe outPipe = tank.getOutPipe();
         TankSelector selector = tank.getTankSelector();
@@ -61,7 +61,7 @@ public class PhysicsSimulator {
      * @param tank The tank to set the temperature
      * @param temperature The temperature
      */
-    public final void setInputTemperature (TankSelector tank, float temperature) {
+    public void setInputTemperature(TankSelector tank, float temperature) {
         productionSite.setInputTemperature(tank, temperature);
     }
 }

@@ -7,11 +7,11 @@ import javafx.application.Application;
  * @author David Kahles
  * @version 1.0
  */
-public class MainClass {
+public final class MainClass {
     /**
      * Private constructor to avoid instantiation of the main class.
      */
-    private MainClass () {
+    private MainClass() {
 
     }
 
@@ -19,7 +19,7 @@ public class MainClass {
      * Main entry point into the jar
      * @param args Command line arguments
      */
-    public final static void main (String[] args) {
+    public static void main(String[] args) {
         Application.launch(SimulationController.class, args);
     }
 }
