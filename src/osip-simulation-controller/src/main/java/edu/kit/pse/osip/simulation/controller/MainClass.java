@@ -15,6 +15,8 @@ public class MainClass {
      * @param args Command line arguments
      */
     public final static void main (String[] args) {
-        throw new RuntimeException("Not implemented!");
+        //throw new RuntimeException("Not implemented!");
+        SimulationController con = new SimulationController();
+        con.launch(SimulationController.class, args);
     }
 }

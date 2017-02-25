@@ -2,7 +2,9 @@ package edu.kit.pse.osip.simulation.controller;
 
 import java.util.Observable;
 
+import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.core.model.simulation.ProductionSiteSimulation;
+import edu.kit.pse.osip.simulation.view.main.SimulationMainWindow;
 
 /**
  * Manages servers and controls view actions.
@@ -17,14 +19,18 @@ public class SimulationController extends javafx.application.Application impleme
      * Responsible for controlling the display windows and simulating the production
      */
     public SimulationController () {
-        throw new RuntimeException("Not implemented!");
+        //throw new RuntimeException("Not implemented!");
+        
     }
     /**
      * Called bx JavaFx to start drawing the UI
      * @param primaryStage The stage to draw the main window on
      */
     public final void start (javafx.stage.Stage primaryStage) {
-        throw new RuntimeException("Not implemented!");
+        //throw new RuntimeException("Not implemented!");
+        SimulationMainWindow window = new SimulationMainWindow(new ProductionSite());
+        window.start(primaryStage);
+        window.setAboutButtonHandler(new MenuAboutButtonHandler());
     }
     /**
      * Show windows and start loop that updates the values
@@ -55,7 +61,7 @@ public class SimulationController extends javafx.application.Application impleme
      * @param stage The javafx stage
      */
     private final void setupUI (javafx.stage.Stage stage) {
-        throw new RuntimeException("Not implemented!");
+        //throw new RuntimeException("Not implemented!");
     }
     /**
      * One of the observed objects changed its state

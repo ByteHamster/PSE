@@ -7,12 +7,19 @@ import javafx.scene.text.Text;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.view.main.ViewConstants;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.TextFlow;
+import javafx.scene.layout.RowConstraints;
 
 /**
  * This window shows information about the creators of OSIP.
@@ -63,6 +70,26 @@ public class AboutDialog extends javafx.stage.Stage {
         return new Text("\n");
     }
     
+    private Text getLicenseText(String path) {
+        InputStreamReader reader = null;
+        reader = new InputStreamReader(getClass().getClassLoader().getResourceAsStream(path));
+        
+        String fileContents = "";
+       
+        int i;       
+        try {
+            while((i = reader.read())!=-1){
+             char ch = (char)i;      
+             fileContents = fileContents + ch; 
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Text output = new Text(fileContents);
+        output.setFont(new Font (FONT_SIZE));
+        return output;
+    }
+    
     private void configure() {
         this.setTitle(Translator.getInstance().getString("monitoring.aboutdialog.title"));
         Image imageIcon = new Image(getClass().getClassLoader().getResourceAsStream("icon.png"));
@@ -83,38 +110,55 @@ public class AboutDialog extends javafx.stage.Stage {
         iconText.setFont(iconFont);
         
         hbox.getChildren().addAll(aboutIcon, iconText);
-                    
+           
+        Font stdFont = new Font(FONT_SIZE);
+        
         TextFlow introductionFlow = new TextFlow();
-        introductionFlow.getChildren().add(getText("monitoring.aboutdialog.aboutIntroduction", null));
+        introductionFlow.getChildren().add(getText("monitoring.aboutdialog.aboutIntroduction", stdFont));
         GridPane.setConstraints(introductionFlow, 0, 1); 
         
-        TextFlow licenseFlow = new TextFlow();
-        licenseFlow.getChildren().add(getText("monitoring.aboutdialog.license.head", null));
-        licenseFlow.getChildren().add(newLine());
-        licenseFlow.getChildren().add(getText("monitoring.aboutdialog.license.copyright", null));
-        licenseFlow.getChildren().add(getText("monitoring.aboutdialog.license.author1", null));
-        licenseFlow.getChildren().add(getText("monitoring.aboutdialog.license.author2", null));
-        licenseFlow.getChildren().add(getText("monitoring.aboutdialog.license.author3", null));
-        licenseFlow.getChildren().add(getText("monitoring.aboutdialog.license.author4", null));
-        licenseFlow.getChildren().add(getText("monitoring.aboutdialog.license.author5", null));
-        licenseFlow.getChildren().add(newLine());
-        licenseFlow.getChildren().add(getText("monitoring.aboutdialog.license.mainParagraph1", null));
-        licenseFlow.getChildren().add(newLine());
-        licenseFlow.getChildren().add(getText("monitoring.aboutdialog.license.mainParagraph2", null));
-        licenseFlow.getChildren().add(newLine());
-        licenseFlow.getChildren().add(getText("monitoring.aboutdialog.license.mainParagraph3", null));
+        TextFlow osipVersionFlow = new TextFlow();
+        osipVersionFlow.getChildren().add(getText("monitoring.aboutdialog.version", stdFont));
+        GridPane.setConstraints(osipVersionFlow, 0, 2);
+        
+//        TextFlow mitLicenseFlow = new TextFlow();
+//        mitLicenseFlow.getChildren().add(getText("monitoring.aboutdialog.license.head", stdFont));
+//        mitLicenseFlow.getChildren().add(newLine());
+//        mitLicenseFlow.getChildren().add(getText("monitoring.aboutdialog.license.copyright", stdFont));
+//        mitLicenseFlow.getChildren().add(getText("monitoring.aboutdialog.license.author1", stdFont));
+//        mitLicenseFlow.getChildren().add(getText("monitoring.aboutdialog.license.author2", stdFont));
+//        mitLicenseFlow.getChildren().add(getText("monitoring.aboutdialog.license.author3", stdFont));
+//        mitLicenseFlow.getChildren().add(getText("monitoring.aboutdialog.license.author4", stdFont));
+//        mitLicenseFlow.getChildren().add(getText("monitoring.aboutdialog.license.author5", stdFont));
+//        mitLicenseFlow.getChildren().add(newLine());
+//        mitLicenseFlow.getChildren().add(getText("monitoring.aboutdialog.license.mainParagraph1", stdFont));
+//        mitLicenseFlow.getChildren().add(newLine());
+//        mitLicenseFlow.getChildren().add(getText("monitoring.aboutdialog.license.mainParagraph2", stdFont));
+//        mitLicenseFlow.getChildren().add(newLine());
+//        mitLicenseFlow.getChildren().add(getText("monitoring.aboutdialog.license.mainParagraph3", stdFont));
                       
+        
+        
+        TextFlow licenseFlow = new TextFlow();
+        licenseFlow.getChildren().add(getLicenseText("License.txt"));
+        
         ScrollPane scrollPane = new ScrollPane();
         configureScrollPane(scrollPane, licenseFlow);
-        GridPane.setConstraints(scrollPane, 0, 2);
+        GridPane.setConstraints(scrollPane, 0, 3);
         GridPane.setMargin(scrollPane, new Insets(2 * ViewConstants.ELEMENTS_GAP, 0, 0, 0));
+        
+//        ScrollPane miloScrollPane = new ScrollPane();
+//        configureScrollPane(miloScrollPane, miloLicenseFlow);
+//        GridPane.setConstraints(miloScrollPane, 0, 4);
+//        GridPane.setMargin(miloScrollPane, new Insets(2 * ViewConstants.ELEMENTS_GAP, 0, 0, 0));
                         
-        grid.getChildren().addAll(hbox, introductionFlow, scrollPane);
+        grid.getChildren().addAll(hbox, introductionFlow, osipVersionFlow ,scrollPane);
         Scene scene = new Scene(grid, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
         
-        grid.setHgrow(scrollPane, Priority.ALWAYS);
         grid.setHgrow(introductionFlow, Priority.ALWAYS);
-        grid.setVgrow(scrollPane, Priority.ALWAYS);        
+        grid.setHgrow(scrollPane, Priority.ALWAYS);
+        grid.setVgrow(scrollPane, Priority.ALWAYS);
+        
         
         this.setScene(scene);        
         this.setDialogSize();
