@@ -23,10 +23,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import java.util.Collection;
-import java.util.Observer;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -38,7 +36,7 @@ import java.util.TimerTask;
  * @version 1.0
  * @author Niko Wilhelm
  */
-public class SimulationMainWindow implements SimulationViewInterface, Observer {
+public class SimulationMainWindow implements SimulationViewInterface {
 
     /**
      * It is assumed, that the tanks and mixtank are always ordered in two rows.
@@ -199,15 +197,6 @@ public class SimulationMainWindow implements SimulationViewInterface, Observer {
      * The simulation is replaced by the OverflowOverlay.
      */
     public final void showOverflow() {
-        throw new RuntimeException("Not implemented!");
-    }
-
-    /**
-     * The observed object received an update
-     * @param observable The observed object
-     * @param object The new value
-     */
-    public final void update(Observable observable, Object object) {
         throw new RuntimeException("Not implemented!");
     }
 
