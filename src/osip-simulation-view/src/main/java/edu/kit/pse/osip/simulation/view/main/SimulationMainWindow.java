@@ -250,7 +250,7 @@ public class SimulationMainWindow implements SimulationViewInterface, Observer {
     private void setResizeListeners(Stage primaryStage) {
 
         final ChangeListener<Number> listener = new ChangeListener<Number>() {
-            final Timer timer = new Timer();
+            final Timer timer = new Timer(true);
             TimerTask task = null;
             final long delayTime = 50;
 
