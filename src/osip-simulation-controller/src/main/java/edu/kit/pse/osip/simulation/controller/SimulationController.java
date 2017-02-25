@@ -9,12 +9,12 @@ import edu.kit.pse.osip.simulation.view.main.SimulationMainWindow;
 /**
  * Manages servers and controls view actions.
  */
-public class SimulationController extends javafx.application.Application implements java.util.Observer {
-    public SimulationViewInterface currentSimulationView;
-    public ProductionSiteSimulation productionSite;
-    public PhysicsSimulator simulator;
-    public TankServer inputServer;
-    public MixTankServer mixServer;
+public class SimulationController extends javafx.application.Application implements java.util.Observer {    
+    private SimulationViewInterface currentSimulationView;   
+    private ProductionSiteSimulation productionSite;   
+    private PhysicsSimulator simulator;   
+    private TankServer inputServer;   
+    private MixTankServer mixServer;
     /**
      * Responsible for controlling the display windows and simulating the production
      */
@@ -38,13 +38,13 @@ public class SimulationController extends javafx.application.Application impleme
     /**
      * Update values from model inside the servers
      */
-    private final void updateServerValues() {
+    private void updateServerValues() {
         throw new RuntimeException("Not implemented!");
     }
     /**
      * Check if threre is an alarm that needs to be set in the servers
      */
-    private final void checkAlarms() {
+    private void checkAlarms() {
         throw new RuntimeException("Not implemented!");
     }
     /**
@@ -57,7 +57,7 @@ public class SimulationController extends javafx.application.Application impleme
      * Initialize the UI
      * @param stage The javafx stage
      */
-    private final void setupUI(javafx.stage.Stage stage) {
+    private void setupUI(javafx.stage.Stage stage) {
         throw new RuntimeException("Not implemented!");
     }
     /**
