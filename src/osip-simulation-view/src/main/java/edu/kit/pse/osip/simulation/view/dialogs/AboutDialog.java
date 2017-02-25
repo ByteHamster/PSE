@@ -8,8 +8,6 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -19,7 +17,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.TextFlow;
-import javafx.scene.layout.RowConstraints;
 
 /**
  * This window shows information about the creators of OSIP.
@@ -76,15 +73,15 @@ public class AboutDialog extends javafx.stage.Stage {
         String fileContents = "";      
         int i;       
         try {
-            while((i = reader.read())!=-1){
-             char ch = (char)i;      
-             fileContents = fileContents + ch; 
+            while ((i = reader.read()) != -1) {
+                char ch = (char) i;      
+                fileContents = fileContents + ch; 
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         Text output = new Text(fileContents);
-        output.setFont(new Font (FONT_SIZE));
+        output.setFont(new Font(FONT_SIZE));
         return output;
     }
     
@@ -127,7 +124,7 @@ public class AboutDialog extends javafx.stage.Stage {
         GridPane.setConstraints(scrollPane, 0, 3);
         GridPane.setMargin(scrollPane, new Insets(2 * ViewConstants.ELEMENTS_GAP, 0, 0, 0));
                         
-        grid.getChildren().addAll(hbox, introductionFlow, osipVersionFlow ,scrollPane);
+        grid.getChildren().addAll(hbox, introductionFlow, osipVersionFlow, scrollPane);
         Scene scene = new Scene(grid, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
         
         grid.setHgrow(introductionFlow, Priority.ALWAYS);
