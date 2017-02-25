@@ -1,6 +1,5 @@
 package edu.kit.pse.osip.simulation.controller;
 
-import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.simulation.view.dialogs.AboutDialog;
 import javafx.event.ActionEvent;
 

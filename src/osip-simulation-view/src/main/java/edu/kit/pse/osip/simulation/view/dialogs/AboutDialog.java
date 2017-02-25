@@ -81,7 +81,7 @@ public class AboutDialog extends javafx.stage.Stage {
             e.printStackTrace();
         }
         Text output = new Text(fileContents);
-        output.setFont(new Font(FONT_SIZE));
+        output.setFont(Font.font("Monospaced", FONT_SIZE));
         return output;
     }
     
