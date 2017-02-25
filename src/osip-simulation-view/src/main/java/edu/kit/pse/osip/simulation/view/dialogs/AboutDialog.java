@@ -25,8 +25,8 @@ import javafx.scene.text.TextFlow;
  */
 public class AboutDialog extends javafx.stage.Stage {    
     private static final int FONT_SIZE = ViewConstants.FONT_SIZE;
-    private static final int MIN_WINDOW_WIDTH = 600;
-    private static final int MIN_WINDOW_HEIGHT = 400;
+    private static final int MIN_WINDOW_WIDTH = 800;
+    private static final int MIN_WINDOW_HEIGHT = 500;
     private static final String PROG_NAME = "OSIP";
     
     /**
@@ -117,7 +117,7 @@ public class AboutDialog extends javafx.stage.Stage {
         GridPane.setConstraints(osipVersionFlow, 0, 2);
                
         TextFlow licenseFlow = new TextFlow();
-        licenseFlow.getChildren().add(getLicenseText("License.txt"));
+        licenseFlow.getChildren().add(getLicenseText("Licenses.txt"));
         
         ScrollPane scrollPane = new ScrollPane();
         configureScrollPane(scrollPane, licenseFlow);
