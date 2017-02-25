@@ -1,10 +1,7 @@
 package edu.kit.pse.osip.simulation.controller;
 
 import java.util.Observable;
-
-import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.core.model.simulation.ProductionSiteSimulation;
-import edu.kit.pse.osip.simulation.view.main.SimulationMainWindow;
 
 /**
  * Manages servers and controls view actions.
