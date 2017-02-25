@@ -42,14 +42,14 @@ public class SimulationController extends Application {
     private final List<TankContainer> tanks = new LinkedList<>();
 
     private ServerSettingsWrapper settingsWrapper;
-    private final static int DEFAULT_PORT = 12686;
+    private static final int DEFAULT_PORT = 12686;
     private boolean overflow = false;
     private Timer stepTimer = new Timer(true);
 
     /**
      * Responsible for controlling the display windows and simulating the production
      */
-    public SimulationController () {
+    public SimulationController() {
         try {
             settingsWrapper = new ServerSettingsWrapper(new File("file"));
         } catch (IOException ex) {
@@ -66,7 +66,6 @@ public class SimulationController extends Application {
             cont.selector = selector;
         }
         mixCont.tank = productionSite.getMixTank();
-        mixCont.selector = TankSelector.MIX;
 
         try {
             setupServer();
@@ -131,11 +130,13 @@ public class SimulationController extends Application {
         currentSimulationView.setOverflowClosedHandler(actionEvent -> productionSite.reset());
         currentSimulationView.setSettingsButtonHandler(actionEvent -> settingsInterface.show());
         currentSimulationView.setControlButtonHandler(actionEvent -> controlInterface.show());
+        currentSimulationView.setAboutButtonHandler(actionEvent -> about.show());
+        currentSimulationView.setHelpButtonHandler(actionEvent -> help.show());
 
         controlInterface.setValveListener((pipe, number) -> pipe.setValveThreshold(number.byteValue()));
         controlInterface.setTemperatureListener((tankSelector, number) ->
                 productionSite.setInputTemperature(tankSelector, number.byteValue()));
-        controlInterface.setMotorListener(rpm -> productionSite.getMixTank().getMotor().setRPM(rpm.intValue()));
+        controlInterface.setMotorListener(rpm -> productionSite.getMixTank().getMotor().setRPM(rpm));
         settingsInterface.setSettingsChangedListener(this::reSetupServer);
     }
 
@@ -143,7 +144,7 @@ public class SimulationController extends Application {
      * Called bx JavaFx to start drawing the UI
      * @param primaryStage The stage to draw the main window on
      */
-    public final void start (Stage primaryStage) {
+    public void start(Stage primaryStage) {
         currentSimulationView = new SimulationMainWindow(productionSite);
         currentSimulationView.start(primaryStage);
         setupView();
@@ -152,7 +153,7 @@ public class SimulationController extends Application {
     /**
      * Called when the last window is closed
      */
-    public final void stop () {
+    public void stop() {
         try {
             for (TankContainer cont : tanks) {
                 cont.server.stop();
@@ -168,7 +169,7 @@ public class SimulationController extends Application {
     /**
      * Start loop that updates the values
      */
-    public final void startMainLoop () {
+    public void startMainLoop() {
         stepTimer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -181,7 +182,7 @@ public class SimulationController extends Application {
     /**
      * Update values from model inside the servers
      */
-    private final void updateServerValues () {
+    private void updateServerValues() {
         overflow = false;
         for (TankContainer cont: tanks) {
             cont.server.setInputFlowRate(cont.tank.getInPipe().getMaxInput());
@@ -231,7 +232,6 @@ public class SimulationController extends Application {
     }
 
     private class MixTankContainer {
-        private TankSelector selector;
         private MixTank tank;
         private MixTankServer server;
 
