@@ -38,13 +38,13 @@ public class SimulationController extends Application {
     private SimulationSettingsInterface settingsInterface;
     private SimulationControlInterface controlInterface;
 
-    private final MixTankContainer mixTank = new MixTankContainer();
+    private final MixTankContainer mixCont = new MixTankContainer();
     private final List<TankContainer> tanks = new LinkedList<>();
 
     private ServerSettingsWrapper settingsWrapper;
-    private final static int DEFAULT_PORT = 4848;
+    private final static int DEFAULT_PORT = 12686;
     private boolean overflow = false;
-    private final Timer stepTimer = new Timer(true);
+    private Timer stepTimer = new Timer(true);
 
     /**
      * Responsible for controlling the display windows and simulating the production
@@ -65,8 +65,8 @@ public class SimulationController extends Application {
             cont.tank = productionSite.getUpperTank(selector);
             cont.selector = selector;
         }
-        mixTank.tank = productionSite.getMixTank();
-        mixTank.selector = TankSelector.MIX;
+        mixCont.tank = productionSite.getMixTank();
+        mixCont.selector = TankSelector.MIX;
 
         try {
             setupServer();
@@ -88,10 +88,10 @@ public class SimulationController extends Application {
             cont.undercoolAlarm = new TemperatureAlarm(cont.tank, 200f, AlarmBehavior.SMALLER_THAN);
         }
 
-        mixTank.overflowAlarm = new FillAlarm(mixTank.tank, 95f, AlarmBehavior.GREATER_THAN);
-        mixTank.underflowAlarm = new FillAlarm(mixTank.tank, 5f, AlarmBehavior.SMALLER_THAN);
-        mixTank.overheatAlarm = new TemperatureAlarm(mixTank.tank, 5000f, AlarmBehavior.GREATER_THAN);
-        mixTank.undercoolAlarm = new TemperatureAlarm(mixTank.tank, 200f, AlarmBehavior.SMALLER_THAN);
+        mixCont.overflowAlarm = new FillAlarm(mixCont.tank, 95f, AlarmBehavior.GREATER_THAN);
+        mixCont.underflowAlarm = new FillAlarm(mixCont.tank, 5f, AlarmBehavior.SMALLER_THAN);
+        mixCont.overheatAlarm = new TemperatureAlarm(mixCont.tank, 5000f, AlarmBehavior.GREATER_THAN);
+        mixCont.undercoolAlarm = new TemperatureAlarm(mixCont.tank, 200f, AlarmBehavior.SMALLER_THAN);
     }
 
     private void setupServer() throws UaException {
@@ -99,7 +99,7 @@ public class SimulationController extends Application {
         for (TankContainer cont : tanks) {
             cont.server = new TankServer(settingsWrapper.getServerPort(cont.selector, defaultPort++));
         }
-        mixTank.server = new MixTankServer(defaultPort);
+        mixCont.server = new MixTankServer(defaultPort);
     }
 
     private void reSetupServer() {
@@ -113,12 +113,12 @@ public class SimulationController extends Application {
                 cont.server = old;
             }
         }
-        MixTankServer old = mixTank.server;
+        MixTankServer old = mixCont.server;
         try {
-            mixTank.server = new MixTankServer(defaultPort);
+            mixCont.server = new MixTankServer(defaultPort);
         } catch (UaException ex) {
             System.err.println("Couldn't change OPC UA server port: " + ex.getMessage());
-            mixTank.server = old;
+            mixCont.server = old;
         }
     }
 
@@ -154,14 +154,15 @@ public class SimulationController extends Application {
      */
     public final void stop () {
         try {
-            for (TankContainer tank : tanks) {
-                tank.server.stop();
+            for (TankContainer cont : tanks) {
+                cont.server.stop();
+                cont.server = null;
             }
-            mixTank.server.stop();
+            mixCont.server.stop();
+            mixCont.server = null;
         } catch (InterruptedException | ExecutionException ex) {
             System.err.println("Couldn't stop OPC UA servers, continuing: " + ex.getMessage());
         }
-        stepTimer.purge();
     }
 
     /**
@@ -199,18 +200,18 @@ public class SimulationController extends Application {
             }
         }
 
-        mixTank.server.setMotorSpeed(mixTank.tank.getMotor().getRPM());
-        mixTank.server.setColor(mixTank.tank.getLiquid().getColor().getRGB());
-        mixTank.server.setFillLevel(mixTank.tank.getLiquid().getAmount());
-        mixTank.server.setOutputFlowRate(mixTank.tank.getOutPipe().getMaxInput());
-        mixTank.server.setTemperature(mixTank.tank.getLiquid().getTemperature());
+        mixCont.server.setMotorSpeed(mixCont.tank.getMotor().getRPM());
+        mixCont.server.setColor(mixCont.tank.getLiquid().getColor().getRGB());
+        mixCont.server.setFillLevel(mixCont.tank.getLiquid().getAmount());
+        mixCont.server.setOutputFlowRate(mixCont.tank.getOutPipe().getMaxInput());
+        mixCont.server.setTemperature(mixCont.tank.getLiquid().getTemperature());
 
-        mixTank.server.setOverflowAlarm(mixTank.overflowAlarm.isAlarmTriggered());
-        mixTank.server.setUnderflowAlarm(mixTank.underflowAlarm.isAlarmTriggered());
-        mixTank.server.setOverheatAlarm(mixTank.overheatAlarm.isAlarmTriggered());
-        mixTank.server.setUndercoolAlarm(mixTank.undercoolAlarm.isAlarmTriggered());
+        mixCont.server.setOverflowAlarm(mixCont.overflowAlarm.isAlarmTriggered());
+        mixCont.server.setUnderflowAlarm(mixCont.underflowAlarm.isAlarmTriggered());
+        mixCont.server.setOverheatAlarm(mixCont.overheatAlarm.isAlarmTriggered());
+        mixCont.server.setUndercoolAlarm(mixCont.undercoolAlarm.isAlarmTriggered());
 
-        if (mixTank.tank.getFillLevel() > 1) {
+        if (mixCont.tank.getFillLevel() > 1) {
             overflow = true;
         }
     }
