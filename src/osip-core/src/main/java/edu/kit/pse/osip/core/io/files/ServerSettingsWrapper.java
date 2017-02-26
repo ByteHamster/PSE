@@ -2,7 +2,6 @@ package edu.kit.pse.osip.core.io.files;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -23,18 +22,25 @@ public class ServerSettingsWrapper {
     /**
      * Constructor of ServerSettingsWrapper
      * @param propFile The file to save the settings to
-     * @throws IOException  Exception in FileInputStream
-     * @throws FileNotFoundException Exception in file param
      */
-    public ServerSettingsWrapper(File propFile) throws IOException, FileNotFoundException  {
+    public ServerSettingsWrapper(File propFile) {
         if (propFile == null) {
             throw new NullPointerException("File parameter is null");
         }
-        this.propFile = propFile;
-        properties = new Properties();
-        FileInputStream in = new FileInputStream(propFile);
-        properties.load(in);
-        in.close();
+
+        try {
+            if (!propFile.exists() && !propFile.createNewFile()) {
+                throw new RuntimeException("Unable to create settings file at " + propFile.getAbsolutePath());
+            }
+            this.propFile = propFile;
+            properties = new Properties();
+            FileInputStream in = new FileInputStream(propFile);
+            properties.load(in);
+            in.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            throw new RuntimeException("Impossible to access provided settings file");
+        }
     }
     /**
      * Setter method of server port
@@ -62,12 +68,15 @@ public class ServerSettingsWrapper {
     }
     /**
      * Saves settings in file
-     * @throws IOException Exception in FileOutputStream
-     * @throws FileNotFoundException Exception in file param
      */
-    public final void saveSettings() throws FileNotFoundException, IOException {
-        FileOutputStream out = new FileOutputStream(propFile);
-        properties.store(out, null);
-        out.close();
+    public final void saveSettings() {
+        try {
+            FileOutputStream out = new FileOutputStream(propFile);
+            properties.store(out, null);
+            out.close();
+        } catch (IOException ex) {
+            System.err.println("Unable to save settings file. Old values will be used on next start");
+            ex.printStackTrace();
+        }
     }
 }
