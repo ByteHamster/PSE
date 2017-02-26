@@ -12,7 +12,7 @@ import javafx.scene.shape.Circle;
  * Visualizes an alarm with a name and the current state.
  * 
  * @author Martin Armbruster
- * @version 1.3
+ * @version 1.5
  */
 class AlarmVisualization extends Observable implements Observer {
     /**
@@ -69,6 +69,15 @@ class AlarmVisualization extends Observable implements Observer {
     }
     
     /**
+     * Returns the name of the represented alarm.
+     * 
+     * @return the name of the represented alarm.
+     */
+    protected String getAlarmName() {
+        return alarmName.getText();
+    }
+    
+    /**
      * Returns the current state of the alarm.
      * 
      * @return the current state of the alarm.
@@ -89,7 +98,8 @@ class AlarmVisualization extends Observable implements Observer {
         } else if (newState == AlarmState.ALARM_DISABLED) {
             alarmState.setFill(MonitoringViewConstants.ALARM_DISABLED);
         }
-        super.notifyObservers(false);
+        super.setChanged();
+        super.notifyObservers(null);
     }
     
     /**
@@ -100,7 +110,8 @@ class AlarmVisualization extends Observable implements Observer {
      */
     public void update(Observable observable, Object object) {
         TankAlarm<?> actualAlarm = (TankAlarm<?>) observable;
-        super.notifyObservers(actualAlarm.isAlarmTriggered());
+        super.setChanged();
+        super.notifyObservers(actualAlarm);
         if (currentState == AlarmState.ALARM_DISABLED) {
             return;
         }

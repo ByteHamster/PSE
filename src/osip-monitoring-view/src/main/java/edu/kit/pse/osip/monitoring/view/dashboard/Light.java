@@ -1,5 +1,6 @@
 package edu.kit.pse.osip.monitoring.view.dashboard;
 
+import edu.kit.pse.osip.core.model.behavior.TankAlarm;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -12,7 +13,7 @@ import javafx.scene.shape.Circle;
  * Visualizes a traffic light.
  * 
  * @author Martin Armbruster
- * @version 1.3
+ * @version 1.4
  */
 class Light extends VBox implements Observer {
     /**
@@ -88,12 +89,12 @@ class Light extends VBox implements Observer {
      */
     public void update(Observable observable, Object object) {
         AlarmVisualization alarm = (AlarmVisualization) observable;
-        boolean triggered = (boolean) object;
+        TankAlarm<?> ta = (TankAlarm<?>) object;
         if (alarm.getAlarmState() == AlarmState.ALARM_DISABLED) {
             triggeredAlarms.remove(alarm);
             enabledAlarms.remove(alarm);
             disabledAlarms.add(alarm);
-        } else if (triggered) {
+        } else if (ta != null && ta.isAlarmTriggered()) {
             enabledAlarms.remove(alarm);
             disabledAlarms.remove(alarm);
             triggeredAlarms.add(alarm);

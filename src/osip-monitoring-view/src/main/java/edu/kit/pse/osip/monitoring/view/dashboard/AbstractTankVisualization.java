@@ -19,7 +19,7 @@ import javafx.scene.paint.Color;
  * Visualizes a general tank.
  * 
  * @author Martin Armbruster
- * @version 1.6
+ * @version 1.7
  */
 abstract class AbstractTankVisualization extends GridPane {
     /**
@@ -166,8 +166,8 @@ abstract class AbstractTankVisualization extends GridPane {
      * 
      * @return the visualization of the overheating alarm.
      */
-    protected TemperatureAlarm getTemperatureOverheatingAlarm() {
-        return overheating;
+    protected AlarmVisualization getTemperatureOverheatingAlarm() {
+        return temperatureOverheatingAlarm;
     }
     
     /**
@@ -175,8 +175,8 @@ abstract class AbstractTankVisualization extends GridPane {
      * 
      * @return the visualization of the undercooling alarm.
      */
-    protected TemperatureAlarm getTemperatureUndercoolingAlarm() {
-        return undercooling;
+    protected AlarmVisualization getTemperatureUndercoolingAlarm() {
+        return temperatureUndercoolingAlarm;
     }
     
     /**
