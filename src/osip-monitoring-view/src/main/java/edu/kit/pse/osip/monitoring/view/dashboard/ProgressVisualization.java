@@ -12,13 +12,13 @@ import javafx.scene.chart.XYChart;
  * Visualizes a progression.
  * 
  * @author Martin Armbruster
- * @version 1.2
+ * @version 1.3
  */
 class ProgressVisualization implements Observer {
     /**
      * Stores the amount of milliseconds per second.
      */
-    private static final int MS_PER_SEC = 1000;
+    private static final double MS_PER_SEC = 1000;
     
     /**
      * Saves the creation time of this instance in milliseconds.
@@ -55,8 +55,10 @@ class ProgressVisualization implements Observer {
         this.progressName = progressName;
         isEnabled = true;
         NumberAxis x = new NumberAxis();
+        x.setForceZeroInRange(false);
         x.setLabel(Translator.getInstance().getString("monitoring.tank.progress.x"));
         NumberAxis y = new NumberAxis();
+        y.setForceZeroInRange(false);
         y.setLabel(Translator.getInstance().getString("monitoring.tank.progress.y"));
         progressChart = new LineChart<Number, Number>(x, y);
         progressChart.setPrefHeight(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS * 1.25);
@@ -103,12 +105,15 @@ class ProgressVisualization implements Observer {
             return;
         }
         AbstractTank tank = (AbstractTank) observable;
-        long x = (System.currentTimeMillis() - creationTime) / MS_PER_SEC;
+        double x = (System.currentTimeMillis() - creationTime) / MS_PER_SEC;
         XYChart.Data<Number, Number> newDataPoint;
         if (progressName.equals(Translator.getInstance().getString("monitoring.tank.progress.temperature"))) {
             newDataPoint = new XYChart.Data<Number, Number>(x, tank.getLiquid().getTemperature());
         } else {
             newDataPoint = new XYChart.Data<Number, Number>(x, tank.getFillLevel());
+        }
+        if (progressSeries.getData().size() > 60) {
+            progressSeries.getData().remove(0);
         }
         progressSeries.getData().add(newDataPoint);
     }
