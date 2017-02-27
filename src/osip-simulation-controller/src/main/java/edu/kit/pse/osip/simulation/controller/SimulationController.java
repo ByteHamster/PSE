@@ -92,6 +92,11 @@ public class SimulationController extends Application {
     }
 
     private void reSetupServer() {
+        for (TankSelector selector: TankSelector.values()) {
+            settingsWrapper.setServerPort(selector, settingsInterface.getPort(selector));
+        }
+        settingsWrapper.saveSettings();
+
         int defaultPort = OSIPConstants.DEFAULT_PORT_MIX;
 
         MixTankServer oldMix = mixCont.server;
