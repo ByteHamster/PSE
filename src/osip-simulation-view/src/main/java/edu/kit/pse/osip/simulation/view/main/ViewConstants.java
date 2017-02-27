@@ -73,7 +73,7 @@ public final class ViewConstants {
      * The height of the TemperatureSensor relative to the height of the box containing a tank and its
      * sensors
      */
-    protected static final double TEMP_HEIGHT = 0.15;
+    protected static final double TEMP_HEIGHT = 0.2;
 
     /**
      * The width of a pipe relative to the width of a tank compartment.

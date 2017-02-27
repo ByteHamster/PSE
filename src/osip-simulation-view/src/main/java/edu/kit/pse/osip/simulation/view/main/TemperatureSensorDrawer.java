@@ -51,28 +51,42 @@ public class TemperatureSensorDrawer extends ObjectDrawer {
         context.setStroke(Color.BLACK);
         context.setLineWidth(2);
 
-        double outerTopLeftX = (getPosition().getX() - ViewConstants.TEMP_WIDTH / cols) * totalWidth;
+        double padding = ((ViewConstants.TEMP_WIDTH / 2) / cols) * totalWidth;
+        double outerTopLeftX = (getPosition().getX() - ViewConstants.TEMP_WIDTH / cols) * totalWidth - padding;
         double outerTopLeftY = (getPosition().getY() - ViewConstants.TEMP_HEIGHT / rows) * totalHeight;
         double outerWidth = (ViewConstants.TEMP_WIDTH / cols) * totalWidth;
         double outerHeight = (ViewConstants.TEMP_HEIGHT / rows) * totalHeight;
 
-        double innerTopLeftX = (getPosition().getX() - (ViewConstants.TEMP_WIDTH - 0.015) / cols) * totalWidth;
+        double innerTopLeftX = (getPosition().getX() - (ViewConstants.TEMP_WIDTH - 0.025) / cols) * totalWidth
+                - padding;
         double innerTopLeftY = (getPosition().getY() - (ViewConstants.TEMP_HEIGHT - 0.015) / rows) * totalHeight;
-        double innerWidth = ((ViewConstants.TEMP_WIDTH - 0.03) / cols) * totalWidth;
+        double innerWidth = ((ViewConstants.TEMP_WIDTH - 0.05) / cols) * totalWidth;
         double innerHeight = ((ViewConstants.TEMP_HEIGHT - 0.03) / rows) * totalHeight;
+        double circleWidth = ((ViewConstants.TEMP_WIDTH - 0.03) / cols) * totalWidth;
+        double circleY = innerTopLeftY + innerHeight - circleWidth;
+        double circleX = (getPosition().getX() - (ViewConstants.TEMP_WIDTH - 0.015) / cols) * totalWidth - padding;
 
         context.fillRect(outerTopLeftX, outerTopLeftY, outerWidth, outerHeight);
         context.strokeRect(outerTopLeftX, outerTopLeftY, outerWidth, outerHeight);
-        context.strokeRect(innerTopLeftX, innerTopLeftY, innerWidth, innerHeight);
 
-        double tempTopLeftX = (getPosition().getX() - (ViewConstants.TEMP_WIDTH - 0.015) / cols) * totalWidth;
+        context.strokeLine(outerTopLeftX + outerWidth, innerTopLeftY + 0.5 * outerHeight,
+                outerTopLeftX + outerWidth + 2 * padding, innerTopLeftY + 0.5 * outerHeight);
+
+        context.setFill(Color.LIGHTGRAY);
+        context.setLineWidth(0);
+        context.fillRect(innerTopLeftX, innerTopLeftY, innerWidth, innerHeight);
+
+        double tempTopLeftX = (getPosition().getX() - (ViewConstants.TEMP_WIDTH - 0.025) / cols) * totalWidth - padding;
         double tempTopLeftY = (getPosition().getY() - (ViewConstants.TEMP_HEIGHT - 0.015 - (1.0 - temp)
                 * ViewConstants.TEMP_HEIGHT) / rows) * totalHeight;
-        double tempWidth = ((ViewConstants.TEMP_WIDTH - 0.03) / cols) * totalWidth;
-        double tempHeight = ((ViewConstants.TEMP_HEIGHT - 0.03 - (1.0 - temp)
-                * ViewConstants.TEMP_HEIGHT) / rows) * totalHeight;
+        double tempWidth = ((ViewConstants.TEMP_WIDTH - 0.05) / cols) * totalWidth;
+        double whRatio = totalWidth / totalHeight;
+        double tempHeight = ((ViewConstants.TEMP_HEIGHT - 0.03 - (ViewConstants.TEMP_WIDTH - 0.04) * whRatio
+                - (1.0 - temp) * ViewConstants.TEMP_HEIGHT) / rows) * totalHeight;
 
         context.setFill(Color.RED);
+        context.fillOval(circleX, circleY, circleWidth, circleWidth);
+        context.fillRect(tempTopLeftX, tempTopLeftY + tempHeight, tempWidth, circleWidth / 2);
         context.fillRect(tempTopLeftX, tempTopLeftY, tempWidth, tempHeight);
     }
 }
