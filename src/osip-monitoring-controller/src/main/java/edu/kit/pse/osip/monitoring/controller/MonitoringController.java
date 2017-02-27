@@ -9,6 +9,8 @@ import edu.kit.pse.osip.monitoring.view.settings.SettingsViewFacade;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+import java.io.File;
+
 /**
  * The controller starts the monitoring view and initializes the model with the main loop.
  * It is also responsible for the communication between the view and model.
@@ -42,11 +44,9 @@ public final class MonitoringController extends Application {
      */
     public MonitoringController() {
         currentProductionSite = new ProductionSite();
-//        try {
-//            currentSettings = new ClientSettingsWrapper(new File(".properties"));
-//        } catch (IOException ioExc) {
-//            ioExc.printStackTrace();
-//      }
+        File settingsLocation = new File(System.getProperty("user.home") + File.separator + ".osip");
+        settingsLocation.mkdirs();
+        currentSettings = new ClientSettingsWrapper(new File(settingsLocation, "monitoring.conf"));
         currentView = new MonitoringViewFacade();
         currentSettingsView = new SettingsViewFacade(currentSettings);
     }
