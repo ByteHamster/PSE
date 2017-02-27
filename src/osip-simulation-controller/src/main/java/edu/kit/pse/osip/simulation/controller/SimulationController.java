@@ -17,7 +17,7 @@ public class SimulationController extends javafx.application.Application impleme
      * Responsible for controlling the display windows and simulating the production
      */
     public SimulationController () {
-        throw new RuntimeException("Not implemented!");       
+        throw new RuntimeException("Not implemented!");
     }
     /**
      * Called bx JavaFx to start drawing the UI
