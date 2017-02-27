@@ -1,5 +1,6 @@
 package edu.kit.pse.osip.simulation.controller;
 
+import edu.kit.pse.osip.core.OSIPConstants;
 import edu.kit.pse.osip.core.io.files.ServerSettingsWrapper;
 import edu.kit.pse.osip.core.model.base.MixTank;
 import edu.kit.pse.osip.core.model.base.Tank;
@@ -42,7 +43,6 @@ public class SimulationController extends Application {
     private final List<TankContainer> tanks = new LinkedList<>();
 
     private ServerSettingsWrapper settingsWrapper;
-    private static final int DEFAULT_PORT = 12686;
     private boolean overflow = false;
     private Timer stepTimer = new Timer(true);
 
@@ -94,15 +94,25 @@ public class SimulationController extends Application {
     }
 
     private void setupServer() throws UaException {
-        int defaultPort = DEFAULT_PORT;
+        int defaultPort = OSIPConstants.DEFAULT_PORT_MIX;
+        mixCont.server = new MixTankServer(defaultPort++);
+
         for (TankContainer cont : tanks) {
             cont.server = new TankServer(settingsWrapper.getServerPort(cont.selector, defaultPort++));
         }
-        mixCont.server = new MixTankServer(defaultPort);
     }
 
     private void reSetupServer() {
-        int defaultPort = DEFAULT_PORT;
+        int defaultPort = OSIPConstants.DEFAULT_PORT_MIX;
+
+        MixTankServer oldMix = mixCont.server;
+        try {
+            mixCont.server = new MixTankServer(defaultPort++);
+        } catch (UaException ex) {
+            System.err.println("Couldn't change OPC UA server port: " + ex.getMessage());
+            mixCont.server = oldMix;
+        }
+
         for (TankContainer cont : tanks) {
             TankServer old = cont.server;
             try {
@@ -111,13 +121,6 @@ public class SimulationController extends Application {
                 System.err.println("Couldn't change OPC UA server port: " + ex.getMessage());
                 cont.server = old;
             }
-        }
-        MixTankServer old = mixCont.server;
-        try {
-            mixCont.server = new MixTankServer(defaultPort);
-        } catch (UaException ex) {
-            System.err.println("Couldn't change OPC UA server port: " + ex.getMessage());
-            mixCont.server = old;
         }
     }
 

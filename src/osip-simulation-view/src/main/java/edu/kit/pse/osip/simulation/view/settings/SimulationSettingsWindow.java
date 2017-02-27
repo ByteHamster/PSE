@@ -1,5 +1,6 @@
 package edu.kit.pse.osip.simulation.view.settings;
 
+import edu.kit.pse.osip.core.OSIPConstants;
 import edu.kit.pse.osip.core.io.files.ServerSettingsWrapper;
 import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.utils.formatting.FormatChecker;
@@ -132,7 +133,7 @@ public class SimulationSettingsWindow implements SimulationSettingsInterface {
      * Sets PortTextFields to the value saved in settings
      */
     private void resetValues() {
-        int defaultPort = 12868;
+        int defaultPort = OSIPConstants.DEFAULT_PORT_MIX;
         for (Map.Entry<TankSelector, PortTextField> entry : portTextFields.entrySet()) {
             entry.getValue().setText("" + settings.getServerPort(entry.getKey(), defaultPort++));
         }
