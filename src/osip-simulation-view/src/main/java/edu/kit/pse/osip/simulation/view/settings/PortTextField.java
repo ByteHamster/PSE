@@ -18,8 +18,10 @@ class PortTextField extends TextField {
     protected PortTextField() {
         setText("0");
         textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d+")) {
-                setText(oldValue);
+            if (!FormatChecker.isValidPort(newValue)) {
+                setStyle("-fx-control-inner-background: #ff9d9d");
+            } else {
+                setStyle("-fx-control-inner-background: #ffffff");
             }
         });
         focusedProperty().addListener((arg0, oldPropertyValue, newPropertyValue) -> {
@@ -35,6 +37,6 @@ class PortTextField extends TextField {
      * @return The port number in the textField.
      */
     protected final int getPort() {
-        return FormatChecker.checkPort(getText());
+        return Integer.parseInt(getText());
     }
 }
