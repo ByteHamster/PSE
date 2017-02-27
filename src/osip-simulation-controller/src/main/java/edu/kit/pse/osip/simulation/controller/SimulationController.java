@@ -74,20 +74,6 @@ public class SimulationController extends Application {
         startMainLoop();
     }
 
-    private void setupAlarms() {
-        for (TankContainer cont: tanks) {
-            cont.overflowAlarm = new FillAlarm(cont.tank, 95f, AlarmBehavior.GREATER_THAN);
-            cont.underflowAlarm = new FillAlarm(cont.tank, 5f, AlarmBehavior.SMALLER_THAN);
-            cont.overheatAlarm = new TemperatureAlarm(cont.tank, 5000f, AlarmBehavior.GREATER_THAN);
-            cont.undercoolAlarm = new TemperatureAlarm(cont.tank, 200f, AlarmBehavior.SMALLER_THAN);
-        }
-
-        mixCont.overflowAlarm = new FillAlarm(mixCont.tank, 95f, AlarmBehavior.GREATER_THAN);
-        mixCont.underflowAlarm = new FillAlarm(mixCont.tank, 5f, AlarmBehavior.SMALLER_THAN);
-        mixCont.overheatAlarm = new TemperatureAlarm(mixCont.tank, 5000f, AlarmBehavior.GREATER_THAN);
-        mixCont.undercoolAlarm = new TemperatureAlarm(mixCont.tank, 200f, AlarmBehavior.SMALLER_THAN);
-    }
-
     private void setupServer() throws UaException {
         int defaultPort = OSIPConstants.DEFAULT_PORT_MIX;
         mixCont.server = new MixTankServer(defaultPort++);
@@ -119,58 +105,18 @@ public class SimulationController extends Application {
         }
     }
 
-    private void setupView() {
-        Stage help = new HelpDialog();
-        Stage about = new AboutDialog();
-        settingsInterface = new SimulationSettingsWindow(settingsWrapper);
-        controlInterface = new SimulationControlWindow(productionSite);
-
-        currentSimulationView.setOverflowClosedHandler(actionEvent -> productionSite.reset());
-        currentSimulationView.setSettingsButtonHandler(actionEvent -> settingsInterface.show());
-        currentSimulationView.setControlButtonHandler(actionEvent -> controlInterface.show());
-        currentSimulationView.setAboutButtonHandler(actionEvent -> about.show());
-        currentSimulationView.setHelpButtonHandler(actionEvent -> help.show());
-
-        controlInterface.setValveListener((pipe, number) -> {
-            pipe.setValveThreshold(number);
-            updateServerValues();
-        });
-        controlInterface.setTemperatureListener((tankSelector, number) -> {
-            simulator.setInputTemperature(tankSelector, number);
-            updateServerValues();
-        });
-        controlInterface.setMotorListener(rpm -> {
-            productionSite.getMixTank().getMotor().setRPM(rpm);
-            updateServerValues();
-        });
-        settingsInterface.setSettingsChangedListener(this::reSetupServer);
-    }
-
-    /**
-     * Called bx JavaFx to start drawing the UI
-     * @param primaryStage The stage to draw the main window on
-     */
-    public void start(Stage primaryStage) {
-        currentSimulationView = new SimulationMainWindow(productionSite);
-        currentSimulationView.start(primaryStage);
-        setupView();
-    }
-
-    /**
-     * Called when the last window is closed
-     */
-    public void stop() {
-        try {
-            for (TankContainer cont : tanks) {
-                cont.server.stop();
-                cont.server = null;
-            }
-            mixCont.server.stop();
-            mixCont.server = null;
-        } catch (InterruptedException | ExecutionException ex) {
-            System.err.println("Couldn't stop OPC UA servers, continuing: " + ex.getMessage());
+    private void setupAlarms() {
+        for (TankContainer cont: tanks) {
+            cont.overflowAlarm = new FillAlarm(cont.tank, 95f, AlarmBehavior.GREATER_THAN);
+            cont.underflowAlarm = new FillAlarm(cont.tank, 5f, AlarmBehavior.SMALLER_THAN);
+            cont.overheatAlarm = new TemperatureAlarm(cont.tank, 5000f, AlarmBehavior.GREATER_THAN);
+            cont.undercoolAlarm = new TemperatureAlarm(cont.tank, 200f, AlarmBehavior.SMALLER_THAN);
         }
-        stepTimer.cancel();
+
+        mixCont.overflowAlarm = new FillAlarm(mixCont.tank, 95f, AlarmBehavior.GREATER_THAN);
+        mixCont.underflowAlarm = new FillAlarm(mixCont.tank, 5f, AlarmBehavior.SMALLER_THAN);
+        mixCont.overheatAlarm = new TemperatureAlarm(mixCont.tank, 5000f, AlarmBehavior.GREATER_THAN);
+        mixCont.undercoolAlarm = new TemperatureAlarm(mixCont.tank, 200f, AlarmBehavior.SMALLER_THAN);
     }
 
     /**
@@ -222,6 +168,60 @@ public class SimulationController extends Application {
         if (mixCont.tank.getFillLevel() > 1) {
             overflow = true;
         }
+    }
+
+    /**
+     * Called bx JavaFx to start drawing the UI
+     * @param primaryStage The stage to draw the main window on
+     */
+    public void start(Stage primaryStage) {
+        currentSimulationView = new SimulationMainWindow(productionSite);
+        currentSimulationView.start(primaryStage);
+        setupView();
+    }
+
+
+    private void setupView() {
+        Stage help = new HelpDialog();
+        Stage about = new AboutDialog();
+        settingsInterface = new SimulationSettingsWindow(settingsWrapper);
+        controlInterface = new SimulationControlWindow(productionSite);
+
+        currentSimulationView.setOverflowClosedHandler(actionEvent -> productionSite.reset());
+        currentSimulationView.setSettingsButtonHandler(actionEvent -> settingsInterface.show());
+        currentSimulationView.setControlButtonHandler(actionEvent -> controlInterface.show());
+        currentSimulationView.setAboutButtonHandler(actionEvent -> about.show());
+        currentSimulationView.setHelpButtonHandler(actionEvent -> help.show());
+
+        controlInterface.setValveListener((pipe, number) -> {
+            pipe.setValveThreshold(number);
+            updateServerValues();
+        });
+        controlInterface.setTemperatureListener((tankSelector, number) -> {
+            simulator.setInputTemperature(tankSelector, number);
+            updateServerValues();
+        });
+        controlInterface.setMotorListener(rpm -> {
+            productionSite.getMixTank().getMotor().setRPM(rpm);
+            updateServerValues();
+        });
+        settingsInterface.setSettingsChangedListener(this::reSetupServer);
+    }
+    /**
+     * Called when the last window is closed
+     */
+    public void stop() {
+        try {
+            for (TankContainer cont : tanks) {
+                cont.server.stop();
+                cont.server = null;
+            }
+            mixCont.server.stop();
+            mixCont.server = null;
+        } catch (InterruptedException | ExecutionException ex) {
+            System.err.println("Couldn't stop OPC UA servers, continuing: " + ex.getMessage());
+        }
+        stepTimer.cancel();
     }
 
     /**
