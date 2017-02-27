@@ -46,6 +46,11 @@ public class SimulationController extends Application {
     private boolean overflow = false;
     private Timer stepTimer = new Timer(true);
 
+    private static final float FILL_ALARM_LOWER_THRESHOLD = 0.05f;
+    private static final float FILL_ALARM_UPPER_THRESHOLD = 0.95f;
+    private static final float TEMP_ALARM_LOWER_THRESHOLD = 273.15f;
+    private static final float TEMP_ALARM_UPPER_THRESHOLD = 373.15f;
+
     /**
      * Responsible for controlling the display windows and simulating the production
      */
@@ -107,16 +112,24 @@ public class SimulationController extends Application {
 
     private void setupAlarms() {
         for (TankContainer cont: tanks) {
-            cont.overflowAlarm = new FillAlarm(cont.tank, 95f, AlarmBehavior.GREATER_THAN);
-            cont.underflowAlarm = new FillAlarm(cont.tank, 5f, AlarmBehavior.SMALLER_THAN);
-            cont.overheatAlarm = new TemperatureAlarm(cont.tank, 5000f, AlarmBehavior.GREATER_THAN);
-            cont.undercoolAlarm = new TemperatureAlarm(cont.tank, 200f, AlarmBehavior.SMALLER_THAN);
+            cont.overflowAlarm =
+                new FillAlarm(cont.tank, FILL_ALARM_UPPER_THRESHOLD, AlarmBehavior.GREATER_THAN);
+            cont.underflowAlarm =
+                new FillAlarm(cont.tank, FILL_ALARM_LOWER_THRESHOLD, AlarmBehavior.SMALLER_THAN);
+            cont.overheatAlarm =
+                new TemperatureAlarm(cont.tank, TEMP_ALARM_UPPER_THRESHOLD, AlarmBehavior.GREATER_THAN);
+            cont.undercoolAlarm =
+                new TemperatureAlarm(cont.tank, TEMP_ALARM_LOWER_THRESHOLD, AlarmBehavior.SMALLER_THAN);
         }
 
-        mixCont.overflowAlarm = new FillAlarm(mixCont.tank, 95f, AlarmBehavior.GREATER_THAN);
-        mixCont.underflowAlarm = new FillAlarm(mixCont.tank, 5f, AlarmBehavior.SMALLER_THAN);
-        mixCont.overheatAlarm = new TemperatureAlarm(mixCont.tank, 5000f, AlarmBehavior.GREATER_THAN);
-        mixCont.undercoolAlarm = new TemperatureAlarm(mixCont.tank, 200f, AlarmBehavior.SMALLER_THAN);
+        mixCont.overflowAlarm =
+            new FillAlarm(mixCont.tank, FILL_ALARM_UPPER_THRESHOLD, AlarmBehavior.GREATER_THAN);
+        mixCont.underflowAlarm =
+            new FillAlarm(mixCont.tank, FILL_ALARM_LOWER_THRESHOLD, AlarmBehavior.SMALLER_THAN);
+        mixCont.overheatAlarm =
+            new TemperatureAlarm(mixCont.tank, TEMP_ALARM_UPPER_THRESHOLD, AlarmBehavior.GREATER_THAN);
+        mixCont.undercoolAlarm =
+            new TemperatureAlarm(mixCont.tank, TEMP_ALARM_LOWER_THRESHOLD, AlarmBehavior.SMALLER_THAN);
     }
 
     /**
