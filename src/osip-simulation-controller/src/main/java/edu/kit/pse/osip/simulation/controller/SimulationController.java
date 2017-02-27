@@ -145,7 +145,7 @@ public class SimulationController extends Application {
     /**
      * Start loop that updates the values
      */
-    public void startMainLoop() {
+    private void startMainLoop() {
         stepTimer.schedule(new TimerTask() {
             @Override
             public void run() {
