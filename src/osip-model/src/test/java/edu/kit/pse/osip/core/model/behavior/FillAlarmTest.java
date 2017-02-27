@@ -41,7 +41,7 @@ public class FillAlarmTest {
     public void testAlarmIsNotTriggered() {
         testLiquid = new Liquid(20f, 300f, new Color(0.5, 0.5, 0.5));
         tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquid, pipe1, pipe2);
-        alarm = new FillAlarm(tank, 50f, AlarmBehavior.GREATER_THAN);
+        alarm = new FillAlarm(tank, 0.5f, AlarmBehavior.GREATER_THAN);
         assertEquals(false, alarm.isAlarmTriggered());
     }
 
@@ -52,7 +52,7 @@ public class FillAlarmTest {
     public void testAlarmIsTriggered() {
         testLiquid = new Liquid(101f, 300f, new Color(0.5, 0.5, 0.5));
         tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquid, pipe1, pipe2);
-        alarm = new FillAlarm(tank, 50f, AlarmBehavior.GREATER_THAN);
+        alarm = new FillAlarm(tank, 0.5f, AlarmBehavior.GREATER_THAN);
         assertEquals(true, alarm.isAlarmTriggered());
     }
     
@@ -63,7 +63,7 @@ public class FillAlarmTest {
     public void testUnderFlowAlarm() {
         testLiquid = new Liquid(90f, 300f, new Color(0.5, 0.5, 0.5));
         tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquid, pipe1, pipe2);
-        alarm = new FillAlarm(tank, 50f, AlarmBehavior.SMALLER_THAN);
+        alarm = new FillAlarm(tank, 0.5f, AlarmBehavior.SMALLER_THAN);
         assertEquals(true, alarm.isAlarmTriggered());
     }
     

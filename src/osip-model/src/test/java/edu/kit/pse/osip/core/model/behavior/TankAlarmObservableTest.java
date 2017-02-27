@@ -73,7 +73,7 @@ public class TankAlarmObservableTest {
     public void testObservableNotify() {       
         testLiquid = new Liquid(150f, 300f, defaultColor);
         tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquid, pipe1, pipe2);
-        alarm = new FillAlarm(tank, 50f, AlarmBehavior.GREATER_THAN);        
+        alarm = new FillAlarm(tank, 0.5f, AlarmBehavior.GREATER_THAN);
         TestObserver tObserver = new TestObserver();
         alarm.addObserver(tObserver);
         Liquid alteredLiquid = new Liquid(50f, 300f, defaultColor);
@@ -88,7 +88,7 @@ public class TankAlarmObservableTest {
     public void testObservableNoNotify() {
         testLiquid = new Liquid(50f, 300f, defaultColor);
         tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquid, pipe1, pipe2);
-        alarm = new FillAlarm(tank, 50f, AlarmBehavior.GREATER_THAN);        
+        alarm = new FillAlarm(tank, 0.5f, AlarmBehavior.GREATER_THAN);
         TestObserver tObserver = new TestObserver();
         alarm.addObserver(tObserver);
         Liquid alteredLiquid = new Liquid(80f, 300f, defaultColor);
@@ -105,7 +105,7 @@ public class TankAlarmObservableTest {
         Liquid testLiquidB = new Liquid(150f, 300f, defaultColor);
         Liquid testLiquidC = new Liquid(60f, 300f, defaultColor);
         tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquidA, pipe1, pipe2);
-        alarm = new FillAlarm(tank, 50f, AlarmBehavior.GREATER_THAN);        
+        alarm = new FillAlarm(tank, 0.5f, AlarmBehavior.GREATER_THAN);
         TestObserver tObserver = new TestObserver();
         alarm.addObserver(tObserver);
         assertEquals(false, tObserver.wasNotified());
@@ -126,7 +126,7 @@ public class TankAlarmObservableTest {
         Liquid testLiquidB = new Liquid(150f, 300f, defaultColor);
         Liquid testLiquidC = new Liquid(160f, 300f, defaultColor);
         tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquidA, pipe1, pipe2);
-        alarm = new FillAlarm(tank, 50f, AlarmBehavior.GREATER_THAN);        
+        alarm = new FillAlarm(tank, 0.5f, AlarmBehavior.GREATER_THAN);
         TestObserver tObserver = new TestObserver();
         alarm.addObserver(tObserver);
         assertEquals(false, tObserver.wasNotified());
