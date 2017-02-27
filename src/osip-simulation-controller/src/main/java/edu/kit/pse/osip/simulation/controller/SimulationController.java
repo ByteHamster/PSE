@@ -94,6 +94,11 @@ public class SimulationController extends Application {
         MixTankServer oldMix = mixCont.server;
         try {
             mixCont.server = new MixTankServer(defaultPort++);
+            try {
+                oldMix.stop();
+            } catch (InterruptedException | ExecutionException ex) {
+                System.err.println("Couldn't stop OPC UA server on port: " + ex.getMessage());
+            }
         } catch (UaException ex) {
             System.err.println("Couldn't change OPC UA server port: " + ex.getMessage());
             mixCont.server = oldMix;
@@ -103,6 +108,11 @@ public class SimulationController extends Application {
             TankServer old = cont.server;
             try {
                 cont.server = new TankServer(settingsWrapper.getServerPort(cont.selector, defaultPort++));
+                try {
+                    old.stop();
+                } catch (InterruptedException | ExecutionException ex) {
+                    System.err.println("Couldn't stop OPC UA server on port: " + ex.getMessage());
+                }
             } catch (UaException ex) {
                 System.err.println("Couldn't change OPC UA server port: " + ex.getMessage());
                 cont.server = old;
