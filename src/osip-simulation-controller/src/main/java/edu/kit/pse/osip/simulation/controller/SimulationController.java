@@ -96,6 +96,7 @@ public class SimulationController extends Application {
             settingsWrapper.setServerPort(selector, settingsInterface.getPort(selector));
         }
         settingsWrapper.saveSettings();
+        settingsInterface.close();
 
         int defaultPort = OSIPConstants.DEFAULT_PORT_MIX;
 
