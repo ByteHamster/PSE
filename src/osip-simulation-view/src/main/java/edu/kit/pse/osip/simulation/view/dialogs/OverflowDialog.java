@@ -29,7 +29,6 @@ import javafx.event.EventHandler;
 public class OverflowDialog extends Stage {
     private TankSelector tank;
     private EventHandler<ActionEvent> resetButtonHandler;
-    private static final int FONT_SIZE = ViewConstants.FONT_SIZE;
     private static final double MIN_WINDOW_HEIGHT = 250;
     private static final double MIN_WINDOW_WIDTH = 500;
 
@@ -84,7 +83,7 @@ public class OverflowDialog extends Stage {
 
         TextFlow overflowTextFlow = new TextFlow();
         Text overflowText = getTextWithTankName("simulation.overflowdialog.overflowmessage", tank,
-                new Font(FONT_SIZE * 3));
+                new Font(ViewConstants.FONT_SIZE * 3));
         overflowText.setFill(Color.RED);
         overflowTextFlow.getChildren().add(overflowText);
         GridPane.setConstraints(overflowTextFlow, 0, 0);
@@ -92,7 +91,7 @@ public class OverflowDialog extends Stage {
         GridPane.setHgrow(overflowTextFlow, Priority.ALWAYS);
 
         Button resetButton = new Button(Translator.getInstance().getString("simulation.overflowdialog.reset"));
-        resetButton.setStyle("-fx-font-size: " + FONT_SIZE * 2 + "px;");
+        resetButton.setStyle("-fx-font-size: " + ViewConstants.FONT_SIZE * 2 + "px;");
         resetButton.setDefaultButton(true);
         resetButton.setOnAction(event -> {
             if (resetButtonHandler != null) {
