@@ -69,7 +69,7 @@ public class SimulationController extends Application {
 
         try {
             setupServer();
-        } catch (UaException ex) {
+        } catch (UaException | InterruptedException | ExecutionException  ex) {
             System.err.println("Couldn't start OPC UA server: " + ex.getMessage());
             System.exit(1);
         }
@@ -79,12 +79,14 @@ public class SimulationController extends Application {
         startMainLoop();
     }
 
-    private void setupServer() throws UaException {
+    private void setupServer() throws UaException, ExecutionException, InterruptedException {
         int defaultPort = OSIPConstants.DEFAULT_PORT_MIX;
         mixCont.server = new MixTankServer(defaultPort++);
+        mixCont.server.start();
 
         for (TankContainer cont : tanks) {
             cont.server = new TankServer(settingsWrapper.getServerPort(cont.selector, defaultPort++));
+            cont.server.start();
         }
     }
 
@@ -94,12 +96,13 @@ public class SimulationController extends Application {
         MixTankServer oldMix = mixCont.server;
         try {
             mixCont.server = new MixTankServer(defaultPort++);
+            mixCont.server.start();
             try {
                 oldMix.stop();
             } catch (InterruptedException | ExecutionException ex) {
                 System.err.println("Couldn't stop OPC UA server on port: " + ex.getMessage());
             }
-        } catch (UaException ex) {
+        } catch (UaException | InterruptedException | ExecutionException ex) {
             System.err.println("Couldn't change OPC UA server port: " + ex.getMessage());
             mixCont.server = oldMix;
         }
@@ -108,12 +111,13 @@ public class SimulationController extends Application {
             TankServer old = cont.server;
             try {
                 cont.server = new TankServer(settingsWrapper.getServerPort(cont.selector, defaultPort++));
+                cont.server.start();
                 try {
                     old.stop();
                 } catch (InterruptedException | ExecutionException ex) {
                     System.err.println("Couldn't stop OPC UA server on port: " + ex.getMessage());
                 }
-            } catch (UaException ex) {
+            } catch (UaException | InterruptedException | ExecutionException ex) {
                 System.err.println("Couldn't change OPC UA server port: " + ex.getMessage());
                 cont.server = old;
             }
