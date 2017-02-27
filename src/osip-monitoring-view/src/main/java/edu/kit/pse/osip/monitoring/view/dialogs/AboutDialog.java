@@ -8,7 +8,9 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import edu.kit.pse.osip.core.utils.language.Translator;
@@ -68,18 +70,19 @@ public class AboutDialog extends javafx.stage.Stage {
     }
     
     private Text getLicenseText(String path) {
-        InputStreamReader reader = null;
-        reader = new InputStreamReader(getClass().getClassLoader().getResourceAsStream(path));        
-        String fileContents = "";      
-        int i;       
+        InputStream inStream = getClass().getClassLoader().getResourceAsStream(path);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inStream));
+        StringBuilder builder = new StringBuilder();
+        String aux = "";
         try {
-            while ((i = reader.read()) != -1) {
-                char ch = (char) i;      
-                fileContents = fileContents + ch; 
+            while ((aux = reader.readLine()) != null) {
+                builder.append(aux);
+                builder.append("\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        String fileContents = builder.toString();
         Text output = new Text(fileContents);
         output.setFont(Font.font("Monospaced", FONT_SIZE));
         return output;
@@ -127,9 +130,9 @@ public class AboutDialog extends javafx.stage.Stage {
         grid.getChildren().addAll(hbox, introductionFlow, osipVersionFlow, scrollPane);
         Scene scene = new Scene(grid, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
         
-        grid.setHgrow(introductionFlow, Priority.ALWAYS);
-        grid.setHgrow(scrollPane, Priority.ALWAYS);
-        grid.setVgrow(scrollPane, Priority.ALWAYS);
+        GridPane.setHgrow(introductionFlow, Priority.ALWAYS);
+        GridPane.setHgrow(scrollPane, Priority.ALWAYS);
+        GridPane.setVgrow(scrollPane, Priority.ALWAYS);
                
         this.setScene(scene);        
         this.setDialogSize();
