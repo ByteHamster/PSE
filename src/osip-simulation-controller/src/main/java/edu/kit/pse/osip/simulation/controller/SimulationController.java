@@ -131,10 +131,18 @@ public class SimulationController extends Application {
         currentSimulationView.setAboutButtonHandler(actionEvent -> about.show());
         currentSimulationView.setHelpButtonHandler(actionEvent -> help.show());
 
-        controlInterface.setValveListener((pipe, number) -> pipe.setValveThreshold(number.byteValue()));
-        controlInterface.setTemperatureListener((tankSelector, number) ->
-                simulator.setInputTemperature(tankSelector, number.byteValue()));
-        controlInterface.setMotorListener(rpm -> productionSite.getMixTank().getMotor().setRPM(rpm));
+        controlInterface.setValveListener((pipe, number) -> {
+            pipe.setValveThreshold(number);
+            updateServerValues();
+        });
+        controlInterface.setTemperatureListener((tankSelector, number) -> {
+            simulator.setInputTemperature(tankSelector, number);
+            updateServerValues();
+        });
+        controlInterface.setMotorListener(rpm -> {
+            productionSite.getMixTank().getMotor().setRPM(rpm);
+            updateServerValues();
+        });
         settingsInterface.setSettingsChangedListener(this::reSetupServer);
     }
 
