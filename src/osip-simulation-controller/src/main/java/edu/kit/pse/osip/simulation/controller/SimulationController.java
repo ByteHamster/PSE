@@ -225,7 +225,7 @@ public class SimulationController extends Application {
     }
 
     /**
-     * Some classes to group all tank related attributes together.
+     * Groups all tank related attributes together.
      */
     private class TankContainer {
         private TankSelector selector;
@@ -238,6 +238,9 @@ public class SimulationController extends Application {
         private TemperatureAlarm undercoolAlarm;
     }
 
+    /**
+     * Groups all mixtank related attributes together.
+     */
     private class MixTankContainer {
         private MixTank tank;
         private MixTankServer server;
