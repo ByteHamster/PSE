@@ -55,7 +55,8 @@ public class SimulationController extends Application {
      * Responsible for controlling the display windows and simulating the production
      */
     public SimulationController() {
-        settingsWrapper = new ServerSettingsWrapper(new File("file"));
+        new File(System.getProperty("user.home") + "/.osip").mkdir();
+        settingsWrapper = new ServerSettingsWrapper(new File(System.getProperty("user.home") + "/.osip/simulation.conf"));
 
         simulator = new PhysicsSimulator(productionSite);
 
