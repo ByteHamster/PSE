@@ -92,7 +92,7 @@ public class OverflowDialog extends Stage {
         GridPane.setHgrow(overflowTextFlow, Priority.ALWAYS);
 
         Button resetButton = new Button(Translator.getInstance().getString("simulation.overflowdialog.reset"));
-        resetButton.setStyle("-fx-font-size: " + ViewConstants.FONT_SIZE * 2 + "px;");
+        resetButton.setStyle("-fx-font-size: " + ViewConstants.FONT_SIZE + "px;");
         resetButton.setDefaultButton(true);
         resetButton.setOnAction(event -> {
             if (resetButtonHandler != null) {
