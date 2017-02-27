@@ -135,7 +135,7 @@ public class SimulationController extends Application {
 
         controlInterface.setValveListener((pipe, number) -> pipe.setValveThreshold(number.byteValue()));
         controlInterface.setTemperatureListener((tankSelector, number) ->
-                productionSite.setInputTemperature(tankSelector, number.byteValue()));
+                simulator.setInputTemperature(tankSelector, number.byteValue()));
         controlInterface.setMotorListener(rpm -> productionSite.getMixTank().getMotor().setRPM(rpm));
         settingsInterface.setSettingsChangedListener(this::reSetupServer);
     }
