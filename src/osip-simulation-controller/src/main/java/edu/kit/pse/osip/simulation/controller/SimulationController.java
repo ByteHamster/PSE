@@ -7,11 +7,11 @@ import edu.kit.pse.osip.core.model.simulation.ProductionSiteSimulation;
 /**
  * Manages servers and controls view actions.
  */
-public class SimulationController extends javafx.application.Application implements java.util.Observer {    
-    public SimulationViewInterface currentSimulationView;   
-    public ProductionSiteSimulation productionSite;   
-    public PhysicsSimulator simulator;   
-    public TankServer inputServer;   
+public class SimulationController extends javafx.application.Application implements java.util.Observer {
+    public SimulationViewInterface currentSimulationView;
+    public ProductionSiteSimulation productionSite;
+    public PhysicsSimulator simulator;
+    public TankServer inputServer;
     public MixTankServer mixServer;
     /**
      * Responsible for controlling the display windows and simulating the production

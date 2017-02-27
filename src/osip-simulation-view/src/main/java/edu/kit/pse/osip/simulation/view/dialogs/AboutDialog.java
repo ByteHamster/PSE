@@ -26,7 +26,7 @@ import javafx.stage.Stage;
  * @author Maximilian Schwarzmann
  * @version 1.0
  */
-public class AboutDialog extends Stage {    
+public class AboutDialog extends Stage {
     private static final int FONT_SIZE = ViewConstants.FONT_SIZE;
     private static final int MIN_WINDOW_WIDTH = 800;
     private static final int MIN_WINDOW_HEIGHT = 500;
@@ -67,7 +67,7 @@ public class AboutDialog extends Stage {
         return text;
     }
         
-    private Text getLicenseText(String path) {          
+    private Text getLicenseText(String path) {
         InputStream inStream = getClass().getClassLoader().getResourceAsStream(path);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inStream));
         StringBuilder builder = new StringBuilder();
@@ -80,7 +80,7 @@ public class AboutDialog extends Stage {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String fileContents = builder.toString();        
+        String fileContents = builder.toString();  
         Text output = new Text(fileContents);
         output.setFont(Font.font("Monospaced", FONT_SIZE));
         return output;
@@ -112,7 +112,7 @@ public class AboutDialog extends Stage {
         TextFlow introductionFlow = new TextFlow();
         introductionFlow.getChildren().add(getText("simulation.aboutdialog.aboutIntroduction", stdFont));
         GridPane.setConstraints(introductionFlow, 0, 1);
-        GridPane.setMargin(introductionFlow, new Insets(ViewConstants.ELEMENTS_GAP * 2, 0, ViewConstants.ELEMENTS_GAP, 0)); 
+        GridPane.setMargin(introductionFlow, new Insets(ViewConstants.ELEMENTS_GAP * 2, 0, ViewConstants.ELEMENTS_GAP, 0));
         
         TextFlow osipVersionFlow = new TextFlow();
         osipVersionFlow.getChildren().add(getText("simulation.aboutdialog.version", stdFont));
@@ -133,7 +133,7 @@ public class AboutDialog extends Stage {
         GridPane.setHgrow(scrollPane, Priority.ALWAYS);
         GridPane.setVgrow(scrollPane, Priority.ALWAYS);
                
-        this.setScene(scene);        
+        this.setScene(scene);
         this.setDialogSize();
     }
 }
