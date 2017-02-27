@@ -1,23 +1,23 @@
 package edu.kit.pse.osip.simulation.controller;
 
 import java.util.Observable;
+
 import edu.kit.pse.osip.core.model.simulation.ProductionSiteSimulation;
 
 /**
  * Manages servers and controls view actions.
  */
 public class SimulationController extends javafx.application.Application implements java.util.Observer {    
-    private SimulationViewInterface currentSimulationView;   
-    private ProductionSiteSimulation productionSite;   
-    private PhysicsSimulator simulator;   
-    private TankServer inputServer;   
-    private MixTankServer mixServer;
+    public SimulationViewInterface currentSimulationView;   
+    public ProductionSiteSimulation productionSite;   
+    public PhysicsSimulator simulator;   
+    public TankServer inputServer;   
+    public MixTankServer mixServer;
     /**
      * Responsible for controlling the display windows and simulating the production
      */
     public SimulationController() {
-        throw new RuntimeException("Not implemented!");
-        
+        throw new RuntimeException("Not implemented!");       
     }
     /**
      * Called bx JavaFx to start drawing the UI

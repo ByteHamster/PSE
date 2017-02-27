@@ -8,8 +8,10 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.InputStream;
 
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.view.main.ViewConstants;
@@ -17,17 +19,19 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
 
 /**
  * This window shows information about the creators of OSIP.
  * @author Maximilian Schwarzmann
  * @version 1.0
  */
-public class AboutDialog extends javafx.stage.Stage {    
+public class AboutDialog extends Stage {    
     private static final int FONT_SIZE = ViewConstants.FONT_SIZE;
     private static final int MIN_WINDOW_WIDTH = 800;
     private static final int MIN_WINDOW_HEIGHT = 500;
     private static final String PROG_NAME = "OSIP";
+    private static final int HBOX_SPACING = 10;
     
     /**
      * Constructor of AboutDialog
@@ -62,24 +66,21 @@ public class AboutDialog extends javafx.stage.Stage {
         }
         return text;
     }
-    
-    private Text newLine() {
-        return new Text("\n");
-    }
-    
-    private Text getLicenseText(String path) {
-        InputStreamReader reader = null;
-        reader = new InputStreamReader(getClass().getClassLoader().getResourceAsStream(path));        
-        String fileContents = "";      
-        int i;       
+        
+    private Text getLicenseText(String path) {          
+        InputStream inStream = getClass().getClassLoader().getResourceAsStream(path);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inStream));
+        StringBuilder builder = new StringBuilder();
+        String aux = "";
         try {
-            while ((i = reader.read()) != -1) {
-                char ch = (char) i;      
-                fileContents = fileContents + ch; 
+            while ((aux = reader.readLine()) != null) {
+                builder.append(aux);
+                builder.append("\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        String fileContents = builder.toString();        
         Text output = new Text(fileContents);
         output.setFont(Font.font("Monospaced", FONT_SIZE));
         return output;
@@ -94,7 +95,7 @@ public class AboutDialog extends javafx.stage.Stage {
         
         HBox hbox = new HBox();
         hbox.setPadding(new Insets(ViewConstants.ELEMENTS_GAP));
-        hbox.setSpacing(10);
+        hbox.setSpacing(HBOX_SPACING);
         GridPane.setConstraints(hbox, 0, 0);
         
         ImageView aboutIcon = new ImageView();
@@ -110,7 +111,8 @@ public class AboutDialog extends javafx.stage.Stage {
         
         TextFlow introductionFlow = new TextFlow();
         introductionFlow.getChildren().add(getText("simulation.aboutdialog.aboutIntroduction", stdFont));
-        GridPane.setConstraints(introductionFlow, 0, 1); 
+        GridPane.setConstraints(introductionFlow, 0, 1);
+        GridPane.setMargin(introductionFlow, new Insets(ViewConstants.ELEMENTS_GAP * 2, 0, ViewConstants.ELEMENTS_GAP, 0)); 
         
         TextFlow osipVersionFlow = new TextFlow();
         osipVersionFlow.getChildren().add(getText("simulation.aboutdialog.version", stdFont));
@@ -127,9 +129,9 @@ public class AboutDialog extends javafx.stage.Stage {
         grid.getChildren().addAll(hbox, introductionFlow, osipVersionFlow, scrollPane);
         Scene scene = new Scene(grid, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
         
-        grid.setHgrow(introductionFlow, Priority.ALWAYS);
-        grid.setHgrow(scrollPane, Priority.ALWAYS);
-        grid.setVgrow(scrollPane, Priority.ALWAYS);
+        GridPane.setHgrow(introductionFlow, Priority.ALWAYS);
+        GridPane.setHgrow(scrollPane, Priority.ALWAYS);
+        GridPane.setVgrow(scrollPane, Priority.ALWAYS);
                
         this.setScene(scene);        
         this.setDialogSize();

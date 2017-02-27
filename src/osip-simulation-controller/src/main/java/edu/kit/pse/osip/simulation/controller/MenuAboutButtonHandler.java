@@ -1,5 +1,6 @@
 package edu.kit.pse.osip.simulation.controller;
 
+import edu.kit.pse.osip.simulation.view.dialogs.AboutDialog;
 import javafx.event.ActionEvent;
 
 /**
@@ -15,6 +16,8 @@ public class MenuAboutButtonHandler extends AbstractMenuAboutButtonHandler {
      * @param event The occured event.
      */
     public final void handle(ActionEvent event) {
-        throw new RuntimeException("Not implemented!");
+        //throw new RuntimeException("Not implemented!");
+        AboutDialog d = new AboutDialog();
+        d.show();
     }
 }
