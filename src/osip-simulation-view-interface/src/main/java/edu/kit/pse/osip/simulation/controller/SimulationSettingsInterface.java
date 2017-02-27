@@ -1,7 +1,6 @@
 package edu.kit.pse.osip.simulation.controller;
 
 import edu.kit.pse.osip.core.model.base.TankSelector;
-import edu.kit.pse.osip.core.utils.formatting.InvalidPortException;
 
 /**
  * Provides abstraction from the view
@@ -12,8 +11,6 @@ import edu.kit.pse.osip.core.utils.formatting.InvalidPortException;
 public interface SimulationSettingsInterface {
     /**
      * Gets the port number in Porttextfield of the given tank
-     * @throws InvalidPortException Thrown if the current value in the text field
-     * is not valid (see FormatChecker.parsePort(String port).
      * @return The port number in Porttextfield of the given tank
      * @param tank The tank to get the port from
      */

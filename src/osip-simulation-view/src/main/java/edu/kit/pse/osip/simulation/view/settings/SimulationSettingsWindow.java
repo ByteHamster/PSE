@@ -2,6 +2,7 @@ package edu.kit.pse.osip.simulation.view.settings;
 
 import edu.kit.pse.osip.core.io.files.ServerSettingsWrapper;
 import edu.kit.pse.osip.core.model.base.TankSelector;
+import edu.kit.pse.osip.core.utils.formatting.FormatChecker;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.controller.SettingsChangedListener;
 import edu.kit.pse.osip.simulation.controller.SimulationSettingsInterface;
@@ -30,6 +31,7 @@ public class SimulationSettingsWindow implements SimulationSettingsInterface {
     private Stage settingsStage;
     private EnumMap<TankSelector, PortTextField> portTextFields;
     private SettingsChangedListener listener;
+    private Button btnSave;
     private static final int SPACING = 10;
     private static final int MAX_HEIGHT = 400;
 
@@ -68,6 +70,7 @@ public class SimulationSettingsWindow implements SimulationSettingsInterface {
             portTextFields.put(tank, portText);
             portBoxes.add(portLabel, 0, row);
             portBoxes.add(portText, 1, row);
+            portText.textProperty().addListener((observable, oldValue, newValue) -> updateSaveButton());
             row++;
         }
 
@@ -78,7 +81,7 @@ public class SimulationSettingsWindow implements SimulationSettingsInterface {
         buttons.setAlignment(Pos.BOTTOM_RIGHT);
         buttons.setPadding(new Insets(SPACING, 0, 0, 0));
 
-        Button btnSave = new Button(t.getString("simulation.settings.save"));
+        btnSave = new Button(t.getString("simulation.settings.save"));
         btnSave.setDefaultButton(true);
         btnSave.setOnAction(e -> {
             if (listener != null) {
@@ -110,6 +113,19 @@ public class SimulationSettingsWindow implements SimulationSettingsInterface {
         rootLayout.setCenter(scrollPortBoxes);
         rootLayout.setBottom(buttons);
         return rootLayout;
+    }
+
+    /**
+     * Updates enabled state of the save button
+     */
+    private void updateSaveButton() {
+        boolean allValid = true;
+        for (Map.Entry<TankSelector, PortTextField> entry : portTextFields.entrySet()) {
+            if (!FormatChecker.isValidPort(entry.getValue().getText())) {
+                allValid = false;
+            }
+        }
+        btnSave.setDisable(!allValid);
     }
 
     /**

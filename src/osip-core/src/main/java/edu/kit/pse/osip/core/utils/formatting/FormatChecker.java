@@ -6,33 +6,29 @@ package edu.kit.pse.osip.core.utils.formatting;
  * @version 1.0
  */
 public final class FormatChecker {
+    private static final int PORT_MAX = 61000;
+    private static final int PORT_MIN = 1024;
     
     private FormatChecker() {
     }
     
     /**
-     * Parses port into an int.
-     * 
-     * @throws InvalidPortException Thrown, if port is not either an int between 1024 and 61000
-     * or the string is empty, contains characters etc.
-     * @return The port number
-     * @param port The port to parse
-     *            
+     * Checks if the given string is a valid port
+     *
+     * @param port The port to check
+     * @return true if the port is valid
      */
-    public static int checkPort(String port) {
+    public static boolean isValidPort(String port) {
         int result;
         if (port == null) {
-            throw new InvalidPortException(port, "is null");
+            throw new NullPointerException("Port is null");
         }
         try {
             result = Integer.parseInt(port);
         } catch (NumberFormatException e) {
-            throw new InvalidPortException(port, "contains non-digits");
+            return false;
         }
-        if (result < 1024 || result > 61000) {
-            throw new InvalidPortException(port, "is not between 1024 and 61000");
-        }
-        return result;
+        return !(result < PORT_MIN || result > PORT_MAX);
     }
 
     /**
