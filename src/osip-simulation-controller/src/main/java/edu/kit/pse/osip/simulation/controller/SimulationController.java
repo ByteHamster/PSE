@@ -16,45 +16,45 @@ public class SimulationController extends javafx.application.Application impleme
     /**
      * Responsible for controlling the display windows and simulating the production
      */
-    public SimulationController() {
+    public SimulationController () {
         throw new RuntimeException("Not implemented!");       
     }
     /**
      * Called bx JavaFx to start drawing the UI
      * @param primaryStage The stage to draw the main window on
      */
-    public final void start(javafx.stage.Stage primaryStage) {
+    public final void start (javafx.stage.Stage primaryStage) {
         throw new RuntimeException("Not implemented!");
     }
     /**
      * Show windows and start loop that updates the values
      */
-    public final void startMainLoop() {
+    public final void startMainLoop () {
         throw new RuntimeException("Not implemented!");
     }
     /**
      * Update values from model inside the servers
      */
-    private void updateServerValues() {
+    private void updateServerValues () {
         throw new RuntimeException("Not implemented!");
     }
     /**
      * Check if threre is an alarm that needs to be set in the servers
      */
-    private void checkAlarms() {
+    private void checkAlarms () {
         throw new RuntimeException("Not implemented!");
     }
     /**
      * Called when the last window is closed
      */
-    public final void stop() {
+    public final void stop () {
         throw new RuntimeException("Not implemented!");
     }
     /**
      * Initialize the UI
      * @param stage The javafx stage
      */
-    private void setupUI(javafx.stage.Stage stage) {
+    private void setupUI (javafx.stage.Stage stage) {
         throw new RuntimeException("Not implemented!");
     }
     /**
@@ -62,7 +62,7 @@ public class SimulationController extends javafx.application.Application impleme
      * @param observable Observed object
      * @param object New value
      */
-    public final void update(Observable observable, Object object) {
+    public final void update (Observable observable, Object object) {
         throw new RuntimeException("Not implemented!");
     }
 }
