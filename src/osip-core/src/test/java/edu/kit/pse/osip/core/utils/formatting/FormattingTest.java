@@ -1,6 +1,9 @@
 package edu.kit.pse.osip.core.utils.formatting;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
 
@@ -16,27 +19,23 @@ public class FormattingTest {
      */
     @Test
     public void testPortNormal() {
-        String input = "2000";
-        int result = FormatChecker.checkPort(input);
-        assertEquals(2000, result);
+        assertTrue(FormatChecker.isValidPort("2000"));
     }
 
     /**
      * Test big that are too big
      */
-    @Test(expected = InvalidPortException.class)
+    @Test
     public void testPortOverflow() {
-        String input = "70000";
-        FormatChecker.checkPort(input);
+        assertFalse(FormatChecker.isValidPort("70000"));
     }
 
     /**
      * Test ports with non-digits
      */
-    @Test(expected = InvalidPortException.class)
+    @Test
     public void testPortFormat() {
-        String input = "20b10";
-        FormatChecker.checkPort(input);
+        assertFalse(FormatChecker.isValidPort("20b10"));
     }
     
     /**
