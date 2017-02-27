@@ -50,12 +50,7 @@ public class SimulationController extends Application {
      * Responsible for controlling the display windows and simulating the production
      */
     public SimulationController() {
-        try {
-            settingsWrapper = new ServerSettingsWrapper(new File("file"));
-        } catch (IOException ex) {
-            System.err.println("Couldn't open settings file: " + ex.getMessage());
-            System.exit(1);
-        }
+        settingsWrapper = new ServerSettingsWrapper(new File("file"));
 
         simulator = new PhysicsSimulator(productionSite);
 
