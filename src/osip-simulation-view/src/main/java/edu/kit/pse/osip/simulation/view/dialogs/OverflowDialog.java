@@ -2,8 +2,6 @@ package edu.kit.pse.osip.simulation.view.dialogs;
 
 import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.utils.language.Translator;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -19,6 +17,8 @@ import edu.kit.pse.osip.simulation.view.main.ViewConstants;
 import javafx.geometry.VPos;
 import javafx.geometry.Pos;
 import javafx.scene.layout.BorderPane;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 /**
  * This window informs the user, that a tank has an overflow.
@@ -28,6 +28,8 @@ import javafx.scene.layout.BorderPane;
  */
 public class OverflowDialog extends Stage {
     private TankSelector tank;
+    private Button resetButton;
+    private EventHandler<ActionEvent> eventHandler;
     private static final int FONT_SIZE = ViewConstants.FONT_SIZE;
     private static final double MIN_WINDOW_HEIGHT = 250;
     private static final double MIN_WINDOW_WIDTH = 500;
@@ -39,8 +41,7 @@ public class OverflowDialog extends Stage {
     public OverflowDialog(TankSelector tank) {
         this.setTank(tank);
     }
-    
-    
+        
     /**
      * Set the tank which has an overflow
      * @param tank The tank which has an overflow
@@ -53,12 +54,16 @@ public class OverflowDialog extends Stage {
         configure();
     }
 
+    public void setResetButtonHandler(EventHandler<ActionEvent> event) {
+        this.eventHandler = event;
+    }
+    
     private Text getTextWithTankName(String id, TankSelector tank, Font font) {
         Text text = new Text();
         if (tank != null) {
             text.setText(Translator.getInstance().getString(id) + " " + tank.toString() + "!" + "\n");
         } else {
-            throw new IllegalStateException("No tank set. Please call setTank() before calling show()");  
+            throw new IllegalStateException("No tank set. Please call setTank() before calling show()");
         }               
         if (font != null) {
             text.setFont(font);
@@ -82,11 +87,13 @@ public class OverflowDialog extends Stage {
         GridPane.setValignment(overflowTextFlow, VPos.CENTER);
         GridPane.setHgrow(overflowTextFlow, Priority.ALWAYS);       
         
-        Button resetButton = new Button(Translator.getInstance().getString("simulation.overflowdialog.reset"));
+        resetButton = new Button(Translator.getInstance().getString("simulation.overflowdialog.reset"));
         resetButton.setStyle("-fx-font-size: " + ViewConstants.FONT_SIZE * 2 + "px;");
-        resetButton.setDefaultButton(true);       
-        //resetButton.setOnAction(new MenuOverflowResetHandler());
-
+        resetButton.setDefaultButton(true);  
+        resetButton.setOnAction(event -> {if (eventHandler != null) {
+            eventHandler.handle(event);};
+            this.close();});
+        
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(grid);
         borderPane.setBottom(resetButton);
@@ -94,11 +101,10 @@ public class OverflowDialog extends Stage {
         BorderPane.setAlignment(resetButton, Pos.CENTER);
         
         grid.getChildren().addAll(overflowTextFlow);
-        Scene scene = new Scene(borderPane, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);        
+        Scene scene = new Scene(borderPane, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);    
         
-        this.setScene(scene);        
+        this.setScene(scene);
         this.setMinWidth(MIN_WINDOW_WIDTH);
         this.setMinHeight(MIN_WINDOW_HEIGHT);
     }
-
 }
