@@ -112,7 +112,8 @@ public class AboutDialog extends Stage {
         TextFlow introductionFlow = new TextFlow();
         introductionFlow.getChildren().add(getText("simulation.aboutdialog.aboutIntroduction", stdFont));
         GridPane.setConstraints(introductionFlow, 0, 1);
-        GridPane.setMargin(introductionFlow, new Insets(ViewConstants.ELEMENTS_GAP * 2, 0, ViewConstants.ELEMENTS_GAP, 0));
+        GridPane.setMargin(introductionFlow, new Insets(ViewConstants.ELEMENTS_GAP * 2, 0,
+                ViewConstants.ELEMENTS_GAP, 0));
         
         TextFlow osipVersionFlow = new TextFlow();
         osipVersionFlow.getChildren().add(getText("simulation.aboutdialog.version", stdFont));
