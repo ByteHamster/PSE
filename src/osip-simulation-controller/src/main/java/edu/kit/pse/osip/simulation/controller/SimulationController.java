@@ -35,13 +35,13 @@ public class SimulationController extends javafx.application.Application impleme
     /**
      * Update values from model inside the servers
      */
-    private void updateServerValues () {
+    private final void updateServerValues () {
         throw new RuntimeException("Not implemented!");
     }
     /**
      * Check if threre is an alarm that needs to be set in the servers
      */
-    private void checkAlarms () {
+    private final void checkAlarms () {
         throw new RuntimeException("Not implemented!");
     }
     /**
@@ -54,7 +54,7 @@ public class SimulationController extends javafx.application.Application impleme
      * Initialize the UI
      * @param stage The javafx stage
      */
-    private void setupUI (javafx.stage.Stage stage) {
+    private final void setupUI (javafx.stage.Stage stage) {
         throw new RuntimeException("Not implemented!");
     }
     /**
