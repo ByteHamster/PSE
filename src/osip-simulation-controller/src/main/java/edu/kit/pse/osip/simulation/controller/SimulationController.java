@@ -149,8 +149,10 @@ public class SimulationController extends Application {
         stepTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-                simulator.tick();
-                updateServerValues();
+                if (! overflow) {
+                    simulator.tick();
+                    updateServerValues();
+                }
             }
         }, 0, 100);
     }
