@@ -86,7 +86,7 @@ public class AboutDialog extends javafx.stage.Stage {
     }
     
     private void configure() {
-        this.setTitle(Translator.getInstance().getString("monitoring.aboutdialog.title"));
+        this.setTitle(Translator.getInstance().getString("simulation.aboutdialog.title"));
         Image imageIcon = new Image(getClass().getClassLoader().getResourceAsStream("icon.png"));
         this.getIcons().add(imageIcon);
         GridPane grid = new GridPane();
@@ -109,11 +109,11 @@ public class AboutDialog extends javafx.stage.Stage {
         Font stdFont = new Font(FONT_SIZE);
         
         TextFlow introductionFlow = new TextFlow();
-        introductionFlow.getChildren().add(getText("monitoring.aboutdialog.aboutIntroduction", stdFont));
+        introductionFlow.getChildren().add(getText("simulation.aboutdialog.aboutIntroduction", stdFont));
         GridPane.setConstraints(introductionFlow, 0, 1); 
         
         TextFlow osipVersionFlow = new TextFlow();
-        osipVersionFlow.getChildren().add(getText("monitoring.aboutdialog.version", stdFont));
+        osipVersionFlow.getChildren().add(getText("simulation.aboutdialog.version", stdFont));
         GridPane.setConstraints(osipVersionFlow, 0, 2);
                
         TextFlow licenseFlow = new TextFlow();
