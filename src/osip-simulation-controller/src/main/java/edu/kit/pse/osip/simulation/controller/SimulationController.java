@@ -14,7 +14,6 @@ import edu.kit.pse.osip.simulation.view.dialogs.HelpDialog;
 import edu.kit.pse.osip.simulation.view.main.SimulationMainWindow;
 import edu.kit.pse.osip.simulation.view.settings.SimulationSettingsWindow;
 import java.io.File;
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -56,7 +55,8 @@ public class SimulationController extends Application {
      */
     public SimulationController() {
         new File(System.getProperty("user.home") + "/.osip").mkdir();
-        settingsWrapper = new ServerSettingsWrapper(new File(System.getProperty("user.home") + "/.osip/simulation.conf"));
+        settingsWrapper =
+            new ServerSettingsWrapper(new File(System.getProperty("user.home") + "/.osip/simulation.conf"));
 
         simulator = new PhysicsSimulator(productionSite);
 
@@ -159,7 +159,7 @@ public class SimulationController extends Application {
         stepTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-                if (! overflow) {
+                if (!overflow) {
                     simulator.tick();
                     updateServerValues();
                 }
