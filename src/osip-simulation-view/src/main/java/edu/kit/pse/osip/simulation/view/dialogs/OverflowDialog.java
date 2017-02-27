@@ -64,7 +64,8 @@ public class OverflowDialog extends Stage {
     private Text getTextWithTankName(String id, TankSelector tank, Font font) {
         Text text = new Text();
         if (tank != null) {
-            text.setText(Translator.getInstance().getString(id) + " " + tank.toString() + "!" + "\n");
+            text.setText(Translator.getInstance().getString(id) + " " +
+        Translator.getInstance().getString(TankSelector.TRANSLATOR_LABEL_PREFIX + tank.name()) + "!" + "\n");
         } else {
             throw new IllegalStateException("No tank set. Please call setTank() before calling show()");
         }
