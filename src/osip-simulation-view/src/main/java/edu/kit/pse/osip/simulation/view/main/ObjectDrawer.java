@@ -22,14 +22,6 @@ public abstract class ObjectDrawer implements Drawer {
     }
 
     /**
-     * Sets the position of this element
-     * @param position The upper left corner
-     */
-    public final void setPosition(Point2D position) {
-        this.position = position;
-    }
-
-    /**
      * Returns the position of this element
      * 
      * @return The position

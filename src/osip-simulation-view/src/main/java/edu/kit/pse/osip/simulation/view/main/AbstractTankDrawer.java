@@ -20,8 +20,6 @@ import javafx.scene.text.Font;
 public abstract class AbstractTankDrawer extends ObjectDrawer {
 
     private AbstractTank tank;
-    private double width;
-    private double height;
 
     private double inBoxHorPadding;
     private double inBoxVertPadding;
@@ -44,9 +42,6 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
         super(pos);
         this.tank = tank;
 
-        width = 1.0 / cols;
-        height = 1.0 / rows;
-
         relInBoxHeight = ViewConstants.INBOX_HEIGHT / rows;
         relInBoxWidth = ViewConstants.INBOX_WIDTH / cols;
         relOutBoxHeight = ViewConstants.OUTBOX_PERCENT / rows;
@@ -58,39 +53,6 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
         outBoxVertPadding = (1 - ViewConstants.OUTBOX_PERCENT) / 2 / rows;
 
         relOvalHeight = ViewConstants.OVAL_PERCENT / rows;
-    }
-    /**
-     * Sets the width of this tank
-     * @param width The width of the tank
-     */
-    public final void setWidth(double width) {
-        this.width = width;
-    }
-
-    /**
-     * Gets the width of this tank
-     * 
-     * @return the width
-     */
-    public final double getWidth() {
-        return width;
-    }
-
-    /**
-     * Sets the height of this tank
-     * @param height The height of the tank
-     */
-    public final void setHeight(double height) {
-        this.height = height;
-    }
-
-    /**
-     * Gets the height of this tank
-     * 
-     * @return the height
-     */
-    public final double getHeight() {
-        return height;
     }
 
     /**
