@@ -79,7 +79,8 @@ public class MixTankTab extends AbstractTankTab {
         StringProperty sp = motorValue.textProperty();
         DoubleProperty dp = motorSlider.valueProperty();
         StringConverter<Number> converter = new NumberStringConverter();
-        Bindings.bindBidirectional(sp, dp, converter);
+        Bindings.bindBidirectional(sp, dp,
+            new ConfinedStringConverter(0d, (double) SimulationConstants.MAX_MOTOR_SPEED, sp));
         row++;
     }
 

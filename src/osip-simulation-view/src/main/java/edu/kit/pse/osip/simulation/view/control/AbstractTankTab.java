@@ -80,8 +80,7 @@ public abstract class AbstractTankTab extends Tab {
 
         StringProperty sp = outFlowValue.textProperty();
         DoubleProperty dp = outFlowSlider.valueProperty();
-        StringConverter<Number> converter = new NumberStringConverter();
-        Bindings.bindBidirectional(sp, dp, converter);
+        Bindings.bindBidirectional(sp, dp, new ConfinedStringConverter(0d, 100d, sp));
 
         row++;
     }

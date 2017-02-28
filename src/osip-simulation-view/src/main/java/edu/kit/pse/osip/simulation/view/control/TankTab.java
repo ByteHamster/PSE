@@ -81,7 +81,7 @@ public class TankTab extends AbstractTankTab {
         StringProperty sp = inFlowValue.textProperty();
         DoubleProperty dp = inFlowSlider.valueProperty();
         StringConverter<Number> converter = new NumberStringConverter();
-        Bindings.bindBidirectional(sp, dp, converter);
+        Bindings.bindBidirectional(sp, dp, new ConfinedStringConverter(0d, 100d, sp));
         row++;
     }
 
@@ -125,7 +125,8 @@ public class TankTab extends AbstractTankTab {
         StringProperty sp = temperatureValue.textProperty();
         DoubleProperty dp = temperatureSlider.valueProperty();
         StringConverter<Number> converter = new NumberStringConverter();
-        Bindings.bindBidirectional(sp, dp, converter);
+        Bindings.bindBidirectional(sp, dp,
+            new ConfinedStringConverter((double) min, (double)SimulationConstants.MAX_TEMPERATURE - SimulationConstants.CELCIUS_OFFSET, sp));
         row++;
     }
 
