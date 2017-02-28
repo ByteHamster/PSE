@@ -86,9 +86,9 @@ public class ProductionSite {
         byte count = 0;
         for (TankSelector selector: TankSelector.valuesWithoutMix()) {
             byte threshold;
+            count++;
             if (count == 0 || count == 1) {
                 threshold = (byte) 50;
-                count++;
             } else {
                 threshold = (byte) 0;
             }
