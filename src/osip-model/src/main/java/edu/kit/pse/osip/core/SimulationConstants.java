@@ -28,12 +28,17 @@ public final class SimulationConstants {
     /**
      * The minimum temperature in kelvin one can set as tank input temperature
      */
-    public static final float MIN_TEMPERATURE = 270;
+    public static final float MIN_TEMPERATURE = 273.15f;
 
     /**
      * The maximum temperature in kelvin one can set as tank input temperature
      */
-    public static final float MAX_TEMPERATURE = 500;
+    public static final float MAX_TEMPERATURE = 503.15f;
+
+    /**
+     * The offset needed to get from the current temperature to Celcius
+     */
+    public static final float CELCIUS_OFFSET = 273.15f;
 
     /**
      * The default pipe crosssection
