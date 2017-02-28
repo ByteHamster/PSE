@@ -76,13 +76,10 @@ public class TemperatureSensorDrawer extends ObjectDrawer {
         context.setLineWidth(0);
         context.fillRect(innerTopLeftX, innerTopLeftY, innerWidth, innerHeight);
 
+        double tempHeight = (((ViewConstants.TEMP_HEIGHT - 0.03) / rows) * totalHeight - circleWidth) * temp;
         double tempTopLeftX = (getPosition().getX() - (ViewConstants.TEMP_WIDTH - 0.025) / cols) * totalWidth - padding;
-        double tempTopLeftY = (getPosition().getY() - (ViewConstants.TEMP_HEIGHT - 0.015 - (1.0 - temp)
-                * ViewConstants.TEMP_HEIGHT) / rows) * totalHeight;
+        double tempTopLeftY = innerTopLeftY + innerHeight - tempHeight - circleWidth;
         double tempWidth = ((ViewConstants.TEMP_WIDTH - 0.05) / cols) * totalWidth;
-        double whRatio = totalWidth / totalHeight;
-        double tempHeight = ((ViewConstants.TEMP_HEIGHT - 0.03 - (ViewConstants.TEMP_WIDTH - 0.04) * whRatio
-                - (1.0 - temp) * ViewConstants.TEMP_HEIGHT) / rows) * totalHeight;
 
         context.setFill(Color.RED);
         context.fillOval(circleX, circleY, circleWidth, circleWidth);
