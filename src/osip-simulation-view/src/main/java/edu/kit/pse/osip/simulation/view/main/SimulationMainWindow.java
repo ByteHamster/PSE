@@ -209,6 +209,7 @@ public class SimulationMainWindow implements SimulationViewInterface {
         };
 
         dialog.setResetButtonHandler(handler);
+        dialog.show();
     }
 
     @Override

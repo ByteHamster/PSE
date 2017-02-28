@@ -22,6 +22,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ExecutionException;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.stage.Stage;
 import org.eclipse.milo.opcua.stack.core.UaException;
 
@@ -187,7 +188,7 @@ public class SimulationController extends Application {
 
             if (cont.tank.getFillLevel() > 1 && overflow == false) {
                 overflow = true;
-                currentSimulationView.showOverflow(cont.selector);
+                showOverflow(cont.selector);
             }
         }
 
@@ -204,8 +205,17 @@ public class SimulationController extends Application {
 
         if (mixCont.tank.getFillLevel() > 1 && overflow == false) {
             overflow = true;
-            currentSimulationView.showOverflow(TankSelector.MIX);
+            showOverflow(TankSelector.MIX);
         }
+    }
+
+    private void showOverflow(TankSelector selector) {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                currentSimulationView.showOverflow(TankSelector.MIX);
+            }
+        });
     }
 
     /**
