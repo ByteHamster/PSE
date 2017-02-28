@@ -43,9 +43,9 @@ public enum TankSelector {
      */
     private static float[] initialTemperatures = {
         300,
-        300,
-        300,
-        300,
+        333,
+        312,
+        290,
     };
 
     /**
