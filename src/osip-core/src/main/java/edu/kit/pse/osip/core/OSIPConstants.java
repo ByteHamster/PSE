@@ -1,7 +1,7 @@
 package edu.kit.pse.osip.core;
 
 /**
- * Some constants which are used in multiple places but doesn't bbelong into the model
+ * Some constants which are used in multiple places but don't belong into the model.
  * @version 1.0
  * @author David Kahles
  */
