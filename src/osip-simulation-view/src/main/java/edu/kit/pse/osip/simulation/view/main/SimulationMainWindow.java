@@ -6,6 +6,7 @@ import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.controller.SimulationViewInterface;
+import edu.kit.pse.osip.simulation.view.dialogs.OverflowDialog;
 import javafx.animation.AnimationTimer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -44,6 +45,7 @@ public class SimulationMainWindow implements SimulationViewInterface {
     private SimulationMenu menu;
     private Collection<Drawer> element;
     private Canvas canvas;
+    private EventHandler<ActionEvent> overflowClosedHandler;
 
     /**
      * Creates a new SimulationMainWindow. It is assumed that there will only ever be two rows of tanks.
@@ -193,14 +195,25 @@ public class SimulationMainWindow implements SimulationViewInterface {
 
     /**
      * The simulation is replaced by the OverflowOverlay.
+     * @param selector The overflowing tank.
      */
-    public final void showOverflow() {
-        throw new RuntimeException("Not implemented!");
+    public void showOverflow(TankSelector selector) {
+        OverflowDialog dialog = new OverflowDialog(selector);
+        EventHandler<ActionEvent> handler = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (overflowClosedHandler != null) {
+                    overflowClosedHandler.handle(actionEvent);
+                }
+            }
+        };
+
+        dialog.setResetButtonHandler(handler);
     }
 
     @Override
     public void setOverflowClosedHandler(EventHandler<ActionEvent> handler) {
-        throw new RuntimeException("Not implemented!");
+        overflowClosedHandler = handler;
     }
 
     /**
