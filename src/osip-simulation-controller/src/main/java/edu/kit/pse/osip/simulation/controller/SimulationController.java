@@ -259,6 +259,7 @@ public class SimulationController extends Application {
      */
     public void stop() {
         stepTimer.cancel();
+        System.out.println("Stopped simulation thread");
         try {
             for (TankContainer cont : tanks) {
                 cont.server.stop();
