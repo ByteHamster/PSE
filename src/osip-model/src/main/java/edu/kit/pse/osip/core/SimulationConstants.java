@@ -48,5 +48,5 @@ public final class SimulationConstants {
     /**
      * The default pipe length
      */
-    public static final int PIPE_LENGTH = 50;
+    public static final int PIPE_LENGTH = 1;
 }
