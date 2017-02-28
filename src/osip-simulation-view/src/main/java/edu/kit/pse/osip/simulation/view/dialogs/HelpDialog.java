@@ -34,14 +34,14 @@ public class HelpDialog extends Stage {
      * Creates a new HelpDialog.
      */
     public HelpDialog() {
-        setTitle(Translator.getInstance().getString("controller.helpdialog.title"));
+        setTitle(Translator.getInstance().getString("simulation.helpdialog.title"));
         getIcons().add(new Image("/icon.png"));
 
         TabPane tabPane = new TabPane();
         tabPane.getTabs().addAll(createMainTab(), createControlTab(), createSettingsTab());
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
-        Button close = new Button(Translator.getInstance().getString("monitoring.helpdialog.closeButton"));
+        Button close = new Button(Translator.getInstance().getString("simulation.helpdialog.closeButton"));
         close.setDefaultButton(true);
         close.setCancelButton(true);
         close.setOnAction(new EventHandler<ActionEvent>() {
@@ -65,14 +65,14 @@ public class HelpDialog extends Stage {
 
     private Tab createMainTab() {
         Tab tab = new Tab();
-        tab.setText(Translator.getInstance().getString("controller.helpdialog.mainTab.header"));
+        tab.setText(Translator.getInstance().getString("simulation.helpdialog.mainTab.header"));
 
         TextFlow textFlow = new TextFlow();
 
-        textFlow.getChildren().add(getText("controller.helpdialog.mainTab.introduction", null));
+        textFlow.getChildren().add(getText("simulation.helpdialog.mainTab.introduction", null));
         textFlow.getChildren().add(newLine());
-        textFlow.getChildren().add(getText("controller.helpdialog.mainTab.layoutSection", sectionFont));
-        textFlow.getChildren().add(getText("controller.helpdialog.mainTab.layoutText", null));
+        textFlow.getChildren().add(getText("simulation.helpdialog.mainTab.layoutSection", sectionFont));
+        textFlow.getChildren().add(getText("simulation.helpdialog.mainTab.layoutText", null));
 
         tab.setContent(setupScrollPane(textFlow));
 
@@ -104,17 +104,17 @@ public class HelpDialog extends Stage {
 
     private Tab createControlTab() {
         Tab tab = new Tab();
-        tab.setText(Translator.getInstance().getString("controller.helpdialog.controlTab.header"));
+        tab.setText(Translator.getInstance().getString("simulation.helpdialog.controlTab.header"));
 
         TextFlow textFlow = new TextFlow();
 
-        textFlow.getChildren().add(getText("controller.helpdialog.controlTab.introduction", null));
+        textFlow.getChildren().add(getText("simulation.helpdialog.controlTab.introduction", null));
         textFlow.getChildren().add(newLine());
-        textFlow.getChildren().add(getText("controller.helpdialog.controlTab.generalSection", sectionFont));
-        textFlow.getChildren().add(getText("controller.helpdialog.controlTab.generalText", null));
+        textFlow.getChildren().add(getText("simulation.helpdialog.controlTab.generalSection", sectionFont));
+        textFlow.getChildren().add(getText("simulation.helpdialog.controlTab.generalText", null));
         textFlow.getChildren().add(newLine());
-        textFlow.getChildren().add(getText("controller.helpdialog.controlTab.mixTankSection", sectionFont));
-        textFlow.getChildren().add(getText("controller.helpdialog.controlTab.mixTankText", null));
+        textFlow.getChildren().add(getText("simulation.helpdialog.controlTab.mixTankSection", sectionFont));
+        textFlow.getChildren().add(getText("simulation.helpdialog.controlTab.mixTankText", null));
 
         tab.setContent(setupScrollPane(textFlow));
 
@@ -123,11 +123,11 @@ public class HelpDialog extends Stage {
 
     private Tab createSettingsTab() {
         Tab tab = new Tab();
-        tab.setText(Translator.getInstance().getString("controller.helpdialog.settingsTab.header"));
+        tab.setText(Translator.getInstance().getString("simulation.helpdialog.settingsTab.header"));
 
         TextFlow textFlow = new TextFlow();
 
-        textFlow.getChildren().add(getText("controller.helpdialog.settingslTab.generalText", null));
+        textFlow.getChildren().add(getText("simulation.helpdialog.settingsTab.generalText", null));
 
         tab.setContent(setupScrollPane(textFlow));
 
