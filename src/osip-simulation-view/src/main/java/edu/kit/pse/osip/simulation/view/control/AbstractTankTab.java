@@ -12,8 +12,6 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
-import javafx.util.StringConverter;
-import javafx.util.converter.NumberStringConverter;
 
 /**
  * This class contains the controls for a single tank in the simulation.

@@ -186,7 +186,7 @@ public class SimulationController extends Application {
             cont.server.setOverheatAlarm(cont.overheatAlarm.isAlarmTriggered());
             cont.server.setUndercoolAlarm(cont.undercoolAlarm.isAlarmTriggered());
 
-            if (cont.tank.getFillLevel() > 1 && overflow == false) {
+            if (cont.tank.getFillLevel() > 1 && !overflow) {
                 overflow = true;
                 showOverflow(cont.selector);
             }
@@ -203,7 +203,7 @@ public class SimulationController extends Application {
         mixCont.server.setOverheatAlarm(mixCont.overheatAlarm.isAlarmTriggered());
         mixCont.server.setUndercoolAlarm(mixCont.undercoolAlarm.isAlarmTriggered());
 
-        if (mixCont.tank.getFillLevel() > 1 && overflow == false) {
+        if (mixCont.tank.getFillLevel() > 1 && !overflow) {
             overflow = true;
             showOverflow(TankSelector.MIX);
         }
