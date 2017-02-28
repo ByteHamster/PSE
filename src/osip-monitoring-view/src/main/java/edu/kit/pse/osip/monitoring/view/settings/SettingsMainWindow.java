@@ -16,6 +16,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 /**
  * The main entry point for the settings view. Within, the user can set all available parameters for his needs.
@@ -121,7 +123,24 @@ class SettingsMainWindow {
         Scene scene = new Scene(generalLayout);
         window.setTitle(translator.getString("monitoring.settings.title"));
         window.getIcons().add(new Image("icon.png"));
+        window.setOnCloseRequest(event -> {
+            if (buttonCancel.isDisabled()) {
+                showSettingsClosedWarning();
+            }
+        });
         window.setScene(scene);
+    }
+    
+    /**
+     * Shows a warning that the settings window was closed without saving valid settings.
+     */
+    private void showSettingsClosedWarning() {
+        Translator translator = Translator.getInstance();
+        Alert alert = new Alert(AlertType.WARNING);        
+        alert.setTitle(translator.getString("monitoring.settings.closewarning.title"));
+        alert.setHeaderText(translator.getString("monitoring.settings.closewarning.header"));
+        alert.setContentText(translator.getString("monitoring.settings.closewarning.text"));
+        alert.show();
     }
     
     /**
@@ -158,6 +177,15 @@ class SettingsMainWindow {
      */
     protected AlarmSettings getAlarmSettings() {
         return alarmsTab;
+    }
+    
+    /**
+     * Sets the diabled status of the cancel button.
+     * 
+     * @param disabled The boolean value for the diabled status. True if disabled.
+     */
+    protected void setCancelButtonDisabled(boolean disabled) {
+        buttonCancel.setDisable(disabled);
     }
     
     /**

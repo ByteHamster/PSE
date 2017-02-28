@@ -61,7 +61,10 @@ public abstract class UAClientWrapper {
      * The server returned an unsupported data type
      */
     public static final int ERROR_DATA_TYPE_UNSUPPORTED = 3;
-
+    /**
+     * The interval parameter for a single immediate read of subscribed data
+     */
+    public static final int SINGLE_READ = -1;
     /**
      * Maximum size of the subscription queue
      */
@@ -302,13 +305,13 @@ public abstract class UAClientWrapper {
             throw new IllegalArgumentException("Listener must not be null");
         }
 
-        if (listeners.containsKey(listener)) {
-            unsubscribe(listener); // Allows changing the interval
-        }
-
-        if (interval == -1) {
+        if (interval == SINGLE_READ) {
             doRead(nodeName, listener, varType);
         } else if (interval > 0) {
+            if (listeners.containsKey(listener)) {
+                unsubscribe(listener); // Allows changing the interval
+            }
+
             doSubscribe(new NodeId(namespaceIndex, nodeName), interval, listener, varType);
         } else {
             throw new IllegalArgumentException("Interval must be > 0 or -1");

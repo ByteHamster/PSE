@@ -12,6 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.application.Platform;
 
 /**
  * The entry point for the monitoring view. It shows all sensor datas graphically.
@@ -133,6 +134,7 @@ class MonitoringMainWindow {
         primaryStage.setScene(scene);
         primaryStage.setWidth(WIDTH);
         primaryStage.setHeight(HEIGHT);
+        primaryStage.setOnCloseRequest(event -> Platform.exit());
         primaryStage.show();
     }
     
