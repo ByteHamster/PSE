@@ -1,6 +1,8 @@
 package edu.kit.pse.osip.simulation.controller;
 
 import edu.kit.pse.osip.core.model.base.TankSelector;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 /**
  * Provides abstraction from the view
@@ -20,7 +22,7 @@ public interface SimulationSettingsInterface {
      * Sets the listener that gets notified as soon as the settings change
      * @param listener The listener to be called when the settings values change
      */
-    void setSettingsChangedListener(SettingsChangedListener listener);
+    void setSettingsChangedListener(EventHandler<ActionEvent> listener);
 
     /**
      * Shows the window

@@ -241,7 +241,7 @@ public class SimulationController extends Application {
             productionSite.getMixTank().getMotor().setRPM(rpm);
             updateServerValues();
         });
-        settingsInterface.setSettingsChangedListener(this::reSetupServer);
+        settingsInterface.setSettingsChangedListener(actionEvent -> reSetupServer());
     }
     /**
      * Called when the last window is closed

@@ -5,8 +5,9 @@ import edu.kit.pse.osip.core.io.files.ServerSettingsWrapper;
 import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.utils.formatting.FormatChecker;
 import edu.kit.pse.osip.core.utils.language.Translator;
-import edu.kit.pse.osip.simulation.controller.SettingsChangedListener;
 import edu.kit.pse.osip.simulation.controller.SimulationSettingsInterface;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -31,7 +32,7 @@ public class SimulationSettingsWindow implements SimulationSettingsInterface {
     private ServerSettingsWrapper settings;
     private Stage settingsStage;
     private EnumMap<TankSelector, PortTextField> portTextFields;
-    private SettingsChangedListener listener;
+    private EventHandler<ActionEvent> listener;
     private Button btnSave;
     private static final int SPACING = 10;
     private static final int MAX_HEIGHT = 400;
@@ -86,7 +87,7 @@ public class SimulationSettingsWindow implements SimulationSettingsInterface {
         btnSave.setDefaultButton(true);
         btnSave.setOnAction(e -> {
             if (listener != null) {
-                listener.onSettingsChanged();
+                listener.handle(e);
             } else {
                 System.err.println("No SettingsChangedListener set");
             }
@@ -145,7 +146,7 @@ public class SimulationSettingsWindow implements SimulationSettingsInterface {
     }
 
     @Override
-    public final void setSettingsChangedListener(SettingsChangedListener listener) {
+    public final void setSettingsChangedListener(EventHandler<ActionEvent> listener) {
         this.listener = listener;
     }
 
