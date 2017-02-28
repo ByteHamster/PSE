@@ -53,7 +53,7 @@ public class PhysicsSimulator {
         Liquid inLiquid = new Liquid(inPipe.getMaxInput(), productionSite.getInputTemperature(selector),
                 selector.getInitialColor());
         tank.putIn(inPipe.putIn(inLiquid));
-        return tank.takeOut(outPipe.getMaxInput());
+        return outPipe.putIn(tank.takeOut(outPipe.getMaxInput()));
     }
 
     /**
