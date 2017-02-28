@@ -22,6 +22,16 @@ public interface SettingsViewInterface {
     void hideSettingsWindow();
     
     /**
+     * Shows disconnect alert and settings view.
+     */
+    void showDisconnectAlert();
+    
+    /**
+     * Shows "can not connect" alert and settings view;
+     */
+    void showCanNotConnectAlert();
+    
+    /**
      * Sets the handler for the cancel button in the settings view.
      * 
      * @param handler The handler for the cancel button in the settings view.

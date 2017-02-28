@@ -113,11 +113,13 @@ public class AboutDialog extends javafx.stage.Stage {
         
         TextFlow introductionFlow = new TextFlow();
         introductionFlow.getChildren().add(getText("monitoring.aboutdialog.aboutIntroduction", stdFont));
-        GridPane.setConstraints(introductionFlow, 0, 1); 
+        GridPane.setConstraints(introductionFlow, 0, 1);
+        GridPane.setMargin(introductionFlow, new Insets(2 * MonitoringViewConstants.ELEMENTS_GAP, 0, 0, 0));
         
         TextFlow osipVersionFlow = new TextFlow();
         osipVersionFlow.getChildren().add(getText("monitoring.aboutdialog.version", stdFont));
         GridPane.setConstraints(osipVersionFlow, 0, 2);
+        GridPane.setMargin(osipVersionFlow, new Insets(MonitoringViewConstants.ELEMENTS_GAP, 0, 0, 0));
                
         TextFlow licenseFlow = new TextFlow();
         licenseFlow.getChildren().add(getLicenseText("Licenses.txt"));

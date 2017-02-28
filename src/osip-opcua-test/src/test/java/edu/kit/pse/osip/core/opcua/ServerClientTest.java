@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import edu.kit.pse.osip.core.opcua.client.UAClientWrapper;
 import org.eclipse.milo.opcua.stack.core.Identifiers;
 import org.eclipse.milo.opcua.stack.core.types.builtin.DataValue;
 import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
@@ -115,7 +116,7 @@ public class ServerClientTest {
         server.addVariableTest("testFolder/testVar", "Variable", Identifiers.Int32);
         server.setVariableTest("testFolder/testVar", new DataValue(new Variant(42)));
 
-        client.subscribeIntTest("testFolder/testVar", -1, received::complete);
+        client.subscribeIntTest("testFolder/testVar", UAClientWrapper.SINGLE_READ, received::complete);
         assertEquals(Integer.valueOf(42), received.get());
     }
 
