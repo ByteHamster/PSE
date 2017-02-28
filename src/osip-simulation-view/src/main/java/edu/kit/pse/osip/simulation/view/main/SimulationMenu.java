@@ -1,10 +1,8 @@
 package edu.kit.pse.osip.simulation.view.main;
 
 import edu.kit.pse.osip.core.utils.language.Translator;
-import edu.kit.pse.osip.simulation.controller.AbstractMenuSettingsButtonHandler;
-import edu.kit.pse.osip.simulation.controller.AbstractMenuAboutButtonHandler;
-import edu.kit.pse.osip.simulation.controller.AbstractMenuControlButtonHandler;
-import edu.kit.pse.osip.simulation.controller.AbstractMenuHelpButtonHandler;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -73,7 +71,7 @@ public class SimulationMenu extends MenuBar {
      * Sets the handler for pressing the control entry in the menu
      * @param controlButtonHandler The handler to execute
      */
-    public final void setControlButtonHandler(AbstractMenuControlButtonHandler controlButtonHandler) {
+    public final void setControlButtonHandler(EventHandler<ActionEvent> controlButtonHandler) {
         menuItemControl.setOnAction(controlButtonHandler);
     }
 
@@ -81,7 +79,7 @@ public class SimulationMenu extends MenuBar {
      * Sets the handler for pressing the settings entry in the menu
      * @param settingsButtonHandler The handler to be called when the settings button is pressed
      */
-    public final void setSettingsButtonHandler(AbstractMenuSettingsButtonHandler settingsButtonHandler) {
+    public final void setSettingsButtonHandler(EventHandler<ActionEvent> settingsButtonHandler) {
         menuItemSettings.setOnAction(settingsButtonHandler);
     }
 
@@ -89,7 +87,7 @@ public class SimulationMenu extends MenuBar {
      * Sets the handler for pressing the about entry in the menu
      * @param aboutButtonHandler The handler to be called when the about button is pressed
      */
-    public final void setAboutButtonHandler(AbstractMenuAboutButtonHandler aboutButtonHandler) {
+    public final void setAboutButtonHandler(EventHandler<ActionEvent> aboutButtonHandler) {
         menuItemAbout.setOnAction(aboutButtonHandler);
     }
 
@@ -97,7 +95,7 @@ public class SimulationMenu extends MenuBar {
      * Sets the handler for pressing the help entry in the menu
      * @param helpButtonHandler The handler to be called when the help button is pressed
      */
-    public final void setHelpButtonHandler(AbstractMenuHelpButtonHandler helpButtonHandler) {
+    public final void setHelpButtonHandler(EventHandler<ActionEvent> helpButtonHandler) {
         menuItemHelp.setOnAction(helpButtonHandler);
     }
 }

@@ -23,7 +23,7 @@ class TemperatureVisualization extends BarLayout implements Observer {
     /**
      * The slider for showing the current temperature.
      */
-    private javafx.scene.control.Slider temperatureBar;
+    private Slider temperatureBar;
     
     /**
      * Creates and initializes a new temperature visualization.

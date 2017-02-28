@@ -1,9 +1,13 @@
 package edu.kit.pse.osip.monitoring.view.dashboard;
 
+import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.model.behavior.TankAlarm;
+import edu.kit.pse.osip.core.utils.language.Translator;
 import java.util.Observable;
 import java.util.Observer;
 import javafx.scene.paint.Color;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
@@ -12,7 +16,7 @@ import javafx.scene.shape.Circle;
  * Visualizes an alarm with a name and the current state.
  * 
  * @author Martin Armbruster
- * @version 1.3
+ * @version 1.6
  */
 class AlarmVisualization extends Observable implements Observer {
     /**
@@ -69,6 +73,15 @@ class AlarmVisualization extends Observable implements Observer {
     }
     
     /**
+     * Returns the name of the represented alarm.
+     * 
+     * @return the name of the represented alarm.
+     */
+    protected String getAlarmName() {
+        return alarmName.getText();
+    }
+    
+    /**
      * Returns the current state of the alarm.
      * 
      * @return the current state of the alarm.
@@ -89,7 +102,8 @@ class AlarmVisualization extends Observable implements Observer {
         } else if (newState == AlarmState.ALARM_DISABLED) {
             alarmState.setFill(MonitoringViewConstants.ALARM_DISABLED);
         }
-        super.notifyObservers(false);
+        super.setChanged();
+        super.notifyObservers(null);
     }
     
     /**
@@ -100,12 +114,20 @@ class AlarmVisualization extends Observable implements Observer {
      */
     public void update(Observable observable, Object object) {
         TankAlarm<?> actualAlarm = (TankAlarm<?>) observable;
-        super.notifyObservers(actualAlarm.isAlarmTriggered());
+        super.setChanged();
+        super.notifyObservers(actualAlarm);
         if (currentState == AlarmState.ALARM_DISABLED) {
             return;
         }
         if (actualAlarm.isAlarmTriggered()) {
             alarmState.setFill(MonitoringViewConstants.ALARM_TRIGGERED);
+            Alert user = new Alert(AlertType.INFORMATION);
+            user.setTitle(Translator.getInstance().getString("monitoring.alarmDialog.header"));
+            user.setHeaderText(Translator.getInstance().getString("monitoring.alarmDialog.header"));
+            user.setContentText(String.format(Translator.getInstance().getString("monitoring.alarmDialog.content"),
+                    getAlarmName(), Translator.getInstance().getString(TankSelector.TRANSLATOR_LABEL_PREFIX
+                            + actualAlarm.getTank().getTankSelector().name()).toLowerCase()));
+            user.show();
         } else {
             alarmState.setFill(MonitoringViewConstants.ALARM_ENABLED);
         }
