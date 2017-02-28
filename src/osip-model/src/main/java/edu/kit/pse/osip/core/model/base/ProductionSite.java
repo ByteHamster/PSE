@@ -86,12 +86,12 @@ public class ProductionSite {
         byte count = 0;
         for (TankSelector selector: TankSelector.valuesWithoutMix()) {
             byte threshold;
-            count++;
             if (count == 0 || count == 1) {
                 threshold = (byte) 50;
             } else {
                 threshold = (byte) 0;
             }
+            count++;
             Liquid l = new Liquid(halfFull, selector.getInitialTemperature(), selector.getInitialColor());
             Pipe inPipe = new Pipe(SimulationConstants.PIPE_CROSSSECTION, SimulationConstants.PIPE_LENGTH, threshold);
             Pipe outPipe = new Pipe(SimulationConstants.PIPE_CROSSSECTION, SimulationConstants.PIPE_LENGTH, threshold);
