@@ -24,6 +24,7 @@ import javafx.util.converter.NumberStringConverter;
 public class MixTankTab extends AbstractTankTab {
 
     private Slider motorSlider;
+    private TextField motorValue;
 
     /**
      * Creates a new TankTab containg the standard controls of the AbstractTankTab as well as a
@@ -67,7 +68,7 @@ public class MixTankTab extends AbstractTankTab {
         GridPane.setMargin(motorSlider, ViewConstants.CONTROL_PADDING);
 
         //TextField and Label to show the current value and unit
-        TextField motorValue = new TextField("" + tank.getMotor().getRPM());
+        motorValue = new TextField("" + tank.getMotor().getRPM());
         motorValue.setMaxWidth(ViewConstants.CONTROL_INPUT_WIDTH);
         pane.add(motorValue, col++, row);
         GridPane.setMargin(motorValue, ViewConstants.CONTROL_PADDING);
@@ -82,6 +83,20 @@ public class MixTankTab extends AbstractTankTab {
         Bindings.bindBidirectional(sp, dp,
             new ConfinedStringConverter(0d, (double) SimulationConstants.MAX_MOTOR_SPEED, sp));
         row++;
+    }
+
+    /**
+     * Disables or enables all control elements in the MixTankTab to block or allow inputs.
+     * @param isDisable true if inputs shall be blocked, false if they shall be enabled
+     */
+    public void setControlsDisabled(boolean isDisable) {
+        if (motorSlider != null) {
+            motorSlider.setDisable(isDisable);
+        }
+        if (motorValue != null) {
+            motorValue.setDisable(isDisable);
+        }
+        super.setControlsDisabled(isDisable);
     }
 
     /**

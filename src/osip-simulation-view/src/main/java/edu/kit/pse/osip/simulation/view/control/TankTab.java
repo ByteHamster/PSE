@@ -25,8 +25,10 @@ import javafx.util.converter.NumberStringConverter;
 public class TankTab extends AbstractTankTab {
 
     private Slider inFlowSlider;
+    private TextField inFlowValue;
 
     private Slider temperatureSlider;
+    private TextField temperatureValue;
 
     /**
      * Creates a new TankTab containing the standard controls of the AbstractTankTab as well as a
@@ -70,7 +72,7 @@ public class TankTab extends AbstractTankTab {
         GridPane.setMargin(inFlowSlider, ViewConstants.CONTROL_PADDING);
 
         //TextField and label to show the current value and unit
-        TextField inFlowValue = new TextField("" + tank.getOutPipe().getValveThreshold());
+        inFlowValue = new TextField("" + tank.getOutPipe().getValveThreshold());
         inFlowValue.setMaxWidth(ViewConstants.CONTROL_INPUT_WIDTH);
         pane.add(inFlowValue, col++, row);
         GridPane.setMargin(inFlowValue, ViewConstants.CONTROL_PADDING);
@@ -114,7 +116,7 @@ public class TankTab extends AbstractTankTab {
         GridPane.setMargin(temperatureSlider, ViewConstants.CONTROL_PADDING);
 
         //Labels to show the current value and unit
-        TextField temperatureValue = new TextField("" + tank.getLiquid().getTemperature());
+        temperatureValue = new TextField("" + tank.getLiquid().getTemperature());
         temperatureValue.setMaxWidth(ViewConstants.CONTROL_INPUT_WIDTH);
         pane.add(temperatureValue, col++, row);
         GridPane.setMargin(temperatureValue, ViewConstants.CONTROL_PADDING);
@@ -128,6 +130,26 @@ public class TankTab extends AbstractTankTab {
         Bindings.bindBidirectional(sp, dp, new ConfinedStringConverter((double) min,
             (double) SimulationConstants.MAX_TEMPERATURE - SimulationConstants.CELCIUS_OFFSET, sp));
         row++;
+    }
+
+    /**
+     * Disables or enables all control elements in the TankTab to block or allow inputs.
+     * @param isDisable true if inputs shall be blocked, false if they shall be enabled
+     */
+    public void setControlsDisabled(boolean isDisable) {
+        if (inFlowSlider != null) {
+            inFlowSlider.setDisable(isDisable);
+        }
+        if (inFlowValue != null) {
+            inFlowValue.setDisable(isDisable);
+        }
+        if (temperatureSlider != null) {
+            temperatureSlider.setDisable(isDisable);
+        }
+        if (temperatureValue != null) {
+            temperatureValue.setDisable(isDisable);
+        }
+        super.setControlsDisabled(isDisable);
     }
 
     /**

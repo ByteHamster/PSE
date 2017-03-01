@@ -71,6 +71,17 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
     }
 
     /**
+     * Disables or enables all control elements in the SimulationControlWindow to block or allow inputs.
+     * @param isDisable true if inputs shall be blocked, false if they shall be enabled
+     */
+    public void setControlsDisabled(boolean isDisable) {
+        for (TankSelector t : TankSelector.values()) {
+            AbstractTankTab tab = tankTabs.get(t);
+            tab.setControlsDisabled(isDisable);
+        }
+    }
+
+    /**
      * Sets the listener that is notified of changes to valve thresholds.
      * @param listener The Consumer that gets all changes to valve thresholds.
      */

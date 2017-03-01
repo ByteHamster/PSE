@@ -1,6 +1,7 @@
 package edu.kit.pse.osip.simulation.view.control;
 
 import edu.kit.pse.osip.core.model.base.AbstractTank;
+import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.view.main.ViewConstants;
 import javafx.beans.binding.Bindings;
@@ -26,6 +27,7 @@ public abstract class AbstractTankTab extends Tab {
     private GridPane pane;
 
     private Slider outFlowSlider;
+    private TextField outFlowValue;
 
     /**
      * Creates a new AbstractTankTab with Sliders to control outFlow and Temperature
@@ -68,7 +70,7 @@ public abstract class AbstractTankTab extends Tab {
         GridPane.setMargin(outFlowSlider, ViewConstants.CONTROL_PADDING);
 
         //TextField and Label to show the current value and unit
-        TextField outFlowValue = new TextField("" + tank.getOutPipe().getValveThreshold());
+        outFlowValue = new TextField("" + tank.getOutPipe().getValveThreshold());
         outFlowValue.setMaxWidth(ViewConstants.CONTROL_INPUT_WIDTH);
         pane.add(outFlowValue, col++, row);
         GridPane.setMargin(outFlowValue, ViewConstants.CONTROL_PADDING);
@@ -81,6 +83,19 @@ public abstract class AbstractTankTab extends Tab {
         Bindings.bindBidirectional(sp, dp, new ConfinedStringConverter(0d, 100d, sp));
 
         row++;
+    }
+
+    /**
+     * Disables or enables all control elements in the AbstractTankTab to block or allow inputs.
+     * @param isDisable true if inputs shall be blocked, false if they shall be enabled
+     */
+    protected void setControlsDisabled(boolean isDisable) {
+        if (outFlowSlider != null) {
+            outFlowSlider.setDisable(isDisable);
+        }
+        if (outFlowValue != null) {
+            outFlowValue.setDisable(isDisable);
+        }
     }
 
     /**
