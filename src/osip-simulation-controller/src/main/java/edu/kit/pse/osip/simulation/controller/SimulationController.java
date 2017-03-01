@@ -217,6 +217,10 @@ public class SimulationController extends Application {
 
     private void showOverflow(TankSelector selector) {
         Platform.runLater(() -> currentSimulationView.showOverflow(selector));
+        if (currentScenario != null) {
+            currentScenario.cancelScenario();
+            currentSimulationView.scenarioFinished();
+        }
     }
 
     /**
