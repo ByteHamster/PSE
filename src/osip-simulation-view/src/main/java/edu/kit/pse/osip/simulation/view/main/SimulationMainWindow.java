@@ -18,6 +18,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Screen;
@@ -238,7 +239,15 @@ public class SimulationMainWindow implements SimulationViewInterface {
 
     @Override
     public void showScenarioError(String error) {
-        // TODO: show error
+        Translator t = Translator.getInstance();
+
+        Alert errorDialog = new Alert(Alert.AlertType.ERROR);
+        errorDialog.setTitle(t.getString("simulation.view.scenario.error.title"));
+        errorDialog.setHeaderText(t.getString("simulation.view.scenario.error.header"));
+        errorDialog.setContentText(error);
+        Stage stage = (Stage) errorDialog.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("/icon.png"));
+        errorDialog.show();
     }
 
     @Override
