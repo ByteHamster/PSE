@@ -127,13 +127,20 @@ class MonitoringMainWindow {
     private void registerAlarms() {
         for (TankVisualization tank : tankVisualizations.values()) {
             tank.getOverflowAlarm().addObserver(light);
+            tank.getOverflowAlarm().addObserver(log);
             tank.getUnderflowAlarm().addObserver(light);
+            tank.getUnderflowAlarm().addObserver(log);
             tank.getTemperatureOverheatingAlarm().addObserver(light);
+            tank.getTemperatureOverheatingAlarm().addObserver(log);
             tank.getTemperatureUndercoolingAlarm().addObserver(light);
+            tank.getTemperatureUndercoolingAlarm().addObserver(log);
         }
         mixTank.getOverflowAlarm().addObserver(light);
+        mixTank.getOverflowAlarm().addObserver(log);
         mixTank.getUnderflowAlarm().addObserver(light);
+        mixTank.getUnderflowAlarm().addObserver(log);
         mixTank.getTemperatureOverheatingAlarm().addObserver(light);
+        mixTank.getTemperatureOverheatingAlarm().addObserver(log);
         mixTank.getTemperatureUndercoolingAlarm().addObserver(light);
         light.setAlarmCount((tankVisualizations.size() + 1) * 4);
     }

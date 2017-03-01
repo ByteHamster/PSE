@@ -1,5 +1,12 @@
 package edu.kit.pse.osip.monitoring.view.dashboard;
 
+import edu.kit.pse.osip.core.model.base.TankSelector;
+import edu.kit.pse.osip.core.model.behavior.TankAlarm;
+import edu.kit.pse.osip.core.utils.language.Translator;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Observable;
+import java.util.Observer;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.text.Text;
@@ -9,9 +16,9 @@ import javafx.scene.text.TextFlow;
  * The graphical console to show all logged events.
  * 
  * @author Martin Armbruster
- * @version 1.3
+ * @version 1.4
  */
-class LoggingConsole extends ScrollPane {
+class LoggingConsole extends ScrollPane implements Observer {
     /**
      * The TextFlow showing the actual logging messages.
      */
@@ -46,4 +53,21 @@ class LoggingConsole extends ScrollPane {
     public void log(String message) {
         flow.getChildren().add(new Text(message));
     }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        AlarmVisualization alarm = (AlarmVisualization) o;
+        TankAlarm<?> ta = (TankAlarm<?>) arg;
+        if (ta != null && ta.isAlarmTriggered()) {
+            Text alarmText = new Text(
+                    "[" + OffsetDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + "] "
+                    + String.format(Translator.getInstance().getString("monitoring.logging.alarmTriggered"),
+                      alarm.getAlarmName(), Translator.getInstance().getString(
+                      TankSelector.TRANSLATOR_LABEL_PREFIX + ta.getTank().getTankSelector().name()).toLowerCase()));
+            if (alarm.getAlarmState() == AlarmState.ALARM_DISABLED) {
+                alarmText.setFill(MonitoringViewConstants.ALARM_DISABLED);
+            }
+            flow.getChildren().add(alarmText);
+        }
+    } 
 }
