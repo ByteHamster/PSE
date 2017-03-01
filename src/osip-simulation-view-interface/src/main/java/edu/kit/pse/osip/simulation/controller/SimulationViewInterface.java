@@ -1,6 +1,7 @@
 package edu.kit.pse.osip.simulation.controller;
 
 import edu.kit.pse.osip.core.model.base.TankSelector;
+import java.util.function.Consumer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
@@ -51,4 +52,26 @@ public interface SimulationViewInterface {
      * @param controlButtonHandler The handler to execute
      */
     void setControlButtonHandler(EventHandler<ActionEvent> controlButtonHandler);
+
+    /**
+     * Sets the listener to start a scenario.
+     * @param listener The listener called if the user starts a scenario. The parameter is the scenario file.
+     */
+    void setScenarioStartListener(Consumer<String> listener);
+    /**
+     * Sets the handler called if the scenario gets stopped by the user.
+     * @param listener The handler function.
+     */
+    void setScenarioStopListener(Runnable listener);
+
+    /**
+     * Show an error about the scenario
+     * @param error The error message.
+     */
+    void showScenarioError(String error);
+
+    /**
+     * Tell the view the scenario is finished.
+     */
+    void scenarioFinished();
 }
