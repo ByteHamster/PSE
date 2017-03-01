@@ -1,11 +1,14 @@
 package edu.kit.pse.osip.simulation.view.main;
 
 import edu.kit.pse.osip.core.utils.language.Translator;
+import java.io.File;
+import java.util.function.Consumer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.stage.FileChooser;
 
 /**
  * This class is the MenuBar at the top of the simulation view. It provides options to control the
@@ -44,6 +47,13 @@ public class SimulationMenu extends MenuBar {
     private MenuItem menuItemAbout;
 
     /**
+     * The scenario menu
+     */
+    private Menu menuScenario;
+    private MenuItem menuItemStartScenario;
+    private MenuItem menuItemStopScenario;
+
+    /**
      * Creates and initializes the menu for the simulation view.
      */
     protected SimulationMenu() {
@@ -64,7 +74,13 @@ public class SimulationMenu extends MenuBar {
         menuOther.getItems().add(menuItemHelp);
         menuOther.getItems().add(menuItemAbout);
 
-        this.getMenus().addAll(menuButtonFile, menuButtonView, menuOther);
+        menuScenario = new Menu(trans.getString("simulation.view.menu.scenario"));
+        menuItemStartScenario = new MenuItem(trans.getString("simulation.view.menu.scenario.start"));
+        menuItemStopScenario = new MenuItem(trans.getString("simulation.view.menu.scenario.stop"));
+        menuItemStopScenario.setDisable(true);
+        menuScenario.getItems().addAll(menuItemStartScenario, menuItemStopScenario);
+
+        this.getMenus().addAll(menuButtonFile, menuButtonView, menuScenario, menuOther);
     }
 
     /**
@@ -97,5 +113,30 @@ public class SimulationMenu extends MenuBar {
      */
     public final void setHelpButtonHandler(EventHandler<ActionEvent> helpButtonHandler) {
         menuItemHelp.setOnAction(helpButtonHandler);
+    }
+
+    public void setScenarioStartListener(Consumer<String> listener) {
+        menuItemStartScenario.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle(Translator.getInstance().getString("simulation.view.scenariofilechooser"));
+                File selectedFile = fileChooser.showOpenDialog(null);
+                if (selectedFile != null) {
+                    menuItemStopScenario.setDisable(false);
+                    menuItemStartScenario.setDisable(true);
+                    listener.accept(selectedFile.getAbsolutePath());
+                }
+            }
+        });
+    }
+
+    public void setScenarioStopListener(Runnable listener) {
+        menuItemStopScenario.setOnAction(actionEvent -> listener.run());
+    }
+
+    public void setScenarioFinished() {
+        menuItemStartScenario.setDisable(false);
+        menuItemStopScenario.setDisable(true);
     }
 }

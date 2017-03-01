@@ -7,6 +7,7 @@ import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.controller.SimulationViewInterface;
 import edu.kit.pse.osip.simulation.view.dialogs.OverflowDialog;
+import java.util.function.Consumer;
 import javafx.animation.AnimationTimer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -223,6 +224,26 @@ public class SimulationMainWindow implements SimulationViewInterface {
      */
     public final void setControlButtonHandler(EventHandler<ActionEvent> controlButtonHandler) {
         menu.setControlButtonHandler(controlButtonHandler);
+    }
+
+    @Override
+    public void setScenarioStartListener(Consumer<String> listener) {
+        menu.setScenarioStartListener(listener);
+    }
+
+    @Override
+    public void setScenarioStopListener(Runnable listener) {
+        menu.setScenarioStopListener(listener);
+    }
+
+    @Override
+    public void showScenarioError(String error) {
+        // TODO: show error
+    }
+
+    @Override
+    public void scenarioFinished() {
+        menu.setScenarioFinished();
     }
 
     /**
