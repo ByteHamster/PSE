@@ -26,7 +26,6 @@ public class ScenarioFile {
             parser = new ScenarioParser(scenarioDefinition);
             scenario = parser.readScenario();
         } catch (ParserException | IOException e) {
-            e.printStackTrace();
             throw new RuntimeException(e.getMessage());
         }
     }
