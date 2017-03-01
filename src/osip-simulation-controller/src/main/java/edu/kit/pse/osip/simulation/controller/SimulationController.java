@@ -1,6 +1,7 @@
 package edu.kit.pse.osip.simulation.controller;
 
 import edu.kit.pse.osip.core.OSIPConstants;
+import edu.kit.pse.osip.core.io.files.ParserException;
 import edu.kit.pse.osip.core.io.files.ScenarioFile;
 import edu.kit.pse.osip.core.io.files.ServerSettingsWrapper;
 import edu.kit.pse.osip.core.model.base.MixTank;
@@ -16,6 +17,7 @@ import edu.kit.pse.osip.simulation.view.dialogs.HelpDialog;
 import edu.kit.pse.osip.simulation.view.main.SimulationMainWindow;
 import edu.kit.pse.osip.simulation.view.settings.SimulationSettingsWindow;
 import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -214,12 +216,7 @@ public class SimulationController extends Application {
     }
 
     private void showOverflow(TankSelector selector) {
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                currentSimulationView.showOverflow(selector);
-            }
-        });
+        Platform.runLater(() -> currentSimulationView.showOverflow(selector));
     }
 
     /**
@@ -245,13 +242,10 @@ public class SimulationController extends Application {
         currentSimulationView.setHelpButtonHandler(actionEvent -> help.show());
 
         currentSimulationView.setScenarioStartListener(this::startScenario);
-        currentSimulationView.setScenarioStopListener(new Runnable() {
-            @Override
-            public void run() {
-                if (currentScenario != null) {
-                    currentScenario.cancelScenario();
-                    currentSimulationView.scenarioFinished();
-                }
+        currentSimulationView.setScenarioStopListener(() -> {
+            if (currentScenario != null) {
+                currentScenario.cancelScenario();
+                currentSimulationView.scenarioFinished();
             }
         });
 
@@ -274,7 +268,7 @@ public class SimulationController extends Application {
         try {
             ScenarioFile scenarioFile = new ScenarioFile(file);
             currentScenario = scenarioFile.getScenario();
-        } catch (RuntimeException ex) {
+        } catch (ParserException | IOException ex) {
             currentSimulationView.showScenarioError(ex.getMessage());
             currentSimulationView.scenarioFinished();
             return;
