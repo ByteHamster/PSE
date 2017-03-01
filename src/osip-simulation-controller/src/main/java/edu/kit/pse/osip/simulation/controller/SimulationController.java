@@ -1,13 +1,16 @@
 package edu.kit.pse.osip.simulation.controller;
 
 import edu.kit.pse.osip.core.OSIPConstants;
+import edu.kit.pse.osip.core.io.files.ScenarioFile;
 import edu.kit.pse.osip.core.io.files.ServerSettingsWrapper;
 import edu.kit.pse.osip.core.model.base.MixTank;
 import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.model.behavior.AlarmBehavior;
 import edu.kit.pse.osip.core.model.behavior.FillAlarm;
+import edu.kit.pse.osip.core.model.behavior.Scenario;
 import edu.kit.pse.osip.core.model.behavior.TemperatureAlarm;
+import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.view.control.SimulationControlWindow;
 import edu.kit.pse.osip.simulation.view.dialogs.AboutDialog;
 import edu.kit.pse.osip.simulation.view.dialogs.HelpDialog;
@@ -41,6 +44,8 @@ public class SimulationController extends Application {
 
     private final MixTankContainer mixCont = new MixTankContainer();
     private final List<TankContainer> tanks = new LinkedList<>();
+
+    private Scenario currentScenario;
 
     private ServerSettingsWrapper settingsWrapper;
     private boolean overflow = false;
@@ -240,6 +245,16 @@ public class SimulationController extends Application {
         currentSimulationView.setAboutButtonHandler(actionEvent -> about.show());
         currentSimulationView.setHelpButtonHandler(actionEvent -> help.show());
 
+        currentSimulationView.setScenarioStartListener(this::startScenario);
+        currentSimulationView.setScenarioStopListener(new Runnable() {
+            @Override
+            public void run() {
+                if (currentScenario != null) {
+                    currentScenario.cancelScenario();
+                }
+            }
+        });
+
         controlInterface.setValveListener((pipe, number) -> {
             pipe.setValveThreshold(number);
             updateServerValues();
@@ -254,6 +269,19 @@ public class SimulationController extends Application {
         });
         settingsInterface.setSettingsChangedListener(actionEvent -> reSetupServer());
     }
+
+    private void startScenario(String file) {
+        try {
+            ScenarioFile scenarioFile = new ScenarioFile(file);
+            currentScenario = scenarioFile.getScenario();
+        } catch (RuntimeException ex) {
+            currentSimulationView.showScenarioError(
+                Translator.getInstance().getString("controller.scenario.error") + ": " + ex.getMessage());
+        }
+        currentScenario.setProductionSite(productionSite);
+        currentScenario.startScenario();
+    }
+
     /**
      * Called when the last window is closed
      */
