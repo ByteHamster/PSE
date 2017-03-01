@@ -10,7 +10,6 @@ import edu.kit.pse.osip.core.model.behavior.AlarmBehavior;
 import edu.kit.pse.osip.core.model.behavior.FillAlarm;
 import edu.kit.pse.osip.core.model.behavior.Scenario;
 import edu.kit.pse.osip.core.model.behavior.TemperatureAlarm;
-import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.view.control.SimulationControlWindow;
 import edu.kit.pse.osip.simulation.view.dialogs.AboutDialog;
 import edu.kit.pse.osip.simulation.view.dialogs.HelpDialog;

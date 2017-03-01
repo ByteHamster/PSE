@@ -105,6 +105,10 @@ public class Scenario extends java.util.Observable implements Runnable {
         this.productionSite = productionSite;
     }
 
+    /**
+     * Set the listener which gets called if the scenario is finished
+     * @param listener The listener.
+     */
     public void setScenarioFinishedListener(Runnable listener) {
         finishedListener = listener;
     }

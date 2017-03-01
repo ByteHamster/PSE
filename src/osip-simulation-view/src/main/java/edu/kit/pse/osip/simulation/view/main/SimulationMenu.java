@@ -115,6 +115,11 @@ public class SimulationMenu extends MenuBar {
         menuItemHelp.setOnAction(helpButtonHandler);
     }
 
+    /**
+     * Sets the listener to start a scenario.
+     * @param listener The listener called if the user starts a scenario.
+     *                 The parameter is the path to the scenario file.
+     */
     public void setScenarioStartListener(Consumer<String> listener) {
         menuItemStartScenario.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -131,10 +136,17 @@ public class SimulationMenu extends MenuBar {
         });
     }
 
+    /**
+     * Sets the handler called if the scenario gets stopped by the user.
+     * @param listener The handler function.
+     */
     public void setScenarioStopListener(Runnable listener) {
         menuItemStopScenario.setOnAction(actionEvent -> listener.run());
     }
 
+    /**
+     * Called if the scenario is finished (either stopped by the user, finished or if it has an error).
+     */
     public void setScenarioFinished() {
         menuItemStartScenario.setDisable(false);
         menuItemStopScenario.setDisable(true);

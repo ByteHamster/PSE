@@ -55,9 +55,11 @@ public interface SimulationViewInterface {
 
     /**
      * Sets the listener to start a scenario.
-     * @param listener The listener called if the user starts a scenario. The parameter is the scenario file.
+     * @param listener The listener called if the user starts a scenario.
+     *                 The parameter is the path tot he scenario file.
      */
     void setScenarioStartListener(Consumer<String> listener);
+
     /**
      * Sets the handler called if the scenario gets stopped by the user.
      * @param listener The handler function.
@@ -71,7 +73,7 @@ public interface SimulationViewInterface {
     void showScenarioError(String error);
 
     /**
-     * Tell the view the scenario is finished.
+     * Tell the view the scenario is finished (either stopped by the user, finished or if it has an error).
      */
     void scenarioFinished();
 }
