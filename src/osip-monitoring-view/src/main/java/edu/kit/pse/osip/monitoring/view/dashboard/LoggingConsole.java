@@ -1,20 +1,38 @@
 package edu.kit.pse.osip.monitoring.view.dashboard;
 
-import javafx.scene.control.TextArea;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 
 /**
  * The graphical console to show all logged events.
  * 
  * @author Martin Armbruster
- * @version 1.2
+ * @version 1.3
  */
-class LoggingConsole extends TextArea {
+class LoggingConsole extends ScrollPane {
+    /**
+     * The TextFlow showing the actual logging messages.
+     */
+    private TextFlow flow;
+    
     /**
      * Creates and initializes the console.
      */
     protected LoggingConsole() {
-        this.setEditable(false);
-        this.setWrapText(true);
+        flow = new TextFlow();
+        // ** Solution for: ScrollPane scrolls automatically.
+        // Based on: http://stackoverflow.com/questions/13156896/javafx-auto-scroll-down-scrollpane
+        flow.heightProperty().addListener(
+            (ObservableValue<? extends Number> observable, Number oldValue, Number newValue) -> {
+                flow.layout();
+                this.setVvalue(this.getVmax());
+            });
+        // **
+        this.setContent(flow);
+        this.setFitToWidth(true);
+        this.setFitToHeight(true);
         UIOutputStream os = new UIOutputStream(this);
         System.setErr(os);
         System.setOut(os);
@@ -23,9 +41,9 @@ class LoggingConsole extends TextArea {
     /**
      * Logs an event.
      * 
-     * @param message The logging message for the occured event.
+     * @param message The logging message for the occurred event.
      */
     public void log(String message) {
-        appendText(message);
+        flow.getChildren().add(new Text(message));
     }
 }
