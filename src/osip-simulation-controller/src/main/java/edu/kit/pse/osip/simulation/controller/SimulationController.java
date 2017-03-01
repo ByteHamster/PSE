@@ -251,6 +251,7 @@ public class SimulationController extends Application {
             public void run() {
                 if (currentScenario != null) {
                     currentScenario.cancelScenario();
+                    currentSimulationView.scenarioFinished();
                 }
             }
         });
@@ -279,6 +280,7 @@ public class SimulationController extends Application {
                 Translator.getInstance().getString("controller.scenario.error") + ": " + ex.getMessage());
         }
         currentScenario.setProductionSite(productionSite);
+        currentScenario.setScenarioFinishedListener(currentSimulationView::scenarioFinished);
         currentScenario.startScenario();
     }
 
