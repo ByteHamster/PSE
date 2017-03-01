@@ -21,19 +21,26 @@ public class Scenario extends java.util.Observable implements Runnable {
     private Thread thread;
     private ProductionSite productionSite;
     private boolean stop = false;
+    private Runnable finishedListener;
+    private boolean repeat;
 
     @Override
     public void run() {
         assert (null != productionSite);
-        for (ThrowingConsumer<ProductionSite> c: commands) {
-            try {
-                c.accept(productionSite);
-            } catch (InterruptedException ex) {
-                System.err.println("Scenario: sleep command failed: " + ex.getMessage());
+        do {
+            for (ThrowingConsumer<ProductionSite> c : commands) {
+                try {
+                    c.accept(productionSite);
+                } catch (InterruptedException ex) {
+                    System.err.println("Scenario: sleep command failed: " + ex.getMessage());
+                }
+                if (stop) {
+                    return;
+                }
             }
-            if (stop) {
-                return;
-            }
+        } while (repeat);
+        if (finishedListener != null) {
+            finishedListener.run();
         }
     }
 
@@ -79,6 +86,9 @@ public class Scenario extends java.util.Observable implements Runnable {
         if (null == thread) {
             throw new IllegalStateException("Scenario has not been started yet");
         }
+        if (finishedListener != null) {
+            finishedListener.run();
+        }
     }
 
     /**
@@ -96,5 +106,21 @@ public class Scenario extends java.util.Observable implements Runnable {
      */
     public void setProductionSite(ProductionSite productionSite) {
         this.productionSite = productionSite;
+    }
+
+    /**
+     * Set the listener which gets called if the scenario is finished
+     * @param listener The listener.
+     */
+    public void setScenarioFinishedListener(Runnable listener) {
+        finishedListener = listener;
+    }
+
+    /**
+     * Set whether the scenario should run in an endless loop.
+     * @param repeat Whether it should run in an endless loop.
+     */
+    public void setRepeat(boolean repeat) {
+        this.repeat = repeat;
     }
 }

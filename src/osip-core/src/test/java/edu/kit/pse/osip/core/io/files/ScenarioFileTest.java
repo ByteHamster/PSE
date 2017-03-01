@@ -12,10 +12,10 @@ public class ScenarioFileTest {
     
     /**
      * Tests if real files can be parsed without ParserExceptions
-     * @throws ParserException If something goes wrong
+     * @throws Exception If something goes wrong
      */
     @Test
-    public void testReadingFile() throws ParserException {
+    public void testReadingFile() throws Exception {
         String path = Thread.currentThread().getContextClassLoader()
                 .getResource("test.scenario.txt").getPath();
         ScenarioFile file = new ScenarioFile(path);

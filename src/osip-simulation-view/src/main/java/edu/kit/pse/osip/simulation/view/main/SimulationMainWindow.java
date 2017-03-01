@@ -7,6 +7,7 @@ import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.controller.SimulationViewInterface;
 import edu.kit.pse.osip.simulation.view.dialogs.OverflowDialog;
+import java.util.function.Consumer;
 import javafx.animation.AnimationTimer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -17,6 +18,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Screen;
@@ -223,6 +225,34 @@ public class SimulationMainWindow implements SimulationViewInterface {
      */
     public final void setControlButtonHandler(EventHandler<ActionEvent> controlButtonHandler) {
         menu.setControlButtonHandler(controlButtonHandler);
+    }
+
+    @Override
+    public void setScenarioStartListener(Consumer<String> listener) {
+        menu.setScenarioStartListener(listener);
+    }
+
+    @Override
+    public void setScenarioStopListener(Runnable listener) {
+        menu.setScenarioStopListener(listener);
+    }
+
+    @Override
+    public void showScenarioError(String error) {
+        Translator t = Translator.getInstance();
+
+        Alert errorDialog = new Alert(Alert.AlertType.ERROR);
+        errorDialog.setTitle(t.getString("simulation.view.scenario.error.title"));
+        errorDialog.setHeaderText(t.getString("simulation.view.scenario.error.header"));
+        errorDialog.setContentText(error);
+        Stage stage = (Stage) errorDialog.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("/icon.png"));
+        errorDialog.show();
+    }
+
+    @Override
+    public void scenarioFinished() {
+        menu.setScenarioFinished();
     }
 
     /**

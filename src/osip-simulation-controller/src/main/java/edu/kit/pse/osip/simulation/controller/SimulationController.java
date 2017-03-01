@@ -1,12 +1,15 @@
 package edu.kit.pse.osip.simulation.controller;
 
 import edu.kit.pse.osip.core.OSIPConstants;
+import edu.kit.pse.osip.core.io.files.ParserException;
+import edu.kit.pse.osip.core.io.files.ScenarioFile;
 import edu.kit.pse.osip.core.io.files.ServerSettingsWrapper;
 import edu.kit.pse.osip.core.model.base.MixTank;
 import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.model.behavior.AlarmBehavior;
 import edu.kit.pse.osip.core.model.behavior.FillAlarm;
+import edu.kit.pse.osip.core.model.behavior.Scenario;
 import edu.kit.pse.osip.core.model.behavior.TemperatureAlarm;
 import edu.kit.pse.osip.simulation.view.control.SimulationControlWindow;
 import edu.kit.pse.osip.simulation.view.dialogs.AboutDialog;
@@ -14,6 +17,7 @@ import edu.kit.pse.osip.simulation.view.dialogs.HelpDialog;
 import edu.kit.pse.osip.simulation.view.main.SimulationMainWindow;
 import edu.kit.pse.osip.simulation.view.settings.SimulationSettingsWindow;
 import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -41,6 +45,8 @@ public class SimulationController extends Application {
 
     private final MixTankContainer mixCont = new MixTankContainer();
     private final List<TankContainer> tanks = new LinkedList<>();
+
+    private Scenario currentScenario;
 
     private ServerSettingsWrapper settingsWrapper;
     private boolean overflow = false;
@@ -210,12 +216,11 @@ public class SimulationController extends Application {
     }
 
     private void showOverflow(TankSelector selector) {
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                currentSimulationView.showOverflow(selector);
-            }
-        });
+        Platform.runLater(() -> currentSimulationView.showOverflow(selector));
+        if (currentScenario != null) {
+            currentScenario.cancelScenario();
+            currentSimulationView.scenarioFinished();
+        }
     }
 
     /**
@@ -240,6 +245,14 @@ public class SimulationController extends Application {
         currentSimulationView.setAboutButtonHandler(actionEvent -> about.show());
         currentSimulationView.setHelpButtonHandler(actionEvent -> help.show());
 
+        currentSimulationView.setScenarioStartListener(this::startScenario);
+        currentSimulationView.setScenarioStopListener(() -> {
+            if (currentScenario != null) {
+                currentScenario.cancelScenario();
+                currentSimulationView.scenarioFinished();
+            }
+        });
+
         controlInterface.setValveListener((pipe, number) -> {
             pipe.setValveThreshold(number);
             updateServerValues();
@@ -254,6 +267,22 @@ public class SimulationController extends Application {
         });
         settingsInterface.setSettingsChangedListener(actionEvent -> reSetupServer());
     }
+
+    private void startScenario(String file) {
+        try {
+            ScenarioFile scenarioFile = new ScenarioFile(file);
+            currentScenario = scenarioFile.getScenario();
+        } catch (ParserException | IOException ex) {
+            currentSimulationView.showScenarioError(ex.getMessage());
+            currentSimulationView.scenarioFinished();
+            return;
+        }
+        currentScenario.setProductionSite(productionSite);
+        currentScenario.setScenarioFinishedListener(currentSimulationView::scenarioFinished);
+        productionSite.reset();
+        currentScenario.startScenario();
+    }
+
     /**
      * Called when the last window is closed
      */
