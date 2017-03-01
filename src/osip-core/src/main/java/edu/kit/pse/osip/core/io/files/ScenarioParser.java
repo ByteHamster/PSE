@@ -25,6 +25,8 @@ public class ScenarioParser extends ExtendedParser {
     public ScenarioParser(String toParse) {
         super(toParse);
         addCommands();
+        variables.put("true", 1f);
+        variables.put("false", 0f);
     }
     
     /**
@@ -84,10 +86,13 @@ public class ScenarioParser extends ExtendedParser {
             check(')');
             skipWhitespaces();
             check(';');
-            
+
             if (command.equals("delay")) {
                 checkArgumentCount(parameters, 1);
                 scenario.addPause(Math.round(parameters.get(0)));
+            } else if (command.equals("setRepeat")) {
+                checkArgumentCount(parameters, 1);
+                scenario.setRepeat(Math.abs(parameters.get(0) - 1) < 0.000001);
             } else if (!commands.containsKey(command)) {
                 die("Unknown command: " + command);
             } else {
