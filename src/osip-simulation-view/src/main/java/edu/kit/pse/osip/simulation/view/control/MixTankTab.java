@@ -15,6 +15,8 @@ import javafx.scene.layout.Priority;
 import javafx.util.StringConverter;
 import javafx.util.converter.NumberStringConverter;
 
+import java.util.Observable;
+
 /**
  * This class has controls specific to the tanks in which several inputs are mixed.
  *
@@ -105,5 +107,14 @@ public class MixTankTab extends AbstractTankTab {
      */
     protected Slider getMotorSlider() {
         return motorSlider;
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+        MixTank tank = (MixTank) observable;
+
+        motorSlider.setValue(tank.getMotor().getRPM());
+        motorValue.setText(String.valueOf(tank.getMotor().getRPM()));
+        super.update(observable, o);
     }
 }

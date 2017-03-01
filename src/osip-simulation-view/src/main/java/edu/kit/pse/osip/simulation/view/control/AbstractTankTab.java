@@ -14,13 +14,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 
+import java.util.Observable;
+import java.util.Observer;
+
 /**
  * This class contains the controls for a single tank in the simulation.
  *
  * @version 1.0
  * @author Niko Wilhelm
  */
-public abstract class AbstractTankTab extends Tab {
+public abstract class AbstractTankTab extends Tab implements Observer {
 
     protected int row;
 
@@ -42,6 +45,7 @@ public abstract class AbstractTankTab extends Tab {
         pane.setPrefWidth(ViewConstants.CONTROL_WIDTH);
         row = 0;
 
+        tank.addObserver(this);
         createOutFlowSlider(pane, tank);
     }
 
@@ -112,5 +116,11 @@ public abstract class AbstractTankTab extends Tab {
      */
     protected GridPane getGridPane() {
         return pane;
+    }
+
+    public void update(Observable observable, Object o) {
+        AbstractTank tank = (AbstractTank) observable;
+        outFlowSlider.setValue(tank.getOutPipe().getValveThreshold());
+        outFlowValue.setText(String.valueOf(tank.getOutPipe().getValveThreshold()));
     }
 }

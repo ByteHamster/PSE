@@ -2,6 +2,7 @@ package edu.kit.pse.osip.simulation.view.control;
 
 import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.model.base.AbstractTank;
+import edu.kit.pse.osip.core.model.base.MixTank;
 import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.view.main.ViewConstants;
@@ -15,6 +16,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.util.StringConverter;
 import javafx.util.converter.NumberStringConverter;
+
+import java.util.Observable;
 
 /**
  * This class has controls specific to the input tanks.
@@ -166,6 +169,18 @@ public class TankTab extends AbstractTankTab {
      */
     protected Slider getTemperatureSlider() {
         return temperatureSlider;
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+        Tank tank = (Tank) observable;
+
+        inFlowSlider.setValue(tank.getInPipe().getValveThreshold());
+        inFlowValue.setText(String.valueOf(tank.getInPipe().getValveThreshold()));
+
+        temperatureSlider.setValue(tank.getLiquid().getTemperature());
+        temperatureValue.setText(String.valueOf(tank.getLiquid().getTemperature()));
+        super.update(observable, o);
     }
 
 }
