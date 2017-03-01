@@ -213,7 +213,7 @@ public class SimulationController extends Application {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                currentSimulationView.showOverflow(TankSelector.MIX);
+                currentSimulationView.showOverflow(selector);
             }
         });
     }
