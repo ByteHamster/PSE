@@ -7,7 +7,6 @@ import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.controller.SimulationControlInterface;
 import edu.kit.pse.osip.simulation.controller.SimulationViewInterface;
-import edu.kit.pse.osip.simulation.view.control.SimulationControlWindow;
 import edu.kit.pse.osip.simulation.view.dialogs.OverflowDialog;
 import java.util.function.Consumer;
 import javafx.animation.AnimationTimer;
@@ -287,6 +286,11 @@ public class SimulationMainWindow implements SimulationViewInterface {
      */
     public final void setHelpButtonHandler(EventHandler<ActionEvent> helpButtonHandler) {
         menu.setHelpButtonHandler(helpButtonHandler);
+    }
+
+    @Override
+    public void setResetListener(EventHandler<ActionEvent> listener) {
+        menu.setResetButtonHandler(listener);
     }
 
 

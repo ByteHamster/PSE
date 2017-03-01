@@ -129,12 +129,12 @@ public abstract class AbstractTankTab extends Tab implements Observer {
         return pane;
     }
 
-    @Override
-    public void update(Observable observable, Object o) {
-        if (controlsDisabled) {
-            AbstractTank tank = (AbstractTank) observable;
-            outFlowSlider.setValue(tank.getOutPipe().getValveThreshold());
-            outFlowValue.setText(String.valueOf(tank.getOutPipe().getValveThreshold()));
-        }
+    /**
+     * Updates the AbstractTankTab to show the values from the productionSite
+     * @param tank The tank whose values are taken
+     */
+    public void update(AbstractTank tank) {
+        outFlowSlider.setValue(tank.getOutPipe().getValveThreshold());
+        outFlowValue.setText(String.valueOf(tank.getOutPipe().getValveThreshold()));
     }
 }

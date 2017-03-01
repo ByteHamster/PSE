@@ -178,16 +178,25 @@ public class TankTab extends AbstractTankTab {
     @Override
     public void update(Observable observable, Object o) {
         if (isControlsDisabled()) {
-            super.update(observable, o);
 
             Tank tank = (Tank) observable;
-
-            inFlowSlider.setValue(tank.getInPipe().getValveThreshold());
-            inFlowValue.setText(String.valueOf(tank.getInPipe().getValveThreshold()));
-
-            temperatureSlider.setValue(site.getInputTemperature(selector));
-            temperatureValue.setText(String.valueOf(site.getInputTemperature(selector)));
+            update(tank);
         }
+    }
+
+    /**
+     * Updates the TankTab to show the values from the productionSite
+     * @param tank The tank whose values are taken
+     */
+    public void update(Tank tank) {
+        super.update(tank);
+
+        inFlowSlider.setValue(tank.getInPipe().getValveThreshold());
+        inFlowValue.setText(String.valueOf(tank.getInPipe().getValveThreshold()));
+
+        temperatureSlider.setValue(site.getInputTemperature(selector) - SimulationConstants.CELCIUS_OFFSET);
+        temperatureValue.setText(String.valueOf(
+                site.getInputTemperature(selector) - SimulationConstants.CELCIUS_OFFSET));
     }
 
 }

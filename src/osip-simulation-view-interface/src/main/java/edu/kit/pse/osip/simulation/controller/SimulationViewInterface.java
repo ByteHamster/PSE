@@ -61,6 +61,12 @@ public interface SimulationViewInterface {
     void setScenarioStartListener(Consumer<String> listener);
 
     /**
+     * Sets the listener to reset the simulation
+     * @param listener The listener to be executed
+     */
+    void setResetListener(EventHandler<ActionEvent> listener);
+
+    /**
      * Sets the handler called if the scenario gets stopped by the user.
      * @param listener The handler function.
      */

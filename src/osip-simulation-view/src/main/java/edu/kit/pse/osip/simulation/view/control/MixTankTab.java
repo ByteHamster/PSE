@@ -109,12 +109,20 @@ public class MixTankTab extends AbstractTankTab {
     @Override
     public void update(Observable observable, Object o) {
         if (isControlsDisabled()) {
-            super.update(observable, o);
-
             MixTank tank = (MixTank) observable;
 
-            motorSlider.setValue(tank.getMotor().getRPM());
-            motorValue.setText(String.valueOf(tank.getMotor().getRPM()));
+            update(tank);
         }
+    }
+
+    /**
+     * Updates the MixTankTab to show the values from the productionSite
+     * @param tank The tank whose values are taken
+     */
+    public void update(MixTank tank) {
+        super.update(tank);
+
+        motorSlider.setValue(tank.getMotor().getRPM());
+        motorValue.setText(String.valueOf(tank.getMotor().getRPM()));
     }
 }

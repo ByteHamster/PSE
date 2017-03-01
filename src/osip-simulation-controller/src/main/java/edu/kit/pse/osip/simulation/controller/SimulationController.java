@@ -254,6 +254,11 @@ public class SimulationController extends Application {
             }
         });
 
+        currentSimulationView.setResetListener((event) -> {
+           productionSite.reset();
+           controlInterface.update();
+        });
+
         controlInterface.setValveListener((pipe, number) -> {
             pipe.setValveThreshold(number);
             updateServerValues();

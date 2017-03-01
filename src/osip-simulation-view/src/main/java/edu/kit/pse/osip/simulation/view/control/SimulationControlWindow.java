@@ -78,6 +78,17 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
         }
     }
 
+    @Override
+    public void update() {
+        for (TankSelector t : TankSelector.valuesWithoutMix()) {
+            TankTab tab = (TankTab) tankTabs.get(t);
+            tab.update(productionSite.getUpperTank(t));
+        }
+
+        MixTankTab mixTab = (MixTankTab) tankTabs.get(TankSelector.MIX);
+        mixTab.update(productionSite.getMixTank());
+    }
+
     /**
      * Sets the listener that is notified of changes to valve thresholds.
      * @param listener The Consumer that gets all changes to valve thresholds.
