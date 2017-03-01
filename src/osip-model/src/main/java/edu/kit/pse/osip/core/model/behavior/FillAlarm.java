@@ -11,7 +11,7 @@ public class FillAlarm extends edu.kit.pse.osip.core.model.behavior.TankAlarm<Fl
     /**
      * Constructs a new FillAlarm.
      * @param tank The tank to monitor.
-     * @param threshold The fill level threshold in %.
+     * @param threshold The fill level threshold in % between 0 and 1.
      * @param behavior Whether the alarm should trigger if thefill level is above or below the threshold.
      */
     public FillAlarm(AbstractTank tank, Float threshold, AlarmBehavior behavior) {
@@ -22,6 +22,6 @@ public class FillAlarm extends edu.kit.pse.osip.core.model.behavior.TankAlarm<Fl
      * @return the fill level.
      */
     protected final Float getNotifiedValue() {
-        return tank.getFillLevel() * 100f; 
+        return tank.getFillLevel();
     }
 }

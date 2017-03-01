@@ -1,6 +1,5 @@
 package edu.kit.pse.osip.simulation.view.main;
 
-import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.model.base.AbstractTank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.utils.language.Translator;
@@ -67,7 +66,7 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
         double totalWidth = canvas.getWidth();
         double totalHeight = canvas.getHeight();
 
-        double fillLevel = tank.getFillLevel() / SimulationConstants.TANK_SIZE;
+        double fillLevel = tank.getFillLevel();
         Color fluidColor = getTankColor();
 
         // start the calculated values

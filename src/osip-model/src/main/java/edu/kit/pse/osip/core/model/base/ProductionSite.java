@@ -83,19 +83,18 @@ public class ProductionSite {
                 TankSelector.MIX.getInitialTemperature(), TankSelector.MIX.getInitialColor()),
                 new Pipe(SimulationConstants.PIPE_CROSSSECTION, SimulationConstants.PIPE_LENGTH, (byte) 100));
 
-        boolean specialPipeAssigned = false;  /* One of the pipes needs to be set to 34 instead of 33 */
+        byte count = 0;
         for (TankSelector selector: TankSelector.valuesWithoutMix()) {
             byte threshold;
-            if (!specialPipeAssigned) {
-                threshold = (byte) 34;
-                specialPipeAssigned = true;
+            if (count == 0 || count == 1) {
+                threshold = (byte) 50;
             } else {
-                threshold = (byte) 33;
+                threshold = (byte) 0;
             }
+            count++;
             Liquid l = new Liquid(halfFull, selector.getInitialTemperature(), selector.getInitialColor());
             Pipe inPipe = new Pipe(SimulationConstants.PIPE_CROSSSECTION, SimulationConstants.PIPE_LENGTH, threshold);
             Pipe outPipe = new Pipe(SimulationConstants.PIPE_CROSSSECTION, SimulationConstants.PIPE_LENGTH, threshold);
-
 
             tanks.put(selector, instantiateTank(SimulationConstants.TANK_SIZE, selector, l, outPipe, inPipe));
         }
