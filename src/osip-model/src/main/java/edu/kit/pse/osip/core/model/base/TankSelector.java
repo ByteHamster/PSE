@@ -32,7 +32,7 @@ public enum TankSelector {
      * This array defines the initial colors in the same order as the tanks are defined above.
      */
     private static Color[] initialColors = {
-        new Color(1, 1, 1),
+        new Color(0.5, 0, 0.5),
         new Color(0, 0, 1),
         new Color(1, 0, 0),
         new Color(0, 1, 0),
@@ -43,9 +43,9 @@ public enum TankSelector {
      */
     private static float[] initialTemperatures = {
         300,
-        300,
-        300,
-        300,
+        333,
+        312,
+        290,
     };
 
     /**

@@ -12,8 +12,6 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
-import javafx.util.StringConverter;
-import javafx.util.converter.NumberStringConverter;
 
 /**
  * This class contains the controls for a single tank in the simulation.
@@ -80,8 +78,7 @@ public abstract class AbstractTankTab extends Tab {
 
         StringProperty sp = outFlowValue.textProperty();
         DoubleProperty dp = outFlowSlider.valueProperty();
-        StringConverter<Number> converter = new NumberStringConverter();
-        Bindings.bindBidirectional(sp, dp, converter);
+        Bindings.bindBidirectional(sp, dp, new ConfinedStringConverter(0d, 100d, sp));
 
         row++;
     }

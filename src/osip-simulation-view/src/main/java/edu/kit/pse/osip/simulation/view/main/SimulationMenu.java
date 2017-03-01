@@ -1,13 +1,14 @@
 package edu.kit.pse.osip.simulation.view.main;
 
 import edu.kit.pse.osip.core.utils.language.Translator;
-import edu.kit.pse.osip.simulation.controller.AbstractMenuSettingsButtonHandler;
-import edu.kit.pse.osip.simulation.controller.AbstractMenuAboutButtonHandler;
-import edu.kit.pse.osip.simulation.controller.AbstractMenuControlButtonHandler;
-import edu.kit.pse.osip.simulation.controller.AbstractMenuHelpButtonHandler;
+import java.io.File;
+import java.util.function.Consumer;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.stage.FileChooser;
 
 /**
  * This class is the MenuBar at the top of the simulation view. It provides options to control the
@@ -46,6 +47,13 @@ public class SimulationMenu extends MenuBar {
     private MenuItem menuItemAbout;
 
     /**
+     * The scenario menu
+     */
+    private Menu menuScenario;
+    private MenuItem menuItemStartScenario;
+    private MenuItem menuItemStopScenario;
+
+    /**
      * Creates and initializes the menu for the simulation view.
      */
     protected SimulationMenu() {
@@ -66,14 +74,20 @@ public class SimulationMenu extends MenuBar {
         menuOther.getItems().add(menuItemHelp);
         menuOther.getItems().add(menuItemAbout);
 
-        this.getMenus().addAll(menuButtonFile, menuButtonView, menuOther);
+        menuScenario = new Menu(trans.getString("simulation.view.menu.scenario"));
+        menuItemStartScenario = new MenuItem(trans.getString("simulation.view.menu.scenario.start"));
+        menuItemStopScenario = new MenuItem(trans.getString("simulation.view.menu.scenario.stop"));
+        menuItemStopScenario.setDisable(true);
+        menuScenario.getItems().addAll(menuItemStartScenario, menuItemStopScenario);
+
+        this.getMenus().addAll(menuButtonFile, menuButtonView, menuScenario, menuOther);
     }
 
     /**
      * Sets the handler for pressing the control entry in the menu
      * @param controlButtonHandler The handler to execute
      */
-    public final void setControlButtonHandler(AbstractMenuControlButtonHandler controlButtonHandler) {
+    public final void setControlButtonHandler(EventHandler<ActionEvent> controlButtonHandler) {
         menuItemControl.setOnAction(controlButtonHandler);
     }
 
@@ -81,7 +95,7 @@ public class SimulationMenu extends MenuBar {
      * Sets the handler for pressing the settings entry in the menu
      * @param settingsButtonHandler The handler to be called when the settings button is pressed
      */
-    public final void setSettingsButtonHandler(AbstractMenuSettingsButtonHandler settingsButtonHandler) {
+    public final void setSettingsButtonHandler(EventHandler<ActionEvent> settingsButtonHandler) {
         menuItemSettings.setOnAction(settingsButtonHandler);
     }
 
@@ -89,7 +103,7 @@ public class SimulationMenu extends MenuBar {
      * Sets the handler for pressing the about entry in the menu
      * @param aboutButtonHandler The handler to be called when the about button is pressed
      */
-    public final void setAboutButtonHandler(AbstractMenuAboutButtonHandler aboutButtonHandler) {
+    public final void setAboutButtonHandler(EventHandler<ActionEvent> aboutButtonHandler) {
         menuItemAbout.setOnAction(aboutButtonHandler);
     }
 
@@ -97,7 +111,44 @@ public class SimulationMenu extends MenuBar {
      * Sets the handler for pressing the help entry in the menu
      * @param helpButtonHandler The handler to be called when the help button is pressed
      */
-    public final void setHelpButtonHandler(AbstractMenuHelpButtonHandler helpButtonHandler) {
+    public final void setHelpButtonHandler(EventHandler<ActionEvent> helpButtonHandler) {
         menuItemHelp.setOnAction(helpButtonHandler);
+    }
+
+    /**
+     * Sets the listener to start a scenario.
+     * @param listener The listener called if the user starts a scenario.
+     *                 The parameter is the path to the scenario file.
+     */
+    public void setScenarioStartListener(Consumer<String> listener) {
+        menuItemStartScenario.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle(Translator.getInstance().getString("simulation.view.scenariofilechooser"));
+                File selectedFile = fileChooser.showOpenDialog(null);
+                if (selectedFile != null) {
+                    menuItemStopScenario.setDisable(false);
+                    menuItemStartScenario.setDisable(true);
+                    listener.accept(selectedFile.getAbsolutePath());
+                }
+            }
+        });
+    }
+
+    /**
+     * Sets the handler called if the scenario gets stopped by the user.
+     * @param listener The handler function.
+     */
+    public void setScenarioStopListener(Runnable listener) {
+        menuItemStopScenario.setOnAction(actionEvent -> listener.run());
+    }
+
+    /**
+     * Called if the scenario is finished (either stopped by the user, finished or if it has an error).
+     */
+    public void setScenarioFinished() {
+        menuItemStartScenario.setDisable(false);
+        menuItemStopScenario.setDisable(true);
     }
 }

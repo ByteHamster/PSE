@@ -38,19 +38,4 @@ public class Point2D {
         return y;
     }
 
-    /**
-     * Sets the value of x.
-     * @param x The x coordinate
-     */
-    public final void setX(double x) {
-        this.x = x;
-    }
-
-    /**
-     * Sets the value of y.
-     * @param y The y coordinate
-     */
-    public final void setY(double y) {
-        this.y = y;
-    }
 }

@@ -17,18 +17,15 @@ public class ScenarioFile {
     private final Scenario scenario;
 
     /**
-     * Constructor of ScenarioFile
-     * @param file The scenario definition file
+     * Constructor of ScenarioFile.
+     * @param file The scenario definition file.
+     * @throws ParserException If the scenario file has syntax errors.
+     * @throws IOException if the file can't be opened for reading.
      */
-    public ScenarioFile(String file) {
-        try {
-            String scenarioDefinition = new String(Files.readAllBytes(Paths.get(file)));
-            parser = new ScenarioParser(scenarioDefinition);
-            scenario = parser.readScenario();
-        } catch (ParserException | IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e.getMessage());
-        }
+    public ScenarioFile(String file) throws ParserException, IOException {
+        String scenarioDefinition = new String(Files.readAllBytes(Paths.get(file)));
+        parser = new ScenarioParser(scenarioDefinition);
+        scenario = parser.readScenario();
     }
 
     /**

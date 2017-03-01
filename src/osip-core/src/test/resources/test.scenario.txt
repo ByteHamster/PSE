@@ -1,7 +1,7 @@
 #############################################
 # Scenario definition that tests the parser #
 #############################################
-
+setRepeat(true); # Repeat scenario in endless loop
 var CELSIUS      = 273.15; # Needed to convert °C to K
 
 var TANK_YELLOW  = 0;

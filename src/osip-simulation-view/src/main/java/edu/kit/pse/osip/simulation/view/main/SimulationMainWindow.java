@@ -5,19 +5,20 @@ import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.utils.language.Translator;
-import edu.kit.pse.osip.simulation.controller.AbstractMenuAboutButtonHandler;
-import edu.kit.pse.osip.simulation.controller.AbstractMenuHelpButtonHandler;
-import edu.kit.pse.osip.simulation.controller.AbstractMenuControlButtonHandler;
-import edu.kit.pse.osip.simulation.controller.AbstractMenuSettingsButtonHandler;
 import edu.kit.pse.osip.simulation.controller.SimulationViewInterface;
+import edu.kit.pse.osip.simulation.view.dialogs.OverflowDialog;
+import java.util.function.Consumer;
 import javafx.animation.AnimationTimer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Screen;
@@ -46,6 +47,7 @@ public class SimulationMainWindow implements SimulationViewInterface {
     private SimulationMenu menu;
     private Collection<Drawer> element;
     private Canvas canvas;
+    private EventHandler<ActionEvent> overflowClosedHandler;
 
     /**
      * Creates a new SimulationMainWindow. It is assumed that there will only ever be two rows of tanks.
@@ -195,24 +197,69 @@ public class SimulationMainWindow implements SimulationViewInterface {
 
     /**
      * The simulation is replaced by the OverflowOverlay.
+     * @param selector The overflowing tank.
      */
-    public final void showOverflow() {
-        throw new RuntimeException("Not implemented!");
+    public void showOverflow(TankSelector selector) {
+        OverflowDialog dialog = new OverflowDialog(selector);
+        EventHandler<ActionEvent> handler = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (overflowClosedHandler != null) {
+                    overflowClosedHandler.handle(actionEvent);
+                }
+            }
+        };
+
+        dialog.setResetButtonHandler(handler);
+        dialog.show();
+    }
+
+    @Override
+    public void setOverflowClosedHandler(EventHandler<ActionEvent> handler) {
+        overflowClosedHandler = handler;
     }
 
     /**
      * Sets the handler for pressing the control entry in the menu
      * @param controlButtonHandler The handler to execute
      */
-    public final void setControlButtonHandler(AbstractMenuControlButtonHandler controlButtonHandler) {
+    public final void setControlButtonHandler(EventHandler<ActionEvent> controlButtonHandler) {
         menu.setControlButtonHandler(controlButtonHandler);
+    }
+
+    @Override
+    public void setScenarioStartListener(Consumer<String> listener) {
+        menu.setScenarioStartListener(listener);
+    }
+
+    @Override
+    public void setScenarioStopListener(Runnable listener) {
+        menu.setScenarioStopListener(listener);
+    }
+
+    @Override
+    public void showScenarioError(String error) {
+        Translator t = Translator.getInstance();
+
+        Alert errorDialog = new Alert(Alert.AlertType.ERROR);
+        errorDialog.setTitle(t.getString("simulation.view.scenario.error.title"));
+        errorDialog.setHeaderText(t.getString("simulation.view.scenario.error.header"));
+        errorDialog.setContentText(error);
+        Stage stage = (Stage) errorDialog.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("/icon.png"));
+        errorDialog.show();
+    }
+
+    @Override
+    public void scenarioFinished() {
+        menu.setScenarioFinished();
     }
 
     /**
      * Sets the handler for pressing the settings entry in the menu
      * @param settingsButtonHandler The handler to be called when the settings button is pressed
      */
-    public final void setSettingsButtonHandler(AbstractMenuSettingsButtonHandler settingsButtonHandler) {
+    public final void setSettingsButtonHandler(EventHandler<ActionEvent> settingsButtonHandler) {
         menu.setSettingsButtonHandler(settingsButtonHandler);
     }
 
@@ -220,7 +267,7 @@ public class SimulationMainWindow implements SimulationViewInterface {
      * Sets the handler for pressing the about entry in the menu
      * @param aboutButtonHandler The handler to be called when the about button is pressed
      */
-    public final void setAboutButtonHandler(AbstractMenuAboutButtonHandler aboutButtonHandler) {
+    public final void setAboutButtonHandler(EventHandler<ActionEvent> aboutButtonHandler) {
         menu.setAboutButtonHandler(aboutButtonHandler);
     }
 
@@ -228,9 +275,10 @@ public class SimulationMainWindow implements SimulationViewInterface {
      * Sets the handler for pressing the help entry in the menu
      * @param helpButtonHandler The handler to be called when the help button is pressed
      */
-    public final void setHelpButtonHandler(AbstractMenuHelpButtonHandler helpButtonHandler) {
+    public final void setHelpButtonHandler(EventHandler<ActionEvent> helpButtonHandler) {
         menu.setHelpButtonHandler(helpButtonHandler);
     }
+
 
     /**
      * This method creates two ChangeListeners that keep track of the window width and height

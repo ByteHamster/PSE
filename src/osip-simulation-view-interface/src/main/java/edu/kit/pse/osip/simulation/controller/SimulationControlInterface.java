@@ -28,4 +28,8 @@ public interface SimulationControlInterface {
      * @param listener The Consumer that gets all to the motorSpeed
      */
     void setMotorListener(Consumer<Integer> listener);
+    /**
+     * Show the control window
+     */
+    void show();
 }
