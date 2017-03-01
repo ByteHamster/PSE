@@ -20,14 +20,10 @@ public class ScenarioFile {
      * Constructor of ScenarioFile
      * @param file The scenario definition file
      */
-    public ScenarioFile(String file) {
-        try {
-            String scenarioDefinition = new String(Files.readAllBytes(Paths.get(file)));
-            parser = new ScenarioParser(scenarioDefinition);
-            scenario = parser.readScenario();
-        } catch (ParserException | IOException e) {
-            throw new RuntimeException(e.getMessage());
-        }
+    public ScenarioFile(String file) throws ParserException, IOException {
+        String scenarioDefinition = new String(Files.readAllBytes(Paths.get(file)));
+        parser = new ScenarioParser(scenarioDefinition);
+        scenario = parser.readScenario();
     }
 
     /**
