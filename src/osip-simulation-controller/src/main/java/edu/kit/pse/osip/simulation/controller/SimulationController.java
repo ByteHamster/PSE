@@ -228,8 +228,10 @@ public class SimulationController extends Application {
      * @param primaryStage The stage to draw the main window on
      */
     public void start(Stage primaryStage) {
+        controlInterface = new SimulationControlWindow(productionSite);
+
         currentSimulationView = new SimulationMainWindow(productionSite);
-        currentSimulationView.start(primaryStage);
+        currentSimulationView.start(primaryStage, controlInterface);
         setupView();
     }
 
@@ -237,7 +239,6 @@ public class SimulationController extends Application {
         Stage help = new HelpDialog();
         Stage about = new AboutDialog();
         settingsInterface = new SimulationSettingsWindow(settingsWrapper);
-        controlInterface = new SimulationControlWindow(productionSite);
 
         currentSimulationView.setOverflowClosedHandler(actionEvent -> productionSite.reset());
         currentSimulationView.setSettingsButtonHandler(actionEvent -> settingsInterface.show());
@@ -280,6 +281,7 @@ public class SimulationController extends Application {
         currentScenario.setProductionSite(productionSite);
         currentScenario.setScenarioFinishedListener(currentSimulationView::scenarioFinished);
         productionSite.reset();
+        controlInterface.setControlsDisabled(true);
         currentScenario.startScenario();
     }
 

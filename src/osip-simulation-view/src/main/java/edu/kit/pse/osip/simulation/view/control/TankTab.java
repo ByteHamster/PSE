@@ -40,6 +40,7 @@ public class TankTab extends AbstractTankTab {
      * slider to control inFlow.
      * @param name The name of the AbstractTankTab
      * @param tank The AbstractTank which is controlled through the AbstractTankTab.
+     * @param site The ProductionSite in which tank resides
      */
     public TankTab(String name, Tank tank, ProductionSite site) {
         super(name, tank);
@@ -143,6 +144,7 @@ public class TankTab extends AbstractTankTab {
      * @param isDisable true if inputs shall be blocked, false if they shall be enabled
      */
     public void setControlsDisabled(boolean isDisable) {
+        super.setControlsDisabled(isDisable);
         if (inFlowSlider != null) {
             inFlowSlider.setDisable(isDisable);
         }
@@ -155,7 +157,6 @@ public class TankTab extends AbstractTankTab {
         if (temperatureValue != null) {
             temperatureValue.setDisable(isDisable);
         }
-        super.setControlsDisabled(isDisable);
     }
 
     /**
@@ -176,15 +177,17 @@ public class TankTab extends AbstractTankTab {
 
     @Override
     public void update(Observable observable, Object o) {
-        super.update(observable, o);
+        if (isControlsDisabled()) {
+            super.update(observable, o);
 
-        Tank tank = (Tank) observable;
+            Tank tank = (Tank) observable;
 
-        inFlowSlider.setValue(tank.getInPipe().getValveThreshold());
-        inFlowValue.setText(String.valueOf(tank.getInPipe().getValveThreshold()));
+            inFlowSlider.setValue(tank.getInPipe().getValveThreshold());
+            inFlowValue.setText(String.valueOf(tank.getInPipe().getValveThreshold()));
 
-        temperatureSlider.setValue(site.getInputTemperature(selector));
-        temperatureValue.setText(String.valueOf(site.getInputTemperature(selector)));
+            temperatureSlider.setValue(site.getInputTemperature(selector));
+            temperatureValue.setText(String.valueOf(site.getInputTemperature(selector)));
+        }
     }
 
 }

@@ -89,13 +89,13 @@ public class MixTankTab extends AbstractTankTab {
      * @param isDisable true if inputs shall be blocked, false if they shall be enabled
      */
     public void setControlsDisabled(boolean isDisable) {
+        super.setControlsDisabled(isDisable);
         if (motorSlider != null) {
             motorSlider.setDisable(isDisable);
         }
         if (motorValue != null) {
             motorValue.setDisable(isDisable);
         }
-        super.setControlsDisabled(isDisable);
     }
 
     /**
@@ -108,11 +108,13 @@ public class MixTankTab extends AbstractTankTab {
 
     @Override
     public void update(Observable observable, Object o) {
-        super.update(observable, o);
+        if (isControlsDisabled()) {
+            super.update(observable, o);
 
-        MixTank tank = (MixTank) observable;
+            MixTank tank = (MixTank) observable;
 
-        motorSlider.setValue(tank.getMotor().getRPM());
-        motorValue.setText(String.valueOf(tank.getMotor().getRPM()));
+            motorSlider.setValue(tank.getMotor().getRPM());
+            motorValue.setText(String.valueOf(tank.getMotor().getRPM()));
+        }
     }
 }

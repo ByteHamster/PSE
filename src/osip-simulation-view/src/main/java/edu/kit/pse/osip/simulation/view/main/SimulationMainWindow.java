@@ -5,7 +5,9 @@ import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.utils.language.Translator;
+import edu.kit.pse.osip.simulation.controller.SimulationControlInterface;
 import edu.kit.pse.osip.simulation.controller.SimulationViewInterface;
+import edu.kit.pse.osip.simulation.view.control.SimulationControlWindow;
 import edu.kit.pse.osip.simulation.view.dialogs.OverflowDialog;
 import java.util.function.Consumer;
 import javafx.animation.AnimationTimer;
@@ -130,7 +132,7 @@ public class SimulationMainWindow implements SimulationViewInterface {
      * The stage that is provided by JavaFx
      * @param primaryStage The stage to draw the window on
      */
-    public final void start(Stage primaryStage) {
+    public final void start(Stage primaryStage, SimulationControlInterface controlWindow) {
         primaryStage.setTitle(Translator.getInstance().getString("simulation.title"));
         primaryStage.getIcons().add(new Image("/icon.png"));
 
@@ -144,17 +146,17 @@ public class SimulationMainWindow implements SimulationViewInterface {
 
         setResizeListeners(primaryStage);
 
-        makeLayout(primaryStage);
+        makeLayout(primaryStage, controlWindow);
 
         primaryStage.show();
     }
 
-    private void makeLayout(Stage primaryStage) {
+    private void makeLayout(Stage primaryStage, SimulationControlInterface controlWindow) {
         BorderPane mainPane = new BorderPane();
 
         mainPane.setStyle("-fx-font-size:" + ViewConstants.FONT_SIZE + "px;");
 
-        menu = new SimulationMenu();
+        menu = new SimulationMenu(controlWindow);
         mainPane.setTop(menu);
 
         canvas = setCanvas(primaryStage);

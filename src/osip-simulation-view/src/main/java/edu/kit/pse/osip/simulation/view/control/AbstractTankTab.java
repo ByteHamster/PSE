@@ -31,6 +31,8 @@ public abstract class AbstractTankTab extends Tab implements Observer {
     private Slider outFlowSlider;
     private TextField outFlowValue;
 
+    private boolean controlsDisabled;
+
     /**
      * Creates a new AbstractTankTab with Sliders to control outFlow and Temperature
      * @param name The name of the AbstractTankTab
@@ -39,6 +41,8 @@ public abstract class AbstractTankTab extends Tab implements Observer {
     public AbstractTankTab(String name, AbstractTank tank) {
         super(name);
         this.setClosable(false);
+
+        controlsDisabled = false;
 
         pane = new GridPane();
         pane.setPrefWidth(ViewConstants.CONTROL_WIDTH);
@@ -102,6 +106,14 @@ public abstract class AbstractTankTab extends Tab implements Observer {
     }
 
     /**
+     * Returns whether or not the control elements are currently disabled.
+     * @return the value of controlsDisabled
+     */
+    protected boolean isControlsDisabled() {
+        return controlsDisabled;
+    }
+
+    /**
      * Gets a reference to the outFlowSlider
      * @return A reference to the outFlowSlider
      */
@@ -117,9 +129,12 @@ public abstract class AbstractTankTab extends Tab implements Observer {
         return pane;
     }
 
+    @Override
     public void update(Observable observable, Object o) {
-        AbstractTank tank = (AbstractTank) observable;
-        outFlowSlider.setValue(tank.getOutPipe().getValveThreshold());
-        outFlowValue.setText(String.valueOf(tank.getOutPipe().getValveThreshold()));
+        if (controlsDisabled) {
+            AbstractTank tank = (AbstractTank) observable;
+            outFlowSlider.setValue(tank.getOutPipe().getValveThreshold());
+            outFlowValue.setText(String.valueOf(tank.getOutPipe().getValveThreshold()));
+        }
     }
 }

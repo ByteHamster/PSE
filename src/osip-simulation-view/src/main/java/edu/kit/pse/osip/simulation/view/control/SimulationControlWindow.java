@@ -70,10 +70,7 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
         return layout;
     }
 
-    /**
-     * Disables or enables all control elements in the SimulationControlWindow to block or allow inputs.
-     * @param isDisable true if inputs shall be blocked, false if they shall be enabled
-     */
+    @Override
     public void setControlsDisabled(boolean isDisable) {
         for (TankSelector t : TankSelector.values()) {
             AbstractTankTab tab = tankTabs.get(t);

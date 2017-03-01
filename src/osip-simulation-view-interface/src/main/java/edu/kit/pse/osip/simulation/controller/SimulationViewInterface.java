@@ -15,7 +15,7 @@ public interface SimulationViewInterface {
      * Draw the simulation view to the stage
      * @param primaryStage The stage that is provided by JavaFx
      */
-    void start(Stage primaryStage);
+    void start(Stage primaryStage, SimulationControlInterface controlWindow);
 
     /**
      * The simulation is replaced by the OverflowOverlay.

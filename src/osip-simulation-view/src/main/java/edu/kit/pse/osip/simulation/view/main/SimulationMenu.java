@@ -3,6 +3,8 @@ package edu.kit.pse.osip.simulation.view.main;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import java.io.File;
 import java.util.function.Consumer;
+
+import edu.kit.pse.osip.simulation.controller.SimulationControlInterface;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
@@ -54,12 +56,16 @@ public class SimulationMenu extends MenuBar {
     private MenuItem menuItemStartScenario;
     private MenuItem menuItemStopScenario;
 
+    private SimulationControlInterface controlWindow;
+
     /**
      * Creates and initializes the menu for the simulation view.
      */
-    protected SimulationMenu() {
+    protected SimulationMenu(SimulationControlInterface controlWindow) {
         this.setStyle("-fx-font-size:" + ViewConstants.FONT_SIZE + "px;");
         Translator trans = Translator.getInstance();
+
+        this.controlWindow = controlWindow;
 
         menuButtonFile = new Menu(trans.getString("simulation.view.menu.file"));
         menuItemSettings = new MenuItem(trans.getString("simulation.view.menu.file.settings"));
@@ -160,5 +166,6 @@ public class SimulationMenu extends MenuBar {
     public void setScenarioFinished() {
         menuItemStartScenario.setDisable(false);
         menuItemStopScenario.setDisable(true);
+        controlWindow.setControlsDisabled(false);
     }
 }
