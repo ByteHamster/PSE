@@ -227,6 +227,14 @@ public class SimulationMainWindow implements SimulationViewInterface {
         menu.setControlButtonHandler(controlButtonHandler);
     }
 
+    /**
+     * Sets the handler for pressing the reset entry in the menu
+     * @param resetButtonHandler The handler to execute
+     */
+    public final void setResetButtonHandler(EventHandler<ActionEvent> resetButtonHandler) {
+        menu.setResetButtonHandler(resetButtonHandler);
+    }
+
     @Override
     public void setScenarioStartListener(Consumer<String> listener) {
         menu.setScenarioStartListener(listener);

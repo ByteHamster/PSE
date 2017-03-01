@@ -108,10 +108,11 @@ public class MixTankTab extends AbstractTankTab {
 
     @Override
     public void update(Observable observable, Object o) {
+        super.update(observable, o);
+
         MixTank tank = (MixTank) observable;
 
         motorSlider.setValue(tank.getMotor().getRPM());
         motorValue.setText(String.valueOf(tank.getMotor().getRPM()));
-        super.update(observable, o);
     }
 }

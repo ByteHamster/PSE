@@ -55,7 +55,7 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
         for (TankSelector tankSelector : TankSelector.valuesWithoutMix()) {
             Tank tank = productionSite.getUpperTank(tankSelector);
             TankTab tab = new TankTab(t.getString(
-                    TankSelector.TRANSLATOR_LABEL_PREFIX + tank.getTankSelector().name()), tank);
+                    TankSelector.TRANSLATOR_LABEL_PREFIX + tank.getTankSelector().name()), tank, productionSite);
             tankTabs.put(tankSelector, tab);
             layout.getTabs().add(tab);
         }

@@ -30,6 +30,7 @@ public class SimulationMenu extends MenuBar {
      */
     private Menu menuButtonFile;
     private MenuItem menuItemSettings;
+    private MenuItem menuItemReset;
 
     /**
      * Menu containing all buttons for help.
@@ -62,7 +63,8 @@ public class SimulationMenu extends MenuBar {
 
         menuButtonFile = new Menu(trans.getString("simulation.view.menu.file"));
         menuItemSettings = new MenuItem(trans.getString("simulation.view.menu.file.settings"));
-        menuButtonFile.getItems().add(menuItemSettings);
+        menuItemReset = new MenuItem(trans.getString("simulation.view.menu.file.reset"));
+        menuButtonFile.getItems().addAll(menuItemSettings, menuItemReset);
 
         menuButtonView = new Menu(trans.getString("simulation.view.menu.view"));
         menuItemControl = new MenuItem(trans.getString("simulation.view.menu.view.control"));
@@ -97,6 +99,14 @@ public class SimulationMenu extends MenuBar {
      */
     public final void setSettingsButtonHandler(EventHandler<ActionEvent> settingsButtonHandler) {
         menuItemSettings.setOnAction(settingsButtonHandler);
+    }
+
+    /**
+     * Sets the handler for pressing the reset entry in the menu
+     * @param resetButtonHandler The handler to execute
+     */
+    public final void setResetButtonHandler(EventHandler<ActionEvent> resetButtonHandler) {
+        menuItemReset.setOnAction(resetButtonHandler);
     }
 
     /**

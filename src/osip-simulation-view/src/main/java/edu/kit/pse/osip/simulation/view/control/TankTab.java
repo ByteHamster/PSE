@@ -2,7 +2,9 @@ package edu.kit.pse.osip.simulation.view.control;
 
 import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.model.base.AbstractTank;
+import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.core.model.base.Tank;
+import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.view.main.ViewConstants;
 import javafx.beans.binding.Bindings;
@@ -30,14 +32,20 @@ public class TankTab extends AbstractTankTab {
     private Slider temperatureSlider;
     private TextField temperatureValue;
 
+    private TankSelector selector;
+    private ProductionSite site;
+
     /**
      * Creates a new TankTab containing the standard controls of the AbstractTankTab as well as a
      * slider to control inFlow.
      * @param name The name of the AbstractTankTab
      * @param tank The AbstractTank which is controlled through the AbstractTankTab.
      */
-    public TankTab(String name, Tank tank) {
+    public TankTab(String name, Tank tank, ProductionSite site) {
         super(name, tank);
+
+        this.selector = tank.getTankSelector();
+        this.site = site;
 
         GridPane pane = getGridPane();
 
@@ -168,14 +176,15 @@ public class TankTab extends AbstractTankTab {
 
     @Override
     public void update(Observable observable, Object o) {
+        super.update(observable, o);
+
         Tank tank = (Tank) observable;
 
         inFlowSlider.setValue(tank.getInPipe().getValveThreshold());
         inFlowValue.setText(String.valueOf(tank.getInPipe().getValveThreshold()));
 
-        temperatureSlider.setValue(tank.getLiquid().getTemperature());
-        temperatureValue.setText(String.valueOf(tank.getLiquid().getTemperature()));
-        super.update(observable, o);
+        temperatureSlider.setValue(site.getInputTemperature(selector));
+        temperatureValue.setText(String.valueOf(site.getInputTemperature(selector)));
     }
 
 }
