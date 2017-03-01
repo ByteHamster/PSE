@@ -110,7 +110,6 @@ public class MixTankTab extends AbstractTankTab {
     public void update(Observable observable, Object o) {
         if (isControlsDisabled()) {
             MixTank tank = (MixTank) observable;
-
             update(tank);
         }
     }

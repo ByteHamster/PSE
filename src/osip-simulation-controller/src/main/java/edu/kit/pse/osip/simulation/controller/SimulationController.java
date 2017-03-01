@@ -240,7 +240,10 @@ public class SimulationController extends Application {
         Stage about = new AboutDialog();
         settingsInterface = new SimulationSettingsWindow(settingsWrapper);
 
-        currentSimulationView.setOverflowClosedHandler(actionEvent -> productionSite.reset());
+        currentSimulationView.setOverflowClosedHandler(actionEvent -> {
+            productionSite.reset();
+            controlInterface.update();
+        });
         currentSimulationView.setSettingsButtonHandler(actionEvent -> settingsInterface.show());
         currentSimulationView.setControlButtonHandler(actionEvent -> controlInterface.show());
         currentSimulationView.setAboutButtonHandler(actionEvent -> about.show());
@@ -255,8 +258,8 @@ public class SimulationController extends Application {
         });
 
         currentSimulationView.setResetListener((event) -> {
-           productionSite.reset();
-           controlInterface.update();
+            productionSite.reset();
+            controlInterface.update();
         });
 
         controlInterface.setValveListener((pipe, number) -> {

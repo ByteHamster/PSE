@@ -60,6 +60,7 @@ public class SimulationMenu extends MenuBar {
 
     /**
      * Creates and initializes the menu for the simulation view.
+     * @param controlWindow The window containing the controls
      */
     protected SimulationMenu(SimulationControlInterface controlWindow) {
         this.setStyle("-fx-font-size:" + ViewConstants.FONT_SIZE + "px;");
@@ -79,8 +80,7 @@ public class SimulationMenu extends MenuBar {
         menuOther = new Menu(trans.getString("simulation.view.menu.other"));
         menuItemHelp = new MenuItem(trans.getString("simulation.view.menu.other.help"));
         menuItemAbout = new MenuItem(trans.getString("simulation.view.menu.other.about"));
-        menuOther.getItems().add(menuItemHelp);
-        menuOther.getItems().add(menuItemAbout);
+        menuOther.getItems().addAll(menuItemHelp, menuItemAbout);
 
         menuScenario = new Menu(trans.getString("simulation.view.menu.scenario"));
         menuItemStartScenario = new MenuItem(trans.getString("simulation.view.menu.scenario.start"));

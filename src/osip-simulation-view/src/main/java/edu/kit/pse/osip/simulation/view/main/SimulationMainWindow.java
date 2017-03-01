@@ -130,6 +130,7 @@ public class SimulationMainWindow implements SimulationViewInterface {
     /**
      * The stage that is provided by JavaFx
      * @param primaryStage The stage to draw the window on
+     * @param controlWindow The window containing the controls
      */
     public final void start(Stage primaryStage, SimulationControlInterface controlWindow) {
         primaryStage.setTitle(Translator.getInstance().getString("simulation.title"));

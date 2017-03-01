@@ -12,8 +12,6 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
-
-import java.util.Observable;
 import java.util.Observer;
 
 /**
@@ -97,6 +95,7 @@ public abstract class AbstractTankTab extends Tab implements Observer {
      * @param isDisable true if inputs shall be blocked, false if they shall be enabled
      */
     protected void setControlsDisabled(boolean isDisable) {
+        controlsDisabled = isDisable;
         if (outFlowSlider != null) {
             outFlowSlider.setDisable(isDisable);
         }

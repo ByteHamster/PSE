@@ -14,6 +14,7 @@ public interface SimulationViewInterface {
     /**
      * Draw the simulation view to the stage
      * @param primaryStage The stage that is provided by JavaFx
+     * @param controlWindow The window containing the controls
      */
     void start(Stage primaryStage, SimulationControlInterface controlWindow);
 
