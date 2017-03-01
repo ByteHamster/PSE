@@ -279,6 +279,7 @@ public class SimulationController extends Application {
         }
         currentScenario.setProductionSite(productionSite);
         currentScenario.setScenarioFinishedListener(currentSimulationView::scenarioFinished);
+        productionSite.reset();
         currentScenario.startScenario();
     }
 
