@@ -276,8 +276,9 @@ public class SimulationController extends Application {
             ScenarioFile scenarioFile = new ScenarioFile(file);
             currentScenario = scenarioFile.getScenario();
         } catch (RuntimeException ex) {
-            currentSimulationView.showScenarioError(
-                Translator.getInstance().getString("controller.scenario.error") + ": " + ex.getMessage());
+            currentSimulationView.showScenarioError(ex.getMessage());
+            currentSimulationView.scenarioFinished();
+            return;
         }
         currentScenario.setProductionSite(productionSite);
         currentScenario.setScenarioFinishedListener(currentSimulationView::scenarioFinished);
