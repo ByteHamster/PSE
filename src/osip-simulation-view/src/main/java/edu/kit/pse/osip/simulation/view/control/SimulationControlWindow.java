@@ -80,14 +80,17 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
             Pipe inPipe = productionSite.getUpperTank(t).getInPipe();
             TankTab tab = (TankTab) tankTabs.get(t);
             tab.getInFlowSlider().valueProperty().addListener((ov, oldVal, newVal) ->
-                listener.accept(inPipe, (byte) newVal));
+                listener.accept(inPipe, newVal.byteValue()));
         }
 
         // Outflow listeners for all tanks
-        for (TankSelector t : TankSelector.values()) {
-            Pipe inPipe = productionSite.getUpperTank(t).getInPipe();
+        Pipe mixInPipe = productionSite.getMixTank().getOutPipe();
+        tankTabs.get(TankSelector.MIX).getOutFlowSlider().valueProperty().addListener((ov, oldVal, newVal) ->
+                listener.accept(mixInPipe, newVal.byteValue()));
+        for (TankSelector t : TankSelector.valuesWithoutMix()) {
+            Pipe inPipe = productionSite.getUpperTank(t).getOutPipe();
             tankTabs.get(t).getOutFlowSlider().valueProperty().addListener((ov, oldVal, newVal) ->
-                listener.accept(inPipe, (byte) newVal));
+                listener.accept(inPipe, newVal.byteValue()));
         }
     }
 
@@ -99,7 +102,7 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
         for (TankSelector t : TankSelector.valuesWithoutMix()) {
             TankTab tab = (TankTab) tankTabs.get(t);
             tab.getTemperatureSlider().valueProperty().addListener((ov, oldVal, newVal) ->
-                listener.accept(t, (float) newVal + SimulationConstants.CELCIUS_OFFSET));
+                listener.accept(t, newVal.floatValue() + SimulationConstants.CELCIUS_OFFSET));
         }
     }
 
@@ -110,6 +113,6 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
     public void setMotorListener(Consumer<Integer> listener) {
         MixTankTab tab = (MixTankTab) tankTabs.get(TankSelector.MIX);
         tab.getMotorSlider().valueProperty().addListener((ov, oldVal, newVal) ->
-            listener.accept((int) newVal));
+            listener.accept(newVal.intValue()));
     }
 }

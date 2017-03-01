@@ -1,5 +1,6 @@
 package edu.kit.pse.osip.monitoring.view.settings;
 
+import edu.kit.pse.osip.core.OSIPConstants;
 import edu.kit.pse.osip.core.io.files.ClientSettingsWrapper;
 import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.utils.language.Translator;
@@ -106,7 +107,7 @@ class GeneralSettings extends ScrollPane {
         layout.add(serverHostname, 1, 2);
         
         Spinner<Integer> currentField;
-        int defaultPort = 12868;
+        int defaultPort = OSIPConstants.DEFAULT_PORT_MIX;
         int row = 3;
         for (TankSelector tank : TankSelector.values()) {
             generalLabel = new Label(String.format(

@@ -26,11 +26,11 @@ public class Liquid {
         if (amount < 0) {
             throw new IllegalArgumentException("The amount of a liquid needs to be >= 0");
         }
-        if (temperature < SimulationConstants.MIN_TEMPERATURE) {
+        if (temperature + 0.0001 < SimulationConstants.MIN_TEMPERATURE) {
             throw new IllegalArgumentException("The temperature of a liquid in Kelvin needs to be >= "
                 + SimulationConstants.MIN_TEMPERATURE);
         }
-        if (temperature > SimulationConstants.MAX_TEMPERATURE) {
+        if (temperature - 0.0001 > SimulationConstants.MAX_TEMPERATURE) {
             throw new IllegalArgumentException("The temperature of a liquid in Kelvin needs to be <= "
                 + SimulationConstants.MAX_TEMPERATURE);
         }

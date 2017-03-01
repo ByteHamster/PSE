@@ -41,8 +41,8 @@ public class TankSelectorTest {
     public void testGEnoughTanks() {
         /* TankSelector.MIX exists */
         TankSelector testSelector = TankSelector.MIX;
-        assertTrue(TankSelector.valuesWithoutMix().length >= 1);
-        assertTrue(TankSelector.values().length >= 2);
+        assertTrue(TankSelector.valuesWithoutMix().length >= 2);
+        assertTrue(TankSelector.values().length >= 3);
     }
 
     /**
