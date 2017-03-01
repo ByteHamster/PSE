@@ -122,11 +122,13 @@ public class ScenarioTest {
      * Check whether canceling the scenario during a pause works fine.
      */
     @Test
-    public void testStop() {
+    public void testStop() throws InterruptedException, ExecutionException {
+        CompletableFuture<Boolean> finished = new CompletableFuture<>();
         scenario.appendRunnable(productionSite -> counter.incrementAndGet());
         scenario.addPause(300);
         scenario.appendRunnable(productionSite -> counter.incrementAndGet());
         scenario.setProductionSite(fakeSite);
+        scenario.setScenarioFinishedListener(() -> finished.complete(true));
         scenario.startScenario();
         try {
             sleep(100);
@@ -144,5 +146,32 @@ public class ScenarioTest {
         }
         assertEquals(1, counter.get());
         assertFalse(scenario.isRunning());
+        assertTrue(finished.get());
+    }
+
+    /**
+     * Check setRepeat works fine
+     */
+    @Test
+    public void testSetRepeat() {
+        AtomicInteger counter = new AtomicInteger();
+
+        scenario.appendRunnable(productionSite -> counter.incrementAndGet());
+        scenario.setProductionSite(fakeSite);
+        scenario.setRepeat(true);
+        scenario.startScenario();
+
+        try {
+            sleep(1000);
+            int state1 = counter.get();
+            sleep(1000);
+            assertTrue(counter.get() > state1);
+        } catch (InterruptedException ex) {
+            fail("Thread.sleep failed: " + ex.getMessage());
+        }
+
+        /* Scenario should still be running */
+        assertTrue(scenario.isRunning());
+        scenario.cancelScenario();
     }
 }
