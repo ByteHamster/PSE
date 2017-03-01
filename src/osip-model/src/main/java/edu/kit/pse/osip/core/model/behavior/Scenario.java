@@ -21,6 +21,7 @@ public class Scenario extends java.util.Observable implements Runnable {
     private Thread thread;
     private ProductionSite productionSite;
     private boolean stop = false;
+    private Runnable finishedListener;
 
     @Override
     public void run() {
@@ -34,6 +35,9 @@ public class Scenario extends java.util.Observable implements Runnable {
             if (stop) {
                 return;
             }
+        }
+        if (finishedListener != null) {
+            finishedListener.run();
         }
     }
 
@@ -79,6 +83,9 @@ public class Scenario extends java.util.Observable implements Runnable {
         if (null == thread) {
             throw new IllegalStateException("Scenario has not been started yet");
         }
+        if (finishedListener != null) {
+            finishedListener.run();
+        }
     }
 
     /**
@@ -96,5 +103,9 @@ public class Scenario extends java.util.Observable implements Runnable {
      */
     public void setProductionSite(ProductionSite productionSite) {
         this.productionSite = productionSite;
+    }
+
+    public void setScenarioFinishedListener(Runnable listener) {
+        finishedListener = listener;
     }
 }
