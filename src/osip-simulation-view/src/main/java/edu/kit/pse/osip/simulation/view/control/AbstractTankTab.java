@@ -1,7 +1,6 @@
 package edu.kit.pse.osip.simulation.view.control;
 
 import edu.kit.pse.osip.core.model.base.AbstractTank;
-import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.view.main.ViewConstants;
 import javafx.beans.binding.Bindings;

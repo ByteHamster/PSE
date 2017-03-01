@@ -2,7 +2,6 @@ package edu.kit.pse.osip.simulation.view.control;
 
 import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.model.base.AbstractTank;
-import edu.kit.pse.osip.core.model.base.MixTank;
 import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.view.main.ViewConstants;
@@ -14,8 +13,6 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
-import javafx.util.StringConverter;
-import javafx.util.converter.NumberStringConverter;
 
 import java.util.Observable;
 
@@ -85,7 +82,6 @@ public class TankTab extends AbstractTankTab {
 
         StringProperty sp = inFlowValue.textProperty();
         DoubleProperty dp = inFlowSlider.valueProperty();
-        StringConverter<Number> converter = new NumberStringConverter();
         Bindings.bindBidirectional(sp, dp, new ConfinedStringConverter(0d, 100d, sp));
         row++;
     }
@@ -129,7 +125,6 @@ public class TankTab extends AbstractTankTab {
 
         StringProperty sp = temperatureValue.textProperty();
         DoubleProperty dp = temperatureSlider.valueProperty();
-        StringConverter<Number> converter = new NumberStringConverter();
         Bindings.bindBidirectional(sp, dp, new ConfinedStringConverter((double) min,
             (double) SimulationConstants.MAX_TEMPERATURE - SimulationConstants.CELCIUS_OFFSET, sp));
         row++;

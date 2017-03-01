@@ -12,8 +12,6 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
-import javafx.util.StringConverter;
-import javafx.util.converter.NumberStringConverter;
 
 import java.util.Observable;
 
@@ -81,7 +79,6 @@ public class MixTankTab extends AbstractTankTab {
 
         StringProperty sp = motorValue.textProperty();
         DoubleProperty dp = motorSlider.valueProperty();
-        StringConverter<Number> converter = new NumberStringConverter();
         Bindings.bindBidirectional(sp, dp,
             new ConfinedStringConverter(0d, (double) SimulationConstants.MAX_MOTOR_SPEED, sp));
         row++;
