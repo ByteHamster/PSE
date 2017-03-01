@@ -1,10 +1,14 @@
 package edu.kit.pse.osip.monitoring.view.dashboard;
 
+import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.model.behavior.TankAlarm;
+import edu.kit.pse.osip.core.utils.language.Translator;
 import java.util.Observable;
 import java.util.Observer;
 import javafx.scene.paint.Color;
 import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
@@ -13,7 +17,7 @@ import javafx.scene.shape.Circle;
  * Visualizes an alarm with a name and the current state.
  * 
  * @author Martin Armbruster
- * @version 1.5
+ * @version 1.6
  */
 class AlarmVisualization extends Observable implements Observer {
     /**
@@ -117,7 +121,17 @@ class AlarmVisualization extends Observable implements Observer {
             return;
         }
         if (actualAlarm.isAlarmTriggered()) {
-            Platform.runLater(() -> alarmState.setFill(MonitoringViewConstants.ALARM_TRIGGERED));
+            Platform.runLater(() -> {
+                alarmState.setFill(MonitoringViewConstants.ALARM_TRIGGERED);
+                alarmState.setFill(MonitoringViewConstants.ALARM_TRIGGERED);
+                Alert user = new Alert(AlertType.INFORMATION);
+                user.setTitle(Translator.getInstance().getString("monitoring.alarmDialog.header"));
+                user.setHeaderText(Translator.getInstance().getString("monitoring.alarmDialog.header"));
+                user.setContentText(String.format(Translator.getInstance().getString("monitoring.alarmDialog.content"),
+                        getAlarmName(), Translator.getInstance().getString(TankSelector.TRANSLATOR_LABEL_PREFIX
+                                + actualAlarm.getTank().getTankSelector().name()).toLowerCase()));
+                user.show();
+            });
         } else {
             Platform.runLater(() -> alarmState.setFill(MonitoringViewConstants.ALARM_ENABLED));
         }
