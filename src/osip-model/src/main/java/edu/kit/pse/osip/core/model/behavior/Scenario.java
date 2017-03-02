@@ -28,6 +28,7 @@ public class Scenario extends java.util.Observable implements Runnable {
     public void run() {
         assert (null != productionSite);
         do {
+            productionSite.reset();
             for (ThrowingConsumer<ProductionSite> c : commands) {
                 try {
                     c.accept(productionSite);
