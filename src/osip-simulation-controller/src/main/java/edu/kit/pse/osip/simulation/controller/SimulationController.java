@@ -260,6 +260,8 @@ public class SimulationController extends Application {
         });
 
         currentSimulationView.setResetListener((event) -> {
+            currentScenario.cancelScenario();
+            currentSimulationView.scenarioFinished();
             productionSite.reset();
             controlInterface.update();
         });
