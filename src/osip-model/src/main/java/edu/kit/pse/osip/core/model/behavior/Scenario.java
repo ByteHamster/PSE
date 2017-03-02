@@ -28,6 +28,7 @@ public class Scenario extends java.util.Observable implements Runnable {
     public void run() {
         assert (null != productionSite);
         do {
+            productionSite.reset();
             for (ThrowingConsumer<ProductionSite> c : commands) {
                 try {
                     c.accept(productionSite);
@@ -74,6 +75,7 @@ public class Scenario extends java.util.Observable implements Runnable {
             throw new IllegalStateException("Before running a scenario, the production site needs to be set");
         }
         thread = new Thread(this);
+        thread.setDaemon(true);
         stop = false;
         thread.start();
     }

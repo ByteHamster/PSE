@@ -14,6 +14,15 @@ import java.util.function.Consumer;
 public interface SimulationControlInterface {
 
     /**
+     * Disables or enables all control elements in the SimulationControlWindow to block or allow inputs.
+     * @param isDisable true if inputs shall be blocked, false if they shall be enabled
+     */
+    void setControlsDisabled(boolean isDisable);
+    /**
+     * Updates all control elements to use the values of the productionSite
+     */
+    void update();
+    /**
      * Sets the listener that is notified of changes to valve thresholds.
      * @param listener The Consumer that gets all changes to valve thresholds.
      */

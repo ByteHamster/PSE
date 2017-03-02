@@ -12,6 +12,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import java.util.Observer;
 
 /**
  * This class contains the controls for a single tank in the simulation.
@@ -19,13 +20,16 @@ import javafx.scene.layout.Priority;
  * @version 1.0
  * @author Niko Wilhelm
  */
-public abstract class AbstractTankTab extends Tab {
+public abstract class AbstractTankTab extends Tab implements Observer {
 
     protected int row;
 
     private GridPane pane;
 
     private Slider outFlowSlider;
+    private TextField outFlowValue;
+
+    private boolean controlsDisabled;
 
     /**
      * Creates a new AbstractTankTab with Sliders to control outFlow and Temperature
@@ -36,10 +40,13 @@ public abstract class AbstractTankTab extends Tab {
         super(name);
         this.setClosable(false);
 
+        controlsDisabled = false;
+
         pane = new GridPane();
         pane.setPrefWidth(ViewConstants.CONTROL_WIDTH);
         row = 0;
 
+        tank.addObserver(this);
         createOutFlowSlider(pane, tank);
     }
 
@@ -68,7 +75,7 @@ public abstract class AbstractTankTab extends Tab {
         GridPane.setMargin(outFlowSlider, ViewConstants.CONTROL_PADDING);
 
         //TextField and Label to show the current value and unit
-        TextField outFlowValue = new TextField("" + tank.getOutPipe().getValveThreshold());
+        outFlowValue = new TextField("" + tank.getOutPipe().getValveThreshold());
         outFlowValue.setMaxWidth(ViewConstants.CONTROL_INPUT_WIDTH);
         pane.add(outFlowValue, col++, row);
         GridPane.setMargin(outFlowValue, ViewConstants.CONTROL_PADDING);
@@ -81,6 +88,28 @@ public abstract class AbstractTankTab extends Tab {
         Bindings.bindBidirectional(sp, dp, new ConfinedStringConverter(0d, 100d, sp));
 
         row++;
+    }
+
+    /**
+     * Disables or enables all control elements in the AbstractTankTab to block or allow inputs.
+     * @param isDisable true if inputs shall be blocked, false if they shall be enabled
+     */
+    protected void setControlsDisabled(boolean isDisable) {
+        controlsDisabled = isDisable;
+        if (outFlowSlider != null) {
+            outFlowSlider.setDisable(isDisable);
+        }
+        if (outFlowValue != null) {
+            outFlowValue.setDisable(isDisable);
+        }
+    }
+
+    /**
+     * Returns whether or not the control elements are currently disabled.
+     * @return the value of controlsDisabled
+     */
+    protected boolean isControlsDisabled() {
+        return controlsDisabled;
     }
 
     /**
@@ -97,5 +126,14 @@ public abstract class AbstractTankTab extends Tab {
      */
     protected GridPane getGridPane() {
         return pane;
+    }
+
+    /**
+     * Updates the AbstractTankTab to show the values from the productionSite
+     * @param tank The tank whose values are taken
+     */
+    public void update(AbstractTank tank) {
+        outFlowSlider.setValue(tank.getOutPipe().getValveThreshold());
+        outFlowValue.setText(String.valueOf(tank.getOutPipe().getValveThreshold()));
     }
 }

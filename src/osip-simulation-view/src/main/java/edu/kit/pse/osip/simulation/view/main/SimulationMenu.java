@@ -3,6 +3,8 @@ package edu.kit.pse.osip.simulation.view.main;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import java.io.File;
 import java.util.function.Consumer;
+
+import edu.kit.pse.osip.simulation.controller.SimulationControlInterface;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
@@ -30,6 +32,7 @@ public class SimulationMenu extends MenuBar {
      */
     private Menu menuButtonFile;
     private MenuItem menuItemSettings;
+    private MenuItem menuItemReset;
 
     /**
      * Menu containing all buttons for help.
@@ -53,16 +56,22 @@ public class SimulationMenu extends MenuBar {
     private MenuItem menuItemStartScenario;
     private MenuItem menuItemStopScenario;
 
+    private SimulationControlInterface controlWindow;
+
     /**
      * Creates and initializes the menu for the simulation view.
+     * @param controlWindow The window containing the controls
      */
-    protected SimulationMenu() {
+    protected SimulationMenu(SimulationControlInterface controlWindow) {
         this.setStyle("-fx-font-size:" + ViewConstants.FONT_SIZE + "px;");
         Translator trans = Translator.getInstance();
 
+        this.controlWindow = controlWindow;
+
         menuButtonFile = new Menu(trans.getString("simulation.view.menu.file"));
         menuItemSettings = new MenuItem(trans.getString("simulation.view.menu.file.settings"));
-        menuButtonFile.getItems().add(menuItemSettings);
+        menuItemReset = new MenuItem(trans.getString("simulation.view.menu.file.reset"));
+        menuButtonFile.getItems().addAll(menuItemSettings, menuItemReset);
 
         menuButtonView = new Menu(trans.getString("simulation.view.menu.view"));
         menuItemControl = new MenuItem(trans.getString("simulation.view.menu.view.control"));
@@ -71,8 +80,7 @@ public class SimulationMenu extends MenuBar {
         menuOther = new Menu(trans.getString("simulation.view.menu.other"));
         menuItemHelp = new MenuItem(trans.getString("simulation.view.menu.other.help"));
         menuItemAbout = new MenuItem(trans.getString("simulation.view.menu.other.about"));
-        menuOther.getItems().add(menuItemHelp);
-        menuOther.getItems().add(menuItemAbout);
+        menuOther.getItems().addAll(menuItemHelp, menuItemAbout);
 
         menuScenario = new Menu(trans.getString("simulation.view.menu.scenario"));
         menuItemStartScenario = new MenuItem(trans.getString("simulation.view.menu.scenario.start"));
@@ -97,6 +105,14 @@ public class SimulationMenu extends MenuBar {
      */
     public final void setSettingsButtonHandler(EventHandler<ActionEvent> settingsButtonHandler) {
         menuItemSettings.setOnAction(settingsButtonHandler);
+    }
+
+    /**
+     * Sets the handler for pressing the reset entry in the menu
+     * @param resetButtonHandler The handler to execute
+     */
+    public final void setResetButtonHandler(EventHandler<ActionEvent> resetButtonHandler) {
+        menuItemReset.setOnAction(resetButtonHandler);
     }
 
     /**
@@ -150,5 +166,6 @@ public class SimulationMenu extends MenuBar {
     public void setScenarioFinished() {
         menuItemStartScenario.setDisable(false);
         menuItemStopScenario.setDisable(true);
+        controlWindow.setControlsDisabled(false);
     }
 }

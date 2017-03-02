@@ -14,8 +14,9 @@ public interface SimulationViewInterface {
     /**
      * Draw the simulation view to the stage
      * @param primaryStage The stage that is provided by JavaFx
+     * @param controlWindow The window containing the controls
      */
-    void start(Stage primaryStage);
+    void start(Stage primaryStage, SimulationControlInterface controlWindow);
 
     /**
      * The simulation is replaced by the OverflowOverlay.
@@ -59,6 +60,12 @@ public interface SimulationViewInterface {
      *                 The parameter is the path tot he scenario file.
      */
     void setScenarioStartListener(Consumer<String> listener);
+
+    /**
+     * Sets the listener to reset the simulation
+     * @param listener The listener to be executed
+     */
+    void setResetListener(EventHandler<ActionEvent> listener);
 
     /**
      * Sets the handler called if the scenario gets stopped by the user.

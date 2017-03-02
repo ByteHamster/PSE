@@ -41,7 +41,7 @@ public class MotorDrawer extends RotatingControlDrawer {
         setSpeed(motor.getRPM());
 
         // Convert the minutes to degrees to be turned in total
-        double degrees = time * getSpeed() * 360;
+        double degrees = time * (getSpeed() * ViewConstants.MOTOR_SPEED_FACTOR) * 360;
 
         Canvas canvas = context.getCanvas();
         double totalWidth = canvas.getWidth();
