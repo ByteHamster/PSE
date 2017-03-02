@@ -46,12 +46,21 @@ class LoggingConsole extends ScrollPane implements Observer {
     }
     
     /**
-     * Logs an event.
+     * Logs an event with a time stamp.
      * 
      * @param message The logging message for the occurred event.
      */
-    public void log(String message) {
+    protected void log(String message) {
         flow.getChildren().add(prepareText(message));
+    }
+    
+    /**
+     * Logs an event without a time stamp.
+     * 
+     * @param message the logging message for the occurred event.
+     */
+    protected void logWithoutTime(String message) {
+        flow.getChildren().add(new Text(message));
     }
     
     /**
