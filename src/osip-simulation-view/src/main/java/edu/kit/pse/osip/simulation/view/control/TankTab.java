@@ -2,7 +2,9 @@ package edu.kit.pse.osip.simulation.view.control;
 
 import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.model.base.AbstractTank;
+import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.core.model.base.Tank;
+import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.view.main.ViewConstants;
 import javafx.beans.binding.Bindings;
@@ -13,8 +15,8 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
-import javafx.util.StringConverter;
-import javafx.util.converter.NumberStringConverter;
+
+import java.util.Observable;
 
 /**
  * This class has controls specific to the input tanks.
@@ -25,17 +27,26 @@ import javafx.util.converter.NumberStringConverter;
 public class TankTab extends AbstractTankTab {
 
     private Slider inFlowSlider;
+    private TextField inFlowValue;
 
     private Slider temperatureSlider;
+    private TextField temperatureValue;
+
+    private TankSelector selector;
+    private ProductionSite site;
 
     /**
      * Creates a new TankTab containing the standard controls of the AbstractTankTab as well as a
      * slider to control inFlow.
      * @param name The name of the AbstractTankTab
      * @param tank The AbstractTank which is controlled through the AbstractTankTab.
+     * @param site The ProductionSite in which tank resides
      */
-    public TankTab(String name, Tank tank) {
+    public TankTab(String name, Tank tank, ProductionSite site) {
         super(name, tank);
+
+        this.selector = tank.getTankSelector();
+        this.site = site;
 
         GridPane pane = getGridPane();
 
@@ -70,7 +81,7 @@ public class TankTab extends AbstractTankTab {
         GridPane.setMargin(inFlowSlider, ViewConstants.CONTROL_PADDING);
 
         //TextField and label to show the current value and unit
-        TextField inFlowValue = new TextField("" + tank.getOutPipe().getValveThreshold());
+        inFlowValue = new TextField("" + tank.getOutPipe().getValveThreshold());
         inFlowValue.setMaxWidth(ViewConstants.CONTROL_INPUT_WIDTH);
         pane.add(inFlowValue, col++, row);
         GridPane.setMargin(inFlowValue, ViewConstants.CONTROL_PADDING);
@@ -80,7 +91,6 @@ public class TankTab extends AbstractTankTab {
 
         StringProperty sp = inFlowValue.textProperty();
         DoubleProperty dp = inFlowSlider.valueProperty();
-        StringConverter<Number> converter = new NumberStringConverter();
         Bindings.bindBidirectional(sp, dp, new ConfinedStringConverter(0d, 100d, sp));
         row++;
     }
@@ -114,7 +124,7 @@ public class TankTab extends AbstractTankTab {
         GridPane.setMargin(temperatureSlider, ViewConstants.CONTROL_PADDING);
 
         //Labels to show the current value and unit
-        TextField temperatureValue = new TextField("" + tank.getLiquid().getTemperature());
+        temperatureValue = new TextField("" + tank.getLiquid().getTemperature());
         temperatureValue.setMaxWidth(ViewConstants.CONTROL_INPUT_WIDTH);
         pane.add(temperatureValue, col++, row);
         GridPane.setMargin(temperatureValue, ViewConstants.CONTROL_PADDING);
@@ -124,10 +134,29 @@ public class TankTab extends AbstractTankTab {
 
         StringProperty sp = temperatureValue.textProperty();
         DoubleProperty dp = temperatureSlider.valueProperty();
-        StringConverter<Number> converter = new NumberStringConverter();
         Bindings.bindBidirectional(sp, dp, new ConfinedStringConverter((double) min,
             (double) SimulationConstants.MAX_TEMPERATURE - SimulationConstants.CELCIUS_OFFSET, sp));
         row++;
+    }
+
+    /**
+     * Disables or enables all control elements in the TankTab to block or allow inputs.
+     * @param isDisable true if inputs shall be blocked, false if they shall be enabled
+     */
+    public void setControlsDisabled(boolean isDisable) {
+        super.setControlsDisabled(isDisable);
+        if (inFlowSlider != null) {
+            inFlowSlider.setDisable(isDisable);
+        }
+        if (inFlowValue != null) {
+            inFlowValue.setDisable(isDisable);
+        }
+        if (temperatureSlider != null) {
+            temperatureSlider.setDisable(isDisable);
+        }
+        if (temperatureValue != null) {
+            temperatureValue.setDisable(isDisable);
+        }
     }
 
     /**
@@ -144,6 +173,30 @@ public class TankTab extends AbstractTankTab {
      */
     protected Slider getTemperatureSlider() {
         return temperatureSlider;
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+        if (isControlsDisabled()) {
+
+            Tank tank = (Tank) observable;
+            update(tank);
+        }
+    }
+
+    /**
+     * Updates the TankTab to show the values from the productionSite
+     * @param tank The tank whose values are taken
+     */
+    public void update(Tank tank) {
+        super.update(tank);
+
+        inFlowSlider.setValue(tank.getInPipe().getValveThreshold());
+        inFlowValue.setText(String.valueOf(tank.getInPipe().getValveThreshold()));
+
+        temperatureSlider.setValue(site.getInputTemperature(selector) - SimulationConstants.CELCIUS_OFFSET);
+        temperatureValue.setText(String.valueOf(
+                site.getInputTemperature(selector) - SimulationConstants.CELCIUS_OFFSET));
     }
 
 }

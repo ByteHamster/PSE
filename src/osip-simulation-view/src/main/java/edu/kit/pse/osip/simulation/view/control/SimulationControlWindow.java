@@ -55,7 +55,7 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
         for (TankSelector tankSelector : TankSelector.valuesWithoutMix()) {
             Tank tank = productionSite.getUpperTank(tankSelector);
             TankTab tab = new TankTab(t.getString(
-                    TankSelector.TRANSLATOR_LABEL_PREFIX + tank.getTankSelector().name()), tank);
+                    TankSelector.TRANSLATOR_LABEL_PREFIX + tank.getTankSelector().name()), tank, productionSite);
             tankTabs.put(tankSelector, tab);
             layout.getTabs().add(tab);
         }
@@ -68,6 +68,25 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
         layout.getTabs().add(mtTab);
 
         return layout;
+    }
+
+    @Override
+    public void setControlsDisabled(boolean isDisable) {
+        for (TankSelector t : TankSelector.values()) {
+            AbstractTankTab tab = tankTabs.get(t);
+            tab.setControlsDisabled(isDisable);
+        }
+    }
+
+    @Override
+    public void update() {
+        for (TankSelector t : TankSelector.valuesWithoutMix()) {
+            TankTab tab = (TankTab) tankTabs.get(t);
+            tab.update(productionSite.getUpperTank(t));
+        }
+
+        MixTankTab mixTab = (MixTankTab) tankTabs.get(TankSelector.MIX);
+        mixTab.update(productionSite.getMixTank());
     }
 
     /**

@@ -12,8 +12,8 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
-import javafx.util.StringConverter;
-import javafx.util.converter.NumberStringConverter;
+
+import java.util.Observable;
 
 /**
  * This class has controls specific to the tanks in which several inputs are mixed.
@@ -24,6 +24,7 @@ import javafx.util.converter.NumberStringConverter;
 public class MixTankTab extends AbstractTankTab {
 
     private Slider motorSlider;
+    private TextField motorValue;
 
     /**
      * Creates a new TankTab containg the standard controls of the AbstractTankTab as well as a
@@ -67,7 +68,7 @@ public class MixTankTab extends AbstractTankTab {
         GridPane.setMargin(motorSlider, ViewConstants.CONTROL_PADDING);
 
         //TextField and Label to show the current value and unit
-        TextField motorValue = new TextField("" + tank.getMotor().getRPM());
+        motorValue = new TextField("" + tank.getMotor().getRPM());
         motorValue.setMaxWidth(ViewConstants.CONTROL_INPUT_WIDTH);
         pane.add(motorValue, col++, row);
         GridPane.setMargin(motorValue, ViewConstants.CONTROL_PADDING);
@@ -78,10 +79,23 @@ public class MixTankTab extends AbstractTankTab {
 
         StringProperty sp = motorValue.textProperty();
         DoubleProperty dp = motorSlider.valueProperty();
-        StringConverter<Number> converter = new NumberStringConverter();
         Bindings.bindBidirectional(sp, dp,
             new ConfinedStringConverter(0d, (double) SimulationConstants.MAX_MOTOR_SPEED, sp));
         row++;
+    }
+
+    /**
+     * Disables or enables all control elements in the MixTankTab to block or allow inputs.
+     * @param isDisable true if inputs shall be blocked, false if they shall be enabled
+     */
+    public void setControlsDisabled(boolean isDisable) {
+        super.setControlsDisabled(isDisable);
+        if (motorSlider != null) {
+            motorSlider.setDisable(isDisable);
+        }
+        if (motorValue != null) {
+            motorValue.setDisable(isDisable);
+        }
     }
 
     /**
@@ -90,5 +104,24 @@ public class MixTankTab extends AbstractTankTab {
      */
     protected Slider getMotorSlider() {
         return motorSlider;
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+        if (isControlsDisabled()) {
+            MixTank tank = (MixTank) observable;
+            update(tank);
+        }
+    }
+
+    /**
+     * Updates the MixTankTab to show the values from the productionSite
+     * @param tank The tank whose values are taken
+     */
+    public void update(MixTank tank) {
+        super.update(tank);
+
+        motorSlider.setValue(tank.getMotor().getRPM());
+        motorValue.setText(String.valueOf(tank.getMotor().getRPM()));
     }
 }

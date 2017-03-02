@@ -1,5 +1,6 @@
 package edu.kit.pse.osip.simulation.view.main;
 
+import edu.kit.pse.osip.core.SimulationConstants;
 import javafx.geometry.Insets;
 import javafx.stage.Screen;
 
@@ -88,6 +89,12 @@ public final class ViewConstants {
      * of the box containing a tank and its sensors.
      */
     protected static final double MOTOR_LINE_WIDTH = 5;
+
+    /**
+     * The factor of the simulation motor speed that is shown in the simulation gui. It scales the
+     * shown rpm to 0 - 50, as anything above that is not shown in an aesthetically pleasing way.
+     */
+    protected static final double MOTOR_SPEED_FACTOR = 1.0 / ((double) SimulationConstants.MAX_MOTOR_SPEED / 50);
 
     /**
      * The width of the TemperatureSensor relative to the height of the box containing a tank and its

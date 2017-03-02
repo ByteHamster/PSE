@@ -192,7 +192,7 @@ public class SimulationController extends Application {
             cont.server.setOverheatAlarm(cont.overheatAlarm.isAlarmTriggered());
             cont.server.setUndercoolAlarm(cont.undercoolAlarm.isAlarmTriggered());
 
-            if (cont.tank.getFillLevel() > 1 && !overflow) {
+            if (cont.tank.getFillLevel() > 1 && !overflow && !productionSite.isResetting()) {
                 overflow = true;
                 showOverflow(cont.selector);
             }
@@ -209,13 +209,14 @@ public class SimulationController extends Application {
         mixCont.server.setOverheatAlarm(mixCont.overheatAlarm.isAlarmTriggered());
         mixCont.server.setUndercoolAlarm(mixCont.undercoolAlarm.isAlarmTriggered());
 
-        if (mixCont.tank.getFillLevel() > 1 && !overflow) {
+        if (mixCont.tank.getFillLevel() > 1 && !overflow && !productionSite.isResetting()) {
             overflow = true;
             showOverflow(TankSelector.MIX);
         }
     }
 
     private void showOverflow(TankSelector selector) {
+        controlInterface.setControlsDisabled(true);
         Platform.runLater(() -> currentSimulationView.showOverflow(selector));
         if (currentScenario != null) {
             currentScenario.cancelScenario();
@@ -228,8 +229,10 @@ public class SimulationController extends Application {
      * @param primaryStage The stage to draw the main window on
      */
     public void start(Stage primaryStage) {
+        controlInterface = new SimulationControlWindow(productionSite);
+
         currentSimulationView = new SimulationMainWindow(productionSite);
-        currentSimulationView.start(primaryStage);
+        currentSimulationView.start(primaryStage, controlInterface);
         setupView();
     }
 
@@ -237,9 +240,12 @@ public class SimulationController extends Application {
         Stage help = new HelpDialog();
         Stage about = new AboutDialog();
         settingsInterface = new SimulationSettingsWindow(settingsWrapper);
-        controlInterface = new SimulationControlWindow(productionSite);
 
-        currentSimulationView.setOverflowClosedHandler(actionEvent -> productionSite.reset());
+        currentSimulationView.setOverflowClosedHandler(actionEvent -> {
+            productionSite.reset();
+            controlInterface.update();
+            controlInterface.setControlsDisabled(false);
+        });
         currentSimulationView.setSettingsButtonHandler(actionEvent -> settingsInterface.show());
         currentSimulationView.setControlButtonHandler(actionEvent -> controlInterface.show());
         currentSimulationView.setAboutButtonHandler(actionEvent -> about.show());
@@ -251,6 +257,15 @@ public class SimulationController extends Application {
                 currentScenario.cancelScenario();
                 currentSimulationView.scenarioFinished();
             }
+        });
+
+        currentSimulationView.setResetListener((event) -> {
+            if (currentScenario != null) {
+                currentScenario.cancelScenario();
+                currentSimulationView.scenarioFinished();
+            }
+            productionSite.reset();
+            controlInterface.update();
         });
 
         controlInterface.setValveListener((pipe, number) -> {
@@ -280,6 +295,7 @@ public class SimulationController extends Application {
         currentScenario.setProductionSite(productionSite);
         currentScenario.setScenarioFinishedListener(currentSimulationView::scenarioFinished);
         productionSite.reset();
+        controlInterface.setControlsDisabled(true);
         currentScenario.startScenario();
     }
 

@@ -60,12 +60,13 @@ public class OverflowDialog extends Stage {
         resetButtonHandler = eventHandler;
     }
 
-    private Text getTextWithTankName(String id, TankSelector tank, Font font) {
+    private Text getTextWithTankName(TankSelector tank, Font font) {
         Text text = new Text();
         if (tank != null) {
-            text.setText(Translator.getInstance().getString(id) + " "
-                    + Translator.getInstance().getString(TankSelector.TRANSLATOR_LABEL_PREFIX + tank.name())
-                    + "!" + "\n");
+            String tankName = Translator.getInstance().getString(
+                TankSelector.TRANSLATOR_LABEL_PREFIX + tank.name()).toLowerCase();
+            text.setText(String.format(
+                Translator.getInstance().getString("simulation.overflowdialog.overflowmessage"), tankName));
         } else {
             throw new IllegalStateException("No tank set. Please call setTank() before calling show()");
         }
@@ -83,7 +84,7 @@ public class OverflowDialog extends Stage {
         grid.setPadding(new Insets(ViewConstants.ELEMENTS_GAP));
 
         TextFlow overflowTextFlow = new TextFlow();
-        Text overflowText = getTextWithTankName("simulation.overflowdialog.overflowmessage", tank,
+        Text overflowText = getTextWithTankName(tank,
                 new Font(ViewConstants.FONT_SIZE * 3));
         overflowText.setFill(Color.RED);
         overflowTextFlow.getChildren().add(overflowText);
