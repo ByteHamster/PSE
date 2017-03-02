@@ -16,7 +16,7 @@ import javafx.scene.text.TextFlow;
  * The graphical console to show all logged events.
  * 
  * @author Martin Armbruster
- * @version 1.4
+ * @version 1.5
  */
 class LoggingConsole extends ScrollPane implements Observer {
     /**
@@ -51,7 +51,18 @@ class LoggingConsole extends ScrollPane implements Observer {
      * @param message The logging message for the occurred event.
      */
     public void log(String message) {
-        flow.getChildren().add(new Text(message));
+        flow.getChildren().add(prepareText(message));
+    }
+    
+    /**
+     * Prepares a text for logging with adding a time stamp.
+     * 
+     * @param text the raw message for output.
+     * @return a Text instance ready for logging.
+     */
+    private Text prepareText(String text) {
+        String time = "[" + OffsetDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + "] ";
+        return new Text(time + text);
     }
 
     @Override
@@ -59,11 +70,10 @@ class LoggingConsole extends ScrollPane implements Observer {
         AlarmVisualization alarm = (AlarmVisualization) o;
         TankAlarm<?> ta = (TankAlarm<?>) arg;
         if (ta != null && ta.isAlarmTriggered()) {
-            Text alarmText = new Text(
-                    "[" + OffsetDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + "] "
-                    + String.format(Translator.getInstance().getString("monitoring.logging.alarmTriggered"),
-                      alarm.getAlarmName(), Translator.getInstance().getString(
-                      TankSelector.TRANSLATOR_LABEL_PREFIX + ta.getTank().getTankSelector().name()).toLowerCase()));
+            Text alarmText = prepareText(String.format(Translator.getInstance()
+                    .getString("monitoring.logging.alarmTriggered"), alarm.getAlarmName(), Translator.getInstance()
+                    .getString(TankSelector.TRANSLATOR_LABEL_PREFIX + ta.getTank().getTankSelector().name())
+                    .toLowerCase()));
             if (alarm.getAlarmState() == AlarmState.ALARM_DISABLED) {
                 alarmText.setFill(MonitoringViewConstants.ALARM_DISABLED);
             }
