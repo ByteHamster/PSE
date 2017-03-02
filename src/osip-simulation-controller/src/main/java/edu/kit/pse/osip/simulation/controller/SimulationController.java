@@ -192,7 +192,7 @@ public class SimulationController extends Application {
             cont.server.setOverheatAlarm(cont.overheatAlarm.isAlarmTriggered());
             cont.server.setUndercoolAlarm(cont.undercoolAlarm.isAlarmTriggered());
 
-            if (cont.tank.getFillLevel() > 1 && !overflow) {
+            if (cont.tank.getFillLevel() > 1 && !overflow && !productionSite.isResetting()) {
                 overflow = true;
                 showOverflow(cont.selector);
             }
@@ -209,13 +209,14 @@ public class SimulationController extends Application {
         mixCont.server.setOverheatAlarm(mixCont.overheatAlarm.isAlarmTriggered());
         mixCont.server.setUndercoolAlarm(mixCont.undercoolAlarm.isAlarmTriggered());
 
-        if (mixCont.tank.getFillLevel() > 1 && !overflow) {
+        if (mixCont.tank.getFillLevel() > 1 && !overflow && !productionSite.isResetting()) {
             overflow = true;
             showOverflow(TankSelector.MIX);
         }
     }
 
     private void showOverflow(TankSelector selector) {
+        controlInterface.setControlsDisabled(true);
         Platform.runLater(() -> currentSimulationView.showOverflow(selector));
         if (currentScenario != null) {
             currentScenario.cancelScenario();
@@ -243,6 +244,7 @@ public class SimulationController extends Application {
         currentSimulationView.setOverflowClosedHandler(actionEvent -> {
             productionSite.reset();
             controlInterface.update();
+            controlInterface.setControlsDisabled(false);
         });
         currentSimulationView.setSettingsButtonHandler(actionEvent -> settingsInterface.show());
         currentSimulationView.setControlButtonHandler(actionEvent -> controlInterface.show());
