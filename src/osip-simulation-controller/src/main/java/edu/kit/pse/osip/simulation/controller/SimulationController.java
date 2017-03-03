@@ -64,7 +64,7 @@ public class SimulationController extends Application {
     public SimulationController() {
         File settingsLocation = new File(System.getProperty("user.home") + File.separator + ".osip");
         settingsLocation.mkdirs();
-        settingsWrapper = new ServerSettingsWrapper(new File(settingsLocation, "monitoring.conf"));
+        settingsWrapper = new ServerSettingsWrapper(new File(settingsLocation, "simulation.conf"));
 
         simulator = new PhysicsSimulator(productionSite);
 
