@@ -1,5 +1,6 @@
 package edu.kit.pse.osip.monitoring.view.dashboard;
 
+import edu.kit.pse.osip.core.SimulationConstants;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 
@@ -7,28 +8,30 @@ import javafx.stage.Screen;
  * Constants for the monitoring view, appearing in more than one class.
  * 
  * @author Martin Armbruster
- * @version 1.4
+ * @version 1.5
  */
 public final class MonitoringViewConstants {
     /**
      * Threshold (in %) when a overflow alarm triggers.
      */
-    public static final Float OVERFLOW_ALARM_THRESHOLD = Float.valueOf(95);
+    public static final Float OVERFLOW_ALARM_THRESHOLD = Float.valueOf(0.95f);
     
     /**
      * Threshold (in %) when an underflow alarm triggers.
      */
-    public static final Float UNDERFLOW_ALARM_THRESHOLD = Float.valueOf(5);
+    public static final Float UNDERFLOW_ALARM_THRESHOLD = Float.valueOf(0.05f);
         
     /**
      * Threshold (in °K) when an alarm for overheating triggers.
      */
-    public static final Float TEMPERATURE_OVERHEATING_THRESHOLD = Float.valueOf(678.5f);
+    public static final Float TEMPERATURE_OVERHEATING_THRESHOLD = Float.valueOf(SimulationConstants.MIN_TEMPERATURE
+            + 0.95f * (SimulationConstants.MAX_TEMPERATURE - SimulationConstants.MIN_TEMPERATURE));
     
     /**
      * Threshold (in °K) when an alarm for undercooling triggers.
      */
-    public static final Float TEMPERATURE_UNDERCOOLING_THRESHOLD = Float.valueOf(291.5f);
+    public static final Float TEMPERATURE_UNDERCOOLING_THRESHOLD = Float.valueOf(SimulationConstants.MIN_TEMPERATURE
+            + 0.05f * (SimulationConstants.MAX_TEMPERATURE - SimulationConstants.MIN_TEMPERATURE));
     
     /**
      * The minimum update interval in milliseconds.
@@ -83,7 +86,7 @@ public final class MonitoringViewConstants {
     /**
      * The font size in pixels, relative to the absolute screen height.
      */
-    public static final int FONT_SIZE = (int) Math.round(0.01389 * Screen.getPrimary().getBounds().getHeight());
+    public static final int FONT_SIZE = (int) Math.round(0.012 * Screen.getPrimary().getBounds().getHeight());
     
     /**
      * The preferred height for any type of a bar, relative to the absolute screen height.

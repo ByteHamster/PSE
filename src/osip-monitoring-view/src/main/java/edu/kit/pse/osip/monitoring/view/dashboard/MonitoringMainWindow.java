@@ -45,6 +45,16 @@ class MonitoringMainWindow {
     private Light light;
     
     /**
+     * Width for the window.
+     */
+    private static final int WIDTH = 1024;
+    
+    /**
+     * Height for the window.
+     */
+    private static final int HEIGHT = 818;
+    
+    /**
      * Initializes the window.
      * 
      * @param primaryStage The primary window.
@@ -106,6 +116,10 @@ class MonitoringMainWindow {
         primaryStage.setTitle(Translator.getInstance().getString("monitoring.title"));
         primaryStage.getIcons().add(new Image("/icon.png"));
         primaryStage.setScene(scene);
+        primaryStage.setMinWidth(WIDTH);
+        primaryStage.setWidth(WIDTH);
+        primaryStage.setMinHeight(HEIGHT);
+        primaryStage.setHeight(HEIGHT);
         primaryStage.show();
     }
     

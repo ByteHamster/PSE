@@ -48,7 +48,7 @@ public final class ViewConstants {
     /**
      * The font size in pixels, relative to the absolute screen height.
      */
-    public static final int FONT_SIZE = (int) Math.round(0.01389 * Screen.getPrimary().getBounds().getHeight());
+    public static final int FONT_SIZE = (int) Math.round(0.012 * Screen.getPrimary().getBounds().getHeight());
 
     /**
      * The width of the input TextFields in pixel.
