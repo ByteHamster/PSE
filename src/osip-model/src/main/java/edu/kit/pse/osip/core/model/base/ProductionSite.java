@@ -16,7 +16,6 @@ public class ProductionSite extends Observable {
     protected final EnumMap<TankSelector, Tank> tanks = new EnumMap<>(TankSelector.class);;
     protected final EnumMap<TankSelector, Float> inputTemperature
         = new EnumMap<TankSelector, Float>(TankSelector.class);
-    private boolean resetting;
 
     /**
      * Template method to allow subclasses to create objects of subclasses of Tank. The parameters are the same
@@ -49,7 +48,6 @@ public class ProductionSite extends Observable {
      * Construct a new ProductionSite
      */
     public ProductionSite() {
-        resetting = false;
         initTanks();
     }
 
@@ -130,25 +128,14 @@ public class ProductionSite extends Observable {
      * a stable state.
      */
     public synchronized void reset() {
-        resetting = true;
         for (TankSelector selector: TankSelector.valuesWithoutMix()) {
             tanks.get(selector).reset();
             inputTemperature.put(selector, selector.getInitialTemperature());
         }
         mixTank.reset();
         inputTemperature.put(TankSelector.MIX, TankSelector.MIX.getInitialTemperature());
-        resetting = false;
         setChanged();
         notifyObservers();
 
-    }
-
-    /**
-     * Returns true, if the ProductionSite is currently in the process of resetting itself,
-     * false otherwise.
-     * @return The value of resetting
-     */
-    public boolean isResetting() {
-        return resetting;
     }
 }

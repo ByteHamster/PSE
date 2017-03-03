@@ -51,6 +51,7 @@ public class SimulationController extends Application {
     private ServerSettingsWrapper settingsWrapper;
     private boolean overflow = false;
     private Timer stepTimer = new Timer(true);
+    private boolean resetInProgress = false;
 
     private static final float FILL_ALARM_LOWER_THRESHOLD = 0.05f;
     private static final float FILL_ALARM_UPPER_THRESHOLD = 0.95f;
@@ -192,7 +193,7 @@ public class SimulationController extends Application {
             cont.server.setOverheatAlarm(cont.overheatAlarm.isAlarmTriggered());
             cont.server.setUndercoolAlarm(cont.undercoolAlarm.isAlarmTriggered());
 
-            if (cont.tank.getFillLevel() > 1 && !overflow && !productionSite.isResetting()) {
+            if (cont.tank.getFillLevel() > 1 && !overflow && !resetInProgress) {
                 overflow = true;
                 showOverflow(cont.selector);
             }
@@ -209,7 +210,7 @@ public class SimulationController extends Application {
         mixCont.server.setOverheatAlarm(mixCont.overheatAlarm.isAlarmTriggered());
         mixCont.server.setUndercoolAlarm(mixCont.undercoolAlarm.isAlarmTriggered());
 
-        if (mixCont.tank.getFillLevel() > 1 && !overflow && !productionSite.isResetting()) {
+        if (mixCont.tank.getFillLevel() > 1 && !overflow && !resetInProgress) {
             overflow = true;
             showOverflow(TankSelector.MIX);
         }
@@ -259,8 +260,9 @@ public class SimulationController extends Application {
                 currentScenario.cancelScenario();
                 currentSimulationView.scenarioFinished();
             }
-            controlInterface.setControlsDisabled(true);
+            resetInProgress = true;
             productionSite.reset();
+            resetInProgress = false;
             controlInterface.setControlsDisabled(false);
         });
 
@@ -290,8 +292,10 @@ public class SimulationController extends Application {
         }
         currentScenario.setProductionSite(productionSite);
         currentScenario.setScenarioFinishedListener(currentSimulationView::scenarioFinished);
-        productionSite.reset();
         controlInterface.setControlsDisabled(true);
+        resetInProgress = true;
+        productionSite.reset();
+        resetInProgress = false;
         currentScenario.startScenario();
     }
 
