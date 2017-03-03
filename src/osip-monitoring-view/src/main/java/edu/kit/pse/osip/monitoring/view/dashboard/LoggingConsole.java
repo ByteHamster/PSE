@@ -9,6 +9,8 @@ import java.util.Observable;
 import java.util.Observer;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
@@ -16,51 +18,74 @@ import javafx.scene.text.TextFlow;
  * The graphical console to show all logged events.
  * 
  * @author Martin Armbruster
- * @version 1.5
+ * @version 1.6
  */
-class LoggingConsole extends ScrollPane implements Observer {
+class LoggingConsole extends TabPane implements Observer {
     /**
-     * The TextFlow showing the actual logging messages.
+     * The TextFlow showing logging messages of occurred alarms.
      */
-    private TextFlow flow;
+    private TextFlow alarms;
+    /**
+     * The TextFlow showing the actual logging messages from System.out or System.err.
+     */
+    private TextFlow stdIO;
     
     /**
      * Creates and initializes the console.
      */
     protected LoggingConsole() {
-        flow = new TextFlow();
-        // ** Solution for: ScrollPane scrolls automatically.
-        // Based on: http://stackoverflow.com/questions/13156896/javafx-auto-scroll-down-scrollpane
-        flow.heightProperty().addListener(
-            (ObservableValue<? extends Number> observable, Number oldValue, Number newValue) -> {
-                flow.layout();
-                this.setVvalue(this.getVmax());
-            });
-        // **
-        this.setContent(flow);
-        this.setFitToWidth(true);
-        this.setFitToHeight(true);
+        this.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
+        stdIO = new TextFlow();
+        alarms = new TextFlow();
+        this.getTabs().addAll(createTab(Translator.getInstance().getString("monitoring.logging.tab.alarms"), alarms),
+                createTab(Translator.getInstance().getString("monitoring.logging.tab.io"), stdIO));
+        
         UIOutputStream os = new UIOutputStream(this);
         System.setErr(os);
         System.setOut(os);
     }
     
     /**
-     * Logs an event with a time stamp.
+     * Creates a logging tab.
+     * 
+     * @param tabName name of the tab.
+     * @param actualContent the TextFlow instance that will be placed in the tab within a ScrollPane.
+     * @return the created tab.
+     */
+    private Tab createTab(String tabName, final TextFlow actualContent) {
+        Tab tab = new Tab(tabName);
+        ScrollPane pane = new ScrollPane();
+        // ** Solution for: ScrollPane scrolls automatically.
+        // Based on: http://stackoverflow.com/questions/13156896/javafx-auto-scroll-down-scrollpane
+        actualContent.heightProperty().addListener(
+            (ObservableValue<? extends Number> observable, Number oldValue, Number newValue) -> {
+                actualContent.layout();
+                pane.setVvalue(pane.getVmax());
+            });
+        // **
+        pane.setContent(actualContent);
+        pane.setFitToWidth(true);
+        pane.setFitToHeight(true);
+        tab.setContent(pane);
+        return tab;
+    }
+    
+    /**
+     * Logs an event with a time stamp to the i/o tab.
      * 
      * @param message The logging message for the occurred event.
      */
     protected void log(String message) {
-        flow.getChildren().add(prepareText(message));
+        stdIO.getChildren().add(prepareText(message));
     }
     
     /**
-     * Logs an event without a time stamp.
+     * Logs an event without a time stamp to the i/o tab.
      * 
      * @param message the logging message for the occurred event.
      */
     protected void logWithoutTime(String message) {
-        flow.getChildren().add(new Text(message));
+        stdIO.getChildren().add(new Text(message));
     }
     
     /**
@@ -82,11 +107,11 @@ class LoggingConsole extends ScrollPane implements Observer {
             Text alarmText = prepareText(String.format(Translator.getInstance()
                     .getString("monitoring.logging.alarmTriggered"), alarm.getAlarmName(), Translator.getInstance()
                     .getString(TankSelector.TRANSLATOR_LABEL_PREFIX + ta.getTank().getTankSelector().name())
-                    .toLowerCase()));
+                    .toLowerCase()) + "\n");
             if (alarm.getAlarmState() == AlarmState.ALARM_DISABLED) {
                 alarmText.setFill(MonitoringViewConstants.ALARM_DISABLED);
             }
-            flow.getChildren().add(alarmText);
+            alarms.getChildren().add(alarmText);
         }
     } 
 }
