@@ -13,8 +13,10 @@ import javafx.beans.property.StringProperty;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import javafx.util.converter.IntegerStringConverter;
 
 import java.util.Observable;
 
@@ -74,14 +76,12 @@ public class TankTab extends AbstractTankTab {
         inFlowSlider.setPrefWidth(ViewConstants.CONTROL_SLIDER_WIDTH);
         GridPane.setHgrow(inFlowSlider, Priority.ALWAYS);
 
-        inFlowSlider.valueProperty().addListener((ov, oldVal, newVal) ->
-                inFlowSlider.setValue(newVal.intValue()));
-
         pane.add(inFlowSlider, col++, row);
         GridPane.setMargin(inFlowSlider, ViewConstants.CONTROL_PADDING);
 
         //TextField and label to show the current value and unit
         inFlowValue = new TextField("" + tank.getOutPipe().getValveThreshold());
+        inFlowValue.setTextFormatter(new TextFormatter<>(new IntegerStringConverter()));
         inFlowValue.setMaxWidth(ViewConstants.CONTROL_INPUT_WIDTH);
         pane.add(inFlowValue, col++, row);
         GridPane.setMargin(inFlowValue, ViewConstants.CONTROL_PADDING);

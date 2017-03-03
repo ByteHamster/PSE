@@ -10,8 +10,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import javafx.util.converter.IntegerStringConverter;
+
 import java.util.Observer;
 
 /**
@@ -68,14 +71,12 @@ public abstract class AbstractTankTab extends Tab implements Observer {
         outFlowSlider.setPrefWidth(ViewConstants.CONTROL_SLIDER_WIDTH);
         GridPane.setHgrow(outFlowSlider, Priority.ALWAYS);
 
-        outFlowSlider.valueProperty().addListener((ov, oldVal, newVal) ->
-            outFlowSlider.setValue(newVal.intValue()));
-
         pane.add(outFlowSlider, col++, row);
         GridPane.setMargin(outFlowSlider, ViewConstants.CONTROL_PADDING);
 
         //TextField and Label to show the current value and unit
         outFlowValue = new TextField("" + tank.getOutPipe().getValveThreshold());
+        outFlowValue.setTextFormatter(new TextFormatter<>(new IntegerStringConverter()));
         outFlowValue.setMaxWidth(ViewConstants.CONTROL_INPUT_WIDTH);
         pane.add(outFlowValue, col++, row);
         GridPane.setMargin(outFlowValue, ViewConstants.CONTROL_PADDING);
