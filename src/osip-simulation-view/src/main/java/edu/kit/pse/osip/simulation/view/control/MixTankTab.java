@@ -16,6 +16,7 @@ import javafx.scene.layout.Priority;
 import javafx.util.converter.IntegerStringConverter;
 
 import java.util.Observable;
+import java.util.function.Consumer;
 
 /**
  * This class has controls specific to the tanks in which several inputs are mixed.
@@ -27,6 +28,7 @@ public class MixTankTab extends AbstractTankTab {
 
     private Slider motorSlider;
     private TextField motorValue;
+    private MixTank mixTank;
 
     /**
      * Creates a new TankTab containg the standard controls of the AbstractTankTab as well as a
@@ -36,12 +38,17 @@ public class MixTankTab extends AbstractTankTab {
      */
     public MixTankTab(String name, MixTank mixTank) {
         super(name, mixTank);
+        this.mixTank = mixTank;
 
         GridPane pane = getGridPane();
 
         createMotorSlider(pane, mixTank);
 
         this.setContent(pane);
+
+        mixTank.addObserver(this);
+        mixTank.getMotor().addObserver(this);
+        mixTank.getOutPipe().addObserver(this);
     }
 
     private void createMotorSlider(GridPane pane, MixTank tank) {
@@ -98,19 +105,10 @@ public class MixTankTab extends AbstractTankTab {
         }
     }
 
-    /**
-     * Returns a reference to the motorSlider
-     * @return A reference to the motorSlider
-     */
-    protected Slider getMotorSlider() {
-        return motorSlider;
-    }
-
     @Override
     public void update(Observable observable, Object o) {
-        if (isControlsDisabled()) {
-            MixTank tank = (MixTank) observable;
-            update(tank);
+        if (!skipUpdates) {
+            update(mixTank);
         }
     }
 
@@ -118,10 +116,21 @@ public class MixTankTab extends AbstractTankTab {
      * Updates the MixTankTab to show the values from the productionSite
      * @param tank The tank whose values are taken
      */
-    public void update(MixTank tank) {
+    private void update(MixTank tank) {
         super.update(tank);
 
         motorSlider.setValue(tank.getMotor().getRPM());
-        motorValue.setText(String.valueOf(tank.getMotor().getRPM()));
+    }
+
+    /**
+     * Sets the listener that is notified of changes in motor speed.
+     * @param listener The Consumer that gets all to the motorSpeed
+     */
+    void setMotorListener(Consumer<Integer> listener) {
+        motorSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (!skipUpdates) {
+                listener.accept(newValue.intValue());
+            }
+        });
     }
 }
