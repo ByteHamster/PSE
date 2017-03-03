@@ -1,11 +1,13 @@
 package edu.kit.pse.osip.monitoring.view.dashboard;
 
 import edu.kit.pse.osip.core.model.base.AbstractTank;
+import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.model.behavior.AlarmBehavior;
 import edu.kit.pse.osip.core.model.behavior.FillAlarm;
 import edu.kit.pse.osip.core.model.behavior.TemperatureAlarm;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import javafx.geometry.Insets;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
@@ -19,7 +21,7 @@ import javafx.scene.paint.Color;
  * Visualizes a general tank.
  * 
  * @author Martin Armbruster
- * @version 1.6
+ * @version 1.7
  */
 abstract class AbstractTankVisualization extends GridPane {
     /**
@@ -110,6 +112,9 @@ abstract class AbstractTankVisualization extends GridPane {
      * @param tank alarms and elements are connected to this tank.
      */
     private void setupElements(AbstractTank tank) {
+        Label tankName = new Label(String.format(Translator.getInstance().getString("monitoring.tank.tankName"),
+                Translator.getInstance().getString(TankSelector.TRANSLATOR_LABEL_PREFIX + tank.getTankSelector()
+                .name())));
         overflowAlarm = new AlarmVisualization(Translator.getInstance().getString("monitoring.tank.overflowAlarm"));
         underflowAlarm = new AlarmVisualization(Translator.getInstance().getString("monitoring.tank.underflowAlarm"));
         temperatureOverheatingAlarm = new AlarmVisualization(
@@ -118,7 +123,7 @@ abstract class AbstractTankVisualization extends GridPane {
                 Translator.getInstance().getString("monitoring.tank.temperatureUndercoolingAlarm"));
         
         VBox box = new VBox(MonitoringViewConstants.ELEMENTS_GAP);
-        box.getChildren().addAll(overflowAlarm.getLayout(), underflowAlarm.getLayout(),
+        box.getChildren().addAll(tankName, overflowAlarm.getLayout(), underflowAlarm.getLayout(),
                 temperatureOverheatingAlarm.getLayout(), temperatureUndercoolingAlarm.getLayout());
         alarmPane = new HBox(MonitoringViewConstants.ELEMENTS_GAP);
         alarmPane.getChildren().add(box);
