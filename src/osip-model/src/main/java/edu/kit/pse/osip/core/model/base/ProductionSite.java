@@ -2,6 +2,7 @@ package edu.kit.pse.osip.core.model.base;
 
 import edu.kit.pse.osip.core.SimulationConstants;
 import java.util.EnumMap;
+import java.util.Observable;
 
 /**
  * Group all tanks in the production site together. This is the entrance point of the model, because you can get every
@@ -10,7 +11,7 @@ import java.util.EnumMap;
  * @version
  * 1.0
  */
-public class ProductionSite {
+public class ProductionSite extends Observable {
     protected MixTank mixTank;
     protected final EnumMap<TankSelector, Tank> tanks = new EnumMap<>(TankSelector.class);;
     protected final EnumMap<TankSelector, Float> inputTemperature
@@ -76,6 +77,8 @@ public class ProductionSite {
         }
 
         inputTemperature.put(tank, temperature);
+        setChanged();
+        notifyObservers();
     }
 
     private void initTanks() {
@@ -135,6 +138,9 @@ public class ProductionSite {
         mixTank.reset();
         inputTemperature.put(TankSelector.MIX, TankSelector.MIX.getInitialTemperature());
         resetting = false;
+        setChanged();
+        notifyObservers();
+
     }
 
     /**
