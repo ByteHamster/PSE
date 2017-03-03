@@ -10,8 +10,10 @@ import javafx.beans.property.StringProperty;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import javafx.util.converter.IntegerStringConverter;
 
 import java.util.Observable;
 
@@ -61,14 +63,12 @@ public class MixTankTab extends AbstractTankTab {
         motorSlider.setPrefWidth(ViewConstants.CONTROL_SLIDER_WIDTH);
         GridPane.setHgrow(motorSlider, Priority.ALWAYS);
 
-        motorSlider.valueProperty().addListener((ov, oldVal, newVal) ->
-                motorSlider.setValue(newVal.intValue()));
-
         pane.add(motorSlider, col++, row);
         GridPane.setMargin(motorSlider, ViewConstants.CONTROL_PADDING);
 
         //TextField and Label to show the current value and unit
         motorValue = new TextField("" + tank.getMotor().getRPM());
+        motorValue.setTextFormatter(new TextFormatter<>(new IntegerStringConverter()));
         motorValue.setMaxWidth(ViewConstants.CONTROL_INPUT_WIDTH);
         pane.add(motorValue, col++, row);
         GridPane.setMargin(motorValue, ViewConstants.CONTROL_PADDING);
