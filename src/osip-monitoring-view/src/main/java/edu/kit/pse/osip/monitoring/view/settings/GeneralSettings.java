@@ -14,12 +14,13 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.GridPane;
+import javafx.util.StringConverter;
 
 /**
  * Contains all controls for setting the general settings.
  * 
  * @author Martin Armbruster
- * @version 1.3
+ * @version 1.4
  */
 class GeneralSettings extends ScrollPane {
     /**
@@ -66,7 +67,27 @@ class GeneralSettings extends ScrollPane {
         layout.setVgap(MonitoringViewConstants.ELEMENTS_GAP);
         layout.setPadding(new Insets(MonitoringViewConstants.ELEMENTS_GAP));
         
-        generalLabel = new Label(translator.getString("monitoring.settings.generalSettings.updateInterval"));
+        setupUpdateInterval(currentSettings, layout);
+        
+        generalLabel = new Label(translator.getString("monitoring.settings.generalSettings.serverHost"));
+        serverHostname = new TextField(currentSettings.getHostname(TankSelector.MIX, "localhost"));
+        layout.add(generalLabel, 0, 2);
+        layout.add(serverHostname, 1, 2);
+        
+        setupPorts(currentSettings, layout);
+        
+        this.setContent(layout);
+    }
+    
+    /**
+     * Creates all necessary thins for the update interval.
+     * 
+     * @param currentSettings the current settings.
+     * @param layout the currently used layout.
+     */
+    private void setupUpdateInterval(ClientSettingsWrapper currentSettings, GridPane layout) {
+        Label label = new Label(Translator.getInstance()
+                .getString("monitoring.settings.generalSettings.updateInterval"));
         timeSlider = new Slider(MonitoringViewConstants.MIN_UPDATE_INTERVAL,
                 MonitoringViewConstants.MAX_UPDATE_INTERVAL,
                 currentSettings.getFetchInterval(MonitoringViewConstants.DEFAULT_UPDATE_INTERVAL));
@@ -80,14 +101,29 @@ class GeneralSettings extends ScrollPane {
         // Based on: http://stackoverflow.com/questions/38681664/javafx-slider-integer-only
         timeSlider.valueProperty().addListener((obs, oldval, newVal) -> timeSlider.setValue(newVal.intValue()));
         // **
-        layout.add(generalLabel, 0, 0);
+        layout.add(label, 0, 0);
         layout.add(timeSlider, 1, 0);
-        
         timeBox = new Spinner<Number>((double) MonitoringViewConstants.MIN_UPDATE_INTERVAL,
                 MonitoringViewConstants.MAX_UPDATE_INTERVAL,
                 currentSettings.getFetchInterval(MonitoringViewConstants.DEFAULT_UPDATE_INTERVAL));
         timeBox.setEditable(true);
         timeBox.setPrefWidth(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS);
+        timeBox.getValueFactory().setConverter(new StringConverter<Number>() {
+            @Override
+            public String toString(Number object) {
+                return Integer.toString(object.intValue());
+            }
+
+            @Override
+            public Number fromString(String string) {
+                try {
+                    double d = Double.parseDouble(string);
+                    return d;
+                } catch (NumberFormatException nfExc) {
+                    return timeSlider.getValue();
+                }
+            }
+        });
         timeBox.getValueFactory().valueProperty().bindBidirectional(timeSlider.valueProperty());
         // ** Solution for: When the timeBox loses focus, the typed-in value will be taken.
         // Based on http://stackoverflow.com/questions/32340476
@@ -97,32 +133,51 @@ class GeneralSettings extends ScrollPane {
         timeBox.getEditor().setTextFormatter(formatter);
         formatter.valueProperty().bindBidirectional(timeBox.getValueFactory().valueProperty());
         // **
-        generalLabel = new Label(translator.getString("monitoring.settings.generalSettings.milliseconds"));
+        label = new Label(Translator.getInstance().getString("monitoring.settings.generalSettings.milliseconds"));
         layout.add(timeBox, 1, 1);
-        layout.add(generalLabel, 2, 1);
-        
-        generalLabel = new Label(translator.getString("monitoring.settings.generalSettings.serverHost"));
-        serverHostname = new TextField(currentSettings.getHostname(TankSelector.MIX, "localhost"));
-        layout.add(generalLabel, 0, 2);
-        layout.add(serverHostname, 1, 2);
-        
+        layout.add(label, 2, 1);
+    }
+    
+    /**
+     * Creates all necessary things for the ports.
+     * 
+     * @param currentSettings the current settings.
+     */
+    private void setupPorts(ClientSettingsWrapper currentSettings, GridPane layout) {
         Spinner<Integer> currentField;
         int defaultPort = OSIPConstants.DEFAULT_PORT_MIX;
         int row = 3;
         for (TankSelector tank : TankSelector.values()) {
-            generalLabel = new Label(String.format(
-                    translator.getString("monitoring.settings.generalSettings.serverPort"),
-                    translator.getString(TankSelector.TRANSLATOR_LABEL_PREFIX + tank.name()).toLowerCase()));
+            Label label = new Label(String.format(
+                    Translator.getInstance().getString("monitoring.settings.generalSettings.serverPort"),
+                    Translator.getInstance().getString(TankSelector.TRANSLATOR_LABEL_PREFIX + tank.name())
+                    .toLowerCase()));
             currentField = new Spinner<Integer>(MonitoringViewConstants.MIN_PORT, MonitoringViewConstants.MAX_PORT,
                     currentSettings.getPort(tank, defaultPort++));
             currentField.setEditable(true);
             currentField.setPrefWidth(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS);
+            currentField.getValueFactory().setConverter(new StringConverter<Integer>() {
+                @Override
+                public String toString(Integer object) {
+                    return Integer.toString(object);
+                }
+
+                @Override
+                public Integer fromString(String string) {
+                    try {
+                        int i = Integer.parseInt(string);
+                        return i;
+                    } catch (NumberFormatException nfEx) {
+                        return OSIPConstants.DEFAULT_PORT_MIX;
+                    }
+                }
+            });
+            currentField.getEditor().setTextFormatter(new TextFormatter<Integer>(currentField.getValueFactory()
+                    .getConverter(), currentField.getValueFactory().getValue()));
             serverPorts.put(tank, currentField);
-            layout.add(generalLabel, 0, row);
+            layout.add(label, 0, row);
             layout.add(currentField, 1, row++);
         }
-        
-        this.setContent(layout);
     }
     
     /**
