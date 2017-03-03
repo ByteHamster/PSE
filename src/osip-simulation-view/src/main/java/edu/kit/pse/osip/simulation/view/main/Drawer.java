@@ -13,7 +13,7 @@ public interface Drawer {
     /**
      * The Drawer draws itself onto the GraphicsContext at its position.
      * @param context The context that the object draws itself onto
-     * @param time The current time in nanoseconds as supplied by ApplicationTimer
+     * @param timeDiff The difference in time in minutes since the last call of draw.
      */
-    void draw(GraphicsContext context, double time);
+    void draw(GraphicsContext context, double timeDiff);
 }

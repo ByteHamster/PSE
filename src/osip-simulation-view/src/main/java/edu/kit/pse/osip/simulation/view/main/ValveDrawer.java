@@ -42,8 +42,8 @@ public class ValveDrawer extends RotatingControlDrawer {
     @Override
     public final void draw(GraphicsContext context, double time) {
         setSpeed(pipe.getValveThreshold());
-        // Convert the minutes to degrees to be turned in total
-        double degrees = time * getSpeed() / 2 * 360;
+
+        updateDegrees(time, 0.5);
 
         Canvas canvas = context.getCanvas();
         double totalWidth = canvas.getWidth();
@@ -77,14 +77,14 @@ public class ValveDrawer extends RotatingControlDrawer {
         context.fillRect(valveTopLeftX, valveTopLeftY, valveWidth, valveHeight);
         context.strokeRect(valveTopLeftX, valveTopLeftY, valveWidth, valveHeight);
 
-        context.strokeLine(rotateX(point1xPos, centerX, point1yPos, centerY, degrees),
-                rotateY(point1xPos, centerX, point1yPos, centerY, degrees),
-                rotateX(point3xPos, centerX, point3yPos, centerY, degrees),
-                rotateY(point3xPos, centerX, point3yPos, centerY, degrees));
-        context.strokeLine(rotateX(point2xPos, centerX, point2yPos, centerY, degrees),
-                rotateY(point2xPos, centerX, point2yPos, centerY, degrees),
-                rotateX(point4xPos, centerX, point4yPos, centerY, degrees),
-                rotateY(point4xPos, centerX, point4yPos, centerY, degrees));
+        context.strokeLine(rotateX(point1xPos, centerX, point1yPos, centerY, getDegrees()),
+                rotateY(point1xPos, centerX, point1yPos, centerY, getDegrees()),
+                rotateX(point3xPos, centerX, point3yPos, centerY, getDegrees()),
+                rotateY(point3xPos, centerX, point3yPos, centerY, getDegrees()));
+        context.strokeLine(rotateX(point2xPos, centerX, point2yPos, centerY, getDegrees()),
+                rotateY(point2xPos, centerX, point2yPos, centerY, getDegrees()),
+                rotateX(point4xPos, centerX, point4yPos, centerY, getDegrees()),
+                rotateY(point4xPos, centerX, point4yPos, centerY, getDegrees()));
         context.strokeOval(point1xPos, point2yPos,
                 radius * 2 * totalHeight - 2 * ViewConstants.VALVE_CIRCLE_DIST * valveWidth,
                 radius * 2 * totalHeight - 2 * ViewConstants.VALVE_CIRCLE_DIST * valveWidth);
