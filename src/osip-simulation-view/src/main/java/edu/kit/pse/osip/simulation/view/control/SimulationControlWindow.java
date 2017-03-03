@@ -78,7 +78,6 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
         }
     }
 
-    @Override
     public void update() {
         for (TankSelector t : TankSelector.valuesWithoutMix()) {
             TankTab tab = (TankTab) tankTabs.get(t);

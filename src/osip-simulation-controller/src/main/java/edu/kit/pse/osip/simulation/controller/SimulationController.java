@@ -259,8 +259,8 @@ public class SimulationController extends Application {
                 currentScenario.cancelScenario();
                 currentSimulationView.scenarioFinished();
             }
+            controlInterface.setControlsDisabled(true);
             productionSite.reset();
-            controlInterface.update();
             controlInterface.setControlsDisabled(false);
         });
 
