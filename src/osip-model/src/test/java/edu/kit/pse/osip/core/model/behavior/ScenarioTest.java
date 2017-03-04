@@ -123,12 +123,10 @@ public class ScenarioTest {
      */
     @Test
     public void testStop() {
-        CompletableFuture<Boolean> finished = new CompletableFuture<>();
         scenario.appendRunnable(productionSite -> counter.incrementAndGet());
         scenario.addPause(300);
         scenario.appendRunnable(productionSite -> counter.incrementAndGet());
         scenario.setProductionSite(fakeSite);
-        scenario.setScenarioFinishedListener(() -> finished.complete(true));
         scenario.startScenario();
         try {
             sleep(100);
@@ -144,13 +142,8 @@ public class ScenarioTest {
         } catch (InterruptedException ex) {
             System.err.println("Sleep failed in ScenarioTest: " + ex.getMessage());
         }
-        try {
-            assertEquals(1, counter.get());
-            assertFalse(scenario.isRunning());
-            assertTrue(finished.get());
-        } catch (InterruptedException | ExecutionException ex) {
-            System.err.println("CompletableFuture.get() failed in ScenarioTest: " + ex.getMessage());
-        }
+        assertEquals(1, counter.get());
+        assertFalse(scenario.isRunning());
     }
 
     /**
