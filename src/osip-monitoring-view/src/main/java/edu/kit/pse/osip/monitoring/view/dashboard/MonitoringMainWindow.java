@@ -16,7 +16,7 @@ import javafx.stage.Stage;
  * The entry point for the monitoring view. It shows all sensor datas graphically.
  * 
  * @author Martin Armbruster
- * @version 1.4
+ * @version 1.5
  */
 class MonitoringMainWindow {
     /**
@@ -47,12 +47,12 @@ class MonitoringMainWindow {
     /**
      * Width for the window.
      */
-    private static final int WIDTH = 1024;
+    private static final int WIDTH = 1000;
     
     /**
      * Height for the window.
      */
-    private static final int HEIGHT = 818;
+    private static final int HEIGHT = 700;
     
     /**
      * Initializes the window.
@@ -116,9 +116,7 @@ class MonitoringMainWindow {
         primaryStage.setTitle(Translator.getInstance().getString("monitoring.title"));
         primaryStage.getIcons().add(new Image("/icon.png"));
         primaryStage.setScene(scene);
-        primaryStage.setMinWidth(WIDTH);
         primaryStage.setWidth(WIDTH);
-        primaryStage.setMinHeight(HEIGHT);
         primaryStage.setHeight(HEIGHT);
         primaryStage.show();
     }
@@ -147,6 +145,9 @@ class MonitoringMainWindow {
      * @param tank The tank whose current used visualization should be returned.
      */
     protected AbstractTankVisualization getTank(TankSelector tank) {
+        if (tank == TankSelector.MIX) {
+            return mixTank;
+        }
         return tankVisualizations.get(tank);
     }
     
