@@ -252,6 +252,7 @@ public class SimulationController extends Application {
             if (currentScenario != null) {
                 currentScenario.cancelScenario();
                 currentSimulationView.scenarioFinished();
+                controlInterface.setControlsDisabled(false);
             }
         });
 
@@ -259,6 +260,7 @@ public class SimulationController extends Application {
             if (currentScenario != null) {
                 currentScenario.cancelScenario();
                 currentSimulationView.scenarioFinished();
+                controlInterface.setControlsDisabled(false);
             }
             resetInProgress = true;
             productionSite.reset();
@@ -291,7 +293,10 @@ public class SimulationController extends Application {
             return;
         }
         currentScenario.setProductionSite(productionSite);
-        currentScenario.setScenarioFinishedListener(currentSimulationView::scenarioFinished);
+        currentScenario.setScenarioFinishedListener(() -> {
+            currentSimulationView.scenarioFinished();
+            controlInterface.setControlsDisabled(false);
+        });
         controlInterface.setControlsDisabled(true);
         resetInProgress = true;
         productionSite.reset();

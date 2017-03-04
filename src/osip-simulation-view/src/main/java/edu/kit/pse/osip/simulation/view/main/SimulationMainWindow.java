@@ -156,7 +156,7 @@ public class SimulationMainWindow implements SimulationViewInterface {
 
         mainPane.setStyle("-fx-font-size:" + ViewConstants.FONT_SIZE + "px;");
 
-        menu = new SimulationMenu(controlWindow);
+        menu = new SimulationMenu();
         mainPane.setTop(menu);
 
         canvas = setCanvas(primaryStage);

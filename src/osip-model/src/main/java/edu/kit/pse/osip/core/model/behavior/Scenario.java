@@ -88,9 +88,6 @@ public class Scenario extends java.util.Observable implements Runnable {
         if (null == thread) {
             throw new IllegalStateException("Scenario has not been started yet");
         }
-        if (finishedListener != null) {
-            finishedListener.run();
-        }
     }
 
     /**
