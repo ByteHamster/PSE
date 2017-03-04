@@ -1,6 +1,8 @@
 package edu.kit.pse.osip.monitoring.view.dashboard;
 
 import edu.kit.pse.osip.core.model.base.Pipe;
+import javafx.application.Platform;
+
 import java.util.Observable;
 import java.util.Observer;
 import jfxtras.scene.control.gauge.linear.SimpleMetroArcGauge;
@@ -53,6 +55,6 @@ class GaugeVisualization extends BarLayout implements Observer {
      */
     public void update(Observable observable, Object object) {
         Pipe pipe = (Pipe) observable;
-        gauge.setValue(pipe.getMaxInput());
+        Platform.runLater(() -> gauge.setValue(pipe.getMaxInput()));
     }
 }
