@@ -181,10 +181,10 @@ public class SimulationController extends Application {
     private void updateServerValues() {
         overflow = false;
         for (TankContainer cont: tanks) {
-            cont.server.setInputFlowRate(cont.tank.getInPipe().getMaxInput());
+            cont.server.setInputFlowRate(cont.tank.getInPipe().getValveThreshold());
             cont.server.setColor(cont.tank.getLiquid().getColor().getRGB());
             cont.server.setFillLevel(cont.tank.getLiquid().getAmount());
-            cont.server.setOutputFlowRate(cont.tank.getOutPipe().getMaxInput());
+            cont.server.setOutputFlowRate(cont.tank.getOutPipe().getValveThreshold());
             cont.server.setTemperature(cont.tank.getLiquid().getTemperature());
 
             cont.server.setOverflowAlarm(cont.overflowAlarm.isAlarmTriggered());
@@ -201,7 +201,7 @@ public class SimulationController extends Application {
         mixCont.server.setMotorSpeed(mixCont.tank.getMotor().getRPM());
         mixCont.server.setColor(mixCont.tank.getLiquid().getColor().getRGB());
         mixCont.server.setFillLevel(mixCont.tank.getLiquid().getAmount());
-        mixCont.server.setOutputFlowRate(mixCont.tank.getOutPipe().getMaxInput());
+        mixCont.server.setOutputFlowRate(mixCont.tank.getOutPipe().getValveThreshold());
         mixCont.server.setTemperature(mixCont.tank.getLiquid().getTemperature());
 
         mixCont.server.setOverflowAlarm(mixCont.overflowAlarm.isAlarmTriggered());
