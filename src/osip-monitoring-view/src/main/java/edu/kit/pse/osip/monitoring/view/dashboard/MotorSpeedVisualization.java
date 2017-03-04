@@ -3,6 +3,8 @@ package edu.kit.pse.osip.monitoring.view.dashboard;
 import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.model.base.Motor;
 import edu.kit.pse.osip.core.utils.language.Translator;
+import javafx.application.Platform;
+
 import java.util.Observable;
 
 /**
@@ -23,6 +25,6 @@ class MotorSpeedVisualization extends GaugeVisualization {
     @Override
     public void update(Observable observable, Object object) {
         Motor motor = (Motor) observable;
-        gauge.setValue(motor.getRPM());
+        Platform.runLater(() -> gauge.setValue(motor.getRPM()));
     }
 }

@@ -4,6 +4,8 @@ import edu.kit.pse.osip.core.model.base.AbstractTank;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import java.util.Observable;
 import java.util.Observer;
+
+import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
@@ -46,6 +48,6 @@ class ColorVisualization extends BarLayout implements Observer {
     public void update(Observable observable, Object object) {
         edu.kit.pse.osip.core.model.base.Color col = ((AbstractTank) observable).getLiquid().getColor();
         Color currentColor = new Color(col.getR(), col.getG(), col.getB(), 1.0);
-        colorCircle.setFill(currentColor);
+        Platform.runLater(() -> colorCircle.setFill(currentColor));
     }
 }

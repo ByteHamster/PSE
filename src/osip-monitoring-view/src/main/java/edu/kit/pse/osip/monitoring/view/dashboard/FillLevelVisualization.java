@@ -2,6 +2,8 @@ package edu.kit.pse.osip.monitoring.view.dashboard;
 
 import edu.kit.pse.osip.core.model.base.AbstractTank;
 import edu.kit.pse.osip.core.utils.language.Translator;
+import javafx.application.Platform;
+
 import java.util.Observable;
 import java.util.Observer;
 import jfxtras.scene.control.gauge.linear.BasicRoundDailGauge;
@@ -40,6 +42,6 @@ class FillLevelVisualization extends BarLayout implements Observer {
      */
     public void update(Observable observable, Object object) {
         AbstractTank tank = (AbstractTank) observable;
-        levelBar.setValue(tank.getFillLevel());
+        Platform.runLater(() -> levelBar.setValue(tank.getFillLevel()));
     }
 }

@@ -4,6 +4,8 @@ import edu.kit.pse.osip.core.model.base.AbstractTank;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import java.util.Observable;
 import java.util.Observer;
+
+import javafx.application.Platform;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
@@ -110,6 +112,6 @@ class ProgressVisualization implements Observer {
         } else {
             newDataPoint = new XYChart.Data<Number, Number>(x, tank.getFillLevel());
         }
-        progressSeries.getData().add(newDataPoint);
+        Platform.runLater(() -> progressSeries.getData().add(newDataPoint));
     }
 }
