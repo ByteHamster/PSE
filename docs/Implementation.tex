@@ -1,0 +1,67 @@
+\documentclass[parskip=full]{scrartcl}
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[german]{babel}
+\usepackage{hyperref}
+\usepackage[toc, nonumberlist]{glossaries}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{color}
+
+\hypersetup{
+  colorlinks=false,
+  linktoc=all,
+  hidelinks,
+}
+
+\title{OSIP - Implementierung}
+\subtitle{OPC UA Simulator for Industrial Plants}
+\author{
+    M. Armbruster\\
+    D. Kahles\\
+    H. Lehmann\\
+    M. Schwarzmann\\
+    N. Wilhelm
+}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\vspace{20px}
+\begin{center}
+  \includegraphics[scale=0.4]{../icon.png}
+\end{center}
+\pagebreak
+\tableofcontents
+\pagebreak
+
+\section{Einleitung}
+
+
+\section{Änderungen zum Entwurf}
+
+
+\section{Implementierte Muss- und Kannkriterien}
+
+
+\section{Verzögerungen im Implementierungsplan}
+
+
+\section{Probleme bei der Implementierung}
+Im Pflichtenheft war geplant, die von OPC UA bereitgestellten Alarme zu benutzen, um bei einem ungewöhnlichen Zustand (z.B. Überlauf)
+die Überwachungskonsole zu benachrichtigen. Leider unterstützt der Milo Server keine Alarme, siehe auch die entsprechende Antwort
+des Milo-Entwicklers auf Stack Overflow: \href{http://stackoverflow.com/a/42161092/}{http://stackoverflow.com/a/42161092/}.
+Somit mussten wir auch bei den Alarmen auf reguläre Subscriptions zurückgreifen, welche wir nun mit einem kürzeren Intervall
+als die restlichen Produktionsvariablen abfragen.
+
+\section{Unit tests}
+
+
+\pagebreak
+\phantomsection
+\addcontentsline{toc}{section}{\listfigurename}
+\listoffigures
+
+\end{document}
