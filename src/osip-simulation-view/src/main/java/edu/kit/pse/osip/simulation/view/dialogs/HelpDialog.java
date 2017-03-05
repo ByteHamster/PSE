@@ -38,7 +38,7 @@ public class HelpDialog extends Stage {
         getIcons().add(new Image("/icon.png"));
 
         TabPane tabPane = new TabPane();
-        tabPane.getTabs().addAll(createMainTab(), createControlTab(), createSettingsTab());
+        tabPane.getTabs().addAll(createMainTab(), createControlTab(), createSettingsTab(), createScenarioTab());
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
         Button close = new Button(Translator.getInstance().getString("simulation.helpdialog.closeButton"));
@@ -128,6 +128,19 @@ public class HelpDialog extends Stage {
         TextFlow textFlow = new TextFlow();
 
         textFlow.getChildren().add(getText("simulation.helpdialog.settingsTab.generalText", null));
+
+        tab.setContent(setupScrollPane(textFlow));
+
+        return tab;
+    }
+
+    private Tab createScenarioTab() {
+        Tab tab = new Tab();
+        tab.setText(Translator.getInstance().getString("simulation.helpdialog.scenarioTab.header"));
+
+        TextFlow textFlow = new TextFlow();
+
+        textFlow.getChildren().add(getText("simulation.helpdialog.scenarioTab.introduction", null));
 
         tab.setContent(setupScrollPane(textFlow));
 
