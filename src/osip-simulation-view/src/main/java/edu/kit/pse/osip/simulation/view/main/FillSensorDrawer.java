@@ -27,13 +27,8 @@ public class FillSensorDrawer extends ObjectDrawer {
         this.cols = cols;
     }
 
-    /**
-     * The Drawer draws itself onto the GraphicsContext at its position.
-     * @param context The context that the object draws itself onto
-     * @param time
-     */
     @Override
-    public final void draw(GraphicsContext context, double time) {
+    public final void draw(GraphicsContext context, double timeDiff) {
         context.setFill(Color.BLACK);
         context.setStroke(Color.BLACK);
         context.setLineWidth(2);

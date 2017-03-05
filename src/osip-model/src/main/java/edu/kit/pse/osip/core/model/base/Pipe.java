@@ -1,8 +1,9 @@
 package edu.kit.pse.osip.core.model.base;
 
 import edu.kit.pse.osip.core.SimulationConstants;
-import java.util.Queue;
-import java.util.concurrent.LinkedBlockingQueue;
+
+import java.util.Deque;
+import java.util.concurrent.LinkedBlockingDeque;
 
 /**
  * A pipe, where you can insert and take out liquid. It is a queue, so if you put in liquid, you can take it out in
@@ -13,7 +14,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class Pipe extends java.util.Observable {
     private float crosssection;
     private int length;
-    private Queue<Liquid> queue = new LinkedBlockingQueue<>();
+    private Deque<Liquid> queue = new LinkedBlockingDeque<>();
     private byte threshold = 100; /* in percent */
     private byte defaultThreshold;
 
@@ -46,14 +47,14 @@ public class Pipe extends java.util.Observable {
             throw new OverfullLiquidContainerException("To much liquid inserted into the pipe",
                     getMaxInput(), liquid.getAmount());
         }
-        queue.add(liquid);
+        queue.addLast(liquid);
         setChanged();
         if (queue.size() <= length) {
             notifyObservers();
             /* Pipe not filled */
             return new Liquid(0, SimulationConstants.MIN_TEMPERATURE, new Color(0));
         } else {
-            Liquid ret = queue.remove();
+            Liquid ret = queue.removeFirst();
             notifyObservers();
             return ret;
         }
@@ -106,5 +107,18 @@ public class Pipe extends java.util.Observable {
         queue.clear();
         setChanged();
         notifyObservers();
+    }
+
+    /**
+     * Checks whether there is currently any amount of liquid at the beginning and thus
+     * entering the pipe.
+     * @return True if the last Liquid put in has an amount > 0, false if the amount is 0 or there
+     *      is not a Liquid object.
+     */
+    public boolean isLiquidEntering() {
+        if (queue.peekLast() == null) {
+            return false;
+        }
+        return queue.peekLast().getAmount() != 0;
     }
 }

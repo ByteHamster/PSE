@@ -37,7 +37,8 @@ public class PhysicsSimulator {
         }
 
         mixTank.putIn(mixInput);
-        mixTank.takeOut(mixTank.getOutPipe().getMaxInput());
+        Pipe mixOutPipe = mixTank.getOutPipe();
+        mixOutPipe.putIn(mixTank.takeOut(mixTank.getOutPipe().getMaxInput()));
     }
 
     /**

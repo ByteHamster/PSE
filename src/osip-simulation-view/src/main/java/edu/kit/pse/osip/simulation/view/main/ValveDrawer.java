@@ -34,16 +34,13 @@ public class ValveDrawer extends RotatingControlDrawer {
         relValveHeight = ViewConstants.VALVE_HEIGHT / rows;
     }
 
-    /**
-     * The Drawer draws itself onto the GraphicsContext at its position.
-     * @param context The context that the object draws itself onto
-     * @param time
-     */
     @Override
-    public final void draw(GraphicsContext context, double time) {
+    public final void draw(GraphicsContext context, double timeDiff) {
         setSpeed(pipe.getValveThreshold());
 
-        updateDegrees(time, 0.5);
+        if (pipe.isLiquidEntering()) {
+            updateDegrees(timeDiff, 0.5);
+        }
 
         Canvas canvas = context.getCanvas();
         double totalWidth = canvas.getWidth();

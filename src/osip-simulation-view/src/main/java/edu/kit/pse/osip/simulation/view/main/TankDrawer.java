@@ -48,13 +48,11 @@ public class TankDrawer extends AbstractTankDrawer {
 
     /**
      * Add temperature- and fillsensor visualizations to the tank.
-     * @param context The GraphicsContext belonging to the canvas on which everything is drawn
-     * @param time The current time in nanoseconds
      */
     @Override
-    public final void drawSensors(GraphicsContext context, double time) {
-        topSensor.draw(context, time);
-        botSensor.draw(context, time);
-        tempSensor.draw(context, time);
+    public final void drawSensors(GraphicsContext context, double timeDiff) {
+        topSensor.draw(context, timeDiff);
+        botSensor.draw(context, timeDiff);
+        tempSensor.draw(context, timeDiff);
     }
 }

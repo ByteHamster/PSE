@@ -32,13 +32,8 @@ public class TemperatureSensorDrawer extends ObjectDrawer {
         this.cols = cols;
     }
 
-    /**
-     * The Drawer draws itself onto the GraphicsContext at its getPosition().
-     * @param context The context that the object draws itself onto
-     * @param currentTime
-     */
     @Override
-    public final void draw(GraphicsContext context, double currentTime) {
+    public final void draw(GraphicsContext context, double timeDiff) {
         Canvas canvas = context.getCanvas();
 
         double temp = (tank.getLiquid().getTemperature() - SimulationConstants.MIN_TEMPERATURE)

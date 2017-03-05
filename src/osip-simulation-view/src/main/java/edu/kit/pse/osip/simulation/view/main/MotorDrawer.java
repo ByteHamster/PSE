@@ -31,16 +31,11 @@ public class MotorDrawer extends RotatingControlDrawer {
         relRadius = ViewConstants.MOTOR_RADIUS / cols;
     }
 
-    /**
-     * The Drawer draws itself onto the GraphicsContext at its position.
-     * @param context The context that the object draws itself onto
-     * @param time
-     */
     @Override
-    public final void draw(GraphicsContext context, double time) {
+    public final void draw(GraphicsContext context, double timeDiff) {
         setSpeed(motor.getRPM());
 
-        updateDegrees(time, ViewConstants.MOTOR_SPEED_FACTOR);
+        updateDegrees(timeDiff, ViewConstants.MOTOR_SPEED_FACTOR);
 
         Canvas canvas = context.getCanvas();
         double totalWidth = canvas.getWidth();
