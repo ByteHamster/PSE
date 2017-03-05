@@ -57,10 +57,10 @@ class ProgressVisualization implements Observer {
         this.progressName = progressName;
         isEnabled = true;
         NumberAxis x = new NumberAxis();
-        x.setForceZeroInRange(true);
+        x.setForceZeroInRange(false);
         x.setLabel(Translator.getInstance().getString("monitoring.tank.progress.x"));
         NumberAxis y = new NumberAxis();
-        y.setForceZeroInRange(true);
+        y.setForceZeroInRange(false);
         y.setLabel(Translator.getInstance().getString("monitoring.tank.progress.y"));
         progressChart = new LineChart<Number, Number>(x, y);
         progressChart.setPrefHeight(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS * 1.25);
