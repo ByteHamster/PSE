@@ -135,7 +135,7 @@ class MonitoringMainWindow {
         mixTank.getUnderflowAlarm().addObserver(light);
         mixTank.getTemperatureOverheatingAlarm().addObserver(light);
         mixTank.getTemperatureUndercoolingAlarm().addObserver(light);
-        light.setAlarmCount(tankVisualizations.size() + 1);
+        light.setAlarmCount((tankVisualizations.size() + 1) * 4);
     }
     
     /**

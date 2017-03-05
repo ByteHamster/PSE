@@ -3,6 +3,7 @@ package edu.kit.pse.osip.monitoring.view.dashboard;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -12,7 +13,7 @@ import javafx.scene.shape.Circle;
  * Visualizes a traffic light.
  * 
  * @author Martin Armbruster
- * @version 1.3
+ * @version 1.4
  */
 class Light extends VBox implements Observer {
     /**
@@ -89,25 +90,22 @@ class Light extends VBox implements Observer {
     public void update(Observable observable, Object object) {
         AlarmVisualization alarm = (AlarmVisualization) observable;
         boolean triggered = (boolean) object;
+        triggeredAlarms.remove(alarm);
+        enabledAlarms.remove(alarm);
+        disabledAlarms.remove(alarm);
         if (alarm.getAlarmState() == AlarmState.ALARM_DISABLED) {
-            triggeredAlarms.remove(alarm);
-            enabledAlarms.remove(alarm);
             disabledAlarms.add(alarm);
         } else if (triggered) {
-            enabledAlarms.remove(alarm);
-            disabledAlarms.remove(alarm);
             triggeredAlarms.add(alarm);
         } else {
-            triggeredAlarms.remove(alarm);
-            disabledAlarms.remove(alarm);
             enabledAlarms.add(alarm);
         }
         if (disabledAlarms.size() == numberAlarms) {
-            disableWithColor();
+            Platform.runLater(() -> disableWithColor());
         } else if (triggeredAlarms.size() > 0) {
-            triggerWithColor();
+            Platform.runLater(() -> triggerWithColor());
         } else {
-            enableWithColor();
+            Platform.runLater(() -> enableWithColor());
         }
     }
     
