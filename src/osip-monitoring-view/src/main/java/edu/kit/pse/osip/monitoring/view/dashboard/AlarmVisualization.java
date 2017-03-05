@@ -4,6 +4,7 @@ import edu.kit.pse.osip.core.model.behavior.TankAlarm;
 import java.util.Observable;
 import java.util.Observer;
 import javafx.scene.paint.Color;
+import javafx.application.Platform;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
@@ -105,9 +106,9 @@ class AlarmVisualization extends Observable implements Observer {
             return;
         }
         if (actualAlarm.isAlarmTriggered()) {
-            alarmState.setFill(MonitoringViewConstants.ALARM_TRIGGERED);
+            Platform.runLater(() -> alarmState.setFill(MonitoringViewConstants.ALARM_TRIGGERED));
         } else {
-            alarmState.setFill(MonitoringViewConstants.ALARM_ENABLED);
+            Platform.runLater(() -> alarmState.setFill(MonitoringViewConstants.ALARM_ENABLED));
         }
     }
 }
