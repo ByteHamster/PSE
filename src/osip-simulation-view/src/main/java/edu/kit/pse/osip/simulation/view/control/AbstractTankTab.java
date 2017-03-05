@@ -121,7 +121,7 @@ public abstract class AbstractTankTab extends Tab implements Observer {
      * Updates the AbstractTankTab to show the values from the productionSite
      * @param tank The tank whose values are taken
      */
-    void update(AbstractTank tank) {
+    protected void update(AbstractTank tank) {
         outFlowSlider.setValue(tank.getOutPipe().getValveThreshold());
     }
 
@@ -129,7 +129,7 @@ public abstract class AbstractTankTab extends Tab implements Observer {
      * Sets the listener that is notified of changes to valve thresholds.
      * @param listener The Consumer that gets all changes to valve thresholds.
      */
-    void setValveListener(BiConsumer<Pipe, Byte> listener) {
+    protected void setValveListener(BiConsumer<Pipe, Byte> listener) {
         outFlowSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             skipUpdates = true;
             listener.accept(tank.getOutPipe(), newValue.byteValue());

@@ -126,7 +126,7 @@ public class MixTankTab extends AbstractTankTab {
      * Sets the listener that is notified of changes in motor speed.
      * @param listener The Consumer that gets all to the motorSpeed
      */
-    void setMotorListener(Consumer<Integer> listener) {
+    protected void setMotorListener(Consumer<Integer> listener) {
         motorSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             if (!skipUpdates) {
                 listener.accept(newValue.intValue());

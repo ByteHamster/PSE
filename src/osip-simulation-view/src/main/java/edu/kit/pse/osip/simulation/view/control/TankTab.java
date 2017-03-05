@@ -185,7 +185,7 @@ public class TankTab extends AbstractTankTab {
     }
 
     @Override
-    void setValveListener(BiConsumer<Pipe, Byte> listener) {
+    protected void setValveListener(BiConsumer<Pipe, Byte> listener) {
         super.setValveListener(listener);
 
         inFlowSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
@@ -199,7 +199,7 @@ public class TankTab extends AbstractTankTab {
      * Sets the listener that is notified of changes in the temperature.
      * @param listener The Consumer that gets all changes to Tank temperatures
      */
-    void setTemperatureListener(BiConsumer<TankSelector, Float> listener) {
+    protected void setTemperatureListener(BiConsumer<TankSelector, Float> listener) {
         temperatureSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             skipUpdates = true;
             listener.accept(selector, newValue.floatValue() + SimulationConstants.CELCIUS_OFFSET);
