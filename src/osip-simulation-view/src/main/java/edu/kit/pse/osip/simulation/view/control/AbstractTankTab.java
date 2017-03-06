@@ -1,6 +1,7 @@
 package edu.kit.pse.osip.simulation.view.control;
 
 import edu.kit.pse.osip.core.model.base.AbstractTank;
+import edu.kit.pse.osip.core.model.base.Pipe;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.view.main.ViewConstants;
 import javafx.beans.binding.Bindings;
@@ -10,9 +11,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import javafx.util.converter.IntegerStringConverter;
+
 import java.util.Observer;
+import java.util.function.BiConsumer;
 
 /**
  * This class contains the controls for a single tank in the simulation.
@@ -28,8 +33,10 @@ public abstract class AbstractTankTab extends Tab implements Observer {
 
     private Slider outFlowSlider;
     private TextField outFlowValue;
+    private AbstractTank tank;
 
     private boolean controlsDisabled;
+    protected boolean skipUpdates = false;
 
     /**
      * Creates a new AbstractTankTab with Sliders to control outFlow and Temperature
@@ -38,6 +45,7 @@ public abstract class AbstractTankTab extends Tab implements Observer {
      */
     public AbstractTankTab(String name, AbstractTank tank) {
         super(name);
+        this.tank = tank;
         this.setClosable(false);
 
         controlsDisabled = false;
@@ -46,7 +54,6 @@ public abstract class AbstractTankTab extends Tab implements Observer {
         pane.setPrefWidth(ViewConstants.CONTROL_WIDTH);
         row = 0;
 
-        tank.addObserver(this);
         createOutFlowSlider(pane, tank);
     }
 
@@ -68,14 +75,12 @@ public abstract class AbstractTankTab extends Tab implements Observer {
         outFlowSlider.setPrefWidth(ViewConstants.CONTROL_SLIDER_WIDTH);
         GridPane.setHgrow(outFlowSlider, Priority.ALWAYS);
 
-        outFlowSlider.valueProperty().addListener((ov, oldVal, newVal) ->
-            outFlowSlider.setValue(newVal.intValue()));
-
         pane.add(outFlowSlider, col++, row);
         GridPane.setMargin(outFlowSlider, ViewConstants.CONTROL_PADDING);
 
         //TextField and Label to show the current value and unit
         outFlowValue = new TextField("" + tank.getOutPipe().getValveThreshold());
+        outFlowValue.setTextFormatter(new TextFormatter<>(new IntegerStringConverter()));
         outFlowValue.setMaxWidth(ViewConstants.CONTROL_INPUT_WIDTH);
         pane.add(outFlowValue, col++, row);
         GridPane.setMargin(outFlowValue, ViewConstants.CONTROL_PADDING);
@@ -105,22 +110,6 @@ public abstract class AbstractTankTab extends Tab implements Observer {
     }
 
     /**
-     * Returns whether or not the control elements are currently disabled.
-     * @return the value of controlsDisabled
-     */
-    protected boolean isControlsDisabled() {
-        return controlsDisabled;
-    }
-
-    /**
-     * Gets a reference to the outFlowSlider
-     * @return A reference to the outFlowSlider
-     */
-    protected Slider getOutFlowSlider() {
-        return outFlowSlider;
-    }
-
-    /**
      * Gets the GridPane on which the sliders are ordered
      * @return The GridPane in the tab
      */
@@ -132,8 +121,19 @@ public abstract class AbstractTankTab extends Tab implements Observer {
      * Updates the AbstractTankTab to show the values from the productionSite
      * @param tank The tank whose values are taken
      */
-    public void update(AbstractTank tank) {
+    protected void update(AbstractTank tank) {
         outFlowSlider.setValue(tank.getOutPipe().getValveThreshold());
-        outFlowValue.setText(String.valueOf(tank.getOutPipe().getValveThreshold()));
+    }
+
+    /**
+     * Sets the listener that is notified of changes to valve thresholds.
+     * @param listener The Consumer that gets all changes to valve thresholds.
+     */
+    protected void setValveListener(BiConsumer<Pipe, Byte> listener) {
+        outFlowSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            skipUpdates = true;
+            listener.accept(tank.getOutPipe(), newValue.byteValue());
+            skipUpdates = false;
+        });
     }
 }

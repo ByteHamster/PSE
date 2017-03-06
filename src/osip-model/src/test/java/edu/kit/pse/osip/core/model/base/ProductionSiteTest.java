@@ -4,6 +4,10 @@ import edu.kit.pse.osip.core.SimulationConstants;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Observable;
+import java.util.Observer;
+
+import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -14,8 +18,9 @@ import static org.junit.Assert.assertTrue;
  * @author David Kahles
  * @version 1.0
  */
-public class ProductionSiteTest {
+public class ProductionSiteTest implements Observer {
     ProductionSite prodSite;
+    boolean updated;
 
     /**
      * Initialize prodSite
@@ -23,6 +28,7 @@ public class ProductionSiteTest {
     @Before
     public void init() {
         prodSite = new ProductionSite();
+        updated = false;
     }
 
     /**
@@ -158,8 +164,14 @@ public class ProductionSiteTest {
      */
     @Test
     public void testInputTemperature() {
+        prodSite.addObserver(this);
+        assertFalse(updated);
         prodSite.setInputTemperature(TankSelector.MIX, SimulationConstants.MIN_TEMPERATURE);
         assertEquals(SimulationConstants.MIN_TEMPERATURE, prodSite.getInputTemperature(TankSelector.MIX), 0.0001);
+        assertTrue(updated);
+        updated = false;
+        prodSite.reset();
+        assertTrue(updated);
     }
 
     /**
@@ -176,5 +188,10 @@ public class ProductionSiteTest {
     @Test(expected = IllegalArgumentException.class)
     public void testTooHighInputTemperature() {
         prodSite.setInputTemperature(TankSelector.MIX, SimulationConstants.MAX_TEMPERATURE + 1);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        updated = true;
     }
 }

@@ -2,6 +2,7 @@ package edu.kit.pse.osip.simulation.view.control;
 
 import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.model.base.AbstractTank;
+import edu.kit.pse.osip.core.model.base.Pipe;
 import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
@@ -13,10 +14,13 @@ import javafx.beans.property.StringProperty;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import javafx.util.converter.IntegerStringConverter;
 
 import java.util.Observable;
+import java.util.function.BiConsumer;
 
 /**
  * This class has controls specific to the input tanks.
@@ -54,6 +58,11 @@ public class TankTab extends AbstractTankTab {
         createTemperatureSlider(pane, tank);
 
         this.setContent(pane);
+
+        site.addObserver(this);
+        tank.addObserver(this);
+        tank.getInPipe().addObserver(this);
+        tank.getOutPipe().addObserver(this);
     }
 
     private void createInFlowSlider(GridPane pane, AbstractTank tank) {
@@ -74,14 +83,12 @@ public class TankTab extends AbstractTankTab {
         inFlowSlider.setPrefWidth(ViewConstants.CONTROL_SLIDER_WIDTH);
         GridPane.setHgrow(inFlowSlider, Priority.ALWAYS);
 
-        inFlowSlider.valueProperty().addListener((ov, oldVal, newVal) ->
-                inFlowSlider.setValue(newVal.intValue()));
-
         pane.add(inFlowSlider, col++, row);
         GridPane.setMargin(inFlowSlider, ViewConstants.CONTROL_PADDING);
 
         //TextField and label to show the current value and unit
         inFlowValue = new TextField("" + tank.getOutPipe().getValveThreshold());
+        inFlowValue.setTextFormatter(new TextFormatter<>(new IntegerStringConverter()));
         inFlowValue.setMaxWidth(ViewConstants.CONTROL_INPUT_WIDTH);
         pane.add(inFlowValue, col++, row);
         GridPane.setMargin(inFlowValue, ViewConstants.CONTROL_PADDING);
@@ -159,28 +166,10 @@ public class TankTab extends AbstractTankTab {
         }
     }
 
-    /**
-     * Returns a reference to the InFlowSlider
-     * @return A reference to the InFlowSlider
-     */
-    protected Slider getInFlowSlider() {
-        return inFlowSlider;
-    }
-
-    /**
-     * Gets a reference to the temperatureSlider
-     * @return A reference to the temperatureSlider
-     */
-    protected Slider getTemperatureSlider() {
-        return temperatureSlider;
-    }
-
     @Override
     public void update(Observable observable, Object o) {
-        if (isControlsDisabled()) {
-
-            Tank tank = (Tank) observable;
-            update(tank);
+        if (!skipUpdates) {
+            update(site.getUpperTank(selector));
         }
     }
 
@@ -188,15 +177,33 @@ public class TankTab extends AbstractTankTab {
      * Updates the TankTab to show the values from the productionSite
      * @param tank The tank whose values are taken
      */
-    public void update(Tank tank) {
+    private void update(Tank tank) {
         super.update(tank);
 
         inFlowSlider.setValue(tank.getInPipe().getValveThreshold());
-        inFlowValue.setText(String.valueOf(tank.getInPipe().getValveThreshold()));
-
         temperatureSlider.setValue(site.getInputTemperature(selector) - SimulationConstants.CELCIUS_OFFSET);
-        temperatureValue.setText(String.valueOf(
-                site.getInputTemperature(selector) - SimulationConstants.CELCIUS_OFFSET));
     }
 
+    @Override
+    protected void setValveListener(BiConsumer<Pipe, Byte> listener) {
+        super.setValveListener(listener);
+
+        inFlowSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            skipUpdates = true;
+            listener.accept(site.getUpperTank(selector).getInPipe(), newValue.byteValue());
+            skipUpdates = false;
+        });
+    }
+
+    /**
+     * Sets the listener that is notified of changes in the temperature.
+     * @param listener The Consumer that gets all changes to Tank temperatures
+     */
+    protected void setTemperatureListener(BiConsumer<TankSelector, Float> listener) {
+        temperatureSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            skipUpdates = true;
+            listener.accept(selector, newValue.floatValue() + SimulationConstants.CELCIUS_OFFSET);
+            skipUpdates = false;
+        });
+    }
 }

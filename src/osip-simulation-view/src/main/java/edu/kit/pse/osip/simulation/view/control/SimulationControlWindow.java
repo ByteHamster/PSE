@@ -1,6 +1,5 @@
 package edu.kit.pse.osip.simulation.view.control;
 
-import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.model.base.Pipe;
 import edu.kit.pse.osip.core.model.base.MixTank;
 import edu.kit.pse.osip.core.model.base.ProductionSite;
@@ -78,38 +77,13 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
         }
     }
 
-    @Override
-    public void update() {
-        for (TankSelector t : TankSelector.valuesWithoutMix()) {
-            TankTab tab = (TankTab) tankTabs.get(t);
-            tab.update(productionSite.getUpperTank(t));
-        }
-
-        MixTankTab mixTab = (MixTankTab) tankTabs.get(TankSelector.MIX);
-        mixTab.update(productionSite.getMixTank());
-    }
-
     /**
      * Sets the listener that is notified of changes to valve thresholds.
      * @param listener The Consumer that gets all changes to valve thresholds.
      */
     public void setValveListener(BiConsumer<Pipe, Byte> listener) {
-        // Inflow listeners for all upper tanks
-        for (TankSelector t : TankSelector.valuesWithoutMix()) {
-            Pipe inPipe = productionSite.getUpperTank(t).getInPipe();
-            TankTab tab = (TankTab) tankTabs.get(t);
-            tab.getInFlowSlider().valueProperty().addListener((ov, oldVal, newVal) ->
-                listener.accept(inPipe, newVal.byteValue()));
-        }
-
-        // Outflow listeners for all tanks
-        Pipe mixInPipe = productionSite.getMixTank().getOutPipe();
-        tankTabs.get(TankSelector.MIX).getOutFlowSlider().valueProperty().addListener((ov, oldVal, newVal) ->
-                listener.accept(mixInPipe, newVal.byteValue()));
-        for (TankSelector t : TankSelector.valuesWithoutMix()) {
-            Pipe inPipe = productionSite.getUpperTank(t).getOutPipe();
-            tankTabs.get(t).getOutFlowSlider().valueProperty().addListener((ov, oldVal, newVal) ->
-                listener.accept(inPipe, newVal.byteValue()));
+        for (AbstractTankTab tab: tankTabs.values()) {
+            tab.setValveListener(listener);
         }
     }
 
@@ -120,8 +94,7 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
     public void setTemperatureListener(BiConsumer<TankSelector, Float> listener) {
         for (TankSelector t : TankSelector.valuesWithoutMix()) {
             TankTab tab = (TankTab) tankTabs.get(t);
-            tab.getTemperatureSlider().valueProperty().addListener((ov, oldVal, newVal) ->
-                listener.accept(t, newVal.floatValue() + SimulationConstants.CELCIUS_OFFSET));
+            tab.setTemperatureListener(listener);
         }
     }
 
@@ -131,7 +104,6 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
      */
     public void setMotorListener(Consumer<Integer> listener) {
         MixTankTab tab = (MixTankTab) tankTabs.get(TankSelector.MIX);
-        tab.getMotorSlider().valueProperty().addListener((ov, oldVal, newVal) ->
-            listener.accept(newVal.intValue()));
+        tab.setMotorListener(listener);
     }
 }

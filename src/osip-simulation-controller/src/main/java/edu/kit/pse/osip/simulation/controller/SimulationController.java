@@ -51,6 +51,7 @@ public class SimulationController extends Application {
     private ServerSettingsWrapper settingsWrapper;
     private boolean overflow = false;
     private Timer stepTimer = new Timer(true);
+    private boolean resetInProgress = false;
 
     private static final float FILL_ALARM_LOWER_THRESHOLD = 0.05f;
     private static final float FILL_ALARM_UPPER_THRESHOLD = 0.95f;
@@ -192,7 +193,7 @@ public class SimulationController extends Application {
             cont.server.setOverheatAlarm(cont.overheatAlarm.isAlarmTriggered());
             cont.server.setUndercoolAlarm(cont.undercoolAlarm.isAlarmTriggered());
 
-            if (cont.tank.getFillLevel() > 1 && !overflow && !productionSite.isResetting()) {
+            if (cont.tank.getFillLevel() > 1 && !overflow && !resetInProgress) {
                 overflow = true;
                 showOverflow(cont.selector);
             }
@@ -209,7 +210,7 @@ public class SimulationController extends Application {
         mixCont.server.setOverheatAlarm(mixCont.overheatAlarm.isAlarmTriggered());
         mixCont.server.setUndercoolAlarm(mixCont.undercoolAlarm.isAlarmTriggered());
 
-        if (mixCont.tank.getFillLevel() > 1 && !overflow && !productionSite.isResetting()) {
+        if (mixCont.tank.getFillLevel() > 1 && !overflow && !resetInProgress) {
             overflow = true;
             showOverflow(TankSelector.MIX);
         }
@@ -241,11 +242,6 @@ public class SimulationController extends Application {
         Stage about = new AboutDialog();
         settingsInterface = new SimulationSettingsWindow(settingsWrapper);
 
-        currentSimulationView.setOverflowClosedHandler(actionEvent -> {
-            productionSite.reset();
-            controlInterface.update();
-            controlInterface.setControlsDisabled(false);
-        });
         currentSimulationView.setSettingsButtonHandler(actionEvent -> settingsInterface.show());
         currentSimulationView.setControlButtonHandler(actionEvent -> controlInterface.show());
         currentSimulationView.setAboutButtonHandler(actionEvent -> about.show());
@@ -256,6 +252,7 @@ public class SimulationController extends Application {
             if (currentScenario != null) {
                 currentScenario.cancelScenario();
                 currentSimulationView.scenarioFinished();
+                controlInterface.setControlsDisabled(false);
             }
         });
 
@@ -263,9 +260,12 @@ public class SimulationController extends Application {
             if (currentScenario != null) {
                 currentScenario.cancelScenario();
                 currentSimulationView.scenarioFinished();
+                controlInterface.setControlsDisabled(false);
             }
+            resetInProgress = true;
             productionSite.reset();
-            controlInterface.update();
+            resetInProgress = false;
+            controlInterface.setControlsDisabled(false);
         });
 
         controlInterface.setValveListener((pipe, number) -> {
@@ -293,9 +293,14 @@ public class SimulationController extends Application {
             return;
         }
         currentScenario.setProductionSite(productionSite);
-        currentScenario.setScenarioFinishedListener(currentSimulationView::scenarioFinished);
-        productionSite.reset();
+        currentScenario.setScenarioFinishedListener(() -> {
+            currentSimulationView.scenarioFinished();
+            controlInterface.setControlsDisabled(false);
+        });
         controlInterface.setControlsDisabled(true);
+        resetInProgress = true;
+        productionSite.reset();
+        resetInProgress = false;
         currentScenario.startScenario();
     }
 

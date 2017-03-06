@@ -48,7 +48,7 @@ public class SimulationMainWindow implements SimulationViewInterface {
     private SimulationMenu menu;
     private Collection<Drawer> element;
     private Canvas canvas;
-    private EventHandler<ActionEvent> overflowClosedHandler;
+    private EventHandler<ActionEvent> resetHandler;
 
     /**
      * Creates a new SimulationMainWindow. It is assumed that there will only ever be two rows of tanks.
@@ -156,7 +156,7 @@ public class SimulationMainWindow implements SimulationViewInterface {
 
         mainPane.setStyle("-fx-font-size:" + ViewConstants.FONT_SIZE + "px;");
 
-        menu = new SimulationMenu(controlWindow);
+        menu = new SimulationMenu();
         mainPane.setTop(menu);
 
         canvas = setCanvas(primaryStage);
@@ -206,19 +206,14 @@ public class SimulationMainWindow implements SimulationViewInterface {
         EventHandler<ActionEvent> handler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (overflowClosedHandler != null) {
-                    overflowClosedHandler.handle(actionEvent);
+                if (resetHandler != null) {
+                    resetHandler.handle(actionEvent);
                 }
             }
         };
 
         dialog.setResetButtonHandler(handler);
         dialog.show();
-    }
-
-    @Override
-    public void setOverflowClosedHandler(EventHandler<ActionEvent> handler) {
-        overflowClosedHandler = handler;
     }
 
     /**
@@ -283,6 +278,7 @@ public class SimulationMainWindow implements SimulationViewInterface {
 
     @Override
     public void setResetListener(EventHandler<ActionEvent> listener) {
+        resetHandler = listener;
         menu.setResetButtonHandler(listener);
     }
 

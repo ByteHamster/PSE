@@ -28,12 +28,6 @@ public interface SimulationViewInterface {
      * Set a handler which gets called if the users closes the overflow dialog
      * @param handler The handler to set.
      */
-    void setOverflowClosedHandler(EventHandler<ActionEvent> handler);
-
-    /**
-     * Set a handler which gets called if the users closes the overflow dialog
-     * @param handler The handler to set.
-     */
     void setHelpButtonHandler(EventHandler<ActionEvent> handler);
 
     /**
