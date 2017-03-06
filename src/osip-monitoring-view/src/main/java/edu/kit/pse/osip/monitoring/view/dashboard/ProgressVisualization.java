@@ -8,7 +8,6 @@ import javafx.application.Platform;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
 /**
