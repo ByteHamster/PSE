@@ -23,3 +23,5 @@ script:
 - cat Pflichtenheft.log | grep -C 15 -i ERROR
 - pdflatex -interaction=batchmode Design &> /dev/null
 - cat Design.log | grep -C 15 -i ERROR
+- pdflatex -interaction=batchmode Implementation &> /dev/null
+- cat Implementation.log | grep -C 15 -i ERROR

@@ -33,12 +33,14 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 *.lnk
+.directory
 
 ###########################################
 #               LaTeX files               #
 ###########################################
 docs/Pflichtenheft.pdf
 docs/Design.pdf
+docs/Implementation.pdf
 *.aux
 *.lof
 *.log
