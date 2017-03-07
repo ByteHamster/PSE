@@ -53,14 +53,12 @@ public class MixTankDrawer extends AbstractTankDrawer {
 
     /**
      * Add Temperature- and Fillsensors as well as a motor visualization to the tank.
-     * @param context The GraphicsContext on which the sensors are drawn.
-     * @param time
      */
     @Override
-    public final void drawSensors(GraphicsContext context, double time) {
-        topSensor.draw(context, time);
-        botSensor.draw(context, time);
-        tempSensor.draw(context, time);
-        motor.draw(context, time);
+    public final void drawSensors(GraphicsContext context, double timeDiff) {
+        topSensor.draw(context, timeDiff);
+        botSensor.draw(context, timeDiff);
+        tempSensor.draw(context, timeDiff);
+        motor.draw(context, timeDiff);
     }
 }

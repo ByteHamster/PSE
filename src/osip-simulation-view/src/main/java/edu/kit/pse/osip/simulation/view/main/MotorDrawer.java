@@ -31,17 +31,11 @@ public class MotorDrawer extends RotatingControlDrawer {
         relRadius = ViewConstants.MOTOR_RADIUS / cols;
     }
 
-    /**
-     * The Drawer draws itself onto the GraphicsContext at its position.
-     * @param context The context that the object draws itself onto
-     * @param time
-     */
     @Override
-    public final void draw(GraphicsContext context, double time) {
+    public final void draw(GraphicsContext context, double timeDiff) {
         setSpeed(motor.getRPM());
 
-        // Convert the minutes to degrees to be turned in total
-        double degrees = time * (getSpeed() * ViewConstants.MOTOR_SPEED_FACTOR) * 360;
+        updateDegrees(timeDiff, ViewConstants.MOTOR_SPEED_FACTOR);
 
         Canvas canvas = context.getCanvas();
         double totalWidth = canvas.getWidth();
@@ -69,14 +63,14 @@ public class MotorDrawer extends RotatingControlDrawer {
         //This leads to a white outline and visibility in all cases.
         context.setStroke(Color.WHITE);
         context.setLineWidth(ViewConstants.MOTOR_LINE_WIDTH + 2);
-        context.strokeLine(rotateX(point1xPos, centerX, point1yPos, centerY, degrees),
-                rotateY(point1xPos, centerX, point1yPos, centerY, degrees),
-                rotateX(point3xPos, centerX, point3yPos, centerY, degrees),
-                rotateY(point3xPos, centerX, point3yPos, centerY, degrees));
-        context.strokeLine(rotateX(point2xPos, centerX, point2yPos, centerY, degrees),
-                rotateY(point2xPos, centerX, point2yPos, centerY, degrees),
-                rotateX(point4xPos, centerX, point4yPos, centerY, degrees),
-                rotateY(point4xPos, centerX, point4yPos, centerY, degrees));
+        context.strokeLine(rotateX(point1xPos, centerX, point1yPos, centerY, getDegrees()),
+                rotateY(point1xPos, centerX, point1yPos, centerY, getDegrees()),
+                rotateX(point3xPos, centerX, point3yPos, centerY, getDegrees()),
+                rotateY(point3xPos, centerX, point3yPos, centerY, getDegrees()));
+        context.strokeLine(rotateX(point2xPos, centerX, point2yPos, centerY, getDegrees()),
+                rotateY(point2xPos, centerX, point2yPos, centerY, getDegrees()),
+                rotateX(point4xPos, centerX, point4yPos, centerY, getDegrees()),
+                rotateY(point4xPos, centerX, point4yPos, centerY, getDegrees()));
 
         context.strokeOval(point1xPos, point2yPos, relRadius * 2 * totalWidth, relRadius * 2 * totalWidth);
 
@@ -84,14 +78,14 @@ public class MotorDrawer extends RotatingControlDrawer {
         context.setLineWidth(ViewConstants.MOTOR_LINE_WIDTH);
 
         // Draw the two rotated lines.
-        context.strokeLine(rotateX(point1xPos, centerX, point1yPos, centerY, degrees),
-                rotateY(point1xPos, centerX, point1yPos, centerY, degrees),
-                rotateX(point3xPos, centerX, point3yPos, centerY, degrees),
-                rotateY(point3xPos, centerX, point3yPos, centerY, degrees));
-        context.strokeLine(rotateX(point2xPos, centerX, point2yPos, centerY, degrees),
-                rotateY(point2xPos, centerX, point2yPos, centerY, degrees),
-                rotateX(point4xPos, centerX, point4yPos, centerY, degrees),
-                rotateY(point4xPos, centerX, point4yPos, centerY, degrees));
+        context.strokeLine(rotateX(point1xPos, centerX, point1yPos, centerY, getDegrees()),
+                rotateY(point1xPos, centerX, point1yPos, centerY, getDegrees()),
+                rotateX(point3xPos, centerX, point3yPos, centerY, getDegrees()),
+                rotateY(point3xPos, centerX, point3yPos, centerY, getDegrees()));
+        context.strokeLine(rotateX(point2xPos, centerX, point2yPos, centerY, getDegrees()),
+                rotateY(point2xPos, centerX, point2yPos, centerY, getDegrees()),
+                rotateX(point4xPos, centerX, point4yPos, centerY, getDegrees()),
+                rotateY(point4xPos, centerX, point4yPos, centerY, getDegrees()));
 
         // There would be not much sense in rotating a circle.
         context.strokeOval(point1xPos, point2yPos, relRadius * 2 * totalWidth, relRadius * 2 * totalWidth);

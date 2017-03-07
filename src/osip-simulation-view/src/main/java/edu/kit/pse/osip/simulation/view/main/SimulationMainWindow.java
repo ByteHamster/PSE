@@ -185,11 +185,16 @@ public class SimulationMainWindow implements SimulationViewInterface {
         setResizeListeners(primaryStage);
 
         new AnimationTimer() {
+            private long oldTime = System.nanoTime();
+
             public void handle(long currentTimeNs) {
+                long timeDiffNs = currentTimeNs - oldTime;
+                oldTime = currentTimeNs;
+
                 context.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
                 for (Drawer d : element) {
-                    double currentTime = ((double) currentTimeNs) / (1000000000.0 * 60);
-                    d.draw(context, currentTime);
+                    double timeDiff = ((double) timeDiffNs) / (1000000000.0 * 60);
+                    d.draw(context, timeDiff);
                 }
             }
         }.start();

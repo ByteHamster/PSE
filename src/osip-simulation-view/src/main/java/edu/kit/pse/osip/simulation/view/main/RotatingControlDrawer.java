@@ -11,6 +11,7 @@ package edu.kit.pse.osip.simulation.view.main;
 public abstract class RotatingControlDrawer extends ObjectDrawer {
 
     private int speed;
+    private double degrees;
 
     /**
      * Sets the position by using super(pos) and the rotation speed.
@@ -20,14 +21,26 @@ public abstract class RotatingControlDrawer extends ObjectDrawer {
     public RotatingControlDrawer(Point2D pos, int speed) {
         super(pos);
         this.speed = speed;
+        degrees = 0;
     }
 
     /**
-     * Get the rotation speed of the RotatingControlDrawer
-     * @return The current value of speed
+     * Gets the value of degrees
+     * @return The value of degrees
      */
-    public int getSpeed() {
-        return speed;
+    public double getDegrees() {
+        return degrees;
+    }
+
+    /**
+     * Updates the total amount of degrees turned accoring to the time passed and norms it to
+     * the interval [0, 360)
+     * @param timeDiff The time passed since the last update
+     * @param speedFactor Fraction of the speed that is actually to be displayed for aesthetic reasons
+     */
+    public void updateDegrees(double timeDiff, double speedFactor) {
+        degrees = degrees + (timeDiff * (speed * speedFactor) * 360);
+        degrees = degrees % 360;
     }
 
     /**

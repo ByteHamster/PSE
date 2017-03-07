@@ -49,13 +49,8 @@ public class PipeDrawer implements Drawer {
         valve = new ValveDrawer(new Point2D(valveX, valveY), pipe, rows);
     }
 
-    /**
-     * The Drawer draws itself onto the GraphicsContext at its position.
-     * @param context The context that the object draws itself onto
-     * @param time
-     */
     @Override
-    public final void draw(GraphicsContext context, double time) {
+    public final void draw(GraphicsContext context, double timeDiff) {
         context.setStroke(Color.BLACK);
         Canvas canvas = context.getCanvas();
         double totalWidth = canvas.getWidth();
@@ -85,6 +80,6 @@ public class PipeDrawer implements Drawer {
             context.strokeLine(x1, y1, x2, y2);
         }
 
-        valve.draw(context, time);
+        valve.draw(context, timeDiff);
     }
 }

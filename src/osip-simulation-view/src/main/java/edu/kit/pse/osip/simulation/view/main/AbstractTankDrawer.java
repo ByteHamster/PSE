@@ -138,9 +138,9 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
     /**
      * Used by draw(). Adds some detail to the tank depending on tank type.
      * @param context The GraphicsContext on which the sensors are drawn
-     * @param time The time passed
+     * @param timeDiff The time passed in minutes since the last call of drawSensors
      */
-    public abstract void drawSensors(GraphicsContext context, double time);
+    public abstract void drawSensors(GraphicsContext context, double timeDiff);
 
     /**
      * Gets the point where pipes can attach to the bottom of the tank. This point lies in the
