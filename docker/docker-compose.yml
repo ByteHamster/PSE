@@ -1,0 +1,27 @@
+version: '3'
+services:
+  simulation:
+    build:
+      context: .
+      dockerfile: simulationDockerfile
+    environment:
+      - DISPLAY
+    expose:
+      - 12868
+      - 12869
+      - 12870
+      - 12871
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+
+  monitor:
+    build:
+      context: .
+      dockerfile: simulationDockerfile
+    environment:
+      - DISPLAY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    depends_on:
+      - simulation
+
