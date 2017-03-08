@@ -9,6 +9,8 @@
 \subtitle{PSE Projekt}
 \author{M. Armbruster, D. Kahles, H. Lehmann, M. Schwarzmann, N. Wilhelm}
 
+\titlelogo{icon}
+
 \begin{document}
 
 \selectlanguage{ngerman}
@@ -18,7 +20,6 @@
 \titlepage
 \end{frame}
 
-\section{Was ist OSIP?}
 \begin{frame}{Wofür benötigt man OSIP?}
 \begin{figure}[ht!]
 \centering
@@ -28,7 +29,7 @@
 
 \begin{frame}{Was ist OSIP?}
 \begin{itemize}[<+->]
- \item Zwei Anwendungen: Die \emph{Simulation} eines chemischen Produktionsprozesses mit vier Tanks und die \emph{Überwachungskonsole}
+ \item Besteht aus zwei Anwendungen: Die \emph{Simulation} eines chemischen Produktionsprozesses mit vier Tanks und die \emph{Überwachungskonsole}
  \item Kommunikation ausschließlich über OPC UA Protokoll
  \item Anwendungen auf getrennten Computern lauffähig, sofern Netzwerkverbindung besteht
 \end{itemize}
@@ -41,14 +42,13 @@
   \item Komponenten der Anlage werden schematisch dargestellt
   \item Enthält für jeden Tank einen eigenen OPC UA Server
   \item Mit Szenarien können interessante Abläufe automatisiert werden
-  \item Jitter in der Berechnung simuliert Messungenauigkeiten
  \end{itemize}
 \end{frame}
 
 \begin{frame}{Überwachungskonsole}
  \begin{itemize}[<+->]
   \item Erhält per OPC UA Messwerte der Simulation und visualisiert diese
-  \item Fragt Sensorwerte in einstellbarem Intervall von den Servern ab
+  \item Fragt Sensorwerte in einstellbarem Intervall von den OPC UA Servern ab
   \item Warnt beim Überschreiten von definierten Grenzen den Benutzer
   \item Alarme sind unabhängig vom Aktualisierungsintervall
   \item Alarme sind ein- und ausschaltbar
@@ -61,7 +61,7 @@
  \item OPC UA Protokoll wird nicht selbst implementiert $\rightarrow$ Open Source Implementierung \emph{Milo}
  \item OSIP wird in \emph{Java} entwickelt
  \item Die GUI wird mit \emph{JavaFX} implementiert
- \item Git (circa 800 Commits) mit Codereview über GitHub
+ \item \emph{Git} (circa 800 Commits) mit Codereview auf \emph{GitHub.com}
  \item Lauffähig auf Ubuntu Linux (mit und ohne Docker) und Windows
  \item Verschiedene Entwurfsmuster verwendet (MVC, Beobachter, Fassade, Strategie, ...)
  \item Circa 15.000 LOC, davon 7500 SLOC
