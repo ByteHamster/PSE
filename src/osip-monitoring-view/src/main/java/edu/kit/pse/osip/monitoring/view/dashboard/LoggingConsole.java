@@ -7,6 +7,7 @@ import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Observable;
 import java.util.Observer;
+import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
@@ -76,7 +77,7 @@ class LoggingConsole extends TabPane implements Observer {
      * @param message The logging message for the occurred event.
      */
     protected void log(String message) {
-        stdIO.getChildren().add(prepareText(message));
+        Platform.runLater(() -> stdIO.getChildren().add(prepareText(message)));
     }
     
     /**
@@ -85,7 +86,7 @@ class LoggingConsole extends TabPane implements Observer {
      * @param message the logging message for the occurred event.
      */
     protected void logWithoutTime(String message) {
-        stdIO.getChildren().add(new Text(message));
+        Platform.runLater(() -> stdIO.getChildren().add(new Text(message)));
     }
     
     /**
@@ -111,7 +112,7 @@ class LoggingConsole extends TabPane implements Observer {
             if (alarm.getAlarmState() == AlarmState.ALARM_DISABLED) {
                 alarmText.setFill(MonitoringViewConstants.ALARM_DISABLED);
             }
-            alarms.getChildren().add(alarmText);
+            Platform.runLater(() -> alarms.getChildren().add(alarmText));
         }
     } 
 }
