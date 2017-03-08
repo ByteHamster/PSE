@@ -1,0 +1,81 @@
+\documentclass[22pt]{beamer}
+
+\usepackage{templates/beamerthemekit}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+\title[OSIP]{OPC UA Simulator for Industrial Plants}
+\subtitle{PSE Projekt}
+\author{M. Armbruster, D. Kahles, H. Lehmann, M. Schwarzmann, N. Wilhelm}
+
+\begin{document}
+
+\selectlanguage{ngerman}
+
+%title page
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Was ist OSIP?}
+\begin{frame}{Wofür benötigt man OSIP?}
+\begin{figure}[ht!]
+\centering
+\includegraphics[height=\textheight,width=\textwidth,keepaspectratio=true]{Demoanlage_IOSB.jpg}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Was ist OSIP?}
+\begin{itemize}[<+->]
+ \item Zwei Anwendungen: Die \emph{Simulation} eines chemischen Produktionsprozesses mit vier Tanks und die \emph{Überwachungskonsole}
+ \item Kommunikation ausschließlich über OPC UA Protokoll
+ \item Anwendungen auf getrennten Computern lauffähig, sofern Netzwerkverbindung besteht
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Simulation}
+ \begin{itemize}[<+->]
+  \item Drei Tanks mit Flüssigkeiten die in einem Mischtank gemischt werden
+  \item Verschiedene Parameter einstellbar (Ventile, Temperaturen, ...)
+  \item Komponenten der Anlage werden schematisch dargestellt
+  \item Enthält für jeden Tank einen eigenen OPC UA Server
+  \item Mit Szenarien können interessante Abläufe automatisiert werden
+  \item Jitter in der Berechnung simuliert Messungenauigkeiten
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{Überwachungskonsole}
+ \begin{itemize}[<+->]
+  \item Erhält per OPC UA Messwerte der Simulation und visualisiert diese
+  \item Fragt Sensorwerte in einstellbarem Intervall von den Servern ab
+  \item Warnt beim Überschreiten von definierten Grenzen den Benutzer
+  \item Alarme sind unabhängig vom Aktualisierungsintervall
+  \item Alarme sind ein- und ausschaltbar
+  \item Nimmt keinen Einfluss auf die Simulation, reines Monitoring
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{Verwendete Technologien}
+\begin{itemize}[<+->]
+ \item OPC UA Protokoll wird nicht selbst implementiert $\rightarrow$ Open Source Implementierung \emph{Milo}
+ \item OSIP wird in \emph{Java} entwickelt
+ \item Die GUI wird mit \emph{JavaFX} implementiert
+ \item Git (circa 800 Commits) mit Codereview über GitHub
+ \item Lauffähig auf Ubuntu Linux (mit und ohne Docker) und Windows
+ \item Verschiedene Entwurfsmuster verwendet (MVC, Beobachter, Fassade, Strategie, ...)
+ \item Circa 15.000 LOC, davon 7500 SLOC
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Resümee}
+\begin{itemize}[<+->]
+ \item Code Review vermeidet viele Probleme
+ \item Controller aufwändiger als gedacht
+ \item Unittesten der Nicht-GUI Komponenten nützlich
+ \item Zeitplan dank Puffer bisher eingehalten
+ \item Alle geplanten Features sind umgesetzt
+\end{itemize}
+\end{frame}
+
+\end{document}
