@@ -90,7 +90,7 @@ public class SimulationController extends Application {
 
     private void setupServer() throws UaException, ExecutionException, InterruptedException {
         int defaultPort = OSIPConstants.DEFAULT_PORT_MIX;
-        mixCont.server = new MixTankServer(defaultPort++);
+        mixCont.server = new MixTankServer(settingsWrapper.getServerPort(TankSelector.MIX, defaultPort++));
         mixCont.server.start();
 
         for (TankContainer cont : tanks) {
@@ -110,7 +110,7 @@ public class SimulationController extends Application {
 
         MixTankServer oldMix = mixCont.server;
         try {
-            mixCont.server = new MixTankServer(defaultPort++);
+            mixCont.server = new MixTankServer(settingsWrapper.getServerPort(TankSelector.MIX, defaultPort++));
             mixCont.server.start();
             try {
                 oldMix.stop();
