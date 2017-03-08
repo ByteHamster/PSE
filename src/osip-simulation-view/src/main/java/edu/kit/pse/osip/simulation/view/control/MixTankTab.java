@@ -42,6 +42,7 @@ public class MixTankTab extends AbstractTankTab {
 
         GridPane pane = getGridPane();
 
+        createOutFlowSlider(pane, mixTank);
         createMotorSlider(pane, mixTank);
 
         this.setContent(pane);
