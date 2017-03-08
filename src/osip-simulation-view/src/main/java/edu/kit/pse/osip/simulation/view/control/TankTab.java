@@ -55,6 +55,7 @@ public class TankTab extends AbstractTankTab {
         GridPane pane = getGridPane();
 
         createInFlowSlider(pane, tank);
+        createOutFlowSlider(pane, tank);
         createTemperatureSlider(pane, tank);
 
         this.setContent(pane);

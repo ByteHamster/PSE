@@ -53,11 +53,14 @@ public abstract class AbstractTankTab extends Tab implements Observer {
         pane = new GridPane();
         pane.setPrefWidth(ViewConstants.CONTROL_WIDTH);
         row = 0;
-
-        createOutFlowSlider(pane, tank);
     }
 
-    private void createOutFlowSlider(GridPane pane, AbstractTank tank) {
+    /**
+     * Creates the layout of the slider for the outgoing valve
+     * @param pane The pane to add the layout to
+     * @param tank The tank to control with this slider
+     */
+    protected void createOutFlowSlider(GridPane pane, AbstractTank tank) {
         Translator t = Translator.getInstance();
         int col = 0;
 
