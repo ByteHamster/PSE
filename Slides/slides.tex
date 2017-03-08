@@ -29,9 +29,9 @@
 
 \begin{frame}{Was ist OSIP?}
 \begin{itemize}[<+->]
- \item Besteht aus zwei Anwendungen: Die \emph{Simulation} eines chemischen Produktionsprozesses mit vier Tanks und die \emph{Überwachungskonsole}
+ \item zwei Anwendungen: \emph{Simulation} eines chemischen Produktionsprozesses mit vier Tanks und \emph{Überwachungskonsole}
  \item Kommunikation ausschließlich über OPC UA Protokoll
- \item Anwendungen auf getrennten Computern lauffähig, sofern Netzwerkverbindung besteht
+ \item Anwendungen per Netzwerk auf getrennten Computern lauffähig
 \end{itemize}
 \end{frame}
 
@@ -51,15 +51,21 @@
 
 \begin{frame}{Verwendete Technologien}
 \begin{itemize}[<+->]
- \item OPC UA Protokoll wird nicht selbst implementiert $\rightarrow$ Open Source Implementierung \emph{Milo}
+ \item OPC UA Protokoll nicht selbst implementieren $\rightarrow$ Open Source Implementierung \emph{Milo}
  \item OSIP wird in \emph{Java} entwickelt
- \item Die GUI wird mit \emph{JavaFX} implementiert
- \item \emph{Git} (circa 800 Commits) mit Codereview auf \emph{GitHub.com}
- \item Lauffähig auf Ubuntu 16.04 und Windows 10
+ \item GUI mittels \emph{JavaFX}
+ \item \emph{Git} (circa 800 Commits), Codereview auf \emph{GitHub.com}
+ \item Plattformen: Ubuntu 16.04 und Windows 10
  \item Unter Ubuntu: einfaches starten in Docker Containern
- \item Verschiedene Entwurfsmuster verwendet (MVC, Beobachter, Fassade, Strategie, ...)
+ \item Verschiedene Entwurfsmuster (MVC, Beobachter, Fassade, Strategie, ...)
  \item Circa 15.000 LOC, davon 7500 SLOC
 \end{itemize}
+\end{frame}
+
+\begin{frame}{It's Showtime}
+\centering
+\huge
+\textbf{Demo}
 \end{frame}
 
 \begin{frame}{Resümee}
@@ -68,7 +74,7 @@
  \item Controller aufwändiger als gedacht
  \item Unittesten der Nicht-GUI Komponenten nützlich
  \item Zeitplan dank Puffer bisher eingehalten
- \item Alle geplanten Features sind umgesetzt
+ \item Alle geplanten Features umgesetzt
 \end{itemize}
 \end{frame}
 
