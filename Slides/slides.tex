@@ -38,9 +38,11 @@
 \begin{frame}{Simulation}
  \begin{itemize}[<+->]
   \item Drei Tanks mit Flüssigkeiten die in einem Mischtank gemischt werden
-  \item Verschiedene Parameter einstellbar (Ventile, Temperaturen, ...)
+  \item Verschiedene Parameter einstellbar (Ventile, Einflusstemperaturen, ...)
   \item Komponenten der Anlage werden schematisch dargestellt
-  \item Enthält für jeden Tank einen eigenen OPC UA Server
+  \item Flüssigkeiten werden physikalisch korrekt simuliert
+  \item Enthält für jeden Tank einen eigenen OPC UA Server mit konfigurierbaren Ports
+  \item OPC UA Server stellen verschiedene Sensorwerte bereit (Füllstände, Temperaturen, Alarmzustände, ...)
   \item Mit Szenarien können interessante Abläufe automatisiert werden
  \end{itemize}
 \end{frame}
@@ -48,11 +50,12 @@
 \begin{frame}{Überwachungskonsole}
  \begin{itemize}[<+->]
   \item Erhält per OPC UA Messwerte der Simulation und visualisiert diese
+  \item Nimmt keinen Einfluss auf die Simulation, reines Monitoring
   \item Fragt Sensorwerte in einstellbarem Intervall von den OPC UA Servern ab
   \item Warnt beim Überschreiten von definierten Grenzen den Benutzer
   \item Alarme sind unabhängig vom Aktualisierungsintervall
   \item Alarme sind ein- und ausschaltbar
-  \item Nimmt keinen Einfluss auf die Simulation, reines Monitoring
+  \item Eine Loggingkonsole zeigt Alarme und Fehler an
  \end{itemize}
 \end{frame}
 
@@ -62,7 +65,8 @@
  \item OSIP wird in \emph{Java} entwickelt
  \item Die GUI wird mit \emph{JavaFX} implementiert
  \item \emph{Git} (circa 800 Commits) mit Codereview auf \emph{GitHub.com}
- \item Lauffähig auf Ubuntu Linux (mit und ohne Docker) und Windows
+ \item Lauffähig auf Ubuntu 16.04 und Windows 10
+ \item Unter Ubuntu: einfaches starten in Docker Containern
  \item Verschiedene Entwurfsmuster verwendet (MVC, Beobachter, Fassade, Strategie, ...)
  \item Circa 15.000 LOC, davon 7500 SLOC
 \end{itemize}
