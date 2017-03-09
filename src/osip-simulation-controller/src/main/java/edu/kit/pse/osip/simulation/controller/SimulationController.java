@@ -165,6 +165,10 @@ public class SimulationController extends Application {
      * Start loop that updates the values
      */
     private void startMainLoop() {
+        if (stepTimer != null) {
+            stepTimer.cancel();
+        }
+        stepTimer = new Timer(true);
         stepTimer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -262,6 +266,9 @@ public class SimulationController extends Application {
                 currentSimulationView.scenarioFinished();
                 controlInterface.setControlsDisabled(false);
             }
+
+            startMainLoop();
+
             resetInProgress = true;
             productionSite.reset();
             resetInProgress = false;
