@@ -54,6 +54,16 @@ public class SubtractiveMixingStrategy implements MixingStrategy {
         m = Math.min(1, m);
         y = Math.min(1, y);
 
+        if (temperature > SimulationConstants.MAX_TEMPERATURE || temperature < SimulationConstants.MIN_TEMPERATURE) {
+            System.err.println("Calculated temperature out of range: " + temperature);
+            System.err.println("Input liquids are:");
+            for (Liquid l: inflow) {
+                System.err.println("Amount: " + l.getAmount() + " Temperature: " + l.getTemperature());
+            }
+            temperature = Math.min(SimulationConstants.MAX_TEMPERATURE,
+                Math.min(SimulationConstants.MIN_TEMPERATURE, temperature));
+        }
+
         return new Liquid(fullAmount, temperature, new Color(c, m, y));
     }
 }
