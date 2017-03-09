@@ -77,4 +77,9 @@ public interface SimulationViewInterface {
      * Tell the view the scenario is finished (either stopped by the user, finished or if it has an error).
      */
     void scenarioFinished();
+
+    /**
+     * Show an OPC UA Server error dialog
+     */
+    void showOPCUAServerError(String message);
 }

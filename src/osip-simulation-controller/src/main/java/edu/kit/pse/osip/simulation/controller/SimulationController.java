@@ -11,6 +11,7 @@ import edu.kit.pse.osip.core.model.behavior.AlarmBehavior;
 import edu.kit.pse.osip.core.model.behavior.FillAlarm;
 import edu.kit.pse.osip.core.model.behavior.Scenario;
 import edu.kit.pse.osip.core.model.behavior.TemperatureAlarm;
+import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.view.control.SimulationControlWindow;
 import edu.kit.pse.osip.simulation.view.dialogs.AboutDialog;
 import edu.kit.pse.osip.simulation.view.dialogs.HelpDialog;
@@ -24,6 +25,7 @@ import java.util.List;
 import edu.kit.pse.osip.core.model.simulation.ProductionSiteSimulation;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.Vector;
 import java.util.concurrent.ExecutionException;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -100,43 +102,78 @@ public class SimulationController extends Application {
     }
 
     private void reSetupServer() {
-        for (TankSelector selector: TankSelector.values()) {
-            settingsWrapper.setServerPort(selector, settingsInterface.getPort(selector));
+        boolean error = false;
+        Translator t = Translator.getInstance();
+
+        if (hasDoublePorts()) {
+            currentSimulationView.showOPCUAServerError(t.getString("simulation.settings.samePort"));
+            return;
+        }
+
+        for (TankContainer cont: tanks) {
+            try {
+                if (cont.server != null) {
+                    cont.server.stop();
+                }
+            } catch (InterruptedException | ExecutionException ex) {
+                currentSimulationView.showOPCUAServerError(String.format(
+                    t.getString("simulation.settings.stopError") + ": " + ex.getMessage(),
+                    cont.selector.toString().toLowerCase()));
+                error = true;
+            }
+            cont.server = null;
+        }
+        try {
+            if (mixCont.server != null) {
+                mixCont.server.stop();
+            }
+        } catch (InterruptedException | ExecutionException ex) {
+            currentSimulationView.showOPCUAServerError(String.format(t.getString("simulation.settings.stopError")
+                    + ": " + ex.getMessage(), TankSelector.MIX.toString().toLowerCase()));
+            error = true;
+        }
+        mixCont.server = null;
+
+        for (TankContainer cont: tanks) {
+            try {
+                int port = settingsInterface.getPort(cont.selector);
+                cont.server = new TankServer(settingsInterface.getPort(cont.selector));
+                cont.server.start();
+                settingsWrapper.setServerPort(cont.selector, port);
+            } catch (InterruptedException | ExecutionException | UaException ex) {
+                currentSimulationView.showOPCUAServerError(String.format(
+                    t.getString("simulation.settings.startError") + ": "
+                    + ex.getMessage(), cont.selector.toString().toLowerCase()));
+                error = true;
+            }
+        }
+        try {
+            int port = settingsInterface.getPort(TankSelector.MIX);
+            mixCont.server = new MixTankServer(port);
+            mixCont.server.start();
+            settingsWrapper.setServerPort(TankSelector.MIX, port);
+        } catch (InterruptedException | ExecutionException | UaException ex) {
+            currentSimulationView.showOPCUAServerError(String.format(t.getString("simulation.settings.startError")
+                + ": " + ex.getMessage(), TankSelector.MIX.toString().toLowerCase()));
+            error = true;
         }
         settingsWrapper.saveSettings();
-        settingsInterface.close();
-
-        int defaultPort = OSIPConstants.DEFAULT_PORT_MIX;
-
-        MixTankServer oldMix = mixCont.server;
-        try {
-            mixCont.server = new MixTankServer(settingsWrapper.getServerPort(TankSelector.MIX, defaultPort++));
-            mixCont.server.start();
-            try {
-                oldMix.stop();
-            } catch (InterruptedException | ExecutionException ex) {
-                System.err.println("Couldn't stop OPC UA server on port: " + ex.getMessage());
-            }
-        } catch (UaException | InterruptedException | ExecutionException ex) {
-            System.err.println("Couldn't change OPC UA server port: " + ex.getMessage());
-            mixCont.server = oldMix;
+        if (!error) {
+            settingsInterface.close();
         }
+    }
 
-        for (TankContainer cont : tanks) {
-            TankServer old = cont.server;
-            try {
-                cont.server = new TankServer(settingsWrapper.getServerPort(cont.selector, defaultPort++));
-                cont.server.start();
-                try {
-                    old.stop();
-                } catch (InterruptedException | ExecutionException ex) {
-                    System.err.println("Couldn't stop OPC UA server on port: " + ex.getMessage());
-                }
-            } catch (UaException | InterruptedException | ExecutionException ex) {
-                System.err.println("Couldn't change OPC UA server port: " + ex.getMessage());
-                cont.server = old;
+    private boolean hasDoublePorts() {
+        Vector ports = new Vector<Integer>(TankSelector.values().length);
+        for (TankSelector selector: TankSelector.values()) {
+            int port = settingsInterface.getPort(selector);
+            if (ports.contains(port)) {
+                return true;
+            } else {
+                ports.add(port);
             }
         }
+        return false;
     }
 
     private void setupAlarms() {
