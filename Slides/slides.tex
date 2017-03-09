@@ -5,6 +5,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 
+\usepackage{tikz}
+
 \title[OSIP]{OPC UA Simulator for Industrial Plants}
 \subtitle{PSE Projekt}
 \author{M. Armbruster, D. Kahles, H. Lehmann, M. Schwarzmann, N. Wilhelm}
@@ -35,19 +37,24 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Simulation}
-\vspace*{-1em}
- \begin{center}
- \includegraphics[height=0.9\textheight,width=0.9\textwidth,keepaspectratio=true]{ScreenshotSimulation.png}
- \end{center}
-\end{frame}
-
-\begin{frame}{Überwachungskonsole}
-  \vspace*{-1em}
- \begin{center}
-  \includegraphics[height=0.9\textheight,width=0.9\textwidth,keepaspectratio=true]{ScreenshotMonitor.png}
- \end{center}
-\end{frame}
+{ % all template changes are local to this group.
+    \setbeamertemplate{navigation symbols}{}
+    \begin{frame}[plain]
+        \begin{tikzpicture}[remember picture,overlay]
+            \node[at=(current page.center)] {
+                \includegraphics[height=\paperheight,width=\paperwidth,keepaspectratio=true]{ScreenshotSimulation.png}
+            };
+        \end{tikzpicture}
+     \end{frame}
+     
+    \begin{frame}[plain]
+        \begin{tikzpicture}[remember picture,overlay]
+            \node[at=(current page.center)] {
+                \includegraphics[height=\paperheight,width=\paperwidth,keepaspectratio=true]{ScreenshotMonitor.png}
+            };
+        \end{tikzpicture}
+     \end{frame}
+}
 
 \begin{frame}{Verwendete Technologien}
 \begin{itemize}[<+->]
@@ -55,11 +62,24 @@
  \item Programmiersprache: \emph{Java}
  \item Bauen des Projekts: \emph{Maven}
  \item Entwicklung der GUI: \emph{JavaFX}
- \item \emph{Git} (circa 800 Commits), Codereview und CI auf \emph{GitHub.com}
+ \item \emph{Git} mit Codereview und CI auf \emph{GitHub.com}
  \item Plattformen: Ubuntu 16.04 und Windows 10
  \item Unter Ubuntu: einfaches starten in Docker Containern
- \item Verschiedene Entwurfsmuster (MVC, Beobachter, Fassade, Strategie, ...)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Was haben wir bis jetzt?}
+\begin{itemize}[<+->]
+ \item circa 800 Commits
+ \item Verschiedene Entwurfsmuster
+ \begin{itemize}
+  \item Model-View-Controller
+  \item Fassade
+  \item Strategie
+  \item ...
+ \end{itemize}
  \item Circa 15.000 LOC, davon 7500 SLOC
+ \item Fast alle geplanten Features umgesetzt
 \end{itemize}
 \end{frame}
 
@@ -71,11 +91,11 @@
 
 \begin{frame}{Resümee}
 \begin{itemize}[<+->]
- \item Code Review vermeidet viele Probleme
- \item Controller aufwändiger als gedacht
+ \item Code Review und CI vermeiden viele Probleme
+ \item Controller (und generell Implementierungsphase) aufwändiger als gedacht
+ \item Entwurf bei den Schnittstellen zwischen Controller und View unvollständig
  \item Unittesten der Nicht-GUI Komponenten nützlich
- \item Zeitplan dank Puffer bisher eingehalten
- \item Fast alle geplanten Features umgesetzt
+ \item Zeitplan bei der Implementierung nicht ganz eingehalten
 \end{itemize}
 \end{frame}
 
