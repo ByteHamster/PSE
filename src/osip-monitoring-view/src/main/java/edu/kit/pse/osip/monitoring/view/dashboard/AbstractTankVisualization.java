@@ -264,4 +264,11 @@ abstract class AbstractTankVisualization extends GridPane {
     protected void setFillLevelProgressionEnabled(boolean progressionEnabled) {
         progresses.setFillLevelProgressEnabled(progressionEnabled);
     }
+    
+    /**
+     * Updates the progressions.
+     */
+    protected void updateProgressions() {
+        progresses.updateProgressions();
+    }
 }
