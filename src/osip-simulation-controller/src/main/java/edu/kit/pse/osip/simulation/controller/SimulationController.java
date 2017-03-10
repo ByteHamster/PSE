@@ -327,6 +327,7 @@ public class SimulationController extends Application {
         } catch (InterruptedException | ExecutionException ex) {
             System.err.println("Couldn't stop OPC UA servers, continuing: " + ex.getMessage());
         }
+        AbstractTankServer.releaseSharedResources();
     }
 
     /**
