@@ -2,9 +2,6 @@ package edu.kit.pse.osip.monitoring.view.dashboard;
 
 import edu.kit.pse.osip.core.model.base.AbstractTank;
 import edu.kit.pse.osip.core.utils.language.Translator;
-import java.util.Observable;
-import java.util.Observer;
-import javafx.application.Platform;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
@@ -14,13 +11,15 @@ import javafx.scene.shape.Line;
  * Visualizes a progression.
  * 
  * @author Martin Armbruster
- * @version 1.3
+ * @version 1.4
  */
-class ProgressVisualization implements Observer {
+class ProgressVisualization {
     /**
      * Stores the amount of milliseconds per second.
      */
     private static final double MS_PER_SEC = 1000;
+    
+    private AbstractTank tank;
     
     /**
      * Saves the creation time of this instance in milliseconds.
@@ -51,16 +50,21 @@ class ProgressVisualization implements Observer {
      * Creates and initializes a new chart for the progression.
      * 
      * @param progressName The name of this progression.
+     * @param tank the tank to which this progression is assigned.
      */
-    protected ProgressVisualization(String progressName) {
+    protected ProgressVisualization(String progressName, AbstractTank tank) {
         creationTime = System.currentTimeMillis();
+        this.tank = tank;
         this.progressName = progressName;
         isEnabled = true;
         NumberAxis x = new NumberAxis();
         x.setForceZeroInRange(false);
         x.setLabel(Translator.getInstance().getString("monitoring.tank.progress.x"));
         NumberAxis y = new NumberAxis();
-        y.setForceZeroInRange(false);
+        y.setAutoRanging(false);
+        y.setLowerBound(0.0);
+        y.setUpperBound(1.0);
+        y.setTickUnit(0.1);
         y.setLabel(Translator.getInstance().getString("monitoring.tank.progress.y"));
         progressChart = new LineChart<Number, Number>(x, y);
         progressChart.setPrefHeight(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS * 1.25);
@@ -97,16 +101,12 @@ class ProgressVisualization implements Observer {
     }
     
     /**
-     * Called when the observed object has updated.
-     * 
-     * @param observable The observed object.
-     * @param object The new value.
+     * Updates this progression.
      */
-    public void update(Observable observable, Object object) {
+    protected void update() {
         if (!isEnabled) {
             return;
         }
-        AbstractTank tank = (AbstractTank) observable;
         double x = (System.currentTimeMillis() - creationTime) / MS_PER_SEC;
         XYChart.Data<Number, Number> newDataPoint;
         if (progressName.equals(Translator.getInstance().getString("monitoring.tank.progress.temperature"))) {
@@ -117,11 +117,9 @@ class ProgressVisualization implements Observer {
         Line dataPointVisual = new Line();
         dataPointVisual.setStrokeWidth(0);
         newDataPoint.setNode(dataPointVisual);
-        Platform.runLater(() -> {
-            if (progressSeries.getData().size() > 60) {
-                progressSeries.getData().remove(0);
-            }
-            progressSeries.getData().add(newDataPoint);   
-        });
+        if (progressSeries.getData().size() > 60) {
+            progressSeries.getData().remove(0);
+        }
+        progressSeries.getData().add(newDataPoint);   
     }
 }
