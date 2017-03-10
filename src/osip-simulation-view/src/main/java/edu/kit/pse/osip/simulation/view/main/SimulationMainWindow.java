@@ -315,32 +315,15 @@ public class SimulationMainWindow implements SimulationViewInterface {
     private void setResizeListeners(Stage primaryStage) {
 
         final ChangeListener<Number> listener = new ChangeListener<Number>() {
-            final Timer timer = new Timer(true);
-            TimerTask task = null;
-            final long delayTime = 50;
-
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, final Number newValue) {
-                if (task != null) { // there was already a task scheduled from the previous operation
-                    task.cancel(); // cancel it, we have a new size to consider
+                synchronized (canvas) {
+                    double newWidth = primaryStage.getWidth();
+                    double newHeight = primaryStage.getHeight() - 50;
+                    canvas.setWidth(newWidth);
+                    canvas.setHeight(newHeight);
+                    canvas.getGraphicsContext2D().clearRect(0, 0, newWidth, newHeight);
                 }
-
-                task = new TimerTask() {
-                    @Override
-                    public void run() {
-                        synchronized (canvas) {
-
-                            double newWidth = primaryStage.getWidth();
-                            double newHeight = primaryStage.getHeight() - 50;
-
-                            canvas.setWidth(newWidth);
-                            canvas.setHeight(newHeight);
-                            canvas.getGraphicsContext2D().clearRect(0, 0, newWidth, newHeight);
-                        }
-                    }
-                };
-
-                timer.schedule(task, delayTime);
             }
         };
 
