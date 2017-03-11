@@ -104,9 +104,4 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
         MixTankTab tab = (MixTankTab) tankTabs.get(TankSelector.MIX);
         tab.setMotorListener(listener);
     }
-
-    @Override
-    public void close() {
-        this.close();
-    }
 }
