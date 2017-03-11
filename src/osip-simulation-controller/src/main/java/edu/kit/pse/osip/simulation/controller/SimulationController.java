@@ -23,6 +23,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import edu.kit.pse.osip.core.model.simulation.ProductionSiteSimulation;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
@@ -64,6 +65,7 @@ public class SimulationController extends Application {
      * Responsible for controlling the display windows and simulating the production
      */
     public SimulationController() {
+        Locale.setDefault(Locale.US);
         File settingsLocation = new File(System.getProperty("user.home") + File.separator + ".osip");
         settingsLocation.mkdirs();
         settingsWrapper = new ServerSettingsWrapper(new File(settingsLocation, "simulation.conf"));
