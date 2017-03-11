@@ -42,6 +42,6 @@ class FillLevelVisualization extends BarLayout implements Observer {
      */
     public void update(Observable observable, Object object) {
         AbstractTank tank = (AbstractTank) observable;
-        Platform.runLater(() -> levelBar.setValue(tank.getFillLevel()));
+        Platform.runLater(() -> levelBar.setValue(Math.min(1, tank.getFillLevel())));
     }
 }
