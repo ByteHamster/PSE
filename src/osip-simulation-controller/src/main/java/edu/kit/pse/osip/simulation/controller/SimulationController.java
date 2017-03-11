@@ -237,7 +237,7 @@ public class SimulationController extends Application {
         controlInterface = new SimulationControlWindow(productionSite);
 
         currentSimulationView = new SimulationMainWindow(productionSite);
-        currentSimulationView.start(primaryStage, controlInterface);
+        currentSimulationView.start(primaryStage);
         setupView();
     }
 
