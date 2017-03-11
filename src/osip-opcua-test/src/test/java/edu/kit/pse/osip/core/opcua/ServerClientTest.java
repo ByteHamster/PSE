@@ -11,7 +11,6 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
 import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
-import org.junit.Ignore;
 
 import edu.kit.pse.osip.core.opcua.client.IntReceivedListener;
 import edu.kit.pse.osip.core.opcua.client.UAClientException;
@@ -191,8 +190,7 @@ public class ServerClientTest {
      * Tests if client notices stopped server
      * @throws Exception If something goes wrong
      */
-    @Ignore
-    @Test(timeout = 60000)
+    @Test(timeout = 20000)
     public void testConnectionLost() throws Exception  {
         CompletableFuture<Integer> received = new CompletableFuture<>();
         CompletableFuture<Integer> receivedErr = new CompletableFuture<>();
