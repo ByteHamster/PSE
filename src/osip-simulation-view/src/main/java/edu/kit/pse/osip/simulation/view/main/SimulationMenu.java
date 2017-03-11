@@ -10,6 +10,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 /**
  * This class is the MenuBar at the top of the simulation view. It provides options to control the
@@ -55,13 +56,18 @@ public class SimulationMenu extends MenuBar {
     private MenuItem menuItemStartScenario;
     private MenuItem menuItemStopScenario;
 
+    private Stage primaryStage;
+
 
     /**
      * Creates and initializes the menu for the simulation view.
+     * @param primaryStage The window to which this SimulationMenu belongs.
      */
-    protected SimulationMenu() {
+    protected SimulationMenu(Stage primaryStage) {
         this.setStyle("-fx-font-size:" + ViewConstants.FONT_SIZE + "px;");
         Translator trans = Translator.getInstance();
+
+        this.primaryStage = primaryStage;
 
         menuButtonFile = new Menu(trans.getString("simulation.view.menu.file"));
         menuItemSettings = new MenuItem(trans.getString("simulation.view.menu.file.settings"));
@@ -137,7 +143,7 @@ public class SimulationMenu extends MenuBar {
             public void handle(ActionEvent actionEvent) {
                 FileChooser fileChooser = new FileChooser();
                 fileChooser.setTitle(Translator.getInstance().getString("simulation.view.scenariofilechooser"));
-                File selectedFile = fileChooser.showOpenDialog(null);
+                File selectedFile = fileChooser.showOpenDialog(primaryStage);
                 if (selectedFile != null) {
                     menuItemStopScenario.setDisable(false);
                     menuItemStartScenario.setDisable(true);
