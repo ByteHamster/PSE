@@ -15,15 +15,18 @@ class UIOutputStream extends PrintStream {
      */
     private LoggingConsole con;
     private boolean isAlreadyOneLinePrinted;
+    private PrintStream oldStream;
     
     /**
      * Creates a new output stream for GUI.
-     * 
+     *
+     * @param old The old stream to interept
      * @param console LoggingConsole used for the output.
      * @throws NullPointerException when the LoggingConsole is null.
      */
-    UIOutputStream(LoggingConsole console) {
-        super(System.out);
+    UIOutputStream(PrintStream old, LoggingConsole console) {
+        super(old);
+        oldStream = old;
         if (console == null) {
             throw new NullPointerException("LoggingConsole is null.");
         }
@@ -148,6 +151,7 @@ class UIOutputStream extends PrintStream {
     
     @Override
     public void print(String s) {
+        oldStream.print(s);
         if (isAlreadyOneLinePrinted) {
             con.logWithoutTime(s);
         } else {
@@ -158,6 +162,7 @@ class UIOutputStream extends PrintStream {
     
     @Override
     public void println() {
+        oldStream.println();
         con.logWithoutTime("\n");
         isAlreadyOneLinePrinted = false;
     }
