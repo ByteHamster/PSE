@@ -37,4 +37,8 @@ public interface SimulationControlInterface {
      * Show the control window
      */
     void show();
+    /**
+     * Closes the window
+     */
+    void close();
 }

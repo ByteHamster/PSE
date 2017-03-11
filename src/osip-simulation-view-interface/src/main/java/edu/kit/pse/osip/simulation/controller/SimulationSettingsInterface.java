@@ -33,4 +33,5 @@ public interface SimulationSettingsInterface {
      * Closes the window
      */
     void close();
+
 }
