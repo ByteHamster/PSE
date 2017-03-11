@@ -223,6 +223,9 @@ public class SimulationController extends Application {
     private void updateServerValues() {
         overflow = false;
         for (TankContainer cont: tanks) {
+            if (cont.server == null) {
+                continue;
+            }
             cont.server.setInputFlowRate(cont.tank.getInPipe().getValveThreshold());
             cont.server.setColor(cont.tank.getLiquid().getColor().getRGB());
             cont.server.setFillLevel(cont.tank.getLiquid().getAmount());
@@ -240,6 +243,9 @@ public class SimulationController extends Application {
             }
         }
 
+        if (mixCont.server == null) {
+            return;
+        }
         mixCont.server.setMotorSpeed(mixCont.tank.getMotor().getRPM());
         mixCont.server.setColor(mixCont.tank.getLiquid().getColor().getRGB());
         mixCont.server.setFillLevel(mixCont.tank.getLiquid().getAmount());
@@ -356,11 +362,16 @@ public class SimulationController extends Application {
         System.out.println("Stopped simulation thread");
         try {
             for (TankContainer cont : tanks) {
+                if (cont.server == null) {
+                    continue;
+                }
                 cont.server.stop();
                 cont.server = null;
             }
-            mixCont.server.stop();
-            mixCont.server = null;
+            if (mixCont.server != null ) {
+                mixCont.server.stop();
+                mixCont.server = null;
+            }
         } catch (InterruptedException | ExecutionException ex) {
             System.err.println("Couldn't stop OPC UA servers, continuing: " + ex.getMessage());
         }
