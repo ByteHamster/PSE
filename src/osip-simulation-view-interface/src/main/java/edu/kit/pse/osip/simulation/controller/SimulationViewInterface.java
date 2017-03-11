@@ -80,6 +80,7 @@ public interface SimulationViewInterface {
 
     /**
      * Show an OPC UA Server error dialog
+     * @param message The error message to show.
      */
     void showOPCUAServerError(String message);
 }

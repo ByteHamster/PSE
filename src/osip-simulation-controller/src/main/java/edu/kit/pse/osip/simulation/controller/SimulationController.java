@@ -368,7 +368,7 @@ public class SimulationController extends Application {
                 cont.server.stop();
                 cont.server = null;
             }
-            if (mixCont.server != null ) {
+            if (mixCont.server != null) {
                 mixCont.server.stop();
                 mixCont.server = null;
             }
