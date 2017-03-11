@@ -40,6 +40,21 @@
 \section{Einleitung}
 
 
+\section{Workflow}
+OSIP wurde von uns open-source mit Hilfe von GitHub entwickelt. Um die Qualität des Codes möglichst gut zu halten,
+haben wir konsequent Code-Reviews eingesetzt. Jede Änderung musste von einem Kommilitonen genehmigt werden. Zusätzlich ließen wir
+durch den Dienst "`Travis"' bei jeder einzubindenden Änderung die Stil-Richtlinien für den Code (mittels Checkstyle) und die Unit Tests überprüfen.
+Dieses Vorgehen erforderte zwar oft lange Wartezeiten auf Reviews, im Sinne der guten Qualität haben wir uns allerdings darauf eingelassen. 
+
+Um die Aufgaben der einzelnen Kommilitonen aufeinander abzustimmen, setzten wir den von GitHub bereitgestellten Issue-Tracker ein. Im Laufe der
+Entwicklung von OSIP wurden über 400 Issues und Pull requests erstellt.
+
+\section{Arbeitsaufteilung}
+Bei der Implementierung gingen nach dem bottom-up-Prinzip vor. Während Model, OPC UA Wrapper und Core-Bestandteile von David, Hans-Peter und Max entwickelt wurden,
+begannen Martin und Niko mit den Benutzeroberflächen von Überwachungskonsole und Fertigungssimulation. Auf Grund des modularen Entwurfes
+und der automatischen Generierung von Quellcode aus dem Klassendiagramm war dies problemlos möglich. Nachdem dann die Bestandteile einzeln
+implementiert waren, wurden noch die Controller hinzugefügt, die jeweils Model und View verbinden, um so Leben in die Anwendung zu bringen.
+
 \section{Änderungen zum Entwurf}
 
 
@@ -57,7 +72,14 @@ Somit mussten wir auch bei den Alarmen auf reguläre Subscriptions zurückgreife
 als die restlichen Produktionsvariablen abfragen.
 
 \section{Unit tests}
+Unit tests waren ausschlaggebend wichtig für den ersten Teil der Implementierung, bei dem die Controller noch nicht entwickelt waren.
+Entsprechend ist die Testabdeckung sehr hoch. Das Model besitzt eine Zeilenabdeckung von 93\%, ebenso wie die Core-Bestandteile.
+Um die Funktionalität von OPC UA Server und Client zu testen, musste von reinen unit tests abgewichen werden, da der Client keine
+Methoden zum Setzen von Werten besitzt. Es wurde somit ein weiteres Modul hinzugefügt, das die Tests der Server- und Client-Module übernimmt.
+Dieses Modul testet gleichzeitig das Client-Modul und das Server-Modul zu OPC UA, stellt also eher einen Integrationstest dar. Zur bottom-up
+Entwicklung der OPC UA Abstraktion war dies aber unumgänglich. Durch die Tests konnte bei OPC UA eine Abdeckung von 78\% erreicht werden.
 
+In UI und Controller wurden keine automatischen Unit tests eingesetzt, sondern die Funktionalität bei Pull requests manuell getestet.
 
 \pagebreak
 \phantomsection
