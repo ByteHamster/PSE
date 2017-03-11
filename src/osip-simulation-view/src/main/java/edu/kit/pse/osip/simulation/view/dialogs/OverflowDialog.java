@@ -5,8 +5,8 @@ import edu.kit.pse.osip.core.utils.language.Translator;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.scene.control.Button;
 import edu.kit.pse.osip.simulation.view.main.ViewConstants;
-import javafx.geometry.VPos;
 import javafx.geometry.Pos;
 import javafx.scene.layout.BorderPane;
 import javafx.event.ActionEvent;
@@ -83,14 +82,17 @@ public class OverflowDialog extends Stage {
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(ViewConstants.ELEMENTS_GAP));
 
+        ImageView icon = new ImageView();
+        icon.setImage(new Image("/overflow.png"));
+        icon.setFitHeight(MIN_WINDOW_HEIGHT * 0.7);
+        icon.setPreserveRatio(true);
+
         TextFlow overflowTextFlow = new TextFlow();
         Text overflowText = getTextWithTankName(tank,
-                new Font(ViewConstants.FONT_SIZE * 3));
-        overflowText.setFill(Color.RED);
+                new Font(ViewConstants.FONT_SIZE * 2));
+        overflowText.setFill(Color.valueOf("#c80000"));
         overflowTextFlow.getChildren().add(overflowText);
-        GridPane.setConstraints(overflowTextFlow, 0, 0);
-        GridPane.setValignment(overflowTextFlow, VPos.CENTER);
-        GridPane.setHgrow(overflowTextFlow, Priority.ALWAYS);
+        overflowTextFlow.setPadding(new Insets(ViewConstants.FONT_SIZE * 2, 0, 0, 0));
 
         Button resetButton = new Button(Translator.getInstance().getString("simulation.overflowdialog.reset"));
         resetButton.setStyle("-fx-font-size: " + ViewConstants.FONT_SIZE + "px;");
@@ -108,9 +110,9 @@ public class OverflowDialog extends Stage {
         borderPane.setPadding(new Insets(0, 0, ViewConstants.ELEMENTS_GAP, 0));
         BorderPane.setAlignment(resetButton, Pos.CENTER);
 
-        grid.getChildren().addAll(overflowTextFlow);
+        grid.add(icon, 0, 0);
+        grid.add(overflowTextFlow, 1, 0);
         Scene scene = new Scene(borderPane, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
-
         this.setScene(scene);
         this.setMinWidth(MIN_WINDOW_WIDTH);
         this.setMinHeight(MIN_WINDOW_HEIGHT);

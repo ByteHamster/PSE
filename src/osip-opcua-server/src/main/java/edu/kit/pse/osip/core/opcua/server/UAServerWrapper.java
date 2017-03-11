@@ -6,6 +6,7 @@ import java.util.concurrent.ExecutionException;
 import org.eclipse.milo.opcua.sdk.server.OpcUaServer;
 import org.eclipse.milo.opcua.sdk.server.api.config.OpcUaServerConfig;
 import org.eclipse.milo.opcua.sdk.server.identity.AnonymousIdentityValidator;
+import org.eclipse.milo.opcua.stack.core.Stack;
 import org.eclipse.milo.opcua.stack.core.UaException;
 import org.eclipse.milo.opcua.stack.core.application.DefaultCertificateManager;
 import org.eclipse.milo.opcua.stack.core.application.DefaultCertificateValidator;
@@ -133,5 +134,12 @@ public abstract class UAServerWrapper {
      */
     protected void setVariable(String path, DataValue value) {
         namespace.updateValue(path, value);
+    }
+
+    /**
+     * Releases all resources used by milo. It is impossible to start servers afterwards.
+     */
+    public static void releaseSharedResources() {
+        Stack.releaseSharedResources();
     }
 }

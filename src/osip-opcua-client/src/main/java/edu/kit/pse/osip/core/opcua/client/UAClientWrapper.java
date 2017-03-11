@@ -12,6 +12,7 @@ import org.eclipse.milo.opcua.sdk.client.model.nodes.objects.ServerNode;
 import org.eclipse.milo.opcua.stack.client.UaTcpStackClient;
 import org.eclipse.milo.opcua.stack.core.AttributeId;
 import org.eclipse.milo.opcua.stack.core.Identifiers;
+import org.eclipse.milo.opcua.stack.core.Stack;
 import org.eclipse.milo.opcua.stack.core.UaException;
 import org.eclipse.milo.opcua.stack.core.security.SecurityPolicy;
 import org.eclipse.milo.opcua.stack.core.types.builtin.DataValue;
@@ -401,5 +402,12 @@ public abstract class UAClientWrapper {
                 listeners.remove(listener);
             }
         }
+    }
+
+    /**
+     * Releases all resources used by milo. It is impossible to start clients afterwards.
+     */
+    public static void releaseSharedResources() {
+        Stack.releaseSharedResources();
     }
 }

@@ -221,7 +221,6 @@ public class SimulationController extends Application {
      * Update values from model inside the servers
      */
     private void updateServerValues() {
-        overflow = false;
         for (TankContainer cont: tanks) {
             if (cont.server == null) {
                 continue;
@@ -280,14 +279,21 @@ public class SimulationController extends Application {
         controlInterface = new SimulationControlWindow(productionSite);
 
         currentSimulationView = new SimulationMainWindow(productionSite);
-        currentSimulationView.start(primaryStage, controlInterface);
-        setupView();
+        currentSimulationView.start(primaryStage);
+        setupView(primaryStage);
     }
 
-    private void setupView() {
+    private void setupView(Stage primaryStage) {
         Stage help = new HelpDialog();
         Stage about = new AboutDialog();
         settingsInterface = new SimulationSettingsWindow(settingsWrapper);
+
+        primaryStage.setOnHiding((event) -> {
+            help.hide();
+            about.hide();
+            settingsInterface.close();
+            controlInterface.close();
+        });
 
         currentSimulationView.setSettingsButtonHandler(actionEvent -> settingsInterface.show());
         currentSimulationView.setControlButtonHandler(actionEvent -> controlInterface.show());
@@ -314,6 +320,7 @@ public class SimulationController extends Application {
 
             resetInProgress = true;
             productionSite.reset();
+            overflow = false;
             resetInProgress = false;
             controlInterface.setControlsDisabled(false);
         });
@@ -375,6 +382,7 @@ public class SimulationController extends Application {
         } catch (InterruptedException | ExecutionException ex) {
             System.err.println("Couldn't stop OPC UA servers, continuing: " + ex.getMessage());
         }
+        AbstractTankServer.releaseSharedResources();
     }
 
     /**
