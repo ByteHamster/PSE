@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.function.Consumer;
 
+import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.model.behavior.Scenario;
@@ -135,6 +136,10 @@ public class ScenarioParser extends ExtendedParser {
     private void addCommands() {
         commands.put("setMotorRpm", (parameters) -> {
             checkArgumentCount(parameters, 1);
+            if (Math.round(parameters.get(0)) > SimulationConstants.MAX_MOTOR_SPEED
+                    || Math.round(parameters.get(0)) < 0) {
+                die("Argument out of range");
+            }
             return (site) -> site.getMixTank().getMotor().setRPM(Math.round(parameters.get(0)));
         });
         commands.put("setUpperInThreshold", (parameters) -> {
@@ -164,7 +169,9 @@ public class ScenarioParser extends ExtendedParser {
         });
         commands.put("setInputTemperature", (parameters) -> {
             checkArgumentCount(parameters, 2);
-            if (Math.round(parameters.get(0)) >= TankSelector.getUpperTankCount()) {
+            if (Math.round(parameters.get(0)) >= TankSelector.getUpperTankCount()
+                    || parameters.get(1) > SimulationConstants.MAX_TEMPERATURE
+                    || parameters.get(1) < SimulationConstants.MIN_TEMPERATURE) {
                 die("Argument out of range");
             }
             return (site) -> site.setInputTemperature(
