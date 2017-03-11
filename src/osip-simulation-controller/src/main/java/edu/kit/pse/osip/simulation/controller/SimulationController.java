@@ -184,7 +184,6 @@ public class SimulationController extends Application {
      * Update values from model inside the servers
      */
     private void updateServerValues() {
-        overflow = false;
         for (TankContainer cont: tanks) {
             cont.server.setInputFlowRate(cont.tank.getInPipe().getValveThreshold());
             cont.server.setColor(cont.tank.getLiquid().getColor().getRGB());
@@ -278,6 +277,7 @@ public class SimulationController extends Application {
 
             resetInProgress = true;
             productionSite.reset();
+            overflow = false;
             resetInProgress = false;
             controlInterface.setControlsDisabled(false);
         });
