@@ -21,6 +21,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Region;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import java.util.Collection;
@@ -253,6 +254,20 @@ public class SimulationMainWindow implements SimulationViewInterface {
     @Override
     public void scenarioFinished() {
         menu.setScenarioFinished();
+    }
+
+    @Override
+    public void showOPCUAServerError(String message) {
+        Translator t = Translator.getInstance();
+
+        Alert errorDialog = new Alert(Alert.AlertType.ERROR);
+        errorDialog.setTitle(t.getString("simulation.view.opcua.error.title"));
+        errorDialog.setHeaderText(t.getString("simulation.view.opcua.error.header"));
+        errorDialog.setContentText(message);
+        errorDialog.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+        Stage stage = (Stage) errorDialog.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("/icon.png"));
+        errorDialog.show();
     }
 
     /**
