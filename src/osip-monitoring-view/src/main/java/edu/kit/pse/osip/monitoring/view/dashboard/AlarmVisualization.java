@@ -5,6 +5,7 @@ import edu.kit.pse.osip.core.model.behavior.TankAlarm;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import java.util.Observable;
 import java.util.Observer;
+import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
@@ -130,6 +131,7 @@ class AlarmVisualization extends Observable implements Observer {
                 user.setContentText(String.format(Translator.getInstance().getString("monitoring.alarmDialog.content"),
                         getAlarmName(), Translator.getInstance().getString(TankSelector.TRANSLATOR_LABEL_PREFIX
                                 + actualAlarm.getTank().getTankSelector().name()).toLowerCase()));
+                user.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
                 user.show();
             });
         } else {
