@@ -50,6 +50,21 @@ java -jar src/osip-simulation-controller/target/osip-simulation-controller-1.0-w
 java -jar src/osip-monitoring-controller/target/osip-monitoring-controller-1.0-with-dependencies.jar
 ```
 
+## Docker
+Um OSIP mittels Docker zu starten, muss Docker und Docker Compose installiert sein. Dann muss im Hauptverzeichnis
+```bash
+./startup.sh
+```
+ausgeführt werden. Sollen die Docker Container neu erstellt werden (etwa weil es eine neue Version gibt), dann muss zuerst
+```bash
+docker-compose build
+```
+und danach wie gewohnt
+```bash
+./startup.sh
+```
+ausgeführt werden. Achtung: Die Docker Container werden mit den lokalen Quelldateien gebaut, d.h. wenn es lokale Änderungen an den Quellen gab, werden diese Änderungen auch im Container vorhanden sein.
+
 ## Beitragende
 
 M. Armbruster ([@HansMartinA](https://github.com/HansMartinA))  
