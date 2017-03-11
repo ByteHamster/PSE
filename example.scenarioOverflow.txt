@@ -1,0 +1,41 @@
+#
+# Scenario with overflow situation that can be used to showcase OSIP
+# @author Maximilian Schwarzmann
+# @version 1.0
+#
+
+setRepeat(true);
+
+var CELSIUS      = 273.15; # Needed to convert °C to K
+var TANK_YELLOW  = 0;
+var TANK_CYAN    = 1;
+var delayTime    = 6000;
+
+setInputTemperature(TANK_YELLOW,  CELSIUS + 137.5);
+setInputTemperature(TANK_CYAN,  CELSIUS + 200);
+setMotorRpm(1000);
+
+setUpperInThreshold(TANK_YELLOW, 50);
+setUpperOutThreshold(TANK_YELLOW, 100);
+delay(delayTime);
+
+setUpperInThreshold(TANK_CYAN, 100);
+setUpperOutThreshold(TANK_CYAN, 0);
+setMixOutThreshold(0);
+delay(2 * delayTime);
+
+setUpperInThreshold(TANK_YELLOW, 100);
+setUpperOutThreshold(TANK_YELLOW, 0);
+setUpperInThreshold(TANK_CYAN, 0);
+setUpperOutThreshold(TANK_CYAN, 100);
+setMixOutThreshold(20);
+delay(2 * delayTime);
+
+setUpperInThreshold(TANK_CYAN, 100);
+setUpperOutThreshold(TANK_CYAN, 0);
+delay(delayTime);
+
+setUpperInThreshold(TANK_YELLOW, 50);
+setUpperInThreshold(TANK_CYAN, 0);
+delay(2 * delayTime);
+
