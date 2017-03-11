@@ -107,6 +107,6 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
 
     @Override
     public void close() {
-        this.hide();
+        this.close();
     }
 }

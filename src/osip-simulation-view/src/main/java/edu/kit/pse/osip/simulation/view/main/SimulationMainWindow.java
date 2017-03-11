@@ -5,7 +5,6 @@ import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.utils.language.Translator;
-import edu.kit.pse.osip.simulation.controller.SimulationControlInterface;
 import edu.kit.pse.osip.simulation.controller.SimulationViewInterface;
 import edu.kit.pse.osip.simulation.view.dialogs.OverflowDialog;
 import java.util.function.Consumer;
@@ -155,7 +154,7 @@ public class SimulationMainWindow implements SimulationViewInterface {
 
         mainPane.setStyle("-fx-font-size:" + ViewConstants.FONT_SIZE + "px;");
 
-        menu = new SimulationMenu();
+        menu = new SimulationMenu(primaryStage);
         mainPane.setTop(menu);
 
         canvas = setCanvas(primaryStage);
