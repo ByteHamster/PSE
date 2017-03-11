@@ -17,7 +17,7 @@ services:
   monitor:
     build:
       context: .
-      dockerfile: simulationDockerfile
+      dockerfile: monitorDockerfile
     environment:
       - DISPLAY
     volumes:
