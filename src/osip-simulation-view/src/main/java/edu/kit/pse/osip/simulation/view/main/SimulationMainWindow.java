@@ -246,6 +246,7 @@ public class SimulationMainWindow implements SimulationViewInterface {
         errorDialog.setTitle(t.getString("simulation.view.scenario.error.title"));
         errorDialog.setHeaderText(t.getString("simulation.view.scenario.error.header"));
         errorDialog.setContentText(error);
+        errorDialog.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         Stage stage = (Stage) errorDialog.getDialogPane().getScene().getWindow();
         stage.getIcons().add(new Image("/icon.png"));
         errorDialog.show();
