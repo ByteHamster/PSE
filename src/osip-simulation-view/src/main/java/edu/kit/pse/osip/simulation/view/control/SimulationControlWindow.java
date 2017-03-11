@@ -26,7 +26,6 @@ import java.util.EnumMap;
 public class SimulationControlWindow extends Stage implements SimulationControlInterface {
 
     private EnumMap<TankSelector, AbstractTankTab> tankTabs;
-    private ProductionSite productionSite;
 
     /**
      * Constructs a new SimulationControlWindow
@@ -34,7 +33,6 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
      */
     public SimulationControlWindow(ProductionSite productionSite) {
         Translator t = Translator.getInstance();
-        this.productionSite = productionSite;
 
         this.getIcons().add(new Image("/icon.png"));
 
