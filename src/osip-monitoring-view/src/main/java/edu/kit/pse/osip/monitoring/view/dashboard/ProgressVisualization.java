@@ -12,7 +12,7 @@ import javafx.scene.shape.Line;
  * Visualizes a progression.
  * 
  * @author Martin Armbruster
- * @version 1.5
+ * @version 1.6
  */
 class ProgressVisualization {
     /**
@@ -26,9 +26,9 @@ class ProgressVisualization {
     private AbstractTank tank;
     
     /**
-     * Saves the creation time of this instance in milliseconds.
+     * Saves the x coordinate for the next data point.
      */
-    private long creationTime;
+    private long x;
     
     /**
      * true when this progression is enabled and tracked.
@@ -57,7 +57,7 @@ class ProgressVisualization {
      * @param tank the tank to which this progression is assigned.
      */
     protected ProgressVisualization(String progressName, AbstractTank tank) {
-        creationTime = System.currentTimeMillis();
+        x = 0;
         this.tank = tank;
         this.progressName = progressName;
         isEnabled = true;
@@ -124,7 +124,6 @@ class ProgressVisualization {
         if (!isEnabled) {
             return;
         }
-        double x = (System.currentTimeMillis() - creationTime) / MS_PER_SEC;
         XYChart.Data<Number, Number> newDataPoint;
         if (progressName.equals(Translator.getInstance().getString("monitoring.tank.progress.temperature"))) {
             newDataPoint = new XYChart.Data<Number, Number>(x, tank.getLiquid().getTemperature()
@@ -135,9 +134,10 @@ class ProgressVisualization {
         Line dataPointVisual = new Line();
         dataPointVisual.setStrokeWidth(0);
         newDataPoint.setNode(dataPointVisual);
-        if (progressSeries.getData().size() > 60) {
-            progressSeries.getData().remove(0, 5);
+        if (progressSeries.getData().size() > 70) {
+            progressSeries.getData().remove(0, 10);
         }
-        progressSeries.getData().add(newDataPoint);   
+        progressSeries.getData().add(newDataPoint);
+        x++;
     }
 }
