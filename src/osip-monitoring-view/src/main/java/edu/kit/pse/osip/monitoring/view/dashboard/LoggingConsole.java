@@ -12,6 +12,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
@@ -76,7 +77,7 @@ class LoggingConsole extends TabPane implements Observer {
      * @param message The logging message for the occurred event.
      */
     protected void log(String message) {
-        Platform.runLater(() -> stdIO.getChildren().add(prepareText(message)));
+        Platform.runLater(() -> stdIO.getChildren().add(prepareTextWithTime(message)));
     }
     
     /**
@@ -85,7 +86,19 @@ class LoggingConsole extends TabPane implements Observer {
      * @param message the logging message for the occurred event.
      */
     protected void logWithoutTime(String message) {
-        Platform.runLater(() -> stdIO.getChildren().add(new Text(message)));
+        Platform.runLater(() -> stdIO.getChildren().add(prepareText(message)));
+    }
+    
+    /**
+     * Prepares a text for logging without a time stamp.
+     * 
+     * @param text the raw message for output.
+     * @return a Text instance ready for logging.
+     */
+    private Text prepareText(String text) {
+        Text returnValue = new Text(text);
+        returnValue.setFont(Font.font("Monospaced", MonitoringViewConstants.FONT_SIZE));
+        return returnValue;
     }
     
     /**
@@ -94,9 +107,9 @@ class LoggingConsole extends TabPane implements Observer {
      * @param text the raw message for output.
      * @return a Text instance ready for logging.
      */
-    private Text prepareText(String text) {
-        String time = "[" + OffsetDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) + "] ";
-        return new Text(time + text);
+    private Text prepareTextWithTime(String text) {
+        String time = "[" + OffsetDateTime.now().format(DateTimeFormatter.RFC_1123_DATE_TIME) + "] ";
+        return prepareText(time + text);
     }
 
     @Override
@@ -104,7 +117,7 @@ class LoggingConsole extends TabPane implements Observer {
         AlarmVisualization alarm = (AlarmVisualization) o;
         TankAlarm<?> ta = (TankAlarm<?>) arg;
         if (ta != null && ta.isAlarmTriggered()) {
-            Text alarmText = prepareText(String.format(Translator.getInstance()
+            Text alarmText = prepareTextWithTime(String.format(Translator.getInstance()
                     .getString("monitoring.logging.alarmTriggered"), alarm.getAlarmName(), Translator.getInstance()
                     .getString(TankSelector.TRANSLATOR_LABEL_PREFIX + ta.getTank().getTankSelector().name())
                     .toLowerCase()) + "\n");
