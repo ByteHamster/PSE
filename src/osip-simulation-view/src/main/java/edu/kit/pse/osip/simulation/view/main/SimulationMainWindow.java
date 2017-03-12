@@ -324,8 +324,8 @@ public class SimulationMainWindow implements SimulationViewInterface {
 
         @Override
         public void resize(double width, double height) {
-            super.setWidth(width);
-            super.setHeight(height);
+            setWidth(width);
+            setHeight(height);
         }
     }
 }
