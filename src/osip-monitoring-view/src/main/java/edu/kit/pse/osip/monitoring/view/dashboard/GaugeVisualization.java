@@ -1,10 +1,9 @@
 package edu.kit.pse.osip.monitoring.view.dashboard;
 
 import edu.kit.pse.osip.core.model.base.Pipe;
-import javafx.application.Platform;
-
 import java.util.Observable;
 import java.util.Observer;
+import javafx.application.Platform;
 import jfxtras.scene.control.gauge.linear.SimpleMetroArcGauge;
 
 /**
@@ -32,22 +31,6 @@ class GaugeVisualization extends BarLayout implements Observer {
     }
     
     /**
-     * Creates a new visualization that is connected to a pipe.
-     * 
-     * @param name The name of the represented bar.
-     * @param connectedPipe The pipe, the bar is connected to.
-     * @throws NullPointerException when the pipe is null.
-     */
-    protected GaugeVisualization(String name, Pipe connectedPipe) {
-        this(name);
-        if (connectedPipe == null) {
-            throw new NullPointerException("Pipe is null.");
-        }
-        gauge.setMaxValue(connectedPipe.getMaxInputWithFullyOpenedValve());
-        connectedPipe.addObserver(this);
-    }
-    
-    /**
      * Called when the observed object has changed.
      * 
      * @param observable The observed object.
@@ -55,6 +38,6 @@ class GaugeVisualization extends BarLayout implements Observer {
      */
     public void update(Observable observable, Object object) {
         Pipe pipe = (Pipe) observable;
-        Platform.runLater(() -> gauge.setValue(pipe.getMaxInput()));
+        Platform.runLater(() -> gauge.setValue(pipe.getValveThreshold()));
     }
 }

@@ -1,19 +1,17 @@
 package edu.kit.pse.osip.core.utils.formatting;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-
 /**
  * JUnit test class for FormatChecker.java
+ * 
  * @author Maximilian Schwarzmann
- * @version 1.0
+ * @version 1.1
  */
 public class FormattingTest {
-
     /**
      * Test normal ports
      */
@@ -39,57 +37,37 @@ public class FormattingTest {
     }
     
     /**
-     * Test normal percentage
+     * Tests a normal percentage.
      */
     @Test
-    public void testPercentage() {
+    public void testValidPercentage() {
         String input = "55";
-        int result = FormatChecker.checkPercentage(input);
-        assertEquals(55, result);
+        assertTrue(FormatChecker.checkPercentage(input));
     }
 
     /**
-     * Test inputs that are not percentages
+     * Tests inputs that are not percentages.
      */
-    @Test(expected = InvalidPercentageException.class)
-    public void testPercentageFormat() {
-        String input = "a1";
-        FormatChecker.checkPercentage(input);
+    @Test
+    public void testInvalidPercentages() {
+        assertFalse(FormatChecker.checkPercentage("a1"));
+        assertFalse(FormatChecker.checkPercentage("-1"));
     }
 
     /**
-     * Test negative percentage
-     */
-    @Test(expected = InvalidPercentageException.class)
-    public void testPercentageRange() {
-        String input = "-1";
-        FormatChecker.checkPercentage(input);
-    }
-
-    /**
-     * Test valid ip
+     * Tests valid IP address.
      */
     @Test
     public void testHostIp() {
-        String input = "66.249.69.000";
-        FormatChecker.checkHost(input);
+        assertTrue(FormatChecker.checkHost("66.249.69.000"));
     }
 
     /**
-     * Test valid port
+     * Tests invalid host names.
      */
-    @Test (expected = InvalidHostException.class)
-    public void testHostName() {
-        String input = "\\";
-        FormatChecker.checkHost(input);
-    }
-
-    /**
-     * Test invalid host input with invalid signs
-     */
-    @Test(expected = InvalidHostException.class)
-    public void testHostInvalidHostName() {
-        String input = "&/(&";
-        FormatChecker.checkHost(input);
+    @Test
+    public void testInvalidHostName() {
+        assertFalse(FormatChecker.checkHost("\\"));
+        assertFalse(FormatChecker.checkHost("&/(&"));
     }
 }
