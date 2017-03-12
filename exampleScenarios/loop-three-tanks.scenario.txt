@@ -1,38 +1,51 @@
 #
 # Scenario definition that can be used to showcase OSIP
-# @author Hans-Peter Lehmann
+# Changes all three upper tanks
+# @author Maximilian Schwarzmann
 # @version 1.0
 #
 
-setRepeat(true);           # Repeat scenario in endless loop
+setRepeat(true);
 
 var CELSIUS      = 273.15; # Needed to convert °C to K
 var TANK_YELLOW  = 0;
 var TANK_CYAN    = 1;
+var TANK_MAGENTA = 2;
 var delayTime    = 6000;
 
 setInputTemperature(TANK_YELLOW,  CELSIUS + 137.5);
 setInputTemperature(TANK_CYAN,  CELSIUS + 200);
+setInputTemperature(TANK_CYAN,  CELSIUS + 150);
 setMotorRpm(1000);
 
 setUpperInThreshold(TANK_YELLOW, 0);
-setUpperOutThreshold(TANK_YELLOW, 100);
+setUpperOutThreshold(TANK_YELLOW, 20);
+setUpperInThreshold(TANK_MAGENTA, 0);
+setUpperOutThreshold(TANK_MAGENTA, 80);
+
 delay(delayTime);
 
+setInputTemperature(TANK_YELLOW,  CELSIUS);
+setInputTemperature(TANK_CYAN,  CELSIUS);
+setInputTemperature(TANK_MAGENTA,  CELSIUS);
 setUpperInThreshold(TANK_CYAN, 100);
 setUpperOutThreshold(TANK_CYAN, 0);
 setMixOutThreshold(0);
 delay(2 * delayTime);
 
-setUpperInThreshold(TANK_YELLOW, 100);
+setUpperInThreshold(TANK_YELLOW, 40);
 setUpperOutThreshold(TANK_YELLOW, 0);
 setUpperInThreshold(TANK_CYAN, 0);
-setUpperOutThreshold(TANK_CYAN, 100);
+setUpperOutThreshold(TANK_CYAN, 20);
+setUpperInThreshold(TANK_MAGENTA, 50);
+setUpperOutThreshold(TANK_MAGENTA, 0);
 setMixOutThreshold(100);
 delay(2 * delayTime);
 
 setUpperInThreshold(TANK_CYAN, 100);
 setUpperOutThreshold(TANK_CYAN, 0);
+setUpperInThreshold(TANK_MAGENTA, 0);
+setUpperOutThreshold(TANK_MAGENTA, 0);
 delay(delayTime);
 
 setUpperInThreshold(TANK_YELLOW, 50);
@@ -49,4 +62,11 @@ delay(delayTime);
 setUpperOutThreshold(TANK_YELLOW, 0);
 setUpperOutThreshold(TANK_CYAN, 0);
 setMixOutThreshold(100);
-delay(1.5 * delayTime);
+delay(2 * delayTime);
+
+setUpperOutThreshold(TANK_YELLOW, 50);
+setUpperOutThreshold(TANK_CYAN, 100);
+setUpperInThreshold(TANK_MAGENTA, 85);
+setMixOutThreshold(0);
+delay(1.6 * delayTime);
+
