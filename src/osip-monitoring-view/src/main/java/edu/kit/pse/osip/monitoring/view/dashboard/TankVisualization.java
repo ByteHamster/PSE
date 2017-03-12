@@ -24,7 +24,8 @@ class TankVisualization extends AbstractTankVisualization {
      */
     protected TankVisualization(Tank tank) {
         super(tank);
-        supply = new GaugeVisualization(Translator.getInstance().getString("monitoring.tank.supply"), tank.getInPipe());
+        supply = new GaugeVisualization(Translator.getInstance().getString("monitoring.tank.supply"));
+        tank.getInPipe().addObserver(supply);
         this.add(supply, 0, 1);
         this.add(drain, 1, 1);
         this.add(fillLevel, 0, 2);
