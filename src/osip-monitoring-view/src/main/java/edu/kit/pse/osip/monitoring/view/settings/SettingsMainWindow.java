@@ -23,13 +23,18 @@ import javafx.scene.control.Alert.AlertType;
  * The main entry point for the settings view. Within, the user can set all available parameters for his needs.
  * 
  * @author Martin Armbruster
- * @version 1.3
+ * @version 1.4
  */
 class SettingsMainWindow {
     /**
      * The window in which the settings are presented.
      */
     private Stage window;
+    
+    /**
+     * The used settings.
+     */
+    private ClientSettingsWrapper currentSettings;
     
     /**
      * Pane containing tabs with the different settings possibilities.
@@ -82,6 +87,7 @@ class SettingsMainWindow {
      * @param currentSettings The current settings used for displaying.
      */
     protected SettingsMainWindow(ClientSettingsWrapper currentSettings) {
+        this.currentSettings = currentSettings;
         generalSettingsTab = new GeneralSettings(currentSettings);
         alarmsTab = new AlarmSettings(currentSettings);
         progressionsTab = new Progressions(currentSettings);
@@ -124,6 +130,9 @@ class SettingsMainWindow {
         window.setTitle(translator.getString("monitoring.settings.title"));
         window.getIcons().add(new Image("icon.png"));
         window.setOnCloseRequest(event -> {
+            generalSettingsTab.reset(currentSettings);
+            alarmsTab.reset(currentSettings);
+            progressionsTab.reset(currentSettings);
             if (buttonCancel.isDisabled()) {
                 showSettingsClosedWarning();
             }
@@ -194,7 +203,12 @@ class SettingsMainWindow {
      * @param handler The handler for the cancel button in the settings view.
      */
     protected void setSettingsCancelButtonHandler(EventHandler<ActionEvent> handler) {
-        buttonCancel.setOnAction(handler);
+        buttonCancel.setOnAction(event -> {
+            generalSettingsTab.reset(currentSettings);
+            alarmsTab.reset(currentSettings);
+            progressionsTab.reset(currentSettings);
+            handler.handle(event);
+        });
     }
     
     /**
