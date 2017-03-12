@@ -26,6 +26,8 @@ import javafx.scene.control.Alert.AlertType;
  * @version 1.3
  */
 class SettingsMainWindow {
+    private static final int MIN_WINDOW_WIDTH = 500;
+    private static final int MIN_WINDOW_HEIGHT = 300;
     /**
      * The window in which the settings are presented.
      */
@@ -129,6 +131,8 @@ class SettingsMainWindow {
             }
         });
         window.setScene(scene);
+        window.setMinWidth(MIN_WINDOW_WIDTH);
+        window.setMinHeight(MIN_WINDOW_HEIGHT);
     }
     
     /**

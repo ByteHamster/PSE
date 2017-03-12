@@ -36,6 +36,7 @@ class Progressions extends ScrollPane {
     protected Progressions(ClientSettingsWrapper currentSettings) {
         fillLevelsEnabled = new EnumMap<>(TankSelector.class);
         temperaturesEnabled = new EnumMap<>(TankSelector.class);
+        setFitToWidth(true);
         createLayout(currentSettings);
     }
     

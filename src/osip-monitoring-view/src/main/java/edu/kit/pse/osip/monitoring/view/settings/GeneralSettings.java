@@ -59,6 +59,7 @@ class GeneralSettings extends ScrollPane {
     protected GeneralSettings(ClientSettingsWrapper currentSettings) {
         serverPorts = new EnumMap<>(TankSelector.class);
         invalidHostname = new SimpleBooleanProperty(false);
+        setFitToWidth(true);
         createLayout(currentSettings);
     }
     
