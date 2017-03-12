@@ -143,8 +143,6 @@ public class SimulationMainWindow implements SimulationViewInterface {
         primaryStage.setHeight(800);
         primaryStage.setMaximized(true);
 
-        setResizeListeners(primaryStage);
-
         makeLayout(primaryStage);
 
         primaryStage.show();
@@ -167,21 +165,14 @@ public class SimulationMainWindow implements SimulationViewInterface {
     }
 
     private Canvas setCanvas(Stage primaryStage) {
-        Rectangle2D screenDimensions = Screen.getPrimary().getVisualBounds();
-
-        double totalWidth = screenDimensions.getWidth();
-        double totalHeight = screenDimensions.getHeight();
-
         Group root = new Group();
         Scene theScene = new Scene(root);
         primaryStage.setScene(theScene);
 
-        canvas = new Canvas(totalWidth, totalHeight);
+        canvas = new ResizableCanvas();
         root.getChildren().add(canvas);
 
         GraphicsContext context = canvas.getGraphicsContext2D();
-
-        setResizeListeners(primaryStage);
 
         new AnimationTimer() {
             private long oldTime = System.nanoTime();
@@ -195,10 +186,10 @@ public class SimulationMainWindow implements SimulationViewInterface {
                 }
                 
                 oldTime = currentTimeNs;
+                double timeDiff = ((double) timeDiffNs) / (1000000000.0 * 60);
 
                 context.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
                 for (Drawer d : element) {
-                    double timeDiff = ((double) timeDiffNs) / (1000000000.0 * 60);
                     d.draw(context, timeDiff);
                 }
             }
@@ -307,27 +298,40 @@ public class SimulationMainWindow implements SimulationViewInterface {
         menu.setResetButtonHandler(listener);
     }
 
-
     /**
-     * This method creates two ChangeListeners that keep track of the window width and height
-     * and, if it changes, change the canvas size accordingly
+     * Canvas that adapts width and height of the parent
+     * Source: http://stackoverflow.com/a/34264033/
      */
-    private void setResizeListeners(Stage primaryStage) {
+    private class ResizableCanvas extends Canvas {
+        @Override
+        public double minHeight(double width) {
+            return 0;
+        }
 
-        final ChangeListener<Number> listener = new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, final Number newValue) {
-                synchronized (canvas) {
-                    double newWidth = primaryStage.getWidth();
-                    double newHeight = primaryStage.getHeight() - 50;
-                    canvas.setWidth(newWidth);
-                    canvas.setHeight(newHeight);
-                    canvas.getGraphicsContext2D().clearRect(0, 0, newWidth, newHeight);
-                }
-            }
-        };
+        @Override
+        public double maxHeight(double width) {
+            return 10000;
+        }
 
-        primaryStage.widthProperty().addListener(listener);
-        primaryStage.heightProperty().addListener(listener);
+        @Override
+        public double minWidth(double height) {
+            return 0;
+        }
+
+        @Override
+        public double maxWidth(double height) {
+            return 10000;
+        }
+
+        @Override
+        public boolean isResizable() {
+            return true;
+        }
+
+        @Override
+        public void resize(double width, double height) {
+            super.setWidth(width);
+            super.setHeight(height);
+        }
     }
 }
