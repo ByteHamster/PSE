@@ -12,7 +12,6 @@ import org.junit.Test;
  * @version 1.1
  */
 public class FormattingTest {
-
     /**
      * Test normal ports
      */
@@ -49,35 +48,26 @@ public class FormattingTest {
     /**
      * Tests inputs that are not percentages.
      */
+    @Test
     public void testInvalidPercentages() {
         assertFalse(FormatChecker.checkPercentage("a1"));
         assertFalse(FormatChecker.checkPercentage("-1"));
     }
 
     /**
-     * Test valid ip
+     * Tests valid IP address.
      */
     @Test
     public void testHostIp() {
-        String input = "66.249.69.000";
-        FormatChecker.checkHost(input);
+        assertTrue(FormatChecker.checkHost("66.249.69.000"));
     }
 
     /**
-     * Test valid port
+     * Tests invalid host names.
      */
-    @Test (expected = InvalidHostException.class)
-    public void testHostName() {
-        String input = "\\";
-        FormatChecker.checkHost(input);
-    }
-
-    /**
-     * Test invalid host input with invalid signs
-     */
-    @Test(expected = InvalidHostException.class)
-    public void testHostInvalidHostName() {
-        String input = "&/(&";
-        FormatChecker.checkHost(input);
+    @Test
+    public void testInvalidHostName() {
+        assertFalse(FormatChecker.checkHost("\\"));
+        assertFalse(FormatChecker.checkHost("&/(&"));
     }
 }
