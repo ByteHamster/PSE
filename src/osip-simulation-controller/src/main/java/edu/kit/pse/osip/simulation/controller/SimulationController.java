@@ -1,6 +1,7 @@
 package edu.kit.pse.osip.simulation.controller;
 
 import edu.kit.pse.osip.core.OSIPConstants;
+import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.io.files.ParserException;
 import edu.kit.pse.osip.core.io.files.ScenarioFile;
 import edu.kit.pse.osip.core.io.files.ServerSettingsWrapper;
@@ -58,8 +59,10 @@ public class SimulationController extends Application {
 
     private static final float FILL_ALARM_LOWER_THRESHOLD = 0.05f;
     private static final float FILL_ALARM_UPPER_THRESHOLD = 0.95f;
-    private static final float TEMP_ALARM_LOWER_THRESHOLD = 273.15f;
-    private static final float TEMP_ALARM_UPPER_THRESHOLD = 373.15f;
+    private static final float TEMP_ALARM_LOWER_THRESHOLD = SimulationConstants.MIN_TEMPERATURE
+            + 0.05f * (SimulationConstants.MAX_TEMPERATURE - SimulationConstants.MIN_TEMPERATURE);
+    private static final float TEMP_ALARM_UPPER_THRESHOLD = SimulationConstants.MIN_TEMPERATURE
+            + 0.95f * (SimulationConstants.MAX_TEMPERATURE - SimulationConstants.MIN_TEMPERATURE);
 
     /**
      * Responsible for controlling the display windows and simulating the production
