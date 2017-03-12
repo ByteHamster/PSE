@@ -1,14 +1,13 @@
 package edu.kit.pse.osip.core.utils.formatting;
 
+import edu.kit.pse.osip.core.OSIPConstants;
+
 /**
  * This class provides static methods to check input formats.
  * @author Maximilian Schwarzmann, Martin Armbruster
  * @version 1.1
  */
 public final class FormatChecker {
-    private static final int PORT_MAX = 61000;
-    private static final int PORT_MIN = 1024;
-    
     private FormatChecker() {
     }
     
@@ -28,7 +27,7 @@ public final class FormatChecker {
         } catch (NumberFormatException e) {
             return false;
         }
-        return !(result < PORT_MIN || result > PORT_MAX);
+        return !(result < OSIPConstants.MIN_PORT || result > OSIPConstants.MAX_PORT);
     }
 
     /**
