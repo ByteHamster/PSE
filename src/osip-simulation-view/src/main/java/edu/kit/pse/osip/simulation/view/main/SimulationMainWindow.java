@@ -9,11 +9,8 @@ import edu.kit.pse.osip.simulation.controller.SimulationViewInterface;
 import edu.kit.pse.osip.simulation.view.dialogs.OverflowDialog;
 import java.util.function.Consumer;
 import javafx.animation.AnimationTimer;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -22,13 +19,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import java.util.Collection;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * The main window for visualizing the OSIP simulation.
@@ -143,8 +137,6 @@ public class SimulationMainWindow implements SimulationViewInterface {
         primaryStage.setHeight(800);
         primaryStage.setMaximized(true);
 
-        setResizeListeners(primaryStage);
-
         makeLayout(primaryStage);
 
         primaryStage.show();
@@ -167,32 +159,31 @@ public class SimulationMainWindow implements SimulationViewInterface {
     }
 
     private Canvas setCanvas(Stage primaryStage) {
-        Rectangle2D screenDimensions = Screen.getPrimary().getVisualBounds();
-
-        double totalWidth = screenDimensions.getWidth();
-        double totalHeight = screenDimensions.getHeight();
-
         Group root = new Group();
         Scene theScene = new Scene(root);
         primaryStage.setScene(theScene);
 
-        canvas = new Canvas(totalWidth, totalHeight);
+        canvas = new ResizableCanvas();
         root.getChildren().add(canvas);
 
         GraphicsContext context = canvas.getGraphicsContext2D();
-
-        setResizeListeners(primaryStage);
 
         new AnimationTimer() {
             private long oldTime = System.nanoTime();
 
             public void handle(long currentTimeNs) {
                 long timeDiffNs = currentTimeNs - oldTime;
+                
+                // The canvas is only drawn after at least 25 ms. This is equals to approximately 40 FPS.
+                if (timeDiffNs < 25000000) {
+                    return;
+                }
+                
                 oldTime = currentTimeNs;
+                double timeDiff = ((double) timeDiffNs) / (1000000000.0 * 60);
 
                 context.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
                 for (Drawer d : element) {
-                    double timeDiff = ((double) timeDiffNs) / (1000000000.0 * 60);
                     d.draw(context, timeDiff);
                 }
             }
@@ -301,44 +292,40 @@ public class SimulationMainWindow implements SimulationViewInterface {
         menu.setResetButtonHandler(listener);
     }
 
-
     /**
-     * This method creates two ChangeListeners that keep track of the window width and height
-     * and, if it changes, change the canvas size accordingly
+     * Canvas that adapts width and height of the parent
+     * Source: http://stackoverflow.com/a/34264033/
      */
-    private void setResizeListeners(Stage primaryStage) {
+    private class ResizableCanvas extends Canvas {
+        @Override
+        public double minHeight(double width) {
+            return 0;
+        }
 
-        final ChangeListener<Number> listener = new ChangeListener<Number>() {
-            final Timer timer = new Timer(true);
-            TimerTask task = null;
-            final long delayTime = 50;
+        @Override
+        public double maxHeight(double width) {
+            return 10000;
+        }
 
-            @Override
-            public void changed(ObservableValue<? extends Number> observable, Number oldValue, final Number newValue) {
-                if (task != null) { // there was already a task scheduled from the previous operation
-                    task.cancel(); // cancel it, we have a new size to consider
-                }
+        @Override
+        public double minWidth(double height) {
+            return 0;
+        }
 
-                task = new TimerTask() {
-                    @Override
-                    public void run() {
-                        synchronized (canvas) {
+        @Override
+        public double maxWidth(double height) {
+            return 10000;
+        }
 
-                            double newWidth = primaryStage.getWidth();
-                            double newHeight = primaryStage.getHeight() - 50;
+        @Override
+        public boolean isResizable() {
+            return true;
+        }
 
-                            canvas.setWidth(newWidth);
-                            canvas.setHeight(newHeight);
-                            canvas.getGraphicsContext2D().clearRect(0, 0, newWidth, newHeight);
-                        }
-                    }
-                };
-
-                timer.schedule(task, delayTime);
-            }
-        };
-
-        primaryStage.widthProperty().addListener(listener);
-        primaryStage.heightProperty().addListener(listener);
+        @Override
+        public void resize(double width, double height) {
+            setWidth(width);
+            setHeight(height);
+        }
     }
 }
