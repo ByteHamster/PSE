@@ -1,5 +1,6 @@
 package edu.kit.pse.osip.monitoring.view.dashboard;
 
+import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.model.base.AbstractTank;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import javafx.scene.chart.LineChart;
@@ -11,7 +12,7 @@ import javafx.scene.shape.Line;
  * Visualizes a progression.
  * 
  * @author Martin Armbruster
- * @version 1.4
+ * @version 1.5
  */
 class ProgressVisualization {
     /**
@@ -19,6 +20,9 @@ class ProgressVisualization {
      */
     private static final double MS_PER_SEC = 1000;
     
+    /**
+     * The tank to which this progression is assigned.
+     */
     private AbstractTank tank;
     
     /**
@@ -57,14 +61,27 @@ class ProgressVisualization {
         this.tank = tank;
         this.progressName = progressName;
         isEnabled = true;
+        setupChart();
+    }
+    
+    /**
+     * Setups the chart.
+     */
+    private void setupChart() {
         NumberAxis x = new NumberAxis();
         x.setForceZeroInRange(false);
         x.setLabel(Translator.getInstance().getString("monitoring.tank.progress.x"));
         NumberAxis y = new NumberAxis();
         y.setAutoRanging(false);
-        y.setLowerBound(0.0);
-        y.setUpperBound(1.0);
-        y.setTickUnit(0.1);
+        if (progressName.equals(Translator.getInstance().getString("monitoring.tank.progress.temperature"))) {
+            y.setLowerBound(SimulationConstants.MIN_TEMPERATURE);
+            y.setUpperBound(SimulationConstants.MAX_TEMPERATURE);
+            y.setTickUnit(1);
+        } else {
+            y.setLowerBound(0.0);
+            y.setUpperBound(1.0);
+            y.setTickUnit(0.1);
+        }
         y.setLabel(Translator.getInstance().getString("monitoring.tank.progress.y"));
         progressChart = new LineChart<Number, Number>(x, y);
         progressChart.setPrefHeight(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS * 1.25);
