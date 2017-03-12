@@ -66,7 +66,25 @@ Insgesamt ließ sich über diese Aufteilung eine weitestgehend gerechte Arbeitsa
 
 
 \section{Implementierte Muss- und Kannkriterien}
+In diesem Abschnitt werden die im Pflichtenheft definierten Kann- und Musskriterien noch einmal kurz umrissen und erläutert, welche davon erfolgreich
+implementiert wurden oder nicht und wodurch sich das jeweils begründet.
 
+Die Musskriterien konnten wir nahzu vollständig in der Form in der sie im Pflichtenheft stehen im fertigen Programm realisieren.
+
+Die einzige Abweichung besteht in der Übertragung der Alarmzustände an die Überwachungskonsole. In den Funktionalen Anforderungen (FA 440) wurde definiert,
+dass diese asynchron zum normalen Aktualisierungsintervall der Überwachungskonsole empfangen werden. Die von uns verwendete OPC UA Implementierung Milo
+stellt die dazu nötige Funktionalität leider nicht bereit, weshalb wir Alarme nur im Rahmen des normalen Aktualisierungsintervalls übertragen können.
+
+Innerhalb der geplanten Kannkriterien kam es ebenfalls zu leichten Abweichungen.
+
+Die Logging-Konsole innerhalb der Überwachungskonsole wurde auf zwei separate Tabs aufgeteilt. Der erste Tab loggt wie geplant die von der Fertigungssimulation
+eintreffenden Alarme. Der zweite Tab loggt auftretende Ausnahmen und Fehlermeldungen, anstatt diese wie ursprünglich geplant auf stdout auszugeben. So sind die
+Ausnahmen und Fehlermeldungen auch dann für den Anwender sichtbar, wenn er die beiden Programme nicht über ein Terminal startet, auf dem die Ausgabe erfolgen kann.
+Zudem dient die Zweiteilung in Tabs der Übersichtlichkeit. Potentiell auftretende Ausnahmen im Programmfluss verdrängen so nicht OPC UA Alarme.
+
+Des weiteren wurde der Jitter in den Eingabewerten nicht implementiert. Praxistests haben ergeben, dass der Jitter entweder so schwach ist, dass er kaum sichtbar
+ist und somit nur unnötigen Overhead in der Fertigungssimulation erzeugt oder aber so stark ist, dass er immer wieder zu nicht geplanten und nicht vorhersehbaren
+Überläufen während der Ausführung von Szenarien führt.
 
 \section{Verzögerungen im Implementierungsplan}
 
