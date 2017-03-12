@@ -1,14 +1,13 @@
 package edu.kit.pse.osip.core.utils.formatting;
 
+import edu.kit.pse.osip.core.OSIPConstants;
+
 /**
  * This class provides static methods to check input formats.
- * @author Maximilian Schwarzmann
- * @version 1.0
+ * @author Maximilian Schwarzmann, Martin Armbruster
+ * @version 1.1
  */
 public final class FormatChecker {
-    private static final int PORT_MAX = 61000;
-    private static final int PORT_MIN = 1024;
-    
     private FormatChecker() {
     }
     
@@ -28,50 +27,42 @@ public final class FormatChecker {
         } catch (NumberFormatException e) {
             return false;
         }
-        return !(result < PORT_MIN || result > PORT_MAX);
+        return !(result < OSIPConstants.MIN_PORT || result > OSIPConstants.MAX_PORT);
     }
 
     /**
      * Checks whether string is a valid IP address or hostname.
      * 
-     * @throws InvalidHostException Thrown if the given host is not valid
-     *             
      * @param host The host to check
+     * @return true when the string is valid. false otherwise.
      */
-    public static void checkHost(String host) {
-        boolean validHostname;
+    public static boolean checkHost(String host) {
         if (host == null) {
-            throw new InvalidHostException(host, "is null");
+            return false;
         }
         String hostnamePattern = "[0-9a-zA-Z\\-_\\.]+";
-        validHostname = host.matches(hostnamePattern);
-        if (!validHostname) {
-            throw new InvalidHostException(host, "is neither an ip nor a hostname");
-        }
+        return host.matches(hostnamePattern);
     }
 
     /**
-     * Parses a percentage value and checks whether is valid.
+     * Checks whether a percentage is valid.
      * 
-     * @throws InvalidPercentageException Thrown, if percentage does not represent an int or if
-     * percentage is not in the range from 0 to 100.
-     * @return percentage parsed into an int.
      * @param percentage The percentage to parse
-     *            
+     * @return true when the percentage is valid. false otherwise.
      */
-    public static int checkPercentage(String percentage) {
+    public static boolean checkPercentage(String percentage) {
         int result;
         if (percentage == null) {
-            throw new InvalidPercentageException(percentage, "is null");
+            return false;
         }
         try {
             result = Integer.parseInt(percentage);
         } catch (NumberFormatException e) {
-            throw new InvalidPercentageException(percentage, "contains non-digits");
+            return false;
         }
         if (result < 0 || result > 100) {
-            throw new InvalidPercentageException(percentage, "is not between 0 and 100");
+            return false;
         }
-        return result;
+        return true;
     }
 }

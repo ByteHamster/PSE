@@ -43,16 +43,15 @@ class ProgressOverview extends TabPane {
             throw new NullPointerException("Tank is null.");
         }
         this.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
-        fillLevel = new ProgressVisualization(Translator.getInstance().getString("monitoring.tank.progress.fillLevel"));
+        fillLevel = new ProgressVisualization(Translator.getInstance()
+                .getString("monitoring.tank.progress.fillLevel"), tank);
         tabFillLevel = new Tab(fillLevel.getProgressName());
         tabFillLevel.setContent(fillLevel.getProgressChart());
-        tank.addObserver(fillLevel);
         this.getTabs().add(tabFillLevel);
         temperature = new ProgressVisualization(
-                Translator.getInstance().getString("monitoring.tank.progress.temperature"));
+                Translator.getInstance().getString("monitoring.tank.progress.temperature"), tank);
         tabTemperature = new Tab(temperature.getProgressName());
         tabTemperature.setContent(temperature.getProgressChart());
-        tank.addObserver(temperature);
         this.getTabs().add(tabTemperature);
     }
     
@@ -72,5 +71,13 @@ class ProgressOverview extends TabPane {
      */
     protected final void setTemperatureProgressEnabled(boolean progressEnabled) {
         temperature.setProgressEnabled(progressEnabled);
+    }
+    
+    /**
+     * Updates the progressions.
+     */
+    protected void updateProgressions() {
+        temperature.update();
+        fillLevel.update();
     }
 }

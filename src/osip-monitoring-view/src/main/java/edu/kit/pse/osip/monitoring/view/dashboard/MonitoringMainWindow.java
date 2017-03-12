@@ -4,6 +4,7 @@ import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import java.util.EnumMap;
+import javafx.animation.AnimationTimer;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -67,6 +68,20 @@ class MonitoringMainWindow {
             tankVisualizations.put(selector, new TankVisualization(currentModel.getUpperTank(selector)));
         }
         mixTank = new MixTankVisualization(currentModel.getMixTank());
+        new AnimationTimer() {
+            private long lastIntervalBegin;
+            
+            @Override
+            public void handle(long now) {
+                if (now - lastIntervalBegin > 1000 * 1000000) {
+                    lastIntervalBegin = now;
+                    for (TankSelector tank : TankSelector.valuesWithoutMix()) {
+                        tankVisualizations.get(tank).updateProgressions();
+                    }
+                    mixTank.updateProgressions();
+                }
+            }
+        }.start();
         log = new LoggingConsole();
         light = new Light();
         makeLayout(primaryStage);

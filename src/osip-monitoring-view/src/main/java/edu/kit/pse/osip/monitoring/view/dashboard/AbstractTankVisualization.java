@@ -129,7 +129,7 @@ abstract class AbstractTankVisualization extends GridPane {
         alarmPane.getChildren().add(box);
         this.add(alarmPane, 0, 0, 2, 1);
         
-        drain = new GaugeVisualization(Translator.getInstance().getString("monitoring.tank.drain"), tank.getOutPipe());
+        drain = new GaugeVisualization(Translator.getInstance().getString("monitoring.tank.drain"));
         fillLevel = new FillLevelVisualization();
         temperature = new TemperatureVisualization();
         progresses = new ProgressOverview(tank);
@@ -144,6 +144,7 @@ abstract class AbstractTankVisualization extends GridPane {
         undercooling = new TemperatureAlarm(tank, MonitoringViewConstants.TEMPERATURE_UNDERCOOLING_THRESHOLD,
                 AlarmBehavior.SMALLER_THAN);
         undercooling.addObserver(temperatureUndercoolingAlarm);
+        tank.getOutPipe().addObserver(drain);
         tank.addObserver(fillLevel);
         tank.addObserver(temperature);
     }
@@ -263,5 +264,12 @@ abstract class AbstractTankVisualization extends GridPane {
      */
     protected void setFillLevelProgressionEnabled(boolean progressionEnabled) {
         progresses.setFillLevelProgressEnabled(progressionEnabled);
+    }
+    
+    /**
+     * Updates the progressions.
+     */
+    protected void updateProgressions() {
+        progresses.updateProgressions();
     }
 }
