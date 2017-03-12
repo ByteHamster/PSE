@@ -15,7 +15,7 @@ import jfxtras.scene.layout.VBox;
  * Controls all controls for disabling / enabling the progressions in the monitoring view.
  * 
  * @author Martin Armbruster
- * @version 1.2
+ * @version 1.3
  */
 class Progressions extends ScrollPane {
     /**
@@ -55,16 +55,27 @@ class Progressions extends ScrollPane {
                     .toLowerCase();
             currentBox = new CheckBox(String.format(
                     Translator.getInstance().getString("monitoring.settings.progressions.fillLevel"), tankName));
-            currentBox.setSelected(currentSettings.getFillLevelDiagram(tank, true));
             fillLevelsEnabled.put(tank, currentBox);
             root.getChildren().add(currentBox);
             currentBox = new CheckBox(String.format(
                     Translator.getInstance().getString("monitoring.settings.progressions.temperature"), tankName));
-            currentBox.setSelected(currentSettings.getTempDiagram(tank, true));
             temperaturesEnabled.put(tank, currentBox);
             root.getChildren().addAll(currentBox, new Separator());
         }
+        reset(currentSettings);
         this.setContent(root);
+    }
+    
+    /**
+     * Resets the settings with the current set settings.
+     * 
+     * @param currentSettings the current settings.
+     */
+    protected void reset(ClientSettingsWrapper currentSettings) {
+        for (TankSelector tank : TankSelector.values()) {
+            fillLevelsEnabled.get(tank).setSelected(currentSettings.getFillLevelDiagram(tank, true));
+            temperaturesEnabled.get(tank).setSelected(currentSettings.getTempDiagram(tank, true));
+        }
     }
     
     /**

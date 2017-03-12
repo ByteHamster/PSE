@@ -12,7 +12,7 @@ import javafx.scene.control.Alert;
  * Provides a single access point to the user-set settings.
  * 
  * @author Martin Armbruster
- * @version 1.3
+ * @version 1.4
  */
 public class SettingsViewFacade implements SettingsViewInterface {
     /**
@@ -29,7 +29,7 @@ public class SettingsViewFacade implements SettingsViewInterface {
      */
     public SettingsViewFacade(ClientSettingsWrapper currentSettings) {
         currentSettingsWindow = new SettingsMainWindow(currentSettings);
-
+        
         Translator t = Translator.getInstance();
         disconnectAlert = new Alert(Alert.AlertType.ERROR);
         disconnectAlert.setTitle(t.getString("monitoring.settings.disconnectalert.title"));
@@ -40,7 +40,6 @@ public class SettingsViewFacade implements SettingsViewInterface {
         cannotConnectAlert.setTitle(t.getString("monitoring.settings.cannotconnectalert.title"));
         cannotConnectAlert.setHeaderText(null);
         cannotConnectAlert.setContentText(t.getString("monitoring.settings.cannotconnectalert.text"));
-
     }
     
     @Override

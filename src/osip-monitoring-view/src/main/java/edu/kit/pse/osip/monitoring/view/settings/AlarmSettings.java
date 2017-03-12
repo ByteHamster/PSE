@@ -15,7 +15,7 @@ import javafx.scene.layout.VBox;
  * Contains all controls for enabling / disabling the alarms in the monitoring view.
  * 
  * @author Martin Armbruster
- * @version 1.2
+ * @version 1.3
  */
 class AlarmSettings extends ScrollPane {
     /**
@@ -67,26 +67,37 @@ class AlarmSettings extends ScrollPane {
             tankName = translator.getString(TankSelector.TRANSLATOR_LABEL_PREFIX + tank.name()).toLowerCase();
             currentBox = new CheckBox(String.format(translator.getString("monitoring.settings.alarms.liquidUnderflow"),
                     tankName));
-            currentBox.setSelected(currentSettings.getUnderflowAlarm(tank, true));
             underflowEnabled.put(tank, currentBox);
             layout.getChildren().add(currentBox);
             currentBox = new CheckBox(String.format(translator.getString("monitoring.settings.alarms.liquidOverflow"),
                     tankName));
-            currentBox.setSelected(currentSettings.getOverflowAlarm(tank, true));
             overflowEnabled.put(tank, currentBox);
             layout.getChildren().add(currentBox);
             currentBox = new CheckBox(String.format(
                     translator.getString("monitoring.settings.alarms.temperatureOverheating"), tankName));
-            currentBox.setSelected(currentSettings.getOverheatingAlarm(tank, true));
             temperatureOverheatingEnabled.put(tank, currentBox);
             layout.getChildren().add(currentBox);
             currentBox = new CheckBox(String.format(
                     translator.getString("monitoring.settings.alarms.temperatureUndercooling"), tankName));
-            currentBox.setSelected(currentSettings.getUndercoolingAlarm(tank, true));
             temperatureUndercoolingEnabled.put(tank, currentBox);
             layout.getChildren().addAll(currentBox, new Separator());
         }
+        reset(currentSettings);
         this.setContent(layout);
+    }
+    
+    /**
+     * Resets the settings to the current settings.
+     * 
+     * @param currentSettings the current settings.
+     */
+    protected void reset(ClientSettingsWrapper currentSettings) {
+        for (TankSelector tank : TankSelector.values()) {
+            underflowEnabled.get(tank).setSelected(currentSettings.getUnderflowAlarm(tank, true));
+            overflowEnabled.get(tank).setSelected(currentSettings.getOverflowAlarm(tank, true));
+            temperatureOverheatingEnabled.get(tank).setSelected(currentSettings.getOverheatingAlarm(tank, true));
+            temperatureUndercoolingEnabled.get(tank).setSelected(currentSettings.getUndercoolingAlarm(tank, true));
+        }
     }
     
     /**

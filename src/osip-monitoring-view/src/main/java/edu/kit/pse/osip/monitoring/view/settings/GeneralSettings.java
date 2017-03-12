@@ -23,7 +23,7 @@ import javafx.util.StringConverter;
  * Contains all controls for setting the general settings.
  * 
  * @author Martin Armbruster
- * @version 1.6
+ * @version 1.7
  */
 class GeneralSettings extends ScrollPane {
     /**
@@ -202,6 +202,20 @@ class GeneralSettings extends ScrollPane {
             serverPorts.put(tank, currentField);
             layout.add(label, 0, row);
             layout.add(currentField, 1, row++);
+        }
+    }
+    
+    /**
+     * Resets the settings to the current set settings.
+     * 
+     * @param currentSettings the current settings.
+     */
+    protected void reset(ClientSettingsWrapper currentSettings) {
+        serverHostname.setText(currentSettings.getHostname(TankSelector.MIX, "localhost"));
+        timeSlider.setValue(currentSettings.getFetchInterval(MonitoringViewConstants.DEFAULT_UPDATE_INTERVAL));
+        int defaultPort = OSIPConstants.DEFAULT_PORT_MIX;
+        for (TankSelector tank : TankSelector.values()) {
+            serverPorts.get(tank).getValueFactory().setValue(currentSettings.getPort(tank, defaultPort++));
         }
     }
     
