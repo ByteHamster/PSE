@@ -1,5 +1,6 @@
 package edu.kit.pse.osip.monitoring.view.dashboard;
 
+import edu.kit.pse.osip.core.SimulationConstants;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 
@@ -23,12 +24,14 @@ public final class MonitoringViewConstants {
     /**
      * Threshold (in °K) when an alarm for overheating triggers.
      */
-    public static final Float TEMPERATURE_OVERHEATING_THRESHOLD = Float.valueOf(373.15f);
+    public static final Float TEMPERATURE_OVERHEATING_THRESHOLD = SimulationConstants.MIN_TEMPERATURE
+            + 0.95f * (SimulationConstants.MAX_TEMPERATURE - SimulationConstants.MIN_TEMPERATURE);
     
     /**
      * Threshold (in °K) when an alarm for undercooling triggers.
      */
-    public static final Float TEMPERATURE_UNDERCOOLING_THRESHOLD = Float.valueOf(273.15f);
+    public static final Float TEMPERATURE_UNDERCOOLING_THRESHOLD = SimulationConstants.MIN_TEMPERATURE
+            + 0.05f * (SimulationConstants.MAX_TEMPERATURE - SimulationConstants.MIN_TEMPERATURE);
     
     /**
      * The minimum update interval in milliseconds.
