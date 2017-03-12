@@ -18,7 +18,8 @@ import javafx.scene.text.Font;
  */
 public abstract class AbstractTankDrawer extends ObjectDrawer {
 
-    private AbstractTank tank;
+    private final AbstractTank tank;
+    private final String tankName;
 
     private double inBoxHorPadding;
     private double inBoxVertPadding;
@@ -40,6 +41,8 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
     public AbstractTankDrawer(Point2D pos, AbstractTank tank, int rows, int cols) {
         super(pos);
         this.tank = tank;
+        this.tankName = Translator.getInstance().getString(
+                TankSelector.TRANSLATOR_LABEL_PREFIX + tank.getTankSelector().name());
 
         relInBoxHeight = ViewConstants.INBOX_HEIGHT / rows;
         relInBoxWidth = ViewConstants.INBOX_WIDTH / cols;
@@ -118,9 +121,8 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
         double fontSize = totalWidth * ViewConstants.ABSTRACT_TANK_FONT_SIZE;
         context.setFont(Font.font("Arial", fontSize));
         double textYPos = (getPosition().getY() + outBoxVertPadding) * totalHeight + outBoxHeight;
-        String name = Translator.getInstance().getString(
-                TankSelector.TRANSLATOR_LABEL_PREFIX + tank.getTankSelector().name());
-        context.fillText(name, outBoxXPos + 2, textYPos - 3);
+
+        context.fillText(tankName, outBoxXPos + 2, textYPos - 3);
 
         context.setLineWidth(3);
         context.strokeOval(inBoxXPos, topOvalYPos, inBoxWidth, totalOvalHeight);
