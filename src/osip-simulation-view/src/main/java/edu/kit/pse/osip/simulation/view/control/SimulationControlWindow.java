@@ -26,6 +26,8 @@ import java.util.EnumMap;
 public class SimulationControlWindow extends Stage implements SimulationControlInterface {
 
     private EnumMap<TankSelector, AbstractTankTab> tankTabs;
+    private static final double MIN_WINDOW_HEIGHT = 250;
+    private static final double MIN_WINDOW_WIDTH = 300;
 
     /**
      * Constructs a new SimulationControlWindow
@@ -41,6 +43,8 @@ public class SimulationControlWindow extends Stage implements SimulationControlI
 
         Scene scene = new Scene(makeLayout(productionSite));
         this.setScene(scene);
+        setMinHeight(MIN_WINDOW_HEIGHT);
+        setMinWidth(MIN_WINDOW_WIDTH);
     }
 
     private TabPane makeLayout(ProductionSite productionSite) {

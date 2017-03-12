@@ -36,6 +36,7 @@ public class SimulationSettingsWindow implements SimulationSettingsInterface {
     private Button btnSave;
     private static final int SPACING = 10;
     private static final int MAX_HEIGHT = 400;
+    private static final double MIN_WINDOW_SIZE = 250;
 
     /**
      * Generates a new window that shows the simulation settings
@@ -49,6 +50,8 @@ public class SimulationSettingsWindow implements SimulationSettingsInterface {
         Scene scene = new Scene(createRootLayout());
         settingsStage.setScene(scene);
         settingsStage.setTitle(Translator.getInstance().getString("simulation.settings.title"));
+        settingsStage.setMinWidth(MIN_WINDOW_SIZE);
+        settingsStage.setMinHeight(MIN_WINDOW_SIZE);
 
         resetValues();
     }
