@@ -7,7 +7,7 @@ import java.util.Locale;
  * This class can be used to print messages of the default output and error output stream to a GUI console.
  * 
  * @author Martin Armbruster
- * @version 1.1
+ * @version 1.2
  */
 class UIOutputStream extends PrintStream {
     /**
@@ -35,122 +35,122 @@ class UIOutputStream extends PrintStream {
     }
     
     @Override
-    public void write(byte[] buf, int off, int len) {
+    public synchronized void write(byte[] buf, int off, int len) {
         for (int i = off; i < off + len; i++) {
             print(buf[i]);
         }
     }
     
     @Override
-    public void write(int b) {
+    public synchronized void write(int b) {
         print(b);
     }
     
     @Override
-    public void flush() {
+    public synchronized void flush() {
     }
     
     @Override
-    public void close() {
+    public synchronized void close() {
     }
     
     @Override
-    public boolean checkError() {
+    public synchronized boolean checkError() {
         return false;
     }
     
     @Override
-    protected void setError() {
+    protected synchronized void setError() {
     }
     
     @Override
-    protected void clearError() {
+    protected synchronized void clearError() {
     }
     
     @Override
-    public PrintStream append(char c) {
+    public synchronized PrintStream append(char c) {
         print(c);
         return this;
     }
     
     @Override
-    public PrintStream append(CharSequence csq) {
+    public synchronized PrintStream append(CharSequence csq) {
         print(csq);
         return this;
     }
     
     @Override
-    public PrintStream append(CharSequence csq, int start, int end) {
+    public synchronized PrintStream append(CharSequence csq, int start, int end) {
         print(csq.subSequence(start, end));
         return this;
     }
     
     @Override
-    public PrintStream format(Locale l, String format, Object... args) {
+    public synchronized PrintStream format(Locale l, String format, Object... args) {
         print(String.format(l, format, args));
         return this;
     }
     
     @Override
-    public PrintStream format(String format, Object... args) {
+    public synchronized PrintStream format(String format, Object... args) {
         print(String.format(format, args));
         return this;
     }
     
     @Override
-    public PrintStream printf(Locale l, String format, Object... args) {
+    public synchronized PrintStream printf(Locale l, String format, Object... args) {
         print(String.format(l, format, args));
         return this;
     }
     
     @Override
-    public PrintStream printf(String format, Object... args) {
+    public synchronized PrintStream printf(String format, Object... args) {
         print(String.format(format, args));
         return this;
     }
     
     @Override
-    public void print(boolean b) {
+    public synchronized void print(boolean b) {
         print(Boolean.toString(b));
     }
     
     @Override
-    public void print(char c) {
+    public synchronized void print(char c) {
         print(Character.toString(c));
     }
     
     @Override
-    public void print(char[] s) {
+    public synchronized void print(char[] s) {
         print(String.copyValueOf(s));
     }
     
     @Override
-    public void print(double d) {
+    public synchronized void print(double d) {
         print(Double.toString(d));
     }
     
     @Override
-    public void print(float f) {
+    public synchronized void print(float f) {
         print(Float.toString(f));
     }
     
     @Override
-    public void print(int i) {
+    public synchronized void print(int i) {
         print(Integer.toString(i));
     }
     
     @Override
-    public void print(long l) {
+    public synchronized void print(long l) {
         print(Long.toString(l));
     }
     
     @Override
-    public void print(Object obj) {
+    public synchronized void print(Object obj) {
         print(obj.toString());
     }
     
     @Override
-    public void print(String s) {
+    public synchronized void print(String s) {
         oldStream.print(s);
         if (isAlreadyOneLinePrinted) {
             con.logWithoutTime(s);
@@ -161,62 +161,62 @@ class UIOutputStream extends PrintStream {
     }
     
     @Override
-    public void println() {
+    public synchronized void println() {
         oldStream.println();
         con.logWithoutTime("\n");
         isAlreadyOneLinePrinted = false;
     }
     
     @Override
-    public void println(boolean x) {
+    public synchronized void println(boolean x) {
         print(x);
         println();
     }
     
     @Override
-    public void println(char x) {
+    public synchronized void println(char x) {
         print(x);
         println();
     }
     
     @Override
-    public void println(char[] x) {
+    public synchronized void println(char[] x) {
         print(x);
         println();
     }
     
     @Override
-    public void println(double x) {
+    public synchronized void println(double x) {
         print(x);
         println();
     }
     
     @Override
-    public void println(float x) {
+    public synchronized void println(float x) {
         print(x);
         println();
     }
     
     @Override
-    public void println(int x) {
+    public synchronized void println(int x) {
         print(x);
         println();
     }
     
     @Override
-    public void println(long x) {
+    public synchronized void println(long x) {
         print(x);
         println();
     }
     
     @Override
-    public void println(Object x) {
+    public synchronized void println(Object x) {
         print(x);
         println();
     }
     
     @Override
-    public void println(String x) {
+    public synchronized void println(String x) {
         print(x);
         println();
     }
