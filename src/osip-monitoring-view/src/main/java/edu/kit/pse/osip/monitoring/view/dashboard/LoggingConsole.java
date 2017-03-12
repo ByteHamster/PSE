@@ -41,9 +41,8 @@ class LoggingConsole extends TabPane implements Observer {
         this.getTabs().addAll(createTab(Translator.getInstance().getString("monitoring.logging.tab.alarms"), alarms),
                 createTab(Translator.getInstance().getString("monitoring.logging.tab.io"), stdIO));
         
-        UIOutputStream os = new UIOutputStream(this);
-        System.setErr(os);
-        System.setOut(os);
+        System.setErr(new UIOutputStream(System.err, this));
+        System.setOut(new UIOutputStream(System.out, this));
     }
     
     /**
