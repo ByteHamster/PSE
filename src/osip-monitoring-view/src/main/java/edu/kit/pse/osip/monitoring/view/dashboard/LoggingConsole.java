@@ -1,7 +1,6 @@
 package edu.kit.pse.osip.monitoring.view.dashboard;
 
 import edu.kit.pse.osip.core.model.base.TankSelector;
-import edu.kit.pse.osip.core.model.behavior.TankAlarm;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
@@ -115,11 +114,11 @@ class LoggingConsole extends TabPane implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         AlarmVisualization alarm = (AlarmVisualization) o;
-        TankAlarm<?> ta = (TankAlarm<?>) arg;
-        if (ta != null && ta.isAlarmTriggered()) {
+        TankSelector tankSel = (TankSelector) arg;
+        if (tankSel != null && alarm.isAlarmTriggered()) {
             Text alarmText = prepareTextWithTime(String.format(Translator.getInstance()
                     .getString("monitoring.logging.alarmTriggered"), alarm.getAlarmName(), Translator.getInstance()
-                    .getString(TankSelector.TRANSLATOR_LABEL_PREFIX + ta.getTank().getTankSelector().name())
+                    .getString(TankSelector.TRANSLATOR_LABEL_PREFIX + tankSel.name())
                     .toLowerCase()) + "\n");
             if (alarm.getAlarmState() == AlarmState.ALARM_DISABLED) {
                 alarmText.setFill(MonitoringViewConstants.ALARM_DISABLED);
