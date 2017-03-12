@@ -229,7 +229,7 @@ public class ServerClientTest {
      * Tests if a long connection without changes generates a timeout
      * @throws Exception If something goes wrong
      */
-    @Test(timeout = 20000)
+    @Test(timeout = TestUaClientWrapper.CONNECTION_TIMEOUT_TEST * 3)
     public void testLongConnection() throws Exception  {
         server.addFolderTest("testFolder", "Test folder");
         server.addVariableTest("testFolder/testVar", "Variable", Identifiers.Int32);

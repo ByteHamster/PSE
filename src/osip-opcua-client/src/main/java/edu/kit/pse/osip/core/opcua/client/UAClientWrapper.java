@@ -197,6 +197,8 @@ public abstract class UAClientWrapper {
             throw new UAClientException("Not connected");
         }
 
+        errorListener = null;
+
         Iterator<Entry<ReceivedListener, UInteger>> it = listeners.entrySet().iterator();
         while (it.hasNext()) {
             try {
