@@ -28,11 +28,6 @@ class Light extends VBox implements Observer {
     private ArrayList<AlarmVisualization> triggeredAlarms;
     
     /**
-     * List of all enabled alarms.
-     */
-    private ArrayList<AlarmVisualization> enabledAlarms;
-    
-    /**
      * List of all disabled alarms. If its count is equals to the number of available alarms, all alarms are disabled. 
      */
     private ArrayList<AlarmVisualization> disabledAlarms;
@@ -52,7 +47,6 @@ class Light extends VBox implements Observer {
      */
     protected Light() {
         triggeredAlarms = new ArrayList<>();
-        enabledAlarms = new ArrayList<>();
         disabledAlarms = new ArrayList<>();
         this.setSpacing(MonitoringViewConstants.ELEMENTS_GAP);
         this.setAlignment(Pos.TOP_RIGHT);
@@ -92,14 +86,11 @@ class Light extends VBox implements Observer {
         AlarmVisualization alarm = (AlarmVisualization) observable;
         TankAlarm<?> ta = (TankAlarm<?>) object;        
         triggeredAlarms.remove(alarm);
-        enabledAlarms.remove(alarm);
         disabledAlarms.remove(alarm);
         if (alarm.getAlarmState() == AlarmState.ALARM_DISABLED) {
             disabledAlarms.add(alarm);
         } else if (ta != null && ta.isAlarmTriggered()) {
             triggeredAlarms.add(alarm);
-        } else {
-            enabledAlarms.add(alarm);
         }
         if (disabledAlarms.size() == numberAlarms) {
             Platform.runLater(() -> disableWithColor());

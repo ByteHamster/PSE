@@ -46,16 +46,6 @@ public final class MonitoringViewConstants {
     public static final int MAX_UPDATE_INTERVAL = 4000;
     
     /**
-     * The minimum server port.
-     */
-    public static final int MIN_PORT = 1024;
-    
-    /**
-     * The maximum server port.
-     */
-    public static final int MAX_PORT = 61000;
-    
-    /**
      * The number of major ticks for a slider.
      */
     public static final int NUMBER_OF_MAJOR_TICKS = 7;

@@ -111,6 +111,7 @@ class SettingsMainWindow {
         buttonCancel.setCancelButton(true);
         buttonSave = new Button(translator.getString("monitoring.settings.button.save"));
         buttonSave.setDefaultButton(true);
+        buttonSave.disableProperty().bind(generalSettingsTab.invalidHostnameProperty());
         buttons.getChildren().addAll(buttonCancel, buttonSave);
         
         BorderPane generalLayout = new BorderPane();
