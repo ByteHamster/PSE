@@ -40,6 +40,28 @@
 \section{Einleitung}
 
 
+\section{Workflow}
+OSIP wurde von uns open-source mit Hilfe von GitHub entwickelt. Um die Qualität des Codes möglichst gut zu halten,
+haben wir konsequent Code-Reviews eingesetzt. Jede Änderung musste von einem Kommilitonen genehmigt werden. Zusätzlich ließen wir
+durch den Dienst "`Travis"' bei jeder einzubindenden Änderung die Stil-Richtlinien für den Code (mittels Checkstyle) und die Unit Tests überprüfen.
+Dieses Vorgehen erforderte zwar oft lange Wartezeiten auf Reviews, im Sinne der guten Qualität haben wir uns allerdings darauf eingelassen. 
+
+Um die Aufgaben der einzelnen Kommilitonen aufeinander abzustimmen, setzten wir den von GitHub bereitgestellten Issue-Tracker ein. Im Laufe der
+Entwicklung von OSIP wurden über 400 Issues und Pull requests erstellt.
+
+\section{Arbeitsaufteilung}
+Bei der Implementierung gingen nach dem outside-in-Prinzip vor. Während Model, OPC UA Wrapper und Core-Bestandteile von David, Hans-Peter und Max entwickelt wurden,
+begannen Martin und Niko mit den Benutzeroberflächen von Überwachungskonsole und Fertigungssimulation. Auf Grund des modularen Entwurfes
+und der automatischen Generierung von Quellcode aus dem Klassendiagramm war dies problemlos möglich. Die Aufteilung erfolgte deshalb, weil Martin und Niko die
+Benutzeroberflächen während der letzten Phase entworfen hatten und sich somit besonders gut in dem Bereich auskannten. Des Weiteren hätten wir uns mit 5 Personen,
+die das Model entwickeln, wahrscheinlich gegenseitig sehr gestört.
+
+Nachdem dann die Bestandteile einzeln implementiert waren, wurden noch die Controller hinzugefügt. Die Controller verbinden jeweils Model und View,
+um so Leben in die Anwendung zu bringen. Da zu diesem Zeitpunkt das Model mit der Grundfunnktionalität der Anwendungen schon fertig war,
+konnte man in den Controllern sehr schnell Fortschritte sehen. Die Controller wurden maßgeblich von David und Max entwickelt.
+
+Insgesamt ließ sich über diese Aufteilung eine weitestgehend gerechte Arbeitsaufteilung umsetzen.
+
 \section{Änderungen zum Entwurf}
 
 
@@ -56,8 +78,17 @@ des Milo-Entwicklers auf Stack Overflow: \href{http://stackoverflow.com/a/421610
 Somit mussten wir auch bei den Alarmen auf reguläre Subscriptions zurückgreifen, welche wir nun mit einem kürzeren Intervall
 als die restlichen Produktionsvariablen abfragen.
 
-\section{Unit tests}
+\section{Unittests}
+Unittests waren ausschlaggebend wichtig für den ersten Teil der Implementierung, bei dem die Controller noch nicht entwickelt waren.
+Entsprechend ist die Testabdeckung sehr hoch. Das Model besitzt eine Zeilenabdeckung von 93\%, ebenso wie die Core-Bestandteile.
+Um die Funktionalität von OPC UA Server und Client zu testen, musste von reinen Unittests abgewichen werden, da der Client keine
+Methoden zum Setzen von Werten besitzt. Es wurde somit ein weiteres Modul hinzugefügt, das die Tests der Server- und Client-Module übernimmt.
+Dieses Modul testet gleichzeitig das Client-Modul und das Server-Modul zu OPC UA, stellt also eher einen Integrationstest dar. Zur bottom-up
+Entwicklung der OPC UA Abstraktion war dies aber unumgänglich. Durch die Tests konnte bei OPC UA eine Abdeckung von 78\% erreicht werden.
 
+In UI und Controller wurden keine automatischen Unittest eingesetzt, sondern die Funktionalität in den entsprechenden Pull requests
+jeweils manuell getestet. Wir entschieden uns zu diesem Vorgehen, da das Testen in der UI einen hohen Aufwand bedeutet, der sich allerdings
+kaum bezahlt macht - Es gibt kaum hinreichend komplexe, testbare Code-Abschnitte, bei denen sich automatisierte Tests des UI lohnen würden.
 
 \pagebreak
 \phantomsection
