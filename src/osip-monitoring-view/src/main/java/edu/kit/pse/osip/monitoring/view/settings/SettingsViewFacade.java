@@ -19,10 +19,6 @@ public class SettingsViewFacade implements SettingsViewInterface {
      * The current settings view containing the user-set settings.
      */
     private SettingsMainWindow currentSettingsWindow;
-    /**
-     * The used settings.
-     */
-    private ClientSettingsWrapper currentSettings;
     private Alert disconnectAlert;
     private Alert cannotConnectAlert;
     
@@ -33,7 +29,6 @@ public class SettingsViewFacade implements SettingsViewInterface {
      */
     public SettingsViewFacade(ClientSettingsWrapper currentSettings) {
         currentSettingsWindow = new SettingsMainWindow(currentSettings);
-        this.currentSettings = currentSettings;
         
         Translator t = Translator.getInstance();
         disconnectAlert = new Alert(Alert.AlertType.ERROR);
@@ -68,12 +63,7 @@ public class SettingsViewFacade implements SettingsViewInterface {
     
     @Override
     public void setSettingsCancelButtonHandler(EventHandler<ActionEvent> handler) {
-        currentSettingsWindow.setSettingsCancelButtonHandler(event -> {
-            currentSettingsWindow.getGeneralSettings().reset(currentSettings);
-            currentSettingsWindow.getAlarmSettings().reset(currentSettings);
-            currentSettingsWindow.getProgressions().reset(currentSettings);
-            handler.handle(event);
-        });
+        currentSettingsWindow.setSettingsCancelButtonHandler(handler);
     }
     
     @Override
