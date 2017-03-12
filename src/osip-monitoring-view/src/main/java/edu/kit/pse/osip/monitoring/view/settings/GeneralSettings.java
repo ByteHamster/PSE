@@ -7,6 +7,8 @@ import edu.kit.pse.osip.core.utils.formatting.FormatChecker;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.monitoring.view.dashboard.MonitoringViewConstants;
 import java.util.EnumMap;
+import javafx.beans.property.ReadOnlyBooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -21,7 +23,7 @@ import javafx.util.StringConverter;
  * Contains all controls for setting the general settings.
  * 
  * @author Martin Armbruster
- * @version 1.5
+ * @version 1.6
  */
 class GeneralSettings extends ScrollPane {
     /**
@@ -45,12 +47,18 @@ class GeneralSettings extends ScrollPane {
     private Spinner<Number> timeBox;
     
     /**
+     * Saves if the host name is valid or not.
+     */
+    private SimpleBooleanProperty invalidHostname;
+    
+    /**
      * Creates a new tab that holds the general settings.
      * 
      * @param currentSettings The current settings used for displaying them.
      */
     protected GeneralSettings(ClientSettingsWrapper currentSettings) {
         serverPorts = new EnumMap<>(TankSelector.class);
+        invalidHostname = new SimpleBooleanProperty(false);
         createLayout(currentSettings);
     }
     
@@ -72,6 +80,15 @@ class GeneralSettings extends ScrollPane {
         
         generalLabel = new Label(translator.getString("monitoring.settings.generalSettings.serverHost"));
         serverHostname = new TextField(currentSettings.getHostname(TankSelector.MIX, "localhost"));
+        serverHostname.textProperty().addListener((obs, oldValue, newValue) -> {
+            if (!FormatChecker.checkHost(newValue)) {
+                serverHostname.setStyle("-fx-control-inner-background: rgb(255, 157, 157);");
+                invalidHostname.set(true);
+            } else {
+                serverHostname.setStyle("-fx-control-inner-background: rgb(255, 255, 255);");
+                invalidHostname.set(false);
+            }
+        });
         layout.add(generalLabel, 0, 2);
         layout.add(serverHostname, 1, 2);
         
@@ -167,6 +184,12 @@ class GeneralSettings extends ScrollPane {
                 public Integer fromString(String string) {
                     try {
                         int i = Integer.parseInt(string);
+                        if (i < OSIPConstants.MIN_PORT) {
+                            return OSIPConstants.MIN_PORT;
+                        }
+                        if (i > OSIPConstants.MAX_PORT) {
+                            return OSIPConstants.MAX_PORT;
+                        }
                         return i;
                     } catch (NumberFormatException nfEx) {
                         return OSIPConstants.DEFAULT_PORT_MIX;
@@ -179,6 +202,15 @@ class GeneralSettings extends ScrollPane {
             layout.add(label, 0, row);
             layout.add(currentField, 1, row++);
         }
+    }
+    
+    /**
+     * Property indicating if the current input host name is invalid or valid.
+     * 
+     * @return the read-only property which is true when the input host name is invalid.
+     */
+    protected ReadOnlyBooleanProperty invalidHostnameProperty() {
+        return invalidHostname;
     }
     
     /**
