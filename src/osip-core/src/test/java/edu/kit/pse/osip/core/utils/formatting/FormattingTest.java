@@ -1,16 +1,15 @@
 package edu.kit.pse.osip.core.utils.formatting;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-
 /**
  * JUnit test class for FormatChecker.java
+ * 
  * @author Maximilian Schwarzmann
- * @version 1.0
+ * @version 1.1
  */
 public class FormattingTest {
 
@@ -39,31 +38,20 @@ public class FormattingTest {
     }
     
     /**
-     * Test normal percentage
+     * Tests a normal percentage.
      */
     @Test
-    public void testPercentage() {
+    public void testValidPercentage() {
         String input = "55";
-        int result = FormatChecker.checkPercentage(input);
-        assertEquals(55, result);
+        assertTrue(FormatChecker.checkPercentage(input));
     }
 
     /**
-     * Test inputs that are not percentages
+     * Tests inputs that are not percentages.
      */
-    @Test(expected = InvalidPercentageException.class)
-    public void testPercentageFormat() {
-        String input = "a1";
-        FormatChecker.checkPercentage(input);
-    }
-
-    /**
-     * Test negative percentage
-     */
-    @Test(expected = InvalidPercentageException.class)
-    public void testPercentageRange() {
-        String input = "-1";
-        FormatChecker.checkPercentage(input);
+    public void testInvalidPercentages() {
+        assertFalse(FormatChecker.checkPercentage("a1"));
+        assertFalse(FormatChecker.checkPercentage("-1"));
     }
 
     /**
