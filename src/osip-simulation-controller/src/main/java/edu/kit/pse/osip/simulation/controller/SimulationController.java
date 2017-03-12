@@ -354,6 +354,7 @@ public class SimulationController extends Application {
             currentSimulationView.scenarioFinished();
             return;
         }
+        currentSimulationView.scenarioStarted();
         currentScenario.setProductionSite(productionSite);
         currentScenario.setScenarioFinishedListener(() -> {
             currentSimulationView.scenarioFinished();

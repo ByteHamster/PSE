@@ -78,6 +78,11 @@ public interface SimulationViewInterface {
     void scenarioFinished();
 
     /**
+     * Tell the view the scenario has started.
+     */
+    void scenarioStarted();
+
+    /**
      * Show an OPC UA Server error dialog
      * @param message The error message to show.
      */
