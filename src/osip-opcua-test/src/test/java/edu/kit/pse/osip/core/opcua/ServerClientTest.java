@@ -1,9 +1,11 @@
 package edu.kit.pse.osip.core.opcua;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.milo.opcua.stack.core.Identifiers;
 import org.eclipse.milo.opcua.stack.core.types.builtin.DataValue;
@@ -220,5 +222,23 @@ public class ServerClientTest {
 
         client.subscribeIntTest("testFolder/testVar", 1000, listener);
         client.unsubscribe(listener);
+    }
+
+    /**
+     * Tests if a long connection without changes generates a timeout
+     * @throws Exception If something goes wrong
+     */
+    @Test(timeout = 20000)
+    public void testLongConnection() throws Exception  {
+        server.addFolderTest("testFolder", "Test folder");
+        server.addVariableTest("testFolder/testVar", "Variable", Identifiers.Int32);
+        server.setVariableTest("testFolder/testVar", new DataValue(new Variant(42)));
+
+        AtomicBoolean errorOccurred = new AtomicBoolean(false);
+        client.setErrorListener(code -> errorOccurred.set(true));
+        client.subscribeIntTest("testFolder/testVar", 1000, (value) -> { });
+
+        Thread.sleep(TestUaClientWrapper.CONNECTION_TIMEOUT_TEST * 2);
+        assertFalse("Long connection is not kept alive", errorOccurred.get());
     }
 }

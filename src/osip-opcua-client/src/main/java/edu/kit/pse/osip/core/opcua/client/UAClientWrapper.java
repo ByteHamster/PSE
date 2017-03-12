@@ -69,7 +69,7 @@ public abstract class UAClientWrapper {
     /**
      * Timeout when connecting
      */
-    private static final UInteger CONNECTION_TIMEOUT = Unsigned.uint(5000);
+    protected static final int CONNECTION_TIMEOUT = 5000;
 
     private OpcUaClient client = null;
     private String serverUrl;
@@ -115,8 +115,8 @@ public abstract class UAClientWrapper {
                 .setApplicationUri("urn:edu:kit:pse:osip:client:" + namespace)
                 .setEndpoint(endpoint)
                 .setIdentityProvider(new AnonymousProvider())
-                .setRequestTimeout(CONNECTION_TIMEOUT)
-                .setSessionTimeout(CONNECTION_TIMEOUT)
+                .setRequestTimeout(Unsigned.uint(CONNECTION_TIMEOUT))
+                .setSessionTimeout(Unsigned.uint(CONNECTION_TIMEOUT))
                 .build();
 
         OpcUaClient client = new OpcUaClient(config);
@@ -160,6 +160,10 @@ public abstract class UAClientWrapper {
             e.printStackTrace();
             throw new UAClientException("Unable to start server");
         }
+
+        // To prevent connection timeout if values on server do not change for a long time
+        doSubscribe(Identifiers.Server_ServerStatus_CurrentTime, CONNECTION_TIMEOUT / 2,
+                (IntReceivedListener) value -> { }, Identifiers.DateTime);
 
         client.getSubscriptionManager().addSubscriptionListener(new SubscriptionListener() {
             @Override
@@ -305,7 +309,7 @@ public abstract class UAClientWrapper {
         if (interval == -1) {
             doRead(nodeName, listener, varType);
         } else if (interval > 0) {
-            doSubscribe(nodeName, interval, listener, varType);
+            doSubscribe(new NodeId(namespaceIndex, nodeName), interval, listener, varType);
         } else {
             throw new IllegalArgumentException("Interval must be > 0 or -1");
         }
@@ -332,19 +336,19 @@ public abstract class UAClientWrapper {
 
     /**
      * Subscribes to a value from the server.
-     * @param nodeName The path of the node to subscribe or read
+     * @param nodeId The node to subscribe
      * @param interval Fetch interval in ms. Single, immediate read when providing -1.
      * @param listener Callback function that is called when the value was changed
      * @param varType The type of the variable to be read
      * @throws UAClientException If subscription fails
      */
-    private void doSubscribe(String nodeName, int interval, ReceivedListener listener, NodeId varType)
+    private void doSubscribe(NodeId nodeId, int interval, ReceivedListener listener, NodeId varType)
             throws UAClientException {
         try {
             UaSubscription subscription = client.getSubscriptionManager().createSubscription(interval).get();
 
             ReadValueId readValueId = new ReadValueId(
-                new NodeId(namespaceIndex, nodeName),
+                nodeId,
                 AttributeId.Value.uid(), null, QualifiedName.NULL_VALUE);
 
             MonitoringParameters parameters = new MonitoringParameters(
@@ -406,7 +410,9 @@ public abstract class UAClientWrapper {
                 ((FloatReceivedListener) listener).onReceived((float) value.getValue().getValue());
             } else if (varType == Identifiers.Boolean) {
                 ((BooleanReceivedListener) listener).onReceived((boolean) value.getValue().getValue());
-            } else {
+            } else if (varType != Identifiers.DateTime) {
+                // Ignore DateTime. Used for the keep alive signal
+
                 if (errorListener != null) {
                     errorListener.onError(ERROR_DATA_TYPE_UNSUPPORTED);
                 }
