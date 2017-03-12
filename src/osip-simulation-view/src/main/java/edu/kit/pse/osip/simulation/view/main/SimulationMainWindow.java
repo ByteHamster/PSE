@@ -174,8 +174,8 @@ public class SimulationMainWindow implements SimulationViewInterface {
             public void handle(long currentTimeNs) {
                 long timeDiffNs = currentTimeNs - oldTime;
                 
-                // The canvas is only drawn after at least 33 ms. This is equals to approximately 30 FPS.
-                if (timeDiffNs < 33000000) {
+                // The canvas is only drawn after at least 25 ms. This is equals to approximately 40 FPS.
+                if (timeDiffNs < 25000000) {
                     return;
                 }
                 
