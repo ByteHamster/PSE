@@ -14,6 +14,11 @@ import edu.kit.pse.osip.core.opcua.client.UAClientWrapper;
  */
 public class TestUaClientWrapper extends UAClientWrapper {
     /**
+     * Allows public access to the connection timeout
+     */
+    protected static final int CONNECTION_TIMEOUT_TEST = UAClientWrapper.CONNECTION_TIMEOUT;
+
+    /**
      * Allows public access to UAClientWrapper
      * @param url Same as for UAClientWrapper
      * @param namespace Same as for UAClientWrapper
