@@ -9,6 +9,7 @@ import edu.kit.pse.osip.simulation.controller.SimulationViewInterface;
 import edu.kit.pse.osip.simulation.view.dialogs.OverflowDialog;
 import java.util.function.Consumer;
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -141,6 +142,7 @@ public class SimulationMainWindow implements SimulationViewInterface {
         primaryStage.setMinWidth(MIN_WINDOW_SIZE);
         primaryStage.setMinHeight(MIN_WINDOW_SIZE);
         primaryStage.setMaximized(true);
+        primaryStage.setOnCloseRequest(event -> Platform.exit());
 
         makeLayout(primaryStage);
 
