@@ -2,6 +2,8 @@ package edu.kit.pse.osip.core.opcua.client;
 
 import com.google.common.collect.Lists;
 import org.eclipse.milo.opcua.sdk.client.OpcUaClient;
+import org.eclipse.milo.opcua.sdk.client.SessionActivityListener;
+import org.eclipse.milo.opcua.sdk.client.api.UaSession;
 import org.eclipse.milo.opcua.sdk.client.api.config.OpcUaClientConfig;
 import org.eclipse.milo.opcua.sdk.client.api.identity.AnonymousProvider;
 import org.eclipse.milo.opcua.sdk.client.api.nodes.VariableNode;
@@ -114,6 +116,7 @@ public abstract class UAClientWrapper {
                 .setEndpoint(endpoint)
                 .setIdentityProvider(new AnonymousProvider())
                 .setRequestTimeout(CONNECTION_TIMEOUT)
+                .setSessionTimeout(CONNECTION_TIMEOUT)
                 .build();
 
         OpcUaClient client = new OpcUaClient(config);
@@ -161,6 +164,14 @@ public abstract class UAClientWrapper {
         client.getSubscriptionManager().addSubscriptionListener(new SubscriptionListener() {
             @Override
             public void onPublishFailure(UaException exception) {
+                if (errorListener != null) {
+                    errorListener.onError(ERROR_DISCONNECT);
+                }
+            }
+        });
+        client.addSessionActivityListener(new SessionActivityListener() {
+            @Override
+            public void onSessionInactive(UaSession session) {
                 if (errorListener != null) {
                     errorListener.onError(ERROR_DISCONNECT);
                 }

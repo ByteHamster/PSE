@@ -138,17 +138,18 @@ public class SimulationMenu extends MenuBar {
      *                 The parameter is the path to the scenario file.
      */
     public void setScenarioStartListener(Consumer<String> listener) {
-        menuItemStartScenario.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                FileChooser fileChooser = new FileChooser();
-                fileChooser.setTitle(Translator.getInstance().getString("simulation.view.scenariofilechooser"));
-                File selectedFile = fileChooser.showOpenDialog(primaryStage);
-                if (selectedFile != null) {
-                    menuItemStopScenario.setDisable(false);
-                    menuItemStartScenario.setDisable(true);
-                    listener.accept(selectedFile.getAbsolutePath());
-                }
+        menuItemStartScenario.setOnAction(actionEvent -> {
+            FileChooser fileChooser = new FileChooser();
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
+                    Translator.getInstance().getString("simulation.view.scenariofilechooser.filter"),
+                    "*.scenario.txt");
+            fileChooser.getExtensionFilters().add(extFilter);
+            fileChooser.setTitle(Translator.getInstance().getString("simulation.view.scenariofilechooser"));
+            File selectedFile = fileChooser.showOpenDialog(primaryStage);
+            if (selectedFile != null) {
+                menuItemStopScenario.setDisable(false);
+                menuItemStartScenario.setDisable(true);
+                listener.accept(selectedFile.getAbsolutePath());
             }
         });
     }
