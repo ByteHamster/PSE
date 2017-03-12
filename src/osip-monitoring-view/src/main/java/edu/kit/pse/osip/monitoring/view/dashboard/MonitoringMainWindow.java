@@ -55,6 +55,9 @@ class MonitoringMainWindow {
      * Height for the window.
      */
     private static final int HEIGHT = 700;
+
+    private static final int MIN_WIDTH = 500;
+    private static final int MIN_HEIGHT = 400;
     
     /**
      * Initializes the window.
@@ -134,6 +137,8 @@ class MonitoringMainWindow {
         primaryStage.setScene(scene);
         primaryStage.setWidth(WIDTH);
         primaryStage.setHeight(HEIGHT);
+        primaryStage.setMinWidth(MIN_WIDTH);
+        primaryStage.setMinHeight(MIN_HEIGHT);
         primaryStage.setOnCloseRequest(event -> Platform.exit());
         primaryStage.show();
     }

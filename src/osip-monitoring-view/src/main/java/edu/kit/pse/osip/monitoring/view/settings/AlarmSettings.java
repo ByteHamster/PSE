@@ -48,6 +48,7 @@ class AlarmSettings extends ScrollPane {
         overflowEnabled = new EnumMap<TankSelector, CheckBox>(TankSelector.class);
         temperatureOverheatingEnabled = new EnumMap<TankSelector, CheckBox>(TankSelector.class);
         temperatureUndercoolingEnabled = new EnumMap<TankSelector, CheckBox>(TankSelector.class);
+        setFitToWidth(true);
         createLayout(currentSettings);
     }
     
