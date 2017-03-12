@@ -3,6 +3,7 @@ package edu.kit.pse.osip.monitoring.view.settings;
 import edu.kit.pse.osip.core.OSIPConstants;
 import edu.kit.pse.osip.core.io.files.ClientSettingsWrapper;
 import edu.kit.pse.osip.core.model.base.TankSelector;
+import edu.kit.pse.osip.core.utils.formatting.FormatChecker;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.monitoring.view.dashboard.MonitoringViewConstants;
 import java.util.EnumMap;
@@ -20,7 +21,7 @@ import javafx.util.StringConverter;
  * Contains all controls for setting the general settings.
  * 
  * @author Martin Armbruster
- * @version 1.4
+ * @version 1.5
  */
 class GeneralSettings extends ScrollPane {
     /**
@@ -152,7 +153,7 @@ class GeneralSettings extends ScrollPane {
                     Translator.getInstance().getString("monitoring.settings.generalSettings.serverPort"),
                     Translator.getInstance().getString(TankSelector.TRANSLATOR_LABEL_PREFIX + tank.name())
                     .toLowerCase()));
-            currentField = new Spinner<Integer>(MonitoringViewConstants.MIN_PORT, MonitoringViewConstants.MAX_PORT,
+            currentField = new Spinner<Integer>(OSIPConstants.MIN_PORT, OSIPConstants.MAX_PORT,
                     currentSettings.getPort(tank, defaultPort++));
             currentField.setEditable(true);
             currentField.setPrefWidth(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS);
