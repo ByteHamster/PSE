@@ -1,6 +1,5 @@
 package edu.kit.pse.osip.monitoring.view.dashboard;
 
-import edu.kit.pse.osip.core.model.behavior.TankAlarm;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -83,13 +82,12 @@ class Light extends VBox implements Observer {
      * @param object The new value.
      */
     public void update(Observable observable, Object object) {
-        AlarmVisualization alarm = (AlarmVisualization) observable;
-        TankAlarm<?> ta = (TankAlarm<?>) object;        
+        AlarmVisualization alarm = (AlarmVisualization) observable;       
         triggeredAlarms.remove(alarm);
         disabledAlarms.remove(alarm);
         if (alarm.getAlarmState() == AlarmState.ALARM_DISABLED) {
             disabledAlarms.add(alarm);
-        } else if (ta != null && ta.isAlarmTriggered()) {
+        } else if (alarm.isAlarmTriggered()) {
             triggeredAlarms.add(alarm);
         }
         if (disabledAlarms.size() == numberAlarms) {

@@ -99,6 +99,15 @@ class AlarmVisualization extends Observable implements Observer {
     }
     
     /**
+     * Returns the triggered state of the represented alarm regardless of an enabled or disabled alarm.
+     * 
+     * @return true if this alarm is triggered. false otherwise.
+     */
+    protected boolean isAlarmTriggered() {
+        return triggered;
+    }
+    
+    /**
      * Sets the current state of the alarm.
      * 
      * @param newState The new state of the alarm.
@@ -126,13 +135,13 @@ class AlarmVisualization extends Observable implements Observer {
      */
     public void update(Observable observable, Object object) {
         TankAlarm<?> actualAlarm = (TankAlarm<?>) observable;
-        super.setChanged();
-        super.notifyObservers(actualAlarm);
         triggered = actualAlarm.isAlarmTriggered();
+        super.setChanged();
+        super.notifyObservers(actualAlarm.getTank().getTankSelector());
         if (currentState == AlarmState.ALARM_DISABLED) {
             return;
         }
-        if (actualAlarm.isAlarmTriggered()) {
+        if (triggered) {
             Platform.runLater(() -> {
                 alarmState.setFill(MonitoringViewConstants.ALARM_TRIGGERED);
                 alarmState.setFill(MonitoringViewConstants.ALARM_TRIGGERED);
