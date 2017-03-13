@@ -12,14 +12,18 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.util.Collection;
 import java.util.ArrayList;
@@ -47,6 +51,8 @@ public class SimulationMainWindow implements SimulationViewInterface {
     private Collection<Drawer> element;
     private Canvas canvas;
     private EventHandler<ActionEvent> resetHandler;
+
+    private Label scenarioLabel;
 
     /**
      * Creates a new SimulationMainWindow. It is assumed that there will only ever be two rows of tanks.
@@ -161,6 +167,14 @@ public class SimulationMainWindow implements SimulationViewInterface {
 
         mainPane.setCenter(canvas);
 
+        scenarioLabel = new Label(Translator.getInstance().getString("simulation.view.noScenario"));
+        scenarioLabel.setFont(Font.font("Arial", ViewConstants.FONT_SIZE * 1.5));
+        HBox labelBox = new HBox(10);
+        labelBox.getChildren().add(scenarioLabel);
+        labelBox.setStyle("-fx-background-color: #D3D3D3");
+        mainPane.setBottom(labelBox);
+        labelBox.setPadding(new Insets(2, 2, 2, 2));
+
         Scene scene = new Scene(mainPane);
         primaryStage.setScene(scene);
     }
@@ -253,6 +267,12 @@ public class SimulationMainWindow implements SimulationViewInterface {
     @Override
     public void scenarioFinished() {
         menu.setScenarioFinished();
+        scenarioLabel.setText(Translator.getInstance().getString("simulation.view.noScenario"));
+    }
+
+    @Override
+    public void scenarioStarted() {
+        scenarioLabel.setText(Translator.getInstance().getString("simulation.view.showScenario"));
     }
 
     @Override

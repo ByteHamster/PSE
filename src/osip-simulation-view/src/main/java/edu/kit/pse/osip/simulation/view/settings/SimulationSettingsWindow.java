@@ -103,8 +103,8 @@ public class SimulationSettingsWindow implements SimulationSettingsInterface {
             settingsStage.close();
         });
 
-        buttons.getChildren().add(btnSave);
         buttons.getChildren().add(btnCancel);
+        buttons.getChildren().add(btnSave);
 
         ScrollPane scrollPortBoxes = new ScrollPane();
         scrollPortBoxes.setPadding(new Insets(SPACING));
