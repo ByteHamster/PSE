@@ -134,6 +134,7 @@ abstract class AbstractTankVisualization extends GridPane {
         temperature = new TemperatureVisualization();
         progresses = new ProgressOverview(tank);
         
+
         overflow = new FillAlarm(tank, MonitoringViewConstants.OVERFLOW_ALARM_THRESHOLD, AlarmBehavior.GREATER_THAN);
         overflow.addObserver(overflowAlarm);
         underflow = new FillAlarm(tank, MonitoringViewConstants.UNDERFLOW_ALARM_THRESHOLD, AlarmBehavior.SMALLER_THAN);
