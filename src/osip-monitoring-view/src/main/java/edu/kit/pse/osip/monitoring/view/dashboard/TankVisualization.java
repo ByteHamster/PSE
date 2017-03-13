@@ -1,6 +1,8 @@
 package edu.kit.pse.osip.monitoring.view.dashboard;
 
 import edu.kit.pse.osip.core.model.base.Tank;
+import edu.kit.pse.osip.core.model.behavior.AlarmGroup;
+import edu.kit.pse.osip.core.model.behavior.ObservableBoolean;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import javafx.scene.paint.Color;
 
@@ -20,10 +22,11 @@ class TankVisualization extends AbstractTankVisualization {
      * Creates a new visualization.
      * 
      * @param tank The tank to display
+     * @param alarms The alarms of the tank
      * @throws NullPointerException when the tank is null.
      */
-    protected TankVisualization(Tank tank) {
-        super(tank);
+    protected TankVisualization(Tank tank, AlarmGroup<ObservableBoolean, ObservableBoolean> alarms) {
+        super(tank, alarms);
         supply = new GaugeVisualization(Translator.getInstance().getString("monitoring.tank.supply"));
         tank.getInPipe().addObserver(supply);
         this.add(supply, 0, 1);

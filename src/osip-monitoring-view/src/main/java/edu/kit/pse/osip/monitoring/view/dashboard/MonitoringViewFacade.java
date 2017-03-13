@@ -2,10 +2,14 @@ package edu.kit.pse.osip.monitoring.view.dashboard;
 
 import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.core.model.base.TankSelector;
+import edu.kit.pse.osip.core.model.behavior.AlarmGroup;
+import edu.kit.pse.osip.core.model.behavior.ObservableBoolean;
 import edu.kit.pse.osip.monitoring.controller.MonitoringViewInterface;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
+
+import java.util.EnumMap;
 
 /**
  * Provides one single access point to the monitoring view.
@@ -20,8 +24,9 @@ public final class MonitoringViewFacade implements MonitoringViewInterface {
     private MonitoringMainWindow mainWindow;
     
     @Override
-    public void showMonitoringView(Stage stage, ProductionSite currentModel) {
-        mainWindow = new MonitoringMainWindow(stage, currentModel);
+    public void showMonitoringView(Stage stage, ProductionSite currentModel, EnumMap<TankSelector,
+        AlarmGroup<ObservableBoolean, ObservableBoolean>> alarmGroup) {
+        mainWindow = new MonitoringMainWindow(stage, currentModel, alarmGroup);
     }
     
     @Override

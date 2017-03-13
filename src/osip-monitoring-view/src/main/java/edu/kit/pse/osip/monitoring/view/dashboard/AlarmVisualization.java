@@ -1,7 +1,7 @@
 package edu.kit.pse.osip.monitoring.view.dashboard;
 
 import edu.kit.pse.osip.core.model.base.TankSelector;
-import edu.kit.pse.osip.core.model.behavior.TankAlarm;
+import edu.kit.pse.osip.core.model.behavior.ObservableBoolean;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import java.util.Observable;
 import java.util.Observer;
@@ -29,7 +29,9 @@ class AlarmVisualization extends Observable implements Observer {
     /**
      * Saves if the alarm is currently triggered or not. This is used when the the alarm state changes back to enabled.
      */
-    private boolean triggered;
+    private ObservableBoolean alarm;
+
+    private TankSelector selector;
     
     /**
      * The layout for this visualizations.
@@ -50,15 +52,22 @@ class AlarmVisualization extends Observable implements Observer {
      * Creates and initializes a new alarm visualization.
      * 
      * @param alarmName The name of the alarm.
+     * @param alarm The boolean alarm
+     * @param selector the TankSelector of the alarms tank
      */
-    protected AlarmVisualization(String alarmName) {
+    protected AlarmVisualization(String alarmName, ObservableBoolean alarm, TankSelector selector) {
+        if (alarm == null || alarmName == null || selector == null) {
+            throw new NullPointerException("The AlarmVisualization arguments must nut be null!");
+        }
+        this.alarm = alarm;
+        alarm.addObserver(this);
+        this.selector = selector;
         this.alarmName = new Label(alarmName);
         alarmState = new Circle();
         alarmState.setStroke(Color.BLACK);
         alarmState.setStrokeWidth(MonitoringViewConstants.STROKE_WIDTH);
         alarmState.setFill(MonitoringViewConstants.ALARM_ENABLED);
         currentState = AlarmState.ALARM_ENABLED;
-        triggered = false;
         layout = new HBox(MonitoringViewConstants.ELEMENTS_GAP) {
             @Override
             protected void layoutChildren() {
@@ -70,7 +79,7 @@ class AlarmVisualization extends Observable implements Observer {
         layout.setPrefWidth(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS * 1.2);
         layout.getChildren().addAll(alarmState, this.alarmName);
     }
-    
+
     /**
      * Returns the layout for this visualization.
      * 
@@ -104,7 +113,7 @@ class AlarmVisualization extends Observable implements Observer {
      * @return true if this alarm is triggered. false otherwise.
      */
     protected boolean isAlarmTriggered() {
-        return triggered;
+        return alarm.getValue();
     }
     
     /**
@@ -115,7 +124,7 @@ class AlarmVisualization extends Observable implements Observer {
     protected void setAlarmState(AlarmState newState) {
         currentState = newState;
         if (newState == AlarmState.ALARM_ENABLED) {
-            if (triggered) {
+            if (alarm.getValue()) {
                 alarmState.setFill(MonitoringViewConstants.ALARM_TRIGGERED);
             } else {
                 alarmState.setFill(MonitoringViewConstants.ALARM_ENABLED);
@@ -134,14 +143,12 @@ class AlarmVisualization extends Observable implements Observer {
      * @param object The new value.
      */
     public void update(Observable observable, Object object) {
-        TankAlarm<?> actualAlarm = (TankAlarm<?>) observable;
-        triggered = actualAlarm.isAlarmTriggered();
         super.setChanged();
-        super.notifyObservers(actualAlarm.getTank().getTankSelector());
+        super.notifyObservers(selector);
         if (currentState == AlarmState.ALARM_DISABLED) {
             return;
         }
-        if (triggered) {
+        if (alarm.getValue()) {
             Platform.runLater(() -> {
                 alarmState.setFill(MonitoringViewConstants.ALARM_TRIGGERED);
                 alarmState.setFill(MonitoringViewConstants.ALARM_TRIGGERED);
@@ -150,7 +157,7 @@ class AlarmVisualization extends Observable implements Observer {
                 user.setHeaderText(Translator.getInstance().getString("monitoring.alarmDialog.header"));
                 user.setContentText(String.format(Translator.getInstance().getString("monitoring.alarmDialog.content"),
                         getAlarmName(), Translator.getInstance().getString(TankSelector.TRANSLATOR_LABEL_PREFIX
-                                + actualAlarm.getTank().getTankSelector().name()).toLowerCase()));
+                                + selector.name()).toLowerCase()));
                 user.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
                 user.show();
             });

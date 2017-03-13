@@ -2,9 +2,13 @@ package edu.kit.pse.osip.monitoring.controller;
 
 import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.core.model.base.TankSelector;
+import edu.kit.pse.osip.core.model.behavior.AlarmGroup;
+import edu.kit.pse.osip.core.model.behavior.ObservableBoolean;
 import javafx.stage.Stage;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
+
+import java.util.EnumMap;
 
 /**
  * Provides abstraction from the UI and a single interface to configure the monitoring view.
@@ -18,8 +22,10 @@ public interface MonitoringViewInterface {
      * 
      * @param stage The stage used for displaying controls.
      * @param currentModel the current model used to initialize the ui elements.
+     * @param alarmGroup The AlarmGroups of all tanks
      */
-    void showMonitoringView(Stage stage, ProductionSite currentModel);
+    void showMonitoringView(Stage stage, ProductionSite currentModel, EnumMap<TankSelector,
+        AlarmGroup<ObservableBoolean, ObservableBoolean>> alarmGroup);
     
     /**
      * Enables or disables the underflow alarm for a specified tank.
