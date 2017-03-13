@@ -99,6 +99,7 @@ public final class MonitoringController extends Application {
             setupClients();
         } catch (UAClientException e) {
             System.err.println("Unable to connect to servers. " + e.getMessage());
+            disableProgressions();
             currentSettingsView.showCanNotConnectAlert();
             return;
         }
@@ -217,6 +218,7 @@ public final class MonitoringController extends Application {
             errorListenerEnabled = true;
         } catch (UAClientException e) {
             System.err.println("Unable to connect to servers. " + e.getMessage());
+            disableProgressions();
             currentSettingsView.showCanNotConnectAlert();
         }
     }
@@ -257,6 +259,16 @@ public final class MonitoringController extends Application {
                     tank, currentSettingsViewInterface.isTemperatureUndercoolingAlarmEnabled(tank));
             currentMonitoringViewInterface.setUnderflowAlarmEnabled(
                     tank, currentSettingsViewInterface.isUnderflowAlarmEnabled(tank)); 
+        }
+    }
+    
+    /**
+     * Disables all progressions in case there is no connection.
+     */
+    private void disableProgressions() {
+        for (TankSelector tank : TankSelector.values()) {
+            currentView.setFillLevelProgressionEnabled(tank, false);
+            currentView.setTemperatureProgressionEnabled(tank, false);
         }
     }
     
@@ -354,8 +366,11 @@ public final class MonitoringController extends Application {
                     case UAClientWrapper.ERROR_DISCONNECT: 
                         if (errorListenerEnabled) {
                             System.err.println("The client disconnected from the server!");
-                            Platform.runLater(() -> currentSettingsView.showDisconnectAlert());
-                            }
+                            Platform.runLater(() -> {
+                                disableProgressions();
+                                currentSettingsView.showDisconnectAlert();
+                            });
+                        }
                         break;
                     case UAClientWrapper.ERROR_DATA_TYPE_MISMATCH:
                         System.err.println("The data type found on the server does not match the one you requested!");
