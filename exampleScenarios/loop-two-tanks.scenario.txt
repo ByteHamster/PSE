@@ -1,0 +1,50 @@
+#
+# Scenario definition that can be used to showcase OSIP.
+# Changes the first two upper tanks
+# @author Hans-Peter Lehmann
+# @version 1.0
+#
+
+setRepeat(true);           # Repeat scenario in endless loop
+
+var TANK_YELLOW  = 0;
+var TANK_CYAN    = 1;
+var delayTime    = 6000;
+
+setMotorRpm(1000);
+
+setUpperInThreshold(TANK_YELLOW, 0);
+setUpperOutThreshold(TANK_YELLOW, 100);
+delay(delayTime);
+
+setUpperInThreshold(TANK_CYAN, 100);
+setUpperOutThreshold(TANK_CYAN, 0);
+setMixOutThreshold(0);
+delay(2 * delayTime);
+
+setUpperInThreshold(TANK_YELLOW, 100);
+setUpperOutThreshold(TANK_YELLOW, 0);
+setUpperInThreshold(TANK_CYAN, 0);
+setUpperOutThreshold(TANK_CYAN, 100);
+setMixOutThreshold(100);
+delay(2 * delayTime);
+
+setUpperInThreshold(TANK_CYAN, 100);
+setUpperOutThreshold(TANK_CYAN, 0);
+delay(delayTime);
+
+setUpperInThreshold(TANK_YELLOW, 50);
+setUpperInThreshold(TANK_CYAN, 0);
+delay(2 * delayTime);
+
+setUpperInThreshold(TANK_YELLOW, 0);
+setUpperOutThreshold(TANK_YELLOW, 100);
+setUpperInThreshold(TANK_CYAN, 0);
+setUpperOutThreshold(TANK_CYAN, 100);
+setMixOutThreshold(0);
+delay(delayTime);
+
+setUpperOutThreshold(TANK_YELLOW, 0);
+setUpperOutThreshold(TANK_CYAN, 0);
+setMixOutThreshold(100);
+delay(1.5 * delayTime);
