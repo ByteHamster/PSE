@@ -121,7 +121,7 @@ abstract class AbstractTankVisualization extends GridPane {
         alarmPane.getChildren().add(box);
         this.add(alarmPane, 0, 0, 2, 1);
         
-        drain = new GaugeVisualization(Translator.getInstance().getString("monitoring.tank.drain"));
+        drain = new GaugeVisualization(Translator.getInstance().getString("monitoring.tank.outflow"));
         fillLevel = new FillLevelVisualization();
         temperature = new TemperatureVisualization();
         progresses = new ProgressOverview(tank);
