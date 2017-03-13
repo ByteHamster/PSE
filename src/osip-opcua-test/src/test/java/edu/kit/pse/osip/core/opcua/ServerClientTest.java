@@ -1,10 +1,13 @@
 package edu.kit.pse.osip.core.opcua;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
 
+import edu.kit.pse.osip.core.opcua.client.UAClientWrapper;
 import org.eclipse.milo.opcua.stack.core.Identifiers;
 import org.eclipse.milo.opcua.stack.core.types.builtin.DataValue;
 import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
@@ -113,7 +116,7 @@ public class ServerClientTest {
         server.addVariableTest("testFolder/testVar", "Variable", Identifiers.Int32);
         server.setVariableTest("testFolder/testVar", new DataValue(new Variant(42)));
 
-        client.subscribeIntTest("testFolder/testVar", -1, received::complete);
+        client.subscribeIntTest("testFolder/testVar", UAClientWrapper.SINGLE_READ, received::complete);
         assertEquals(Integer.valueOf(42), received.get());
     }
 
@@ -220,5 +223,23 @@ public class ServerClientTest {
 
         client.subscribeIntTest("testFolder/testVar", 1000, listener);
         client.unsubscribe(listener);
+    }
+
+    /**
+     * Tests if a long connection without changes generates a timeout
+     * @throws Exception If something goes wrong
+     */
+    @Test(timeout = TestUaClientWrapper.CONNECTION_TIMEOUT_TEST * 3)
+    public void testLongConnection() throws Exception  {
+        server.addFolderTest("testFolder", "Test folder");
+        server.addVariableTest("testFolder/testVar", "Variable", Identifiers.Int32);
+        server.setVariableTest("testFolder/testVar", new DataValue(new Variant(42)));
+
+        AtomicBoolean errorOccurred = new AtomicBoolean(false);
+        client.setErrorListener(code -> errorOccurred.set(true));
+        client.subscribeIntTest("testFolder/testVar", 1000, (value) -> { });
+
+        Thread.sleep(TestUaClientWrapper.CONNECTION_TIMEOUT_TEST * 2);
+        assertFalse("Long connection is not kept alive", errorOccurred.get());
     }
 }

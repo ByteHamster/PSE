@@ -38,7 +38,17 @@
 \pagebreak
 
 \section{Einleitung}
+Nachdem im Designdokument der softwaretechnische Entwurf von OSIP festgelegt wurde, wird in diesem Dokument erläutert, wie die Implementierung von OSIP auf Basis
+dieses Entwurfs verlaufen ist.
 
+Hierbei wird zuerst kurz der interne Workflow erklärt. Anschließend wird aufgezeigt, in welche Abschnitte die Implementierung von OSIP aufgeteilt wurde und
+welches Teammitglied sich hauptsächlich um welche Teile der Implementierung bemüht hat.
+
+Im Anschluss wird erläutert, an welchen Stellen der Entwurf auf welche Art geändert werden musste, um in der Praxis auftretenden Problemen zu begegnen. Danach
+werden die im Pflichtenheft definierten Muss- und Kannkriterien sowie die im Design daraus getroffene Auswahl noch einmal mit der tatsächlich implementierten
+Funktionalität abgeglichen. Abweichungen vom ursprünglichen Zeitplan der Implementierung werden ebenfalls erläutert.
+
+Als Abschluss werden kurz Probleme in der Implementierung aufgelistet und ein Überblick zu den vorhandenen Unittests gegeben.
 
 \section{Workflow}
 OSIP wurde von uns open-source mit Hilfe von GitHub entwickelt. Um die Qualität des Codes möglichst gut zu halten,
@@ -50,14 +60,14 @@ Um die Aufgaben der einzelnen Kommilitonen aufeinander abzustimmen, setzten wir 
 Entwicklung von OSIP wurden über 400 Issues und Pull requests erstellt.
 
 \section{Arbeitsaufteilung}
-Bei der Implementierung gingen nach dem outside-in-Prinzip vor. Während Model, OPC UA Wrapper und Core-Bestandteile von David, Hans-Peter und Max entwickelt wurden,
-begannen Martin und Niko mit den Benutzeroberflächen von Überwachungskonsole und Fertigungssimulation. Auf Grund des modularen Entwurfes
+Bei der Implementierung gingen wir nach dem outside-in-Prinzip vor. Während Model, OPC UA Wrapper und Core-Bestandteile von David, Hans-Peter und Max entwickelt wurden,
+begannen Martin und Niko mit den Benutzeroberflächen von Überwachungskonsole und Fertigungssimulation. Aufgrund des modularen Entwurfes
 und der automatischen Generierung von Quellcode aus dem Klassendiagramm war dies problemlos möglich. Die Aufteilung erfolgte deshalb, weil Martin und Niko die
 Benutzeroberflächen während der letzten Phase entworfen hatten und sich somit besonders gut in dem Bereich auskannten. Des Weiteren hätten wir uns mit 5 Personen,
 die das Model entwickeln, wahrscheinlich gegenseitig sehr gestört.
 
 Nachdem dann die Bestandteile einzeln implementiert waren, wurden noch die Controller hinzugefügt. Die Controller verbinden jeweils Model und View,
-um so Leben in die Anwendung zu bringen. Da zu diesem Zeitpunkt das Model mit der Grundfunnktionalität der Anwendungen schon fertig war,
+um so Leben in die Anwendung zu bringen. Da zu diesem Zeitpunkt das Model mit der Grundfunktionalität der Anwendungen schon fertig war,
 konnte man in den Controllern sehr schnell Fortschritte sehen. Die Controller wurden maßgeblich von David und Max entwickelt.
 
 Insgesamt ließ sich über diese Aufteilung eine weitestgehend gerechte Arbeitsaufteilung umsetzen.
@@ -66,7 +76,26 @@ Insgesamt ließ sich über diese Aufteilung eine weitestgehend gerechte Arbeitsa
 
 
 \section{Implementierte Muss- und Kannkriterien}
+In diesem Abschnitt werden die im Pflichtenheft definierten Kann- und Musskriterien noch einmal kurz umrissen und erläutert, welche davon erfolgreich
+implementiert wurden oder nicht und wodurch sich das jeweils begründet.
 
+Die Musskriterien konnten wir nahezu vollständig in der Form in der sie im Pflichtenheft stehen im fertigen Programm realisieren.
+
+Die einzige Abweichung besteht in der Übertragung der Alarmzustände an die Überwachungskonsole. In den Funktionalen Anforderungen (FA 440) wurde definiert,
+dass diese asynchron zum normalen Aktualisierungsintervall der Überwachungskonsole empfangen werden. Die von uns verwendete OPC UA Implementierung Milo
+stellt die dazu nötige Funktionalität leider nicht bereit. Darum haben wir uns entschlossen die Alarme zwar nur in regelmäßigen Intervallen zu übermitteln,
+dieses Intervall aber sehr klein gewählt, um die Asynchronität zu emulieren.
+
+Innerhalb der geplanten Kannkriterien kam es ebenfalls zu leichten Abweichungen.
+
+Die Logging-Konsole innerhalb der Überwachungskonsole wurde auf zwei separate Tabs aufgeteilt. Der erste Tab loggt wie geplant die von der Fertigungssimulation
+eintreffenden Alarme. Der zweite Tab loggt auftretende Ausnahmen und Fehlermeldungen, anstatt diese wie ursprünglich geplant auf stdout auszugeben. So sind die
+Ausnahmen und Fehlermeldungen auch dann für den Anwender sichtbar, wenn er die beiden Programme nicht über ein Terminal startet, auf dem die Ausgabe erfolgen kann.
+Zudem dient die Zweiteilung in Tabs der Übersichtlichkeit. Potentiell auftretende Ausnahmen im Programmfluss verdrängen so nicht OPC UA Alarme.
+
+Des weiteren wurde der Jitter in den Eingabewerten nicht implementiert. Praxistests haben ergeben, dass der Jitter entweder so schwach ist, dass er kaum sichtbar
+ist und somit nur unnötigen Overhead in der Fertigungssimulation erzeugt, oder aber so stark ist, dass er immer wieder zu nicht geplanten und nicht vorhersehbaren
+Überläufen während der Ausführung von Szenarien führt.
 
 \section{Verzögerungen im Implementierungsplan}
 

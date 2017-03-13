@@ -9,6 +9,7 @@ import edu.kit.pse.osip.simulation.controller.SimulationViewInterface;
 import edu.kit.pse.osip.simulation.view.dialogs.OverflowDialog;
 import java.util.function.Consumer;
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -33,6 +34,9 @@ import java.util.List;
  * @author Niko Wilhelm
  */
 public class SimulationMainWindow implements SimulationViewInterface {
+    private static final double WINDOW_HEIGHT = 800;
+    private static final double WINDOW_WIDTH = 700;
+    private static final double MIN_WINDOW_SIZE = 300;
 
     /**
      * It is assumed, that the tanks and mixtank are always ordered in two rows.
@@ -133,9 +137,12 @@ public class SimulationMainWindow implements SimulationViewInterface {
         Scene theScene = new Scene(root);
         primaryStage.setScene(theScene);
 
-        primaryStage.setWidth(700);
-        primaryStage.setHeight(800);
+        primaryStage.setWidth(WINDOW_WIDTH);
+        primaryStage.setHeight(WINDOW_HEIGHT);
+        primaryStage.setMinWidth(MIN_WINDOW_SIZE);
+        primaryStage.setMinHeight(MIN_WINDOW_SIZE);
         primaryStage.setMaximized(true);
+        primaryStage.setOnCloseRequest(event -> Platform.exit());
 
         makeLayout(primaryStage);
 

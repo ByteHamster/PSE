@@ -29,6 +29,7 @@ public class HelpDialog extends Stage {
     private Font sectionFont = new Font(20);
     private static final double WINDOW_HEIGHT = 400;
     private static final double WINDOW_WIDTH = 600;
+    private static final double MIN_WINDOW_SIZE = 300;
 
     /**
      * Creates a new HelpDialog.
@@ -61,6 +62,8 @@ public class HelpDialog extends Stage {
         setScene(new Scene(pane));
         setHeight(WINDOW_HEIGHT);
         setWidth(WINDOW_WIDTH);
+        setMinWidth(MIN_WINDOW_SIZE);
+        setMinHeight(MIN_WINDOW_SIZE);
     }
 
     private Tab createMainTab() {

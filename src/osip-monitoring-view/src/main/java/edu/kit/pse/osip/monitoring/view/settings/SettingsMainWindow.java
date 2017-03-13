@@ -16,18 +16,27 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 /**
  * The main entry point for the settings view. Within, the user can set all available parameters for his needs.
  * 
  * @author Martin Armbruster
- * @version 1.3
+ * @version 1.4
  */
 class SettingsMainWindow {
+    private static final int MIN_WINDOW_WIDTH = 500;
+    private static final int MIN_WINDOW_HEIGHT = 300;
     /**
      * The window in which the settings are presented.
      */
     private Stage window;
+    
+    /**
+     * The used settings.
+     */
+    private ClientSettingsWrapper currentSettings;
     
     /**
      * Pane containing tabs with the different settings possibilities.
@@ -80,6 +89,7 @@ class SettingsMainWindow {
      * @param currentSettings The current settings used for displaying.
      */
     protected SettingsMainWindow(ClientSettingsWrapper currentSettings) {
+        this.currentSettings = currentSettings;
         generalSettingsTab = new GeneralSettings(currentSettings);
         alarmsTab = new AlarmSettings(currentSettings);
         progressionsTab = new Progressions(currentSettings);
@@ -121,7 +131,29 @@ class SettingsMainWindow {
         Scene scene = new Scene(generalLayout);
         window.setTitle(translator.getString("monitoring.settings.title"));
         window.getIcons().add(new Image("icon.png"));
+        window.setOnCloseRequest(event -> {
+            generalSettingsTab.reset(currentSettings);
+            alarmsTab.reset(currentSettings);
+            progressionsTab.reset(currentSettings);
+            if (buttonCancel.isDisabled()) {
+                showSettingsClosedWarning();
+            }
+        });
         window.setScene(scene);
+        window.setMinWidth(MIN_WINDOW_WIDTH);
+        window.setMinHeight(MIN_WINDOW_HEIGHT);
+    }
+    
+    /**
+     * Shows a warning that the settings window was closed without saving valid settings.
+     */
+    private void showSettingsClosedWarning() {
+        Translator translator = Translator.getInstance();
+        Alert alert = new Alert(AlertType.WARNING);        
+        alert.setTitle(translator.getString("monitoring.settings.closewarning.title"));
+        alert.setHeaderText(translator.getString("monitoring.settings.closewarning.header"));
+        alert.setContentText(translator.getString("monitoring.settings.closewarning.text"));
+        alert.show();
     }
     
     /**
@@ -161,12 +193,26 @@ class SettingsMainWindow {
     }
     
     /**
+     * Sets the diabled status of the cancel button.
+     * 
+     * @param disabled The boolean value for the diabled status. True if disabled.
+     */
+    protected void setCancelButtonDisabled(boolean disabled) {
+        buttonCancel.setDisable(disabled);
+    }
+    
+    /**
      * Sets the handler for the cancel button in the settings view.
      * 
      * @param handler The handler for the cancel button in the settings view.
      */
     protected void setSettingsCancelButtonHandler(EventHandler<ActionEvent> handler) {
-        buttonCancel.setOnAction(handler);
+        buttonCancel.setOnAction(event -> {
+            generalSettingsTab.reset(currentSettings);
+            alarmsTab.reset(currentSettings);
+            progressionsTab.reset(currentSettings);
+            handler.handle(event);
+        });
     }
     
     /**

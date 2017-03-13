@@ -18,13 +18,18 @@ import javafx.scene.shape.Circle;
  * Visualizes an alarm with a name and the current state.
  * 
  * @author Martin Armbruster
- * @version 1.6
+ * @version 1.7
  */
 class AlarmVisualization extends Observable implements Observer {
     /**
      * Saves the current alarm state.
      */
     private AlarmState currentState;
+    
+    /**
+     * Saves if the alarm is currently triggered or not. This is used when the the alarm state changes back to enabled.
+     */
+    private boolean triggered;
     
     /**
      * The layout for this visualizations.
@@ -53,6 +58,7 @@ class AlarmVisualization extends Observable implements Observer {
         alarmState.setStrokeWidth(MonitoringViewConstants.STROKE_WIDTH);
         alarmState.setFill(MonitoringViewConstants.ALARM_ENABLED);
         currentState = AlarmState.ALARM_ENABLED;
+        triggered = false;
         layout = new HBox(MonitoringViewConstants.ELEMENTS_GAP) {
             @Override
             protected void layoutChildren() {
@@ -93,6 +99,15 @@ class AlarmVisualization extends Observable implements Observer {
     }
     
     /**
+     * Returns the triggered state of the represented alarm regardless of an enabled or disabled alarm.
+     * 
+     * @return true if this alarm is triggered. false otherwise.
+     */
+    protected boolean isAlarmTriggered() {
+        return triggered;
+    }
+    
+    /**
      * Sets the current state of the alarm.
      * 
      * @param newState The new state of the alarm.
@@ -100,7 +115,11 @@ class AlarmVisualization extends Observable implements Observer {
     protected void setAlarmState(AlarmState newState) {
         currentState = newState;
         if (newState == AlarmState.ALARM_ENABLED) {
-            alarmState.setFill(MonitoringViewConstants.ALARM_ENABLED);
+            if (triggered) {
+                alarmState.setFill(MonitoringViewConstants.ALARM_TRIGGERED);
+            } else {
+                alarmState.setFill(MonitoringViewConstants.ALARM_ENABLED);
+            }
         } else if (newState == AlarmState.ALARM_DISABLED) {
             alarmState.setFill(MonitoringViewConstants.ALARM_DISABLED);
         }
@@ -116,12 +135,13 @@ class AlarmVisualization extends Observable implements Observer {
      */
     public void update(Observable observable, Object object) {
         TankAlarm<?> actualAlarm = (TankAlarm<?>) observable;
+        triggered = actualAlarm.isAlarmTriggered();
         super.setChanged();
-        super.notifyObservers(actualAlarm);
+        super.notifyObservers(actualAlarm.getTank().getTankSelector());
         if (currentState == AlarmState.ALARM_DISABLED) {
             return;
         }
-        if (actualAlarm.isAlarmTriggered()) {
+        if (triggered) {
             Platform.runLater(() -> {
                 alarmState.setFill(MonitoringViewConstants.ALARM_TRIGGERED);
                 alarmState.setFill(MonitoringViewConstants.ALARM_TRIGGERED);
