@@ -32,7 +32,7 @@ public class SubtractiveMixingStrategy implements MixingStrategy {
         }
 
         if (Math.abs(fullAmount) < 0.000001) {
-            return new Liquid(0, SimulationConstants.MIN_TEMPERATURE, new Color(0));
+            return new Liquid(0, inflow.peekFirst().getTemperature(), inflow.peekFirst().getColor());
         }
 
         // Real calculations...
