@@ -171,6 +171,7 @@ public abstract class UAClientWrapper {
         client.getSubscriptionManager().addSubscriptionListener(new SubscriptionListener() {
             @Override
             public void onPublishFailure(UaException exception) {
+                connected = false;
                 if (errorListener != null) {
                     errorListener.onError(ERROR_DISCONNECT);
                 }
@@ -179,6 +180,7 @@ public abstract class UAClientWrapper {
         client.addSessionActivityListener(new SessionActivityListener() {
             @Override
             public void onSessionInactive(UaSession session) {
+                connected = false;
                 if (errorListener != null) {
                     errorListener.onError(ERROR_DISCONNECT);
                 }
@@ -194,7 +196,8 @@ public abstract class UAClientWrapper {
      */
     public void disconnectClient() throws UAClientException {
         if (!connected) {
-            throw new UAClientException("Not connected");
+            System.err.println("Not connected or connection failed. Continuing.");
+            return;
         }
 
         errorListener = null;
