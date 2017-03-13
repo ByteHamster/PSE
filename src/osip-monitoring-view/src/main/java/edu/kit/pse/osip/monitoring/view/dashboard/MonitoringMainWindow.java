@@ -2,6 +2,8 @@ package edu.kit.pse.osip.monitoring.view.dashboard;
 
 import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.core.model.base.TankSelector;
+import edu.kit.pse.osip.core.model.behavior.AlarmGroup;
+import edu.kit.pse.osip.core.model.behavior.ObservableBoolean;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import java.util.EnumMap;
 import javafx.animation.AnimationTimer;
@@ -64,14 +66,17 @@ class MonitoringMainWindow {
      * 
      * @param primaryStage The primary window.
      * @param currentModel The current model used to initialize all observable objects and initial values.
+     * @param alarms The alarms of all tanks
      */
-    protected MonitoringMainWindow(Stage primaryStage, ProductionSite currentModel) {
+    protected MonitoringMainWindow(Stage primaryStage, ProductionSite currentModel,
+        EnumMap<TankSelector, AlarmGroup<ObservableBoolean, ObservableBoolean>> alarms) {
         menu = new MonitoringMenu();
-        tankVisualizations = new EnumMap<TankSelector, TankVisualization>(TankSelector.class);
+        tankVisualizations = new EnumMap<>(TankSelector.class);
         for (TankSelector selector : TankSelector.valuesWithoutMix()) {
-            tankVisualizations.put(selector, new TankVisualization(currentModel.getUpperTank(selector)));
+            tankVisualizations.put(selector, new TankVisualization(currentModel.getUpperTank(selector),
+                alarms.get(selector)));
         }
-        mixTank = new MixTankVisualization(currentModel.getMixTank());
+        mixTank = new MixTankVisualization(currentModel.getMixTank(), alarms.get(TankSelector.MIX));
         new AnimationTimer() {
             private long lastIntervalBegin;
             

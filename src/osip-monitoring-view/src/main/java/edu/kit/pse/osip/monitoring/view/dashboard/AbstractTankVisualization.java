@@ -2,9 +2,8 @@ package edu.kit.pse.osip.monitoring.view.dashboard;
 
 import edu.kit.pse.osip.core.model.base.AbstractTank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
-import edu.kit.pse.osip.core.model.behavior.AlarmBehavior;
-import edu.kit.pse.osip.core.model.behavior.FillAlarm;
-import edu.kit.pse.osip.core.model.behavior.TemperatureAlarm;
+import edu.kit.pse.osip.core.model.behavior.AlarmGroup;
+import edu.kit.pse.osip.core.model.behavior.ObservableBoolean;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
@@ -24,46 +23,27 @@ import javafx.scene.paint.Color;
  * @version 1.7
  */
 abstract class AbstractTankVisualization extends GridPane {
+    private AlarmGroup<ObservableBoolean, ObservableBoolean> alarmGroup;
     /**
      * Visualization for the overflow alarm.
      */
     private AlarmVisualization overflowAlarm;
-    
-    /**
-     * The actual overflow alarm that triggers the visualization.
-     */
-    private FillAlarm overflow;
-    
+
     /**
      * Visualization for the underflow alarm.
      */
     private AlarmVisualization underflowAlarm;
-    
-    /**
-     * The actual underflow alarm that triggers the visualization.
-     */
-    private FillAlarm underflow;
-    
+
     /**
      * Alarm when the temperature becomes too high.
      */
     private AlarmVisualization temperatureOverheatingAlarm;
-    
-    /**
-     * The actual alarm when the temperature becomes too high that triggers the visualization.
-     */
-    private TemperatureAlarm overheating;
-    
+
     /**
      * Alarm when a temperature becomes too low.
      */
     private AlarmVisualization temperatureUndercoolingAlarm;
-    
-    /**
-     * The actual alarm when the temperature becomes too low that triggers the visualization.
-     */
-    private TemperatureAlarm undercooling;
-    
+
     /**
      * The layout of the row in which the alarms are.
      */
@@ -94,12 +74,19 @@ abstract class AbstractTankVisualization extends GridPane {
      * except the progresses and adds the alarms.
      * 
      * @param tank this visualization is connected to that tank.
+     * @param alarmGroup The AlarmGroup of the tank
      * @throws NullPointerException when the tank is null.
      */
-    protected AbstractTankVisualization(AbstractTank tank) {
+    protected AbstractTankVisualization(AbstractTank tank,
+        AlarmGroup<ObservableBoolean, ObservableBoolean> alarmGroup) {
         if (tank == null) {
             throw new NullPointerException("Tank is null.");
         }
+
+        if (alarmGroup == null) {
+            throw new NullPointerException("AlarmGroupt is null.");
+        }
+        this.alarmGroup = alarmGroup;
         this.setVgap(MonitoringViewConstants.ELEMENTS_GAP);
         this.setHgap(MonitoringViewConstants.ELEMENTS_GAP);
         this.setPadding(new Insets(MonitoringViewConstants.ELEMENTS_GAP));
@@ -115,12 +102,17 @@ abstract class AbstractTankVisualization extends GridPane {
         Label tankName = new Label(String.format(Translator.getInstance().getString("monitoring.tank.tankName"),
                 Translator.getInstance().getString(TankSelector.TRANSLATOR_LABEL_PREFIX + tank.getTankSelector()
                 .name())));
-        overflowAlarm = new AlarmVisualization(Translator.getInstance().getString("monitoring.tank.overflowAlarm"));
-        underflowAlarm = new AlarmVisualization(Translator.getInstance().getString("monitoring.tank.underflowAlarm"));
+        overflowAlarm = new AlarmVisualization(Translator.getInstance().getString("monitoring.tank.overflowAlarm"),
+            alarmGroup.getOverflow(), tank.getTankSelector());
+        underflowAlarm = new AlarmVisualization(
+            Translator.getInstance().getString("monitoring.tank.underflowAlarm"), alarmGroup.getUnderflow(),
+            tank.getTankSelector());
         temperatureOverheatingAlarm = new AlarmVisualization(
-                Translator.getInstance().getString("monitoring.tank.temperatureOverheatingAlarm"));
+            Translator.getInstance().getString("monitoring.tank.temperatureOverheatingAlarm"),
+            alarmGroup.getOverheat(), tank.getTankSelector());
         temperatureUndercoolingAlarm = new AlarmVisualization(
-                Translator.getInstance().getString("monitoring.tank.temperatureUndercoolingAlarm"));
+            Translator.getInstance().getString("monitoring.tank.temperatureUndercoolingAlarm"),
+            alarmGroup.getUndercool(), tank.getTankSelector());
         
         VBox box = new VBox(MonitoringViewConstants.ELEMENTS_GAP);
         box.getChildren().addAll(tankName, overflowAlarm.getLayout(), underflowAlarm.getLayout(),
@@ -133,18 +125,6 @@ abstract class AbstractTankVisualization extends GridPane {
         fillLevel = new FillLevelVisualization();
         temperature = new TemperatureVisualization();
         progresses = new ProgressOverview(tank);
-        
-
-        overflow = new FillAlarm(tank, MonitoringViewConstants.OVERFLOW_ALARM_THRESHOLD, AlarmBehavior.GREATER_THAN);
-        overflow.addObserver(overflowAlarm);
-        underflow = new FillAlarm(tank, MonitoringViewConstants.UNDERFLOW_ALARM_THRESHOLD, AlarmBehavior.SMALLER_THAN);
-        underflow.addObserver(underflowAlarm);
-        overheating = new TemperatureAlarm(tank, MonitoringViewConstants.TEMPERATURE_OVERHEATING_THRESHOLD,
-                AlarmBehavior.GREATER_THAN);
-        overheating.addObserver(temperatureOverheatingAlarm);
-        undercooling = new TemperatureAlarm(tank, MonitoringViewConstants.TEMPERATURE_UNDERCOOLING_THRESHOLD,
-                AlarmBehavior.SMALLER_THAN);
-        undercooling.addObserver(temperatureUndercoolingAlarm);
         tank.getOutPipe().addObserver(drain);
         tank.addObserver(fillLevel);
         tank.addObserver(temperature);
