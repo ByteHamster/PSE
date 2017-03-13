@@ -10,6 +10,8 @@ import edu.kit.pse.osip.core.model.base.MixTank;
 import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
+import edu.kit.pse.osip.core.model.behavior.AlarmGroup;
+import edu.kit.pse.osip.core.model.behavior.ObservableBoolean;
 import edu.kit.pse.osip.core.opcua.client.BooleanReceivedListener;
 import edu.kit.pse.osip.core.opcua.client.ErrorListener;
 import edu.kit.pse.osip.core.opcua.client.FloatReceivedListener;
@@ -26,6 +28,7 @@ import javafx.stage.Stage;
 import javafx.application.Platform;
 
 import java.io.File;
+import java.util.EnumMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
@@ -63,7 +66,6 @@ public final class MonitoringController extends Application {
     private static final String DEFAULT_HOSTNAME = "localhost";
     private static final int ALARM_FETCH_INTERVAL = 50;
     private boolean errorListenerEnabled = false;
-    
     /**
      * Creates a new controller instance.
      */
@@ -84,16 +86,23 @@ public final class MonitoringController extends Application {
     public void start(Stage primaryStage) {
         Locale.setDefault(Locale.US);
         errorListenerEnabled = true;
-        setupUI(primaryStage);
         for (TankSelector selector: TankSelector.valuesWithoutMix()) {
             TankContainer cont = new TankContainer();
             tanks.add(cont);
             cont.tank = productionSite.getUpperTank(selector);
             cont.selector = selector;
             cont.absTank = cont.tank;
+            cont.alarmGroup = new AlarmGroup<>(new ObservableBoolean(false),
+                new ObservableBoolean(false), new ObservableBoolean(false),
+                new ObservableBoolean(false));
         }
         mixCont.tank = productionSite.getMixTank();
         mixCont.absTank = mixCont.tank;
+        mixCont.alarmGroup = new AlarmGroup<>(new ObservableBoolean(false),
+                new ObservableBoolean(false), new ObservableBoolean(false),
+                new ObservableBoolean(false));
+
+        setupUI(primaryStage);
 
         try {
             setupClients();
@@ -110,13 +119,22 @@ public final class MonitoringController extends Application {
                 ALARM_FETCH_INTERVAL);
     }
 
+    private EnumMap<TankSelector, AlarmGroup<ObservableBoolean, ObservableBoolean>> getAlarmEnumMap() {
+        EnumMap<TankSelector, AlarmGroup<ObservableBoolean, ObservableBoolean>> map = new EnumMap<>(TankSelector.class);
+        for (TankContainer cont: tanks) {
+            map.put(cont.selector, cont.alarmGroup);
+        }
+        map.put(TankSelector.MIX, mixCont.alarmGroup);
+        return map;
+    }
+
     /**
      * Initializes the UI.
      * 
      * @param stage The JavaFX stage.
      */
     private void setupUI(Stage stage) {
-        currentView.showMonitoringView(stage, productionSite);
+        currentView.showMonitoringView(stage, productionSite, getAlarmEnumMap());
         currentView.setMenuSettingsButtonHandler(event -> currentSettingsView.showSettingsWindow());
         HelpDialog helpDialog = new HelpDialog();
         currentView.setMenuHelpButtonHandler(event -> helpDialog.show());
@@ -313,6 +331,7 @@ public final class MonitoringController extends Application {
         TankSelector selector;
         AbstractTank absTank;
         AbstractTankClient absClient;
+        AlarmGroup<ObservableBoolean, ObservableBoolean> alarmGroup;
         
         IntReceivedListener colorListener = value ->
                 absTank.setLiquid(new Liquid(absTank.getLiquid().getAmount(),
@@ -325,40 +344,16 @@ public final class MonitoringController extends Application {
         FloatReceivedListener outputFlowRateListener = value ->
                 absTank.getOutPipe().setValveThreshold((byte) value);
 
-        BooleanReceivedListener overflowSensorListener = value -> {
-            try {
-                absClient.subscribeFillLevel(UAClientWrapper.SINGLE_READ, fillLevelListener);
-            } catch (UAClientException e) {
-                System.err.println("Can not get fill level: " + e.getMessage());
-            }
-        };
+        BooleanReceivedListener overflowSensorListener = value -> alarmGroup.getOverflow().setValue(value);
 
         FloatReceivedListener temperatureListener = value ->
                 absTank.setLiquid(new Liquid(absTank.getLiquid().getAmount(), value, absTank.getLiquid().getColor()));
 
-        BooleanReceivedListener overheatSensorListener = value -> {
-            try {
-                absClient.subscribeTemperature(UAClientWrapper.SINGLE_READ, temperatureListener);
-            } catch (UAClientException e) {
-                System.err.println("Can not get temperature: " + e.getMessage());
-            }
-        };
+        BooleanReceivedListener overheatSensorListener = value -> alarmGroup.getOverheat().setValue(value);
 
-        BooleanReceivedListener undercoolSensorListener = value -> {
-            try {
-                absClient.subscribeTemperature(UAClientWrapper.SINGLE_READ, temperatureListener);
-            } catch (UAClientException e) {
-                System.err.println("Can not get temperature: " + e.getMessage());
-            }
-        };
+        BooleanReceivedListener undercoolSensorListener = value -> alarmGroup.getUndercool().setValue(value);
 
-        BooleanReceivedListener underflowSensorListener = value -> {
-            try {
-                absClient.subscribeFillLevel(UAClientWrapper.SINGLE_READ, fillLevelListener);
-            } catch (UAClientException e) {
-                System.err.println("Can not get fill level:" + e.getMessage());
-            }
-        };
+        BooleanReceivedListener underflowSensorListener = value -> alarmGroup.getUnderflow().setValue(value);
 
         ErrorListener errorListener = new ErrorListener() {
             public void onError(int code) {
