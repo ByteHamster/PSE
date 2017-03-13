@@ -1,5 +1,6 @@
 package edu.kit.pse.osip.simulation.view.main;
 
+import edu.kit.pse.osip.core.model.base.AbstractTank;
 import edu.kit.pse.osip.core.model.base.MixTank;
 import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.core.model.base.Tank;
@@ -215,16 +216,13 @@ public class SimulationMainWindow implements SimulationViewInterface {
 
     /**
      * The simulation is replaced by the OverflowOverlay.
-     * @param selector The overflowing tank.
+     * @param tank The overflowing tank.
      */
-    public void showOverflow(TankSelector selector) {
-        OverflowDialog dialog = new OverflowDialog(selector);
-        EventHandler<ActionEvent> handler = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                if (resetHandler != null) {
-                    resetHandler.handle(actionEvent);
-                }
+    public void showOverflow(AbstractTank tank) {
+        OverflowDialog dialog = new OverflowDialog(tank);
+        EventHandler<ActionEvent> handler = actionEvent -> {
+            if (resetHandler != null) {
+                resetHandler.handle(actionEvent);
             }
         };
 
