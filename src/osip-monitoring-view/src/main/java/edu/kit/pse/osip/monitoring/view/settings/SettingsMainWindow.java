@@ -132,9 +132,7 @@ class SettingsMainWindow {
         window.setTitle(translator.getString("monitoring.settings.title"));
         window.getIcons().add(new Image("icon.png"));
         window.setOnCloseRequest(event -> {
-            generalSettingsTab.reset(currentSettings);
-            alarmsTab.reset(currentSettings);
-            progressionsTab.reset(currentSettings);
+            reset();
             if (buttonCancel.isDisabled()) {
                 showSettingsClosedWarning();
             }
@@ -142,6 +140,16 @@ class SettingsMainWindow {
         window.setScene(scene);
         window.setMinWidth(MIN_WINDOW_WIDTH);
         window.setMinHeight(MIN_WINDOW_HEIGHT);
+    }
+    
+    /**
+     * Resets the settings when no settings are saved.
+     */
+    private void reset() {
+        tabsPane.getSelectionModel().clearAndSelect(0);
+        generalSettingsTab.reset(currentSettings);
+        alarmsTab.reset(currentSettings);
+        progressionsTab.reset(currentSettings);
     }
     
     /**
@@ -208,9 +216,7 @@ class SettingsMainWindow {
      */
     protected void setSettingsCancelButtonHandler(EventHandler<ActionEvent> handler) {
         buttonCancel.setOnAction(event -> {
-            generalSettingsTab.reset(currentSettings);
-            alarmsTab.reset(currentSettings);
-            progressionsTab.reset(currentSettings);
+            reset();
             handler.handle(event);
         });
     }
