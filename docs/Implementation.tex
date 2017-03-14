@@ -98,7 +98,22 @@ ist und somit nur unnötigen Overhead in der Fertigungssimulation erzeugt, oder 
 Überläufen während der Ausführung von Szenarien führt.
 
 \section{Verzögerungen im Implementierungsplan}
+Die Implementierungsphase war zunächst auf einen Monat ausgelegt.
+In der ersten Woche sollten das Model, die OPC UA Wrapper, Core und einige Bestandteile der Benutzeroberflächen
+implementiert werden.
+In der zweiten Woche sollten Settingsfenster und weitere Dialogfenster implementiert werden.
+In der dritten Woche sollten die Controller für die Simulation und Überwachungskonsole implementiert werden.
+Die letzte Woche war zur Beseitigung von verbleibenden Fehlern gedacht.
 
+Um den Implementierungsplan zu entspannen wurde bereits zwei Wochen vor Beginn der eigentlichen Implementierungsphase
+mit der Arbeit am Parser für die Szenarien aus dem Core begonnen. Dieser wurde zu Beginn der Implementierungsphase fertiggestellt.
+Auch die OPC UA Wrapper wurden eine halbe Woche vor Beginn der Implementierungsphase angefangen, da aufgrund der mangelnden Dokumentation von Milo Verzug im OPC UA Wrapper bereits eingeplant war.
+
+Dennoch gab es an einigen Stellen starke Verzögerungen in der Implementierung.
+Die Implementierung der Benutzeroberflächen bremste die Entwicklung häufig aus, da Designentscheidungen oft lange
+diskutiert wurden und die Ausarbeitung des gewünschten Designs viel Zeit beanspruchte, bis es so aussah wie geplant.
+Insbesondere die Controller der Simulation und Überwachungskonsole hatten eine höhere Komplexität als erwartet.
+Da sie alle Funktionalitäten mit der Benutzeroberfläche verknüpfen, mussten viele Besonderheiten der OPC UA Server-Client Kommunikation und Sonderfälle berücksichtigt werden.
 
 \section{Probleme bei der Implementierung}
 Im Pflichtenheft war geplant, die von OPC UA bereitgestellten Alarme zu benutzen, um bei einem ungewöhnlichen Zustand (z.B. Überlauf)
