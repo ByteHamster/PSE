@@ -5,6 +5,7 @@ import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.io.files.ParserException;
 import edu.kit.pse.osip.core.io.files.ScenarioFile;
 import edu.kit.pse.osip.core.io.files.ServerSettingsWrapper;
+import edu.kit.pse.osip.core.model.base.AbstractTank;
 import edu.kit.pse.osip.core.model.base.MixTank;
 import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
@@ -243,7 +244,7 @@ public class SimulationController extends Application {
 
             if (cont.tank.getFillLevel() > 1 && !overflow && !resetInProgress) {
                 overflow = true;
-                showOverflow(cont.selector);
+                showOverflow(cont.tank);
             }
         }
 
@@ -263,13 +264,13 @@ public class SimulationController extends Application {
 
         if (mixCont.tank.getFillLevel() > 1 && !overflow && !resetInProgress) {
             overflow = true;
-            showOverflow(TankSelector.MIX);
+            showOverflow(mixCont.tank);
         }
     }
 
-    private void showOverflow(TankSelector selector) {
+    private void showOverflow(AbstractTank tank) {
         controlInterface.setControlsDisabled(true);
-        Platform.runLater(() -> currentSimulationView.showOverflow(selector));
+        Platform.runLater(() -> currentSimulationView.showOverflow(tank));
         if (currentScenario != null) {
             currentScenario.cancelScenario();
             currentSimulationView.scenarioFinished();

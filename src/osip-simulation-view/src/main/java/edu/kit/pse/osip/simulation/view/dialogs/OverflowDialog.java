@@ -1,12 +1,16 @@
 package edu.kit.pse.osip.simulation.view.dialogs;
 
+import edu.kit.pse.osip.core.model.base.AbstractTank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import javafx.geometry.Insets;
+import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.effect.BlendMode;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -26,7 +30,7 @@ import javafx.event.EventHandler;
  * @version 1.0
  */
 public class OverflowDialog extends Stage {
-    private TankSelector tank;
+    private AbstractTank tank;
     private EventHandler<ActionEvent> resetButtonHandler;
     private static final double MIN_WINDOW_HEIGHT = 250;
     private static final double MIN_WINDOW_WIDTH = 500;
@@ -35,7 +39,7 @@ public class OverflowDialog extends Stage {
      * Constructor of OverflowDialog
      * @param tank Tank which has an overflow
      */
-    public OverflowDialog(TankSelector tank) {
+    public OverflowDialog(AbstractTank tank) {
         this.setTank(tank);
     }
 
@@ -43,7 +47,7 @@ public class OverflowDialog extends Stage {
      * Set the tank which has an overflow
      * @param tank The tank which has an overflow
      */
-    public final void setTank(TankSelector tank) {
+    public final void setTank(AbstractTank tank) {
         if (tank == null) {
             throw new NullPointerException("TankSelector parameter is null");
         }
@@ -82,15 +86,19 @@ public class OverflowDialog extends Stage {
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(ViewConstants.ELEMENTS_GAP));
 
-        ImageView icon = new ImageView();
-        icon.setImage(new Image("/overflow.png"));
-        icon.setFitHeight(MIN_WINDOW_HEIGHT * 0.7);
-        icon.setPreserveRatio(true);
+        Image mask = new Image("/overflow_mask.png");
+        Rectangle baseColor = new Rectangle(mask.getWidth(), mask.getHeight());
+        edu.kit.pse.osip.core.model.base.Color c = tank.getLiquid().getColor();
+        baseColor.setFill(new Color(c.getR(), c.getG(), c.getB(), 1));
+
+        Group baseShape = new Group();
+        baseShape.setBlendMode(BlendMode.MULTIPLY);
+        baseShape.getChildren().addAll(baseColor, new ImageView(mask));
+
+        Group overflowTankImage = new Group(baseShape, new ImageView(new Image("/overflow.png")));
 
         TextFlow overflowTextFlow = new TextFlow();
-        Text overflowText = getTextWithTankName(tank,
-                new Font(ViewConstants.FONT_SIZE * 2));
-        overflowText.setFill(Color.valueOf("#c80000"));
+        Text overflowText = getTextWithTankName(tank.getTankSelector(), new Font(ViewConstants.FONT_SIZE * 2));
         overflowTextFlow.getChildren().add(overflowText);
         overflowTextFlow.setPadding(new Insets(ViewConstants.FONT_SIZE * 2, 0, 0, 0));
 
@@ -110,7 +118,7 @@ public class OverflowDialog extends Stage {
         borderPane.setPadding(new Insets(0, 0, ViewConstants.ELEMENTS_GAP, 0));
         BorderPane.setAlignment(resetButton, Pos.CENTER);
 
-        grid.add(icon, 0, 0);
+        grid.add(overflowTankImage, 0, 0);
         grid.add(overflowTextFlow, 1, 0);
         Scene scene = new Scene(borderPane, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
         this.setScene(scene);

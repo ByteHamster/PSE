@@ -1,6 +1,6 @@
 package edu.kit.pse.osip.simulation.controller;
 
-import edu.kit.pse.osip.core.model.base.TankSelector;
+import edu.kit.pse.osip.core.model.base.AbstractTank;
 import java.util.function.Consumer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,9 +19,9 @@ public interface SimulationViewInterface {
 
     /**
      * The simulation is replaced by the OverflowOverlay.
-     * @param selector The overflowing tank.
+     * @param tank The overflowing tank.
      */
-    void showOverflow(TankSelector selector);
+    void showOverflow(AbstractTank tank);
 
     /**
      * Set a handler which gets called if the users closes the overflow dialog
