@@ -44,6 +44,7 @@ public class SettingsViewFacade implements SettingsViewInterface {
     
     @Override
     public void showSettingsWindow() {
+        currentSettingsWindow.reset();
         currentSettingsWindow.getStage().show();
     }
     
