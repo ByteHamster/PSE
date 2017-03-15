@@ -73,7 +73,61 @@ konnte man in den Controllern sehr schnell Fortschritte sehen. Die Controller wu
 Insgesamt ließ sich über diese Aufteilung eine weitestgehend gerechte Arbeitsaufteilung umsetzen.
 
 \section{Änderungen zum Entwurf}
+Im Nachfolgenden werden alle Änderungen zum Entwurf dargestellt.
 
+\subsection{Allgemeines}
+\begin{itemize}
+ \item Generell wurde das Werfen einiger Exceptions hinzugefügt sowie verschiedene Oberklassenmethoden überschrieben.
+ \item Die Parameter weniger bestehenden Methoden wurden angepasst. Alle Kommentare dem entsprechend auch.
+ \item Die Klassen OSIPConstants im core-Modul, MonitoringViewConstants im monitoring-view-Modul und ViewConstants im simulation-view-Modul sind hinzugekommen, die als zentraler Ort für Konstanten, die über mehrere Klassen hinweg gebraucht werden, dienen.
+\end{itemize}
+
+\subsection{Das Modell}
+\begin{itemize}
+ \item Die ProductionSite wurde um get/setInputTemperature und getTank erweitert.
+ \item Alle Tanks und Pipes besitzen eine reset-Methode zum Zurücksetzen in den ursprünglichen Zustand.
+ \item Der TankSelector enthält nur statische Methoden außer getInitialColor, die die initialen Farben für die Tanks zurückgibt.
+ \item Die Klasse Color verwendet doubles für die Farbwerte, um Rundungsfehler bei kleinen Simulationsschritten zu vermeiden.
+ \item In den SettingsWrapper-Klassen werden mit den Methoden Standardwerte übergeben, die zurückgegeben werden, wenn kein entsprechender Wert gespeichert ist.
+\end{itemize}
+
+\subsection{OPC UA}
+\begin{itemize}
+ \item Mit einem Subscription-Intervall von -1 ist es möglich, den Wert sofort einmal zu lesen.
+ \item Statt einer onError Methode in den Listenern gibt es einen ErrorListener, der über die Methode setErrorListener im UAClientWrapper gesetzt wird. Entsprechend dazu sind alle möglichen Errors im UAClientWrapper als statische Variablen codiert.
+ \item Server und Client benutzen am Ende ihrer Lebenszeit die Methode releaseSharedResources, wie es auch in den Milo-Beispielen getan wird.
+ \item Die Klassen UAClientException und UAIdentifiers (im Modul core), die von Server und Client benutzt werden, wurden hinzugefügt.
+\end{itemize}
+
+\subsection{Die Module monitoring-view-interface und simulation-view-interface}
+\begin{itemize}
+ \item Um zyklische Abhängigkeiten zwischen den Controller- und View-Modulen zu vermeiden, enthalten die View-Interface-Module die Interfaces, die jede GUI für OSIP implementieren muss.
+ \item Hierin gehörten ebenfalls die ButtonHandler-Klassen. Diese wurden allerdings entfernt, da die Realisierung als Klasse nicht im Verhältnis zum Umfang der realisierten Funktion stand: die tatsächliche Funktion eines Handlers bestand nur aus einer bis wenigen Zeilen Code. Daher sind sie als Lambda-Anweisungen oder Methoden in den Controllern realisiert.
+ \item Besonders die SettingsViewInterface des monitoring-view-interface Moduls wurde um die Methoden showDisconnectAlert und showCanNotConnectAlert erweitert, um im Fall einer fehlenden Verbindung zu einer Fertigungssimulation den Benutzer darüber zu informieren und die Einstellungen für die Eingabe neuer Verbindungsinformationen anzuzeigen.
+ \item Im Modul simulation-view-interface wurden im SimulationViewInterface die Methode setOverflowClosedHandler und im SimulationControlInterface die Methode close zum Schließen aller Fenster bei Ende der Simulation hinzugefügt.
+\end{itemize}
+
+\subsection{Das Modul monitoring-view}
+\begin{itemize}
+ \item Im dashboard wurde die Klasse BarLayout als Oberklasse für die Visualisierungsklassen Color, FillLevel, Temperature, Bar und MotorSpeed hinzugefügt. Damit wird das Layout und der Label, der die Anzeige in der GUI beschriftet, gebündelt und die Methoden zur Rückgabe der GUI-Komponenten entfallen. Im Zuge dessen wurden auch BarVisualization zu GaugeVisualization umbenannt, um diese gegenüber der Klasse BarLayout besser unterscheiden zu können, und die Klasse MotorSpeedVisualization hinzugefügt, um in der Visualisierung und speziell bei den Aktualisierungen der Werte besser zwischen der Motorgeschwindigkeit und den Rohren unterscheiden zu können.
+ \item Die Temperaturalarme wurden von overflow zu overheating und underflow zu undercooling umbenannt.
+ \item Für die Alarmvisualisierungen wurden die Klassen AlarmGroup und ObservableBoolean hinzugefügt, die der MonitoringViewInterface übergeben werden. Damit werden die Alarme direkt durch OPC UA de- oder aktiviert.
+ \item Darüber hinaus sind die Alarmvisualisierungen selbst beobachtbar und werden von der Ampel und LoggingConsole beobachtet, die so ihren eigenen Zustand regeln.
+ \item Für die LoggingConsole speziell ist die Klasse UIOutputStream hinzugekommen, die alle Ausgaben von System.out oder System.err weiterhin darauf und zusätzlich in der LoggingConsole ausgibt, die dafür zwei Tabs besitzt: einen für die Ausgabe der Alarme und einen für System.out bzw. System.err.
+\end{itemize}
+
+\subsection{Das Modul simulation-view}
+\begin{itemize}
+ \item Die Klasse SimulationMenu wurde für die Darstellung und Auslagerung der MenuBar erstellt. Damit wurden die Menüelemente „About“ und „Help“ unter dem Menü „?“ zusammengeführt sowie der Menüpunkt „Reset“ zur Rücksetzung der Simulation hinzugefügt.
+ \item Im Konstruktor erhalten die Drawer FillSensor, MixTank, Tank und TemperatureSensor zusätzlich die Parameter row und cols, der Drawer Motor cols und die Drawer Pipe und Valve rows als Anzahl der Reihen bzw. Spalten in der GUI, um jeweils relative Größen zu berechnen und für eine beliebige Anzahl an Tanks zu skalieren.
+ \item Die Methoden drawSensors des AbstractTankDrawer und draw des Drawer erhalten als weiteren double-Parameter time, sodass sich bewegende Elemente das Ausmaß der Bewegung bestimmen können.
+ \item Der AbstractTankDrawer hat die Methoden getPipeStartPoint (mittig unten am tatsächlichen Tank), getPipeEndPoint (gibt einen aus der Reihe von Punkten, die oben in den Tank führen), getPipeTopEntry (mittig oben im Tankabschnitt für Pipes, die die Simulation betreten) und getPipeBotExit (mittig unten im Tankabschnitt für Pipes, die die Simulation verlassen) erhalten.
+ \item Die Methoden get/set Height/Width im AbstractTankDrawer und setX bzw. setY in Point2D wurden entfernt, da sie nie benutzt werden. Gleichzeitig wurde der RotatingControlDrawer um Methode get/set Speed und rotateX bzw. rotateY erweitert, um die x- bzw. y-Koordinate eines Punktes in einem gewissen Winkel um einen anderen Punkt zu drehen.
+ \item Des Weiteren wurden Methoden hinzugefügt, um die Szenarien in der GUI zu steuern.
+ \item Die Klasse AbstractTankTab im control beobachtet die zugewiesenen Tanks, um die Änderungen der Werte durch die Szenarien direkt zu übernehmen. Im Zuge dessen wurden die get-Methoden für die Werte im SimulationControlWindow entfernt und die analogen get-Methoden in den TankTab-Klassen zu get-Methoden für die zugehörigen Slider umgeändert. Außerdem hat der AbstractTankTab eine getGridPane-Methode, damit Unterklassen auf das Layout zugreifen können.
+ \item Das SimulationControlWindow besitzt eine Methode setControlsDisabled, die die Slider und Textfelder blockiert und wieder freigibt, um Änderungen während eines Überlaufs zu verhindern.
+ \item Für die Bindung zwischen den Slidern und Textfeldern zur korrekten Konvertierung der Werte wurde die Klasse ConfinedStringConverter hinzugefügt.
+\end{itemize}
 
 \section{Implementierte Muss- und Kannkriterien}
 In diesem Abschnitt werden die im Pflichtenheft definierten Kann- und Musskriterien noch einmal kurz umrissen und erläutert, welche davon erfolgreich
