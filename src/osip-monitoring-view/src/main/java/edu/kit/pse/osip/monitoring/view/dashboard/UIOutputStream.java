@@ -37,7 +37,7 @@ class UIOutputStream extends PrintStream {
     @Override
     public synchronized void write(byte[] buf, int off, int len) {
         for (int i = off; i < off + len; i++) {
-            print(buf[i]);
+            print((char) buf[i]);
         }
     }
     
