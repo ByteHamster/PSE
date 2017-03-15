@@ -78,23 +78,23 @@ Im Nachfolgenden werden alle Änderungen zum Entwurf dargestellt.
 \subsection{Allgemeines}
 \begin{itemize}
  \item Generell wurde das Werfen einiger Exceptions hinzugefügt sowie verschiedene Oberklassenmethoden überschrieben.
- \item Die Parameter weniger bestehenden Methoden wurden angepasst. Alle Kommentare dem entsprechend auch.
+ \item Die Parameter weniger bestehenden Methoden wurden angepasst. Alle Kommentare dementsprechend auch.
  \item Die Klassen \emph{OSIPConstants} im core-Modul, \emph{MonitoringViewConstants} im monitoring-view-Modul und \emph{ViewConstants} im simulation-view-Modul sind hinzugekommen, die als zentraler Ort für Konstanten, die über mehrere Klassen hinweg gebraucht werden, dienen.
 \end{itemize}
 
 \subsection{Das Modell}
 \begin{itemize}
- \item Die \emph{ProductionSite} wurde um \emph{get/setInputTemperature} und\emph{getTank} erweitert.
+ \item Die \emph{ProductionSite} wurde um \emph{get/setInputTemperature} und \emph{getTank} erweitert.
  \item Alle Tanks und Pipes besitzen eine \emph{reset}-Methode zum Zurücksetzen in den ursprünglichen Zustand.
- \item Der \emph{TankSelector} enthält nur statische Methoden außer \emph{getInitialColor}, die die initialen Farben für die Tanks zurückgibt.
+ \item Der \emph{TankSelector} enthält nur statische Methoden außer \emph{getInitialColor} und \emph{getInitialTemperature}, die die initialen Farben und Temperaturen für die Tanks zurückgibt.
  \item Die Klasse \emph{Color} verwendet doubles für die Farbwerte, um Rundungsfehler bei kleinen Simulationsschritten zu vermeiden.
  \item In den \emph{SettingsWrapper}-Klassen werden mit den Methoden Standardwerte übergeben, die zurückgegeben werden, wenn kein entsprechender Wert gespeichert ist.
 \end{itemize}
 
 \subsection{OPC UA}
 \begin{itemize}
- \item Mit einem Subscription-Intervall von -1 ist es möglich, den Wert sofort einmal zu lesen.
- \item Statt einer \emph{onError}-Methode in den Listenern gibt es einen \emph{ErrorListener}, der über die Methode \emph{setErrorListener} im \emph{UAClientWrapper} gesetzt wird. Entsprechend dazu sind alle möglichen Errors im \emph{UAClientWrapper} als statische Variablen codiert.
+ \item Mit \emph{UAClientWrapper.SINGLE\_READ} als Subscription-Intervall ist es möglich, den Wert sofort einmal zu lesen.
+ \item Statt einer \emph{onError}-Methode in den Listenern gibt es einen \emph{ErrorListener}, der über die Methode \emph{setErrorListener} im \emph{UAClientWrapper} gesetzt wird. Entsprechend dazu sind alle möglichen Errors im \emph{UAClientWrapper} als Konstanten codiert.
  \item Server und Client benutzen am Ende ihrer Lebenszeit die Methode \emph{releaseSharedResources}, wie es auch in den Milo-Beispielen getan wird.
  \item Die Klassen \emph{UAClientException} und \emph{UAIdentifiers} (im Modul core), die von Server und Client benutzt werden, wurden hinzugefügt.
 \end{itemize}
@@ -104,14 +104,14 @@ Im Nachfolgenden werden alle Änderungen zum Entwurf dargestellt.
  \item Um zyklische Abhängigkeiten zwischen den Controller- und View-Modulen zu vermeiden, enthalten die View-Interface-Module die Interfaces, die jede GUI für OSIP implementieren muss.
  \item Hierin gehörten ebenfalls die \emph{ButtonHandler}-Klassen. Diese wurden allerdings entfernt, da die Realisierung als Klasse nicht im Verhältnis zum Umfang der realisierten Funktion stand: die tatsächliche Funktion eines Handlers bestand nur aus einer bis wenigen Zeilen Code. Daher sind sie als Lambda-Anweisungen oder Methoden in den Controllern realisiert.
  \item Besonders die \emph{SettingsViewInterface} des monitoring-view-interface Moduls wurde um die Methoden \emph{showDisconnectAlert} und \emph{showCanNotConnectAlert} erweitert, um im Fall einer fehlenden Verbindung zu einer Fertigungssimulation den Benutzer darüber zu informieren und die Einstellungen für die Eingabe neuer Verbindungsinformationen anzuzeigen.
- \item Im Modul simulation-view-interface wurden im \emph{SimulationViewInterface} die Methode \emph{setOverflowClosedHandler} und im \emph{SimulationControlInterface} die Methode \emph{close} zum Schließen aller Fenster bei Ende der Simulation hinzugefügt.
+ \item Im Modul simulation-view-interface wurden im \emph{SimulationViewInterface} die Methoden \emph{showOPCUAServerError}, \emph{setOverflowClosedHandler}, \emph{scenarioStarted}, \emph{scenarioFinished}, \emph{setScenarioStopListener} und \emph{showScenarioError} und im \emph{SimulationControlInterface} die Methode \emph{close} zum Schließen aller Fenster bei Ende der Simulation hinzugefügt.
 \end{itemize}
 
 \subsection{Das Modul monitoring-view}
 \begin{itemize}
- \item Im dashboard wurde die Klasse \emph{BarLayout} als Oberklasse für die Visualisierungsklassen Color, FillLevel, Temperature, Bar und MotorSpeed hinzugefügt. Damit wird das Layout und der Label, der die Anzeige in der GUI beschriftet, gebündelt und die Methoden zur Rückgabe der GUI-Komponenten entfallen. Im Zuge dessen wurden auch \emph{BarVisualization} zu \emph{GaugeVisualization} umbenannt, um diese gegenüber der Klasse \emph{BarLayout} besser unterscheiden zu können, und die Klasse \emph{MotorSpeedVisualization} hinzugefügt, um in der Visualisierung und speziell bei den Aktualisierungen der Werte besser zwischen der Motorgeschwindigkeit und den Rohren unterscheiden zu können.
+ \item Im Paket \emph{dashboard} wurde die Klasse \emph{BarLayout} als Oberklasse für die Visualisierungsklassen Color, FillLevel, Temperature, Bar und MotorSpeed hinzugefügt. Damit wird das Layout und der Label, der die Anzeige in der GUI beschriftet, gebündelt und die Methoden zur Rückgabe der GUI-Komponenten entfallen. Im Zuge dessen wurden auch \emph{BarVisualization} zu \emph{GaugeVisualization} umbenannt, um diese gegenüber der Klasse \emph{BarLayout} besser unterscheiden zu können, und die Klasse \emph{MotorSpeedVisualization} hinzugefügt, um in der Visualisierung und speziell bei den Aktualisierungen der Werte besser zwischen der Motorgeschwindigkeit und den Rohren unterscheiden zu können.
  \item Die Temperaturalarme wurden von overflow zu overheating und underflow zu undercooling umbenannt.
- \item Für die Alarmvisualisierungen wurden die Klassen \emph{AlarmGroup} und \emph{ObservableBoolean} hinzugefügt, die der \emph{MonitoringViewInterface} übergeben werden. Damit werden die Alarme direkt durch OPC UA de- oder aktiviert.
+ \item Für die Alarmvisualisierungen wurden die Klassen \emph{AlarmGroup} und \emph{ObservableBoolean} hinzugefügt, die der \emph{MonitoringViewInterface} übergeben werden. Damit werden die Alarme direkt durch OPC UA de- oder aktiviert. Ursprünglich war geplant, dass bei Empfang eines Alarms der Wert sofort gelesen, gesetzt und so der Alarm als ausgelöst angezeigt wird. Aufgrund eines unbekannten Fehlers kam es bei De- oder Aktivierung zu einem Flackern der Werte, sodass bei Aktivierung eines Alarms dieser zweimal und bei Deaktivierung dieser einmal ausgelöst wurde, während die Alarmwerte über OPC UA ohne Flackern übertragen wurden. Deshalb werden die Alarme direkt de- oder aktiviert.
  \item Darüber hinaus sind die Alarmvisualisierungen selbst beobachtbar und werden von der Ampel und \emph{LoggingConsole} beobachtet, die so ihren eigenen Zustand regeln.
  \item Für die \emph{LoggingConsole} speziell ist die Klasse \emph{UIOutputStream} hinzugekommen, die alle Ausgaben von \emph{System.out} oder \emph{System.err} weiterhin darauf und zusätzlich in der \emph{LoggingConsole} ausgibt, die dafür zwei Tabs besitzt: einen für die Ausgabe der Alarme und einen für \emph{System.out} bzw. \emph{System.err}.
 \end{itemize}
@@ -122,10 +122,10 @@ Im Nachfolgenden werden alle Änderungen zum Entwurf dargestellt.
  \item Im Konstruktor erhalten die Drawer FillSensor, MixTank, Tank und TemperatureSensor zusätzlich die Parameter row und cols, der Drawer Motor cols und die Drawer Pipe und Valve rows als Anzahl der Reihen bzw. Spalten in der GUI, um jeweils relative Größen zu berechnen und für eine beliebige Anzahl an Tanks zu skalieren.
  \item Die Methoden \emph{drawSensors} des \emph{AbstractTankDrawer} und \emph{draw} des \emph{Drawer} erhalten als weiteren double-Parameter time, sodass sich bewegende Elemente das Ausmaß der Bewegung bestimmen können.
  \item Der \emph{AbstractTankDrawer} hat die Methoden \emph{getPipeStartPoint} (mittig unten am tatsächlichen Tank), \emph{getPipeEndPoint} (gibt einen aus der Reihe von Punkten, die oben in den Tank führen), \emph{getPipeTopEntry} (mittig oben im Tankabschnitt für Pipes, die die Simulation betreten) und \emph{getPipeBotExit} (mittig unten im Tankabschnitt für Pipes, die die Simulation verlassen) erhalten.
- \item Die Methoden \emph{get/set Height/Width} im \emph{AbstractTankDrawer} und \emph{setX} bzw. \emph{setY} in \emph{Point2D} wurden entfernt, da sie nie benutzt werden. Gleichzeitig wurde der \emph{RotatingControlDrawer} um Methode \emph{get/setSpeed} und \emph{rotateX} bzw. \emph{rotateY} erweitert, um die x- bzw. y-Koordinate eines Punktes in einem gewissen Winkel um einen anderen Punkt zu drehen.
+ \item Die Methoden \emph{get/set Height/Width} im \emph{AbstractTankDrawer} und \emph{setX} bzw. \emph{setY} in \emph{Point2D} wurden entfernt, da sie nie benutzt werden. Gleichzeitig wurde der \emph{RotatingControlDrawer} um die Methoden \emph{get/setSpeed} und \emph{rotateX} bzw. \emph{rotateY} erweitert, um die x- bzw. y-Koordinate eines Punktes in einem gewissen Winkel um einen anderen Punkt zu drehen.
  \item Des Weiteren wurden Methoden hinzugefügt, um die Szenarien in der GUI zu steuern.
- \item Die Klasse \emph{AbstractTankTab} im control beobachtet die zugewiesenen Tanks, um die Änderungen der Werte durch die Szenarien direkt zu übernehmen. Im Zuge dessen wurden die get-Methoden für die Werte im \emph{SimulationControlWindow} entfernt und die analogen get-Methoden in den \emph{TankTab}-Klassen zu get-Methoden für die zugehörigen Slider umgeändert. Außerdem hat der \emph{AbstractTankTab} eine \emph{getGridPane}-Methode, damit Unterklassen auf das Layout zugreifen können.
- \item Das \emph{SimulationControlWindow} besitzt eine Methode \emph{setControlsDisabled}, die die Slider und Textfelder blockiert und wieder freigibt, um Änderungen während eines Überlaufs zu verhindern.
+ \item Die Klasse \emph{AbstractTankTab} im Paket \emph{control} beobachtet die zugewiesenen Tanks, um die Änderungen der Werte durch die Szenarien direkt zu übernehmen. Im Zuge dessen wurden die get-Methoden für die Werte im \emph{SimulationControlWindow} entfernt und die analogen get-Methoden in den \emph{TankTab}-Klassen zu get-Methoden für die zugehörigen Slider umgeändert. Außerdem hat der \emph{AbstractTankTab} eine \emph{getGridPane}-Methode, damit Unterklassen auf das Layout zugreifen können.
+ \item Das \emph{SimulationControlWindow} besitzt eine Methode \emph{setControlsDisabled}, die die Slider und Textfelder blockiert und wieder freigibt, um Änderungen während eines Überlaufs oder insbesondere während eines Szenarios zu verhindern.
  \item Für die Bindung zwischen den Slidern und Textfeldern zur korrekten Konvertierung der Werte wurde die Klasse \emph{ConfinedStringConverter} hinzugefügt.
 \end{itemize}
 
@@ -142,7 +142,7 @@ dieses Intervall aber sehr klein gewählt, um die Asynchronität zu emulieren.
 
 Innerhalb der geplanten Kannkriterien kam es ebenfalls zu leichten Abweichungen.
 
-Die LoggingConsole innerhalb der Überwachungskonsole wurde auf zwei separate Tabs aufgeteilt. Der erste Tab loggt, wie geplant, die von der Fertigungssimulation
+Die Logging-Konsole innerhalb der Überwachungskonsole wurde auf zwei separate Tabs aufgeteilt. Der erste Tab loggt, wie geplant, die von der Fertigungssimulation
 eintreffenden Alarme. Der zweite Tab loggt auftretende Ausnahmen und Fehlermeldungen, anstatt diese, wie ursprünglich geplant, auf stdout auszugeben. So sind die
 Ausnahmen und Fehlermeldungen auch dann für den Anwender sichtbar, wenn er die beiden Programme nicht über ein Terminal startet, auf dem die Ausgabe erfolgen kann.
 Zudem dient die Zweiteilung in Tabs der Übersichtlichkeit. Potentiell auftretende Ausnahmen im Programmfluss verdrängen so nicht OPC UA Alarme.
