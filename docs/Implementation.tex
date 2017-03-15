@@ -53,21 +53,21 @@ Als Abschluss werden kurz Probleme in der Implementierung aufgelistet und ein Ü
 \section{Workflow}
 OSIP wurde von uns open-source mit Hilfe von GitHub entwickelt. Um die Qualität des Codes möglichst gut zu halten,
 haben wir konsequent Code-Reviews eingesetzt. Jede Änderung musste von einem Kommilitonen genehmigt werden. Zusätzlich ließen wir
-durch den Dienst "`Travis"' bei jeder einzubindenden Änderung die Stil-Richtlinien für den Code (mittels Checkstyle) und die Unit Tests überprüfen.
+durch den Dienst "`Travis"' bei jeder einzubindenden Änderung die Stil-Richtlinien für den Code (mittels Checkstyle) und die Unittests überprüfen.
 Dieses Vorgehen erforderte zwar oft lange Wartezeiten auf Reviews, im Sinne der guten Qualität haben wir uns allerdings darauf eingelassen. 
 
 Um die Aufgaben der einzelnen Kommilitonen aufeinander abzustimmen, setzten wir den von GitHub bereitgestellten Issue-Tracker ein. Im Laufe der
 Entwicklung von OSIP wurden über 400 Issues und Pull requests erstellt.
 
 \section{Arbeitsaufteilung}
-Bei der Implementierung gingen wir nach dem outside-in-Prinzip vor. Während Model, OPC UA Wrapper und Core-Bestandteile von David, Hans-Peter und Max entwickelt wurden,
+Bei der Implementierung gingen wir nach dem Outside-In-Prinzip vor. Während Modell, OPC UA Wrapper und Core-Bestandteile von David, Hans-Peter und Max entwickelt wurden,
 begannen Martin und Niko mit den Benutzeroberflächen von Überwachungskonsole und Fertigungssimulation. Aufgrund des modularen Entwurfes
 und der automatischen Generierung von Quellcode aus dem Klassendiagramm war dies problemlos möglich. Die Aufteilung erfolgte deshalb, weil Martin und Niko die
 Benutzeroberflächen während der letzten Phase entworfen hatten und sich somit besonders gut in dem Bereich auskannten. Des Weiteren hätten wir uns mit 5 Personen,
-die das Model entwickeln, wahrscheinlich gegenseitig sehr gestört.
+die das Modell entwickeln, wahrscheinlich gegenseitig sehr gestört.
 
-Nachdem dann die Bestandteile einzeln implementiert waren, wurden noch die Controller hinzugefügt. Die Controller verbinden jeweils Model und View,
-um so Leben in die Anwendung zu bringen. Da zu diesem Zeitpunkt das Model mit der Grundfunktionalität der Anwendungen schon fertig war,
+Nachdem dann die Bestandteile einzeln implementiert waren, wurden noch die Controller hinzugefügt. Die Controller verbinden jeweils Modell und View,
+um so Leben in die Anwendung zu bringen. Da zu diesem Zeitpunkt das Modell mit der Grundfunktionalität der Anwendungen schon fertig war,
 konnte man in den Controllern sehr schnell Fortschritte sehen. Die Controller wurden maßgeblich von David und Max entwickelt.
 
 Insgesamt ließ sich über diese Aufteilung eine weitestgehend gerechte Arbeitsaufteilung umsetzen.
@@ -79,75 +79,75 @@ Im Nachfolgenden werden alle Änderungen zum Entwurf dargestellt.
 \begin{itemize}
  \item Generell wurde das Werfen einiger Exceptions hinzugefügt sowie verschiedene Oberklassenmethoden überschrieben.
  \item Die Parameter weniger bestehenden Methoden wurden angepasst. Alle Kommentare dem entsprechend auch.
- \item Die Klassen OSIPConstants im core-Modul, MonitoringViewConstants im monitoring-view-Modul und ViewConstants im simulation-view-Modul sind hinzugekommen, die als zentraler Ort für Konstanten, die über mehrere Klassen hinweg gebraucht werden, dienen.
+ \item Die Klassen \emph{OSIPConstants} im core-Modul, \emph{MonitoringViewConstants} im monitoring-view-Modul und \emph{ViewConstants} im simulation-view-Modul sind hinzugekommen, die als zentraler Ort für Konstanten, die über mehrere Klassen hinweg gebraucht werden, dienen.
 \end{itemize}
 
 \subsection{Das Modell}
 \begin{itemize}
- \item Die ProductionSite wurde um get/setInputTemperature und getTank erweitert.
- \item Alle Tanks und Pipes besitzen eine reset-Methode zum Zurücksetzen in den ursprünglichen Zustand.
- \item Der TankSelector enthält nur statische Methoden außer getInitialColor, die die initialen Farben für die Tanks zurückgibt.
- \item Die Klasse Color verwendet doubles für die Farbwerte, um Rundungsfehler bei kleinen Simulationsschritten zu vermeiden.
- \item In den SettingsWrapper-Klassen werden mit den Methoden Standardwerte übergeben, die zurückgegeben werden, wenn kein entsprechender Wert gespeichert ist.
+ \item Die \emph{ProductionSite} wurde um \emph{get/setInputTemperature} und\emph{getTank} erweitert.
+ \item Alle Tanks und Pipes besitzen eine \emph{reset}-Methode zum Zurücksetzen in den ursprünglichen Zustand.
+ \item Der \emph{TankSelector} enthält nur statische Methoden außer \emph{getInitialColor}, die die initialen Farben für die Tanks zurückgibt.
+ \item Die Klasse \emph{Color} verwendet doubles für die Farbwerte, um Rundungsfehler bei kleinen Simulationsschritten zu vermeiden.
+ \item In den \emph{SettingsWrapper}-Klassen werden mit den Methoden Standardwerte übergeben, die zurückgegeben werden, wenn kein entsprechender Wert gespeichert ist.
 \end{itemize}
 
 \subsection{OPC UA}
 \begin{itemize}
  \item Mit einem Subscription-Intervall von -1 ist es möglich, den Wert sofort einmal zu lesen.
- \item Statt einer onError Methode in den Listenern gibt es einen ErrorListener, der über die Methode setErrorListener im UAClientWrapper gesetzt wird. Entsprechend dazu sind alle möglichen Errors im UAClientWrapper als statische Variablen codiert.
- \item Server und Client benutzen am Ende ihrer Lebenszeit die Methode releaseSharedResources, wie es auch in den Milo-Beispielen getan wird.
- \item Die Klassen UAClientException und UAIdentifiers (im Modul core), die von Server und Client benutzt werden, wurden hinzugefügt.
+ \item Statt einer \emph{onError}-Methode in den Listenern gibt es einen \emph{ErrorListener}, der über die Methode \emph{setErrorListener} im \emph{UAClientWrapper} gesetzt wird. Entsprechend dazu sind alle möglichen Errors im \emph{UAClientWrapper} als statische Variablen codiert.
+ \item Server und Client benutzen am Ende ihrer Lebenszeit die Methode \emph{releaseSharedResources}, wie es auch in den Milo-Beispielen getan wird.
+ \item Die Klassen \emph{UAClientException} und \emph{UAIdentifiers} (im Modul core), die von Server und Client benutzt werden, wurden hinzugefügt.
 \end{itemize}
 
 \subsection{Die Module monitoring-view-interface und simulation-view-interface}
 \begin{itemize}
  \item Um zyklische Abhängigkeiten zwischen den Controller- und View-Modulen zu vermeiden, enthalten die View-Interface-Module die Interfaces, die jede GUI für OSIP implementieren muss.
- \item Hierin gehörten ebenfalls die ButtonHandler-Klassen. Diese wurden allerdings entfernt, da die Realisierung als Klasse nicht im Verhältnis zum Umfang der realisierten Funktion stand: die tatsächliche Funktion eines Handlers bestand nur aus einer bis wenigen Zeilen Code. Daher sind sie als Lambda-Anweisungen oder Methoden in den Controllern realisiert.
- \item Besonders die SettingsViewInterface des monitoring-view-interface Moduls wurde um die Methoden showDisconnectAlert und showCanNotConnectAlert erweitert, um im Fall einer fehlenden Verbindung zu einer Fertigungssimulation den Benutzer darüber zu informieren und die Einstellungen für die Eingabe neuer Verbindungsinformationen anzuzeigen.
- \item Im Modul simulation-view-interface wurden im SimulationViewInterface die Methode setOverflowClosedHandler und im SimulationControlInterface die Methode close zum Schließen aller Fenster bei Ende der Simulation hinzugefügt.
+ \item Hierin gehörten ebenfalls die \emph{ButtonHandler}-Klassen. Diese wurden allerdings entfernt, da die Realisierung als Klasse nicht im Verhältnis zum Umfang der realisierten Funktion stand: die tatsächliche Funktion eines Handlers bestand nur aus einer bis wenigen Zeilen Code. Daher sind sie als Lambda-Anweisungen oder Methoden in den Controllern realisiert.
+ \item Besonders die \emph{SettingsViewInterface} des monitoring-view-interface Moduls wurde um die Methoden \emph{showDisconnectAlert} und \emph{showCanNotConnectAlert} erweitert, um im Fall einer fehlenden Verbindung zu einer Fertigungssimulation den Benutzer darüber zu informieren und die Einstellungen für die Eingabe neuer Verbindungsinformationen anzuzeigen.
+ \item Im Modul simulation-view-interface wurden im \emph{SimulationViewInterface} die Methode \emph{setOverflowClosedHandler} und im \emph{SimulationControlInterface} die Methode \emph{close} zum Schließen aller Fenster bei Ende der Simulation hinzugefügt.
 \end{itemize}
 
 \subsection{Das Modul monitoring-view}
 \begin{itemize}
- \item Im dashboard wurde die Klasse BarLayout als Oberklasse für die Visualisierungsklassen Color, FillLevel, Temperature, Bar und MotorSpeed hinzugefügt. Damit wird das Layout und der Label, der die Anzeige in der GUI beschriftet, gebündelt und die Methoden zur Rückgabe der GUI-Komponenten entfallen. Im Zuge dessen wurden auch BarVisualization zu GaugeVisualization umbenannt, um diese gegenüber der Klasse BarLayout besser unterscheiden zu können, und die Klasse MotorSpeedVisualization hinzugefügt, um in der Visualisierung und speziell bei den Aktualisierungen der Werte besser zwischen der Motorgeschwindigkeit und den Rohren unterscheiden zu können.
+ \item Im dashboard wurde die Klasse \emph{BarLayout} als Oberklasse für die Visualisierungsklassen Color, FillLevel, Temperature, Bar und MotorSpeed hinzugefügt. Damit wird das Layout und der Label, der die Anzeige in der GUI beschriftet, gebündelt und die Methoden zur Rückgabe der GUI-Komponenten entfallen. Im Zuge dessen wurden auch \emph{BarVisualization} zu \emph{GaugeVisualization} umbenannt, um diese gegenüber der Klasse \emph{BarLayout} besser unterscheiden zu können, und die Klasse \emph{MotorSpeedVisualization} hinzugefügt, um in der Visualisierung und speziell bei den Aktualisierungen der Werte besser zwischen der Motorgeschwindigkeit und den Rohren unterscheiden zu können.
  \item Die Temperaturalarme wurden von overflow zu overheating und underflow zu undercooling umbenannt.
- \item Für die Alarmvisualisierungen wurden die Klassen AlarmGroup und ObservableBoolean hinzugefügt, die der MonitoringViewInterface übergeben werden. Damit werden die Alarme direkt durch OPC UA de- oder aktiviert.
- \item Darüber hinaus sind die Alarmvisualisierungen selbst beobachtbar und werden von der Ampel und LoggingConsole beobachtet, die so ihren eigenen Zustand regeln.
- \item Für die LoggingConsole speziell ist die Klasse UIOutputStream hinzugekommen, die alle Ausgaben von System.out oder System.err weiterhin darauf und zusätzlich in der LoggingConsole ausgibt, die dafür zwei Tabs besitzt: einen für die Ausgabe der Alarme und einen für System.out bzw. System.err.
+ \item Für die Alarmvisualisierungen wurden die Klassen \emph{AlarmGroup} und \emph{ObservableBoolean} hinzugefügt, die der \emph{MonitoringViewInterface} übergeben werden. Damit werden die Alarme direkt durch OPC UA de- oder aktiviert.
+ \item Darüber hinaus sind die Alarmvisualisierungen selbst beobachtbar und werden von der Ampel und \emph{LoggingConsole} beobachtet, die so ihren eigenen Zustand regeln.
+ \item Für die \emph{LoggingConsole} speziell ist die Klasse \emph{UIOutputStream} hinzugekommen, die alle Ausgaben von \emph{System.out} oder \emph{System.err} weiterhin darauf und zusätzlich in der \emph{LoggingConsole} ausgibt, die dafür zwei Tabs besitzt: einen für die Ausgabe der Alarme und einen für \emph{System.out} bzw. \emph{System.err}.
 \end{itemize}
 
 \subsection{Das Modul simulation-view}
 \begin{itemize}
- \item Die Klasse SimulationMenu wurde für die Darstellung und Auslagerung der MenuBar erstellt. Damit wurden die Menüelemente „About“ und „Help“ unter dem Menü „?“ zusammengeführt sowie der Menüpunkt „Reset“ zur Rücksetzung der Simulation hinzugefügt.
+ \item Die Klasse \emph{SimulationMenu} wurde für die Darstellung und Auslagerung der \emph{MenuBar} erstellt. Damit wurden die Menüelemente "`About"' und "`Help"' unter dem Menü "`?"' zusammengeführt sowie der Menüpunkt "`Reset"' zur Rücksetzung der Simulation hinzugefügt.
  \item Im Konstruktor erhalten die Drawer FillSensor, MixTank, Tank und TemperatureSensor zusätzlich die Parameter row und cols, der Drawer Motor cols und die Drawer Pipe und Valve rows als Anzahl der Reihen bzw. Spalten in der GUI, um jeweils relative Größen zu berechnen und für eine beliebige Anzahl an Tanks zu skalieren.
- \item Die Methoden drawSensors des AbstractTankDrawer und draw des Drawer erhalten als weiteren double-Parameter time, sodass sich bewegende Elemente das Ausmaß der Bewegung bestimmen können.
- \item Der AbstractTankDrawer hat die Methoden getPipeStartPoint (mittig unten am tatsächlichen Tank), getPipeEndPoint (gibt einen aus der Reihe von Punkten, die oben in den Tank führen), getPipeTopEntry (mittig oben im Tankabschnitt für Pipes, die die Simulation betreten) und getPipeBotExit (mittig unten im Tankabschnitt für Pipes, die die Simulation verlassen) erhalten.
- \item Die Methoden get/set Height/Width im AbstractTankDrawer und setX bzw. setY in Point2D wurden entfernt, da sie nie benutzt werden. Gleichzeitig wurde der RotatingControlDrawer um Methode get/set Speed und rotateX bzw. rotateY erweitert, um die x- bzw. y-Koordinate eines Punktes in einem gewissen Winkel um einen anderen Punkt zu drehen.
+ \item Die Methoden \emph{drawSensors} des \emph{AbstractTankDrawer} und \emph{draw} des \emph{Drawer} erhalten als weiteren double-Parameter time, sodass sich bewegende Elemente das Ausmaß der Bewegung bestimmen können.
+ \item Der \emph{AbstractTankDrawer} hat die Methoden \emph{getPipeStartPoint} (mittig unten am tatsächlichen Tank), \emph{getPipeEndPoint} (gibt einen aus der Reihe von Punkten, die oben in den Tank führen), \emph{getPipeTopEntry} (mittig oben im Tankabschnitt für Pipes, die die Simulation betreten) und \emph{getPipeBotExit} (mittig unten im Tankabschnitt für Pipes, die die Simulation verlassen) erhalten.
+ \item Die Methoden \emph{get/set Height/Width} im \emph{AbstractTankDrawer} und \emph{setX} bzw. \emph{setY} in \emph{Point2D} wurden entfernt, da sie nie benutzt werden. Gleichzeitig wurde der \emph{RotatingControlDrawer} um Methode \emph{get/setSpeed} und \emph{rotateX} bzw. \emph{rotateY} erweitert, um die x- bzw. y-Koordinate eines Punktes in einem gewissen Winkel um einen anderen Punkt zu drehen.
  \item Des Weiteren wurden Methoden hinzugefügt, um die Szenarien in der GUI zu steuern.
- \item Die Klasse AbstractTankTab im control beobachtet die zugewiesenen Tanks, um die Änderungen der Werte durch die Szenarien direkt zu übernehmen. Im Zuge dessen wurden die get-Methoden für die Werte im SimulationControlWindow entfernt und die analogen get-Methoden in den TankTab-Klassen zu get-Methoden für die zugehörigen Slider umgeändert. Außerdem hat der AbstractTankTab eine getGridPane-Methode, damit Unterklassen auf das Layout zugreifen können.
- \item Das SimulationControlWindow besitzt eine Methode setControlsDisabled, die die Slider und Textfelder blockiert und wieder freigibt, um Änderungen während eines Überlaufs zu verhindern.
- \item Für die Bindung zwischen den Slidern und Textfeldern zur korrekten Konvertierung der Werte wurde die Klasse ConfinedStringConverter hinzugefügt.
+ \item Die Klasse \emph{AbstractTankTab} im control beobachtet die zugewiesenen Tanks, um die Änderungen der Werte durch die Szenarien direkt zu übernehmen. Im Zuge dessen wurden die get-Methoden für die Werte im \emph{SimulationControlWindow} entfernt und die analogen get-Methoden in den \emph{TankTab}-Klassen zu get-Methoden für die zugehörigen Slider umgeändert. Außerdem hat der \emph{AbstractTankTab} eine \emph{getGridPane}-Methode, damit Unterklassen auf das Layout zugreifen können.
+ \item Das \emph{SimulationControlWindow} besitzt eine Methode \emph{setControlsDisabled}, die die Slider und Textfelder blockiert und wieder freigibt, um Änderungen während eines Überlaufs zu verhindern.
+ \item Für die Bindung zwischen den Slidern und Textfeldern zur korrekten Konvertierung der Werte wurde die Klasse \emph{ConfinedStringConverter} hinzugefügt.
 \end{itemize}
 
 \section{Implementierte Muss- und Kannkriterien}
 In diesem Abschnitt werden die im Pflichtenheft definierten Kann- und Musskriterien noch einmal kurz umrissen und erläutert, welche davon erfolgreich
 implementiert wurden oder nicht und wodurch sich das jeweils begründet.
 
-Die Musskriterien konnten wir nahezu vollständig in der Form in der sie im Pflichtenheft stehen im fertigen Programm realisieren.
+Die Musskriterien konnten wir nahezu vollständig in der Form, in der sie im Pflichtenheft stehen, im fertigen Programm realisieren.
 
 Die einzige Abweichung besteht in der Übertragung der Alarmzustände an die Überwachungskonsole. In den Funktionalen Anforderungen (FA 440) wurde definiert,
-dass diese asynchron zum normalen Aktualisierungsintervall der Überwachungskonsole empfangen werden. Die von uns verwendete OPC UA Implementierung Milo
-stellt die dazu nötige Funktionalität leider nicht bereit. Darum haben wir uns entschlossen die Alarme zwar nur in regelmäßigen Intervallen zu übermitteln,
+dass diese asynchron zum normalen Aktualisierungsintervall der Überwachungskonsole empfangen werden. Die von uns verwendete OPC UA-Implementierung Milo
+stellt die dazu nötige Funktionalität leider nicht bereit. Darum haben wir uns entschlossen, die Alarme zwar nur in regelmäßigen Intervallen zu übermitteln,
 dieses Intervall aber sehr klein gewählt, um die Asynchronität zu emulieren.
 
 Innerhalb der geplanten Kannkriterien kam es ebenfalls zu leichten Abweichungen.
 
-Die Logging-Konsole innerhalb der Überwachungskonsole wurde auf zwei separate Tabs aufgeteilt. Der erste Tab loggt wie geplant die von der Fertigungssimulation
-eintreffenden Alarme. Der zweite Tab loggt auftretende Ausnahmen und Fehlermeldungen, anstatt diese wie ursprünglich geplant auf stdout auszugeben. So sind die
+Die LoggingConsole innerhalb der Überwachungskonsole wurde auf zwei separate Tabs aufgeteilt. Der erste Tab loggt, wie geplant, die von der Fertigungssimulation
+eintreffenden Alarme. Der zweite Tab loggt auftretende Ausnahmen und Fehlermeldungen, anstatt diese, wie ursprünglich geplant, auf stdout auszugeben. So sind die
 Ausnahmen und Fehlermeldungen auch dann für den Anwender sichtbar, wenn er die beiden Programme nicht über ein Terminal startet, auf dem die Ausgabe erfolgen kann.
 Zudem dient die Zweiteilung in Tabs der Übersichtlichkeit. Potentiell auftretende Ausnahmen im Programmfluss verdrängen so nicht OPC UA Alarme.
 
-Des weiteren wurde der Jitter in den Eingabewerten nicht implementiert. Praxistests haben ergeben, dass der Jitter entweder so schwach ist, dass er kaum sichtbar
+Des Weiteren wurde der Jitter in den Eingabewerten nicht implementiert. Praxistests haben ergeben, dass der Jitter entweder so schwach ist, dass er kaum sichtbar
 ist und somit nur unnötigen Overhead in der Fertigungssimulation erzeugt, oder aber so stark ist, dass er immer wieder zu nicht geplanten und nicht vorhersehbaren
 Überläufen während der Ausführung von Szenarien führt.
 
@@ -165,9 +165,9 @@ ist und somit nur unnötigen Overhead in der Fertigungssimulation erzeugt, oder 
 \end{figure}
 
 Die Implementierungsphase war zunächst auf einen Monat ausgelegt.
-In der ersten Woche sollten das Model, die OPC UA Wrapper, Core und einige Bestandteile der Benutzeroberflächen
+In der ersten Woche sollten das Modell, die OPC UA Wrapper, Core und einige Bestandteile der Benutzeroberflächen
 implementiert werden.
-In der zweiten Woche sollten Settingsfenster und weitere Dialogfenster implementiert werden.
+In der zweiten Woche sollten die Einstellungsfenster und weitere Dialogfenster implementiert werden.
 In der dritten Woche sollten die Controller für die Simulation und Überwachungskonsole implementiert werden.
 Die letzte Woche war zur Beseitigung von verbleibenden Fehlern gedacht.
 
@@ -190,15 +190,14 @@ als die restlichen Produktionsvariablen abfragen.
 
 \section{Unittests}
 Unittests waren ausschlaggebend wichtig für den ersten Teil der Implementierung, bei dem die Controller noch nicht entwickelt waren.
-Entsprechend ist die Testabdeckung sehr hoch. Das Model besitzt eine Zeilenabdeckung von 93\%, ebenso wie die Core-Bestandteile.
+Entsprechend ist die Testabdeckung sehr hoch. Das Modell besitzt eine Zeilenabdeckung von 93\%, ebenso wie die Core-Bestandteile.
 Um die Funktionalität von OPC UA Server und Client zu testen, musste von reinen Unittests abgewichen werden, da der Client keine
 Methoden zum Setzen von Werten besitzt. Es wurde somit ein weiteres Modul hinzugefügt, das die Tests der Server- und Client-Module übernimmt.
-Dieses Modul testet gleichzeitig das Client-Modul und das Server-Modul zu OPC UA, stellt also eher einen Integrationstest dar. Zur bottom-up
-Entwicklung der OPC UA Abstraktion war dies aber unumgänglich. Durch die Tests konnte bei OPC UA eine Abdeckung von 78\% erreicht werden.
+Dieses Modul testet gleichzeitig das Client-Modul und das Server-Modul zu OPC UA, stellt also eher einen Integrationstest dar. Zur Bottom-Up-Entwicklung der OPC UA Abstraktion war dies aber unumgänglich. Durch die Tests konnte bei OPC UA eine Abdeckung von 78\% erreicht werden.
 
 In UI und Controller wurden keine automatischen Unittest eingesetzt, sondern die Funktionalität in den entsprechenden Pull requests
 jeweils manuell getestet. Wir entschieden uns zu diesem Vorgehen, da das Testen in der UI einen hohen Aufwand bedeutet, der sich allerdings
-kaum bezahlt macht - Es gibt kaum hinreichend komplexe, testbare Code-Abschnitte, bei denen sich automatisierte Tests des UI lohnen würden.
+kaum bezahlt macht - es gibt kaum hinreichend komplexe, testbare Code-Abschnitte, bei denen sich automatisierte Tests des UI lohnen würden.
 
 \pagebreak
 \phantomsection
