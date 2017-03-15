@@ -1,0 +1,95 @@
+﻿Testprotokoll
+
+Tester: 
+Betriebssystem: 
+
+Szenarien
+
+(1) Fertigungssimulation
+Durchlauf: 
+Abdeckung: 
+Status: 
+[GT100]: 
+[GT280]: 
+
+(2) Überwachungskonsole mit ungültigen Einstellungen
+Durchlauf: 
+Abdeckung: 
+Status: 
+[GT100]: 
+[GT120]: 
+[GT280]: 
+
+(3) GUI
+Durchlauf: 
+Abdeckung: 
+Status: 
+[GT100]: 
+[GT110]: 
+[GT140]: 
+[GT280]: 
+
+(4) Verbindungsinformation
+Durchlauf: 
+Abdeckung: 
+Status: 
+[GT100]: 
+[GT110]: 
+[GT150]: 
+[GT260]: 
+[GT280]: 
+
+(5) Sensordatum
+Durchlauf: 
+Abdeckung: 
+Status: 
+[GT100]: 
+[GT110]: 
+[GT180]: 
+[GT280]: 
+
+(6) Alarme und Logging
+Durchlauf: 
+Abdeckung: 
+Status: 
+[GT100]: 
+[GT110]: 
+[GT190]: 
+[GT230]: 
+[GT260]: 
+[GT280]: 
+
+(7) Aktualisierungsfrequenz und Verläufe
+Durchlauf: 
+Abdeckung: 
+Status: 
+[GT100]: 
+[GT110]: 
+[GT220]: 
+[GT250]: 
+[GT280]: 
+
+(8) Fehlerhafte Eingaben
+Durchlauf: 
+Abdeckung: 
+Status: 
+[GT100]: 
+[GT110]: 
+[GT270]: 
+[GT280]: 
+
+(9) Simulations-Szenario
+Durchlauf: 
+Abdeckung: 
+Status: 
+[GT100]: 
+[GT110]: 
+[GT210]: 
+[GT280]: 
+
+(10) Dockerimage
+Durchlauf: 
+Abdeckung: 
+Status: 
+[GT130]: 
+[GT280]: 
