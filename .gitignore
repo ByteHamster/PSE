@@ -41,6 +41,7 @@ $RECYCLE.BIN/
 docs/Pflichtenheft.pdf
 docs/Design.pdf
 docs/Implementation.pdf
+Qualitaetssicherung.pdf
 *.aux
 *.lof
 *.log
