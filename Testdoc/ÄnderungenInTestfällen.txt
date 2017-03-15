@@ -1,0 +1,6 @@
+﻿GT160, GT170, GT200, GT240 gestrichen, da auf nicht implementierten Kannkriterien basieren
+GT210: Alle verfügbaren, d. h. von uns mit gelieferten (es gibt keine Liste, sondern Auswahl über einen Dateidialog. Vier sind bereits vordefiniert.) Simulationsszenarien ...
+GT270: ... Jedes Mal muss eine Fehlermeldung erscheinen oder eine automatische Korrektur in den Wertebereich (so in der Überwachungskonsole implementiert) erfolgen.
+Testszenario 4: Reduktion auf Verbindungsinformationen
+Testszenario 5: Reduktion auf Sensordaten
+Testszenario 10: nur unter Ubuntu 16.04

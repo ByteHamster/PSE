@@ -1,0 +1,117 @@
+﻿  \item[FA10] Es gibt eine .jar Datei, die bei Ausführung die \gls{Fertigungssimulation} sowie zugehörige \glspl{OPC UA Server} startet.
+  \item[\textcolor{blue}{*FA20}] Es gibt ein \gls{Dockerimage} zur einfachen Verteilung und isolierten Ausführung der \gls{Fertigungssimulation}.
+  \item[FA30] Die \gls{Fertigungssimulation} wird nach der Model-View-Controller-Architektur entworfen.
+  \item[FA40] Der Betrieb der \gls{Produktionsanlage} wird simuliert und grafisch dargestellt.
+  \item[FA50] Die \gls{Produktionsanlage} wird innerhalb der \glspl{OPC UA Server} repräsentiert.
+  \item[FA60] Die Ports, über welche die einzelnen \gls{OPC UA Server} der \gls{Fertigungssimulation} kommunizieren, sind konfigurierbar.
+  \item[FA70] Die \gls{Fertigungssimulation} aktualisiert die \glspl{Sensordatum} ihrer \glspl{OPC UA Server}.
+  \item[FA80] Die \glspl{OPC UA Client} der \gls{Uberwachungskonsole} registrieren sich bei den \glslink{OPC UA Server}{OPC UA Servern} der \gls{Fertigungssimulation} und empfangen von diesen \glspl{Sensordatum}.
+  \item[FA90] Nach Anforderung durch die \gls{Uberwachungskonsole} wird in bestimmten, in der Anfrage definierten Zust\"anden ein Alarm an die \glspl{OPC UA Client} der \gls{Uberwachungskonsole} gesendet.
+  \item[\textcolor{blue}{*FA120}] Die \gls{Fertigungssimulation} besitzt vordefinierte \glspl{Simulations-Szenario}, die über das Menü gestartet werden können. Somit kann ohne aktive Nutzerinteraktion eine sich im aktiven Betrieb befindliche \gls{Produktionsanlage} simuliert werden.
+  \item[FA130] Die \gls{GUI} der \gls{Fertigungssimulation} zeigt drei Flüssigkeitstanks, die auf einer Höhe sind, und einen weiteren Flüssigkeitstank unter den oberen drei. Es führen Leitungen von den drei oberen Tanks zum unteren Tank.
+  \item[FA140] An jeder Leitung befinden sich ein Ventil sowie ein Durchflussmesser, dargestellt in Form eines sich drehenden Elements. Der Öffnungsgrad des Ventils wird prozentual auf dem Ventil angezeigt.
+  \item[FA150] Die Zu- und Abflussmengen der oberen Tanks, sowie die Abflussmenge des unteren Tanks können separat eingestellt werden. Die Zuflussmenge ergibt sich aus der Summe der Abflussmengen der oberen Tanks.
+  \item[FA170] Jedem der oberen Tanks ist eine feste Flüssigkeitsfarbe zugeordnet (Gelb, Cyan und Magenta). Die Farbe des unteren Tanks ergibt sich aus dem Mischungsverhältnis der oberen Tanks mittels \glslink{subtraktive Farbmischung}{subtraktiver Farbmischung}.
+  \item[FA190] Die Füllstände der Tanks werden gemessen. Der Füllstand der Tanks wird durch das Füllen der Tanks in der Farbe ihrer Flüssigkeit dargestellt.
+  \item[FA210] Der untere Tank enthält einen motorbetriebenen Mischer, dessen Drehzahl eingestellt werden kann. Dieser wird durch ein sich drehendes \gls{GUI} Element dargestellt. Die Umdrehungsgeschwindigkeit repräsentiert die Drehzahl des Mischermotors.
+  \item[FA230] An jedem Tank ist ein Temperatursensor angebracht.
+  \item[FA240] Die Zuflusstemperaturen der oberen Tanks können separat eingestellt werden.
+  \item[FA250] Jeder der dargestellten Tanks ist mit einer hellgrauen Box hinterlegt, welche den Zuständigkeitsbereich des jeweiligen \glslink{OPC UA Server}{OPC UA Servers} repräsentiert.
+  \item[FA260] Kommt es in der \gls{Fertigungssimulation} zu einem \"Uberlauf, so h\"alt die \gls{Fertigungssimulation} an und es wird ein Dialog mit dem Text "`\"Uberlauf"' angezeigt. Durch den Knopf "`Zur\"ucksetzen"' im Dialog wird das System wieder in den Startzustand versetzt. Anschlie{\ss}end wird die Ausführung fortgesetzt.
+  \item[FA280] Die \gls{Fertigungssimulation} besitzt einen "`Über"'-Dialog, welcher Lizenzinformationen zu verwendeten Bibliotheken sowie eine kurze Information zu den Erstellern des Programms, enthält.
+  \item[\textcolor{blue}{*FA290}] Der Menüeintrag "`Szenarien"' zeigt eine Liste der \glspl{Simulations-Szenario}, die durch einen Klick gestartet werden können.
+  \item[FA300] Die \glspl{Prozessvariable} können in einem Einstellungsdialog durch Schieberegler festgelegt werden. Darin existiert für jeden Tank ein eigener Reiter, der die tankspezifischen Einstellungen, wie zum Beispiel Zu- und Abflussmengen, Zuflusstemperaturen oder Motordrehzahlen enthält.
+  \item[FA330] Die Standardsprache der \gls{GUI} ist Englisch.
+  \item[FA340] Der Einstellungsdialog besitzt Knöpfe zum Verwerfen ("`Abbrechen"') und Anwenden ("`Speichern"') der Änderungen. Ein Klick auf einer der beiden Knöpfe schließt zudem den Dialog.
+  \item[FA350] Es gibt eine .jar-Datei, die bei Ausführung die \gls{Uberwachungskonsole} startet.
+  \item[\textcolor{blue}{*FA360}] Es gibt ein \gls{Dockerimage} zur einfachen Verteilung und isolierten Ausführung der \gls{Uberwachungskonsole}.
+  \item[FA370] Die \gls{Uberwachungskonsole} wird nach der Model-View-Controller-Architektur entworfen.
+  \item[FA380] Die \gls{Uberwachungskonsole} enthält vier \glspl{OPC UA Client}, von denen sich jeder mit einem \gls{OPC UA Server} der \gls{Fertigungssimulation} verbindet und mit diesem über \gls{TCP/IP} per \gls{OPC  UA} kommuniziert.
+  \item[FA390] Die \glspl{OPC UA Client} erhalten die \glslink{TCP/IP}{IP-Adresse} des verwendeten Computers, die durch die \gls{Uberwachungskonsole} nicht geändert werden kann.
+  \item[FA400] Die \glspl{OPC UA Client} erhalten beim Start die ausgehenden Ports automatisch durch das Betriebssystem.
+  \item[FA410] Beim Start versucht die \gls{Uberwachungskonsole}, eine Verbindung zwischen den \glspl{OPC UA Client} und den \glslink{OPC UA Server}{OPC UA Servern} herzustellen und sich so bei der \gls{Fertigungssimulation} zu registrieren.
+  \item[FA420] Alle angezeigten \glspl{Sensordatum} werden mit einer festen Frequenz aktualisiert. Dabei fragen die \glspl{OPC UA Client} die Daten der \glspl{OPC UA Server} ab und stellen sie anschlie{\ss}end der \gls{Uberwachungskonsole} bereit.
+  \item[FA430] Alarme mit ihrem jeweiligen Auslöser werden bei den \glslink{OPC UA Server}{OPC UA Servern} der \gls{Fertigungssimulation} registriert. Sie werden von den \glslink{OPC UA Client}{OPC UA Clients} der \gls{Uberwachungskonsole} empfangen und an die \gls{Uberwachungskonsole} weitergeleitet.
+  \item[FA440] Alarme werden asynchron zu den \glspl{Sensordatum} empfangen.
+  \item[\textcolor{blue}{*FA460}] Fehler und Ausnahmen während der Ausführung der \gls{Uberwachungskonsole} sowie alle eintreffenden Alarme werden geloggt.
+  \item[FA470] Die \gls{Uberwachungskonsole} stellt die \glspl{Sensordatum} und Alarme jedes Flüssigkeitsanks in einem eigenen Bereich dar.
+  \item[FA480] Die \gls{Uberwachungskonsole} zeigt die Farbe des unteren Tanks an.
+  \item[FA490] Die \gls{Uberwachungskonsole} zeigt die Zuflussmenge der oberen Tanks und die Abflussmenge aller Tanks auf jeweils einer Skala an.
+  \item[FA510] Die \gls{Uberwachungskonsole} zeigt den Füllstand aller Tanks auf jeweils einer Skala an.
+  \item[FA520] Die \gls{Uberwachungskonsole} zeigt die Temperatur aller Tanks auf jeweils einer Skala an.
+  \item[FA530] Die \gls{Uberwachungskonsole} zeigt die Drehzahl des Mischermotors im unteren Tank auf einer Skala an.
+  \item[FA540] Der zeitliche Verlauf des Füllstandes und der Temperatur wird jeweils für alle Tanks angezeigt.
+  \item[FA560] Die \gls{Uberwachungskonsole} registriert für jeden Tank jeweils einen Alarm für einen Überlauf und für einen Unterlauf.
+  \item[FA580] Ein Alarm wird durch einen Bezeichner und einen Kreis als Zustandssymbol dargestellt. Ist der Kreis rot, wurde der Alarm ausgelöst, ist er grün, wurde der Alarm nicht ausgelöst.
+  \item[FA620] Der Benutzer wird über einen Dialog und durch einen roten Kreis der Anzeige des entsprechenden Alarms direkt benachrichtigt, wenn der Alarm ausgelöst wurde.
+  \item[FA630] Ein Alarm wird als ausgelöst angezeigt nachdem die \gls{Uberwachungskonsole} durch die \gls{Fertigungssimulation} \"uber den Alarm informiert wurde. Die Anzeige besteht, bis der Alarm in der \gls{Fertigungssimulation} nicht mehr aktiv ist und die \gls{Uberwachungskonsole} mit der nächsten Aktualisierung der \glspl{Sensordatum} über das Ende informiert wurde.
+  \item[FA640] Es gibt eine zweistufige Ampel für den allgemeinen Zustand der \gls{Uberwachungskonsole}. Ist die Ampel rot, wurde mindestens ein Alarm ausgelöst, ist sie grün, wurde kein Alarm ausgelöst.
+  \item[\textcolor{blue}{*FA670}] Es gibt eine Loggingkonsole in Form einer mehrzeiligen Textausgabe, die die geloggten Ereignisse der \gls{Uberwachungskonsole} ausgibt.
+  \item[FA680] Der Menüeintrag "`Über"' öffnet ein neues Fenster, in dem der Programmname "`OSIP"', die Version, das Programmsymbol und die Lizenz einschließlich der Lizenzen verwendeter Bibliotheken angezeigt werden.
+  \item[FA690] Der Menüeintrag "`Einstellungen"' öffnet ein separates Fenster.
+  \item[FA700] In den Einstellungen werden die \glslink{TCP/IP}{IP-Adresse} der \glslink{OPC UA Client}{OPC UA Clients} und der \gls{OPC UA Server} sowie deren Ports angezeigt. Die Ports und die IP-Adresse der \glspl{OPC UA Server} sind konfigurierbar.
+  \item[FA750] Die Standardsprache ist Englisch.
+  \item[\textcolor{blue}{*FA760}] Der Nutzer kann das Zeitintervall für die Aktualisierung der Werte über einen Schieberegler oder eine Textbox einstellen.
+  \item[\textcolor{blue}{*FA770}] Die Aufnahme des zeitlichen Verlaufs jedes Füllstandes und jeder Temperatur ist ein- und ausschaltbar.
+  \item[\textcolor{blue}{*FA780}] Der Nutzer kann die verfügbaren Alarme ein- und ausschalten und deren Schwellenwerte festlegen.
+  \item[FA790] Die Eingaben in den Einstellungen werden direkt nach der Eingabe auf richtige Formatierung und Einhaltung des Wertebereichs gepr\"uft.
+  \item[FA800] Der Benutzer wird über eine Fehleingabe informiert.
+  \item[FA810] Nach Drücken des Abbruch-Knopfes im Einstellungsfenster bleiben die Einstellungen unverändert. Nach Drücken des Speichern-Knopfes im Einstellungsfenster werden alle vorhandenen Einstellungen mit denen aus dem Fenster überschrieben.
+  \item[FA830] Werden die Verbindungseinstellungen der \gls{Uberwachungskonsole} für die \glspl{OPC UA Server} oder \glspl{OPC UA Client} überschrieben, werden die \glspl{OPC UA Client} mit den neuen Einstellungen neu gestartet.
+  \item[FA840] Schlägt die Verbindung zischen den \glspl{OPC UA Client} und \glslink{OPC UA Server}{OPC UA Servern} fehl oder verliert mindestens ein \gls{OPC UA Client} die Verbindung zu seinem \gls{OPC UA Server}, wird der Benutzer über einen Dialog informiert und das Einstellungsfenster zur Eingabe der \gls{IP-Adresse} und Ports der \glspl{OPC UA Server} öffnet sich.
+  \item[NF05] OSIP wird frei unter der MIT Lizenz veröffentlicht.
+  \item[NF10] IP-Adressen müssen gültige IPv4 Adressen oder Hostnamen sein.
+  \item[NF20] Ports dürfen Werte im Bereich 1024 bis 61000 annehmen.
+  \item[NF30] Wenn sich \glspl{Sensordatum} in der \gls{Fertigungssimulation} ändern, werden die Änderungen spätestens nach der Zeitspanne von 100 Millisekunden (ms)
+    durch \gls{OPC UA} bereitgestellt. Nach der Aktualisierungsfrequenz und der Aktualisierung der \gls{Uberwachungskonsole} sind die ge\"anderten \glspl{Sensordatum}
+    gesch\"atzt nach 500 ms plus der Aktualisierungsfrequenz in der \gls{Uberwachungskonsole} sichtbar.
+  \item[NF40] Standardmäßig haben die \glspl{OPC UA Server} die Ports 8080, 8081, 8082 und 8083.
+  \item[NF50] Wenn \glspl{Prozessvariable} verändert werden, sind sie gesch\"atzt nach spätestens 500 ms per \gls{OPC UA} abrufbar.
+  \item[NF60] Die Drehzahl des Mischermotors kann vom Benutzer in einem Bereich zwischen 0 und 300 Umdrehungen pro Minute gewählt werden.
+  \item[NF70] Standardmäßig hat der Mischermotor 250 Umdrehungen pro Minute.
+  \item[NF80] Die Tanks haben ein Füllvermögen von 100 Litern.
+  \item[NF90] Der Zu- und Abfluss der oberen Tanks liegt zwischen 0 und 10 Litern pro Sekunde. Der Zu- und Abfluss des unteren Tanks liegt zwischen 0 und 30 Litern pro Sekunde.
+  \item[\textcolor{blue}{*NF110}] Die Schwellenwerte für die Alarme dürfen zwischen 0 und 100 \% gewählt werden. Standardmäßig liegt der Schwellenwert für einen Überlauf bei
+  95 \% und der Schwellenwert für einen Unterlauf bei 5 \%.
+  \item[\textcolor{blue}{*NF140}] Die Aktualisierungsfrequenz kann vom Benutzer im Bereich zwischen 100 und 4000 ms gewählt werden.
+  \item[NF150] Standardmäßig liegt die Aktualisierungsfrequenz bei 1000 ms.
+  \item[D10] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellte IP-Adresse und Ports der \gls{OPC UA Server}.
+  \item[\textcolor{blue}{*D30}] Die \gls{Uberwachungskonsole} speichert die zuletzt eingestellte Aktualisierungsfrequenz für die \glspl{Sensordatum}.
+  \item[\textcolor{blue}{*D40}] Die \gls{Uberwachungskonsole} speichert die zuletzt eingeschalteten Alarme und alle Schwellenwerte.
+  \item[\textcolor{blue}{*D50}] Die \gls{Uberwachungskonsole} speichert, welche Verläufe zuletzt angezeigt wurden.
+  \item[D110] Die \gls{Fertigungssimulation} speichert die zuletzt genutzten Ports der \glspl{OPC UA Server}.
+  \item[\textcolor{blue}{*D130}] Die \gls{Fertigungssimulation} speichert \glspl{Simulations-Szenario} in einzelnen Dateien.
+
+\section{Globale Testfälle}
+  \item[GT100] \textbf{Starten der \gls{Fertigungssimulation}}: Eine .jar-Datei startet bei Ausführung die \gls{Fertigungssimulation} und die \glspl{OPC UA Server} (FA10).
+  \item[GT110] \textbf{Starten der \gls{Uberwachungskonsole} mit gültigen Einstellungen}: Die \gls{Fertigungssimulation} läuft und eine .jar-Datei startet
+   bei Ausführung die \gls{Uberwachungskonsole} (FA350) und die \glspl{OPC UA Client} (FA380). Diese sind mit der korrekten \gls{IP-Adresse} und den verwendeten Ports der \gls{OPC UA Server} der \gls{Fertigungssimulation} eingestellt, sodass die Verbindungen erfolgreich hergestellt (FA380 - FA400, FA410) und die aktuellen \glspl{Sensordatum}
+   dargestellt werden (FA80, FA420).
+  \item[GT120] \textbf{Starten der \gls{Uberwachungskonsole} mit ungültigen Einstellungen}: Die \gls{Fertigungssimulation} läuft und die \gls{Uberwachungskonsole} wird mit falscher \gls{IP-Adresse} und falschen Ports für die \glspl{OPC UA Server} der \gls{Fertigungssimulation} gestartet, sodass eine Fehlermeldung für den Benutzer erscheint (FA840).
+  \item[GT130] \textbf{Test der \glspl{Dockerimage}}: Das \gls{Dockerimage} der \gls{Fertigungssimulation} (FA20) und im Anschluss das der \gls{Uberwachungskonsole} (FA360) werden gestartet. Beide besitzen unterschiedliche \glspl{IP-Adresse}.
+  \item[GT140] \textbf{Vollständigkeit der \glspl{GUI}}: Nach dem ersten Öffnen der \gls{Fertigungssimulation} und der \gls{Uberwachungskonsole} enthalten die Fenster alle Anzeigen entsprechend FA40, FA130, FA140, FA170 - FA230, FA250 für die \gls{Fertigungssimulation} und FA470 - FA580, FA640 - FA670 für die \gls{Uberwachungskonsole}.
+   Außerdem beinhalten der "`Über"'- und "`Einstellungen"'-Dialog der \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} alle Elemente entsprechend FA280, FA300 - FA340 für die \gls{Fertigungssimulation} und FA680 - FA720, FA740 - FA780, FA810 für die \gls{Uberwachungskonsole}. Die Sprache ist jeweils Englisch (FA330, FA750).
+  \item[GT150] \textbf{Einstellung der \gls{Verbindungsinformation} der \gls{Fertigungssimulation}}: Die \gls{Fertigungssimulation} läuft. Die Ports für die \gls{OPC UA Server} werden neu eingestellt (FA60). Eine auf die alten Ports eingestellte \gls{Uberwachungskonsole} erhält zunächst keine \glspl{Sensordatum} mehr. Nach Einstellung der \gls{Uberwachungskonsole} auf die neuen Ports (FA700, FA810, FA820) und leeren Eingaben für die Ports der \glspl{OPC UA Client}, die somit automatisch bezogen werden (FA730), werden die \glspl{Sensordatum} wieder abgerufen (FA830).
+  \item[GT180] \textbf{Einstellung der \glspl{Sensordatum} mit Messung des zeitlichen Verlaufs}: Die \gls{Fertigungssimulation} läuft und die \gls{Uberwachungskonsole} ist bei dieser mit einer Aktualisierungsfrequenz von 500 ms registriert. Nacheinander werden die Werte für die Zuflussmengen der oberen Tanks (FA150), die Abflussmengen und
+   Temperaturen aller Tanks (FA150, FA240) sowie die Drehzahl des Mischermotors (FA210) in der \gls{Fertigungssimulation} neu eingestellt (FA300, FA340) und wieder auf ihren Standardwert zurückgesetzt. Alle Veränderungen werden in der \gls{Uberwachungskonsole} innerhalb von 1000 ms (NF30) angezeigt. Ebenfalls werden über die Zeit die Änderungen der Füllstände und Temperaturen korrekt aufgezeichnet und dargestellt (FA540).
+  \item[GT190] \textbf{Auslösen der Alarme}: Die \gls{Fertigungssimulation} läuft und die \gls{Uberwachungskonsole} ist bei dieser mit einer Aktualisierungsfrequenz von 4000 ms registriert. Nacheinander werden die Alarme für die Überläufe und Unterläufe in der \gls{Fertigungssimulation} ausgelöst, indem die Tanks voll bzw. leer laufen. Nach jedem Überlauf muss die \gls{Fertigungssimulation} zurückgesetzt werden (FA260). Die ausgelösten Alarme werden direkt in der \gls{Uberwachungskonsole} angezeigt (FA90, FA430, FA440, FA460, FA560, FA580, FA620 - FA670).
+  \item[GT210] \textbf{Korrekter Ablauf der \glspl{Simulations-Szenario}}: Die \gls{Fertigungssimulation} läuft und die \gls{Uberwachungskonsole} ist bei dieser registriert. Alle verfügbaren, d. h. von uns mit gelieferten \glspl{Simulations-Szenario} werden nacheinander korrekt ausgeführt (FA120, FA290), ohne dass eine Bedienung durch den Nutzer benötigt wird.
+  \item[GT220] \textbf{Änderung der Aktualisierungsfrequenz}: Die \gls{Fertigungssimulation} läuft und die \gls{Uberwachungskonsole} ist bei dieser mit einer Aktualisierungsfrequenz von 500 ms registriert. Das Ändern beliebiger \glspl{Sensordatum} in der \gls{Fertigungssimulation} wird innerhalb gesch\"atzt 1000 ms in der \gls{Uberwachungskonsole} angezeigt (FA50, FA70, FA420, NF30). Anschließend wird die Aktualisierungsfrequenz auf 4000 ms erhöht (FA760) und innerhalb der \gls{Fertigungssimulation} werden beliebige \glspl{Sensordatum} umgeändert, deren Veränderung gesch\"atzt nach spätestens 4500 ms in der \gls{Uberwachungskonsole} angezeigt wird (NF30).
+  \item[GT230] \textbf{Ein- und Ausschalten der Alarme}: Die \gls{Fertigungssimulation} läuft und die \gls{Uberwachungskonsole} ist bei dieser registriert.
+   Die vorhandenen Alarme werden in der \gls{Uberwachungskonsole} ausgeschalten (FA450, FA780) und anschließend wird der Schwellenwert in der \gls{Fertigungssimulation} überschritten. Dies wird in der \gls{Uberwachungskonsole} nicht angezeigt.
+  \item[GT250] \textbf{Ein- und Ausschalten der Verläufe}: Die \gls{Fertigungssimulation} läuft mit eingestelltem \gls{Jitter} und die \gls{Uberwachungskonsole} ist bei dieser registriert. Die verschiedenen Temperatur- und Füllstandsverläufe werden ausgeschalten und nach einer Minute wieder eingeschalten (FA770). In dieser Zeit darf keine Aufzeichnung erfolgen. Werte aus diesem Zeitraum werden im Verlauf weder währenddessen noch danach angezeigt.
+  \item[GT260] \textbf{Logging}: Die \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} laufen über einen bestimmten Zeitraum. Alle in diesem Zeitraum auftretenden Ereignisse werden geloggt (FA100, FA460) und angezeigt (FA670).
+  \item[GT270] \textbf{Fehlerhafte Eingaben}: Alle möglichen Einstellungen in der \gls{Fertigungssimulation} und \gls{Uberwachungskonsole} werden mit Werten außerhalb des Wertebereichs vorgenommen (NF10, NF20, NF60, NF90 - NF110, NF140). Jedes Mal muss eine Fehlermeldung erscheinen (FA790, FA800) oder eine automatische Korrektur in den Wertebreich erfolgen.
+  \item[GT280] \textbf{Programmende}: Wenn die \gls{Fertigungssimulation} oder \gls{Uberwachungskonsole} beendet wird, werden auch die \glspl{OPC UA Server} und die \glspl{OPC UA Client} beendet und es bleibt kein laufender Prozess übrig.
+
+\subsection{Testszenarien}
+  \item[(1)] \gls{Fertigungssimulation}: [GT100], [GT280]
+  \item[(2)] \gls{Uberwachungskonsole} mit ungültigen Einstellungen: [GT100], [GT120], [GT280]
+  \item[(3)] \gls{GUI}: [GT100], [GT110], [GT140], [GT280]
+  \item[(4)] \glspl{Verbindungsinformation}: [GT100], [GT110], [GT150], [GT260], [GT280]
+  \item[(5)] \glspl{Sensordatum}: [GT100], [GT110], [GT180], [GT280]
+  \item[(6)] Alarme und Logging: [GT100], [GT110], [GT190], [GT230], [GT260], [GT280]
+  \item[(7)] Aktualisierungsfrequenz und Verläufe: [GT100], [GT110], [GT220], [GT250], [GT280]
+  \item[(8)] Fehlerhafte Eingaben: [GT100], [GT110], [GT270], [GT280]
+  \item[(9)] \glspl{Simulations-Szenario}: [GT100], [GT110], [GT210], [GT280]
+  \item[(10)] \glspl{Dockerimage}: [GT130], [GT280]
