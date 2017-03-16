@@ -1,0 +1,11 @@
+FROM ubuntu:16.04
+
+RUN apt-get update && apt-get install --assume-yes --no-install-recommends openjfx openjdk-8-jdk maven git
+
+COPY . /opt/PSE
+WORKDIR /opt/PSE/src
+RUN mvn package -Dmaven.test.skip=true
+RUN mkdir /root/.osip
+RUN echo "serverHostname_MIX=simulation\nserverHostname_YELLOW=simulation\nserverHostname_CYAN=simulation\nserverHostname_MAGENTA=simulation\n" > /root/.osip/monitoring.conf
+CMD java -jar osip-monitoring-controller/target/osip-monitoring-controller-1.0-with-dependencies.jar
+
