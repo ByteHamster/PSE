@@ -27,6 +27,16 @@ import javafx.util.StringConverter;
  */
 class GeneralSettings extends ScrollPane {
     /**
+     * The number of major ticks for the timeSlider.
+     */
+    private static final int NUMBER_OF_MAJOR_TICKS = 7;
+    
+    /**
+     * The number of minor ticks between two major ticks in the timeSlider.
+     */
+    private static final int NUMBER_OF_MINOR_TICKS = 8;
+    
+    /**
      * Used for setting the servers' host name.
      */
     private TextField serverHostname;
@@ -111,8 +121,8 @@ class GeneralSettings extends ScrollPane {
                 MonitoringViewConstants.MAX_UPDATE_INTERVAL,
                 currentSettings.getFetchInterval(MonitoringViewConstants.DEFAULT_UPDATE_INTERVAL));
         timeSlider.setMajorTickUnit((MonitoringViewConstants.MAX_UPDATE_INTERVAL
-                - MonitoringViewConstants.MIN_UPDATE_INTERVAL) / MonitoringViewConstants.NUMBER_OF_MAJOR_TICKS);
-        timeSlider.setMinorTickCount(MonitoringViewConstants.NUMBER_OF_MINOR_TICKS);
+                - MonitoringViewConstants.MIN_UPDATE_INTERVAL) / GeneralSettings.NUMBER_OF_MAJOR_TICKS);
+        timeSlider.setMinorTickCount(GeneralSettings.NUMBER_OF_MINOR_TICKS);
         timeSlider.setShowTickMarks(true);
         timeSlider.setShowTickLabels(true);
         timeSlider.setPrefWidth(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS);

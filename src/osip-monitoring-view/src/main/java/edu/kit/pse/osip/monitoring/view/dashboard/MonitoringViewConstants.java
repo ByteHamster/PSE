@@ -51,7 +51,7 @@ public final class MonitoringViewConstants {
     /**
      * The number of major ticks for a slider.
      */
-    public static final int NUMBER_OF_MAJOR_TICKS = 7;
+    public static final int NUMBER_OF_MAJOR_TICKS = 10;
     
     /**
      * The number of minor ticks between two major ticks.
