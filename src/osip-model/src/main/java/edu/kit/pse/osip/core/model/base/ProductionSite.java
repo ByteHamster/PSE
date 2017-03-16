@@ -14,8 +14,7 @@ import java.util.Observable;
 public class ProductionSite extends Observable {
     protected MixTank mixTank;
     protected final EnumMap<TankSelector, Tank> tanks = new EnumMap<>(TankSelector.class);;
-    protected final EnumMap<TankSelector, Float> inputTemperature
-        = new EnumMap<TankSelector, Float>(TankSelector.class);
+    protected final EnumMap<TankSelector, Float> inputTemperature = new EnumMap<>(TankSelector.class);
 
     /**
      * Template method to allow subclasses to create objects of subclasses of Tank. The parameters are the same

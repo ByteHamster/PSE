@@ -2,8 +2,6 @@ package edu.kit.pse.osip.simulation.view.dialogs;
 
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.view.main.ViewConstants;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -38,6 +36,10 @@ public class HelpDialog extends Stage {
         setTitle(Translator.getInstance().getString("simulation.helpdialog.title"));
         getIcons().add(new Image("/icon.png"));
 
+        setupView();
+    }
+
+    private void setupView() {
         TabPane tabPane = new TabPane();
         tabPane.getTabs().addAll(createMainTab(), createControlTab(), createSettingsTab(), createScenarioTab());
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
@@ -45,12 +47,9 @@ public class HelpDialog extends Stage {
         Button close = new Button(Translator.getInstance().getString("simulation.helpdialog.closeButton"));
         close.setDefaultButton(true);
         close.setCancelButton(true);
-        close.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                Stage stage = (Stage) close.getScene().getWindow();
-                stage.close();
-            }
+        close.setOnAction(actionEvent -> {
+            Stage stage = (Stage) close.getScene().getWindow();
+            stage.close();
         });
 
         BorderPane pane = new BorderPane();

@@ -2,8 +2,6 @@ package edu.kit.pse.osip.monitoring.view.dialogs;
 
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.monitoring.view.dashboard.MonitoringViewConstants;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -37,6 +35,10 @@ public class HelpDialog extends Stage {
         setTitle(Translator.getInstance().getString("monitoring.helpdialog.title"));
         getIcons().add(new Image("/icon.png"));
 
+        setupView();
+    }
+
+    private void setupView() {
         TabPane tabPane = new TabPane();
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
         tabPane.getTabs().addAll(createMainTab(), createSettingsTab());
@@ -44,12 +46,9 @@ public class HelpDialog extends Stage {
         Button close = new Button(Translator.getInstance().getString("monitoring.helpdialog.closeButton"));
         close.setDefaultButton(true);
         close.setCancelButton(true);
-        close.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                Stage stage = (Stage) close.getScene().getWindow();
-                stage.close();
-            }
+        close.setOnAction(actionEvent -> {
+            Stage stage = (Stage) close.getScene().getWindow();
+            stage.close();
         });
 
         BorderPane pane = new BorderPane();

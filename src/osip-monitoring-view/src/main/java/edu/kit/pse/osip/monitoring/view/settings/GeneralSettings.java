@@ -132,7 +132,7 @@ class GeneralSettings extends ScrollPane {
         // **
         layout.add(label, 0, 0);
         layout.add(timeSlider, 1, 0);
-        timeBox = new Spinner<Number>((double) MonitoringViewConstants.MIN_UPDATE_INTERVAL,
+        timeBox = new Spinner<>((double) MonitoringViewConstants.MIN_UPDATE_INTERVAL,
                 MonitoringViewConstants.MAX_UPDATE_INTERVAL,
                 currentSettings.getFetchInterval(MonitoringViewConstants.DEFAULT_UPDATE_INTERVAL));
         timeBox.setEditable(true);
@@ -181,7 +181,7 @@ class GeneralSettings extends ScrollPane {
                     Translator.getInstance().getString("monitoring.settings.generalSettings.serverPort"),
                     Translator.getInstance().getString(TankSelector.TRANSLATOR_LABEL_PREFIX + tank.name())
                     .toLowerCase()));
-            currentField = new Spinner<Integer>(OSIPConstants.MIN_PORT, OSIPConstants.MAX_PORT,
+            currentField = new Spinner<>(OSIPConstants.MIN_PORT, OSIPConstants.MAX_PORT,
                     currentSettings.getPort(tank, defaultPort++));
             currentField.setEditable(true);
             currentField.setPrefWidth(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS);
@@ -207,7 +207,7 @@ class GeneralSettings extends ScrollPane {
                     }
                 }
             });
-            currentField.getEditor().setTextFormatter(new TextFormatter<Integer>(currentField.getValueFactory()
+            currentField.getEditor().setTextFormatter(new TextFormatter<>(currentField.getValueFactory()
                     .getConverter(), currentField.getValueFactory().getValue()));
             serverPorts.put(tank, currentField);
             layout.add(label, 0, row);

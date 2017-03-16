@@ -64,9 +64,9 @@ public class ScenarioTest {
         CompletableFuture<Boolean> future2 = new CompletableFuture<>();
         CompletableFuture<Boolean> future3 = new CompletableFuture<>();
 
-        scenario.appendRunnable(productionSite -> future1.complete(Boolean.valueOf(true)));
-        scenario.appendRunnable(productionSite -> future2.complete(Boolean.valueOf(true)));
-        scenario.appendRunnable(productionSite -> future3.complete(Boolean.valueOf(true)));
+        scenario.appendRunnable(productionSite -> future1.complete(Boolean.TRUE));
+        scenario.appendRunnable(productionSite -> future2.complete(Boolean.TRUE));
+        scenario.appendRunnable(productionSite -> future3.complete(Boolean.TRUE));
         scenario.setProductionSite(fakeSite);
         scenario.startScenario();
 
@@ -87,9 +87,9 @@ public class ScenarioTest {
         CompletableFuture<Boolean> future1 = new CompletableFuture<>();
         CompletableFuture<Boolean> future2 = new CompletableFuture<>();
 
-        scenario.appendRunnable(productionSite -> future1.complete(Boolean.valueOf(true)));
+        scenario.appendRunnable(productionSite -> future1.complete(Boolean.TRUE));
         scenario.addPause(500);
-        scenario.appendRunnable(productionSite -> future2.complete(Boolean.valueOf(true)));
+        scenario.appendRunnable(productionSite -> future2.complete(Boolean.TRUE));
         scenario.setProductionSite(fakeSite);
         scenario.startScenario();
 
