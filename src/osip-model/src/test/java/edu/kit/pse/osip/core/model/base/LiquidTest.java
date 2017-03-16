@@ -77,7 +77,7 @@ public class LiquidTest {
         assertTrue(liquid1.equals(liquid2));
         assertTrue(liquid2.equals(liquid1));
         assertFalse(liquid1.equals(null));
-        assertFalse(liquid1.equals(new String("test")));
+        assertFalse(liquid1.equals("test"));
 
         liquid2 = new Liquid(2, SimulationConstants.MIN_TEMPERATURE, color);
         assertFalse(liquid1.equals(liquid2));

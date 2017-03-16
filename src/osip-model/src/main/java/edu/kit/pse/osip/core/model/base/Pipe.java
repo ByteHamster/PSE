@@ -7,7 +7,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 /**
  * A pipe, where you can insert and take out liquid. It is a queue, so if you put in liquid, you can take it out in
- * @see length steps. It has a valve attached, so you can limit the throughput. If you limit the throughput or put in
+ * {@code length} steps. It has a valve attached, so you can limit the throughput. If you limit the throughput or put in
  * less liquid than possible, the liquid of takeOut will be smaller when the put in liquid reaches the other end. You
  * can put in the liquid of SimulationConstants.SIMULATION_STEP millimeter of the pipe at once.
  */
@@ -107,9 +107,6 @@ public class Pipe extends java.util.Observable {
      *      is not a Liquid object.
      */
     public boolean isLiquidEntering() {
-        if (queue.peekLast() == null) {
-            return false;
-        }
-        return queue.peekLast().getAmount() != 0;
+        return queue.peekLast() != null && queue.peekLast().getAmount() != 0;
     }
 }

@@ -13,7 +13,7 @@ public abstract class ObjectDrawer implements Drawer {
 
     /**
      * Initiates the ObjectDrawer, setting its position to pos.
-     * @param pos 
+     * @param pos Position of the element
      */
     public ObjectDrawer(Point2D pos) {
         this.position = pos;

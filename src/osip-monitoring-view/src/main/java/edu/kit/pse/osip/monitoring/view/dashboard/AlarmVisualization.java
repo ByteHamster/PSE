@@ -76,7 +76,7 @@ class AlarmVisualization extends Observable implements Observer {
                 super.layoutChildren();
             }
         };
-        layout.setPrefWidth(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS * 1.2);
+        layout.setPrefWidth(MonitoringViewConstants.PREF_SIZE_FOR_BARS * 1.2);
         layout.getChildren().addAll(alarmState, this.alarmName);
     }
 

@@ -79,7 +79,7 @@ class ProgressVisualization {
         }
         y.setLabel(Translator.getInstance().getString("monitoring.tank.progress.y"));
         progressChart = new LineChart<>(x, y);
-        progressChart.setPrefHeight(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS * 1.25);
+        progressChart.setPrefHeight(MonitoringViewConstants.PREF_SIZE_FOR_BARS * 1.25);
         progressSeries = new XYChart.Series<>();
         progressSeries.setName(Translator.getInstance().getString("monitoring.tank.progress.legend"));
         progressChart.getData().add(progressSeries);

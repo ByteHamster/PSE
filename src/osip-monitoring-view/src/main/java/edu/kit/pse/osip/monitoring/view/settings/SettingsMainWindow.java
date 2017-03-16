@@ -105,7 +105,7 @@ class SettingsMainWindow {
         
         tabsPane = new TabPane();
         tabsPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
-        tabsPane.setPrefHeight(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS * 1.5);
+        tabsPane.setPrefHeight(MonitoringViewConstants.PREF_SIZE_FOR_BARS * 1.5);
         tabGeneralSettings = new Tab(translator.getString("monitoring.settings.tab.generalSettings"));
         tabGeneralSettings.setContent(generalSettingsTab);
         tabAlarms = new Tab(translator.getString("monitoring.settings.tab.alarms"));
