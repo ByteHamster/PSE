@@ -18,7 +18,7 @@ setMotorRpm(1000);
 setUpperInThreshold(TANK_YELLOW, 0);
 setUpperOutThreshold(TANK_YELLOW, 20);
 setUpperInThreshold(TANK_MAGENTA, 0);
-setUpperOutThreshold(TANK_MAGENTA, 100);
+setUpperOutThreshold(TANK_MAGENTA, 60);
 
 delay(delayTime);
 
@@ -35,7 +35,7 @@ setUpperOutThreshold(TANK_YELLOW, 0);
 setUpperInThreshold(TANK_CYAN, 0);
 setUpperOutThreshold(TANK_CYAN, 0);
 setUpperInThreshold(TANK_MAGENTA, 100);
-setUpperOutThreshold(TANK_MAGENTA, 100);
+setUpperOutThreshold(TANK_MAGENTA, 50);
 setMixOutThreshold(100);
 delay(3 * delayTime);
 
