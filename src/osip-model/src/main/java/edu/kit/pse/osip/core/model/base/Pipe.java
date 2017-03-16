@@ -89,15 +89,6 @@ public class Pipe extends java.util.Observable {
     public float getMaxInput() {
         return crosssection * SimulationConstants.SIMULATION_STEP * (threshold / 100f);
     }
-    
-    /**
-     * This tells you the maximal amount of liquid in cm³ which you can put into the pipe with a fully opened valve.
-     * 
-     * @return the maximum amount of liquid you can put into the pipe with a fully opened valve.
-     */
-    public float getMaxInputWithFullyOpenedValve() {
-        return crosssection * SimulationConstants.SIMULATION_STEP;
-    }
 
     /**
      * Resets the Pipe.

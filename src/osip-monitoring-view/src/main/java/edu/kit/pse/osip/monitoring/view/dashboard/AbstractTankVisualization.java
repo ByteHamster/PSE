@@ -174,7 +174,7 @@ abstract class AbstractTankVisualization extends GridPane {
     protected final void setBorderColor(Color borderColor) {
         BorderStroke bStroke = new BorderStroke(borderColor, BorderStrokeStyle.SOLID, null,
                 new BorderWidths(MonitoringViewConstants.TANK_BORDER_WIDTH));
-        Border newBorder = new Border(new BorderStroke[]{bStroke});
+        Border newBorder = new Border(bStroke);
         this.setBorder(newBorder);
     }
     

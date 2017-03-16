@@ -60,9 +60,6 @@ public final class FormatChecker {
         } catch (NumberFormatException e) {
             return false;
         }
-        if (result < 0 || result > 100) {
-            return false;
-        }
-        return true;
+        return !(result < 0 || result > 100);
     }
 }

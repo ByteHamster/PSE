@@ -146,8 +146,7 @@ class GeneralSettings extends ScrollPane {
             @Override
             public Number fromString(String string) {
                 try {
-                    double d = Double.parseDouble(string);
-                    return d;
+                    return Double.parseDouble(string);
                 } catch (NumberFormatException nfExc) {
                     return timeSlider.getValue();
                 }

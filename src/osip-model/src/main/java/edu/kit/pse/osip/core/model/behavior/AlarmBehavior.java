@@ -14,4 +14,4 @@ public enum AlarmBehavior {
      * Alarm is triggered when the observed value gets smaller than the given value.
      */
     SMALLER_THAN
-};
+}

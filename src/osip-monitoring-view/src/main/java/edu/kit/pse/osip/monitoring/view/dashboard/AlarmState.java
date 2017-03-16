@@ -12,4 +12,4 @@ public enum AlarmState {
      * The alarm is disabled and receives no de- or activation.
      */
     ALARM_DISABLED
-};
+}

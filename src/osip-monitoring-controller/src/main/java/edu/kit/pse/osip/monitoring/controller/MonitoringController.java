@@ -160,7 +160,6 @@ public final class MonitoringController extends Application {
                 System.err.println("Error while disconnecting: " + e.getMessage());
             }
             cont.client = null;
-            cont.absClient = null;
         }
         try {
             mixCont.client.disconnectClient();
@@ -168,7 +167,6 @@ public final class MonitoringController extends Application {
             System.err.println("Error while disconnecting: " + e.getMessage());
         }
         mixCont.client = null;
-        mixCont.absClient = null;
         AbstractTankClient.releaseSharedResources();
     }
 
@@ -177,13 +175,11 @@ public final class MonitoringController extends Application {
         String hostname = currentSettings.getHostname(mixCont.tank.getTankSelector(), DEFAULT_HOSTNAME);
         int port = currentSettings.getPort(mixCont.tank.getTankSelector(), defaultPort++);
         mixCont.client = new MixTankClient(new RemoteMachine(hostname, port));
-        mixCont.absClient = mixCont.client;        
         
         for (TankContainer cont : tanks) {
             hostname = currentSettings.getHostname(cont.tank.getTankSelector(), DEFAULT_HOSTNAME);
             port = currentSettings.getPort(cont.tank.getTankSelector(), defaultPort++);
             cont.client = new TankClient(new RemoteMachine(hostname, port));
-            cont.absClient = cont.client;           
         }
     
         mixCont.client.connectClient();
@@ -218,13 +214,11 @@ public final class MonitoringController extends Application {
         hostname = currentSettings.getHostname(mixCont.tank.getTankSelector(), DEFAULT_HOSTNAME);
         port = currentSettings.getPort(mixCont.tank.getTankSelector(), defaultPort++);
         mixCont.client = new MixTankClient(new RemoteMachine(hostname, port));
-        mixCont.absClient = mixCont.client;
 
         for (TankContainer cont: tanks) {
             hostname = currentSettings.getHostname(cont.tank.getTankSelector(), DEFAULT_HOSTNAME);
             port = currentSettings.getPort(cont.tank.getTankSelector(), defaultPort++);
             cont.client = new TankClient(new RemoteMachine(hostname, port));
-            cont.absClient = cont.client;
         }
 
         try {
@@ -330,7 +324,6 @@ public final class MonitoringController extends Application {
     private class Container {
         TankSelector selector;
         AbstractTank absTank;
-        AbstractTankClient absClient;
         AlarmGroup<ObservableBoolean, ObservableBoolean> alarmGroup;
         
         IntReceivedListener colorListener = value ->

@@ -35,7 +35,6 @@ public abstract class AbstractTankTab extends Tab implements Observer {
     private TextField outFlowValue;
     private AbstractTank tank;
 
-    private boolean controlsDisabled;
     protected boolean skipUpdates = false;
 
     /**
@@ -47,8 +46,6 @@ public abstract class AbstractTankTab extends Tab implements Observer {
         super(name);
         this.tank = tank;
         this.setClosable(false);
-
-        controlsDisabled = false;
 
         pane = new GridPane();
         pane.setPrefWidth(ViewConstants.CONTROL_WIDTH);
@@ -103,7 +100,6 @@ public abstract class AbstractTankTab extends Tab implements Observer {
      * @param isDisable true if inputs shall be blocked, false if they shall be enabled
      */
     protected void setControlsDisabled(boolean isDisable) {
-        controlsDisabled = isDisable;
         if (outFlowSlider != null) {
             outFlowSlider.setDisable(isDisable);
         }
