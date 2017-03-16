@@ -132,7 +132,6 @@ class SettingsMainWindow {
         window.setTitle(translator.getString("monitoring.settings.title"));
         window.getIcons().add(new Image("icon.png"));
         window.setOnCloseRequest(event -> {
-            reset();
             if (buttonCancel.isDisabled()) {
                 showSettingsClosedWarning();
             }
@@ -140,16 +139,6 @@ class SettingsMainWindow {
         window.setScene(scene);
         window.setMinWidth(MIN_WINDOW_WIDTH);
         window.setMinHeight(MIN_WINDOW_HEIGHT);
-    }
-    
-    /**
-     * Resets the settings when no settings are saved.
-     */
-    private void reset() {
-        tabsPane.getSelectionModel().clearAndSelect(0);
-        generalSettingsTab.reset(currentSettings);
-        alarmsTab.reset(currentSettings);
-        progressionsTab.reset(currentSettings);
     }
     
     /**
@@ -171,6 +160,16 @@ class SettingsMainWindow {
      */
     protected Stage getStage() {
         return window;
+    }
+    
+    /**
+     * Resets the settings when no settings are saved.
+     */
+    protected void reset() {
+        tabsPane.getSelectionModel().clearAndSelect(0);
+        generalSettingsTab.reset(currentSettings);
+        alarmsTab.reset(currentSettings);
+        progressionsTab.reset(currentSettings);
     }
     
     /**
@@ -215,10 +214,7 @@ class SettingsMainWindow {
      * @param handler The handler for the cancel button in the settings view.
      */
     protected void setSettingsCancelButtonHandler(EventHandler<ActionEvent> handler) {
-        buttonCancel.setOnAction(event -> {
-            reset();
-            handler.handle(event);
-        });
+        buttonCancel.setOnAction(handler);
     }
     
     /**

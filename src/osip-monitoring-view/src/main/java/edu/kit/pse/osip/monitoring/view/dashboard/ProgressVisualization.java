@@ -16,11 +16,6 @@ import javafx.scene.shape.Line;
  */
 class ProgressVisualization {
     /**
-     * Stores the amount of milliseconds per second.
-     */
-    private static final double MS_PER_SEC = 1000;
-    
-    /**
      * The tank to which this progression is assigned.
      */
     private AbstractTank tank;
