@@ -71,7 +71,7 @@ public class AboutDialog extends Stage {
         InputStream inStream = getClass().getClassLoader().getResourceAsStream(path);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inStream));
         StringBuilder builder = new StringBuilder();
-        String aux = "";
+        String aux;
         try {
             while ((aux = reader.readLine()) != null) {
                 builder.append(aux);

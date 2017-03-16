@@ -43,7 +43,7 @@ public class ColorTest {
         assertEquals(0x22 / 255f, color.getB(), epsilon);
         assertEquals(0x7F9B22, color.getRGB());
         try {
-            color = new Color(0x01FFFFFF);
+            new Color(0x01FFFFFF);
             fail("Color accepts non-null first byte for rgb constructor");
         } catch (IllegalArgumentException e) {
             // expected
@@ -55,39 +55,38 @@ public class ColorTest {
      */
     @Test
     public void testWrongArgumentsConstructor() {
-        Color color = null;
         try {
-            color = new Color(-1, 0, 0);
+            new Color(-1, 0, 0);
             fail("Expected IllegalArgumentException");
         } catch (IllegalArgumentException e) {
             // Expected
         }
         try {
-            color = new Color(2, 0, 0);
+            new Color(2, 0, 0);
             fail("Expected IllegalArgumentException");
         } catch (IllegalArgumentException e) {
             // Expected
         }
         try {
-            color = new Color(0, -1, 0);
+            new Color(0, -1, 0);
             fail("Expected IllegalArgumentException");
         } catch (IllegalArgumentException e) {
             // Expected
         }
         try {
-            color = new Color(0, 2, 0);
+            new Color(0, 2, 0);
             fail("Expected IllegalArgumentException");
         } catch (IllegalArgumentException e) {
             // Expected
         }
         try {
-            color = new Color(0, 0, -1);
+            new Color(0, 0, -1);
             fail("Expected IllegalArgumentException");
         } catch (IllegalArgumentException e) {
             // Expected
         }
         try {
-            color = new Color(0, 0, 2);
+            new Color(0, 0, 2);
             fail("Expected IllegalArgumentException");
         } catch (IllegalArgumentException e) {
             // Expected
@@ -104,7 +103,7 @@ public class ColorTest {
         assertTrue(color1.equals(color2));
         assertTrue(color2.equals(color1));
         assertFalse(color1.equals(null));
-        assertFalse(color1.equals(new String("test")));
+        assertFalse(color1.equals("test"));
         color2 = new Color(0.5, 0.5, 0.6);
         assertFalse(color1.equals(color2));
         assertFalse(color2.equals(color1));

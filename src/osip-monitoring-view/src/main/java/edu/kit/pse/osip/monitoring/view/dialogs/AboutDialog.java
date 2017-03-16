@@ -65,15 +65,11 @@ public class AboutDialog extends javafx.stage.Stage {
         return text;
     }
     
-    private Text newLine() {
-        return new Text("\n");
-    }
-    
     private Text getLicenseText(String path) {
         InputStream inStream = getClass().getClassLoader().getResourceAsStream(path);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inStream));
         StringBuilder builder = new StringBuilder();
-        String aux = "";
+        String aux;
         try {
             while ((aux = reader.readLine()) != null) {
                 builder.append(aux);

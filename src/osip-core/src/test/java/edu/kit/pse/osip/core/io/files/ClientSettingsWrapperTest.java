@@ -3,7 +3,6 @@ package edu.kit.pse.osip.core.io.files;
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -235,11 +234,10 @@ public class ClientSettingsWrapperTest {
     
     /**
      * Test saving to file
-     * @throws FileNotFoundException Exception in file param
      * @throws IOException Exception in IO stream
      */
     @Test
-    public void testSaveSettings() throws FileNotFoundException, IOException {
+    public void testSaveSettings() throws IOException {
         wrapper.setServerPort(TankSelector.valuesWithoutMix()[0], 424299);
         wrapper.saveSettings();
         ClientSettingsWrapper helpWrapper = new ClientSettingsWrapper(tempTestFile);

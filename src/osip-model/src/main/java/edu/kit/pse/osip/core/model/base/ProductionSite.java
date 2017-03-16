@@ -13,7 +13,7 @@ import java.util.Observable;
  */
 public class ProductionSite extends Observable {
     protected MixTank mixTank;
-    protected final EnumMap<TankSelector, Tank> tanks = new EnumMap<>(TankSelector.class);;
+    protected final EnumMap<TankSelector, Tank> tanks = new EnumMap<>(TankSelector.class);
     protected final EnumMap<TankSelector, Float> inputTemperature = new EnumMap<>(TankSelector.class);
 
     /**
