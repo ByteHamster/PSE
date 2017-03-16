@@ -36,8 +36,8 @@ public class TankSimulation extends Tank {
      */
     public void putIn(Liquid input) {
         LinkedList<Liquid> liquids = new LinkedList<>();
-        liquids.add(input);
         liquids.add(this.getLiquid());
+        liquids.add(input);
         this.setLiquid(mixingStrategy.mixLiquids(liquids));
     }
 
