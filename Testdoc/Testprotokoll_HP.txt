@@ -1,0 +1,42 @@
+﻿Testprotokoll
+
+Tester: Hans-Peter Lehmann
+Betriebssystem: Ubuntu 16.04.2
+
+Szenarien
+
+(3) GUI
+Durchlauf: 1
+Abdeckung: simulation-view: 88%. simulation-controller: 79%. opcua-server: 64%. model: 61%. model-simulation: 86%. core: 14%. monitoring-view: 90%. opcua-client: 72%. monitoring-controller: 92%
+Status: Nicht erfolgreich
+[GT100]: Die jar-Datei startet Server und Fertigungssimulation.
+[GT110]: Die Clients erhalten den Hostname des entfernten PC statt der IP Adresse (FA390). Daten werden erfolgreich empfangen.
+[GT140]: Die Anlage wird simuliert und wie gefordert dargestellt. Die Sensordaten werden abgerufen und wie gefordert dargestellt. Die Sprache kann nicht umgestellt werden (FA320), der Jitter ist nicht konfigurierbar (FA310). Die ausgehenden Ports der Überwachungskonsole können nicht konfiguriert werden (FA720). Beim Drücken des Schließen-Knopfes der Einstellungen der Simulation werden die Werte der Textfelder nicht zurückgesetzt (FA810). Alarmschwellen können nicht verändert werden (FA780). Die Sprache ist wie gefordert Englisch.
+[GT280]: Alle gestarteten Prozesse werden ordnungsgemäß beendet.
+
+(6) Alarme und Logging
+Durchlauf: 1
+Abdeckung: simulation-view: 94%. simulation-controller: 71%. opcua-server: 74%. model: 63%. model-simulation: 98%. core: 14%. monitoring-view: 92%. opcua-client: 68%. monitoring-controller: 87%
+Status: Nicht erfolgreich
+[GT100]: Die jar-Datei startet Server und Fertigungssimulation.
+[GT110]: Die Clients erhalten den Hostname des entfernten PC statt der IP Adresse (FA390). Daten werden erfolgreich empfangen.
+[GT190]: Alarme werden asynchron zu den Sensordaten empfangen, aber trotzdem mit Aktualisierungsintervall (FA440). Alle Alarme werden korrekt empfangen.
+[GT230]: Deaktivierte Alarme werden in der Überwachungskonsole in grau angezeigt, anstatt sie überhaupt nicht anzuzeigen.
+[GT260]: Die auftretenden Ereignisse werden korrekt protokolliert.
+[GT280]: Alle gestarteten Prozesse werden ordnungsgemäß beendet.
+
+(9) Simulations-Szenario
+Durchlauf: 1
+Abdeckung: simulation-view: 97%. simulation-controller: 86%. opcua-server: 64%. model: 71%. model-simulation: 86%. core: 54%.
+Status: Erfolgreich
+[GT100]: Die jar-Datei startet Server und Fertigungssimulation.
+[GT110]: Die Clients erhalten den Hostname des entfernten PC statt der IP Adresse (FA390). Daten werden erfolgreich empfangen.
+[GT210]: Der Menüeintrag "`Szenarien"' zeigt keine Liste der Szenarien, sondern einen Dialog zur Auswahl einer Szenario-Datei (FA290). Jedes der mitgelieferten Szenarien läuft ordnungsgemäß ab.
+[GT280]: Alle gestarteten Prozesse werden ordnungsgemäß beendet.
+
+(10) Dockerimage
+Durchlauf: 1
+Abdeckung: Unbekannt
+Status: Erfolgreich
+[GT130]: Es existiert ein Shell-Skript, das automatisch beide Images startet. Die Images starten mit dem Skript ordnungsgemäß.
+[GT280]: Alle gestarteten Prozesse werden ordnungsgemäß beendet.
