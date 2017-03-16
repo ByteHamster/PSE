@@ -40,17 +40,6 @@ public class OverflowDialog extends Stage {
      * @param tank Tank which has an overflow
      */
     public OverflowDialog(AbstractTank tank) {
-        this.setTank(tank);
-    }
-
-    /**
-     * Set the tank which has an overflow
-     * @param tank The tank which has an overflow
-     */
-    public final void setTank(AbstractTank tank) {
-        if (tank == null) {
-            throw new NullPointerException("TankSelector parameter is null");
-        }
         this.tank = tank;
         configure();
     }

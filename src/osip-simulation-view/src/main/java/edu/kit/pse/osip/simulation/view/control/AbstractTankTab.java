@@ -42,7 +42,7 @@ public abstract class AbstractTankTab extends Tab implements Observer {
      * @param name The name of the AbstractTankTab
      * @param tank The AbstractTank which is controlled through the AbstractTankTab.
      */
-    public AbstractTankTab(String name, AbstractTank tank) {
+    protected AbstractTankTab(String name, AbstractTank tank) {
         super(name);
         this.tank = tank;
         this.setClosable(false);

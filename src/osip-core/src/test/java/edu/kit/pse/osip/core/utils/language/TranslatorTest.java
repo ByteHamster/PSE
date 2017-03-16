@@ -14,7 +14,7 @@ import java.util.Locale;
  */
 public class TranslatorTest {
 
-    Translator translator;
+    private Translator translator;
     
     /**
      * Create a new translator instance
