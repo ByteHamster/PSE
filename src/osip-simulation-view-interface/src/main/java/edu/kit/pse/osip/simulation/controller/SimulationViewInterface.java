@@ -87,4 +87,10 @@ public interface SimulationViewInterface {
      * @param message The error message to show.
      */
     void showOPCUAServerError(String message);
+
+    /**
+     * Shows and hides the progress indicator
+     * @param visible If the indicator should be visible
+     */
+    void setProgressIndicatorVisible(boolean visible);
 }

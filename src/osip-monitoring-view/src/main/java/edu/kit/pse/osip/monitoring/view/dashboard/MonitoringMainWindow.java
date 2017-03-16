@@ -8,11 +8,15 @@ import edu.kit.pse.osip.core.utils.language.Translator;
 import java.util.EnumMap;
 import javafx.animation.AnimationTimer;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.application.Platform;
 
@@ -60,6 +64,11 @@ class MonitoringMainWindow {
 
     private static final int MIN_WIDTH = 500;
     private static final int MIN_HEIGHT = 400;
+    private static final double PROGRESS_INDICATOR_SIZE = 100;
+
+    private Stage stage;
+    private Scene mainScene;
+    private Scene progressScene;
     
     /**
      * Initializes the window.
@@ -93,6 +102,7 @@ class MonitoringMainWindow {
         }.start();
         log = new LoggingConsole();
         light = new Light();
+        stage = primaryStage;
         makeLayout(primaryStage);
         registerAlarms();
     }
@@ -134,12 +144,21 @@ class MonitoringMainWindow {
         mainPane.setStyle("-fx-font-size: " + MonitoringViewConstants.FONT_SIZE + "px;");
         mainPane.setTop(menu);
         mainPane.setCenter(tankPane);
-        
-        Scene scene = new Scene(mainPane);
+        mainScene = new Scene(mainPane);
+
+        ProgressIndicator progressIndicator = new ProgressIndicator(-1);
+        progressIndicator.setMaxSize(PROGRESS_INDICATOR_SIZE, PROGRESS_INDICATOR_SIZE);
+        VBox box = new VBox();
+        box.setSpacing(PROGRESS_INDICATOR_SIZE / 2);
+        box.setAlignment(Pos.CENTER);
+        box.getChildren().add(progressIndicator);
+        box.getChildren().add(new Label(Translator.getInstance().getString("monitoring.wait")));
+        progressScene = new Scene(box);
+
         primaryStage.setMaximized(true);
         primaryStage.setTitle(Translator.getInstance().getString("monitoring.title"));
         primaryStage.getIcons().add(new Image("/icon.png"));
-        primaryStage.setScene(scene);
+        primaryStage.setScene(progressScene);
         primaryStage.setWidth(WIDTH);
         primaryStage.setHeight(HEIGHT);
         primaryStage.setMinWidth(MIN_WIDTH);
@@ -192,5 +211,13 @@ class MonitoringMainWindow {
      */
     protected MonitoringMenu getMonitoringMenu() {
         return menu;
+    }
+
+    /**
+     * Shows and hides the progress indicator
+     * @param visible If the indicator should be visible
+     */
+    public void setProgressIndicatorVisible(boolean visible) {
+        Platform.runLater(() -> stage.setScene(visible ? progressScene : mainScene));
     }
 }

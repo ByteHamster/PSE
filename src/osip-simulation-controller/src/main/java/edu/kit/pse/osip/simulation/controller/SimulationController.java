@@ -75,7 +75,9 @@ public class SimulationController extends Application {
         settingsWrapper = new ServerSettingsWrapper(new File(settingsLocation, "simulation.conf"));
 
         simulator = new PhysicsSimulator(productionSite);
+    }
 
+    private void initialize() {
         for (TankSelector selector: TankSelector.valuesWithoutMix()) {
             TankContainer cont = new TankContainer();
             tanks.add(cont);
@@ -107,13 +109,17 @@ public class SimulationController extends Application {
         }
     }
 
-    private void reSetupServer() {
+    /**
+     * Re-setup the servers
+     * @return true if successful
+     */
+    private boolean reSetupServer() {
         boolean error = false;
         Translator t = Translator.getInstance();
 
         if (hasDoublePorts()) {
             currentSimulationView.showOPCUAServerError(t.getString("simulation.settings.samePort"));
-            return;
+            return false;
         }
 
         for (TankContainer cont: tanks) {
@@ -164,9 +170,7 @@ public class SimulationController extends Application {
             error = true;
         }
         settingsWrapper.saveSettings();
-        if (!error) {
-            settingsInterface.close();
-        }
+        return !error;
     }
 
     private boolean hasDoublePorts() {
@@ -287,6 +291,12 @@ public class SimulationController extends Application {
         currentSimulationView = new SimulationMainWindow(productionSite);
         currentSimulationView.start(primaryStage);
         setupView(primaryStage);
+
+        currentSimulationView.setProgressIndicatorVisible(true);
+        new Thread(() -> {
+            initialize();
+            currentSimulationView.setProgressIndicatorVisible(false);
+        }).start();
     }
 
     private void setupView(Stage primaryStage) {
@@ -343,7 +353,15 @@ public class SimulationController extends Application {
             productionSite.getMixTank().getMotor().setRPM(rpm);
             updateServerValues();
         });
-        settingsInterface.setSettingsChangedListener(actionEvent -> reSetupServer());
+        settingsInterface.setSettingsChangedListener(actionEvent -> {
+            currentSimulationView.setProgressIndicatorVisible(true);
+            new Thread(() -> {
+                if (reSetupServer()) {
+                    Platform.runLater(() -> settingsInterface.close());
+                }
+                currentSimulationView.setProgressIndicatorVisible(false);
+            }).start();
+        });
     }
 
     private void startScenario(String file) {

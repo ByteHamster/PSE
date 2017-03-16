@@ -104,19 +104,27 @@ public final class MonitoringController extends Application {
 
         setupUI(primaryStage);
 
-        try {
-            setupClients();
-        } catch (UAClientException e) {
-            System.err.println("Unable to connect to servers. " + e.getMessage());
-            disableProgressions();
-            currentSettingsView.showCanNotConnectAlert();
-            return;
-        }
-
         syncMonitoringViewAndSettingsView(currentView, currentSettingsView);
-        
-        clientSubscribe(currentSettings.getFetchInterval(MonitoringViewConstants.DEFAULT_UPDATE_INTERVAL),
-                ALARM_FETCH_INTERVAL);
+
+        currentView.setProgressIndicatorVisible(true);
+        new Thread(() -> {
+            try {
+                setupClients();
+            } catch (UAClientException e) {
+                System.err.println("Unable to connect to servers. " + e.getMessage());
+                currentView.setProgressIndicatorVisible(false);
+                Platform.runLater(() -> {
+                    disableProgressions();
+                    currentSettingsView.showCanNotConnectAlert();
+                });
+                return;
+            }
+
+            clientSubscribe(currentSettings.getFetchInterval(MonitoringViewConstants.DEFAULT_UPDATE_INTERVAL),
+                    ALARM_FETCH_INTERVAL);
+
+            currentView.setProgressIndicatorVisible(false);
+        }).start();
     }
 
     private EnumMap<TankSelector, AlarmGroup<ObservableBoolean, ObservableBoolean>> getAlarmEnumMap() {
@@ -188,8 +196,12 @@ public final class MonitoringController extends Application {
         }
         
     }
-    
-    private void reSetupClients() {
+
+    /**
+     * Changes server connections
+     * @return true if switching servers is successful
+     */
+    private boolean reSetupClients() {
         int defaultPort = OSIPConstants.DEFAULT_PORT_MIX;
         String hostname;
         int port;
@@ -228,10 +240,10 @@ public final class MonitoringController extends Application {
                 cont.client.connectClient();
             }
             errorListenerEnabled = true;
+            return true;
         } catch (UAClientException e) {
             System.err.println("Unable to connect to servers. " + e.getMessage());
-            disableProgressions();
-            currentSettingsView.showCanNotConnectAlert();
+            return false;
         }
     }
     
@@ -251,9 +263,20 @@ public final class MonitoringController extends Application {
         }
         currentSettings.saveSettings();
         currentSettingsViewInterface.hideSettingsWindow();
-        reSetupClients();
-        clientSubscribe(currentSettings.getFetchInterval(MonitoringViewConstants.DEFAULT_UPDATE_INTERVAL),
-                ALARM_FETCH_INTERVAL);
+
+        currentView.setProgressIndicatorVisible(true);
+        new Thread(() -> {
+            if (reSetupClients()) {
+                clientSubscribe(currentSettings.getFetchInterval(MonitoringViewConstants.DEFAULT_UPDATE_INTERVAL),
+                        ALARM_FETCH_INTERVAL);
+            } else {
+                Platform.runLater(() -> {
+                    disableProgressions();
+                    currentSettingsView.showCanNotConnectAlert();
+                });
+            }
+            currentView.setProgressIndicatorVisible(false);
+        }).start();
     }
     
     private void syncMonitoringViewAndSettingsView(MonitoringViewInterface currentMonitoringViewInterface,
