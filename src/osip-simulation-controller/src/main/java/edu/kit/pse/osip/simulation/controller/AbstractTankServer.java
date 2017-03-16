@@ -22,7 +22,7 @@ public abstract class AbstractTankServer extends UAServerWrapper {
      * @param port The port on which the server should be available
      * @throws UaException If the server can not be created
      */
-    public AbstractTankServer(String namespaceName, int port) throws UaException {
+    protected AbstractTankServer(String namespaceName, int port) throws UaException {
         super(namespaceName, port);
 
         Translator t = Translator.getInstance();

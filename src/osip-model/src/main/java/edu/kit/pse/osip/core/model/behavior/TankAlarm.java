@@ -15,7 +15,7 @@ public abstract class TankAlarm <T extends Comparable<T>> extends java.util.Obse
     /**
      * tank must be protected so that all alarms  can get information from it
      */
-    protected AbstractTank tank;
+    private AbstractTank tank;
     private T threshold;
     private AlarmBehavior behavior;
     private boolean triggered = false;
@@ -37,11 +37,13 @@ public abstract class TankAlarm <T extends Comparable<T>> extends java.util.Obse
         tank.addObserver(this);
         update(tank, tank.getLiquid());
     }
+
     /**
      * Get the value of the tank, which is monitored by the alarm. This should be overridden by subclasses.
      * @return notified value
      */
     protected abstract T getNotifiedValue();
+
     /**
      * The method called by the tank if something changes.
      * @param observable the observable object.
@@ -69,6 +71,7 @@ public abstract class TankAlarm <T extends Comparable<T>> extends java.util.Obse
         }        
         notifyObservers(triggered);
     }
+
     /**
      * Return whether the alarm is active at the moment.
      * @return true if the alarm is currently triggered.

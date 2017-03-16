@@ -19,8 +19,8 @@ import static org.junit.Assert.assertTrue;
  * @version 1.0
  */
 public class ProductionSiteTest implements Observer {
-    ProductionSite prodSite;
-    boolean updated;
+    private ProductionSite prodSite;
+    private boolean updated;
 
     /**
      * Initialize prodSite

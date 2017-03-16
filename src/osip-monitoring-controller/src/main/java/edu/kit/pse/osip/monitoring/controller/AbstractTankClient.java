@@ -21,7 +21,7 @@ public abstract class AbstractTankClient extends UAClientWrapper {
      * @param machine The machine to connect to
      * @param namespace The namespace to use
      */
-    public AbstractTankClient(RemoteMachine machine, String namespace) {
+    protected AbstractTankClient(RemoteMachine machine, String namespace) {
         super("opc.tcp://" + machine.getHostname() + ":" + machine.getPort() + "/osip", namespace);
     }
 

@@ -21,7 +21,7 @@ public abstract class AbstractTank extends java.util.Observable {
      * @param liquid The default liquid of the tank.
      * @param outPipe The outgoing pipe.
      */
-    public AbstractTank(float capacity, TankSelector tankSelector, Liquid liquid, Pipe outPipe) {
+    protected AbstractTank(float capacity, TankSelector tankSelector, Liquid liquid, Pipe outPipe) {
         if (capacity <= 0) {
             throw new IllegalArgumentException("Capacity of a tank needs to be greater than zero");
         }
@@ -84,7 +84,7 @@ public abstract class AbstractTank extends java.util.Observable {
     /**
      * Resets the tank and all attached units like pipes or motors.
      */
-    public synchronized void reset() {
+    protected synchronized void reset() {
         setLiquid(initialLiquid);
         outPipe.reset();
     }
