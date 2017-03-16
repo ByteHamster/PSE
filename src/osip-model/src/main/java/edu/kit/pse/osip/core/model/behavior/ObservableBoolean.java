@@ -12,7 +12,7 @@ public class ObservableBoolean extends Observable {
 
     /**
      * Creates a new ObservableBoolean
-     * @param value the initial valie
+     * @param value the initial value
      */
     public ObservableBoolean(boolean value) {
         this.value = value;

@@ -36,9 +36,9 @@ public final class SimulationConstants {
     public static final float MAX_TEMPERATURE = 503.15f;
 
     /**
-     * The offset needed to get from the current temperature to Celcius
+     * The offset needed to get from the current temperature to Celsius
      */
-    public static final float CELCIUS_OFFSET = 273.15f;
+    public static final float CELSIUS_OFFSET = 273.15f;
 
     /**
      * The default pipe crosssection

@@ -29,7 +29,6 @@ public class AboutDialog extends javafx.stage.Stage {
     private static final int FONT_SIZE = MonitoringViewConstants.FONT_SIZE;
     private static final int MIN_WINDOW_WIDTH = 800;
     private static final int MIN_WINDOW_HEIGHT = 500;
-    private static final String PROG_NAME = "OSIP";
     
     /**
      * Constructor of AboutDialog
@@ -99,7 +98,7 @@ public class AboutDialog extends javafx.stage.Stage {
         ImageView aboutIcon = new ImageView();
         configureIcon(imageIcon, aboutIcon);
         
-        Text iconText = new Text(PROG_NAME);
+        Text iconText = new Text(Translator.getInstance().getString("monitoring.aboutdialog.heading"));
         Font iconFont = new Font(FONT_SIZE * 7);
         iconText.setFont(iconFont);
         

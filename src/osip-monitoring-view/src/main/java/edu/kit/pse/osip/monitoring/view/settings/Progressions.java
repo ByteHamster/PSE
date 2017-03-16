@@ -89,7 +89,7 @@ class Progressions extends ScrollPane {
     }
     
     /**
-     * Returns true if the temperature pogression should be enabled for a specified tank and false otherwise.
+     * Returns true if the temperature progression should be enabled for a specified tank and false otherwise.
      * 
      * @return true if the temperature progression should be enabled for the specified tank. false otherwise.
      * @param tank The tank whose value for enabling / disabling the temperature progression will be returned.

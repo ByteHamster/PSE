@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 public class SimulationMenu extends MenuBar {
 
     /**
-     * Menu containing all buttons leading to ways to conrol the simulation.
+     * Menu containing all buttons leading to ways to control the simulation.
      */
     private Menu menuButtonView;
     private MenuItem menuItemControl;

@@ -112,17 +112,17 @@ public class TankTab extends AbstractTankTab {
         GridPane.setMargin(temperatureLabel, ViewConstants.CONTROL_PADDING);
 
         // Otherwise the scale might end at -0.0
-        float min = SimulationConstants.MIN_TEMPERATURE - SimulationConstants.CELCIUS_OFFSET;
+        float min = SimulationConstants.MIN_TEMPERATURE - SimulationConstants.CELSIUS_OFFSET;
         if (min == -0.0) {
             min = 0.0f;
         }
 
         temperatureSlider = new Slider(min,
-                SimulationConstants.MAX_TEMPERATURE - SimulationConstants.CELCIUS_OFFSET,
-                tank.getLiquid().getTemperature() - SimulationConstants.CELCIUS_OFFSET);
+                SimulationConstants.MAX_TEMPERATURE - SimulationConstants.CELSIUS_OFFSET,
+                tank.getLiquid().getTemperature() - SimulationConstants.CELSIUS_OFFSET);
         temperatureSlider.setShowTickLabels(true);
         temperatureSlider.setShowTickMarks(true);
-        int majorTick = (int) (SimulationConstants.MAX_TEMPERATURE - SimulationConstants.CELCIUS_OFFSET)
+        int majorTick = (int) (SimulationConstants.MAX_TEMPERATURE - SimulationConstants.CELSIUS_OFFSET)
                 / ViewConstants.SLIDER_LABEL_COUNT;
         temperatureSlider.setMajorTickUnit(majorTick);
         temperatureSlider.setMinorTickCount(majorTick - 1);
@@ -143,7 +143,7 @@ public class TankTab extends AbstractTankTab {
         StringProperty sp = temperatureValue.textProperty();
         DoubleProperty dp = temperatureSlider.valueProperty();
         Bindings.bindBidirectional(sp, dp, new ConfinedStringConverter((double) min,
-            (double) SimulationConstants.MAX_TEMPERATURE - SimulationConstants.CELCIUS_OFFSET, sp));
+            (double) SimulationConstants.MAX_TEMPERATURE - SimulationConstants.CELSIUS_OFFSET, sp));
         row++;
     }
 
@@ -182,7 +182,7 @@ public class TankTab extends AbstractTankTab {
         super.update(tank);
 
         inFlowSlider.setValue(tank.getInPipe().getValveThreshold());
-        temperatureSlider.setValue(site.getInputTemperature(selector) - SimulationConstants.CELCIUS_OFFSET);
+        temperatureSlider.setValue(site.getInputTemperature(selector) - SimulationConstants.CELSIUS_OFFSET);
     }
 
     @Override
@@ -203,7 +203,7 @@ public class TankTab extends AbstractTankTab {
     protected void setTemperatureListener(BiConsumer<TankSelector, Float> listener) {
         temperatureSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             skipUpdates = true;
-            listener.accept(selector, newValue.floatValue() + SimulationConstants.CELCIUS_OFFSET);
+            listener.accept(selector, newValue.floatValue() + SimulationConstants.CELSIUS_OFFSET);
             skipUpdates = false;
         });
     }

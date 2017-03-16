@@ -13,7 +13,7 @@ public class Motor extends java.util.Observable {
 
     /**
      * Constructs a new Motor
-     * @param initialRpm The initial motor speed, which is also set when the motor gets reseted.
+     * @param initialRpm The initial motor speed, which is also set when the motor gets reset.
      */
     public Motor(int initialRpm) {
         this.initialRpm = initialRpm;

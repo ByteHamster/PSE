@@ -17,8 +17,8 @@ public class Liquid {
      * Construct a new Liquid object.
      *
      * @throws IllegalArgumentException if the amount is smaller than zero, the temperature is smaller than
-     * SimulationConstants.MIN_TEMPERATURE or greather than SimulationConstants.MAX_TEMPERATURE or the color is null.
-     * @param amount      The amout in cm³.
+     * SimulationConstants.MIN_TEMPERATURE or greater than SimulationConstants.MAX_TEMPERATURE or the color is null.
+     * @param amount      The amount in cm³.
      * @param temperature The temperature in °K.
      * @param color       The color of the liquid.
      */

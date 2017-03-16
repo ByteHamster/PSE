@@ -64,7 +64,7 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
      */
     @Override
     public final void draw(GraphicsContext context, double time) {
-        // get the ouside values
+        // get the outside values
         Canvas canvas = context.getCanvas();
         double totalWidth = canvas.getWidth();
         double totalHeight = canvas.getHeight();

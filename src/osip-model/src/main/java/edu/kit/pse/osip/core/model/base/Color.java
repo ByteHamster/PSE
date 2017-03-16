@@ -16,7 +16,7 @@ public class Color {
      * @param cyan    The portion of the cyan color. It needs to be between 0 and 1.
      * @param yellow  The portion of the yellow color. It needs to be between 0 and 1.
      * @param magenta The portion of the magenta color. It needs to be between 0 and 1.
-     * @throws IllegalArgumentException if cyan, yellow or magenta is smaller than 0 or greather than 1.
+     * @throws IllegalArgumentException if cyan, yellow or magenta is smaller than 0 or greater than 1.
      */
     public Color(double cyan, double magenta, double yellow) {
         if (cyan < 0 || cyan > 1 || yellow < 0 || yellow > 1 || magenta < 0 || magenta > 1) {

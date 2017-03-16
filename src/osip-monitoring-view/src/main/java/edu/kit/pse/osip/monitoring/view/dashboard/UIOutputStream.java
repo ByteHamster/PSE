@@ -20,7 +20,7 @@ class UIOutputStream extends PrintStream {
     /**
      * Creates a new output stream for GUI.
      *
-     * @param old The old stream to interept
+     * @param old The old stream to intercept
      * @param console LoggingConsole used for the output.
      * @throws NullPointerException when the LoggingConsole is null.
      */

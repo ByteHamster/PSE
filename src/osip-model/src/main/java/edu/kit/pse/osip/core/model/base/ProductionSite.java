@@ -65,7 +65,7 @@ public class ProductionSite extends Observable {
       */
     public void setInputTemperature(TankSelector tank, float temperature) {
         if (temperature > SimulationConstants.MAX_TEMPERATURE) {
-            throw new IllegalArgumentException("Tank input temperature must not be grather than "
+            throw new IllegalArgumentException("Tank input temperature must not be grater than "
                 + SimulationConstants.MAX_TEMPERATURE);
         }
         if (temperature < SimulationConstants.MIN_TEMPERATURE) {

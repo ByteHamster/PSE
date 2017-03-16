@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import javafx.application.Platform;
 
 /**
- * The entry point for the monitoring view. It shows all sensor datas graphically.
+ * The entry point for the monitoring view. It shows all sensor data graphically.
  * 
  * @author Martin Armbruster
  * @version 1.5

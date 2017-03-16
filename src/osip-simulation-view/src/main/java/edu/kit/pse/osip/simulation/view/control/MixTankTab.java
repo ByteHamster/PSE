@@ -31,7 +31,7 @@ public class MixTankTab extends AbstractTankTab {
     private MixTank mixTank;
 
     /**
-     * Creates a new TankTab containg the standard controls of the AbstractTankTab as well as a
+     * Creates a new TankTab containing the standard controls of the AbstractTankTab as well as a
      * slider to control motor speed.
      * @param name The name of the AbstractTanktab
      * @param mixTank The AbstractTank which is controlled through the AbstractTankTab.
