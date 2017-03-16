@@ -15,7 +15,7 @@ import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
 
 /**
- * Test class for observerable ability of TankAlarm
+ * Test class for observable ability of TankAlarm
  * @author Maximilian Schwarzmann
  * @version 1.0
  */
@@ -58,7 +58,7 @@ public class TankAlarmObservableTest {
     }
 
     /**
-     * Intialize pipes
+     * Initialize pipes
      */
     @Before
     public void init() {
@@ -118,10 +118,10 @@ public class TankAlarmObservableTest {
     }
 
     /**
-     * Test if alarm gives no nofification on multiple new liquid inputs, which all trigger alarms
+     * Test if alarm gives no notification on multiple new liquid inputs, which all trigger alarms
      */
     @Test
-    public void testObservbleNotifyMultipleConstant() {
+    public void testObservableNotifyMultipleConstant() {
         Liquid testLiquidA = new Liquid(50f, 300f, defaultColor);
         Liquid testLiquidB = new Liquid(150f, 300f, defaultColor);
         Liquid testLiquidC = new Liquid(160f, 300f, defaultColor);

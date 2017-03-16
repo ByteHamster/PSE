@@ -7,15 +7,15 @@ import edu.kit.pse.osip.core.model.base.Color;
 import edu.kit.pse.osip.core.model.base.Liquid;
 
 /**
- * Mixing liquids using subtractive color mixture and richmann's formula for temperature mixing.
+ * Mixing liquids using subtractive color mixture and Richmann's formula for temperature mixing.
  *
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
 public class SubtractiveMixingStrategy implements MixingStrategy {
     /**
-     * Mixes the given liquids and generates a new one. Colors are mixed using a substractive strategy
-     * and the temperatures are mixed using the richmann's formula. If the resulting liquid amount is zero,
+     * Mixes the given liquids and generates a new one. Colors are mixed using a subtractive strategy
+     * and the temperatures are mixed using the Richmann's formula. If the resulting liquid amount is zero,
      * the temperature and color of the first liquid will be used.
      *
      * @return a single Liquid element containing a mixture of the given liquids

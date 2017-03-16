@@ -26,7 +26,7 @@ public class TemperatureAlarmTest {
     private Pipe pipe2;
 
     /**
-     * Intialize pipes
+     * Initialize pipes
      */
     @Before
     public void init() {

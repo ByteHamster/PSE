@@ -69,8 +69,8 @@ class ProgressVisualization {
         NumberAxis y = new NumberAxis();
         y.setAutoRanging(false);
         if (progressName.equals(Translator.getInstance().getString("monitoring.tank.progress.temperature"))) {
-            y.setLowerBound(SimulationConstants.MIN_TEMPERATURE - SimulationConstants.CELCIUS_OFFSET);
-            y.setUpperBound(SimulationConstants.MAX_TEMPERATURE - SimulationConstants.CELCIUS_OFFSET);
+            y.setLowerBound(SimulationConstants.MIN_TEMPERATURE - SimulationConstants.CELSIUS_OFFSET);
+            y.setUpperBound(SimulationConstants.MAX_TEMPERATURE - SimulationConstants.CELSIUS_OFFSET);
             y.setTickUnit((SimulationConstants.MAX_TEMPERATURE - SimulationConstants.MIN_TEMPERATURE) / 10);
         } else {
             y.setLowerBound(0.0);
@@ -122,7 +122,7 @@ class ProgressVisualization {
         XYChart.Data<Number, Number> newDataPoint;
         if (progressName.equals(Translator.getInstance().getString("monitoring.tank.progress.temperature"))) {
             newDataPoint = new XYChart.Data<>(x, tank.getLiquid().getTemperature()
-                    - SimulationConstants.CELCIUS_OFFSET);
+                    - SimulationConstants.CELSIUS_OFFSET);
         } else {
             newDataPoint = new XYChart.Data<>(x, tank.getFillLevel());
         }

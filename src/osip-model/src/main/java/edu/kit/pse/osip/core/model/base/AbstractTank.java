@@ -2,7 +2,7 @@ package edu.kit.pse.osip.core.model.base;
 
 /**
  * The model of a tank. It is the base class of the mixtank and the upper tanks, so it has some shared functionality
- * which is avaiable in the mixtank and the upper tanks.
+ * which is available in the mixtank and the upper tanks.
  * @author David Kahles
  * @version 1.0
  */
@@ -23,7 +23,7 @@ public abstract class AbstractTank extends java.util.Observable {
      */
     public AbstractTank(float capacity, TankSelector tankSelector, Liquid liquid, Pipe outPipe) {
         if (capacity <= 0) {
-            throw new IllegalArgumentException("Capacity of a tank needs to be greather than zero");
+            throw new IllegalArgumentException("Capacity of a tank needs to be greater than zero");
         }
         if (tankSelector == null || liquid == null || outPipe == null) {
             throw new NullPointerException("Arguments of AbstractTank must not be null");
@@ -59,7 +59,7 @@ public abstract class AbstractTank extends java.util.Observable {
 
     /**
      * Get the tank selector. This is useful if you have access to the tank and need to get a unique identifier.
-     * @return the tank selecor.
+     * @return the tank selector.
      */
     public TankSelector getTankSelector() {
         return selector;

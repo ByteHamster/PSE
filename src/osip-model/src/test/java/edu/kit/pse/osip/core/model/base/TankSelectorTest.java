@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class TankSelectorTest {
     /**
-     * Check whether valuesWithoutMix() returns all enum values exept the mix tank.
+     * Check whether valuesWithoutMix() returns all enum values except the mix tank.
      */
     @Test
     public void testValuesWithoutMix() {
@@ -46,7 +46,7 @@ public class TankSelectorTest {
     }
 
     /**
-     * Check whether getIntialColor() and getInitialTemperatue() returns a value for every tank. Should not throw an
+     * Check whether getInitialColor() and getInitialTemperature() returns a value for every tank. Should not throw an
      * ArrayIndexOutOfBoundsException.
      */
     @Test

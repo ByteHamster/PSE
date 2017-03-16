@@ -32,7 +32,7 @@ import java.util.List;
 
 /**
  * The main window for visualizing the OSIP simulation.
- * It regularly updates itself with current information from the model and posesses an update() method for alarms.
+ * It regularly updates itself with current information from the model and processes an update() method for alarms.
  * If an overflow occurs in the model it is be displayed by an overlay.
  *
  * @version 1.0

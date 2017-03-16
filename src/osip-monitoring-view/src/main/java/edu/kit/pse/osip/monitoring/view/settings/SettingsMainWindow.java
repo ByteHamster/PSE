@@ -200,9 +200,9 @@ class SettingsMainWindow {
     }
     
     /**
-     * Sets the diabled status of the cancel button.
+     * Sets the disabled status of the cancel button.
      * 
-     * @param disabled The boolean value for the diabled status. True if disabled.
+     * @param disabled The boolean value for the disabled status. True if disabled.
      */
     protected void setCancelButtonDisabled(boolean disabled) {
         buttonCancel.setDisable(disabled);

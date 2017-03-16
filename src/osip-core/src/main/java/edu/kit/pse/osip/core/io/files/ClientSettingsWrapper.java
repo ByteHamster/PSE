@@ -66,8 +66,8 @@ public class ClientSettingsWrapper {
      * @param intervalMs fetch interval
      */
     public final void setFetchInterval(int intervalMs) {
-        String intervallString = String.valueOf(intervalMs);
-        properties.setProperty("fetchInterval", intervallString);
+        String intervalString = String.valueOf(intervalMs);
+        properties.setProperty("fetchInterval", intervalString);
     }
     /**
      * Setter method of overflow alarm
@@ -236,8 +236,8 @@ public class ClientSettingsWrapper {
         return Boolean.parseBoolean(entry); 
     }
     /**
-     * Get the hostname or IP adress
-     * @return the hostname of IP adress or default on error
+     * Get the hostname or IP address
+     * @return the hostname of IP address or default on error
      * @param tank The tank to get the hostname
      * @param defaultValue value on error
      */

@@ -33,7 +33,7 @@ public abstract class RotatingControlDrawer extends ObjectDrawer {
     }
 
     /**
-     * Updates the total amount of degrees turned accoring to the time passed and norms it to
+     * Updates the total amount of degrees turned according to the time passed and norms it to
      * the interval [0, 360)
      * @param timeDiff The time passed since the last update
      * @param speedFactor Fraction of the speed that is actually to be displayed for aesthetic reasons

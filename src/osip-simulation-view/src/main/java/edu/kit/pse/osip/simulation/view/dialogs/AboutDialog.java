@@ -30,7 +30,6 @@ public class AboutDialog extends Stage {
     private static final int FONT_SIZE = ViewConstants.FONT_SIZE;
     private static final int MIN_WINDOW_WIDTH = 800;
     private static final int MIN_WINDOW_HEIGHT = 500;
-    private static final String PROG_NAME = "OSIP";
     private static final int HBOX_SPACING = 10;
     
     /**
@@ -101,7 +100,7 @@ public class AboutDialog extends Stage {
         ImageView aboutIcon = new ImageView();
         configureIcon(imageIcon, aboutIcon);
         
-        Text iconText = new Text(PROG_NAME);
+        Text iconText = new Text(Translator.getInstance().getString("simulation.aboutdialog.heading"));
         Font iconFont = new Font(FONT_SIZE * 7);
         iconText.setFont(iconFont);
         

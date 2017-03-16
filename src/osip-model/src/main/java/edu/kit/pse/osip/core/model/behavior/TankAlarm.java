@@ -38,13 +38,13 @@ public abstract class TankAlarm <T extends Comparable<T>> extends java.util.Obse
         update(tank, tank.getLiquid());
     }
     /**
-     * Get the value of the tank, which is monitored by the alarm. This should be overriden by subclasses.
+     * Get the value of the tank, which is monitored by the alarm. This should be overridden by subclasses.
      * @return notified value
      */
     protected abstract T getNotifiedValue();
     /**
      * The method called by the tank if something changes.
-     * @param observable the observerable object.
+     * @param observable the observable object.
      * @param object The changed value.
      */
     public final void update(Observable observable, Object object) {

@@ -84,7 +84,7 @@ abstract class AbstractTankVisualization extends GridPane {
         }
 
         if (alarmGroup == null) {
-            throw new NullPointerException("AlarmGroupt is null.");
+            throw new NullPointerException("AlarmGroup is null.");
         }
         this.alarmGroup = alarmGroup;
         this.setVgap(MonitoringViewConstants.ELEMENTS_GAP);
