@@ -265,7 +265,8 @@ public class SimulationMainWindow implements SimulationViewInterface {
     @Override
     public void scenarioFinished() {
         menu.setScenarioFinished();
-        scenarioLabel.setText(Translator.getInstance().getString("simulation.view.noScenario"));
+        Platform.runLater(()->
+                scenarioLabel.setText(Translator.getInstance().getString("simulation.view.noScenario")));
     }
 
     @Override
