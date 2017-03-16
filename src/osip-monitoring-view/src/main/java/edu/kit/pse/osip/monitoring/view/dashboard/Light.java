@@ -91,11 +91,11 @@ class Light extends VBox implements Observer {
             triggeredAlarms.add(alarm);
         }
         if (disabledAlarms.size() == numberAlarms) {
-            Platform.runLater(() -> disableWithColor());
+            Platform.runLater(this::disableWithColor);
         } else if (triggeredAlarms.size() > 0) {
-            Platform.runLater(() -> triggerWithColor());
+            Platform.runLater(this::triggerWithColor);
         } else {
-            Platform.runLater(() -> enableWithColor());
+            Platform.runLater(this::enableWithColor);
         }
     }
     

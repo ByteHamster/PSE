@@ -8,7 +8,7 @@ import java.util.HashMap;
  * @version 1.0
  */
 public class ExtendedParser extends BaseParser {
-    protected HashMap<String, Float> variables = new HashMap<String, Float>();
+    protected HashMap<String, Float> variables = new HashMap<>();
     
     /**
      * Constructor of ExtendedParser

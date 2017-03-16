@@ -44,10 +44,10 @@ class AlarmSettings extends ScrollPane {
      * @param currentSettings The current settings used to display them.
      */
     protected AlarmSettings(ClientSettingsWrapper currentSettings) {
-        underflowEnabled = new EnumMap<TankSelector, CheckBox>(TankSelector.class);
-        overflowEnabled = new EnumMap<TankSelector, CheckBox>(TankSelector.class);
-        temperatureOverheatingEnabled = new EnumMap<TankSelector, CheckBox>(TankSelector.class);
-        temperatureUndercoolingEnabled = new EnumMap<TankSelector, CheckBox>(TankSelector.class);
+        underflowEnabled = new EnumMap<>(TankSelector.class);
+        overflowEnabled = new EnumMap<>(TankSelector.class);
+        temperatureOverheatingEnabled = new EnumMap<>(TankSelector.class);
+        temperatureUndercoolingEnabled = new EnumMap<>(TankSelector.class);
         setFitToWidth(true);
         createLayout(currentSettings);
     }

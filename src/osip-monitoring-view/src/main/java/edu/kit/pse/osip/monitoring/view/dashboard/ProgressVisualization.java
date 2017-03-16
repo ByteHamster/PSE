@@ -78,9 +78,9 @@ class ProgressVisualization {
             y.setTickUnit(0.1);
         }
         y.setLabel(Translator.getInstance().getString("monitoring.tank.progress.y"));
-        progressChart = new LineChart<Number, Number>(x, y);
+        progressChart = new LineChart<>(x, y);
         progressChart.setPrefHeight(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS * 1.25);
-        progressSeries = new XYChart.Series<Number, Number>();
+        progressSeries = new XYChart.Series<>();
         progressSeries.setName(Translator.getInstance().getString("monitoring.tank.progress.legend"));
         progressChart.getData().add(progressSeries);
     }
@@ -121,10 +121,10 @@ class ProgressVisualization {
         }
         XYChart.Data<Number, Number> newDataPoint;
         if (progressName.equals(Translator.getInstance().getString("monitoring.tank.progress.temperature"))) {
-            newDataPoint = new XYChart.Data<Number, Number>(x, tank.getLiquid().getTemperature()
+            newDataPoint = new XYChart.Data<>(x, tank.getLiquid().getTemperature()
                     - SimulationConstants.CELCIUS_OFFSET);
         } else {
-            newDataPoint = new XYChart.Data<Number, Number>(x, tank.getFillLevel());
+            newDataPoint = new XYChart.Data<>(x, tank.getFillLevel());
         }
         Line dataPointVisual = new Line();
         dataPointVisual.setStrokeWidth(0);
