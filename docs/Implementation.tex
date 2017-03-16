@@ -72,6 +72,45 @@ konnte man in den Controllern sehr schnell Fortschritte sehen. Die Controller wu
 
 Insgesamt ließ sich über diese Aufteilung eine weitestgehend gerechte Arbeitsaufteilung umsetzen.
 
+\section{Verzögerungen im Implementierungsplan}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.35]{media/GanttDiagram/pseGantt.png}
+	\caption{Der erwartete Zeitplan}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.35]{media/GanttDiagram/pseGanttReal.png}
+	\caption{Der tatsächliche Zeitplan}
+\end{figure}
+
+Die Implementierungsphase war zunächst auf einen Monat ausgelegt.
+In der ersten Woche sollten das Modell, die OPC UA Wrapper, Core und einige Bestandteile der Benutzeroberflächen
+implementiert werden.
+In der zweiten Woche sollten die Einstellungsfenster und weitere Dialogfenster implementiert werden.
+In der dritten Woche sollten die Controller für die Simulation und Überwachungskonsole implementiert werden.
+Die letzte Woche war zur Beseitigung von verbleibenden Fehlern gedacht.
+
+Um den Implementierungsplan zu entspannen, wurde bereits zwei Wochen vor Beginn der eigentlichen Implementierungsphase
+mit der Arbeit am Parser für die Szenarien aus dem Core begonnen. Dieser wurde zu Beginn der Implementierungsphase fertiggestellt.
+Auch die OPC UA Wrapper wurden eine halbe Woche vor Beginn der Implementierungsphase angefangen, da aufgrund der mangelnden Dokumentation von Milo Verzug im OPC UA Wrapper bereits eingeplant war.
+
+Dennoch gab es an einigen Stellen starke Verzögerungen in der Implementierung.
+Die Implementierung der Benutzeroberflächen bremste die Entwicklung häufig aus, da Designentscheidungen oft lange
+diskutiert wurden und die Ausarbeitung des gewünschten Designs viel Zeit beanspruchte, bis es so aussah wie geplant.
+Insbesondere die Controller der Simulation und Überwachungskonsole hatten eine höhere Komplexität als erwartet.
+Da sie alle Funktionalitäten mit der Benutzeroberfläche verknüpfen, mussten viele Besonderheiten der OPC UA Server-Client Kommunikation und Sonderfälle berücksichtigt werden.
+
+\section{Probleme bei der Implementierung}
+Im Pflichtenheft war geplant, die von OPC UA bereitgestellten Alarme zu benutzen, um bei einem ungewöhnlichen Zustand (z.B. Überlauf)
+die Überwachungskonsole zu benachrichtigen. Leider unterstützt der Milo Server keine Alarme, siehe auch die entsprechende Antwort
+des Milo-Entwicklers auf Stack Overflow: \href{http://stackoverflow.com/a/42161092/}{http://stackoverflow.com/a/42161092/}.
+Somit mussten wir auch bei den Alarmen auf reguläre Subscriptions zurückgreifen, welche wir nun mit einem kürzeren Intervall
+als die restlichen Produktionsvariablen abfragen.
+
+Als weiteres Problem stellt sich die Versionsverwaltung von Milo dar: der Entwickler löscht bei neuen Versionen alle alten Versionen aus dem Maven-Repository und macht damit OSIP nicht baufähig.
+
 \section{Änderungen zum Entwurf}
 Im Nachfolgenden werden alle Änderungen zum Entwurf dargestellt.
 
@@ -150,43 +189,6 @@ Zudem dient die Zweiteilung in Tabs der Übersichtlichkeit. Potentiell auftreten
 Des Weiteren wurde der Jitter in den Eingabewerten nicht implementiert. Praxistests haben ergeben, dass der Jitter entweder so schwach ist, dass er kaum sichtbar
 ist und somit nur unnötigen Overhead in der Fertigungssimulation erzeugt, oder aber so stark ist, dass er immer wieder zu nicht geplanten und nicht vorhersehbaren
 Überläufen während der Ausführung von Szenarien führt.
-
-\section{Verzögerungen im Implementierungsplan}
-\begin{figure}[H]
-  \centering
-  \includegraphics[scale=0.35]{media/GanttDiagram/pseGantt.png}
-  \caption{Der erwartete Zeitplan}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[scale=0.35]{media/GanttDiagram/pseGanttReal.png}
-  \caption{Der tatsächliche Zeitplan}
-\end{figure}
-
-Die Implementierungsphase war zunächst auf einen Monat ausgelegt.
-In der ersten Woche sollten das Modell, die OPC UA Wrapper, Core und einige Bestandteile der Benutzeroberflächen
-implementiert werden.
-In der zweiten Woche sollten die Einstellungsfenster und weitere Dialogfenster implementiert werden.
-In der dritten Woche sollten die Controller für die Simulation und Überwachungskonsole implementiert werden.
-Die letzte Woche war zur Beseitigung von verbleibenden Fehlern gedacht.
-
-Um den Implementierungsplan zu entspannen, wurde bereits zwei Wochen vor Beginn der eigentlichen Implementierungsphase
-mit der Arbeit am Parser für die Szenarien aus dem Core begonnen. Dieser wurde zu Beginn der Implementierungsphase fertiggestellt.
-Auch die OPC UA Wrapper wurden eine halbe Woche vor Beginn der Implementierungsphase angefangen, da aufgrund der mangelnden Dokumentation von Milo Verzug im OPC UA Wrapper bereits eingeplant war.
-
-Dennoch gab es an einigen Stellen starke Verzögerungen in der Implementierung.
-Die Implementierung der Benutzeroberflächen bremste die Entwicklung häufig aus, da Designentscheidungen oft lange
-diskutiert wurden und die Ausarbeitung des gewünschten Designs viel Zeit beanspruchte, bis es so aussah wie geplant.
-Insbesondere die Controller der Simulation und Überwachungskonsole hatten eine höhere Komplexität als erwartet.
-Da sie alle Funktionalitäten mit der Benutzeroberfläche verknüpfen, mussten viele Besonderheiten der OPC UA Server-Client Kommunikation und Sonderfälle berücksichtigt werden.
-
-\section{Probleme bei der Implementierung}
-Im Pflichtenheft war geplant, die von OPC UA bereitgestellten Alarme zu benutzen, um bei einem ungewöhnlichen Zustand (z.B. Überlauf)
-die Überwachungskonsole zu benachrichtigen. Leider unterstützt der Milo Server keine Alarme, siehe auch die entsprechende Antwort
-des Milo-Entwicklers auf Stack Overflow: \href{http://stackoverflow.com/a/42161092/}{http://stackoverflow.com/a/42161092/}.
-Somit mussten wir auch bei den Alarmen auf reguläre Subscriptions zurückgreifen, welche wir nun mit einem kürzeren Intervall
-als die restlichen Produktionsvariablen abfragen.
 
 \section{Unittests}
 Unittests waren ausschlaggebend wichtig für den ersten Teil der Implementierung, bei dem die Controller noch nicht entwickelt waren.
