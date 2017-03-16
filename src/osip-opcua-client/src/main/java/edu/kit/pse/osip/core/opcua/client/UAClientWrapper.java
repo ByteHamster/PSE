@@ -9,13 +9,11 @@ import org.eclipse.milo.opcua.sdk.client.api.identity.AnonymousProvider;
 import org.eclipse.milo.opcua.sdk.client.api.nodes.VariableNode;
 import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaMonitoredItem;
 import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaSubscription;
-import org.eclipse.milo.opcua.sdk.client.api.subscriptions.UaSubscriptionManager.SubscriptionListener;
 import org.eclipse.milo.opcua.sdk.client.model.nodes.objects.ServerNode;
 import org.eclipse.milo.opcua.stack.client.UaTcpStackClient;
 import org.eclipse.milo.opcua.stack.core.AttributeId;
 import org.eclipse.milo.opcua.stack.core.Identifiers;
 import org.eclipse.milo.opcua.stack.core.Stack;
-import org.eclipse.milo.opcua.stack.core.UaException;
 import org.eclipse.milo.opcua.stack.core.security.SecurityPolicy;
 import org.eclipse.milo.opcua.stack.core.types.builtin.DataValue;
 import org.eclipse.milo.opcua.stack.core.types.builtin.LocalizedText;
@@ -168,22 +166,13 @@ public abstract class UAClientWrapper {
         doSubscribe(Identifiers.Server_ServerStatus_CurrentTime, CONNECTION_TIMEOUT / 2,
                 (IntReceivedListener) value -> { }, Identifiers.DateTime);
 
-        client.getSubscriptionManager().addSubscriptionListener(new SubscriptionListener() {
-            @Override
-            public void onPublishFailure(UaException exception) {
-                connected = false;
-                if (errorListener != null) {
-                    errorListener.onError(ERROR_DISCONNECT);
-                }
-            }
-        });
         client.addSessionActivityListener(new SessionActivityListener() {
             @Override
             public void onSessionInactive(UaSession session) {
-                connected = false;
-                if (errorListener != null) {
+                if (connected && errorListener != null) {
                     errorListener.onError(ERROR_DISCONNECT);
                 }
+                connected = false;
             }
         });
 
