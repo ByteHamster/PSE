@@ -170,7 +170,7 @@ public class SimulationController extends Application {
     }
 
     private boolean hasDoublePorts() {
-        Vector ports = new Vector<Integer>(TankSelector.values().length);
+        Vector<Integer> ports = new Vector<>(TankSelector.values().length);
         for (TankSelector selector: TankSelector.values()) {
             int port = settingsInterface.getPort(selector);
             if (ports.contains(port)) {

@@ -56,9 +56,9 @@ public final class MonitoringViewConstants {
     public static final int FONT_SIZE = (int) Math.round(0.012 * Screen.getPrimary().getBounds().getHeight());
     
     /**
-     * The preferred height for any type of a bar, relative to the absolute screen height.
+     * The preferred size for any type of a bar, relative to the absolute screen height.
      */
-    public static final int PREF_HEIGHT_FOR_BARS = (int)
+    public static final int PREF_SIZE_FOR_BARS = (int)
             Math.round(0.27778 * Screen.getPrimary().getBounds().getHeight());
     
     /**

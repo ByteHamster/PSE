@@ -42,7 +42,7 @@ class TemperatureVisualization extends BarLayout implements Observer {
         temperatureBar.setMajorTickUnit((SimulationConstants.MAX_TEMPERATURE - SimulationConstants.MIN_TEMPERATURE)
                 / MonitoringViewConstants.NUMBER_OF_MAJOR_TICKS);
         temperatureBar.setOrientation(Orientation.VERTICAL);
-        temperatureBar.setPrefHeight(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS);
+        temperatureBar.setPrefHeight(MonitoringViewConstants.PREF_SIZE_FOR_BARS);
         this.getChildren().add(0, temperatureBar);
     }
 

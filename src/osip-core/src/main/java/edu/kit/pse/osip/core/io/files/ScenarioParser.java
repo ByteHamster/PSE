@@ -20,7 +20,6 @@ public class ScenarioParser extends ExtendedParser {
     
     /**
      * Constructor of ScenarioParser
-     * @param toParse
      * @param toParse String to parse
      */
     public ScenarioParser(String toParse) {

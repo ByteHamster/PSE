@@ -26,7 +26,7 @@ class GaugeVisualization extends BarLayout implements Observer {
     protected GaugeVisualization(String name) {
         super(name);
         gauge = new SimpleMetroArcGauge();
-        gauge.setPrefSize(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS, MonitoringViewConstants.PREF_HEIGHT_FOR_BARS);
+        gauge.setPrefSize(MonitoringViewConstants.PREF_SIZE_FOR_BARS, MonitoringViewConstants.PREF_SIZE_FOR_BARS);
         this.getChildren().add(0, gauge);
     }
     

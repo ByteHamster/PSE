@@ -60,7 +60,7 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
     /**
      * Contains the main calls necessary to draw the tank. Uses the abstract method drawSensors() for detail.
      * @param context The GraphicsContext on which the tank is drawn
-     * @param time
+     * @param time Time since last call
      */
     @Override
     public final void draw(GraphicsContext context, double time) {

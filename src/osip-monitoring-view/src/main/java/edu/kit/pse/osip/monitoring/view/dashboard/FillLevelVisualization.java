@@ -26,8 +26,8 @@ class FillLevelVisualization extends BarLayout implements Observer {
     protected FillLevelVisualization() {
         super(Translator.getInstance().getString("monitoring.tank.fillLevel"));
         levelBar = new BasicRoundDailGauge();
-        levelBar.setPrefSize(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS,
-                MonitoringViewConstants.PREF_HEIGHT_FOR_BARS);
+        levelBar.setPrefSize(MonitoringViewConstants.PREF_SIZE_FOR_BARS,
+                MonitoringViewConstants.PREF_SIZE_FOR_BARS);
         levelBar.setMaxValue(1);
         levelBar.setStyle("-fxx-value-color: -fxx-backplate-color;");
         levelBar.getStylesheets().add("BasicRoundDailGaugeShadowRemoval.css");

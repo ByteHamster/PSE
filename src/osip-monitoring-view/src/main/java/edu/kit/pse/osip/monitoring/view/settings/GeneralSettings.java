@@ -125,7 +125,7 @@ class GeneralSettings extends ScrollPane {
         timeSlider.setMinorTickCount(GeneralSettings.NUMBER_OF_MINOR_TICKS);
         timeSlider.setShowTickMarks(true);
         timeSlider.setShowTickLabels(true);
-        timeSlider.setPrefWidth(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS);
+        timeSlider.setPrefWidth(MonitoringViewConstants.PREF_SIZE_FOR_BARS);
         // ** Solution for: Slider doesn't show integer-only values.
         // Based on: http://stackoverflow.com/questions/38681664/javafx-slider-integer-only
         timeSlider.valueProperty().addListener((obs, oldval, newVal) -> timeSlider.setValue(newVal.intValue()));
@@ -136,7 +136,7 @@ class GeneralSettings extends ScrollPane {
                 MonitoringViewConstants.MAX_UPDATE_INTERVAL,
                 currentSettings.getFetchInterval(MonitoringViewConstants.DEFAULT_UPDATE_INTERVAL));
         timeBox.setEditable(true);
-        timeBox.setPrefWidth(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS);
+        timeBox.setPrefWidth(MonitoringViewConstants.PREF_SIZE_FOR_BARS);
         timeBox.getValueFactory().setConverter(new StringConverter<Number>() {
             @Override
             public String toString(Number object) {
@@ -183,7 +183,7 @@ class GeneralSettings extends ScrollPane {
             currentField = new Spinner<>(OSIPConstants.MIN_PORT, OSIPConstants.MAX_PORT,
                     currentSettings.getPort(tank, defaultPort++));
             currentField.setEditable(true);
-            currentField.setPrefWidth(MonitoringViewConstants.PREF_HEIGHT_FOR_BARS);
+            currentField.setPrefWidth(MonitoringViewConstants.PREF_SIZE_FOR_BARS);
             currentField.getValueFactory().setConverter(new StringConverter<Integer>() {
                 @Override
                 public String toString(Integer object) {
