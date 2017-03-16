@@ -31,7 +31,7 @@ public class MixTankSimulation extends MixTank {
      * @param input The liquids to put in.
      */
     public void putIn(LinkedList<Liquid> input) {
-        input.add(this.getLiquid());
+        input.addFirst(this.getLiquid());
         this.setLiquid(mixingStrategy.mixLiquids(input));
     }
 
