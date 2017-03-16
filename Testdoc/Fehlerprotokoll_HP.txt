@@ -1,0 +1,6 @@
+﻿\subsection{UI hängt nach dem Start und beim Speichern der Einstellungen}
+\begin{description}
+ \item[Beschreibung] Das UI von Überwachungskonsole und Simulation ist nach dem Start für ca 3-10 Sekunden blockiert und reagiert nicht. Nach dem Speichern der Einstellungen tritt es ebenfalls auf.
+ \item[Ursache] Die OPC UA Server und Clients werden im UI Thread gestartet und beendet.
+ \item[Behebung] Starte einen neuen Thread für Aktionen mit OPC UA. Zeige während der Aktionen einen Warte-Dialog an, um den Nutzer zu informieren.
+\end{description}
