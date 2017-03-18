@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -141,6 +142,18 @@ public class PipeTest implements Observer {
         changed = false;
         pipe.setValveThreshold((byte) 23);
         assertTrue(changed);
+    }
+
+    /**
+     * Check if isLiquidEntering works correctly.
+     */
+    @Test
+    public void testIsLiquidEntering() {
+        assertFalse(pipe.isLiquidEntering());
+        pipe.putIn(new Liquid(pipe.getMaxInput(), SimulationConstants.MIN_TEMPERATURE, new Color(0)));
+        assertTrue(pipe.isLiquidEntering());
+        pipe.putIn(new Liquid(0, SimulationConstants.MIN_TEMPERATURE, new Color(0)));
+        assertFalse(pipe.isLiquidEntering());
     }
 
     @Override

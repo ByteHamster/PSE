@@ -104,6 +104,15 @@ public class TankTest implements Observer {
     }
 
     /**
+     * Test whether setting a null liquid works correctly.
+     */
+    @Test(expected = NullPointerException.class)
+    public void testSetNullLiquid() {
+        Tank tank = new Tank(5, TankSelector.CYAN, liquid, outPipe, inPipe);
+        tank.setLiquid(null);
+    }
+
+    /**
      * Test whether getting the TankSelector works.
      */
     @Test
