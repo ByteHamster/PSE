@@ -87,6 +87,15 @@ public class MixTankTest implements Observer {
         assertEquals(4, tank.getFillLevel(), 0.001);
     }
 
+    /**
+     * Test whether setting a null liquid works correctly.
+     */
+    @Test(expected = NullPointerException.class)
+    public void testSetNullLiquid() {
+        MixTank tank = new MixTank(5, liquid, outPipe);
+        tank.setLiquid(null);
+    }
+
     @Override
     public void update(Observable observable, Object o) {
         changed = true;

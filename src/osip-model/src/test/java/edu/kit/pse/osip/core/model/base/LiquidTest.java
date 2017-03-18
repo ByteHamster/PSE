@@ -19,9 +19,17 @@ public class LiquidTest {
      * Test whether the constructor accepts too low temperatures
      */
     @Test(expected = IllegalArgumentException.class)
-    public void testNegativeTemperature() {
+    public void testTooLowTemperature() {
         new Liquid(1, SimulationConstants.MIN_TEMPERATURE - 0.01f, new Color(0, 0, 0));
     }
+    /**
+     * Test whether the constructor accepts too high temperatures
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testTooHighTemperature() {
+        new Liquid(1, SimulationConstants.MAX_TEMPERATURE + 0.01f, new Color(0, 0, 0));
+    }
+
 
     /**
      * Test whether the constructor accepts a negative amount.

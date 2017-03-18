@@ -18,7 +18,7 @@ public class OverfullLiquidContainerExceptionTest {
     public void testGetter() {
         OverfullLiquidContainerException ex = new OverfullLiquidContainerException("test", 1, 2);
         assertEquals(1, ex.getMaximumAmount(), 0.001);
-        assertEquals(1, ex.getMaximumAmount(), 0.001);
+        assertEquals(2, ex.getTriedAmount(), 0.001);
         assertEquals("test", ex.getMessage());
     }
 }
