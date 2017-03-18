@@ -71,9 +71,35 @@ public class ScenarioTest {
         scenario.startScenario();
 
         try {
-            assertEquals(true, future1.get(1, TimeUnit.SECONDS));
-            assertEquals(true, future2.get(1, TimeUnit.SECONDS));
-            assertEquals(true, future3.get(1, TimeUnit.SECONDS));
+            assertTrue(future1.get(1, TimeUnit.SECONDS));
+            assertTrue(future2.get(1, TimeUnit.SECONDS));
+            assertTrue(future3.get(1, TimeUnit.SECONDS));
+        } catch (InterruptedException | ExecutionException | TimeoutException ex) {
+            fail("CompletableFuture.get() failed: " + ex.getMessage());
+        }
+    }
+
+    /**
+     * Check that the finished listener gets called.
+     */
+    @Test
+    public void testNoListener() {
+        CompletableFuture<Boolean> future1 = new CompletableFuture<>();
+        CompletableFuture<Boolean> future3 = new CompletableFuture<>();
+
+        scenario.appendRunnable(productionSite -> future1.complete(Boolean.TRUE));
+        scenario.setProductionSite(fakeSite);
+        scenario.setScenarioFinishedListener(new Runnable() {
+            @Override
+            public void run() {
+                future3.complete(Boolean.TRUE);
+            }
+        });
+        scenario.startScenario();
+
+        try {
+            assertTrue(future1.get(50, TimeUnit.MILLISECONDS));
+            assertTrue(future3.get(50, TimeUnit.MILLISECONDS));
         } catch (InterruptedException | ExecutionException | TimeoutException ex) {
             fail("CompletableFuture.get() failed: " + ex.getMessage());
         }
@@ -94,8 +120,8 @@ public class ScenarioTest {
         scenario.startScenario();
 
         try {
-            assertEquals(true, future1.get(100, TimeUnit.MILLISECONDS));
-            assertEquals(false, future2.isDone());
+            assertTrue(future1.get(100, TimeUnit.MILLISECONDS));
+            assertFalse(future2.isDone());
             assertTrue(scenario.isRunning());
         } catch (InterruptedException | ExecutionException | TimeoutException ex) {
             fail("CompletableFuture.get() failed: " + ex.getMessage());
@@ -106,11 +132,11 @@ public class ScenarioTest {
         } catch (InterruptedException ex) {
             System.err.println("Sleep failed in ScenarioTest: " + ex.getMessage());
         }
-        assertEquals(false, future2.isDone());
+        assertFalse(future2.isDone());
         assertTrue(scenario.isRunning());
 
         try {
-            assertEquals(true, future2.get(300, TimeUnit.MILLISECONDS));
+            assertTrue(future2.get(300, TimeUnit.MILLISECONDS));
             sleep(50);
             assertFalse(scenario.isRunning());
         } catch (InterruptedException | ExecutionException | TimeoutException ex) {
