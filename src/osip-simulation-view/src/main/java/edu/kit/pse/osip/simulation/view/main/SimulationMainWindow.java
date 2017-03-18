@@ -14,16 +14,18 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.Group;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.util.Collection;
@@ -42,6 +44,7 @@ public class SimulationMainWindow implements SimulationViewInterface {
     private static final double WINDOW_HEIGHT = 800;
     private static final double WINDOW_WIDTH = 700;
     private static final double MIN_WINDOW_SIZE = 300;
+    private static final double PROGRESS_INDICATOR_SIZE = 100;
 
     /**
      * It is assumed, that the tanks and mixtank are always ordered in two rows.
@@ -52,8 +55,10 @@ public class SimulationMainWindow implements SimulationViewInterface {
     private Collection<Drawer> element;
     private Canvas canvas;
     private EventHandler<ActionEvent> resetHandler;
-
     private Label scenarioLabel;
+    private Stage stage;
+    private Scene mainScene;
+    private Scene progressScene;
 
     /**
      * Creates a new SimulationMainWindow. It is assumed that there will only ever be two rows of tanks.
@@ -137,12 +142,9 @@ public class SimulationMainWindow implements SimulationViewInterface {
      * @param primaryStage The stage to draw the window on
      */
     public final void start(Stage primaryStage) {
+        stage = primaryStage;
         primaryStage.setTitle(Translator.getInstance().getString("simulation.title"));
         primaryStage.getIcons().add(new Image("/icon.png"));
-
-        Group root = new Group();
-        Scene theScene = new Scene(root);
-        primaryStage.setScene(theScene);
 
         primaryStage.setWidth(WINDOW_WIDTH);
         primaryStage.setHeight(WINDOW_HEIGHT);
@@ -152,7 +154,6 @@ public class SimulationMainWindow implements SimulationViewInterface {
         primaryStage.setOnCloseRequest(event -> Platform.exit());
 
         makeLayout(primaryStage);
-
         primaryStage.show();
     }
 
@@ -164,8 +165,7 @@ public class SimulationMainWindow implements SimulationViewInterface {
         menu = new SimulationMenu(primaryStage);
         mainPane.setTop(menu);
 
-        canvas = setCanvas(primaryStage);
-
+        canvas = createCanvas();
         mainPane.setCenter(canvas);
 
         scenarioLabel = new Label(Translator.getInstance().getString("simulation.view.noScenario"));
@@ -176,17 +176,22 @@ public class SimulationMainWindow implements SimulationViewInterface {
         mainPane.setBottom(labelBox);
         labelBox.setPadding(new Insets(2, 2, 2, 2));
 
-        Scene scene = new Scene(mainPane);
-        primaryStage.setScene(scene);
+        mainScene = new Scene(mainPane);
+
+        ProgressIndicator progressIndicator = new ProgressIndicator(-1);
+        progressIndicator.setMaxSize(PROGRESS_INDICATOR_SIZE, PROGRESS_INDICATOR_SIZE);
+        VBox box = new VBox();
+        box.setSpacing(PROGRESS_INDICATOR_SIZE / 2);
+        box.setAlignment(Pos.CENTER);
+        box.getChildren().add(progressIndicator);
+        box.getChildren().add(new Label(Translator.getInstance().getString("simulation.wait")));
+        progressScene = new Scene(box);
+
+        primaryStage.setScene(progressScene);
     }
 
-    private Canvas setCanvas(Stage primaryStage) {
-        Group root = new Group();
-        Scene theScene = new Scene(root);
-        primaryStage.setScene(theScene);
-
+    private Canvas createCanvas() {
         canvas = new ResizableCanvas();
-        root.getChildren().add(canvas);
 
         GraphicsContext context = canvas.getGraphicsContext2D();
 
@@ -276,16 +281,23 @@ public class SimulationMainWindow implements SimulationViewInterface {
 
     @Override
     public void showOPCUAServerError(String message) {
-        Translator t = Translator.getInstance();
+        Platform.runLater(() -> {
+            Translator t = Translator.getInstance();
 
-        Alert errorDialog = new Alert(Alert.AlertType.ERROR);
-        errorDialog.setTitle(t.getString("simulation.view.opcua.error.title"));
-        errorDialog.setHeaderText(t.getString("simulation.view.opcua.error.header"));
-        errorDialog.setContentText(message);
-        errorDialog.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
-        Stage stage = (Stage) errorDialog.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image("/icon.png"));
-        errorDialog.show();
+            Alert errorDialog = new Alert(Alert.AlertType.ERROR);
+            errorDialog.setTitle(t.getString("simulation.view.opcua.error.title"));
+            errorDialog.setHeaderText(t.getString("simulation.view.opcua.error.header"));
+            errorDialog.setContentText(message);
+            errorDialog.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            Stage stage = (Stage) errorDialog.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("/icon.png"));
+            errorDialog.show();
+        });
+    }
+
+    @Override
+    public void setProgressIndicatorVisible(boolean visible) {
+        Platform.runLater(() -> stage.setScene(visible ? progressScene : mainScene));
     }
 
     /**

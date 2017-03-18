@@ -73,4 +73,9 @@ public final class MonitoringViewFacade implements MonitoringViewInterface {
     public void setMenuHelpButtonHandler(EventHandler<ActionEvent> handler) {
         mainWindow.getMonitoringMenu().setMenuHelpButtonHandler(handler);
     }
+
+    @Override
+    public void setProgressIndicatorVisible(boolean visible) {
+        mainWindow.setProgressIndicatorVisible(visible);
+    }
 }

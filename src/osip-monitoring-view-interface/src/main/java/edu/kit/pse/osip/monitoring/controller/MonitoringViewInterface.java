@@ -95,4 +95,10 @@ public interface MonitoringViewInterface {
      * @param handler The handler handles a click on the help menu button.
      */
     void setMenuHelpButtonHandler(EventHandler<ActionEvent> handler);
+
+    /**
+     * Shows and hides the progress indicator
+     * @param visible If the indicator should be visible
+     */
+    void setProgressIndicatorVisible(boolean visible);
 }
