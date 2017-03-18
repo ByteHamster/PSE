@@ -93,3 +93,12 @@ Abdeckung:
 Status: 
 [GT130]: 
 [GT280]: 
+
+(11) Produkdaten
+Durchlauf: 
+Abdeckung: 
+Status: 
+[GT100]: 
+[GT110]: 
+[GT290]: 
+[GT280]: 
