@@ -63,6 +63,7 @@ public abstract class RotatingControlDrawer extends ObjectDrawer {
      * @return The x coordinate of the point (xPos, yPos) rotated around (centerX, centerY) by degrees degrees
      */
     protected static double rotateX(double xPos, double centerX, double yPos, double centerY, double degrees) {
+        degrees = degrees % 360;
         double angle = degrees * (Math.PI / 180);
         return Math.cos(angle) * (xPos - centerX) - Math.sin(angle) * (yPos - centerY) + centerX;
     }
@@ -79,6 +80,7 @@ public abstract class RotatingControlDrawer extends ObjectDrawer {
      * @return The y coordinate of the point (xPos, yPos) rotated around (centerX, centerY) by degrees degrees
      */
     protected static double rotateY(double xPos, double centerX, double yPos, double centerY, double degrees) {
+        degrees = degrees % 360;
         double angle = degrees * (Math.PI / 180);
         return Math.sin(angle) * (xPos - centerX) + Math.cos(angle) * (yPos - centerY) + centerY;
     }
