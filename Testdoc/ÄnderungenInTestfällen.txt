@@ -1,6 +1,9 @@
-﻿GT160, GT170, GT200, GT240 gestrichen, da auf nicht implementierten Kannkriterien basieren
+﻿FA290, FA560, FA580, FA630, FA640, FA700, FA780, FA800, NF40, NF60, NF70, NF90, NF110, NF140, D40 angepasst, da anders umgesetzt
+FA100, FA110, FA160, FA180, FA200, FA220, FA270, FA310, FA320, FA450, FA500, FA550, FA570, FA590, FA600, FA610, FA650, FA660, FA710, FA720, FA730, FA740, FA820, NF100, NF120, NF130, D20, D60, D70, D80, D90, D100, D120 entfernt, da nicht implementiert
+GT160, GT170, GT200, GT240 gestrichen, da auf nicht implementierten Kannkriterien basieren
 GT210: Alle verfügbaren, d. h. von uns mit gelieferten (es gibt keine Liste, sondern Auswahl über einen Dateidialog. Vier sind bereits vordefiniert.) Simulationsszenarien ...
 GT270: ... Jedes Mal muss eine Fehlermeldung erscheinen oder eine automatische Korrektur in den Wertebereich (so in der Überwachungskonsole implementiert) erfolgen.
 Testszenario 4: Reduktion auf Verbindungsinformationen
 Testszenario 5: Reduktion auf Sensordaten
-Testszenario 10: nur unter Ubuntu 16.04
+Testszenario 10: nur unter Ubuntu 16.04 (bereits im Pflichtenheft vorgesehen)
+GT290 und Testszenario 11 hinzugefügt, um Produktdaten zu testen
