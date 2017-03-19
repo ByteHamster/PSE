@@ -54,7 +54,15 @@ public class TranslatorTest {
         String output = translator.getString("branch");
         assertEquals(output, "branch");
     }
-      
+     
+    /**
+     * Test null key
+     */
+    @Test(expected = NullPointerException.class)
+    public void testNullKey() {
+        String output = translator.getString(null);
+    }
+        
     /**
      * Test null as input
      */

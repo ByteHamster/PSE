@@ -21,7 +21,9 @@ import edu.kit.pse.osip.core.model.base.TankSelector;
 public class ClientSettingsWrapperTest {
 
     private ClientSettingsWrapper wrapper;
+    private ClientSettingsWrapper wrapperFalse;
     private File tempTestFile;
+    private File tempTestFileFalse;
     
     /**
      * Set up for tests
@@ -51,6 +53,30 @@ public class ClientSettingsWrapperTest {
         outStream.println();
         outStream.close();
         wrapper = new ClientSettingsWrapper(tempTestFile);
+    
+        tempTestFileFalse = File.createTempFile("testClientSettingsTempFalse", ".properties");        
+        PrintWriter outStreamFalse = new PrintWriter(tempTestFileFalse);        
+        outStream.print("fetchIntervall=80");
+        outStream.println();
+        outStream.print("overflowAlarmm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
+        outStream.println();
+        outStream.print("underflowAlarmm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
+        outStream.println();
+        outStream.print("overheatingAlarmm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
+        outStream.println();
+        outStream.print("undercoolingAlarmm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
+        outStream.println();
+        outStream.print("tempDiagramm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
+        outStream.println();
+        outStream.print("fillLevelDiagramm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
+        outStream.println();
+        outStream.print("serverHostnamee_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "hostNAME");
+        outStream.println();
+        outStream.print("serverPortt_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "4242");
+        outStream.println();
+        outStream.close();
+        wrapperFalse = new ClientSettingsWrapper(tempTestFileFalse);
+    
     }
     
     /**
@@ -243,6 +269,95 @@ public class ClientSettingsWrapperTest {
         ClientSettingsWrapper helpWrapper = new ClientSettingsWrapper(tempTestFile);
         int helpPort = helpWrapper.getPort(TankSelector.valuesWithoutMix()[0], -1);
         assertEquals(helpPort, 424299);
+    }
+    
+    /**
+     * Test constructor with null argument.
+     */
+    @Test(expected = NullPointerException.class) 
+    public void testNullArgConstructor() {
+        ClientSettingsWrapper wrapper = new ClientSettingsWrapper(null);
+    }
+    
+    /**
+     * Test getting null fetchInterval
+     */
+    @Test
+    public void testNullFetchInterval() {
+        int interval = wrapperFalse.getFetchInterval(1122);
+        assertEquals(interval, 1122);
+    }
+    
+    /**
+     * Test getting null overheating alarm
+     */
+    @Test
+    public void testNullOverheatingAlarm() {
+        boolean value = wrapperFalse.getOverheatingAlarm(TankSelector.valuesWithoutMix()[0], false);
+        assertEquals(value, false);
+    }
+    
+    /**
+     * Test getting null undercooling alarm
+     */
+    @Test
+    public void testNullUnderCoolingAlarm() {
+        boolean value = wrapperFalse.getUndercoolingAlarm(TankSelector.valuesWithoutMix()[0], false);
+        assertEquals(value, false);
+    }
+    
+    /**
+     * Test getting null overflow alarm
+     */
+    @Test
+    public void testNullOverflowAlarm() {
+        boolean value = wrapperFalse.getOverflowAlarm(TankSelector.valuesWithoutMix()[0], false);
+        assertEquals(value, false);
+    }
+    
+    /**
+     * Test getting null underflow alarm
+     */
+    @Test
+    public void testNullUnderflowAlarm() {
+        boolean value = wrapperFalse.getUnderflowAlarm(TankSelector.valuesWithoutMix()[0], false);
+        assertEquals(value, false);
+    }
+    
+    /**
+     * Test getting null temperature diagramm
+     */
+    @Test
+    public void testNullTempDiagramm() {
+        boolean value = wrapperFalse.getTempDiagram(TankSelector.valuesWithoutMix()[0], false);
+        assertEquals(value, false);
+    }
+    
+    /**
+     * Test getting null fill level diagramm
+     */
+    @Test
+    public void testNullFillLevelDiagramm() {
+        boolean value = wrapperFalse.getFillLevelDiagram(TankSelector.valuesWithoutMix()[0], false);
+        assertEquals(value, false);
+    }
+    
+    /**
+     * Test getting null hostname
+     */
+    @Test
+    public void testNullHostname() {
+        String value = wrapperFalse.getHostname(TankSelector.valuesWithoutMix()[0], "local");
+        assertEquals(value, "local");
+    }
+    
+    /**
+     * Test getting null port
+     */
+    @Test
+    public void testNullPort() {
+        int value = wrapperFalse.getPort(TankSelector.valuesWithoutMix()[0], 4242);
+        assertEquals(value, 4242);
     }
     
 }
