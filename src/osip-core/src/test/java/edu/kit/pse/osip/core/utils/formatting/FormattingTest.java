@@ -91,17 +91,17 @@ public class FormattingTest {
     /**
      * Tests null host.
      */
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testNullHost() {
-        FormatChecker.checkHost(null);       
+        assertFalse(FormatChecker.checkHost(null));       
     }
     
     /**
      * Tests null percentage.
      */
-    @Test(expected = NullPointerException.class)
+    @Test
     public void testNullPercentage() {
-        FormatChecker.checkPercentage(null);       
+        assertFalse(FormatChecker.checkPercentage(null));       
     }
     
 }
