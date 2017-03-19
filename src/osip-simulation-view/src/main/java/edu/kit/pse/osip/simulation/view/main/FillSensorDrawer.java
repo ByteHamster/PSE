@@ -12,18 +12,15 @@ import javafx.scene.paint.Color;
  */
 public class FillSensorDrawer extends ObjectDrawer {
 
-    private int rows;
     private int cols;
 
     /**
      * Generates a new drawer for fill sensors
      * @param pos The center of the drawer
-     * @param rows The number of rows in which the tanks are ordered
      * @param cols The number of columns in which the tanks are ordered
      */
-    public FillSensorDrawer(Point2D pos, int rows, int cols) {
+    public FillSensorDrawer(Point2D pos, int cols) {
         super(pos);
-        this.rows = rows;
         this.cols = cols;
     }
 

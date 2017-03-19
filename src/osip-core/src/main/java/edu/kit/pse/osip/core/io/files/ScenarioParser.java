@@ -107,10 +107,11 @@ public class ScenarioParser extends ExtendedParser {
      * @throws ParserException If something goes wrong
      */
     private String readAlphabetic() throws ParserException {
-        String name = "";
+        StringBuilder builder = new StringBuilder();
         while (available() && (Character.isAlphabetic(peek()) || peek() == '_')) {
-            name += pop();
+            builder.append(pop());
         }
+        String name = builder.toString();
         if (name.equals("")) {
             die("Expected String literal");
         }

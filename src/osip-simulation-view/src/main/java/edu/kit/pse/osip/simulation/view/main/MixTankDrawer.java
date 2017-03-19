@@ -34,11 +34,11 @@ public class MixTankDrawer extends AbstractTankDrawer {
         double topXPos = getPosition().getX() + inBoxHorPadding + relInBoxWidth;
         double topYPos = getPosition().getY() + inBoxVertPadding + 0.1 * relInBoxHeight;
         Point2D topPos = new Point2D(topXPos, topYPos);
-        topSensor = new FillSensorDrawer(topPos, rows, cols);
+        topSensor = new FillSensorDrawer(topPos, cols);
 
         double botYPos = getPosition().getY() + inBoxVertPadding + 0.92 * relInBoxHeight;
         Point2D botPos = new Point2D(topXPos, botYPos);
-        botSensor = new FillSensorDrawer(botPos, rows, cols);
+        botSensor = new FillSensorDrawer(botPos, cols);
 
         double tempX = getPosition().getX() + inBoxHorPadding;
         double tempY = getPosition().getY() + inBoxVertPadding + relInBoxHeight;

@@ -97,10 +97,11 @@ public class ExtendedParser extends BaseParser {
         if (Character.isDigit(peek())) {
             return readNumber();
         } else if (Character.isAlphabetic(peek())) {
-            String variableName = "";
+            StringBuilder builder = new StringBuilder();
             while (available() && (Character.isAlphabetic(peek()) || peek() == '_')) {
-                variableName += pop();
+                builder.append(pop());
             }
+            String variableName = builder.toString();
             
             if (variables.containsKey(variableName)) {
                 return variables.get(variableName);

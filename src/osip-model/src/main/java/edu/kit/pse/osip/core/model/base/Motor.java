@@ -36,7 +36,7 @@ public class Motor extends java.util.Observable {
      * Get the RPM.
      * @return the RPM.
      */
-    public int getRPM() {
+    public synchronized int getRPM() {
         return rpm;
     }
 
