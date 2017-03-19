@@ -77,6 +77,14 @@ public class ServerSettingsWrapperTest {
     }
     
     /**
+     * Test null argument in constructor
+     */
+    @Test(expected = NullPointerException.class)
+    public void testNullArgConstructor() {
+        ServerSettingsWrapper serverWrapper = new ServerSettingsWrapper(null);
+    }
+    
+    /**
      * Reset file
      * @throws IOException Exception in IO streams
      */

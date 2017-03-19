@@ -29,10 +29,16 @@ public class ClientSettingsWrapperTest {
     
     /**
      * Set up for tests
-     * @throws Exception Exceptions in set up
+     * @throws IOException Exceptions in set up
      */
     @Before
-    public void setUp() throws Exception {
+    public void setUp() throws IOException {
+        initWrapper();
+        initNullWrapper();
+        initInvalidWrapper();
+    }
+    
+    private void initWrapper() throws IOException {
         tempTestFile = File.createTempFile("testClientSettingsTemp", ".properties");        
         PrintWriter outStream = new PrintWriter(tempTestFile);        
         outStream.print("fetchInterval=80");
@@ -55,7 +61,9 @@ public class ClientSettingsWrapperTest {
         outStream.println();
         outStream.close();
         wrapper = new ClientSettingsWrapper(tempTestFile);
+    }
     
+    private void initNullWrapper() throws IOException {
         tempTestFileNullEntry = File.createTempFile("testClientSettingsTempNullEntry", ".properties");        
         PrintWriter outStreamNullEntry = new PrintWriter(tempTestFileNullEntry);        
         outStreamNullEntry.print("fetchIntervall=80");
@@ -78,7 +86,9 @@ public class ClientSettingsWrapperTest {
         outStreamNullEntry.println();
         outStreamNullEntry.close();
         wrapperNullEntry = new ClientSettingsWrapper(tempTestFileNullEntry);
-    
+    }
+       
+    private void initInvalidWrapper() throws IOException {
         tempTestFileInvalidEntry = File.createTempFile("testClientSettingsTempInvalidEntry", ".properties");        
         PrintWriter outStreamInvalidEntry = new PrintWriter(tempTestFileInvalidEntry);        
         outStreamInvalidEntry.print("fetchInterval=8G0AER");
@@ -102,7 +112,6 @@ public class ClientSettingsWrapperTest {
         outStreamInvalidEntry.close();
         wrapperInvalidEntry = new ClientSettingsWrapper(tempTestFileInvalidEntry);       
     }
-    
     /**
      * Delete used test temp file
      */

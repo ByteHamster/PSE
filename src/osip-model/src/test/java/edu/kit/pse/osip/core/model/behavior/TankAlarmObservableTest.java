@@ -124,8 +124,8 @@ public class TankAlarmObservableTest {
         tank.setLiquid(alteredLiquid);
         assertEquals(false, tObserver.wasNotified());
         assertFalse(alarm.isAlarmTriggered());
-    }    
-
+    }
+    
     /**
      * Test if alarm gives notification on changes 
      */
@@ -152,9 +152,10 @@ public class TankAlarmObservableTest {
 
     /**
      * Test if alarm gives no notification on multiple new liquid inputs, which all trigger alarms
+     * Use GREATER_THAN behavior
      */
     @Test
-    public void testObservableNotifyMultipleConstant() {
+    public void testObservableNotifyMultipleConstantGreaterThan() {
         Liquid testLiquidA = new Liquid(50f, 300f, defaultColor);
         Liquid testLiquidB = new Liquid(150f, 300f, defaultColor);
         Liquid testLiquidC = new Liquid(160f, 300f, defaultColor);
@@ -173,5 +174,41 @@ public class TankAlarmObservableTest {
         assertEquals(false, tObserver.wasNotified());
         assertTrue(alarm.isAlarmTriggered());
     }
+    
+    /**
+     * Test if alarm gives no notification on multiple new liquid inputs, which all trigger alarms.
+     * Use SMALLER_THAN behavior
+     */
+    @Test
+    public void testObservableNotifyMultipleConstantSmallerThan() {
+        Liquid testLiquidA = new Liquid(150f, 300f, defaultColor);
+        Liquid testLiquidB = new Liquid(50f, 300f, defaultColor);
+        Liquid testLiquidC = new Liquid(60f, 300f, defaultColor);
+        tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquidA, pipe1, pipe2);
+        alarm = new FillAlarm(tank, 0.5f, AlarmBehavior.SMALLER_THAN);
+        TestObserver tObserver = new TestObserver();
+        alarm.addObserver(tObserver);
+        assertEquals(false, tObserver.wasNotified());
+        assertFalse(alarm.isAlarmTriggered());
+        tObserver.resetNotified();
+        tank.setLiquid(testLiquidB);
+        assertEquals(true, tObserver.wasNotified());
+        assertTrue(alarm.isAlarmTriggered());
+        tObserver.resetNotified();
+        tank.setLiquid(testLiquidC);
+        assertEquals(false, tObserver.wasNotified());
+        assertTrue(alarm.isAlarmTriggered());
+    }
 
+    /**
+     * Test update method with argument which is not a liquid
+     */
+    @Test(expected = AssertionError.class)
+    public void testNotInstanceOfLiquidArg() {
+        testLiquid = new Liquid(50f, 300f, defaultColor);
+        tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquid, pipe1, pipe2);
+        alarm = new FillAlarm(tank, 0.5f, AlarmBehavior.GREATER_THAN);
+        alarm.update(tank, "String");
+    }
+    
 }
