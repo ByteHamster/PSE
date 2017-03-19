@@ -77,7 +77,7 @@ public class Pipe extends java.util.Observable {
      * Get the valve threshold in %.
      * @return the threshold, which is between 0 and 100.
      */
-    public byte getValveThreshold() {
+    public synchronized byte getValveThreshold() {
         return threshold;
     }
     /**
@@ -86,7 +86,7 @@ public class Pipe extends java.util.Observable {
      * (SimulationConstants.SIMULATION_STEP, because you fill in so much liquid with every call to putIn).
      * @return the maximum amount of liquid you can put into the pipe with one call to putIn().
      */
-    public float getMaxInput() {
+    public synchronized float getMaxInput() {
         return crosssection * SimulationConstants.SIMULATION_STEP * (threshold / 100f);
     }
 
