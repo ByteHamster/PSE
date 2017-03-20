@@ -52,7 +52,7 @@ public class TranslatorTest {
     @Test
     public void testMissingKey() {
         String output = translator.getString("branch");
-        assertEquals(output, "branch");
+        assertEquals("branch", output);
     }
      
     /**

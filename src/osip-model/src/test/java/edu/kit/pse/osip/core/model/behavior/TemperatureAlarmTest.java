@@ -1,6 +1,7 @@
 package edu.kit.pse.osip.core.model.behavior;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -42,7 +43,7 @@ public class TemperatureAlarmTest {
         testLiquid = new Liquid(20f, 300f, new Color(0.5, 0.5, 0.5));
         tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquid, pipe1, pipe2);
         alarm = new TemperatureAlarm(tank, 400f, AlarmBehavior.GREATER_THAN);
-        assertEquals(false, alarm.isAlarmTriggered());
+        assertFalse(alarm.isAlarmTriggered());
     }
 
     /**
@@ -53,7 +54,7 @@ public class TemperatureAlarmTest {
         testLiquid = new Liquid(20f, 300f, new Color(0.5, 0.5, 0.5));
         tank = new Tank(200f, TankSelector.valuesWithoutMix()[0], testLiquid, pipe1, pipe2);
         alarm = new TemperatureAlarm(tank, 200f, AlarmBehavior.GREATER_THAN);
-        assertEquals(true, alarm.isAlarmTriggered());
+        assertTrue(alarm.isAlarmTriggered());
     }
     
 }
