@@ -1,7 +1,6 @@
 package edu.kit.pse.osip.core.model.behavior;
 
 import static junit.framework.TestCase.assertFalse;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Observable;
@@ -81,7 +80,7 @@ public class TankAlarmObservableTest {
         Liquid alteredLiquid = new Liquid(150f, 300f, defaultColor);
         assertFalse(alarm.isAlarmTriggered());
         tank.setLiquid(alteredLiquid);
-        assertEquals(true, tObserver.wasNotified());
+        assertTrue(tObserver.wasNotified());
         assertTrue(alarm.isAlarmTriggered());
     }
 
@@ -99,13 +98,13 @@ public class TankAlarmObservableTest {
         assertFalse(alarm.isAlarmTriggered());
 
         tank.setLiquid(alteredLiquid);
-        assertEquals(true, tObserver.wasNotified());
+        assertTrue(tObserver.wasNotified());
         assertTrue(alarm.isAlarmTriggered());
 
         tObserver.resetNotified();
         alteredLiquid = new Liquid(150f, 300f, defaultColor);
         tank.setLiquid(alteredLiquid);
-        assertEquals(true, tObserver.wasNotified());
+        assertTrue(tObserver.wasNotified());
         assertFalse(alarm.isAlarmTriggered());
     }
 
@@ -122,7 +121,7 @@ public class TankAlarmObservableTest {
         assertFalse(alarm.isAlarmTriggered());
         Liquid alteredLiquid = new Liquid(80f, 300f, defaultColor);
         tank.setLiquid(alteredLiquid);
-        assertEquals(false, tObserver.wasNotified());
+        assertFalse(tObserver.wasNotified());
         assertFalse(alarm.isAlarmTriggered());
     }
     
@@ -138,15 +137,15 @@ public class TankAlarmObservableTest {
         alarm = new FillAlarm(tank, 0.5f, AlarmBehavior.GREATER_THAN);
         TestObserver tObserver = new TestObserver();
         alarm.addObserver(tObserver);
-        assertEquals(false, tObserver.wasNotified());
+        assertFalse(tObserver.wasNotified());
         assertFalse(alarm.isAlarmTriggered());
         tObserver.resetNotified();
         tank.setLiquid(testLiquidB);
-        assertEquals(true, tObserver.wasNotified());
+        assertTrue(tObserver.wasNotified());
         assertTrue(alarm.isAlarmTriggered());
         tObserver.resetNotified();
         tank.setLiquid(testLiquidC);
-        assertEquals(true, tObserver.wasNotified());
+        assertTrue(tObserver.wasNotified());
         assertFalse(alarm.isAlarmTriggered());
     }
 
@@ -163,15 +162,15 @@ public class TankAlarmObservableTest {
         alarm = new FillAlarm(tank, 0.5f, AlarmBehavior.GREATER_THAN);
         TestObserver tObserver = new TestObserver();
         alarm.addObserver(tObserver);
-        assertEquals(false, tObserver.wasNotified());
+        assertFalse(tObserver.wasNotified());
         assertFalse(alarm.isAlarmTriggered());
         tObserver.resetNotified();
         tank.setLiquid(testLiquidB);
-        assertEquals(true, tObserver.wasNotified());
+        assertTrue(tObserver.wasNotified());
         assertTrue(alarm.isAlarmTriggered());
         tObserver.resetNotified();
         tank.setLiquid(testLiquidC);
-        assertEquals(false, tObserver.wasNotified());
+        assertFalse(tObserver.wasNotified());
         assertTrue(alarm.isAlarmTriggered());
     }
     
@@ -188,15 +187,15 @@ public class TankAlarmObservableTest {
         alarm = new FillAlarm(tank, 0.5f, AlarmBehavior.SMALLER_THAN);
         TestObserver tObserver = new TestObserver();
         alarm.addObserver(tObserver);
-        assertEquals(false, tObserver.wasNotified());
+        assertFalse(tObserver.wasNotified());
         assertFalse(alarm.isAlarmTriggered());
         tObserver.resetNotified();
         tank.setLiquid(testLiquidB);
-        assertEquals(true, tObserver.wasNotified());
+        assertTrue(tObserver.wasNotified());
         assertTrue(alarm.isAlarmTriggered());
         tObserver.resetNotified();
         tank.setLiquid(testLiquidC);
-        assertEquals(false, tObserver.wasNotified());
+        assertFalse(tObserver.wasNotified());
         assertTrue(alarm.isAlarmTriggered());
     }
 

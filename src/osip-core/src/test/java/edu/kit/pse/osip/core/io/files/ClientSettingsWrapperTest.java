@@ -1,6 +1,8 @@
 package edu.kit.pse.osip.core.io.files;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,6 +28,7 @@ public class ClientSettingsWrapperTest {
     private File tempTestFile;
     private File tempTestFileNullEntry;
     private File tempTestFileInvalidEntry;
+    private TankSelector testTank;
     
     /**
      * Set up for tests
@@ -33,6 +36,7 @@ public class ClientSettingsWrapperTest {
      */
     @Before
     public void setUp() throws IOException {
+        testTank = TankSelector.valuesWithoutMix()[0];
         initWrapper();
         initNullWrapper();
         initInvalidWrapper();
@@ -41,24 +45,15 @@ public class ClientSettingsWrapperTest {
     private void initWrapper() throws IOException {
         tempTestFile = File.createTempFile("testClientSettingsTemp", ".properties");        
         PrintWriter outStream = new PrintWriter(tempTestFile);        
-        outStream.print("fetchInterval=80");
-        outStream.println();
-        outStream.print("overflowAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
-        outStream.println();
-        outStream.print("underflowAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
-        outStream.println();
-        outStream.print("overheatingAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
-        outStream.println();
-        outStream.print("undercoolingAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
-        outStream.println();
-        outStream.print("tempDiagram_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
-        outStream.println();
-        outStream.print("fillLevelDiagram_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
-        outStream.println();
-        outStream.print("serverHostname_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "hostNAME");
-        outStream.println();
-        outStream.print("serverPort_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "4242");
-        outStream.println();
+        outStream.println("fetchInterval=80");
+        outStream.println("overflowAlarm_" + testTank + "=" + "false");
+        outStream.println("underflowAlarm_" + testTank + "=" + "false");
+        outStream.println("overheatingAlarm_" + testTank + "=" + "false");
+        outStream.println("undercoolingAlarm_" + testTank + "=" + "false");
+        outStream.println("tempDiagram_" + testTank + "=" + "false");
+        outStream.println("fillLevelDiagram_" + testTank + "=" + "false");
+        outStream.println("serverHostname_" + testTank + "=" + "hostNAME");
+        outStream.println("serverPort_" + testTank + "=" + "4242");
         outStream.close();
         wrapper = new ClientSettingsWrapper(tempTestFile);
     }
@@ -66,24 +61,15 @@ public class ClientSettingsWrapperTest {
     private void initNullWrapper() throws IOException {
         tempTestFileNullEntry = File.createTempFile("testClientSettingsTempNullEntry", ".properties");        
         PrintWriter outStreamNullEntry = new PrintWriter(tempTestFileNullEntry);        
-        outStreamNullEntry.print("fetchIntervall=80");
-        outStreamNullEntry.println();
-        outStreamNullEntry.print("overflowAlarmm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
-        outStreamNullEntry.println();
-        outStreamNullEntry.print("underflowAlarmm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
-        outStreamNullEntry.println();
-        outStreamNullEntry.print("overheatingAlarmm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
-        outStreamNullEntry.println();
-        outStreamNullEntry.print("undercoolingAlarmm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
-        outStreamNullEntry.println();
-        outStreamNullEntry.print("tempDiagramm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
-        outStreamNullEntry.println();
-        outStreamNullEntry.print("fillLevelDiagramm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "false");
-        outStreamNullEntry.println();
-        outStreamNullEntry.print("serverHostnamee_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "hostNAME");
-        outStreamNullEntry.println();
-        outStreamNullEntry.print("serverPortt_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "4242");
-        outStreamNullEntry.println();
+        outStreamNullEntry.println("fetchIntervall=80");
+        outStreamNullEntry.println("overflowAlarmm_" + testTank + "=" + "false");
+        outStreamNullEntry.println("underflowAlarmm_" + testTank + "=" + "false");
+        outStreamNullEntry.println("overheatingAlarmm_" + testTank + "=" + "false");
+        outStreamNullEntry.println("undercoolingAlarmm_" + testTank + "=" + "false");
+        outStreamNullEntry.println("tempDiagramm_" + testTank + "=" + "false");
+        outStreamNullEntry.println("fillLevelDiagramm_" + testTank + "=" + "false");
+        outStreamNullEntry.println("serverHostnamee_" + testTank + "=" + "hostNAME");
+        outStreamNullEntry.println("serverPortt_" + testTank + "=" + "4242");
         outStreamNullEntry.close();
         wrapperNullEntry = new ClientSettingsWrapper(tempTestFileNullEntry);
     }
@@ -91,24 +77,15 @@ public class ClientSettingsWrapperTest {
     private void initInvalidWrapper() throws IOException {
         tempTestFileInvalidEntry = File.createTempFile("testClientSettingsTempInvalidEntry", ".properties");        
         PrintWriter outStreamInvalidEntry = new PrintWriter(tempTestFileInvalidEntry);        
-        outStreamInvalidEntry.print("fetchInterval=8G0AER");
-        outStreamInvalidEntry.println();
-        outStreamInvalidEntry.print("overflowAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "falsE");
-        outStreamInvalidEntry.println();
-        outStreamInvalidEntry.print("underflowAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "falsE");
-        outStreamInvalidEntry.println();
-        outStreamInvalidEntry.print("overheatingAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "falsE");
-        outStreamInvalidEntry.println();
-        outStreamInvalidEntry.print("undercoolingAlarm_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "falsE");
-        outStreamInvalidEntry.println();
-        outStreamInvalidEntry.print("tempDiagram_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "falsE");
-        outStreamInvalidEntry.println();
-        outStreamInvalidEntry.print("fillLevelDiagram_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "falsE");
-        outStreamInvalidEntry.println();
-        outStreamInvalidEntry.print("serverHostname_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "hostNAMEZ");
-        outStreamInvalidEntry.println();
-        outStreamInvalidEntry.print("serverPort_" + (TankSelector.valuesWithoutMix()[0]) + "=" + "4L4L");
-        outStreamInvalidEntry.println();
+        outStreamInvalidEntry.println("fetchInterval=8G0AER");
+        outStreamInvalidEntry.println("overflowAlarm_" + testTank + "=" + "falsE");
+        outStreamInvalidEntry.println("underflowAlarm_" + testTank + "=" + "falsE");
+        outStreamInvalidEntry.println("overheatingAlarm_" + testTank + "=" + "falsE");
+        outStreamInvalidEntry.println("undercoolingAlarm_" + testTank + "=" + "falsE");
+        outStreamInvalidEntry.println("tempDiagram_" + testTank + "=" + "falsE");
+        outStreamInvalidEntry.println("fillLevelDiagram_" + testTank + "=" + "falsE");
+        outStreamInvalidEntry.println("serverHostname_" + testTank + "=" + "hostNAMEZ");
+        outStreamInvalidEntry.println("serverPort_" + testTank + "=" + "4L4L");
         outStreamInvalidEntry.close();
         wrapperInvalidEntry = new ClientSettingsWrapper(tempTestFileInvalidEntry);       
     }
@@ -144,7 +121,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testSetOverflowAlarm() {
         wrapper.setOverflowAlarm(TankSelector.valuesWithoutMix()[0], true);        
-        assertEquals(wrapper.getOverflowAlarm(TankSelector.valuesWithoutMix()[0], false), true);
+        assertTrue(wrapper.getOverflowAlarm(TankSelector.valuesWithoutMix()[0], false));
     }
     
     /**
@@ -153,7 +130,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testSetTempDiagram() {
         wrapper.setTempDiagram(TankSelector.valuesWithoutMix()[0], true);        
-        assertEquals(wrapper.getTempDiagram(TankSelector.valuesWithoutMix()[0], false), true);
+        assertTrue(wrapper.getTempDiagram(TankSelector.valuesWithoutMix()[0], false));
     }
     
     /**
@@ -171,7 +148,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testSetUnderflowAlarm() {
         wrapper.setUnderflowAlarm(TankSelector.valuesWithoutMix()[0], true);        
-        assertEquals(wrapper.getUnderflowAlarm(TankSelector.valuesWithoutMix()[0], false), true);
+        assertTrue(wrapper.getUnderflowAlarm(TankSelector.valuesWithoutMix()[0], false));
     }
     
     /**
@@ -180,7 +157,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testSetFillLevelDiagram() {
         wrapper.setFillLevelDiagram(TankSelector.valuesWithoutMix()[0], true);        
-        assertEquals(wrapper.getFillLevelDiagram(TankSelector.valuesWithoutMix()[0], false), true);
+        assertTrue(wrapper.getFillLevelDiagram(TankSelector.valuesWithoutMix()[0], false));
     }
     
     /**
@@ -189,7 +166,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testSetOverheatingAlarm() {
         wrapper.setOverheatingAlarm(TankSelector.valuesWithoutMix()[0], true);        
-        assertEquals(wrapper.getOverheatingAlarm(TankSelector.valuesWithoutMix()[0], false), true);
+        assertTrue(wrapper.getOverheatingAlarm(TankSelector.valuesWithoutMix()[0], false));
     }
     
     /**
@@ -198,7 +175,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testSetTempLowAlarm() {
         wrapper.setUndercoolingAlarm(TankSelector.valuesWithoutMix()[0], true);        
-        assertEquals(wrapper.getUndercoolingAlarm(TankSelector.valuesWithoutMix()[0], false), true);
+        assertTrue(wrapper.getUndercoolingAlarm(TankSelector.valuesWithoutMix()[0], false));
     }
     
     /**
@@ -216,7 +193,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testGetOverflowAlarm() {
         boolean result = wrapper.getOverflowAlarm(TankSelector.valuesWithoutMix()[0], false);
-        assertEquals(result, false);
+        assertFalse(result);
     }
     
     /**
@@ -225,7 +202,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testGetUnderflowAlarm() {
         boolean result = wrapper.getUnderflowAlarm(TankSelector.valuesWithoutMix()[0], false);
-        assertEquals(result, false);
+        assertFalse(result);
     }
     
     /**
@@ -234,7 +211,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testGetTempDiagram() {
         boolean result = wrapper.getTempDiagram(TankSelector.valuesWithoutMix()[0], false);
-        assertEquals(result, false);
+        assertFalse(result);
     }
     
     /**
@@ -243,7 +220,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testGetFillLevelDiagram() {
         boolean result = wrapper.getFillLevelDiagram(TankSelector.valuesWithoutMix()[0], false);
-        assertEquals(result, false);
+        assertFalse(result);
     }
     
     /**
@@ -270,7 +247,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testGetOverheatingAlarm() {
         boolean result = wrapper.getOverheatingAlarm(TankSelector.valuesWithoutMix()[0], false);
-        assertEquals(result, false);
+        assertFalse(result);
     }
     
     /**
@@ -279,7 +256,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testGetTempLowAlarm() {
         boolean result = wrapper.getUndercoolingAlarm(TankSelector.valuesWithoutMix()[0], false);
-        assertEquals(result, false);
+        assertFalse(result);
     }
     
     /**
@@ -336,7 +313,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testNullOverheatingAlarm() {
         boolean value = wrapperNullEntry.getOverheatingAlarm(TankSelector.valuesWithoutMix()[0], false);
-        assertEquals(value, false);
+        assertFalse(value);
     }
     
     /**
@@ -345,7 +322,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testInvalidOverheatingAlarm() {
         boolean value = wrapperInvalidEntry.getOverheatingAlarm(TankSelector.valuesWithoutMix()[0], false);
-        assertEquals(value, false);
+        assertFalse(value);
     }
     
     /**
@@ -354,7 +331,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testNullUnderCoolingAlarm() {
         boolean value = wrapperNullEntry.getUndercoolingAlarm(TankSelector.valuesWithoutMix()[0], false);
-        assertEquals(value, false);
+        assertFalse(value);
     }
     
     /**
@@ -363,7 +340,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testInvalidUnderCoolingAlarm() {
         boolean value = wrapperInvalidEntry.getUndercoolingAlarm(TankSelector.valuesWithoutMix()[0], false);
-        assertEquals(value, false);
+        assertFalse(value);
     }
     
     /**
@@ -372,7 +349,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testNullOverflowAlarm() {
         boolean value = wrapperNullEntry.getOverflowAlarm(TankSelector.valuesWithoutMix()[0], false);
-        assertEquals(value, false);
+        assertFalse(value);
     }
     
     /**
@@ -381,7 +358,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testInvalidOverflowAlarm() {
         boolean value = wrapperInvalidEntry.getOverflowAlarm(TankSelector.valuesWithoutMix()[0], false);
-        assertEquals(value, false);
+        assertFalse(value);
     }
     
     /**
@@ -390,7 +367,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testNullUnderflowAlarm() {
         boolean value = wrapperNullEntry.getUnderflowAlarm(TankSelector.valuesWithoutMix()[0], false);
-        assertEquals(value, false);
+        assertFalse(value);
     }
     
     /**
@@ -399,7 +376,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testInvalidUnderflowAlarm() {
         boolean value = wrapperInvalidEntry.getUnderflowAlarm(TankSelector.valuesWithoutMix()[0], false);
-        assertEquals(value, false);
+        assertFalse(value);
     }
     
     /**
@@ -408,7 +385,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testNullTempDiagramm() {
         boolean value = wrapperNullEntry.getTempDiagram(TankSelector.valuesWithoutMix()[0], false);
-        assertEquals(value, false);
+        assertFalse(value);
     }
     
     /**
@@ -417,7 +394,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testInvalidTempDiagramm() {
         boolean value = wrapperInvalidEntry.getTempDiagram(TankSelector.valuesWithoutMix()[0], false);
-        assertEquals(value, false);
+        assertFalse(value);
     }
     
     /**
@@ -426,7 +403,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testNullFillLevelDiagramm() {
         boolean value = wrapperNullEntry.getFillLevelDiagram(TankSelector.valuesWithoutMix()[0], false);
-        assertEquals(value, false);
+        assertFalse(value);
     }
     
     /**
@@ -435,7 +412,7 @@ public class ClientSettingsWrapperTest {
     @Test
     public void testInvalidFillLevelDiagramm() {
         boolean value = wrapperInvalidEntry.getFillLevelDiagram(TankSelector.valuesWithoutMix()[0], false);
-        assertEquals(value, false);
+        assertFalse(value);
     }
     
     /**
