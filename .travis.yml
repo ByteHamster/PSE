@@ -7,11 +7,12 @@ notifications:
 install:
 - sudo apt-get update
 - sudo apt-get install --no-install-recommends texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-lang-german texlive-generic-extra
+- sudo cp tools/openjfx-monocle-8u76-b04.jar $JAVA_HOME/jre/lib/ext/
 
 script:
 - test `find . -not -type d -exec file "{}" ";" | grep CRLF | wc -l` -eq 0
 - cd src
-- mvn -U -B test
+- mvn -Dtestfx.robot=glass -Dglass.platform=Monocle -Dmonocle.platform=Headless -Dprism.order=sw -U -B test
 - cd ../docs
 - export max_print_line=200
 - pdflatex -interaction=batchmode Pflichtenheft &> /dev/null
