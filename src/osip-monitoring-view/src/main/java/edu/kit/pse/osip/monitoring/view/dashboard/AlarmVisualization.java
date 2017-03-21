@@ -31,6 +31,9 @@ class AlarmVisualization extends Observable implements Observer {
      */
     private ObservableBoolean alarm;
 
+    /**
+     * The tank the alarm is connected to.
+     */
     private TankSelector selector;
     
     /**
@@ -52,12 +55,12 @@ class AlarmVisualization extends Observable implements Observer {
      * Creates and initializes a new alarm visualization.
      * 
      * @param alarmName The name of the alarm.
-     * @param alarm The boolean alarm
-     * @param selector the TankSelector of the alarms tank
+     * @param alarm The actual boolean alarm.
+     * @param selector the TankSelector of the alarm's tank.
      */
     protected AlarmVisualization(String alarmName, ObservableBoolean alarm, TankSelector selector) {
         if (alarm == null || alarmName == null || selector == null) {
-            throw new NullPointerException("The AlarmVisualization arguments must nut be null!");
+            throw new NullPointerException("The AlarmVisualization arguments must not be null!");
         }
         this.alarm = alarm;
         alarm.addObserver(this);
