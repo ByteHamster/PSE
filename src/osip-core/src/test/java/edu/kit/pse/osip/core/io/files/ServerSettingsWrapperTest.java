@@ -43,7 +43,7 @@ public class ServerSettingsWrapperTest {
     @Test
     public void testSetServerPort() {
         wrapper.setServerPort(TankSelector.valuesWithoutMix()[0], 1042);        
-        assertEquals(wrapper.getServerPort(TankSelector.valuesWithoutMix()[0], -1), 1042);
+        assertEquals(1042, wrapper.getServerPort(TankSelector.valuesWithoutMix()[0], -1));
     }
 
     /**
@@ -52,7 +52,7 @@ public class ServerSettingsWrapperTest {
     @Test
     public void testGetServerPort() {
         int result = wrapper.getServerPort(TankSelector.valuesWithoutMix()[0], -1);
-        assertEquals(result, 1000);
+        assertEquals(1000, result);
     }
 
     /**
@@ -64,7 +64,7 @@ public class ServerSettingsWrapperTest {
         wrapper.setServerPort(TankSelector.valuesWithoutMix()[0], 1122);
         wrapper.saveSettings();
         wrapper = new ServerSettingsWrapper(tempTestFile);
-        assertEquals(wrapper.getServerPort(TankSelector.valuesWithoutMix()[0], -1), 1122);
+        assertEquals(1122, wrapper.getServerPort(TankSelector.valuesWithoutMix()[0], -1));
     }
 
     /**
@@ -73,7 +73,15 @@ public class ServerSettingsWrapperTest {
     @Test
     public void testGetServerPortNull() {
         int result = wrapper.getServerPort(TankSelector.valuesWithoutMix()[1], -1);
-        assertEquals(result, -1);
+        assertEquals(-1, result);
+    }
+    
+    /**
+     * Test null argument in constructor
+     */
+    @Test(expected = NullPointerException.class)
+    public void testNullArgConstructor() {
+        ServerSettingsWrapper serverWrapper = new ServerSettingsWrapper(null);
     }
     
     /**

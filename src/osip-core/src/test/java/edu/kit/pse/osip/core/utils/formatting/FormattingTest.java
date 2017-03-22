@@ -37,6 +37,14 @@ public class FormattingTest {
     }
     
     /**
+     * Test port that is too small.
+     */
+    @Test
+    public void testPortUnderflow() {
+        assertFalse(FormatChecker.isValidPort("0"));
+    }
+    
+    /**
      * Tests a normal percentage.
      */
     @Test
@@ -52,6 +60,7 @@ public class FormattingTest {
     public void testInvalidPercentages() {
         assertFalse(FormatChecker.checkPercentage("a1"));
         assertFalse(FormatChecker.checkPercentage("-1"));
+        assertFalse(FormatChecker.checkPercentage("120"));
     }
 
     /**
@@ -70,4 +79,29 @@ public class FormattingTest {
         assertFalse(FormatChecker.checkHost("\\"));
         assertFalse(FormatChecker.checkHost("&/(&"));
     }
+
+    /**
+     * Tests null port.
+     */
+    @Test(expected = NullPointerException.class)
+    public void testNullPort() {
+        FormatChecker.isValidPort(null);       
+    }
+
+    /**
+     * Tests null host.
+     */
+    @Test
+    public void testNullHost() {
+        assertFalse(FormatChecker.checkHost(null));       
+    }
+    
+    /**
+     * Tests null percentage.
+     */
+    @Test
+    public void testNullPercentage() {
+        assertFalse(FormatChecker.checkPercentage(null));       
+    }
+    
 }
