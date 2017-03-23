@@ -2,10 +2,9 @@ package edu.kit.pse.osip.monitoring.view.dashboard;
 
 import edu.kit.pse.osip.core.model.base.AbstractTank;
 import edu.kit.pse.osip.core.utils.language.Translator;
-import javafx.application.Platform;
-
 import java.util.Observable;
 import java.util.Observer;
+import javafx.application.Platform;
 import jfxtras.scene.control.gauge.linear.BasicRoundDailGauge;
 
 /**
