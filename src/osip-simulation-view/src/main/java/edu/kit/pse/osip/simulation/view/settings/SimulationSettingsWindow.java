@@ -98,10 +98,9 @@ public class SimulationSettingsWindow implements SimulationSettingsInterface {
 
         Button btnCancel = new Button(t.getString("simulation.settings.cancel"));
         btnCancel.setCancelButton(true);
-        btnCancel.setOnAction(e -> {
-            resetValues();
-            settingsStage.close();
-        });
+        btnCancel.setOnAction(e ->
+            settingsStage.close()
+        );
 
         buttons.getChildren().add(btnCancel);
         buttons.getChildren().add(btnSave);
@@ -155,6 +154,7 @@ public class SimulationSettingsWindow implements SimulationSettingsInterface {
 
     @Override
     public void show() {
+        resetValues();
         settingsStage.show();
     }
 
