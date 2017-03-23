@@ -23,47 +23,42 @@ import javafx.scene.paint.Color;
  * @version 1.7
  */
 abstract class AbstractTankVisualization extends GridPane {
+    /**
+     * The actual alarms for this tank.
+     */
     private AlarmGroup<ObservableBoolean, ObservableBoolean> alarmGroup;
     /**
      * Visualization for the overflow alarm.
      */
     private AlarmVisualization overflowAlarm;
-
     /**
      * Visualization for the underflow alarm.
      */
     private AlarmVisualization underflowAlarm;
-
     /**
      * Alarm when the temperature becomes too high.
      */
     private AlarmVisualization temperatureOverheatingAlarm;
-
     /**
      * Alarm when a temperature becomes too low.
      */
     private AlarmVisualization temperatureUndercoolingAlarm;
-
     /**
      * The layout of the row in which the alarms are.
      */
     protected HBox alarmPane;
-    
     /**
      * Visualization for the drain pipe.
      */
     protected GaugeVisualization drain;
-    
     /**
      * Visualization of the fill level.
      */
     protected FillLevelVisualization fillLevel;
-    
     /**
      * Visualization of the temperature.
      */
     protected TemperatureVisualization temperature;
-    
     /**
      * Visualization of the progressions.
      */
@@ -71,11 +66,11 @@ abstract class AbstractTankVisualization extends GridPane {
     
     /**
      * Constructor for sub classes. It creates all through this class available visualizations
-     * except the progresses and adds the alarms.
+     * and adds the alarms.
      * 
      * @param tank this visualization is connected to that tank.
-     * @param alarmGroup The AlarmGroup of the tank
-     * @throws NullPointerException when the tank is null.
+     * @param alarmGroup The AlarmGroup of the tank.
+     * @throws NullPointerException when the tank or AlarmGroup is null.
      */
     protected AbstractTankVisualization(AbstractTank tank,
         AlarmGroup<ObservableBoolean, ObservableBoolean> alarmGroup) {
