@@ -19,6 +19,9 @@ public class RotatingControlDrawerTest {
 
     private RotatingControlDrawer drawer;
 
+    /**
+     * Initializes a new RotatingControlDrawer and sets its speed to 1.
+     */
     @Before
     public void setUp() {
         drawer = new RotatingControlDrawer(null, 0) {
@@ -30,16 +33,26 @@ public class RotatingControlDrawerTest {
         drawer.setSpeed(1);
     }
 
+    /**
+     * Resets the RotatingControlDrawer between tests.
+     */
     @After
     public void tearDown() {
         drawer = null;
     }
 
+    /**
+     * Tests for no rotation at all.
+     */
     @Test
     public void updateDegreesZero() {
-        drawer.updateDegrees(0.1, 1);
+        drawer.updateDegrees(0, 1);
+        assertEquals(0, drawer.getDegrees(), 0);
     }
 
+    /**
+     * Tests for one full revolution.
+     */
     @Test
     public void updateDegreesNonZero() {
         // ask for degrees after timeDiff mins
@@ -47,30 +60,45 @@ public class RotatingControlDrawerTest {
         assertEquals(0, drawer.getDegrees(), 0);
     }
 
+    /**
+     * Tests with higher speed factor in the formula.
+     */
     @Test
     public void updateDegreesHighFactor() {
         drawer.updateDegrees(1, 1.5);
         assertEquals(180, drawer.getDegrees(), 0);
     }
 
+    /**
+     * Tests with lower speed factor in the formula.
+     */
     @Test
     public void updateDegreesLowFactor() {
         drawer.updateDegrees(1, 0.5);
         assertEquals(180, drawer.getDegrees(), 0);
     }
 
+    /**
+     * Tests with higher timediff in the formula.
+     */
     @Test
     public void updateDegreesHighTime() {
         drawer.updateDegrees(1.5, 1);
         assertEquals(180, drawer.getDegrees(), 0);
     }
 
+    /**
+     * Tests with lower timediff in the formula.
+     */
     @Test
     public void updateDegreesLowTime() {
         drawer.updateDegrees(0.5, 1);
         assertEquals(180, drawer.getDegrees(), 0);
     }
 
+    /**
+     * Tests with higher speed set in the formula.
+     */
     @Test
     public void updateDegreesHighSpeed() {
         drawer.setSpeed(2);
@@ -78,6 +106,9 @@ public class RotatingControlDrawerTest {
         assertEquals(180, drawer.getDegrees(), 0);
     }
 
+    /**
+     * Tests rotating the x coordinate 0 degrees.
+     */
     @Test
     public void rotateXZero() {
         double newXPos = RotatingControlDrawer.rotateX(0, 1, 0, 0, 0);
@@ -87,30 +118,45 @@ public class RotatingControlDrawerTest {
         assertEquals(0, newXNeg, 0);
     }
 
+    /**
+     * Tests a full clockwise rotation of the x coordinate.
+     */
     @Test
     public void rotateXFullCw() {
         double newXCw = RotatingControlDrawer.rotateX(0, 1, 0, 0, 360);
         assertEquals(0, newXCw, 0);
     }
 
+    /**
+     * Tests a full counter clockwise rotation of the x coordinate.
+     */
     @Test
     public void rotateXFullCcw() {
         double newXCcw = RotatingControlDrawer.rotateX(0, 1, 0, 0, -360);
         assertEquals(0, newXCcw, 0);
     }
 
+    /**
+     * Tests a half clockwise rotation of the x corrdinate.
+     */
     @Test
     public void rotateXHalfCw() {
         double newXCw = RotatingControlDrawer.rotateX(0, 1, 0, 0, 180);
         assertEquals(2, newXCw, 0);
         }
 
+    /**
+     * Tests a half counter clockwise rotation of the x coordinate.
+     */
     @Test
     public void rotateXHalfCcw() {
         double newXCcw = RotatingControlDrawer.rotateX(0, 1, 0, 0, -180);
         assertEquals(2, newXCcw, 0);
     }
 
+    /**
+     * Tests rotating the y coordinate 0 degrees.
+     */
     @Test
     public void rotateYZero() {
         double newYPos = RotatingControlDrawer.rotateY(0, 1, 0, 0, 0);
@@ -120,24 +166,36 @@ public class RotatingControlDrawerTest {
         assertEquals(0, newYNeg, 0);
     }
 
+    /**
+     * Tests a full clockwise rotation of the y coordinate.
+     */
     @Test
     public void rotateYFullCw() {
         double newYCw = RotatingControlDrawer.rotateY(0, 0, 0, 1, 360);
         assertEquals(0, newYCw, 0);
     }
 
+    /**
+     * Tests a full counter clockwise rotation of the y coordinate.
+     */
     @Test
     public void rotateYFullCcw() {
         double newYCcw = RotatingControlDrawer.rotateY(0, 0, 0, 1, -360);
         assertEquals(0, newYCcw, 0);
     }
 
+    /**
+     * Tests a half clockwise rotation of the y coordinate.
+     */
     @Test
     public void rotateYHalfCw() {
         double newYCw = RotatingControlDrawer.rotateY(0, 0, 0, 1, 180);
         assertEquals(2, newYCw, 0);
     }
 
+    /**
+     * Tests a half counter clockwise rotation of the y coordinate.
+     */
     @Test
     public void rotateYHalfCcw() {
         double newYCcw = RotatingControlDrawer.rotateY(0, 0, 0, 1, -180);
