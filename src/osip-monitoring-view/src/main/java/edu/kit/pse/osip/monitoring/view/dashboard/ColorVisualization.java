@@ -4,7 +4,6 @@ import edu.kit.pse.osip.core.model.base.AbstractTank;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import java.util.Observable;
 import java.util.Observer;
-
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
