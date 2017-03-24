@@ -2,6 +2,8 @@ package edu.kit.pse.osip.monitoring.view.dashboard;
 
 import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.model.behavior.ObservableBoolean;
+import edu.kit.pse.osip.core.utils.language.Translator;
+
 import java.lang.reflect.Field;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -41,7 +43,10 @@ public class LoggingConsoleTest extends ApplicationTest {
         ob.setValue(true);
         Thread.sleep(1000);
         Text text = (Text) t.getChildren().get(0);
-        assertTrue(text.getText().endsWith("The alarm \"Test\" for the label.tank.mix tank is triggered.\n"));
+        assertTrue(text.getText().endsWith(String.format(
+                Translator.getInstance().getString("monitoring.alarmDialog.content"), "Test",
+                Translator.getInstance().getString(TankSelector.TRANSLATOR_LABEL_PREFIX
+                        + TankSelector.MIX.name().toLowerCase())) + "\n"));
     }
     
     /**
