@@ -7,3 +7,4 @@ Testszenario 4: Reduktion auf Verbindungsinformationen
 Testszenario 5: Reduktion auf Sensordaten
 Testszenario 10: nur unter Ubuntu 16.04 (bereits im Pflichtenheft vorgesehen)
 GT290 und Testszenario 11 hinzugefügt, um Produktdaten zu testen
+GT290 und Testszenario 11 hinzugefügt, um Produktdaten zu testen
