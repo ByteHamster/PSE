@@ -37,7 +37,6 @@ public class AlarmSettingsTest extends SettingsTest {
     @Test
     public void testDefaultValues() {
         AlarmSettings alarms = new AlarmSettings(wrapper);
-        assertNotNull(alarms);
         for (TankSelector tank : TankSelector.values()) {
             assertFalse(alarms.isOverflowEnabled(tank));
             assertFalse(alarms.isUnderflowEnabled(tank));
