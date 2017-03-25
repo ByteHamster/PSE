@@ -117,6 +117,11 @@ public class SimulationController extends Application {
         boolean error = false;
         Translator t = Translator.getInstance();
 
+        for (TankSelector selector: TankSelector.values()) {
+            settingsWrapper.setServerPort(selector, settingsInterface.getPort(selector));
+        }
+        settingsWrapper.saveSettings();
+
         if (hasDoublePorts()) {
             currentSimulationView.showOPCUAServerError(t.getString("simulation.settings.samePort"));
             return false;
@@ -149,9 +154,8 @@ public class SimulationController extends Application {
         for (TankContainer cont: tanks) {
             try {
                 int port = settingsInterface.getPort(cont.selector);
-                cont.server = new TankServer(settingsInterface.getPort(cont.selector));
+                cont.server = new TankServer(port);
                 cont.server.start();
-                settingsWrapper.setServerPort(cont.selector, port);
             } catch (InterruptedException | ExecutionException | UaException ex) {
                 currentSimulationView.showOPCUAServerError(String.format(
                     t.getString("simulation.settings.startError") + ": "
@@ -163,13 +167,11 @@ public class SimulationController extends Application {
             int port = settingsInterface.getPort(TankSelector.MIX);
             mixCont.server = new MixTankServer(port);
             mixCont.server.start();
-            settingsWrapper.setServerPort(TankSelector.MIX, port);
         } catch (InterruptedException | ExecutionException | UaException ex) {
             currentSimulationView.showOPCUAServerError(String.format(t.getString("simulation.settings.startError")
                 + ": " + ex.getMessage(), TankSelector.MIX.toString().toLowerCase()));
             error = true;
         }
-        settingsWrapper.saveSettings();
         return !error;
     }
 
@@ -356,8 +358,9 @@ public class SimulationController extends Application {
         settingsInterface.setSettingsChangedListener(actionEvent -> {
             currentSimulationView.setProgressIndicatorVisible(true);
             new Thread(() -> {
-                if (reSetupServer()) {
-                    Platform.runLater(() -> settingsInterface.close());
+                Platform.runLater(() -> settingsInterface.close());
+                if (!reSetupServer()) {
+                    Platform.runLater(() -> settingsInterface.show());
                 }
                 currentSimulationView.setProgressIndicatorVisible(false);
             }).start();
