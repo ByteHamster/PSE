@@ -37,7 +37,6 @@ public class GeneralSettingsTest extends SettingsTest {
     @Test
     public void testDefaultValues() {
         GeneralSettings g = new GeneralSettings(wrapper);
-        assertNotNull(g);
         assertNotNull(g.invalidHostnameProperty());
         assertEquals("localhost", g.getServerHost());
         int port = OSIPConstants.DEFAULT_PORT_MIX;

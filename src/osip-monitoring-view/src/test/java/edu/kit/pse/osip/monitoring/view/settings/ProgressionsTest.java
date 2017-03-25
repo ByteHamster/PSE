@@ -37,7 +37,6 @@ public class ProgressionsTest extends SettingsTest {
     @Test
     public void testDefaultValues() {
         Progressions p = new Progressions(wrapper);
-        assertNotNull(p);
         for (TankSelector tank : TankSelector.values()) {
             assertFalse(p.isFillLevelEnabled(tank));
             assertFalse(p.isTemperatureEnabled(tank));

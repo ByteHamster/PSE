@@ -79,7 +79,6 @@ public class TankVisualizationTest extends ApplicationTest {
     @Test
     public void testDefaultTankVis() {
         TankVisualization tv = new TankVisualization(tank, alarms);
-        assertNotNull(tv);
         assertNotNull(tv.getOverflowAlarm());
         assertNotNull(tv.getUnderflowAlarm());
         assertNotNull(tv.getTemperatureOverheatingAlarm());
@@ -123,6 +122,6 @@ public class TankVisualizationTest extends ApplicationTest {
      */
     @Test
     public void testMixTankVis() {
-        assertNotNull(new MixTankVisualization(mixTank, alarms));
+        new MixTankVisualization(mixTank, alarms);
     }
 }

@@ -7,6 +7,8 @@ import edu.kit.pse.osip.core.model.base.Liquid;
 import edu.kit.pse.osip.core.model.base.Pipe;
 import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
@@ -17,6 +19,7 @@ import org.testfx.framework.junit.ApplicationTest;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test class for nearly all visualization classes.
@@ -53,12 +56,18 @@ public class VisualizationTest extends ApplicationTest {
     
     /**
      * Tests the constructor of the ColorVisualization.
+     * 
+     * @throws Exception when something goes wrong.
      */
     @Test
-    public void testColor() {
+    public void testColor() throws Exception {
         ColorVisualization c = new ColorVisualization();
-        Platform.runLater(() -> pane.getChildren().add(c));
-        assertNotNull(c);
+        CompletableFuture<Boolean> up = new CompletableFuture<>();
+        Platform.runLater(() -> {
+            pane.getChildren().add(c);
+            up.complete(true);
+        });
+        assertTrue(up.get(5, TimeUnit.SECONDS));
     }
     
     /**
@@ -66,7 +75,7 @@ public class VisualizationTest extends ApplicationTest {
      */
     @Test
     public void testFillLevel() {
-        assertNotNull(new FillLevelVisualization());
+        new FillLevelVisualization();
     }
     
     /**
@@ -74,7 +83,7 @@ public class VisualizationTest extends ApplicationTest {
      */
     @Test
     public void testGauge() {
-        assertNotNull(new GaugeVisualization(""));
+        new GaugeVisualization("");
     }
     
     /**
@@ -82,7 +91,7 @@ public class VisualizationTest extends ApplicationTest {
      */
     @Test
     public void testMotorSpeed() {
-        assertNotNull(new MotorSpeedVisualization());
+        new MotorSpeedVisualization();
     }
     
     /**
@@ -91,7 +100,6 @@ public class VisualizationTest extends ApplicationTest {
     @Test
     public void testProgress() {
         ProgressVisualization p = new ProgressVisualization("Test", tank);
-        assertNotNull(p);
         assertEquals("Test", p.getProgressName());
         assertNotNull(p.getProgressChart());
     }
@@ -106,21 +114,29 @@ public class VisualizationTest extends ApplicationTest {
     
     /**
      * Tests the ProgressOverview and with that, the ProgressVisualization.
+     * 
+     * @throws Exception when something goes wrong.
      */
     @Test
-    public void testProgressOverview() {
+    public void testProgressOverview() throws Exception {
         ProgressOverview po = new ProgressOverview(tank);
-        assertNotNull(po);
         po.setFillLevelProgressEnabled(false);
         po.setTemperatureProgressEnabled(false);
+        CompletableFuture<Boolean> firstUpdate = new CompletableFuture<>();
         Platform.runLater(() -> {
             pane.getChildren().add(po);
             po.updateProgressions();
+            firstUpdate.complete(true);
         });
+        assertTrue(firstUpdate.get(5, TimeUnit.SECONDS));
         po.setFillLevelProgressEnabled(true);
         po.setTemperatureProgressEnabled(true);
-        Platform.runLater(() -> po.updateProgressions());
-        assertNotNull(po);
+        CompletableFuture<Boolean> secondUpdate = new CompletableFuture<>();
+        Platform.runLater(() -> {
+            po.updateProgressions();
+            secondUpdate.complete(true);
+        });
+        assertTrue(secondUpdate.get(5, TimeUnit.SECONDS));
     }
     
     /**
@@ -128,6 +144,6 @@ public class VisualizationTest extends ApplicationTest {
      */
     @Test
     public void testTemperature() {
-        assertNotNull(new TemperatureVisualization());
+        new TemperatureVisualization();
     }
 }

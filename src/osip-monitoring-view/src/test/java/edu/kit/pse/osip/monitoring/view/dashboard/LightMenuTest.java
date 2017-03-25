@@ -22,7 +22,7 @@ public class LightMenuTest extends ApplicationTest {
      */
     @Test
     public void testLight() {
-        assertNotNull(new Light());
+        new Light();
     }
     
     /**
@@ -30,6 +30,6 @@ public class LightMenuTest extends ApplicationTest {
      */
     @Test
     public void testMenu() {
-        assertNotNull(new MonitoringMenu());
+        new MonitoringMenu();
     }
 }
