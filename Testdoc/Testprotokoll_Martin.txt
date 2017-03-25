@@ -1,0 +1,51 @@
+﻿Testprotokoll
+
+Tester: Martin Armbruster
+Betriebssystem: Windows 10
+
+Szenarien
+
+(1) Fertigungssimulation
+Durchlauf: 1
+Abdeckung: osip-model 18%, osip-core 2,8%, osip-simulation-controller 56,4%, osip-simulation-view 87,1%, osip-model-simulation 29,9%, osip-opcua-server 50,6%
+Status: erfolgreich
+[GT100]: erfolgreich
+[GT280]: erfolgreich
+
+(2) Überwachungskonsole mit ungültigen Einstellungen
+Durchlauf: 1
+Abdeckung: osip-model 19,1%, osip-core 8,9%, osip-simulation-controller 56,4%, osip-monitoring-controller 43,6%, osip-simulation-view 87,1%, osip-monitoring-view 85,6%, osip-model-simulation 29,9%, osip-opcua-client 10,1%, osip-opcua-server 50,6%
+Status: erfolgreich
+[GT100]: erfolgreich
+[GT120]: erfolgreich
+[GT280]: erfolgreich
+
+(4) Verbindungsinformation
+Durchlauf: 1
+Abdeckung: -
+Status: nicht erfolgreich
+[GT100]: erfolgreich
+[GT110]: erfolgreich
+[GT150]: MA-002
+[GT260]: -
+[GT280]: -
+
+(6) Alarme und Logging
+Durchlauf: 1
+Abdeckung: aus Versehen gelöscht
+Status: erfolgreich
+[GT100]: erfolgreich
+[GT110]: erfolgreich
+[GT190]: erfolreich
+[GT230]: erfolgreich
+[GT260]: erfolgreich
+[GT280]: erfolgreich
+
+(8) Fehlerhafte Eingaben
+Durchlauf: 1
+Abdeckung: osip-model 19%, osip-core 2,9%, osip-simulation-controller 60,5%, osip-model-simulation 29,9%, osip-opcua-server 59,3%, osip-simulation-view 95,7% (nur Simulation)
+Status: erfolgreich
+[GT100]: erfolgreich
+[GT110]: erfolgreich
+[GT270]: erfolgreich
+[GT280]: erfolgreich
