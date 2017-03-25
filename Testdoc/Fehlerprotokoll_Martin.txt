@@ -1,0 +1,20 @@
+﻿\subsection{MA-001}
+\begin{description}
+ \item[Beschreibung] Der Unittest edu.kit.pse.osip.io.files.ScenarioFileTest schlägt unter Windows fehl.
+ \item[Ursache] 
+ \item[Behebung] 
+\end{description}
+
+\subsection{MA-002}
+\begin{description}
+ \item[Beschreibung] Nach Einstellung neuer Ports für die OPC UA Server in der Fertigungssimulation und fertigem Neustart der OPC UA Server können sich die OPC UA Clients nach Einstellen der neuen Ports und deren Speichern in der Überwachungskonsole nicht verbinden. Auch nach dem erneuten Speichern erfolgt keine Herstellung der Verbindung.
+ \item[Ursache] 
+ \item[Behebung] 
+\end{description}
+
+\subsection{}
+\begin{description}
+ \item[Beschreibung] 
+ \item[Ursache] 
+ \item[Behebung] 
+\end{description}
