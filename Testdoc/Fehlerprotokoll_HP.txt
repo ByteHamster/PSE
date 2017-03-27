@@ -1,6 +1,20 @@
-﻿\subsection{UI hängt nach dem Start und beim Speichern der Einstellungen}
+﻿\subsection{HL-001}
 \begin{description}
  \item[Beschreibung] Das UI von Überwachungskonsole und Simulation ist nach dem Start für ca 3-10 Sekunden blockiert und reagiert nicht. Nach dem Speichern der Einstellungen tritt es ebenfalls auf.
  \item[Ursache] Die OPC UA Server und Clients werden im UI Thread gestartet und beendet.
  \item[Behebung] Starte einen neuen Thread für Aktionen mit OPC UA. Zeige während der Aktionen einen Warte-Dialog an, um den Nutzer zu informieren.
+\end{description}
+
+\subsection{HL-002}
+\begin{description}
+ \item[Beschreibung] Während die Einstellungen der Simulation angewendet werden, bleibt das Einstellungsfenster offen und kann modifiziert werden.
+ \item[Ursache] Das Einstellungsfenster wird nicht geschlossen.
+ \item[Behebung] Einstellungsfenster schließen und bei fehlerhaften Einstellungen wieder öffnen.
+\end{description}
+
+\subsection{HL-003}
+\begin{description}
+ \item[Beschreibung] Beim Schließen der Einstellungen der Simulation werden die Werte nicht zurückgesetzt, erneutes Öffnen zeigt die alten Werte an.
+ \item[Ursache] Die Werte werden nicht zurückgesetzt
+ \item[Behebung] Vor dem Anzeigen des Fensters werden die Werte zurückgesetzt.
 \end{description}
