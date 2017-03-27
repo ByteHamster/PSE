@@ -104,7 +104,7 @@ public final class MonitoringController extends Application {
 
         setupUI(primaryStage);
 
-        syncMonitoringViewAndSettingsView(currentView, currentSettingsView);
+        syncMonitoringViewAndSettingsView();
 
         currentView.setProgressIndicatorVisible(true);
         new Thread(() -> {
@@ -150,8 +150,8 @@ public final class MonitoringController extends Application {
         currentView.setMenuAboutButtonHandler(event -> aboutDialog.show());
         currentSettingsView.setSettingsCancelButtonHandler(event -> currentSettingsView.hideSettingsWindow());
         currentSettingsView.setSettingsSaveButtonHandler(event -> {
-            syncMonitoringViewAndSettingsView(currentView, currentSettingsView);
-            handleSaveButton(currentSettingsView);
+            syncMonitoringViewAndSettingsView();
+            handleSaveButton();
         });
     }
 
@@ -247,22 +247,22 @@ public final class MonitoringController extends Application {
         }
     }
     
-    private void handleSaveButton(SettingsViewInterface currentSettingsViewInterface) {
+    private void handleSaveButton() {
         for (TankSelector tank: TankSelector.values()) {
-            currentSettings.setFetchInterval(currentSettingsViewInterface.getUpdateInterval());
-            currentSettings.setFillLevelDiagram(tank, currentSettingsViewInterface.isFillLevelProgressionEnabled(tank));
-            currentSettings.setOverflowAlarm(tank, currentSettingsViewInterface.isOverflowAlarmEnabled(tank));
+            currentSettings.setFetchInterval(currentSettingsView.getUpdateInterval());
+            currentSettings.setFillLevelDiagram(tank, currentSettingsView.isFillLevelProgressionEnabled(tank));
+            currentSettings.setOverflowAlarm(tank, currentSettingsView.isOverflowAlarmEnabled(tank));
             currentSettings.setOverheatingAlarm(
-                    tank, currentSettingsViewInterface.isTemperatureOverheatingAlarmEnabled(tank));
-            currentSettings.setServerHostname(tank, currentSettingsViewInterface.getServerHostname());
-            currentSettings.setServerPort(tank, currentSettingsViewInterface.getServerPort(tank));
-            currentSettings.setTempDiagram(tank, currentSettingsViewInterface.isTemperatureProgressionEnabled(tank));
+                    tank, currentSettingsView.isTemperatureOverheatingAlarmEnabled(tank));
+            currentSettings.setServerHostname(tank, currentSettingsView.getServerHostname());
+            currentSettings.setServerPort(tank, currentSettingsView.getServerPort(tank));
+            currentSettings.setTempDiagram(tank, currentSettingsView.isTemperatureProgressionEnabled(tank));
             currentSettings.setUndercoolingAlarm(
-                    tank, currentSettingsViewInterface.isTemperatureUndercoolingAlarmEnabled(tank));
-            currentSettings.setUnderflowAlarm(tank, currentSettingsViewInterface.isUnderflowAlarmEnabled(tank));        
+                    tank, currentSettingsView.isTemperatureUndercoolingAlarmEnabled(tank));
+            currentSettings.setUnderflowAlarm(tank, currentSettingsView.isUnderflowAlarmEnabled(tank));        
         }
         currentSettings.saveSettings();
-        currentSettingsViewInterface.hideSettingsWindow();
+        currentSettingsView.hideSettingsWindow();
 
         currentView.setProgressIndicatorVisible(true);
         new Thread(() -> {
@@ -279,21 +279,20 @@ public final class MonitoringController extends Application {
         }).start();
     }
     
-    private void syncMonitoringViewAndSettingsView(MonitoringViewInterface currentMonitoringViewInterface,
-            SettingsViewInterface currentSettingsViewInterface) {
+    private void syncMonitoringViewAndSettingsView() {
         for (TankSelector tank: TankSelector.values()) {
-            currentMonitoringViewInterface.setFillLevelProgressionEnabled(
-                    tank, currentSettingsViewInterface.isFillLevelProgressionEnabled(tank));
-            currentMonitoringViewInterface.setOverflowAlarmEnabled(
-                    tank, currentSettingsViewInterface.isOverflowAlarmEnabled(tank));
-            currentMonitoringViewInterface.setTemperatureOverheatingAlarmEnabled(
-                    tank, currentSettingsViewInterface.isTemperatureOverheatingAlarmEnabled(tank));
-            currentMonitoringViewInterface.setTemperatureProgressionEnabled(
-                    tank, currentSettingsViewInterface.isTemperatureProgressionEnabled(tank));
-            currentMonitoringViewInterface.setTemperatureUndercoolingAlarmEnabled(
-                    tank, currentSettingsViewInterface.isTemperatureUndercoolingAlarmEnabled(tank));
-            currentMonitoringViewInterface.setUnderflowAlarmEnabled(
-                    tank, currentSettingsViewInterface.isUnderflowAlarmEnabled(tank)); 
+            currentView.setFillLevelProgressionEnabled(tank,
+                    currentSettingsView.isFillLevelProgressionEnabled(tank));
+            currentView.setOverflowAlarmEnabled(tank,
+                    currentSettingsView.isOverflowAlarmEnabled(tank));
+            currentView.setTemperatureOverheatingAlarmEnabled(tank,
+                    currentSettingsView.isTemperatureOverheatingAlarmEnabled(tank));
+            currentView.setTemperatureProgressionEnabled(tank,
+                    currentSettingsView.isTemperatureProgressionEnabled(tank));
+            currentView.setTemperatureUndercoolingAlarmEnabled(tank,
+                    currentSettingsView.isTemperatureUndercoolingAlarmEnabled(tank));
+            currentView.setUnderflowAlarmEnabled(tank,
+                    currentSettingsView.isUnderflowAlarmEnabled(tank)); 
         }
     }
     
