@@ -25,7 +25,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import edu.kit.pse.osip.core.model.simulation.ProductionSiteSimulation;
-import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
@@ -69,7 +68,6 @@ public class SimulationController extends Application {
      * Responsible for controlling the display windows and simulating the production
      */
     public SimulationController() {
-        Locale.setDefault(Locale.US);
         File settingsLocation = new File(System.getProperty("user.home") + File.separator + ".osip");
         settingsLocation.mkdirs();
         settingsWrapper = new ServerSettingsWrapper(new File(settingsLocation, "simulation.conf"));
@@ -128,7 +126,7 @@ public class SimulationController extends Application {
                 }
             } catch (InterruptedException | ExecutionException ex) {
                 currentSimulationView.showOPCUAServerError(String.format(
-                    t.getString("simulation.settings.stopError") + ": " + ex.getMessage(),
+                    t.getString("simulation.settings.stopError") + ": " + ex.getLocalizedMessage(),
                     cont.selector.toString().toLowerCase()));
                 error = true;
             }
@@ -140,7 +138,7 @@ public class SimulationController extends Application {
             }
         } catch (InterruptedException | ExecutionException ex) {
             currentSimulationView.showOPCUAServerError(String.format(t.getString("simulation.settings.stopError")
-                    + ": " + ex.getMessage(), TankSelector.MIX.toString().toLowerCase()));
+                    + ": " + ex.getLocalizedMessage(), TankSelector.MIX.toString().toLowerCase()));
             error = true;
         }
         mixCont.server = null;
@@ -153,7 +151,7 @@ public class SimulationController extends Application {
             } catch (InterruptedException | ExecutionException | UaException ex) {
                 currentSimulationView.showOPCUAServerError(String.format(
                     t.getString("simulation.settings.startError") + ": "
-                    + ex.getMessage(), cont.selector.toString().toLowerCase()));
+                    + ex.getLocalizedMessage(), cont.selector.toString().toLowerCase()));
                 error = true;
             }
         }
@@ -163,7 +161,7 @@ public class SimulationController extends Application {
             mixCont.server.start();
         } catch (InterruptedException | ExecutionException | UaException ex) {
             currentSimulationView.showOPCUAServerError(String.format(t.getString("simulation.settings.startError")
-                + ": " + ex.getMessage(), TankSelector.MIX.toString().toLowerCase()));
+                + ": " + ex.getLocalizedMessage(), TankSelector.MIX.toString().toLowerCase()));
             error = true;
         }
         return !error;
@@ -295,8 +293,8 @@ public class SimulationController extends Application {
                 Platform.runLater(() -> currentSimulationView.setProgressIndicatorVisible(false));
             } catch (UaException | InterruptedException | ExecutionException ex) {
                 Platform.runLater(() -> {
-                    currentSimulationView.showOPCUAServerError("Could not start OPC UA servers: " +
-                        ex.getLocalizedMessage());
+                    currentSimulationView.showOPCUAServerError("Could not start OPC UA servers: "
+                        + ex.getLocalizedMessage());
                     settingsInterface.show();
                 });
             }
@@ -376,8 +374,9 @@ public class SimulationController extends Application {
             ScenarioFile scenarioFile = new ScenarioFile(file);
             currentScenario = scenarioFile.getScenario();
         } catch (ParserException | IOException ex) {
-            currentSimulationView.showScenarioError(ex.getMessage());
+            currentSimulationView.showScenarioError(ex.getLocalizedMessage());
             currentSimulationView.scenarioFinished();
+            ex.printStackTrace();
             return;
         }
         currentSimulationView.scenarioStarted();
@@ -412,7 +411,8 @@ public class SimulationController extends Application {
                 mixCont.server = null;
             }
         } catch (InterruptedException | ExecutionException ex) {
-            System.err.println("Couldn't stop OPC UA servers, continuing: " + ex.getMessage());
+            System.err.println("Couldn't stop OPC UA servers, continuing: " + ex.getLocalizedMessage());
+            ex.printStackTrace();
         }
         AbstractTankServer.releaseSharedResources();
     }

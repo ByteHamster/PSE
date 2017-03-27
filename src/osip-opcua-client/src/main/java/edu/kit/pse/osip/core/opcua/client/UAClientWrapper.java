@@ -151,7 +151,7 @@ public abstract class UAClientWrapper {
             try {
                 client = createClient(serverUrl, namespace);
             } catch (InterruptedException | ExecutionException e) {
-                throw new UAClientException("Unable to create server: " + e.getMessage());
+                throw new UAClientException("Unable to create server: " + e.getLocalizedMessage());
             }
         }
 

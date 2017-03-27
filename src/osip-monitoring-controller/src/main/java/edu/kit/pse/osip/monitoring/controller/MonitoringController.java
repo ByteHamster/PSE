@@ -31,7 +31,6 @@ import java.io.File;
 import java.util.EnumMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * The controller starts the monitoring view and initializes the model with the main loop.
@@ -84,7 +83,6 @@ public final class MonitoringController extends Application {
      * @param primaryStage The stage used for displaying all controls.
      */
     public void start(Stage primaryStage) {
-        Locale.setDefault(Locale.US);
         errorListenerEnabled = true;
         for (TankSelector selector: TankSelector.valuesWithoutMix()) {
             TankContainer cont = new TankContainer();
@@ -111,7 +109,7 @@ public final class MonitoringController extends Application {
             try {
                 setupClients();
             } catch (UAClientException e) {
-                System.err.println("Unable to connect to servers. " + e.getMessage());
+                System.err.println("Unable to connect to servers. " + e.getLocalizedMessage());
                 currentView.setProgressIndicatorVisible(false);
                 Platform.runLater(() -> {
                     disableProgressions();
@@ -165,14 +163,14 @@ public final class MonitoringController extends Application {
             try {
                 cont.client.disconnectClient();
             } catch (UAClientException e) {
-                System.err.println("Error while disconnecting: " + e.getMessage());
+                System.err.println("Error while disconnecting: " + e.getLocalizedMessage());
             }
             cont.client = null;
         }
         try {
             mixCont.client.disconnectClient();
         } catch (UAClientException e) {
-            System.err.println("Error while disconnecting: " + e.getMessage());
+            System.err.println("Error while disconnecting: " + e.getLocalizedMessage());
         }
         mixCont.client = null;
         AbstractTankClient.releaseSharedResources();
@@ -219,7 +217,7 @@ public final class MonitoringController extends Application {
                 }
             }
         } catch (UAClientException e) {
-            System.err.println("Error while disconnecting: " + e.getMessage());
+            System.err.println("Error while disconnecting: " + e.getLocalizedMessage());
         }
 
         errorListenerEnabled = true;
@@ -242,7 +240,7 @@ public final class MonitoringController extends Application {
             errorListenerEnabled = true;
             return true;
         } catch (UAClientException e) {
-            System.err.println("Unable to connect to servers. " + e.getMessage());
+            System.err.println("Unable to connect to servers. " + e.getLocalizedMessage());
             return false;
         }
     }
@@ -319,7 +317,8 @@ public final class MonitoringController extends Application {
                 mixCont.client.subscribeUndercoolSensor(intervalAlarm, mixCont.undercoolSensorListener);
                 mixCont.client.subscribeUnderflowSensor(intervalAlarm, mixCont.underflowSensorListener);
             } catch (UAClientException e) {
-                System.err.println("Could not subscribe property: " + e.getMessage());
+                System.err.println("Could not subscribe property: " + e.getLocalizedMessage());
+                e.printStackTrace();
             }
             mixCont.client.setErrorListener(mixCont.errorListener);
         }
@@ -336,7 +335,8 @@ public final class MonitoringController extends Application {
                     cont.client.subscribeUndercoolSensor(intervalAlarm, cont.undercoolSensorListener);
                     cont.client.subscribeUnderflowSensor(intervalAlarm, cont.underflowSensorListener);
                 } catch (UAClientException e) {
-                    System.err.println("Could not subscribe property: " + e.getMessage());
+                    System.err.println("Could not subscribe property: " + e.getLocalizedMessage());
+                    e.printStackTrace();
                 }
                 cont.client.setErrorListener(cont.errorListener);
             }
