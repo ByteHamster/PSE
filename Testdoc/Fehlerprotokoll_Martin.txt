@@ -1,15 +1,15 @@
 ﻿\subsection{MA-001}
 \begin{description}
  \item[Beschreibung] Der Unittest edu.kit.pse.osip.io.files.ScenarioFileTest schlägt unter Windows fehl.
- \item[Ursache] 
- \item[Behebung] 
+ \item[Ursache] Der Pfad der Testdatei ist nicht für Windows konfiguriert.
+ \item[Behebung] Der Pfad wird aus einer URI generiert und alle "/" durch den plattform-abhängigen Separator ersetzt. Außerdem besitzt der Pfad am Anfang ein "/", das unter Windows entfernt wird.
 \end{description}
 
 \subsection{MA-002}
 \begin{description}
  \item[Beschreibung] Nach Einstellung neuer Ports für die OPC UA Server in der Fertigungssimulation und fertigem Neustart der OPC UA Server können sich die OPC UA Clients nach Einstellen der neuen Ports und deren Speichern in der Überwachungskonsole nicht verbinden. Auch nach dem erneuten Speichern erfolgt keine Herstellung der Verbindung.
- \item[Ursache] 
- \item[Behebung] 
+ \item[Ursache] Die Spinner, mit denen die Ports eingestellt werden, übernehmen intern nicht den eingegebenen Wert, wenn sie den Fokus verlieren.
+ \item[Behebung] Ein zusätzliches bidirektionales Binding zwischen dem TextFormatter und der ValueFactory wurde hinzugefügt.
 \end{description}
 
 \subsection{}
