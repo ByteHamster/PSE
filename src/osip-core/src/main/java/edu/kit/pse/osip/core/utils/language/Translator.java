@@ -13,6 +13,7 @@ public final class Translator {
     
     private ResourceBundle bundle;
     private static Translator singleton;
+    private boolean localizationDisabled = false;
     
     /**
      * Creates a new translator. Private because it is a singleton
@@ -37,19 +38,20 @@ public final class Translator {
      * @param key The key to use for translation lookup
      */
     public String getString(String key) {
-        String value;
         if (key == null) {
             throw new NullPointerException("Key is null");
+        }
+        if (localizationDisabled) {
+            return key;
         }
         if (bundle == null) {
             return key;
         }
         try {
-            value = bundle.getString(key);
+            return bundle.getString(key);
         } catch (MissingResourceException e) {
             return key;
-        } 
-        return value;
+        }
     }
     /**
      * Sets the locale to be used when translating
@@ -65,5 +67,13 @@ public final class Translator {
             System.err.println();
             bundle = null;
         }
-    }    
+    }
+
+    /**
+     * Disables localization: Always shows IDs
+     * @param localizationDisabled true if localization should be disabled
+     */
+    public void setLocalizationDisabled(boolean localizationDisabled) {
+        this.localizationDisabled = localizationDisabled;
+    }
 }
