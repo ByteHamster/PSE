@@ -33,7 +33,8 @@ public class Scenario extends java.util.Observable implements Runnable {
                 try {
                     c.accept(productionSite);
                 } catch (InterruptedException ex) {
-                    System.err.println("Scenario: sleep command failed: " + ex.getMessage());
+                    System.err.println("Scenario: sleep command failed: " + ex.getLocalizedMessage());
+                    ex.printStackTrace();
                 }
                 if (stop) {
                     return;

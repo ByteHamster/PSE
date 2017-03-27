@@ -1,5 +1,6 @@
 package edu.kit.pse.osip.simulation.controller;
 
+import java.util.Locale;
 import javafx.application.Application;
 
 /**
@@ -20,6 +21,7 @@ public final class MainClass {
      * @param args Command line arguments
      */
     public static void main(String[] args) {
+        Locale.setDefault(Locale.US);
         Application.launch(SimulationController.class, args);
     }
 }
