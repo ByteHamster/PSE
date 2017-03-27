@@ -77,7 +77,7 @@ public class SimulationController extends Application {
         simulator = new PhysicsSimulator(productionSite);
     }
 
-    private void initialize() {
+    private void initialize() throws UaException, ExecutionException, InterruptedException {
         for (TankSelector selector: TankSelector.valuesWithoutMix()) {
             TankContainer cont = new TankContainer();
             tanks.add(cont);
@@ -85,17 +85,11 @@ public class SimulationController extends Application {
             cont.selector = selector;
         }
         mixCont.tank = productionSite.getMixTank();
-
-        try {
-            setupServer();
-        } catch (UaException | InterruptedException | ExecutionException  ex) {
-            System.err.println("Couldn't start OPC UA server: " + ex.getMessage());
-            System.exit(1);
-        }
-
         setupAlarms();
-        updateServerValues();
+
+        setupServer();
         startMainLoop();
+        updateServerValues();
     }
 
     private void setupServer() throws UaException, ExecutionException, InterruptedException {
@@ -296,8 +290,16 @@ public class SimulationController extends Application {
 
         currentSimulationView.setProgressIndicatorVisible(true);
         new Thread(() -> {
-            initialize();
-            currentSimulationView.setProgressIndicatorVisible(false);
+            try {
+                initialize();
+                Platform.runLater(() -> currentSimulationView.setProgressIndicatorVisible(false));
+            } catch (UaException | InterruptedException | ExecutionException ex) {
+                Platform.runLater(() -> {
+                    currentSimulationView.showOPCUAServerError("Could not start OPC UA servers: " +
+                        ex.getLocalizedMessage());
+                    settingsInterface.show();
+                });
+            }
         }).start();
     }
 
@@ -361,7 +363,9 @@ public class SimulationController extends Application {
                 Platform.runLater(() -> settingsInterface.close());
                 if (!reSetupServer()) {
                     Platform.runLater(() -> settingsInterface.show());
+                    return;
                 }
+                startMainLoop();
                 currentSimulationView.setProgressIndicatorVisible(false);
             }).start();
         });
