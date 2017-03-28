@@ -1,0 +1,62 @@
+﻿Testprotokoll
+
+Tester: David Kahles
+Betriebssystem: Windows 10
+
+Szenarien
+
+(3) GUI
+Durchlauf: 1
+Abdeckung: osip-model 67%, osip-core 32,6%, osip-simulation-controller 79,2%, osip-monitoring-controller 91,6%, osip-simulation-view 89,1%, osip-monitoring-view 94,3%, osip-model-simulation 86,5%, osip-opcua-server 75,7%, osip-opcua-client 72,8%
+Status: erfolgreich
+[GT100]: erfolgreich
+[GT110]: erfolgreich
+[GT140]: erfolgreich
+[GT280]: erfolgreich
+
+(5) Sensordatum
+Durchlauf: 1
+Abdeckung: osip-model 66%, osip-core 30,6%, osip-simulation-controller 66,7%, osip-monitoring-controller 87,4%, osip-simulation-view 88,4%, osip-monitoring-view 89,7%, osip-model-simulation 86,5%, osip-opcua-server 75,7%, osip-opcua-client 72,0%
+Status: erfolgreich
+[GT100]: erfolgreich
+[GT110]: erfolgreich
+[GT180]: erfolgreich
+[GT280]: erfolgreich
+
+(7) Aktualisierungsfrequenz und Verläufe
+Durchlauf: 1
+Status: fehlgeschlagen
+[GT100]: erfolgreich
+[GT110]: erfolgreich
+[GT220]: fehlgeschlagen, siehe DK-001
+[GT250]: erfolgreich
+[GT280]: erfolgreich
+
+(7) Aktualisierungsfrequenz und Verläufe
+Durchlauf: 2
+Abdeckung: osip-model 66,3%, osip-core 29,6%, osip-simulation-controller 69%, osip-monitoring-controller 88%, osip-simulation-view 94,6%, osip-monitoring-view 92,5%, osip-model-simulation 66,3%, osip-opcua-server 75,7%, osip-opcua-client 73,4%
+Status: erfolgreich
+[GT100]: erfolgreich
+[GT110]: erfolgreich
+[GT220]: erfolgreich
+[GT250]: erfolgreich
+[GT280]: erfolgreich
+
+(9) Simulations-Szenario
+Durchlauf: 1
+Abdeckung: osip-model 75,5%, osip-core 77,5%, osip-simulation-controller 74,8%, osip-monitoring-controller 87,7%, osip-simulation-view 96,3%, osip-monitoring-view 93,4%, osip-model-simulation 86,5%, osip-opcua-server 75,7%, osip-opcua-client 72,0%
+Status: erfolgreich
+[GT100]: erfolgreich
+[GT110]: erfolgreich
+[GT210]: erfolgreich
+[GT280]: erfolgreich
+
+(11) Produkdaten
+Durchlauf: 1
+Abdeckung: osip-model 65,7%, osip-core 35,0%, osip-simulation-controller 78,6%, osip-monitoring-controller 89,3%, osip-simulation-view 90,2%, osip-monitoring-view 93,4%, osip-model-simulation 86,5%, osip-opcua-server 75,7%, osip-opcua-client 72,0%
+Status: erfolgreich
+[GT100]: erfolgreich
+[GT110]: erfolgreich
+[GT290]: erfolgreich
+[GT280]: erfolgreich
+
