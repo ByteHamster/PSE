@@ -1,0 +1,13 @@
+﻿\subsection{DK-001}
+\begin{description}
+ \item[Beschreibung] GT220 schlägt fehl, da die Verzögerung zu groß ist.
+ \item[Ursache] In Milo wird das eingestellte Intervall beim Subscriben an zwei Stellen verwendet. Dadurch kann es dazu kommen, dass die Verzögerung bis zu doppelt so groß ist als eingestellt.
+ \item[Behebung] Das Milo-interne Intervall mit dem die Änderungen im Model erfasst werden, wird auf konstant 250 Millisekunden gesetzt.
+\end{description}
+
+\subsection{}
+\begin{description}
+ \item[Beschreibung] 
+ \item[Ursache] 
+ \item[Behebung] 
+\end{description}
