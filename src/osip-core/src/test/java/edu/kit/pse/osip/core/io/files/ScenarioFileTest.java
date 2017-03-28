@@ -1,5 +1,7 @@
 package edu.kit.pse.osip.core.io.files;
 
+import java.io.File;
+import java.util.regex.Matcher;
 import org.junit.Test;
 
 /**
@@ -16,8 +18,11 @@ public class ScenarioFileTest {
      */
     @Test
     public void testReadingFile() throws Exception {
-        String path = Thread.currentThread().getContextClassLoader()
-                .getResource("test.scenario.txt").getPath();
+        String path = Thread.currentThread().getContextClassLoader().getResource("test.scenario.txt").toURI().getPath()
+                .replaceAll("/", Matcher.quoteReplacement(File.separator));
+        if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+            path = path.substring(1);
+        }
         ScenarioFile file = new ScenarioFile(path);
         file.getScenario();
     }
