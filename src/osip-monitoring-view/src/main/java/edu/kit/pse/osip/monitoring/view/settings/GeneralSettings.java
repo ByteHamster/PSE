@@ -206,8 +206,14 @@ class GeneralSettings extends ScrollPane {
                     }
                 }
             });
-            currentField.getEditor().setTextFormatter(new TextFormatter<>(currentField.getValueFactory()
-                    .getConverter(), currentField.getValueFactory().getValue()));
+            // ** Solution for: When a spinner loses focus, the typed-in value will be taken.
+            // Based on http://stackoverflow.com/questions/32340476
+            //          /manually-typing-in-text-in-javafx-spinner-is-not-updating-the-value-unless-user
+            TextFormatter<Integer> formatter = new TextFormatter<>(currentField.getValueFactory().getConverter(),
+                    currentField.getValueFactory().getValue());
+            currentField.getEditor().setTextFormatter(formatter);
+            currentField.getValueFactory().valueProperty().bindBidirectional(formatter.valueProperty());
+            // **
             serverPorts.put(tank, currentField);
             layout.add(label, 0, row);
             layout.add(currentField, 1, row++);
