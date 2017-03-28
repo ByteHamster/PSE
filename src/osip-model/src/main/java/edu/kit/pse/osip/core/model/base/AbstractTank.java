@@ -39,7 +39,7 @@ public abstract class AbstractTank extends java.util.Observable {
      * Get the fill level of the tank in % between 0 and 1 (or more than 1, if the tank is overfull).
      * @return the fill level in % between 0 and 1.
      */
-    public synchronized float getFillLevel() {
+    public float getFillLevel() {
         return liquid.getAmount() / capacity;
     }
 
@@ -77,7 +77,7 @@ public abstract class AbstractTank extends java.util.Observable {
      * Get the liquid of the tank.
      * @return the liquid of the tank.
      */
-    public synchronized Liquid getLiquid() {
+    public Liquid getLiquid() {
         return liquid;
     }
 
