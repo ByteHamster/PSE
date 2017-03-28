@@ -1,5 +1,6 @@
 package edu.kit.pse.osip.core.io.files;
 
+import java.nio.file.Paths;
 import org.junit.Test;
 
 /**
@@ -16,8 +17,8 @@ public class ScenarioFileTest {
      */
     @Test
     public void testReadingFile() throws Exception {
-        String path = Thread.currentThread().getContextClassLoader()
-                .getResource("test.scenario.txt").getPath();
+        String path = Paths.get(Thread.currentThread().getContextClassLoader().getResource("test.scenario.txt")
+                .toURI()).toFile().getAbsolutePath();
         ScenarioFile file = new ScenarioFile(path);
         file.getScenario();
     }
