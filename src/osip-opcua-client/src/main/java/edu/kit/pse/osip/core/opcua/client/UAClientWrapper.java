@@ -185,7 +185,6 @@ public abstract class UAClientWrapper {
      */
     public void disconnectClient() throws UAClientException {
         if (!connected) {
-            System.err.println("Not connected or connection failed. Continuing.");
             return;
         }
 
