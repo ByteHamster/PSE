@@ -109,7 +109,12 @@ class ProgressVisualization {
      * @param progressEnabled true if the progression should be enabled and false otherwise.
      */
     protected void setProgressEnabled(boolean progressEnabled) {
+        if (progressEnabled && !isEnabled) {
+            progressSeries.getData().clear();
+            x = 0;
+        }
         isEnabled = progressEnabled;
+        progressChart.setDisable(!progressEnabled);
     }
     
     /**
