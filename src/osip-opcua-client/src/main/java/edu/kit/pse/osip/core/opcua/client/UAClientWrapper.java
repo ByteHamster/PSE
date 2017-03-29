@@ -71,6 +71,13 @@ public abstract class UAClientWrapper {
      * Timeout when connecting
      */
     protected static final int CONNECTION_TIMEOUT = 5000;
+    /**
+     * Interval that the server uses internally to gather data.
+     * Applying the normal subscription interval does not work because
+     * this means that the overall response time gets the double interval
+     * under certain unfortunate timing conditions.
+     */
+    private static final int INTERNAL_INTERVAL = 250;
 
     private OpcUaClient client = null;
     private String serverUrl;
@@ -341,7 +348,7 @@ public abstract class UAClientWrapper {
     private void doSubscribe(NodeId nodeId, int interval, ReceivedListener listener, NodeId varType)
             throws UAClientException {
         try {
-            UaSubscription subscription = client.getSubscriptionManager().createSubscription(interval).get();
+            UaSubscription subscription = client.getSubscriptionManager().createSubscription(INTERNAL_INTERVAL).get();
 
             ReadValueId readValueId = new ReadValueId(
                 nodeId,
