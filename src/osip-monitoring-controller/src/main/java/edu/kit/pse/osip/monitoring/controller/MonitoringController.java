@@ -101,28 +101,8 @@ public final class MonitoringController extends Application {
                 new ObservableBoolean(false));
 
         setupUI(primaryStage);
-
         syncMonitoringViewAndSettingsView();
-
-        currentView.setProgressIndicatorVisible(true);
-        new Thread(() -> {
-            try {
-                setupClients();
-            } catch (UAClientException e) {
-                System.err.println("Unable to connect to servers. " + e.getLocalizedMessage());
-                currentView.setProgressIndicatorVisible(false);
-                Platform.runLater(() -> {
-                    disableProgressions();
-                    currentSettingsView.showCanNotConnectAlert();
-                });
-                return;
-            }
-
-            clientSubscribe(currentSettings.getFetchInterval(MonitoringViewConstants.DEFAULT_UPDATE_INTERVAL),
-                    ALARM_FETCH_INTERVAL);
-
-            currentView.setProgressIndicatorVisible(false);
-        }).start();
+        connect();
     }
 
     private EnumMap<TankSelector, AlarmGroup<ObservableBoolean, ObservableBoolean>> getAlarmEnumMap() {
@@ -176,23 +156,23 @@ public final class MonitoringController extends Application {
         AbstractTankClient.releaseSharedResources();
     }
 
-    private void setupClients() throws UAClientException {
-        int defaultPort = OSIPConstants.DEFAULT_PORT_MIX;
-        String hostname = currentSettings.getHostname(mixCont.tank.getTankSelector(), DEFAULT_HOSTNAME);
-        int port = currentSettings.getPort(mixCont.tank.getTankSelector(), defaultPort++);
-        mixCont.client = new MixTankClient(new RemoteMachine(hostname, port));
-        
-        for (TankContainer cont : tanks) {
-            hostname = currentSettings.getHostname(cont.tank.getTankSelector(), DEFAULT_HOSTNAME);
-            port = currentSettings.getPort(cont.tank.getTankSelector(), defaultPort++);
-            cont.client = new TankClient(new RemoteMachine(hostname, port));
-        }
-    
-        mixCont.client.connectClient();
-        for (TankContainer cont : tanks) {
-            cont.client.connectClient();
-        }
-        
+    /**
+     * Initializes and connects the clients
+     */
+    private void connect() {
+        currentView.setProgressIndicatorVisible(true);
+        new Thread(() -> {
+            if (reSetupClients()) {
+                clientSubscribe(currentSettings.getFetchInterval(MonitoringViewConstants.DEFAULT_UPDATE_INTERVAL),
+                        ALARM_FETCH_INTERVAL);
+            } else {
+                Platform.runLater(() -> {
+                    disableProgressions();
+                    currentSettingsView.showCanNotConnectAlert();
+                });
+            }
+            currentView.setProgressIndicatorVisible(false);
+        }).start();
     }
 
     /**
@@ -262,19 +242,7 @@ public final class MonitoringController extends Application {
         currentSettings.saveSettings();
         currentSettingsView.hideSettingsWindow();
 
-        currentView.setProgressIndicatorVisible(true);
-        new Thread(() -> {
-            if (reSetupClients()) {
-                clientSubscribe(currentSettings.getFetchInterval(MonitoringViewConstants.DEFAULT_UPDATE_INTERVAL),
-                        ALARM_FETCH_INTERVAL);
-            } else {
-                Platform.runLater(() -> {
-                    disableProgressions();
-                    currentSettingsView.showCanNotConnectAlert();
-                });
-            }
-            currentView.setProgressIndicatorVisible(false);
-        }).start();
+        connect();
     }
     
     private void syncMonitoringViewAndSettingsView() {
