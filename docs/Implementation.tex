@@ -113,7 +113,6 @@ Als weiteres Problem stellt sich die Versionsverwaltung von Milo dar: der Entwic
 
 Weitere Fehler in OSIP, die noch nicht behoben wurden, sind:
 \begin{itemize}
- \item Das Verbinden mit OPC UA Servern dauert lange.
  \item Das Menü des Monitors funktioniert manchmal nicht. Man kann dann die Settings nicht mehr öffnen. Das passiert vor allem, wenn man sich am Anfang nicht direkt verbinden kann. Vermutlich handelt es sich um einen JavaFX Fehler.
  \item Milo wirft beim Beenden manchmal eine Exception.
 \end{itemize}
@@ -207,6 +206,28 @@ Dieses Modul testet gleichzeitig das Client-Modul und das Server-Modul zu OPC UA
 In UI und Controller wurden keine automatischen Unittest eingesetzt, sondern die Funktionalität in den entsprechenden Pull requests
 jeweils manuell getestet. Wir entschieden uns zu diesem Vorgehen, da das Testen in der UI einen hohen Aufwand bedeutet, der sich allerdings
 kaum bezahlt macht - es gibt kaum hinreichend komplexe, testbare Code-Abschnitte, bei denen sich automatisierte Tests des UI lohnen würden.
+
+\pagebreak
+\section{Das Ergebnis}
+Im Folgenden werden nun einige Screenshots gezeigt, die das fertige Programm in Aktion zeigen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.55]{../media/screenshot-simulation.png}
+    \caption{Die Fertigungssimulation}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{../media/screenshot-control.png}
+    \caption{Die Steuerung der Fertigungssimulation}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.55]{../media/screenshot-monitoring.png}
+    \caption{Die Überwachungskonsole}
+\end{figure}
 
 \pagebreak
 \phantomsection
