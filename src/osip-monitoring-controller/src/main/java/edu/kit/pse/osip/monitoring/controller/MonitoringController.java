@@ -64,7 +64,6 @@ public final class MonitoringController extends Application {
     private final List<TankContainer> tanks = new LinkedList<>();
     private static final String DEFAULT_HOSTNAME = "localhost";
     private static final int ALARM_FETCH_INTERVAL = 50;
-    private boolean errorListenerEnabled = false;
     /**
      * Creates a new controller instance.
      */
@@ -83,7 +82,6 @@ public final class MonitoringController extends Application {
      * @param primaryStage The stage used for displaying all controls.
      */
     public void start(Stage primaryStage) {
-        errorListenerEnabled = true;
         for (TankSelector selector: TankSelector.valuesWithoutMix()) {
             TankContainer cont = new TankContainer();
             tanks.add(cont);
@@ -137,7 +135,6 @@ public final class MonitoringController extends Application {
      * Called when the last window is closed.
      */
     public void stop() {
-        errorListenerEnabled = false;
         System.out.println("Stopped monitoring thread");
         for (TankContainer cont : tanks) {
             try {
@@ -184,7 +181,6 @@ public final class MonitoringController extends Application {
         String hostname;
         int port;
 
-        errorListenerEnabled = false;
         try {
             if (mixCont.client != null) {
                 mixCont.client.disconnectClient();
@@ -200,7 +196,6 @@ public final class MonitoringController extends Application {
             System.err.println("Error while disconnecting: " + e.getLocalizedMessage());
         }
 
-        errorListenerEnabled = true;
         hostname = currentSettings.getHostname(mixCont.tank.getTankSelector(), DEFAULT_HOSTNAME);
         port = currentSettings.getPort(mixCont.tank.getTankSelector(), defaultPort++);
         mixCont.client = new MixTankClient(new RemoteMachine(hostname, port));
@@ -212,12 +207,10 @@ public final class MonitoringController extends Application {
         }
 
         try {
-            errorListenerEnabled = false;
             mixCont.client.connectClient();
             for (TankContainer cont : tanks) {
                 cont.client.connectClient();
             }
-            errorListenerEnabled = true;
             return true;
         } catch (UAClientException e) {
             System.err.println("Unable to connect to servers. " + e.getLocalizedMessage());
@@ -341,14 +334,12 @@ public final class MonitoringController extends Application {
         ErrorListener errorListener = new ErrorListener() {
             public void onError(int code) {
                 switch(code) {
-                    case UAClientWrapper.ERROR_DISCONNECT: 
-                        if (errorListenerEnabled) {
-                            System.err.println("The client disconnected from the server!");
-                            Platform.runLater(() -> {
-                                disableProgressions();
-                                currentSettingsView.showDisconnectAlert();
-                            });
-                        }
+                    case UAClientWrapper.ERROR_DISCONNECT:
+                        System.err.println("The client disconnected from the server!");
+                        Platform.runLater(() -> {
+                            disableProgressions();
+                            currentSettingsView.showDisconnectAlert();
+                        });
                         break;
                     case UAClientWrapper.ERROR_DATA_TYPE_MISMATCH:
                         System.err.println("The data type found on the server does not match the one you requested!");
