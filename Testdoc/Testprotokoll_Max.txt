@@ -1,0 +1,46 @@
+﻿Testprotokoll
+
+Tester: Maximilian Schwarzmann
+Betriebssystem: Ubuntu 16.04.1
+
+Szenarien
+
+(1) Fertigungssimulation
+Durchlauf: 1
+Abdeckung: model: 18%. core: 3%. simulation-view: 84%. simulation-controller: 56%. model-simulation: 30%. opcua-server: 51%.
+Status: Erfolgreich
+[GT100]: Die jar startet die Fertigungssimulation und OPC UA Server.
+[GT280]: Beim Schließen der Fertigungssimulation werden alle OPC UA Server und Prozesse beendet.
+
+(4) Verbindungsinformation
+Durchlauf: 1
+Abdeckung: model: 19%. core: 14%. simulation-view: 84%. simulation-controller: 66%. model-simulation:
+30%. monitoring-view: 67%. monitoring-controller: 63%. opcua-server: 50%. opcua-client: 10%.
+Status: Nicht erfolgreich
+[GT100]: Die jar startet die Fertigungssimulation und OPC UA Server.
+[GT110]: Die jar startet die Überwachungskonsole und OPC UA Clients.
+[GT150]: Die Ports der OPC UA Server der Fertigungssimulation können geändert werden (FA60).
+Die Änderungen werden nach dem Drücken des Speichern-Knopfes gespeichert (FA810).
+Darauf bricht die Verbindung zur Überwachungskonsole ab. Nach Einstellung der Überwachungskonsole auf die neuen Ports (FA700, FA810) werden die Port-Einstellungen nicht gespeichert und die Sensordaten nicht wieder abgerufen (FA830). Die Verbindung bleibt unterbrochen.
+[GT260]: Die auftretenden Ereignisse werden in der Überwachungskonsole geloggt (FA460) und angezeigt (FA670), solange die Verbindung besteht.
+[GT280]: Beim Schließen der Fertigungssimulation und Überwachungskonsole werden alle OPC UA Server und OPC UA Clients beendet. Es bliebt kein laufender Prozess übrig.
+
+(7) Aktualisierungsfrequenz und Verläufe
+Durchlauf: 1
+Abdeckung: model: 19%. core: 14%. simulation-view: 84%. simulation-controller: 55%. model-simulation:
+30%. monitoring-view: 67%. monitoring-controller: 63%. opcua-server: 51%. opcua-client: 10%.
+Status: Erfolgreich
+[GT100]: Die jar startet die Fertigungssimulation und OPC UA Server.
+[GT110]: Die jar startet die Überwachungskonsole und OPC UA Clients.
+[GT220]: Die Fertigungssimulation läuft und die Überwachungskonsole ist bei dieser mit einer Aktualisierungsfrequenz von 500 ms registriert. Das Ändern beliebiger Sensordaten in der Fertigungssimulation wird innerhalb gesch\"atzt 1000 ms in der Überwachungskonsole angezeigt (FA50, FA70, FA420, NF30). Nach Erhöhung der Aktualisierungsfrequenz auf 4000 ms (FA760) und Änderung beliebiger Sensordaten innerhalb der Fertigungssimulation, werden Veränderungen gesch\"atzt nach spätestens 4500 ms in der Überwachungskonsole angezeigt (NF30).
+[GT250]: Die verschiedenen Temperatur- und Füllstandsverläufe werden ausgeschaltet und nach einer Minute wieder eingeschaltet (FA770). In dieser Zeit erfolgt keine Aufzeichnung. Werte aus diesem Zeitraum werden im Verlauf weder währenddessen noch danach angezeigt.
+[GT280]: Beim Schließen der Fertigungssimulation und Überwachungskonsole werden alle OPC UA Server und OPC UA Clients beendet. Es bliebt kein laufender Prozess übrig.
+
+(10) Dockerimage
+Durchlauf: 1
+Abdeckung: model: 19%. core: 9%. simulation-view: 84%. simulation-controller: 55%. model-simulation:
+30%. monitoring-view: 66%. monitoring-controller: 44%. opcua-server: 50%. opcua-client: 10%.
+Status: Erfolgreich
+[GT130]: Das Dockerimage der Fertigungssimulation (FA20) und im Anschluss das der Überwachungskonsole (FA360) werden erfolgreich gestartet. Beide besitzen unterschiedliche IP-Adressen und sind miteinander verbunden.
+[GT280]: Beim Schließen der Fertigungssimulation und Überwachungskonsole werden alle OPC UA Server und OPC UA Clients beendet. Es bliebt kein laufender Prozess übrig.
+
