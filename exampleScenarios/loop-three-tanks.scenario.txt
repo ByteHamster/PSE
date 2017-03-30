@@ -25,9 +25,6 @@ setUpperOutThreshold(TANK_MAGENTA, 80);
 
 delay(delayTime);
 
-setInputTemperature(TANK_YELLOW,  CELSIUS);
-setInputTemperature(TANK_CYAN,  CELSIUS);
-setInputTemperature(TANK_MAGENTA,  CELSIUS);
 setUpperInThreshold(TANK_CYAN, 100);
 setUpperOutThreshold(TANK_CYAN, 0);
 setMixOutThreshold(0);
