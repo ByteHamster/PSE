@@ -1,0 +1,48 @@
+﻿Testprotokoll
+
+Tester: Niko Wilhelm
+Betriebssystem: Ubuntu
+
+Szenarien
+
+(2) Überwachungskonsole mit ungültigen Einstellungen
+Durchlauf: 1
+Abdeckung: osip-opcua-client: 9.8%. osip-core: 16.2%. osip-model-simulation: 86.5%. osip-opcua-server: 64.8%. osip-model: 59.5%. osip-simulation-controller: 64.5%. osip-simulation-view: 87.1%. osip-monitoring-controller: 51.4%. osip-monitoring-view: 86.4%.
+Status: Erfolgreich
+[GT100]: Die jar startet OPC UA Server und Fertigungssimulation.
+[GT120]: Beim Start der Überwachungskonsole mit ungültigen Einstellungen werden ein Fehlerdialog und das SettingsWindow geöffnet, um das Problem anzuzeigen und es zu beheben.
+[GT280]: Alle gestarteten Prozesse werden ordnungsgemäß beendet. 
+
+(5) Sensordatum
+Durchlauf: 1
+Abdeckung: osip-opcua-client: 68.9%. osip-core: 16.2%. osip-model-simulation: 86.5%. osip-opcua-server: 75.8%. osip-model: 61.8%. osip-simulation-controller: 68.1%. osip-simulation-view: 89.7%. osip-monitoring-controller: 76.7%. osip-monitoring-view: 86.3%.
+Status: Erfolgreich
+[GT100]: Die jar startet OPC UA Server und Fertigungssimulation.
+[GT110]: Die jar startet OPC UA Clients und Überwachungskonsole.
+[GT180]: Fertigungssimulation und Überwachungskonsole laufen. Alle Sensordaten werden nacheinander in der Fertigungssimulation geändert und tauchen innerhalb von 1000ms in der Überwachungskonsole auf. Die Verläufe werden korrekt aufgezeichnet.
+[GT280]: Alle gestarteten Prozesse werden ordnungsgemäß beendet.
+
+(8) Fehlerhafte Eingaben
+Durchlauf: 1
+Abdeckung: osip-opcua-client: 71.9%. osip-core: 26.7%. osip-model-simulation: 86.5%%. osip-opcua-server: 74.8%. osip-model: 62.8%. osip-simulation-controller: 79.0%. osip-simulation-view: 89.3%. osip-monitoring-controller: 91.3%. osip-monitoring-view: 90.0%.
+Status: Erfolgreich
+GT100]: Die jar startet OPC UA Server und Fertigungssimulation.
+[GT110]: Die jar startet OPC UA Clients und Überwachungskonsole.
+[GT270]: Bei allen einstellbaren Sensordaten werden diese bei Eingaben außerhalb des Wertebereichs automatisch in den Wertebereich korrigiert. Werden illegale Zeichen eingegeben so wird der Wert so lange das Feld noch angewählt ist als "0" angenommen. Wird der Fokus vom Eingabefeld genommen werden die illegalen Zeichen entfernt und der resultierende Wert in den Wertebereich korrigiert. Ports außerhalb des Wertebereichs werden rot unterlegt und ein Speichern verhindert. Werden in der Überwachungskonsole illegale Portnummern oder ein illegales Updateintervall eingegeben, so werden die entsprechenden Werte beim Speichern der Einstellungen in den gültigen Wertebereich zurückgesetzt. Portnummern führen zudem zu einer separaten Warnung, falls die Portnummer zwar legal ist aber kein passender OPC UA Server an dem Port bereitsteht.
+[GT280]: Alle gestarteten Prozesse werden ordnungsgemäß beendet.
+
+(10) Dockerimage
+Durchlauf: 
+Abdeckung: osip-opcua-client: %. osip-core: %. osip-model-simulation: %. osip-opcua-server: %. osip-model: %. osip-simulation-controller: %. osip-simulation-view: %. osip-monitoring-controller: %. osip-monitoring-view: %.
+Status: 
+[GT130]: 
+[GT280]: 
+
+(11) Produktdaten
+Durchlauf: 1
+Abdeckung: osip-opcua-client: 71.9%. osip-core: 27.1%. osip-model-simulation: 86.5%. osip-opcua-server: 75.8%. osip-model: 59.5%. osip-simulation-controller: 76.8%. osip-simulation-view: 87.7%. osip-monitoring-controller: 90.9%. osip-monitoring-view: 89.7%.
+Status: Erfolgreich.
+[GT100]: Die jar startet OPC UA Server und Fertigungssimulation.
+[GT110]: Die jar startet OPC UA Clients und Überwachungskonsole.
+[GT290]: Alle Einstellungen wurden geändert und sind nach einem Neustart immer noch in der geänderten Form vorhanden.
+[GT280]: Alle gestarteten Prozesse werden ordnungsgemäß beendet.
