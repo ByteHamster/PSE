@@ -65,13 +65,13 @@ class AlarmSettings extends ScrollPane {
         String tankName;
         for (TankSelector tank : TankSelector.values()) {
             tankName = translator.getString(TankSelector.TRANSLATOR_LABEL_PREFIX + tank.name()).toLowerCase();
-            currentBox = new CheckBox(String.format(translator.getString("monitoring.settings.alarms.liquidUnderflow"),
-                    tankName));
-            underflowEnabled.put(tank, currentBox);
-            layout.getChildren().add(currentBox);
             currentBox = new CheckBox(String.format(translator.getString("monitoring.settings.alarms.liquidOverflow"),
                     tankName));
             overflowEnabled.put(tank, currentBox);
+            layout.getChildren().add(currentBox);
+            currentBox = new CheckBox(String.format(translator.getString("monitoring.settings.alarms.liquidUnderflow"),
+                    tankName));
+            underflowEnabled.put(tank, currentBox);
             layout.getChildren().add(currentBox);
             currentBox = new CheckBox(String.format(
                     translator.getString("monitoring.settings.alarms.temperatureOverheating"), tankName));
