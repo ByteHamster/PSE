@@ -1,0 +1,14 @@
+﻿\subsection{}
+\begin{description}
+ \item[Beschreibung]
+ \item[Ursache] 
+ \item[Behebung] 
+\end{description}
+
+\subsection{}
+\begin{description}
+ \item[Beschreibung] 
+ \item[Ursache] 
+ \item[Behebung] 
+\end{description}
+
