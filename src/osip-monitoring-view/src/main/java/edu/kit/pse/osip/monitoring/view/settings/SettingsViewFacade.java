@@ -7,6 +7,8 @@ import edu.kit.pse.osip.monitoring.controller.SettingsViewInterface;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 /**
  * Provides a single access point to the user-set settings.
@@ -35,11 +37,15 @@ public class SettingsViewFacade implements SettingsViewInterface {
         disconnectAlert.setTitle(t.getString("monitoring.settings.disconnectalert.title"));
         disconnectAlert.setHeaderText(null);
         disconnectAlert.setContentText(t.getString("monitoring.settings.disconnectalert.text"));
+        Stage stage = (Stage) disconnectAlert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("/icon.png"));
 
         cannotConnectAlert = new Alert(Alert.AlertType.ERROR);
         cannotConnectAlert.setTitle(t.getString("monitoring.settings.cannotconnectalert.title"));
         cannotConnectAlert.setHeaderText(null);
         cannotConnectAlert.setContentText(t.getString("monitoring.settings.cannotconnectalert.text"));
+        stage = (Stage) cannotConnectAlert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("/icon.png"));
     }
     
     @Override

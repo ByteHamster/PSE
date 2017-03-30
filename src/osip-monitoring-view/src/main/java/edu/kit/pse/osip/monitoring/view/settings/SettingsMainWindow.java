@@ -150,6 +150,8 @@ class SettingsMainWindow {
         alert.setTitle(translator.getString("monitoring.settings.closewarning.title"));
         alert.setHeaderText(translator.getString("monitoring.settings.closewarning.header"));
         alert.setContentText(translator.getString("monitoring.settings.closewarning.text"));
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("/icon.png"));
         alert.show();
     }
     
