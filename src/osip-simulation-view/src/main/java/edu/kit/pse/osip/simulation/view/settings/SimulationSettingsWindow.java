@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -50,6 +51,7 @@ public class SimulationSettingsWindow implements SimulationSettingsInterface {
         Scene scene = new Scene(createRootLayout());
         settingsStage.setScene(scene);
         settingsStage.setTitle(Translator.getInstance().getString("simulation.settings.title"));
+        settingsStage.getIcons().add(new Image("icon.png"));
         settingsStage.setMinWidth(MIN_WINDOW_SIZE);
         settingsStage.setMinHeight(MIN_WINDOW_SIZE);
 
