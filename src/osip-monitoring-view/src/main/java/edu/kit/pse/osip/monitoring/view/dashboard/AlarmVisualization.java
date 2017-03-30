@@ -11,8 +11,10 @@ import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 
 /**
  * Visualizes an alarm with a name and the current state.
@@ -162,6 +164,8 @@ class AlarmVisualization extends Observable implements Observer {
                         getAlarmName(), Translator.getInstance().getString(TankSelector.TRANSLATOR_LABEL_PREFIX
                                 + selector.name()).toLowerCase()));
                 user.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+                Stage stage = (Stage) user.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("/icon.png"));
                 user.show();
             });
         } else {
