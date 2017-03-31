@@ -40,9 +40,8 @@ public class SimulationControllerTest extends ApplicationTest {
      * @throws UAClientException    If connecting to the OPC UA servers fails.
      * @throws InterruptedException If sleep fails
      */
-    @Test(timeout = 30000)
+    @Test(timeout = 60000)
     public void testLaunch() throws UAClientException, InterruptedException {
-        Thread.sleep(5000);
         File settingsLocation = new File(System.getProperty("user.home") + File.separator + ".osip");
         settingsLocation.mkdirs();
         ServerSettingsWrapper settings = new ServerSettingsWrapper(new File(settingsLocation, "simulation.conf"));
@@ -52,8 +51,18 @@ public class SimulationControllerTest extends ApplicationTest {
         TankClient client = new TankClient(new RemoteMachine("127.0.0.1",
             settings.getServerPort(TankSelector.valuesWithoutMix()[0], OSIPConstants.DEFAULT_PORT_MIX + 1)));
 
-        mixClient.connectClient();
-        client.connectClient();
+        while (true) {
+            try {
+                mixClient.connectClient();
+                client.connectClient();
+                break;
+            } catch (UAClientException ex) {
+                System.err.println("Exception when connecting to OPC UA server."
+                    + " Waiting for some time before reconnecting");
+                ex.printStackTrace();
+                Thread.sleep(1000);
+            }
+        }
         mixClient.disconnectClient();
         client.disconnectClient();
     }
