@@ -76,7 +76,7 @@ public class SimulationController extends Application {
     }
 
     private void initialize() throws UaException, ExecutionException, InterruptedException {
-        for (TankSelector selector: TankSelector.valuesWithoutMix()) {
+        for (TankSelector selector : TankSelector.valuesWithoutMix()) {
             TankContainer cont = new TankContainer();
             tanks.add(cont);
             cont.tank = productionSite.getUpperTank(selector);
@@ -109,7 +109,7 @@ public class SimulationController extends Application {
         boolean error = false;
         Translator t = Translator.getInstance();
 
-        for (TankSelector selector: TankSelector.values()) {
+        for (TankSelector selector : TankSelector.values()) {
             settingsWrapper.setServerPort(selector, settingsInterface.getPort(selector));
         }
         settingsWrapper.saveSettings();
@@ -119,7 +119,7 @@ public class SimulationController extends Application {
             return false;
         }
 
-        for (TankContainer cont: tanks) {
+        for (TankContainer cont : tanks) {
             try {
                 if (cont.server != null) {
                     cont.server.stop();
@@ -143,7 +143,7 @@ public class SimulationController extends Application {
         }
         mixCont.server = null;
 
-        for (TankContainer cont: tanks) {
+        for (TankContainer cont : tanks) {
             try {
                 int port = settingsInterface.getPort(cont.selector);
                 cont.server = new TankServer(port);
@@ -169,7 +169,7 @@ public class SimulationController extends Application {
 
     private boolean hasDoublePorts() {
         Vector<Integer> ports = new Vector<>(TankSelector.values().length);
-        for (TankSelector selector: TankSelector.values()) {
+        for (TankSelector selector : TankSelector.values()) {
             int port = settingsInterface.getPort(selector);
             if (ports.contains(port)) {
                 return true;
@@ -225,7 +225,7 @@ public class SimulationController extends Application {
      * Update values from model inside the servers
      */
     private void updateServerValues() {
-        for (TankContainer cont: tanks) {
+        for (TankContainer cont : tanks) {
             if (cont.server == null) {
                 continue;
             }
@@ -361,6 +361,7 @@ public class SimulationController extends Application {
                 Platform.runLater(() -> settingsInterface.close());
                 if (!reSetupServer()) {
                     Platform.runLater(() -> settingsInterface.show());
+                    currentSimulationView.setProgressIndicatorVisible(false);
                     return;
                 }
                 startMainLoop();
