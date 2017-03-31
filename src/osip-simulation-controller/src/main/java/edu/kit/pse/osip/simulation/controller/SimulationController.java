@@ -1,6 +1,5 @@
 package edu.kit.pse.osip.simulation.controller;
 
-import edu.kit.pse.osip.core.OSIPConstants;
 import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.io.files.ParserException;
 import edu.kit.pse.osip.core.io.files.ScenarioFile;
@@ -75,7 +74,7 @@ public class SimulationController extends Application {
         simulator = new PhysicsSimulator(productionSite);
     }
 
-    private void initialize() throws UaException, ExecutionException, InterruptedException {
+    private void initialize() {
         for (TankSelector selector : TankSelector.valuesWithoutMix()) {
             TankContainer cont = new TankContainer();
             tanks.add(cont);
@@ -85,19 +84,11 @@ public class SimulationController extends Application {
         mixCont.tank = productionSite.getMixTank();
         setupAlarms();
 
-        setupServer();
-        startMainLoop();
-        updateServerValues();
-    }
-
-    private void setupServer() throws UaException, ExecutionException, InterruptedException {
-        int defaultPort = OSIPConstants.DEFAULT_PORT_MIX;
-        mixCont.server = new MixTankServer(settingsWrapper.getServerPort(TankSelector.MIX, defaultPort++));
-        mixCont.server.start();
-
-        for (TankContainer cont : tanks) {
-            cont.server = new TankServer(settingsWrapper.getServerPort(cont.selector, defaultPort++));
-            cont.server.start();
+        if (reSetupServer()) {
+            startMainLoop();
+            updateServerValues();
+        } else {
+            Platform.runLater(() -> settingsInterface.show());
         }
     }
 
@@ -288,16 +279,8 @@ public class SimulationController extends Application {
 
         currentSimulationView.setProgressIndicatorVisible(true);
         new Thread(() -> {
-            try {
-                initialize();
-                Platform.runLater(() -> currentSimulationView.setProgressIndicatorVisible(false));
-            } catch (UaException | InterruptedException | ExecutionException ex) {
-                Platform.runLater(() -> {
-                    currentSimulationView.showOPCUAServerError("Could not start OPC UA servers: "
-                        + ex.getLocalizedMessage());
-                    settingsInterface.show();
-                });
-            }
+            initialize();
+            Platform.runLater(() -> currentSimulationView.setProgressIndicatorVisible(false));
         }).start();
     }
 
