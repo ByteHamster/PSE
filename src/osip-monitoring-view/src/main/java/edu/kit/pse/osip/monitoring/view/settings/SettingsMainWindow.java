@@ -15,6 +15,7 @@ import javafx.scene.control.TabPane.TabClosingPolicy;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -152,6 +153,8 @@ class SettingsMainWindow {
         alert.setContentText(translator.getString("monitoring.settings.closewarning.text"));
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
         stage.getIcons().add(new Image("/icon.png"));
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.initOwner(window);
         alert.show();
     }
     

@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -39,6 +40,8 @@ public class SettingsViewFacade implements SettingsViewInterface {
         disconnectAlert.setContentText(t.getString("monitoring.settings.disconnectalert.text"));
         Stage stage = (Stage) disconnectAlert.getDialogPane().getScene().getWindow();
         stage.getIcons().add(new Image("/icon.png"));
+        disconnectAlert.initModality(Modality.APPLICATION_MODAL);
+        disconnectAlert.initOwner(currentSettingsWindow.getStage());
 
         cannotConnectAlert = new Alert(Alert.AlertType.ERROR);
         cannotConnectAlert.setTitle(t.getString("monitoring.settings.cannotconnectalert.title"));
@@ -46,6 +49,8 @@ public class SettingsViewFacade implements SettingsViewInterface {
         cannotConnectAlert.setContentText(t.getString("monitoring.settings.cannotconnectalert.text"));
         stage = (Stage) cannotConnectAlert.getDialogPane().getScene().getWindow();
         stage.getIcons().add(new Image("/icon.png"));
+        cannotConnectAlert.initModality(Modality.APPLICATION_MODAL);
+        cannotConnectAlert.initOwner(currentSettingsWindow.getStage());
     }
     
     @Override
