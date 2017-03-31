@@ -123,7 +123,7 @@ public final class MonitoringController extends Application {
         HelpDialog helpDialog = new HelpDialog();
         currentView.setMenuHelpButtonHandler(event -> helpDialog.show());
         AboutDialog aboutDialog = new AboutDialog();
-        currentView.setMenuAboutButtonHandler(event -> aboutDialog.show()); 
+        currentView.setMenuAboutButtonHandler(event -> aboutDialog.show());
         currentSettingsView.setSettingsCancelButtonHandler(event -> currentSettingsView.hideSettingsWindow());
         currentSettingsView.setSettingsSaveButtonHandler(event -> {
             syncMonitoringViewAndSettingsView();
