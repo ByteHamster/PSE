@@ -129,6 +129,12 @@ public final class MonitoringController extends Application {
             syncMonitoringViewAndSettingsView();
             handleSaveButton();
         });
+    
+        stage.setOnHiding((event) -> {
+            helpDialog.hide();
+            aboutDialog.hide();
+            currentSettingsView.hideSettingsWindow();
+        });     
     }
 
     /**
