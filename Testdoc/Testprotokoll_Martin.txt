@@ -30,9 +30,19 @@ Status: nicht erfolgreich
 [GT260]: -
 [GT280]: -
 
+(4) Verbindungsinformation
+Durchlauf: 2
+Abdeckung: osip-model 19,5%, osip-core 13,9%, osip-monitoring-view 68,3%, osip-simulation-view 84,9%, osip-model-simulation 29,9%, osip-simulation-controller 66,3%, osip-opcua-server 59,3%, osip-opcua-client 69,9%, osip-monitoring-controller 90,7%
+Status: erfolgreich
+[GT100]: erfolgreich
+[GT110]: erfolgreich
+[GT150]: erfolgreich
+[GT260]: erfolgreich
+[GT280]: erfolgreich
+
 (6) Alarme und Logging
-Durchlauf: 1
-Abdeckung: aus Versehen gelöscht
+Durchlauf: 1 und 2 (für Abdeckung)
+Abdeckung: osip-model 20,5%, osip-core 13,7%, osip-monitoring-view 71,3%, osip-simulation-controller 61,2%, osip-model-simulation 34%, osip-simulation-view 91,8%, osip-opcua-server 59,3%, osip-opcua-client 68,9%, osip-monitoring-controller 87,1%
 Status: erfolgreich
 [GT100]: erfolgreich
 [GT110]: erfolgreich
@@ -42,8 +52,8 @@ Status: erfolgreich
 [GT280]: erfolgreich
 
 (8) Fehlerhafte Eingaben
-Durchlauf: 1
-Abdeckung: osip-model 19%, osip-core 2,9%, osip-simulation-controller 60,5%, osip-model-simulation 29,9%, osip-opcua-server 59,3%, osip-simulation-view 95,7% (nur Simulation)
+Durchlauf: 1 und 2 (für Abdeckung Monitoring)
+Abdeckung: osip-model 19,5%, osip-core 9,1%, osip-monitoring-view 67,9%, osip-simulation-controller 57%, osip-model-simulation 29,9%, osip-opcua-server 59,3%, osip-simulation-view 85,9%, osip-monitoring-controller 77,8%, osip-opcua-client 68,9%
 Status: erfolgreich
 [GT100]: erfolgreich
 [GT110]: erfolgreich
