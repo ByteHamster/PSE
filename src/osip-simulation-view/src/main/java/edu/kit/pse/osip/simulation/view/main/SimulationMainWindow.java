@@ -227,7 +227,6 @@ public class SimulationMainWindow implements SimulationViewInterface {
     public void showOverflow(AbstractTank tank) {
         OverflowDialog dialog = new OverflowDialog(tank);
         dialog.initModality(Modality.APPLICATION_MODAL);
-        dialog.initOwner(stage);
         EventHandler<ActionEvent> handler = actionEvent -> {
             if (resetHandler != null) {
                 resetHandler.handle(actionEvent);
@@ -266,9 +265,9 @@ public class SimulationMainWindow implements SimulationViewInterface {
         errorDialog.setContentText(error);
         errorDialog.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         errorDialog.initModality(Modality.APPLICATION_MODAL);
-        errorDialog.initOwner(stage);
         Stage stage = (Stage) errorDialog.getDialogPane().getScene().getWindow();
         stage.getIcons().add(new Image("/icon.png"));
+        stage.setAlwaysOnTop(true);
         errorDialog.show();
     }
 
@@ -295,9 +294,9 @@ public class SimulationMainWindow implements SimulationViewInterface {
             errorDialog.setContentText(message);
             errorDialog.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
             errorDialog.initModality(Modality.APPLICATION_MODAL);
-            errorDialog.initOwner(stage);
             Stage stage = (Stage) errorDialog.getDialogPane().getScene().getWindow();
             stage.getIcons().add(new Image("/icon.png"));
+            stage.setAlwaysOnTop(true);
             errorDialog.show();
         });
     }

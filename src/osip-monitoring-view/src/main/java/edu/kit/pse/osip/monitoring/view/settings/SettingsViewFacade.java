@@ -40,8 +40,8 @@ public class SettingsViewFacade implements SettingsViewInterface {
         disconnectAlert.setContentText(t.getString("monitoring.settings.disconnectalert.text"));
         Stage stage = (Stage) disconnectAlert.getDialogPane().getScene().getWindow();
         stage.getIcons().add(new Image("/icon.png"));
+        stage.setAlwaysOnTop(true);
         disconnectAlert.initModality(Modality.APPLICATION_MODAL);
-        disconnectAlert.initOwner(currentSettingsWindow.getStage());
 
         cannotConnectAlert = new Alert(Alert.AlertType.ERROR);
         cannotConnectAlert.setTitle(t.getString("monitoring.settings.cannotconnectalert.title"));
@@ -49,8 +49,8 @@ public class SettingsViewFacade implements SettingsViewInterface {
         cannotConnectAlert.setContentText(t.getString("monitoring.settings.cannotconnectalert.text"));
         stage = (Stage) cannotConnectAlert.getDialogPane().getScene().getWindow();
         stage.getIcons().add(new Image("/icon.png"));
+        stage.setAlwaysOnTop(true);
         cannotConnectAlert.initModality(Modality.APPLICATION_MODAL);
-        cannotConnectAlert.initOwner(currentSettingsWindow.getStage());
     }
     
     @Override
