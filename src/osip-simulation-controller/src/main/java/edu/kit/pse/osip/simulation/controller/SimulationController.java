@@ -90,7 +90,10 @@ public class SimulationController extends Application {
         updateServerValues();
     }
 
-    private void setupServer() throws UaException, ExecutionException, InterruptedException {
+    private void setupServer() throws UaException, ExecutionException, InterruptedException, IllegalStateException {
+        if (hasDoublePorts()) {
+            throw new IllegalStateException("Same port used multiple times");
+        }
         int defaultPort = OSIPConstants.DEFAULT_PORT_MIX;
         mixCont.server = new MixTankServer(settingsWrapper.getServerPort(TankSelector.MIX, defaultPort++));
         mixCont.server.start();
@@ -291,7 +294,7 @@ public class SimulationController extends Application {
             try {
                 initialize();
                 Platform.runLater(() -> currentSimulationView.setProgressIndicatorVisible(false));
-            } catch (UaException | InterruptedException | ExecutionException ex) {
+            } catch (UaException | InterruptedException | ExecutionException | IllegalStateException ex) {
                 Platform.runLater(() -> {
                     currentSimulationView.showOPCUAServerError("Could not start OPC UA servers: "
                         + ex.getLocalizedMessage());
