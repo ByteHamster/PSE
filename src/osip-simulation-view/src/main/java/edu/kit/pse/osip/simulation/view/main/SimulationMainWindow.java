@@ -27,6 +27,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.util.Collection;
 import java.util.ArrayList;
@@ -225,6 +226,8 @@ public class SimulationMainWindow implements SimulationViewInterface {
      */
     public void showOverflow(AbstractTank tank) {
         OverflowDialog dialog = new OverflowDialog(tank);
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initOwner(stage);
         EventHandler<ActionEvent> handler = actionEvent -> {
             if (resetHandler != null) {
                 resetHandler.handle(actionEvent);
@@ -262,6 +265,8 @@ public class SimulationMainWindow implements SimulationViewInterface {
         errorDialog.setHeaderText(t.getString("simulation.view.scenario.error.header"));
         errorDialog.setContentText(error);
         errorDialog.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+        errorDialog.initModality(Modality.APPLICATION_MODAL);
+        errorDialog.initOwner(stage);
         Stage stage = (Stage) errorDialog.getDialogPane().getScene().getWindow();
         stage.getIcons().add(new Image("/icon.png"));
         errorDialog.show();
@@ -289,6 +294,8 @@ public class SimulationMainWindow implements SimulationViewInterface {
             errorDialog.setHeaderText(t.getString("simulation.view.opcua.error.header"));
             errorDialog.setContentText(message);
             errorDialog.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            errorDialog.initModality(Modality.APPLICATION_MODAL);
+            errorDialog.initOwner(stage);
             Stage stage = (Stage) errorDialog.getDialogPane().getScene().getWindow();
             stage.getIcons().add(new Image("/icon.png"));
             errorDialog.show();
