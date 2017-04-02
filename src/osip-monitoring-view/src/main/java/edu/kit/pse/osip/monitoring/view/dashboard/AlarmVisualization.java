@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -166,6 +167,8 @@ class AlarmVisualization extends Observable implements Observer {
                 user.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
                 Stage stage = (Stage) user.getDialogPane().getScene().getWindow();
                 stage.getIcons().add(new Image("/icon.png"));
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setAlwaysOnTop(true);
                 user.show();
             });
         } else {

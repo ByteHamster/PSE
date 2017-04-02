@@ -153,8 +153,8 @@ class SettingsMainWindow {
         alert.setContentText(translator.getString("monitoring.settings.closewarning.text"));
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
         stage.getIcons().add(new Image("/icon.png"));
+        stage.setAlwaysOnTop(true);
         alert.initModality(Modality.APPLICATION_MODAL);
-        alert.initOwner(window);
         alert.show();
     }
     

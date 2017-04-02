@@ -110,6 +110,7 @@ public class OverflowDialog extends Stage {
         grid.add(overflowTankImage, 0, 0);
         grid.add(overflowTextFlow, 1, 0);
         Scene scene = new Scene(borderPane, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
+        this.setAlwaysOnTop(true);
         this.setScene(scene);
         this.setMinWidth(MIN_WINDOW_WIDTH);
         this.setMinHeight(MIN_WINDOW_HEIGHT);
