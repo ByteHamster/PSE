@@ -158,7 +158,7 @@ public abstract class UAClientWrapper {
             try {
                 client = createClient(serverUrl, namespace);
             } catch (InterruptedException | ExecutionException e) {
-                throw new UAClientException("Unable to create server: " + e.getLocalizedMessage());
+                throw new UAClientException("Unable to create client: " + e.getLocalizedMessage());
             }
         }
 
@@ -166,7 +166,7 @@ public abstract class UAClientWrapper {
             client.connect().get();
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
-            throw new UAClientException("Unable to start server");
+            throw new UAClientException("Unable to start client");
         }
 
         // To prevent connection timeout if values on server do not change for a long time
