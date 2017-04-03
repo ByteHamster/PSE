@@ -1,0 +1,55 @@
+\documentclass[parskip=full]{scrartcl}
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[german]{babel}
+\usepackage{hyperref}
+\usepackage[toc, nonumberlist]{glossaries}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{color}
+
+\hypersetup{
+  colorlinks=false,
+  linktoc=all,
+  hidelinks,
+}
+
+\title{OSIP - Testbericht}
+\subtitle{OPC UA Simulator for Industrial Plants}
+\author{
+    M. Armbruster\\
+    D. Kahles\\
+    H. Lehmann\\
+    M. Schwarzmann\\
+    N. Wilhelm
+}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\vspace{20px}
+\begin{center}
+  \includegraphics[scale=0.4]{../icon.png}
+\end{center}
+\pagebreak
+\tableofcontents
+\pagebreak
+
+\section{Einleitung}
+
+\section{Änderungen in der Implementierung}
+
+\section{Unittests}
+
+\section{Testszenarien}
+
+\section{Fehlerprotokoll}
+
+\pagebreak
+\phantomsection
+\addcontentsline{toc}{section}{\listfigurename}
+\listoffigures
+
+\end{document}
