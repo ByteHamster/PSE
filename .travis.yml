@@ -21,3 +21,5 @@ script:
 - cat Design.log | grep -C 15 -i ERROR
 - pdflatex -interaction=batchmode Implementation &> /dev/null
 - cat Implementation.log | grep -C 15 -i ERROR
+- pdflatex -interaction=batchmode Qualitaetssicherung &> /dev/null
+- cat Qualitaetssicherung.log | grep -C 15 -i ERROR
