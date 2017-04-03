@@ -1,0 +1,120 @@
+﻿(1) gesamt: 15,7%
+model 18%
+core 2,9%
+sim-view 85,6%
+sim-con 56,2%
+model-sim 30%
+opcua-server 50,8%
+
+(2) gesamt: 54,8%
+model 39,3%
+core 12,3%
+sim-con 60,5%
+mon-con 47,5%
+sim-view 87,1%
+mon-view 86%
+model-sim 58,2%
+opcua-client 10%
+opcua-server 57,7%
+
+(3) gesamt: 69,6%
+HL-003
+model 64%
+core 23,3%
+sim-con 79,1%
+mon-con 91,8%
+sim-view 88,6%
+mon-view 92,2%
+model-sim 56,3%
+opcua-server 69,9%
+opcua-client 72,4%
+
+(4) gesamt: 46,1%
+MA-002
+model 19,3%
+core 14%
+mon-view 67,7%
+sim-view 84,5%
+model-sim 30%
+sim-con 66,2%
+opcua-server 54,6%
+opcua-client 40%
+mon-con 76,9%
+
+(5) gesamt: 68,6%
+model 63,9%
+core 23,4%
+sim-con 67,4%
+mon-con 86,9%
+sim-view 89,1%
+mon-view 88%
+model-sim 86,5%
+opcua-server 75,8%
+opcua-client 70,5%
+
+(6) gesamt: 59%
+model 41,8%
+core 13,9%
+mon-view 81,7%
+sim-con 66%
+model-sim 66%
+sim-view 92,9%
+opcua-server 66,7%
+opcua-client 68,5%
+mon-con 87,1%
+
+(7) gesamt: 60%
+DK-001
+model 42,7%
+core 21,8%
+sim-con 62%
+mon-con 70,5%
+sim-view 89,3%
+mon-view 89,3%
+model-sim 48,1%
+opcua-server 63,4%
+opcua-client 41,7%
+
+(8) gesamt: 58,2%
+model 41,2%
+core 17,9%
+mon-view 79%
+sim-con 68%
+model-sim 58,2%
+opcua-server 67,1%
+sim-view 87,6%
+mon-con 84,6%
+opcua-client 70,4%
+
+(9) gesamt: 81,3%
+model 73,3%
+core 65,8%
+sim-con 80,4%
+mon-con 87,7%
+sim-view 96,7%
+mon-view 93,4%
+model-sim 86,3%
+opcua-server 69,9%
+opcua-client 72%
+
+(10) gesamt: 40,7%
+model 19%
+core 9%
+sim-view 84%
+sim-con 55%
+model-sim 30%
+mon-view 66%
+mon-con 44%
+opcua-server 50%
+opcua-client 10%
+
+(11) gesamt: 71,7%
+model 62,6%
+core 31,1%
+sim-con 77,7%
+mon-con 90,1%
+sim-view 89%
+mon-view 91,2%
+model-sim 86,5%
+opcua-server 75,8%
+opcua-client 72%

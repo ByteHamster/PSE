@@ -9,6 +9,7 @@
 \usepackage{enumitem}
 \usepackage{float}
 \usepackage{color}
+\usepackage{textcomp}
 
 \hypersetup{
   colorlinks=false,
@@ -43,7 +44,121 @@
 
 \section{Unittests}
 
-\section{Testszenarien}
+\section{Anforderungen und Tests}
+In Folge unterschiedlicher Umsetzungen von Anforderungen im Vergleich zum Pflichtenheft erfolgt zunächst die Anpassung der Anforderungen und Tests durch die vorhandene Rückkoppelung.
+
+\subsection{Angepasste Anforderungen}
+Die Anforderungen [FA100], [FA110], [FA160], [FA180], [FA200], [FA220], [FA270], [FA310], [FA320], [FA450], [FA500], [FA550], [FA570], [FA590], [FA600], [FA610], [FA650], [FA660], [FA710], [FA720], [FA730], [FA740], [FA820], [NF100], [NF120], [NF130], [D20], [D60], [D70], [D80], [D90], [D100] und [D120] wurden nicht implementiert und konnten daher gestrichen werden.
+
+Folgende Anforderungen wurden umgeändert (Änderungen bzw. Hinzufügungen sind \textbf{fett} markiert):
+\begin{enumerate}
+ \item[FA290] Der Menüeintrag "`Szenarien"' \textbf{öffnet einen Dateidialog zur Auswahl eines Simulations-Szenarios, das anschließend gestartet wird.}
+ \item[FA560] Die Überwachungskonsole registriert für jeden Tank jeweils einen Alarm für einen Überlauf und für einen Unterlauf \textbf{sowie einen für Überhitzung und Unterkühlung}.
+ \item[FA580] Ein Alarm wird durch einen Bezeichner und einen Kreis als Zustandssymbol dargestellt. Ist der Kreis rot, wurde der Alarm ausgelöst, ist er grün, wurde der Alarm nicht ausgelöst. \textbf{Ist er grau, ist der Alarm ausgeschalten.}
+ \item[FA630] Ein Alarm wird als ausgelöst angezeigt, nachdem die Überwachungskonsole durch die Fertigungssimulation über den Alarm informiert wurde. Die Anzeige besteht, bis der Alarm in der Fertigungssimulation nicht mehr aktiv ist und \textbf{die Überwachungskonsole über das Ende informiert wurde}.
+ \item[FA640] Es gibt eine zweistufige Ampel für den allgemeinen Zustand der Überwachungskonsole. Ist die Ampel rot, wurde mindestens ein Alarm ausgelöst, ist sie grün, wurde kein Alarm ausgelöst. \textbf{Ist sie grau, sind alle Alarm ausgeschalten.}
+ \item[FA700] In den Einstellungen wird die IP-Adresse der OPC UA Server sowie deren Ports angezeigt. Die Ports und die IP-Adresse der OPC UA Server sind konfigurierbar.
+ \item[FA780] Der Nutzer kann die verfügbaren Alarme ein- und ausschalten.
+ \item[FA800] Der Benutzer wird über eine Fehleingabe informiert \textbf{oder es erfolgt eine automatische Korrektur in den Wertebereich}.
+ \item[NF40] Standardmäßig haben die OPC UA Server die Ports \textbf{12868, 12869, 12870 und 12871}.
+ \item[NF60] Die Drehzahl des Mischermotors kann vom Benutzer in einem Bereich zwischen 0 und \textbf{3000} Umdrehungen pro Minute gewählt werden.
+ \item[NF90] Der Zu- und Abfluss der oberen Tanks und der Abfluss des unteren Tankes liegen zwischen 0 und \textbf{25} Litern pro Sekunde. Der Zufluss des unteren Tanks liegt zwischen 0 und \textbf{75} Litern pro Sekunde.
+ \item[NF110] Die Schwellenwerte für die Füllstands-Alarme liegen zwischen 0 und 100 \% \textbf{und für die Temperatur-Alarme innerhalb von 0 \textcelsius und 230 \textcelsius}. Standardmäßig liegt der Schwellenwert für einen Überlauf bei 95 \%, für einen Unterlauf bei 5 \%\textbf{, für die Überhitzung bei 95 \% und für die Unterkühlung bei 5 \% des einstellbaren Temperaturintervalls}.
+ \item[NF140] Die Aktualisierungsfrequenz kann vom Benutzer im Bereich zwischen \textbf{500} und 4000 ms gewählt werden.
+ \item[D40] Die Überwachungskonsole speichert die zuletzt eingeschalteten Alarme.
+\end{enumerate}
+
+\subsection{Angepasste globale Testfälle}
+Die globalen Testfälle [GT160], [GT170], [GT200] und [GT240] wurden aus den Testszenarien gestrichen und nicht durchgeführt, da sie auf nicht-implementierten Kannkriterien basieren.
+Zudem wurden alle nicht umgesetzten Anforderungen in den globalen Testfällen nicht überprüft. Explizit wurden folgende Testfälle leicht umgeändert (Änderungen auch hier \textbf{fett}):
+
+\begin{enumerate}
+ \item[GT210] Korrekter Ablauf der Simulations-Szenarien: Die Fertigungssimulation läuft und die Überwachungskonsole ist bei dieser registriert. \textbf{Alle verfügbaren, d. h. von uns mit gelieferten, Simulations-Szenarien} werden nacheinander korrekt ausgeführt (FA120, FA290), ohne dass eine Bedienung durch den Nutzer benötigt wird.
+ \item[GT270] Fehlerhafte Eingaben: Alle möglichen Einstellungen in der Fertigungssimulation und Überwachungskonsole werden mit Werten außerhalb des Wertebereichs vorgenommen (NF10, NF20, NF60, NF90, NF110, NF140). Jedes Mal muss eine Fehlermeldung erscheinen (FA790, FA800) \textbf{oder eine automatische Korrektur in den Wertebreich erfolgen (FA800)}.
+ \item[\textbf{GT290}] \textbf{Dauerhaftes Speichern der Einstellungen: Die Fertigungssimulation und Überwachungskonsole werden mit Standardeinstellungen geöffnet. Alle Einstellungen werden geändert und gespeichert. Nach einem Neustart beider Programme sind die geänderten Einstellungen weiterhin vorhanden (D10, D30 - D50, D110, D130).}
+\end{enumerate}
+
+\subsection{Testszenarien}
+Im Nachfolgenden werden eventuelle Änderungen der Testszenarien sowie das Ergebnis dieser dargestellt. Alle Szenarien wurden unter Ubuntu 16.04 und Windows 10 durchgeführt.
+
+\subsubsection{Szenario 1: Fertigungssimulation}
+\begin{description}
+ \item[Ablauf] [GT100], [GT280].
+ \item[Ergebnis] Erfolgreich.
+ \item[Abdeckung] 15,7 \% der Zeilen.
+\end{description}
+
+\subsubsection{Szenario 2: Überwachungskonsole mit ungültigen Einstellungen}
+\begin{description}
+	\item[Ablauf] [GT100], [GT120], [GT280].
+	\item[Ergebnis] Erfolgreich.
+	\item[Abdeckung] 54,8 \% der Zeilen.
+\end{description}
+
+\subsubsection{Szenario 3: GUI}
+\begin{description}
+	\item[Ablauf] [GT100], [GT110], [GT140], [GT280].
+	\item[Ergebnis] Legte den Fehler HL-003 offen.
+	\item[Abdeckung] 69,6 \% der Zeilen.
+\end{description}
+
+\subsubsection{Szenario 4: Verbindungsinformationen}
+\begin{description}
+	\item[Ablauf] [GT100], [GT110], [GT150], [GT260], [GT280].
+	\item[Ergebnis] Legte den Fehler MA-002 offen.
+	\item[Abdeckung] 46,1 \% der Zeilen.
+\end{description}
+
+\subsubsection{Szenario 5: Sensordaten}
+\begin{description}
+	\item[Ablauf] [GT100], [GT110], [GT180], [GT280].
+	\item[Ergebnis] Erfolgreich.
+	\item[Abdeckung] 68,6 \% der Zeilen.
+\end{description}
+
+\subsubsection{Szenario 6: Alarme und Logging}
+\begin{description}
+	\item[Ablauf] [GT100], [GT110], [GT190], [GT230], [GT260], [GT280].
+	\item[Ergebnis] Erfolgreich.
+	\item[Abdeckung] 59 \% der Zeilen.
+\end{description}
+
+\subsubsection{Szenario 7: Aktualisierungsfrequenz und Verläufe}
+\begin{description}
+	\item[Ablauf] [GT100], [GT110], [GT220], [GT250], [GT280].
+	\item[Ergebnis] Legte den Fehler DK-001 offen.
+	\item[Abdeckung] 60 \% der Zeilen.
+\end{description}
+
+\subsubsection{Szenario 8: Fehlerhafte Eingaben}
+\begin{description}
+	\item[Ablauf] [GT100], [GT110], [GT270], [GT280].
+	\item[Ergebnis] Erfolgreich.
+	\item[Abdeckung] 58,2 \% der Zeilen.
+\end{description}
+
+\subsubsection{Szenario 9: Simulations-Szenarien}
+\begin{description}
+	\item[Ablauf] [GT100], [GT110], [GT210], [GT280].
+	\item[Ergebnis] Erfolgreich.
+	\item[Abdeckung] 81,3 \% der Zeilen.
+\end{description}
+
+\subsubsection{Szenario 10: Dockerimage}
+\begin{description}
+	\item{Anmkerung} Dem Pflichtenheft entsprechend, nur unter Ubuntu 16.04 getestet.
+	\item[Ablauf] [GT130], [GT280].
+	\item[Ergebnis] Erfolgreich.
+	\item[Abdeckung] 40,7 \% der Zeilen.
+\end{description}
+
+\subsubsection{Szenario 11: Produktdaten}
+\begin{description}
+	\item[Anmerkung] Neues Szenario, um die Produktdaten zu testen. Diese wurden im Pflichtenheft vernachlässigt.
+	\item[Ablauf] [GT100], [GT110], [GT290], [GT280].
+	\item[Ergebnis] Erfolgreich.
+	\item[Abdeckung] 71,7 \% der Zeilen.
+\end{description}
 
 \section{Fehlerprotokoll}
 
