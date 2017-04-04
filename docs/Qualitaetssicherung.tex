@@ -48,7 +48,7 @@
 In Folge unterschiedlicher Umsetzungen von Anforderungen im Vergleich zum Pflichtenheft erfolgt zunächst die Anpassung der Anforderungen und Tests durch die vorhandene Rückkoppelung.
 
 \subsection{Angepasste Anforderungen}
-Die Anforderungen [FA100], [FA110], [FA160], [FA180], [FA200], [FA220], [FA270], [FA310], [FA320], [FA450], [FA500], [FA550], [FA570], [FA590], [FA600], [FA610], [FA650], [FA660], [FA710], [FA720], [FA730], [FA740], [FA820], [NF100], [NF120], [NF130], [D20], [D60], [D70], [D80], [D90], [D100] und [D120] wurden nicht implementiert und konnten daher gestrichen werden.
+Die Anforderungen [FA100], [FA110], [FA310], [FA320], [FA450], [FA610], [FA720], [FA730], [FA740], [NF100], [D20], [D60], [D70], [D100] und [D120], die zu den Kannkriterien zählten, wurden nicht implementiert und konnten daher gestrichen werden.
 
 Folgende Anforderungen wurden umgeändert (Änderungen bzw. Hinzufügungen sind \textbf{fett} markiert):
 \begin{enumerate}
@@ -56,7 +56,7 @@ Folgende Anforderungen wurden umgeändert (Änderungen bzw. Hinzufügungen sind 
 	\item[FA560] Die Überwachungskonsole registriert für jeden Tank jeweils einen Alarm für einen Überlauf und für einen Unterlauf \textbf{sowie einen für Überhitzung und Unterkühlung}.
 	\item[FA580] Ein Alarm wird durch einen Bezeichner und einen Kreis als Zustandssymbol dargestellt. Ist der Kreis rot, wurde der Alarm ausgelöst, ist er grün, wurde der Alarm nicht ausgelöst. \textbf{Ist er grau, ist der Alarm ausgeschalten.}
 	\item[FA630] Ein Alarm wird als ausgelöst angezeigt, nachdem die Überwachungskonsole durch die Fertigungssimulation über den Alarm informiert wurde. Die Anzeige besteht, bis der Alarm in der Fertigungssimulation nicht mehr aktiv ist und \textbf{die Überwachungskonsole über das Ende informiert wurde}.
-	\item[FA640] Es gibt eine zweistufige Ampel für den allgemeinen Zustand der Überwachungskonsole. Ist die Ampel rot, wurde mindestens ein Alarm ausgelöst, ist sie grün, wurde kein Alarm ausgelöst. \textbf{Ist sie grau, sind alle Alarm ausgeschalten.}
+	\item[FA640] Es gibt eine zweistufige Ampel für den allgemeinen Zustand der Überwachungskonsole. Ist die Ampel rot, wurde mindestens ein Alarm ausgelöst, ist sie grün, wurde kein Alarm ausgelöst. \textbf{Ist sie grau, sind alle Alarme ausgeschalten.}
 	\item[FA700] In den Einstellungen wird die IP-Adresse der OPC UA Server sowie deren Ports angezeigt. Die Ports und die IP-Adresse der OPC UA Server sind konfigurierbar.
 	\item[FA780] Der Nutzer kann die verfügbaren Alarme ein- und ausschalten.
 	\item[FA800] Der Benutzer wird über eine Fehleingabe informiert \textbf{oder es erfolgt eine automatische Korrektur in den Wertebereich}.
@@ -69,11 +69,11 @@ Folgende Anforderungen wurden umgeändert (Änderungen bzw. Hinzufügungen sind 
 \end{enumerate}
 
 \subsection{Angepasste globale Testfälle}
-Die globalen Testfälle [GT160], [GT170], [GT200] und [GT240] wurden aus den Testszenarien gestrichen und nicht durchgeführt, da sie auf nicht-implementierten Kannkriterien basieren.
+Die globalen Testfälle [GT160], [GT170], [GT200] und [GT240] wurden aus den Testszenarien gestrichen und nicht durchgeführt, da sie auf nicht implementierten Kannkriterien basieren.
 Zudem wurden alle nicht umgesetzten Anforderungen in den globalen Testfällen nicht überprüft. Explizit wurden folgende Testfälle leicht umgeändert (Änderungen auch hier \textbf{fett}):
 
 \begin{enumerate}
-	\item[GT210] Korrekter Ablauf der Simulations-Szenarien: Die Fertigungssimulation läuft und die Überwachungskonsole ist bei dieser registriert. \textbf{Alle verfügbaren, d. h. von uns mit gelieferten, Simulations-Szenarien} werden nacheinander korrekt ausgeführt (FA120, FA290), ohne dass eine Bedienung durch den Nutzer benötigt wird.
+	\item[GT210] Korrekter Ablauf der Simulations-Szenarien: Die Fertigungssimulation läuft und die Überwachungskonsole ist bei dieser registriert. \textbf{Alle verfügbaren, d. h. von uns mit gelieferten, Simulations-Szenarien} werden nacheinander korrekt ausgeführt (FA120, FA290), ohne dass \textbf{während der Ausführung eines Szenarios} eine Bedienung durch den Nutzer benötigt wird.
 	\item[GT270] Fehlerhafte Eingaben: Alle möglichen Einstellungen in der Fertigungssimulation und Überwachungskonsole werden mit Werten außerhalb des Wertebereichs vorgenommen (NF10, NF20, NF60, NF90, NF110, NF140). Jedes Mal muss eine Fehlermeldung erscheinen (FA790, FA800) \textbf{oder eine automatische Korrektur in den Wertebreich erfolgen (FA800)}.
 	\item[\textbf{GT290}] \textbf{Dauerhaftes Speichern der Einstellungen: Die Fertigungssimulation und Überwachungskonsole werden mit Standardeinstellungen geöffnet. Alle Einstellungen werden geändert und gespeichert. Nach einem Neustart beider Programme sind die geänderten Einstellungen weiterhin vorhanden (D10, D30 - D50, D110, D130).}
 \end{enumerate}
@@ -164,16 +164,16 @@ Im Nachfolgenden werden eventuelle Änderungen der Testszenarien sowie das Ergeb
 
 \subsection{DK-001}
 \begin{description}
-	\item[Beschreibung] GT220 schlägt fehl, da die Verzögerung zu groß ist.
+	\item[Beschreibung] [GT220] schlägt fehl, da die Verzögerung zu groß ist.
 	\item[Ursache] In Milo wird das eingestellte Intervall beim Subscriben an zwei Stellen verwendet. Dadurch kann es dazu kommen, dass die Verzögerung bis zu doppelt so groß ist als eingestellt.
-	\item[Behebung] Das Milo-interne Intervall mit dem die Änderungen im Model erfasst werden, wird auf konstant 250 Millisekunden gesetzt.
+	\item[Behebung] Das Milo-interne Intervall, mit dem die Änderungen im Modell erfasst werden, wird auf konstant 250 Millisekunden gesetzt.
 \end{description}
 
 \subsection{MA-001}
 \begin{description}
 	\item[Beschreibung] Der Unittest edu.kit.pse.osip.io.files.ScenarioFileTest schlägt unter Windows fehl.
 	\item[Ursache] Der Pfad der Testdatei ist nicht für Windows konfiguriert.
-	\item[Behebung] Der Pfad wird aus einer URI generiert und alle "/" durch den plattform-abhängigen Separator ersetzt. Außerdem besitzt der Pfad am Anfang ein "/", das unter Windows entfernt wird.
+	\item[Behebung] Der Pfad wird in eine java.io.File-Instanz konvertiert, die einen passenden, absoluten Pfad für jedes Betriebssystem liefert.
 \end{description}
 
 \subsection{MA-002}
@@ -185,7 +185,7 @@ Im Nachfolgenden werden eventuelle Änderungen der Testszenarien sowie das Ergeb
 
 \subsection{HL-001}
 \begin{description}
-	\item[Beschreibung] Das UI von Überwachungskonsole und Simulation ist nach dem Start für ca 3-10 Sekunden blockiert und reagiert nicht. Nach dem Speichern der Einstellungen tritt es ebenfalls auf.
+	\item[Beschreibung] Das UI von Überwachungskonsole und Simulation ist nach dem Start für ca. 3-10 Sekunden blockiert und reagiert nicht. Nach dem Speichern der Einstellungen tritt es ebenfalls auf.
 	\item[Ursache] Die OPC UA Server und Clients werden im UI Thread gestartet und beendet.
 	\item[Behebung] Starte einen neuen Thread für Aktionen mit OPC UA. Zeige während der Aktionen einen Warte-Dialog an, um den Nutzer zu informieren.
 \end{description}
@@ -200,7 +200,7 @@ Im Nachfolgenden werden eventuelle Änderungen der Testszenarien sowie das Ergeb
 \subsection{HL-003}
 \begin{description}
 	\item[Beschreibung] Beim Schließen der Einstellungen der Simulation werden die Werte nicht zurückgesetzt, erneutes Öffnen zeigt die alten Werte an.
-	\item[Ursache] Die Werte werden nicht zurückgesetzt
+	\item[Ursache] Die Werte werden nicht zurückgesetzt.
 	\item[Behebung] Vor dem Anzeigen des Fensters werden die Werte zurückgesetzt.
 \end{description}
 
