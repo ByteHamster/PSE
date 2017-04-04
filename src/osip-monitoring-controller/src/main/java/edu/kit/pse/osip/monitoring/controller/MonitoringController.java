@@ -146,14 +146,14 @@ public final class MonitoringController extends Application {
             try {
                 cont.client.disconnectClient();
             } catch (UAClientException e) {
-                System.err.println("Error while disconnecting: " + e.getLocalizedMessage());
+                System.err.println(e.getLocalizedMessage());
             }
             cont.client = null;
         }
         try {
             mixCont.client.disconnectClient();
         } catch (UAClientException e) {
-            System.err.println("Error while disconnecting: " + e.getLocalizedMessage());
+            System.err.println(e.getLocalizedMessage());
         }
         mixCont.client = null;
         AbstractTankClient.releaseSharedResources();
@@ -199,7 +199,7 @@ public final class MonitoringController extends Application {
                 }
             }
         } catch (UAClientException e) {
-            System.err.println("Error while disconnecting: " + e.getLocalizedMessage());
+            System.err.println(e.getLocalizedMessage());
         }
 
         hostname = currentSettings.getHostname(mixCont.tank.getTankSelector(), DEFAULT_HOSTNAME);
@@ -219,7 +219,7 @@ public final class MonitoringController extends Application {
             }
             return true;
         } catch (UAClientException e) {
-            System.err.println("Unable to connect to servers. " + e.getLocalizedMessage());
+            System.err.println(e.getLocalizedMessage());
             return false;
         }
     }
