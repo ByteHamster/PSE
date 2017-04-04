@@ -62,8 +62,11 @@ public class ServerSettingsWrapper {
         String port = properties.getProperty("serverPort_" + tank.name());
         if (port == null) {
             return defaultPort;
-        } else {
-            return Integer.parseInt(port);
+        }
+        try {
+            return  Integer.parseInt(port);
+        } catch (NumberFormatException e) {
+            return defaultPort;
         }
     }
     /**
