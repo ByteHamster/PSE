@@ -46,6 +46,26 @@ Insbesondere wird aufgezeigt, an welchen Stellen sich die Anforderungen und Test
 Das Dokument beschreibt die geprüften Szenarien, deren Ausgang und die Abdeckung des Codes bei der Durchführung der Szenarien.
 Im Anschluss befindet sich ein Fehlerprotokoll, wo aufgetretene Fehler, ihre Ursache und ihre Behandlung dokumentiert sind.
 \section{Änderungen in der Implementierung}
+Während der Testphase wurden einige Fehler behoben und Verhaltensweisen verändert, um OSIP benutzerfreundlicher zu machen.
+Diese Probleme wurden nicht notwendigerweise durch die Testszenarien aufgedeckt, da die Verhaltensweisen nicht im Fokus des
+Pflichtenhefts standen und daher nicht so genau spezifiziert wurden (u.a. da Fragen zu Details der GUI oder zum Verhalten bei Netzwerkproblemen
+erst im Laufe der Entwicklung aufkamen) oder die Szenarien die Fehler nicht aufdecken konnten, weil sie nur durch bestimmte,
+ungewöhnliche Eingaben ausgelöst werden konnten. Die wichtigsten Änderungen sind die folgenden:
+
+\begin{itemize}
+ \item Vereinfachen von Übersetzungen von OSIP in andere Sprachen, indem die lokalisierten Fehlermeldungen sämtlicher Exceptions benutzt werden.
+ \item Beheben von Abstürzen, z.b. wenn invalide Werte in den Einstellungsdateien stehen.
+ \item Öffnen sämtlicher Dialoge (wie z.B. Alarmmeldungen, Einstellungen oder Überlaufmeldungen) über den anderen Fenstern und modale Initialisierung dieser Dialoge,
+ sodass OSIP nicht bedienbar ist, solange diese nicht geschlossen werden. Das verhindert beispielsweise, dass der Benutzer nach einem Verbindungsverlust
+ die Einstellungen nicht bedienen kann, weil der Fehlerdialog im Hintergrund unbemerkt offen ist.
+ \item Verbesserte Logik beim Starten der OPC UA Server und Clients. Wenn ein Server Port mehrfach verwendet wird, wird sofort das
+ Einstellungsfenster geöffnet.
+ \item Performanceverbesserungen bei den OPC UA Servern und Clients und beim Beenden von OSIP.
+ \item Setzen des OSIP Icons in den Fensterrahmen jedes Fensters.
+ \item Verbessern der mitgelieferten Szenarien.
+ \item Besseres Visualisieren von ausgeschalteten Verläufen.
+ \item Vereinfachen des Codes an einigen Stellen.
+\end{itemize}
 
 \section{Unittests}
 
