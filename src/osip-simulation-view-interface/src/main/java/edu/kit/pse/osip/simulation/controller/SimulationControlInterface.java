@@ -6,39 +6,47 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 /**
- * Provides abstraction from the view
+ * Provides abstraction from the view.
  *
  * @version 1.1
  * @author Niko Wihelm
  */
 public interface SimulationControlInterface {
-
     /**
      * Disables or enables all control elements in the SimulationControlWindow to block or allow inputs.
-     * @param isDisable true if inputs shall be blocked, false if they shall be enabled
+     * 
+     * @param isDisable true if inputs shall be blocked, false if they shall be enabled.
      */
     void setControlsDisabled(boolean isDisable);
+    
     /**
      * Sets the listener that is notified of changes to valve thresholds.
+     * 
      * @param listener The Consumer that gets all changes to valve thresholds.
      */
     void setValveListener(BiConsumer<Pipe, Byte> listener);
+    
     /**
      * Sets the listener that is notified of changes in the temperature.
-     * @param listener The Consumer that gets all changes to Tank temperatures
+     * 
+     * @param listener The Consumer that gets all changes to Tank temperatures.
      */
     void setTemperatureListener(BiConsumer<TankSelector, Float> listener);
+    
     /**
      * Sets the listener that is notified of changes in motor speed.
-     * @param listener The Consumer that gets all to the motorSpeed
+     * 
+     * @param listener The Consumer that gets all changes to the motor speed.
      */
     void setMotorListener(Consumer<Integer> listener);
+    
     /**
-     * Show the control window
+     * Shows the control window.
      */
     void show();
+    
     /**
-     * Closes the window
+     * Closes the window.
      */
     void close();
 }

@@ -27,7 +27,7 @@ public interface SettingsViewInterface {
     void showDisconnectAlert();
     
     /**
-     * Shows "can not connect" alert and settings view;
+     * Shows "can not connect" alert and settings view.
      */
     void showCanNotConnectAlert();
     
