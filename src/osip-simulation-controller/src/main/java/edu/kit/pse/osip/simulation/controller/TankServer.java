@@ -15,9 +15,10 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
  */
 public class TankServer extends AbstractTankServer {
     /**
-     * Creates a new server for a tank
-     * @param port The port to add the server
-     * @throws UaException If the server can not be created
+     * Creates a new server for a tank.
+     * 
+     * @param port The port to add the server.
+     * @throws UaException If the server can not be created.
      */
     public TankServer(int port) throws UaException {
         super(UAIdentifiers.TANK, port);
@@ -26,9 +27,11 @@ public class TankServer extends AbstractTankServer {
         addFolder(UAIdentifiers.FOLDER_PIPE_IN, t.getString("opcua.pipe.in"));
         addVariable(UAIdentifiers.PIPE_IN_FLOW_RATE, t.getString("opcua.pipe.flowRate"), Identifiers.Float);
     }
+    
     /**
-     * Sets the flow rate of the incoming valve
-     * @param flowRate The flow rate of the input tanks
+     * Sets the flow rate of the incoming valve.
+     * 
+     * @param flowRate The flow rate of the input tanks.
      */
     public final void setInputFlowRate(float flowRate) {
         setVariable(UAIdentifiers.PIPE_IN_FLOW_RATE, new DataValue(new Variant(flowRate)));

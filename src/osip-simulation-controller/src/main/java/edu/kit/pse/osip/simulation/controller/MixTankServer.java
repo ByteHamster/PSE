@@ -15,9 +15,10 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
  */
 public class MixTankServer extends AbstractTankServer {
     /**
-     * Creates a new server for a mixtank
-     * @param port The port to start the server on
-     * @throws UaException If the server can not be created
+     * Creates a new server for a mixtank.
+     * 
+     * @param port The port to start the server on.
+     * @throws UaException If the server can not be created.
      */
     public MixTankServer(int port) throws UaException {
         super(UAIdentifiers.TANK_MIX, port);
@@ -26,9 +27,11 @@ public class MixTankServer extends AbstractTankServer {
         addFolder(UAIdentifiers.FOLDER_MOTOR, t.getString("opcua.motor"));
         addVariable(UAIdentifiers.MOTOR_RPM, t.getString("opcua.motor.rpm"), Identifiers.Int32);
     }
+    
     /**
-     * Sets the speed of the motor in rpm
-     * @param speed The speed in rpm
+     * Sets the speed of the motor in rpm.
+     * 
+     * @param speed The speed in rpm.
      */
     public final void setMotorSpeed(int speed) {
         setVariable(UAIdentifiers.MOTOR_RPM, new DataValue(new Variant(speed)));
