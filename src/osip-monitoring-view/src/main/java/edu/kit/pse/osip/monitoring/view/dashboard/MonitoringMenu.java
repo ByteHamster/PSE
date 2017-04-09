@@ -18,7 +18,6 @@ class MonitoringMenu extends MenuBar {
      * Menu containing all menu buttons for file interaction.
      */
     private Menu menuFile;
-    
     /**
      * Menu button in the files menu for displaying the settings.
      */
@@ -28,12 +27,10 @@ class MonitoringMenu extends MenuBar {
      * Menu containing all buttons for help.
      */
     private Menu menuHelp;
-    
     /**
      * Button in the help menu for showing the help dialog.
      */
     private MenuItem menuButtonHelp;
-    
     /**
      * Button in the help menu for showing the about dialog.
      */

@@ -16,7 +16,6 @@ class ProgressOverview extends TabPane {
      * Tab contains the temperature progression.
      */
     private Tab tabTemperature;
-    
     /**
      * The actual temperature progression.
      */
@@ -26,7 +25,6 @@ class ProgressOverview extends TabPane {
      * Tab contains the fill level progression.
      */
     private Tab tabFillLevel;
-    
     /**
      * The actual fill level progression.
      */

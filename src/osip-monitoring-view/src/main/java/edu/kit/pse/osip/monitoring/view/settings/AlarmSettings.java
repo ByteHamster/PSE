@@ -103,8 +103,8 @@ class AlarmSettings extends ScrollPane {
     /**
      * Returns true if the underflow alarm for a specified tank should be enabled and false otherwise.
      * 
-     * @return true if the underflow alarm for a specified tank should be enabled and false otherwise.
      * @param tank Tank for which should be looked up if the underflow alarm should be enabled or not.
+     * @return true if the underflow alarm for a specified tank should be enabled and false otherwise.
      */
     protected boolean isUnderflowEnabled(TankSelector tank) {
         return underflowEnabled.get(tank).isSelected();
@@ -113,8 +113,8 @@ class AlarmSettings extends ScrollPane {
     /**
      * Returns true if the overflow alarm for a specified tank should be enabled and false otherwise.
      * 
-     * @return true if the overflow alarm for a specified tank should be enabled and false otherwise.
      * @param tank Tank for which should be looked up if the overflow alarm should be enabled or not.
+     * @return true if the overflow alarm for a specified tank should be enabled and false otherwise.
      */
     protected boolean isOverflowEnabled(TankSelector tank) {
         return overflowEnabled.get(tank).isSelected();
@@ -124,9 +124,9 @@ class AlarmSettings extends ScrollPane {
      * Returns true if the overheating alarm for the temperature for a specified tank should be enabled
      * and false otherwise.
      * 
+     * @param tank The tank whose value for the temperature overflow alarm will be returned.
      * @return true if the overheating alarm for the temperature for a specified tank should be enabled.
      * false otherwise.
-     * @param tank The tank whose value for the temperature overflow alarm will be returned.
      */
     protected boolean isTemperatureOverheatingEnabled(TankSelector tank) {
         return temperatureOverheatingEnabled.get(tank).isSelected();
@@ -136,9 +136,9 @@ class AlarmSettings extends ScrollPane {
      * Returns true if the undercooling alarm for the temperature for a specified tank should be enabled
      * and false otherwise.
      * 
+     * @param tank The tank whose value for enabling / disabling the temperature underflow alarm will be returned.
      * @return true if the undercooling alarm for the temperature for a specified tank should be enabled.
      * false otherwise.
-     * @param tank The tank whose value for enabling / disabling the temperature underflow alarm will be returned.
      */
     protected boolean isTemperatureUndercoolingEnabled(TankSelector tank) {
         return temperatureUndercoolingEnabled.get(tank).isSelected();

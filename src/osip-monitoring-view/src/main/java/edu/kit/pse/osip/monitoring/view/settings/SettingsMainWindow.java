@@ -27,18 +27,22 @@ import javafx.scene.control.Alert.AlertType;
  * @version 1.4
  */
 class SettingsMainWindow {
+    /**
+     * The minimum width of the window.
+     */
     private static final int MIN_WINDOW_WIDTH = 500;
+    /**
+     * The minimum height of the window.
+     */
     private static final int MIN_WINDOW_HEIGHT = 300;
     /**
      * The window in which the settings are presented.
      */
     private Stage window;
-    
     /**
      * The used settings.
      */
     private ClientSettingsWrapper currentSettings;
-    
     /**
      * Pane containing tabs with the different settings possibilities.
      */
@@ -48,7 +52,6 @@ class SettingsMainWindow {
      * Tab for showing all general settings.
      */
     private Tab tabGeneralSettings;
-    
     /**
      * Contains the ui elements for the general settings.
      */
@@ -58,7 +61,6 @@ class SettingsMainWindow {
      * Tab for showing all settings regarding the progressions.
      */
     private Tab tabProgressions;
-    
     /**
      * Contains all ui elements for the progressions tab.
      */
@@ -68,7 +70,6 @@ class SettingsMainWindow {
      * Tab for showing all settings regarding alarms.
      */
     private Tab tabAlarms;
-    
     /**
      * Contains the ui elements for the alarm settings.
      */
@@ -78,7 +79,6 @@ class SettingsMainWindow {
      * The button to cancel the setting of the settings.
      */
     private Button buttonCancel;
-    
     /**
      * The button to save the current settings.
      */

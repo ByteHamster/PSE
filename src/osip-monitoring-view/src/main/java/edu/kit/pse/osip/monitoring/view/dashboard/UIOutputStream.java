@@ -14,13 +14,20 @@ class UIOutputStream extends PrintStream {
      * Stores the LoggingConsole used for the output in the GUI.
      */
     private LoggingConsole con;
+    /**
+     * Indicates whether something was already printed in the current line. When printing to the same line, no time
+     * stamp is generated because a line has only one time stamp.
+     */
     private boolean isAlreadyOneLinePrinted;
+    /**
+     * Saves the old stream this instance is replacing to log to the old and new stream. 
+     */
     private PrintStream oldStream;
     
     /**
-     * Creates a new output stream for GUI.
+     * Creates a new output stream for a GUI.
      *
-     * @param old The old stream to intercept
+     * @param old The old stream to intercept.
      * @param console LoggingConsole used for the output.
      * @throws NullPointerException when the LoggingConsole is null.
      */

@@ -255,8 +255,8 @@ class GeneralSettings extends ScrollPane {
     /**
      * Returns the port number for a specified server.
      * 
-     * @return the port number for the specified server.
      * @param tank Selector of the tank to get the port for.
+     * @return the port number for the specified server.
      */
     protected int getServerPort(TankSelector tank) {
         return serverPorts.get(tank).getValue();

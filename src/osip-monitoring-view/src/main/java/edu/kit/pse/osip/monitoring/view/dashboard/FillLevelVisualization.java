@@ -33,12 +33,7 @@ class FillLevelVisualization extends BarLayout implements Observer {
         this.getChildren().add(0, levelBar);
     }
     
-    /**
-     * Called when the observed object is updated.
-     * 
-     * @param observable The observed object.
-     * @param object The new value.
-     */
+    @Override
     public void update(Observable observable, Object object) {
         AbstractTank tank = (AbstractTank) observable;
         Platform.runLater(() -> levelBar.setValue(Math.min(1, tank.getFillLevel())));

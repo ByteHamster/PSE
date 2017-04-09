@@ -16,7 +16,7 @@ import javafx.scene.shape.Circle;
  */
 class ColorVisualization extends BarLayout implements Observer {
     /**
-     * Circle contains the color.
+     * Circle containing the color.
      */
     private Circle colorCircle;
     
@@ -38,12 +38,7 @@ class ColorVisualization extends BarLayout implements Observer {
         super.layoutChildren();
     }
 
-    /**
-     * Called when the observed object changed.
-     * 
-     * @param observable The observed object.
-     * @param object The new value.
-     */
+    @Override
     public void update(Observable observable, Object object) {
         edu.kit.pse.osip.core.model.base.Color col = ((AbstractTank) observable).getLiquid().getColor();
         Color currentColor = new Color(col.getR(), col.getG(), col.getB(), 1.0);

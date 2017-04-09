@@ -3,9 +3,8 @@ package edu.kit.pse.osip.monitoring.view.dashboard;
 import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.model.base.Motor;
 import edu.kit.pse.osip.core.utils.language.Translator;
-import javafx.application.Platform;
-
 import java.util.Observable;
+import javafx.application.Platform;
 
 /**
  * Visualizes the motor speed.

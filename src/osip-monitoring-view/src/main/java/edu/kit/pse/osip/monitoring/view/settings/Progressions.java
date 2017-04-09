@@ -9,7 +9,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Separator;
-import jfxtras.scene.layout.VBox;
+import javafx.scene.layout.VBox;
 
 /**
  * Controls all controls for disabling / enabling the progressions in the monitoring view.
@@ -80,9 +80,9 @@ class Progressions extends ScrollPane {
     
     /**
      * Returns true if the fill level progression should be enabled for a specified tank and false otherwise.
-     * 
-     * @return true if the fill level progression should be enabled for the specified tank or false otherwise.
+     *
      * @param tank The tank whose value will be returned.
+     * @return true if the fill level progression should be enabled for the specified tank or false otherwise.
      */
     protected boolean isFillLevelEnabled(TankSelector tank) {
         return fillLevelsEnabled.get(tank).isSelected();
@@ -91,8 +91,8 @@ class Progressions extends ScrollPane {
     /**
      * Returns true if the temperature progression should be enabled for a specified tank and false otherwise.
      * 
-     * @return true if the temperature progression should be enabled for the specified tank. false otherwise.
      * @param tank The tank whose value for enabling / disabling the temperature progression will be returned.
+     * @return true if the temperature progression should be enabled for the specified tank. false otherwise.
      */
     protected boolean isTemperatureEnabled(TankSelector tank) {
         return temperaturesEnabled.get(tank).isSelected();

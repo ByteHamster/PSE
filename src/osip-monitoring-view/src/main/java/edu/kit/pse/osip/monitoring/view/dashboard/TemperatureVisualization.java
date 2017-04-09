@@ -5,7 +5,6 @@ import edu.kit.pse.osip.core.model.base.AbstractTank;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import java.util.Observable;
 import java.util.Observer;
-
 import javafx.application.Platform;
 import javafx.geometry.Orientation;
 import javafx.scene.control.Slider;
@@ -46,12 +45,7 @@ class TemperatureVisualization extends BarLayout implements Observer {
         this.getChildren().add(0, temperatureBar);
     }
 
-    /**
-     * Called when the observed object is updated.
-     * 
-     * @param observable The observed object.
-     * @param object The new value.
-     */
+    @Override
     public void update(Observable observable, Object object) {
         AbstractTank tank = (AbstractTank) observable;
         Platform.runLater(() -> temperatureBar.setValue(tank.getLiquid().getTemperature() - DIFFERENCE_KELVIN_CELSIUS));
