@@ -12,6 +12,7 @@ import edu.kit.pse.osip.core.model.behavior.AlarmBehavior;
 import edu.kit.pse.osip.core.model.behavior.FillAlarm;
 import edu.kit.pse.osip.core.model.behavior.Scenario;
 import edu.kit.pse.osip.core.model.behavior.TemperatureAlarm;
+import edu.kit.pse.osip.core.model.simulation.ProductionSiteSimulation;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.view.control.SimulationControlWindow;
 import edu.kit.pse.osip.simulation.view.dialogs.AboutDialog;
@@ -22,8 +23,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
-
-import edu.kit.pse.osip.core.model.simulation.ProductionSiteSimulation;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
@@ -35,36 +34,85 @@ import org.eclipse.milo.opcua.stack.core.UaException;
 
 /**
  * Manages servers and controls view actions.
+ * 
  * @author David Kahles
  * @version 1.0
  */
 public class SimulationController extends Application {
+    /**
+     * The used ProductionSite.
+     */
     private final ProductionSiteSimulation productionSite = new ProductionSiteSimulation();
+    /**
+     * Simulator for the ProductionSite.
+     */
     private PhysicsSimulator simulator;
 
+    /**
+     * Contains the access point to the simulation view.
+     */
     private SimulationViewInterface currentSimulationView;
+    /**
+     * Contains the access point to the settings view.
+     */
     private SimulationSettingsInterface settingsInterface;
+    /**
+     * Contains the access point to the control view.
+     */
     private SimulationControlInterface controlInterface;
 
+    /**
+     * Saves the container for all mixtank related objects.
+     */
     private final MixTankContainer mixCont = new MixTankContainer();
+    /**
+     * Saves all containers for all tank related objects.
+     */
     private final List<TankContainer> tanks = new LinkedList<>();
 
+    /**
+     * The current running scenario.
+     */
     private Scenario currentScenario;
 
+    /**
+     * The current settings.
+     */
     private ServerSettingsWrapper settingsWrapper;
+    /**
+     * Indicates whether an overflow occurred.
+     */
     private boolean overflow = false;
+    /**
+     * Timer for the simulation.
+     */
     private Timer stepTimer = new Timer(true);
+    /**
+     * Indicates whether an reset is in progress.
+     */
     private boolean resetInProgress = false;
 
+    /**
+     * The threshold for an underflow alarm.
+     */
     private static final float FILL_ALARM_LOWER_THRESHOLD = 0.05f;
+    /**
+     * The threshold for an overflow alarm.
+     */
     private static final float FILL_ALARM_UPPER_THRESHOLD = 0.95f;
+    /**
+     * The threshold for an overheating alarm.
+     */
     private static final float TEMP_ALARM_LOWER_THRESHOLD = SimulationConstants.MIN_TEMPERATURE
             + 0.05f * (SimulationConstants.MAX_TEMPERATURE - SimulationConstants.MIN_TEMPERATURE);
+    /**
+     * The threshold for an undercooling alarm.
+     */
     private static final float TEMP_ALARM_UPPER_THRESHOLD = SimulationConstants.MIN_TEMPERATURE
             + 0.95f * (SimulationConstants.MAX_TEMPERATURE - SimulationConstants.MIN_TEMPERATURE);
 
     /**
-     * Responsible for controlling the display windows and simulating the production
+     * Responsible for controlling the display windows and simulating the production.
      */
     public SimulationController() {
         File settingsLocation = new File(System.getProperty("user.home") + File.separator + ".osip");
@@ -74,6 +122,9 @@ public class SimulationController extends Application {
         simulator = new PhysicsSimulator(productionSite);
     }
 
+    /**
+     * Initializes the model.
+     */
     private void initialize() {
         for (TankSelector selector : TankSelector.valuesWithoutMix()) {
             TankContainer cont = new TankContainer();
@@ -93,8 +144,9 @@ public class SimulationController extends Application {
     }
 
     /**
-     * Re-setup the servers
-     * @return true if successful
+     * Re-setup the servers.
+     * 
+     * @return true if successful.
      */
     private boolean reSetupServer() {
         boolean error = false;
@@ -158,6 +210,11 @@ public class SimulationController extends Application {
         return !error;
     }
 
+    /**
+     * Checks whether two server have two ports in common.
+     * 
+     * @return true when at least two servers have the same port set.
+     */
     private boolean hasDoublePorts() {
         Vector<Integer> ports = new Vector<>(TankSelector.values().length);
         for (TankSelector selector : TankSelector.values()) {
@@ -171,6 +228,9 @@ public class SimulationController extends Application {
         return false;
     }
 
+    /**
+     * Sets up the alarms for every tank.
+     */
     private void setupAlarms() {
         for (TankContainer cont: tanks) {
             cont.overflowAlarm =
@@ -194,7 +254,7 @@ public class SimulationController extends Application {
     }
 
     /**
-     * Start loop that updates the values
+     * Starts loop that updates the values.
      */
     private void startMainLoop() {
         if (stepTimer != null) {
@@ -213,7 +273,7 @@ public class SimulationController extends Application {
     }
 
     /**
-     * Update values from model inside the servers
+     * Updates values from model inside the servers.
      */
     private void updateServerValues() {
         for (TankContainer cont : tanks) {
@@ -257,6 +317,11 @@ public class SimulationController extends Application {
         }
     }
 
+    /**
+     * Shows the overflow dialog.
+     * 
+     * @param tank the tank where the overflow occurred.
+     */
     private void showOverflow(AbstractTank tank) {
         controlInterface.setControlsDisabled(true);
         Platform.runLater(() -> currentSimulationView.showOverflow(tank));
@@ -267,8 +332,9 @@ public class SimulationController extends Application {
     }
 
     /**
-     * Called bx JavaFx to start drawing the UI
-     * @param primaryStage The stage to draw the main window on
+     * Called bx JavaFX to start drawing the UI.
+     * 
+     * @param primaryStage The stage to draw the main window on.
      */
     public void start(Stage primaryStage) {
         controlInterface = new SimulationControlWindow(productionSite);
@@ -284,6 +350,11 @@ public class SimulationController extends Application {
         }).start();
     }
 
+    /**
+     * Sets up the view.
+     * 
+     * @param primaryStage the stage on which the view is shown.
+     */
     private void setupView(Stage primaryStage) {
         Stage help = new HelpDialog();
         Stage about = new AboutDialog();
@@ -353,6 +424,11 @@ public class SimulationController extends Application {
         });
     }
 
+    /**
+     * Starts a scenario.
+     * 
+     * @param file path to the scenario file.
+     */
     private void startScenario(String file) {
         try {
             ScenarioFile scenarioFile = new ScenarioFile(file);
@@ -377,7 +453,7 @@ public class SimulationController extends Application {
     }
 
     /**
-     * Called when the last window is closed
+     * Called when the last window is closed.
      */
     public void stop() {
         stepTimer.cancel();

@@ -16,11 +16,17 @@ import static org.junit.Assert.assertEquals;
  * @version 1.0
  */
 public class PhysicsSimulatorTest {
+    /**
+     * The ProductionSiteSimulation instance used for testing.
+     */
     private ProductionSiteSimulation site;
+    /**
+     * Saves the test simulator for the ProductionSite.
+     */
     private PhysicsSimulator sim;
 
     /**
-     * Initialize site and sim.
+     * Initializes site and sim.
      */
     @Before
     public void init() {
@@ -29,7 +35,7 @@ public class PhysicsSimulatorTest {
     }
 
     /**
-     * Check whether tick() works with the default ProductionSite and produces a stable state.
+     * Checks whether tick() works with the default ProductionSite and produces a stable state.
      */
     @Test
     public void testTickDefault() {
@@ -71,7 +77,7 @@ public class PhysicsSimulatorTest {
     }
 
     /**
-     * Check whether setting the input temperatures works correctly.
+     * Checks whether setting the input temperatures works correctly.
      */
     @Test
     public void testSetInputTemperature() {

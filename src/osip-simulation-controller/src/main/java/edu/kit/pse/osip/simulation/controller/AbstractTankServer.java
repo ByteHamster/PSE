@@ -17,10 +17,11 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
  */
 public abstract class AbstractTankServer extends UAServerWrapper {
     /**
-     * Represents a tank inside an OPC UA server
-     * @param namespaceName The name of the namespace
-     * @param port The port on which the server should be available
-     * @throws UaException If the server can not be created
+     * Represents a tank inside an OPC UA server.
+     * 
+     * @param namespaceName The name of the namespace.
+     * @param port The port on which the server should be available.
+     * @throws UaException If the server can not be created.
      */
     protected AbstractTankServer(String namespaceName, int port) throws UaException {
         super(namespaceName, port);
@@ -45,64 +46,72 @@ public abstract class AbstractTankServer extends UAServerWrapper {
     }
 
     /**
-     * Sets the color of the liquid in this tank
-     * @param color The color of the tank infill
+     * Sets the color of the liquid in this tank.
+     * 
+     * @param color The color of the tank infill.
      */
     public final void setColor(int color) {
         setVariable(UAIdentifiers.COLOR, new DataValue(new Variant(color)));
     }
 
     /**
-     * Sets the fill level of the tank
-     * @param filled The fill level of the tank
+     * Sets the fill level of the tank.
+     * 
+     * @param filled The fill level of the tank.
      */
     public final void setFillLevel(float filled) {
         setVariable(UAIdentifiers.FILL_LEVEL, new DataValue(new Variant(filled)));
     }
 
     /**
-     * Sets the flow rate of the outgoing valve
-     * @param rate The flow rate of the outgoing valve
+     * Sets the flow rate of the outgoing valve.
+     * 
+     * @param rate The flow rate of the outgoing valve.
      */
     public final void setOutputFlowRate(float rate) {
         setVariable(UAIdentifiers.PIPE_OUT_FLOW_RATE, new DataValue(new Variant(rate)));
     }
 
     /**
-     * Sets temperature of the contained liquid
-     * @param temperature Temperature of the tank content
+     * Sets temperature of the contained liquid.
+     * 
+     * @param temperature Temperature of the tank content.
      */
     public final void setTemperature(float temperature) {
         setVariable(UAIdentifiers.TEMPERATURE, new DataValue(new Variant(temperature)));
     }
 
     /**
-     * Sets the overflow alarm state
-     * @param overflow true if the tank is overflowing
+     * Sets the overflow alarm state.
+     * 
+     * @param overflow true if the tank is overflowing.
      */
     public final void setOverflowAlarm(boolean overflow) {
         setVariable(UAIdentifiers.ALARM_OVERFLOW, new DataValue(new Variant(overflow)));
     }
 
     /**
-     * Sets the underflow alarm state
-     * @param underflow true if the tank is underflowing
+     * Sets the underflow alarm state.
+     * 
+     * @param underflow true if the tank is underflowing.
      */
     public final void setUnderflowAlarm(boolean underflow) {
         setVariable(UAIdentifiers.ALARM_UNDERFLOW, new DataValue(new Variant(underflow)));
     }
 
     /**
-     * Sets the overheat alarm state
-     * @param overheat true if the tank is overheating
+     * Sets the overheating alarm state.
+     * 
+     * @param overheat true if the tank is overheating.
      */
     public final void setOverheatAlarm(boolean overheat) {
         setVariable(UAIdentifiers.ALARM_OVERHEAT, new DataValue(new Variant(overheat)));
     }
 
     /**
-     * Sets the undercool alarm state
-     * @param undercool true if the tank is undercooling
+     * Sets the undercooling alarm state.
+     * 
+     * @param undercool true if the tank is undercooling.
      */
     public final void setUndercoolAlarm(boolean undercool) {
         setVariable(UAIdentifiers.ALARM_UNDERCOOL, new DataValue(new Variant(undercool)));

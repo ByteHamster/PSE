@@ -10,15 +10,20 @@ import java.util.LinkedList;
 
 /**
  * Simulator for a given plant.
+ * 
  * @author David Kahles
  * @version 1.0
  */
 public class PhysicsSimulator {
+    /**
+     * The simulated ProductionSite.
+     */
     private ProductionSiteSimulation productionSite;
 
     /**
-     * Initializes a new simulator for the given plant
-     * @param productionSite The production site to simulate the values on
+     * Initializes a new simulator for the given plant.
+     * 
+     * @param productionSite The production site to simulate the values on.
      */
     public PhysicsSimulator(ProductionSiteSimulation productionSite) {
         this.productionSite = productionSite;
@@ -42,9 +47,10 @@ public class PhysicsSimulator {
     }
 
     /**
-     * Simulates a normal tank
-     * @return The outflowing liquid used to fill the MixTank
-     * @param tank The tank to put the liquid in (add to fill value)
+     * Simulates a normal tank.
+     * 
+     * @return The outflowing liquid used to fill the MixTank.
+     * @param tank The tank to put the liquid in (add to fill value).
      */
     private Liquid simulateTank(TankSimulation tank) {
         Pipe inPipe = tank.getInPipe();
@@ -58,9 +64,10 @@ public class PhysicsSimulator {
     }
 
     /**
-     * Set the temperature of the liquid which gets into the upper tanks
-     * @param tank The tank to set the temperature
-     * @param temperature The temperature
+     * Sets the temperature of the liquid which gets into the upper tanks.
+     * 
+     * @param tank The tank to set the temperature.
+     * @param temperature The temperature.
      */
     public void setInputTemperature(TankSelector tank, float temperature) {
         productionSite.setInputTemperature(tank, temperature);
