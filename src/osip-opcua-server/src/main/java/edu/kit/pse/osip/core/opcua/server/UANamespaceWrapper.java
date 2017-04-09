@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-
 import org.eclipse.milo.opcua.sdk.core.AccessLevel;
 import org.eclipse.milo.opcua.sdk.core.Reference;
 import org.eclipse.milo.opcua.sdk.server.OpcUaServer;
@@ -42,18 +41,37 @@ import org.eclipse.milo.opcua.stack.core.util.FutureUtils;
  * @version 1.0
  */
 public class UANamespaceWrapper implements Namespace {
+    /**
+     * The used subscription model.
+     */
     private final SubscriptionModel subscriptionModel;
+    /**
+     * The namespace index.
+     */
     private final UShort namespaceIndex;
+    /**
+     * The actual OPC UA server.
+     */
     private final OpcUaServer server;
+    /**
+     * Contains all variables.
+     */
     private final HashMap<String, UaVariableNode> variableNodes = new HashMap<>();
+    /**
+     * Contains all folders.
+     */
     private final HashMap<String, UaFolderNode> folderNodes = new HashMap<>();
 
+    /**
+     * The identifier of the namespace.
+     */
     protected String namespaceUri;
 
     /**
-     * Creates a new namespace to simply manage a milo namespace
-     * @param server The server that this namespace belongs to
-     * @param namespaceIndex The index of this namespace
+     * Creates a new namespace to simply manage a milo namespace.
+     * 
+     * @param server The server that this namespace belongs to.
+     * @param namespaceIndex The index of this namespace.
      */
     protected UANamespaceWrapper(OpcUaServer server, UShort namespaceIndex) {
         this.server = server;
@@ -62,10 +80,11 @@ public class UANamespaceWrapper implements Namespace {
     }
 
     /**
-     * Add a folder to the server
-     * @param path The path of the folder to add
-     * @param displayName Name that is displayed to the user
-     * @throws UaException If the folder can not be added
+     * Adds a folder to the server.
+     * 
+     * @param path The path of the folder to add.
+     * @param displayName Name that is displayed to the user.
+     * @throws UaException If the folder can not be added.
      */
     protected void addFolder(String path, String displayName) throws UaException {
         NodeId folderNodeId = new NodeId(namespaceIndex, path);
@@ -87,11 +106,12 @@ public class UANamespaceWrapper implements Namespace {
     }
 
     /**
-     * Add a variable to the server
-     * @param path The path of the variable to add
-     * @param displayName Name that is displayed to the user
-     * @param type The variable type, for example Identifiers.Float
-     * @throws UaException If the variable can not be added
+     * Adds a variable to the server.
+     * 
+     * @param path The path of the variable to add.
+     * @param displayName Name that is displayed to the user.
+     * @param type The variable type, for example Identifiers.Float.
+     * @throws UaException If the variable can not be added.
      */
     protected void addVariable(String path, String displayName, NodeId type) throws UaException {
         UaVariableNode newNode = new UaVariableNode.UaVariableNodeBuilder(server.getNodeMap())
@@ -116,30 +136,33 @@ public class UANamespaceWrapper implements Namespace {
     }
 
     /**
-     * Update the value of a variable
-     * @param path The path of the variable to update
-     * @param value Name that is displayed to the user
+     * Updates the value of a variable.
+     * 
+     * @param path The path of the variable to update.
+     * @param value Name that is displayed to the user.
      */
     protected void updateValue(String path, DataValue value) {
         variableNodes.get(path).setValue(value);
     }
 
     /**
-     * Needed by milo: Returns the namespace index of this namespace
+     * Needed by milo: Returns the namespace index of this namespace.
      *
-     * @return The index of this namespace
+     * @return The index of this namespace.
      */
+    @Override
     public UShort getNamespaceIndex() {
         return namespaceIndex;
     }
 
     /**
-     * Needed by milo. Allows browsing the nodes inside this namespace
+     * Needed by milo. Allows browsing the nodes inside this namespace.
      *
-     * @return a list of references to nodes on the server
-     * @param context The context to write the values back
-     * @param nodeId The id of the element to browse
+     * @param context The context to write the values back.
+     * @param nodeId The id of the element to browse.
+     * @return a list of references to nodes on the server.
      */
+    @Override
     public CompletableFuture<List<Reference>> browse(AccessContext context, NodeId nodeId) {
         ServerNode node = server.getNodeMap().get(nodeId);
 
@@ -151,12 +174,14 @@ public class UANamespaceWrapper implements Namespace {
     }
 
     /**
-     * Needed by milo. Allows reading a value
-     * @param context The context to write the value back
-     * @param maxAge Maximum age of the values to return
-     * @param timestamps The value from which time to return
-     * @param readValueIds The ids of the values that should be read
+     * Needed by milo. Allows reading a value.
+     * 
+     * @param context The context to write the value back.
+     * @param maxAge Maximum age of the values to return.
+     * @param timestamps The value from which time to return.
+     * @param readValueIds The ids of the values that should be read.
      */
+    @Override
     public void read(ReadContext context, Double maxAge,
             TimestampsToReturn timestamps, List<ReadValueId> readValueIds) {
         List<DataValue> results = new ArrayList<>(readValueIds.size());
@@ -175,10 +200,12 @@ public class UANamespaceWrapper implements Namespace {
     }
 
     /**
-     * Needed by milo. Writes values to the current server
-     * @param context The calling context
-     * @param values The values to write
+     * Needed by milo. Writes values to the current server.
+     * 
+     * @param context The calling context.
+     * @param values The values to write.
      */
+    @Override
     public void write(WriteContext context, List<WriteValue> values) {
         List<StatusCode> results = new ArrayList<>(values.size());
 
@@ -202,41 +229,51 @@ public class UANamespaceWrapper implements Namespace {
     }
 
     /**
-     * Needed by milo. Gets called when the data inside the server are created
-     * @param dataItems The created items
+     * Needed by milo. Gets called when the data inside the server are created.
+     * 
+     * @param dataItems The created items.
      */
+    @Override
     public void onDataItemsCreated(List<DataItem> dataItems) {
         subscriptionModel.onDataItemsCreated(dataItems);
     }
 
     /**
-     * Needed by milo. Called when the data inside the server is modified
-     * @param dataItems The modified data items
+     * Needed by milo. Called when the data inside the server is modified.
+     * 
+     * @param dataItems The modified data items.
      */
+    @Override
     public void onDataItemsModified(List<DataItem> dataItems) {
         subscriptionModel.onDataItemsModified(dataItems);
     }
 
     /**
-     * Needed by milo. Called when items inside the server are deleted
-     * @param dataItems The deleted items
+     * Needed by milo. Called when items inside the server are deleted.
+     * 
+     * @param dataItems The deleted items.
      */
+    @Override
     public void onDataItemsDeleted(List<DataItem> dataItems) {
         subscriptionModel.onDataItemsDeleted(dataItems);
     }
 
     /**
-     * Needed by milo. Called when the method changes how the client gets its data
-     * @param monitoredItems The changed items
+     * Needed by milo. Called when the method changes how the client gets its data.
+     * 
+     * @param monitoredItems The changed items.
      */
+    @Override
     public void onMonitoringModeChanged(List<MonitoredItem> monitoredItems) {
         subscriptionModel.onMonitoringModeChanged(monitoredItems);
     }
 
     /**
-     * Returns the identifier for this namespace
-     * @return the identifying string
+     * Returns the identifier for this namespace.
+     * 
+     * @return the identifying string.
      */
+    @Override
     public String getNamespaceUri() {
         return namespaceUri;
     }

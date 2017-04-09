@@ -1,6 +1,14 @@
 package edu.kit.pse.osip.core.opcua.client;
 
 import com.google.common.collect.Lists;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.BiConsumer;
 import org.eclipse.milo.opcua.sdk.client.OpcUaClient;
 import org.eclipse.milo.opcua.sdk.client.SessionActivityListener;
 import org.eclipse.milo.opcua.sdk.client.api.UaSession;
@@ -28,15 +36,6 @@ import org.eclipse.milo.opcua.stack.core.types.structured.MonitoredItemCreateReq
 import org.eclipse.milo.opcua.stack.core.types.structured.MonitoringParameters;
 import org.eclipse.milo.opcua.stack.core.types.structured.ReadValueId;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.function.BiConsumer;
-
 /**
  * Simplifies the interface of Milo.
  * Provides a way to easily read values by using their identifier.
@@ -52,23 +51,23 @@ public abstract class UAClientWrapper {
      */
     public static final int ERROR_DISCONNECT = 1;
     /**
-     * The data type found on the server does not match the one you requested
+     * The data type found on the server does not match the one you requested.
      */
     public static final int ERROR_DATA_TYPE_MISMATCH = 2;
     /**
-     * The server returned an unsupported data type
+     * The server returned an unsupported data type.
      */
     public static final int ERROR_DATA_TYPE_UNSUPPORTED = 3;
     /**
-     * The interval parameter for a single immediate read of subscribed data
+     * The interval parameter for a single immediate read of subscribed data.
      */
     public static final int SINGLE_READ = -1;
     /**
-     * Maximum size of the subscription queue
+     * Maximum size of the subscription queue.
      */
     private static final UInteger SUBSCRIPTION_QUEUE_SIZE = Unsigned.uint(1);
     /**
-     * Timeout when connecting
+     * Timeout when connecting.
      */
     protected static final int CONNECTION_TIMEOUT = 5000;
     /**
@@ -79,19 +78,44 @@ public abstract class UAClientWrapper {
      */
     private static final int INTERNAL_INTERVAL = 250;
 
+    /**
+     * The actual OPC UA client.
+     */
     private OpcUaClient client = null;
+    /**
+     * The server URL.
+     */
     private String serverUrl;
+    /**
+     * Saves the namespace.
+     */
     private String namespace;
+    /**
+     * Stores the namespace index.
+     */
     private int namespaceIndex = -1;
+    /**
+     * Provides unique numbers for subscriptions.
+     */
     private final AtomicLong clientHandles = new AtomicLong(1L);
+    /**
+     * Indicates whether the client is connected.
+     */
     private boolean connected = false;
+    /**
+     * Maps the listeners to the subscription ids.
+     */
     private HashMap<ReceivedListener, UInteger> listeners = new HashMap<>();
+    /**
+     * Saves the listener for errors.
+     */
     private ErrorListener errorListener;
     
     /**
-     * Wraps the milo client implementation to simplify process
-     * @param serverUrl The url of the server. Something like opc.tcp://localhost:12686/example
-     * @param namespace Name of the expected default namespace. Will fail if the namespaces do not match
+     * Wraps the milo client implementation to simplify process.
+     * 
+     * @param serverUrl The url of the server. Something like opc.tcp://localhost:12686/example.
+     * @param namespace Name of the expected default namespace. Will fail if the namespaces do not match.
      */
     public UAClientWrapper(String serverUrl, String namespace) {
         this.serverUrl = serverUrl;
@@ -99,14 +123,14 @@ public abstract class UAClientWrapper {
     }
 
     /**
-     * Creates the client
+     * Creates the client.
      * 
-     * @return a client ready to be run
-     * @param serverUrl The url of the server to use
-     * @param namespace The default namespace to expect
-     * @throws ExecutionException If creation of the client fails
-     * @throws InterruptedException If creation of the client fails
-     * @throws UAClientException If creation of the client fails
+     * @return a client ready to be run.
+     * @param serverUrl The url of the server to use.
+     * @param namespace The default namespace to expect.
+     * @throws ExecutionException If creation of the client fails.
+     * @throws InterruptedException If creation of the client fails.
+     * @throws UAClientException If creation of the client fails.
      */
     private OpcUaClient createClient(String serverUrl, String namespace)
             throws InterruptedException, ExecutionException, UAClientException {
@@ -142,16 +166,18 @@ public abstract class UAClientWrapper {
     }
 
     /**
-     * Sets the listener to be called on error states
-     * @param listener The listener
+     * Sets the listener to be called on error states.
+     * 
+     * @param listener The listener.
      */
     public void setErrorListener(ErrorListener listener) {
         errorListener = listener;
     }
 
     /**
-     * Connects the client to the server
-     * @throws UAClientException If the connection fails
+     * Connects the client to the server.
+     * 
+     * @throws UAClientException If the connection fails.
      */
     public void connectClient() throws UAClientException {
         if (client == null) {
@@ -187,8 +213,9 @@ public abstract class UAClientWrapper {
     }
 
     /**
-     * Disconnects the client from the server
-     * @throws UAClientException If the client can not be stopped
+     * Disconnects the client from the server.
+     * 
+     * @throws UAClientException If the client can not be stopped.
      */
     public void disconnectClient() throws UAClientException {
         if (!connected) {
@@ -217,9 +244,10 @@ public abstract class UAClientWrapper {
     }
 
     /**
-     * Unsubscribes the listener from getting refreshed
-     * @param listener The listener of the subscription to cancel
-     * @throws UAClientException If unsubscription fails
+     * Unsubscribes the listener from getting refreshed.
+     * 
+     * @param listener The listener of the subscription to cancel.
+     * @throws UAClientException If unsubscription fails.
      */
     public void unsubscribe(ReceivedListener listener) throws UAClientException {
         if (!connected) {
@@ -235,9 +263,10 @@ public abstract class UAClientWrapper {
     }
 
     /**
-     * Unsubscribes the listener from getting refreshed. Does not remove from subscriptions list
-     * @param listener The listener of the subscription to cancel
-     * @throws UAClientException If unsubscription fails
+     * Unsubscribes the listener from getting refreshed. Does not remove from subscriptions list.
+     * 
+     * @param listener The listener of the subscription to cancel.
+     * @throws UAClientException If unsubscription fails.
      */
     private void doUnsubscribe(ReceivedListener listener) throws UAClientException {
         try {
@@ -250,10 +279,11 @@ public abstract class UAClientWrapper {
     /**
      * Subscribes to a float from the server.
      * Subscribe again with same listener and other interval to change interval.
-     * @param nodeName The path of the node to subscribe or read
+     * 
+     * @param nodeName The path of the node to subscribe or read.
      * @param interval Fetch interval in ms. Single, immediate read when providing -1.
-     * @param listener Callback function that is called when the value was changed
-     * @throws UAClientException If subscription fails
+     * @param listener Callback function that is called when the value was changed.
+     * @throws UAClientException If subscription fails.
      */
     protected void subscribeFloat(String nodeName, int interval, FloatReceivedListener listener)
             throws UAClientException {
@@ -263,10 +293,11 @@ public abstract class UAClientWrapper {
     /**
      * Subscribes to a boolean from the server.
      * Subscribe again with same listener and other interval to change interval.
-     * @param nodeName The path of the node to subscribe or read
+     * 
+     * @param nodeName The path of the node to subscribe or read.
      * @param interval Fetch interval in ms. Single, immediate read when providing -1.
-     * @param listener Callback function that is called when the value was changed
-     * @throws UAClientException If subscription fails
+     * @param listener Callback function that is called when the value was changed.
+     * @throws UAClientException If subscription fails.
      */
     protected void subscribeBoolean(String nodeName, int interval, BooleanReceivedListener listener)
             throws UAClientException {
@@ -276,10 +307,11 @@ public abstract class UAClientWrapper {
     /**
      * Subscribes to an int from the server.
      * Subscribe again with same listener and other interval to change interval.
-     * @param nodeName The path of the node to subscribe or read
+     * 
+     * @param nodeName The path of the node to subscribe or read.
      * @param interval Fetch interval in ms. Single, immediate read when providing -1.
-     * @param listener Callback function that is called when the value was changed
-     * @throws UAClientException If subscription fails
+     * @param listener Callback function that is called when the value was changed.
+     * @throws UAClientException If subscription fails.
      */
     protected void subscribeInt(String nodeName, int interval, IntReceivedListener listener)
             throws UAClientException {
@@ -289,11 +321,12 @@ public abstract class UAClientWrapper {
     /**
      * Subscribes to a value from the server.
      * Subscribe again with same listener and other interval to change interval.
-     * @param nodeName The path of the node to subscribe or read
+     * 
+     * @param nodeName The path of the node to subscribe or read.
      * @param interval Fetch interval in ms. Single, immediate read when providing -1.
-     * @param listener Callback function that is called when the value was changed
-     * @param varType The type of the variable to be read
-     * @throws UAClientException If subscription fails
+     * @param listener Callback function that is called when the value was changed.
+     * @param varType The type of the variable to be read.
+     * @throws UAClientException If subscription fails.
      */
     private void subscribeOrRead(String nodeName, int interval, ReceivedListener listener, NodeId varType)
             throws UAClientException {
@@ -319,10 +352,11 @@ public abstract class UAClientWrapper {
     }
 
     /**
-     * Asynchronously reads a value from the server, creating a new thread
-     * @param nodeName Name of the value to read
-     * @param listener The listener to be called as soon as the value is received
-     * @param varType The type of the variable to be read
+     * Asynchronously reads a value from the server, creating a new thread.
+     * 
+     * @param nodeName Name of the value to read.
+     * @param listener The listener to be called as soon as the value is received.
+     * @param varType The type of the variable to be read.
      */
     private void doRead(String nodeName, ReceivedListener listener, NodeId varType) {
         new Thread(() -> {
@@ -339,11 +373,12 @@ public abstract class UAClientWrapper {
 
     /**
      * Subscribes to a value from the server.
-     * @param nodeId The node to subscribe
+     * 
+     * @param nodeId The node to subscribe.
      * @param interval Fetch interval in ms. Single, immediate read when providing -1.
-     * @param listener Callback function that is called when the value was changed
-     * @param varType The type of the variable to be read
-     * @throws UAClientException If subscription fails
+     * @param listener Callback function that is called when the value was changed.
+     * @param varType The type of the variable to be read.
+     * @throws UAClientException If subscription fails.
      */
     private void doSubscribe(NodeId nodeId, int interval, ReceivedListener listener, NodeId varType)
             throws UAClientException {
@@ -391,10 +426,11 @@ public abstract class UAClientWrapper {
     }
 
     /**
-     * Calls the correct function of the given receivedListener
-     * @param value The value to be sent to the listener
-     * @param listener The listener. Listener type must match varType
-     * @param varType The type of the variable to send
+     * Calls the correct function of the given receivedListener.
+     * 
+     * @param value The value to be sent to the listener.
+     * @param listener The listener. Listener type must match varType.
+     * @param varType The type of the variable to send.
      */
     private void callReceivedListener(DataValue value, ReceivedListener listener, NodeId varType) {
         boolean dataTypeMatch = value.getValue().getDataType()

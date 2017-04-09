@@ -9,8 +9,9 @@ package edu.kit.pse.osip.core.opcua.client;
 @FunctionalInterface
 public interface BooleanReceivedListener extends ReceivedListener {
     /**
-     * A boolean was received from the server
-     * @param value The received value
+     * A boolean was received from the server.
+     * 
+     * @param value The received value.
      */
     void onReceived(boolean value);
 }

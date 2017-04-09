@@ -9,8 +9,9 @@ package edu.kit.pse.osip.core.opcua.client;
 @FunctionalInterface
 public interface FloatReceivedListener extends ReceivedListener {
     /**
-     * A float was received from the server
-     * @param value The received value
+     * A float was received from the server.
+     * 
+     * @param value The received value.
      */
     void onReceived(float value);
 }

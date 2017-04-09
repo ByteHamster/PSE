@@ -7,5 +7,4 @@ package edu.kit.pse.osip.core.opcua.client;
  * @version 1.0
  */
 public interface ReceivedListener {
-
 }

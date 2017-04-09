@@ -7,17 +7,23 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests the server wrapper
+ * Tests the server wrapper.
  *
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
 public class UAServerWrapperTest {
+    /**
+     * Saves the UAServerWrapper instance used for testing.
+     */
     private UAServerWrapper server;
+    /**
+     * The used port.
+     */
     private static final int PORT = 12686;
 
     /**
-     * Initialize server
+     * Initializes server.
      */
     @Before
     public void setup() {
@@ -25,8 +31,9 @@ public class UAServerWrapperTest {
     }
 
     /**
-     * Tests if the server can be started and stopped without crashing
-     * @throws Exception If something goes wrong
+     * Tests if the server can be started and stopped without crashing.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @Test
     public void startStopServer() throws Exception {
@@ -35,8 +42,9 @@ public class UAServerWrapperTest {
     }
 
     /**
-     * Tests if multiple servers can be started
-     * @throws Exception If something goes wrong
+     * Tests if multiple servers can be started.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @Test
     public void startMultiple() throws Exception {
@@ -48,8 +56,9 @@ public class UAServerWrapperTest {
     }
 
     /**
-     * Tests if values inside the server can be set
-     * @throws Exception If something goes wrong
+     * Tests if values inside the server can be set.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @Test
     public void setVariable() throws Exception {
@@ -61,8 +70,9 @@ public class UAServerWrapperTest {
     }
 
     /**
-     * Tests if a folder can be created even if the parent folder does not exist
-     * @throws Exception Expected
+     * Tests if a folder can be created even if the parent folder does not exist.
+     * 
+     * @throws Exception Expected.
      */
     @Test(expected = IllegalStateException.class)
     public void createNoParentFolder() throws Exception {
@@ -72,8 +82,9 @@ public class UAServerWrapperTest {
     }
 
     /**
-     * Tests if a variable can be created even if the parent folder does not exist
-     * @throws Exception Expected
+     * Tests if a variable can be created even if the parent folder does not exist.
+     * 
+     * @throws Exception Expected.
      */
     @Test(expected = IllegalStateException.class)
     public void createNoParentVariable() throws Exception {
@@ -83,8 +94,9 @@ public class UAServerWrapperTest {
     }
 
     /**
-     * Tests if multiple folders can be added
-     * @throws Exception If something goes wrong
+     * Tests if multiple folders can be added.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @Test
     public void addMultipleFolders() throws Exception {
