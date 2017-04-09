@@ -17,9 +17,10 @@ import edu.kit.pse.osip.core.opcua.client.UAClientException;
  */
 public abstract class AbstractTankClient extends UAClientWrapper {
     /**
-     * Creates a new tank client
-     * @param machine The machine to connect to
-     * @param namespace The namespace to use
+     * Creates a new tank client.
+     * 
+     * @param machine The machine to connect to.
+     * @param namespace The namespace to use.
      */
     protected AbstractTankClient(RemoteMachine machine, String namespace) {
         super("opc.tcp://" + machine.getHostname() + ":" + machine.getPort() + "/osip", namespace);
@@ -28,9 +29,10 @@ public abstract class AbstractTankClient extends UAClientWrapper {
     /**
      * Subscribes the color of the tank at the given interval.
      * Can be called again with the same listener to change interval.
+     * 
      * @param interval The interval to use when subscribing to the value. Single, immediate read when providing -1.
-     * @param listener The callback function to be called as soon as the subscribed value was received
-     * @throws UAClientException If adding the subscription fails
+     * @param listener The callback function to be called as soon as the subscribed value was received.
+     * @throws UAClientException If adding the subscription fails.
      */
     public void subscribeColor(int interval, IntReceivedListener listener) throws UAClientException {
         subscribeInt(UAIdentifiers.COLOR, interval, listener);
@@ -39,9 +41,10 @@ public abstract class AbstractTankClient extends UAClientWrapper {
     /**
      * Subscribes the temperature of the tank at the given interval.
      * Can be called again with the same listener to change interval.
+     * 
      * @param interval The interval to use when subscribing to the value. Single, immediate read when providing -1.
-     * @param listener The callback function to be called as soon as the subscribed value was received
-     * @throws UAClientException If adding the subscription fails
+     * @param listener The callback function to be called as soon as the subscribed value was received.
+     * @throws UAClientException If adding the subscription fails.
      */
     public void subscribeTemperature(int interval, FloatReceivedListener listener) throws UAClientException {
         subscribeFloat(UAIdentifiers.TEMPERATURE, interval, listener);
@@ -50,9 +53,10 @@ public abstract class AbstractTankClient extends UAClientWrapper {
     /**
      * Subscribes the output flow rate of the tank at the given interval.
      * Can be called again with the same listener to change interval.
+     * 
      * @param interval The interval to use when subscribing to the value. Single, immediate read when providing -1.
-     * @param listener The callback function to be called as soon as the subscribed value was received
-     * @throws UAClientException If adding the subscription fails
+     * @param listener The callback function to be called as soon as the subscribed value was received.
+     * @throws UAClientException If adding the subscription fails.
      */
     public void subscribeOutputFlowRate(int interval, FloatReceivedListener listener) throws UAClientException {
         subscribeFloat(UAIdentifiers.PIPE_OUT_FLOW_RATE, interval, listener);
@@ -61,9 +65,10 @@ public abstract class AbstractTankClient extends UAClientWrapper {
     /**
      * Subscribes the fill level of the tank at the given interval.
      * Can be called again with the same listener to change interval.
+     * 
      * @param interval The interval to use when subscribing to the value. Single, immediate read when providing -1.
-     * @param listener The callback function to be called as soon as the subscribed value was received
-     * @throws UAClientException If adding the subscription fails
+     * @param listener The callback function to be called as soon as the subscribed value was received.
+     * @throws UAClientException If adding the subscription fails.
      */
     public void subscribeFillLevel(int interval, FloatReceivedListener listener) throws UAClientException {
         subscribeFloat(UAIdentifiers.FILL_LEVEL, interval, listener);
@@ -72,9 +77,10 @@ public abstract class AbstractTankClient extends UAClientWrapper {
     /**
      * Subscribes the underflow sensor of the tank at the given interval.
      * Can be called again with the same listener to change interval.
+     * 
      * @param interval The interval to use when subscribing to the value. Single, immediate read when providing -1.
-     * @param listener The callback function to be called as soon as the subscribed value was received
-     * @throws UAClientException If adding the subscription fails
+     * @param listener The callback function to be called as soon as the subscribed value was received.
+     * @throws UAClientException If adding the subscription fails.
      */
     public void subscribeUnderflowSensor(int interval, BooleanReceivedListener listener) throws UAClientException {
         subscribeBoolean(UAIdentifiers.ALARM_UNDERFLOW, interval, listener);
@@ -83,9 +89,10 @@ public abstract class AbstractTankClient extends UAClientWrapper {
     /**
      * Subscribes the overflow sensor of the tank at the given interval.
      * Can be called again with the same listener to change interval.
+     * 
      * @param interval The interval to use when subscribing to the value. Single, immediate read when providing -1.
-     * @param listener The callback function to be called as soon as the subscribed value was received
-     * @throws UAClientException If adding the subscription fails
+     * @param listener The callback function to be called as soon as the subscribed value was received.
+     * @throws UAClientException If adding the subscription fails.
      */
     public void subscribeOverflowSensor(int interval, BooleanReceivedListener listener) throws UAClientException {
         subscribeBoolean(UAIdentifiers.ALARM_OVERFLOW, interval, listener);
@@ -94,9 +101,10 @@ public abstract class AbstractTankClient extends UAClientWrapper {
     /**
      * Subscribes the overheat sensor of the tank at the given interval.
      * Can be called again with the same listener to change interval.
+     * 
      * @param interval The interval to use when subscribing to the value. Single, immediate read when providing -1.
-     * @param listener The callback function to be called as soon as the subscribed value was received
-     * @throws UAClientException If adding the subscription fails
+     * @param listener The callback function to be called as soon as the subscribed value was received.
+     * @throws UAClientException If adding the subscription fails.
      */
     public void subscribeOverheatSensor(int interval, BooleanReceivedListener listener) throws UAClientException {
         subscribeBoolean(UAIdentifiers.ALARM_OVERHEAT, interval, listener);
@@ -105,9 +113,10 @@ public abstract class AbstractTankClient extends UAClientWrapper {
     /**
      * Subscribes the undercool sensor of the tank at the given interval.
      * Can be called again with the same listener to change interval.
+     * 
      * @param interval The interval to use when subscribing to the value. Single, immediate read when providing -1.
-     * @param listener The callback function to be called as soon as the subscribed value was received
-     * @throws UAClientException If adding the subscription fails
+     * @param listener The callback function to be called as soon as the subscribed value was received.
+     * @throws UAClientException If adding the subscription fails.
      */
     public void subscribeUndercoolSensor(int interval, BooleanReceivedListener listener) throws UAClientException {
         subscribeBoolean(UAIdentifiers.ALARM_UNDERCOOL, interval, listener);

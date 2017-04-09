@@ -23,14 +23,13 @@ import edu.kit.pse.osip.monitoring.view.dashboard.MonitoringViewFacade;
 import edu.kit.pse.osip.monitoring.view.dialogs.AboutDialog;
 import edu.kit.pse.osip.monitoring.view.dialogs.HelpDialog;
 import edu.kit.pse.osip.monitoring.view.settings.SettingsViewFacade;
-import javafx.application.Application;
-import javafx.stage.Stage;
-import javafx.application.Platform;
-
 import java.io.File;
 import java.util.EnumMap;
 import java.util.LinkedList;
 import java.util.List;
+import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.application.Platform;
 
 /**
  * The controller starts the monitoring view and initializes the model with the main loop.
@@ -44,26 +43,35 @@ public final class MonitoringController extends Application {
      * The current model.
      */
     private ProductionSite productionSite;
-    
     /**
      * Contains the current settings.
      */
     private ClientSettingsWrapper currentSettings;
-    
     /**
      * The current entry point to the monitoring view.
      */
     private MonitoringViewInterface currentView;
-    
     /**
      * The current entry point for the settings view.
      */
     private SettingsViewInterface currentSettingsView;
-    
+    /**
+     * Contains every mixtank related objects. 
+     */
     private final MixTankContainer mixCont = new MixTankContainer();
+    /**
+     * List of all containers with tank related objects.
+     */
     private final List<TankContainer> tanks = new LinkedList<>();
+    /**
+     * The default host name.
+     */
     private static final String DEFAULT_HOSTNAME = "localhost";
+    /**
+     * The internal fetch interval for the alarms.
+     */
     private static final int ALARM_FETCH_INTERVAL = 50;
+    
     /**
      * Creates a new controller instance.
      */
@@ -81,6 +89,7 @@ public final class MonitoringController extends Application {
      * 
      * @param primaryStage The stage used for displaying all controls.
      */
+    @Override
     public void start(Stage primaryStage) {
         for (TankSelector selector: TankSelector.valuesWithoutMix()) {
             TankContainer cont = new TankContainer();
@@ -103,6 +112,11 @@ public final class MonitoringController extends Application {
         connect();
     }
 
+    /**
+     * Generates and returns a map containing the AlarmGroups for every tank.
+     * 
+     * @return a map containing the AlarmGroups for every tank.
+     */
     private EnumMap<TankSelector, AlarmGroup<ObservableBoolean, ObservableBoolean>> getAlarmEnumMap() {
         EnumMap<TankSelector, AlarmGroup<ObservableBoolean, ObservableBoolean>> map = new EnumMap<>(TankSelector.class);
         for (TankContainer cont: tanks) {
@@ -140,6 +154,7 @@ public final class MonitoringController extends Application {
     /**
      * Called when the last window is closed.
      */
+    @Override
     public void stop() {
         System.out.println("Stopped monitoring thread");
         for (TankContainer cont : tanks) {
@@ -160,7 +175,7 @@ public final class MonitoringController extends Application {
     }
 
     /**
-     * Initializes and connects the clients
+     * Initializes and connects the clients.
      */
     private void connect() {
         currentView.setProgressIndicatorVisible(true);
@@ -179,8 +194,9 @@ public final class MonitoringController extends Application {
     }
 
     /**
-     * Changes server connections
-     * @return true if switching servers is successful
+     * Changes server connections.
+     * 
+     * @return true if switching servers is successful.
      */
     private boolean reSetupClients() {
         int defaultPort = OSIPConstants.DEFAULT_PORT_MIX;
@@ -224,6 +240,9 @@ public final class MonitoringController extends Application {
         }
     }
     
+    /**
+     * Handles a click on the save button in the settings window.
+     */
     private void handleSaveButton() {
         for (TankSelector tank: TankSelector.values()) {
             currentSettings.setFetchInterval(currentSettingsView.getUpdateInterval());
@@ -244,6 +263,9 @@ public final class MonitoringController extends Application {
         connect();
     }
     
+    /**
+     * The settings are applied to the monitoring view.
+     */
     private void syncMonitoringViewAndSettingsView() {
         for (TankSelector tank: TankSelector.values()) {
             currentView.setFillLevelProgressionEnabled(tank,
@@ -271,6 +293,12 @@ public final class MonitoringController extends Application {
         }
     }
     
+    /**
+     * Subscribes all values of the tanks.
+     * 
+     * @param intervalRegular the fetch interval for regular values.
+     * @param intervalAlarm the fetch interval for the alarms.
+     */
     private void clientSubscribe(int intervalRegular, int intervalAlarm) {        
         if (mixCont.client != null) {
             try {
@@ -310,6 +338,12 @@ public final class MonitoringController extends Application {
         }
     }
     
+    /**
+     * Container for the OPC UA clients and subscribed value listeners.
+     * 
+     * @author Maximilian Schwarzmann
+     * @version 1.0
+     */
     private class Container {
         TankSelector selector;
         AbstractTank absTank;
