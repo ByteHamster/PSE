@@ -3,21 +3,20 @@ package edu.kit.pse.osip.core.model.simulation;
 import edu.kit.pse.osip.core.model.base.Color;
 import edu.kit.pse.osip.core.model.base.Liquid;
 import edu.kit.pse.osip.core.model.base.TankSelector;
-import org.junit.Test;
-
 import java.util.LinkedList;
+import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
 
 /**
- * Tests the ProductionSiteSimulation
+ * Tests the ProductionSiteSimulation.
  *
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
 public class ProductionSiteSimulationTest {
     /**
-     * It must be possible to call putIn() on all tanks
+     * It must be possible to call putIn() on all tanks.
      */
     @Test
     public void testObjectTypes() {

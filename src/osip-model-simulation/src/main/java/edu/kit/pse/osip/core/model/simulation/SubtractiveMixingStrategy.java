@@ -1,10 +1,9 @@
 package edu.kit.pse.osip.core.model.simulation;
 
-import java.util.LinkedList;
-
 import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.model.base.Color;
 import edu.kit.pse.osip.core.model.base.Liquid;
+import java.util.LinkedList;
 
 /**
  * Mixing liquids using subtractive color mixture and Richmann's formula for temperature mixing.
@@ -18,8 +17,8 @@ public class SubtractiveMixingStrategy implements MixingStrategy {
      * and the temperatures are mixed using the Richmann's formula. If the resulting liquid amount is zero,
      * the temperature and color of the first liquid will be used.
      *
-     * @return a single Liquid element containing a mixture of the given liquids
      * @param inflow Liquids to mix.
+     * @return a single Liquid element containing a mixture of the given liquids,
      */
     public Liquid mixLiquids(LinkedList<Liquid> inflow) {
         if (inflow == null || inflow.isEmpty()) {

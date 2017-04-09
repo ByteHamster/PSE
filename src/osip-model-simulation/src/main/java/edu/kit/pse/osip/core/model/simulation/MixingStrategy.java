@@ -1,8 +1,7 @@
 package edu.kit.pse.osip.core.model.simulation;
 
-import java.util.LinkedList;
-
 import edu.kit.pse.osip.core.model.base.Liquid;
+import java.util.LinkedList;
 
 /**
  * A strategy to mix liquids. This includes the mixing of colors and the mixing of temperatures.
