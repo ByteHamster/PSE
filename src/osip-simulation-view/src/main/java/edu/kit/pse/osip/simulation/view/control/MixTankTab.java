@@ -4,6 +4,8 @@ import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.model.base.MixTank;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.view.main.ViewConstants;
+import java.util.Observable;
+import java.util.function.Consumer;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.StringProperty;
@@ -15,9 +17,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.util.converter.IntegerStringConverter;
 
-import java.util.Observable;
-import java.util.function.Consumer;
-
 /**
  * This class has controls specific to the tanks in which several inputs are mixed.
  *
@@ -25,15 +24,24 @@ import java.util.function.Consumer;
  * @author Niko Wilhelm
  */
 public class MixTankTab extends AbstractTankTab {
-
+    /**
+     * Slider for setting the motor's rpm.
+     */
     private Slider motorSlider;
+    /**
+     * Shows the motor's rpm as text.
+     */
     private TextField motorValue;
+    /**
+     * Saves the mixtank this tab is assigned to.
+     */
     private MixTank mixTank;
 
     /**
      * Creates a new TankTab containing the standard controls of the AbstractTankTab as well as a
      * slider to control motor speed.
-     * @param name The name of the AbstractTanktab
+     * 
+     * @param name The name of the AbstractTankTab.
      * @param mixTank The AbstractTank which is controlled through the AbstractTankTab.
      */
     public MixTankTab(String name, MixTank mixTank) {
@@ -52,6 +60,12 @@ public class MixTankTab extends AbstractTankTab {
         mixTank.getOutPipe().addObserver(this);
     }
 
+    /**
+     * Creates the controls for the motor.
+     * 
+     * @param pane the layout.
+     * @param tank the mixtank.
+     */
     private void createMotorSlider(GridPane pane, MixTank tank) {
         Translator t = Translator.getInstance();
         int col = 0;
@@ -94,8 +108,10 @@ public class MixTankTab extends AbstractTankTab {
 
     /**
      * Disables or enables all control elements in the MixTankTab to block or allow inputs.
-     * @param isDisable true if inputs shall be blocked, false if they shall be enabled
+     * 
+     * @param isDisable true if inputs shall be blocked, false if they shall be enabled.
      */
+    @Override
     public void setControlsDisabled(boolean isDisable) {
         super.setControlsDisabled(isDisable);
         if (motorSlider != null) {
@@ -114,8 +130,9 @@ public class MixTankTab extends AbstractTankTab {
     }
 
     /**
-     * Updates the MixTankTab to show the values from the productionSite
-     * @param tank The tank whose values are taken
+     * Updates the MixTankTab to show the values from the productionSite.
+     * 
+     * @param tank The tank whose values are taken.
      */
     private void update(MixTank tank) {
         super.update(tank);
@@ -125,7 +142,8 @@ public class MixTankTab extends AbstractTankTab {
 
     /**
      * Sets the listener that is notified of changes in motor speed.
-     * @param listener The Consumer that gets all to the motorSpeed
+     * 
+     * @param listener The Consumer that gets all to the motorSpeed.
      */
     protected void setMotorListener(Consumer<Integer> listener) {
         motorSlider.valueProperty().addListener((observable, oldValue, newValue) -> {

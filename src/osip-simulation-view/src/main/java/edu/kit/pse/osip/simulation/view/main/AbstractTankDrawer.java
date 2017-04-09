@@ -11,14 +11,19 @@ import javafx.scene.text.Font;
 /**
  * This class visualizes a tank holding a colored liquid. It knows its position as well as the color
  * of the content. The changing part of the visualization are the fill level of the tank and, possibly,
- * the  color of the liquid.
+ * the color of the liquid.
  *
  * @version 1.0
  * @author Niko Wilhelm
  */
 public abstract class AbstractTankDrawer extends ObjectDrawer {
-
+    /**
+     * The tank this Drawer draws.
+     */
     private final AbstractTank tank;
+    /**
+     * Name of the tank.
+     */
     private final String tankName;
 
     private double inBoxHorPadding;
@@ -32,11 +37,12 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
     private double relOvalHeight;
 
     /**
-     * Sets the position by using super(pos) and sets the tank
-     * @param pos The upper left corner of the tank
-     * @param tank The tank to get the attributes from
+     * Sets the position by using super(pos) and sets the tank.
+     * 
+     * @param pos The upper left corner of the tank.
+     * @param tank The tank to get the attributes from.
      * @param rows The number of rows in which the Tanks are ordered.
-     * @param cols The number of columns in which the Tanks are ordered
+     * @param cols The number of columns in which the Tanks are ordered.
      */
     public AbstractTankDrawer(Point2D pos, AbstractTank tank, int rows, int cols) {
         super(pos);
@@ -59,8 +65,9 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
 
     /**
      * Contains the main calls necessary to draw the tank. Uses the abstract method drawSensors() for detail.
-     * @param context The GraphicsContext on which the tank is drawn
-     * @param time Time since last call
+     * 
+     * @param context The GraphicsContext on which the tank is drawn.
+     * @param time Time since last call.
      */
     @Override
     public final void draw(GraphicsContext context, double time) {
@@ -129,6 +136,11 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
         drawSensors(context, time);
     }
 
+    /**
+     * Converts the tank's color to a JavaFX color instance.
+     * 
+     * @return the converted color instance.
+     */
     private Color getTankColor() {
         edu.kit.pse.osip.core.model.base.Color tankColor = tank.getLiquid().getColor();
         double red = tankColor.getR();
@@ -139,14 +151,16 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
 
     /**
      * Used by draw(). Adds some detail to the tank depending on tank type.
-     * @param context The GraphicsContext on which the sensors are drawn
-     * @param timeDiff The time passed in minutes since the last call of drawSensors
+     * 
+     * @param context The GraphicsContext on which the sensors are drawn.
+     * @param timeDiff The time passed in minutes since the last call of drawSensors.
      */
     protected abstract void drawSensors(GraphicsContext context, double timeDiff);
 
     /**
      * Gets the point where pipes can attach to the bottom of the tank. This point lies in the
-     * middle of the tank horizontally and and the lowest point of the bottom oval vertically
+     * middle of the tank horizontally and and the lowest point of the bottom oval vertically.
+     * 
      * @return The Point2D sitting at the bottom middle of the tank.
      */
     public Point2D getPipeStartPoint() {
@@ -158,9 +172,10 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
     /**
      * Gets the point number pointnum at the top of the tank, assuming pointCount points
      * are wanted. All points are evenly spaced.
+     * 
      * @param pointNum The number of the point that is wanted.
-     * @param pointCount The number of pipes that have to fit onto the Tank
-     * @return The Point2D that sits at the top of the tank at (pointNum/ (tankCount + 1))
+     * @param pointCount The number of pipes that have to fit onto the Tank.
+     * @return The Point2D that sits at the top of the tank at (pointNum/ (tankCount + 1)).
      */
     public Point2D getPipeEndPoint(int pointNum, int pointCount) {
         double xPos = getPosition().getX() + inBoxHorPadding
@@ -172,6 +187,7 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
     /**
      * Gets the Point2D where a new pipe, marking an input into the production, starts at a Tank.
      * This Point2D marks the top middle of the outer box.
+     * 
      * @return The Point2D sitting at the top middle of the tank.
      */
     public Point2D getPipeTopEntry() {
@@ -182,9 +198,10 @@ public abstract class AbstractTankDrawer extends ObjectDrawer {
 
     /**
      * Gets the Point2D where a pipe, marking an output of the production, leaves the simulation after
-     * coming from the tank..
+     * coming from the tank.
      * This Point2D marks the bottom middle of the outer box.
-     * @return The Point2D sitting at the bottom middle of the tank compartment
+     * 
+     * @return The Point2D sitting at the bottom middle of the tank compartment.
      */
     public Point2D getPipeBotExit() {
         double xPos = getPosition().getX() + inBoxHorPadding + relInBoxWidth / 2;

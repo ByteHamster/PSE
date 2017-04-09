@@ -6,6 +6,8 @@ import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.utils.formatting.FormatChecker;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.controller.SimulationSettingsInterface;
+import java.util.EnumMap;
+import java.util.Map;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -20,9 +22,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-import java.util.EnumMap;
-import java.util.Map;
-
 /**
  * This class is the main window of the OSIP simulation settings.
  *
@@ -30,18 +29,43 @@ import java.util.Map;
  * @version 1.0
  */
 public class SimulationSettingsWindow implements SimulationSettingsInterface {
+    /**
+     * The current settings.
+     */
     private ServerSettingsWrapper settings;
+    /**
+     * The actual settings window.
+     */
     private Stage settingsStage;
+    /**
+     * Contains all PortTextFields for the tanks.
+     */
     private EnumMap<TankSelector, PortTextField> portTextFields;
+    /**
+     * Handler for the save button.
+     */
     private EventHandler<ActionEvent> listener;
+    /**
+     * Stores the save button.
+     */
     private Button btnSave;
+    /**
+     * Spacing between the components.
+     */
     private static final int SPACING = 10;
-    private static final int MAX_HEIGHT = 400;
+    /**
+     * The minimum size of the window.
+     */
     private static final double MIN_WINDOW_SIZE = 250;
+    /**
+     * The maximum height of the window.
+     */
+    private static final int MAX_HEIGHT = 400;
 
     /**
-     * Generates a new window that shows the simulation settings
-     * @param settings Wrapper for saved settings
+     * Generates a new window that shows the simulation settings.
+     * 
+     * @param settings Wrapper for saved settings.
      */
     public SimulationSettingsWindow(ServerSettingsWrapper settings) {
         this.settings = settings;
@@ -59,8 +83,9 @@ public class SimulationSettingsWindow implements SimulationSettingsInterface {
     }
 
     /**
-     * Creates the settings main layout
-     * @return The layout
+     * Creates the settings main layout.
+     * 
+     * @return The layout.
      */
     private BorderPane createRootLayout() {
         Translator t = Translator.getInstance();
@@ -122,7 +147,7 @@ public class SimulationSettingsWindow implements SimulationSettingsInterface {
     }
 
     /**
-     * Updates enabled state of the save button
+     * Updates enabled state of the save button.
      */
     private void updateSaveButton() {
         boolean allValid = true;
@@ -135,7 +160,7 @@ public class SimulationSettingsWindow implements SimulationSettingsInterface {
     }
 
     /**
-     * Sets PortTextFields to the value saved in settings
+     * Sets PortTextFields to the value saved in settings.
      */
     private void resetValues() {
         int defaultPort = OSIPConstants.DEFAULT_PORT_MIX;

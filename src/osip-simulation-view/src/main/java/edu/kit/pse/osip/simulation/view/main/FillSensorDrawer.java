@@ -11,13 +11,16 @@ import javafx.scene.paint.Color;
  * @author Niko Wilhelm
  */
 public class FillSensorDrawer extends ObjectDrawer {
-
+    /**
+     * The number of columns in which the tanks are ordered.
+     */
     private int cols;
 
     /**
-     * Generates a new drawer for fill sensors
-     * @param pos The center of the drawer
-     * @param cols The number of columns in which the tanks are ordered
+     * Generates a new drawer for fill sensors.
+     * 
+     * @param pos The center of the drawer.
+     * @param cols The number of columns in which the tanks are ordered.
      */
     public FillSensorDrawer(Point2D pos, int cols) {
         super(pos);

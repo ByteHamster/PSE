@@ -5,15 +5,15 @@ import javafx.application.Platform;
 import javafx.scene.control.TextField;
 
 /**
- * This textfield is for the input of port numbers.
+ * This TextField is for the input of port numbers.
  * It checks its own inputs and only allows saving them if they are valid.
  *
- * @author Hans.Peter Lehmann
+ * @author Hans-Peter Lehmann
  * @version 1.0
  */
 class PortTextField extends TextField {
     /**
-     * Modified text field that only accepts valid ports
+     * Modified text field that only accepts valid ports.
      */
     protected PortTextField() {
         setText("0");
@@ -31,10 +31,10 @@ class PortTextField extends TextField {
         });
     }
 
-
     /**
-     * Gets the port number in the textField.
-     * @return The port number in the textField.
+     * Gets the port number in the TextField.
+     * 
+     * @return The port number in the TextField.
      */
     protected final int getPort() {
         return Integer.parseInt(getText());

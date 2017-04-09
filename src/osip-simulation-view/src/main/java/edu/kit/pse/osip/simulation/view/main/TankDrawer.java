@@ -11,17 +11,26 @@ import javafx.scene.canvas.GraphicsContext;
  * @author Niko Wilhelm
  */
 public class TankDrawer extends AbstractTankDrawer {
-
+    /**
+     * The upper fill sensor.
+     */
     private FillSensorDrawer topSensor;
+    /**
+     * The lower fill sensor.
+     */
     private FillSensorDrawer botSensor;
+    /**
+     * The temperature sensor.
+     */
     private TemperatureSensorDrawer tempSensor;
 
     /**
-     * Creates a new tank drawer
-     * @param pos The upper left corner of the tank
-     * @param tank The tank to get the attributes from
+     * Creates a new tank drawer.
+     * 
+     * @param pos The upper left corner of the tank.
+     * @param tank The tank to get the attributes from.
      * @param rows The number of rows in which the Tanks are ordered.
-     * @param cols The number of columns in which the Tanks are ordered
+     * @param cols The number of columns in which the Tanks are ordered.
      */
     public TankDrawer(Point2D pos, Tank tank, int rows, int cols) {
         super(pos, tank, rows, cols);
@@ -47,7 +56,7 @@ public class TankDrawer extends AbstractTankDrawer {
     }
 
     /**
-     * Add temperature- and fillsensor visualizations to the tank.
+     * Adds temperature and fill sensor visualizations to the tank.
      */
     @Override
     public final void drawSensors(GraphicsContext context, double timeDiff) {

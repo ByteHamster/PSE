@@ -8,21 +8,24 @@ package edu.kit.pse.osip.simulation.view.main;
  * @author Niko Wilhelm
  */
 public abstract class ObjectDrawer implements Drawer {
-
+    /**
+     * Saves the position of the drawer.
+     */
     private Point2D position;
 
     /**
      * Initiates the ObjectDrawer, setting its position to pos.
-     * @param pos Position of the element
+     * 
+     * @param pos Position of the element.
      */
     public ObjectDrawer(Point2D pos) {
         this.position = pos;
     }
 
     /**
-     * Returns the position of this element
+     * Returns the position of this element.
      * 
-     * @return The position
+     * @return The position.
      */
     public final Point2D getPosition() {
         return position;

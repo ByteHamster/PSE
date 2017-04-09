@@ -11,17 +11,30 @@ import javafx.scene.canvas.GraphicsContext;
  * @author Niko Wilhelm
  */
 public class MixTankDrawer extends AbstractTankDrawer {
-
-    private FillSensorDrawer topSensor;
-    private FillSensorDrawer botSensor;
-    private TemperatureSensorDrawer tempSensor;
-    private MotorDrawer motor;
     /**
-     * Creates a new MixTankDrawer
-     * @param pos The upper left corner of the tank
-     * @param tank The tank to get the attributes from
+     * The upper fill sensor.
+     */
+    private FillSensorDrawer topSensor;
+    /**
+     * The lower fill sensor.
+     */
+    private FillSensorDrawer botSensor;
+    /**
+     * The temperature sensor.
+     */
+    private TemperatureSensorDrawer tempSensor;
+    /**
+     * The motor.
+     */
+    private MotorDrawer motor;
+    
+    /**
+     * Creates a new MixTankDrawer.
+     * 
+     * @param pos The upper left corner of the tank.
+     * @param tank The tank to get the attributes from.
      * @param rows The number of rows in which the Tanks are ordered.
-     * @param cols The number of columns in which the Tanks are ordered
+     * @param cols The number of columns in which the Tanks are ordered.
      */
     public MixTankDrawer(Point2D pos, MixTank tank, int rows, int cols) {
         super(pos, tank, rows, cols);
@@ -52,7 +65,7 @@ public class MixTankDrawer extends AbstractTankDrawer {
     }
 
     /**
-     * Add Temperature- and Fillsensors as well as a motor visualization to the tank.
+     * Adds temperature and fill sensors as well as a motor visualization to the tank.
      */
     @Override
     public final void drawSensors(GraphicsContext context, double timeDiff) {

@@ -7,23 +7,32 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 /**
- * This class visualizes a temperature sensor
+ * This class visualizes a temperature sensor.
  *
  * @version 1.0
  * @author Niko Wilhelm
  */
 public class TemperatureSensorDrawer extends ObjectDrawer {
-
+    /**
+     * Number of rows in which the tanks are ordered.
+     */
     private int rows;
+    /**
+     * Number of columns in which the tanks are ordered.
+     */
     private int cols;
+    /**
+     * The tank the temperture sensor is assigned to.
+     */
     private AbstractTank tank;
 
     /**
-     * Generates a new drawer for temperature sensors
-     * @param pos The center of the drawer
-     * @param tank The tank to get the attributes from
+     * Generates a new drawer for temperature sensors.
+     * 
+     * @param pos The center of the drawer.
+     * @param tank The tank to get the attributes from.
      * @param rows The number of rows in which the Tanks are ordered.
-     * @param cols The number of columns in which the Tanks are ordered
+     * @param cols The number of columns in which the Tanks are ordered.
      */
     public TemperatureSensorDrawer(Point2D pos, AbstractTank tank, int rows, int cols) {
         super(pos);

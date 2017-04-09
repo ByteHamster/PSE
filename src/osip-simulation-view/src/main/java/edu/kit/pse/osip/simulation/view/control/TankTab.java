@@ -8,6 +8,8 @@ import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.view.main.ViewConstants;
+import java.util.Observable;
+import java.util.function.BiConsumer;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.StringProperty;
@@ -19,9 +21,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.util.converter.IntegerStringConverter;
 
-import java.util.Observable;
-import java.util.function.BiConsumer;
-
 /**
  * This class has controls specific to the input tanks.
  *
@@ -29,22 +28,40 @@ import java.util.function.BiConsumer;
  * @author Niko Wilhelm
  */
 public class TankTab extends AbstractTankTab {
-
+    /**
+     * Slider for setting the threshold of the incoming pipe.
+     */
     private Slider inFlowSlider;
+    /**
+     * Shows the threshold of the incoming pipe as text.
+     */
     private TextField inFlowValue;
 
+    /**
+     * Slider for setting the temperature.
+     */
     private Slider temperatureSlider;
+    /**
+     * Shows the temperature as text.
+     */
     private TextField temperatureValue;
 
+    /**
+     * Saves the TankSelector this tab belongs to.
+     */
     private TankSelector selector;
+    /**
+     * The current ProductionSite.
+     */
     private ProductionSite site;
 
     /**
      * Creates a new TankTab containing the standard controls of the AbstractTankTab as well as a
      * slider to control inFlow.
-     * @param name The name of the AbstractTankTab
+     * 
+     * @param name The name of the AbstractTankTab.
      * @param tank The AbstractTank which is controlled through the AbstractTankTab.
-     * @param site The ProductionSite in which tank resides
+     * @param site The ProductionSite in which tank resides.
      */
     public TankTab(String name, Tank tank, ProductionSite site) {
         super(name, tank);
@@ -66,6 +83,12 @@ public class TankTab extends AbstractTankTab {
         tank.getOutPipe().addObserver(this);
     }
 
+    /**
+     * Creates the controls for the incoming pipe.
+     * 
+     * @param pane the layout for the tab.
+     * @param tank the tank with the incoming pipe.
+     */
     private void createInFlowSlider(GridPane pane, AbstractTank tank) {
         Translator t = Translator.getInstance();
         int col = 0;
@@ -103,6 +126,12 @@ public class TankTab extends AbstractTankTab {
         row++;
     }
 
+    /**
+     * Creates all controls for the temperature.
+     * 
+     * @param pane the layout of the tab.
+     * @param tank the tank with the temperature.
+     */
     private void createTemperatureSlider(GridPane pane, AbstractTank tank) {
         Translator t = Translator.getInstance();
         int col = 0;
@@ -149,8 +178,10 @@ public class TankTab extends AbstractTankTab {
 
     /**
      * Disables or enables all control elements in the TankTab to block or allow inputs.
-     * @param isDisable true if inputs shall be blocked, false if they shall be enabled
+     * 
+     * @param isDisable true if inputs shall be blocked, false if they shall be enabled.
      */
+    @Override
     public void setControlsDisabled(boolean isDisable) {
         super.setControlsDisabled(isDisable);
         if (inFlowSlider != null) {
@@ -175,8 +206,9 @@ public class TankTab extends AbstractTankTab {
     }
 
     /**
-     * Updates the TankTab to show the values from the productionSite
-     * @param tank The tank whose values are taken
+     * Updates the TankTab to show the values from the productionSite.
+     * 
+     * @param tank The tank whose values are taken.
      */
     private void update(Tank tank) {
         super.update(tank);
@@ -198,7 +230,8 @@ public class TankTab extends AbstractTankTab {
 
     /**
      * Sets the listener that is notified of changes in the temperature.
-     * @param listener The Consumer that gets all changes to Tank temperatures
+     * 
+     * @param listener The Consumer that gets all changes to Tank temperatures.
      */
     protected void setTemperatureListener(BiConsumer<TankSelector, Float> listener) {
         temperatureSlider.valueProperty().addListener((observable, oldValue, newValue) -> {

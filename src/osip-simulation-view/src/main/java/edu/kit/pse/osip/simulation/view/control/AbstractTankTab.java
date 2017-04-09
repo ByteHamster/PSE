@@ -4,6 +4,8 @@ import edu.kit.pse.osip.core.model.base.AbstractTank;
 import edu.kit.pse.osip.core.model.base.Pipe;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.view.main.ViewConstants;
+import java.util.Observer;
+import java.util.function.BiConsumer;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.StringProperty;
@@ -16,9 +18,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.util.converter.IntegerStringConverter;
 
-import java.util.Observer;
-import java.util.function.BiConsumer;
-
 /**
  * This class contains the controls for a single tank in the simulation.
  *
@@ -26,20 +25,38 @@ import java.util.function.BiConsumer;
  * @author Niko Wilhelm
  */
 public abstract class AbstractTankTab extends Tab implements Observer {
-
+    /**
+     * The next row in the GridPane for components.
+     */
     protected int row;
 
+    /**
+     * The layout for the tab.
+     */
     private GridPane pane;
 
+    /**
+     * Slider for the threshold of the outgoing pipe. 
+     */
     private Slider outFlowSlider;
+    /**
+     * Shows the threshold of the outgoing pipe as text.
+     */
     private TextField outFlowValue;
+    /**
+     * The tank this tab is assigned to.
+     */
     private AbstractTank tank;
 
+    /**
+     * Indicates whether updates from the model should be ignored.
+     */
     protected boolean skipUpdates = false;
 
     /**
-     * Creates a new AbstractTankTab with Sliders to control outFlow and Temperature
-     * @param name The name of the AbstractTankTab
+     * Creates a new AbstractTankTab with Sliders to control outFlow and Temperature.
+     * 
+     * @param name The name of the AbstractTankTab.
      * @param tank The AbstractTank which is controlled through the AbstractTankTab.
      */
     protected AbstractTankTab(String name, AbstractTank tank) {
@@ -53,9 +70,10 @@ public abstract class AbstractTankTab extends Tab implements Observer {
     }
 
     /**
-     * Creates the layout of the slider for the outgoing valve
-     * @param pane The pane to add the layout to
-     * @param tank The tank to control with this slider
+     * Creates the layout of the slider for the outgoing valve.
+     * 
+     * @param pane The pane to add the layout to.
+     * @param tank The tank to control with this slider.
      */
     protected void createOutFlowSlider(GridPane pane, AbstractTank tank) {
         Translator t = Translator.getInstance();
@@ -97,7 +115,8 @@ public abstract class AbstractTankTab extends Tab implements Observer {
 
     /**
      * Disables or enables all control elements in the AbstractTankTab to block or allow inputs.
-     * @param isDisable true if inputs shall be blocked, false if they shall be enabled
+     * 
+     * @param isDisable true if inputs shall be blocked, false if they shall be enabled.
      */
     protected void setControlsDisabled(boolean isDisable) {
         if (outFlowSlider != null) {
@@ -109,16 +128,18 @@ public abstract class AbstractTankTab extends Tab implements Observer {
     }
 
     /**
-     * Gets the GridPane on which the sliders are ordered
-     * @return The GridPane in the tab
+     * Gets the GridPane on which the sliders are ordered.
+     * 
+     * @return The GridPane in the tab.
      */
     protected GridPane getGridPane() {
         return pane;
     }
 
     /**
-     * Updates the AbstractTankTab to show the values from the productionSite
-     * @param tank The tank whose values are taken
+     * Updates the AbstractTankTab to show the values from the productionSite.
+     * 
+     * @param tank The tank whose values are taken.
      */
     protected void update(AbstractTank tank) {
         outFlowSlider.setValue(tank.getOutPipe().getValveThreshold());
@@ -126,6 +147,7 @@ public abstract class AbstractTankTab extends Tab implements Observer {
 
     /**
      * Sets the listener that is notified of changes to valve thresholds.
+     * 
      * @param listener The Consumer that gets all changes to valve thresholds.
      */
     protected void setValveListener(BiConsumer<Pipe, Byte> listener) {

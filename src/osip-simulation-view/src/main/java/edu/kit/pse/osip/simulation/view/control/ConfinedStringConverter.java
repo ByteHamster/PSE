@@ -5,19 +5,30 @@ import javafx.util.StringConverter;
 
 /**
  * A String converter with bounds.
+ * 
  * @author David Kahles
  * @version 1.0
  */
 public class ConfinedStringConverter extends StringConverter<Number> {
+    /**
+     * Saves the maximum a number can have.
+     */
     private double max;
+    /**
+     * Saves the minimum a number can have.
+     */
     private double min;
+    /**
+     * Saves the string property that needs to be confined. 
+     */
     private StringProperty textFieldProperty;
 
     /**
      * Creates a new ConfinedStringConverter.
+     * 
      * @param min The minimum value.
      * @param max The maximum value.
-     * @param textFieldProperty The textfield which needs to be confined.
+     * @param textFieldProperty The TextField which needs to be confined.
      */
     public ConfinedStringConverter(Double min, Double max, StringProperty textFieldProperty) {
         this.max = max;

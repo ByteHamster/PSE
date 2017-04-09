@@ -13,16 +13,16 @@ import javafx.scene.paint.Color;
  * @author Niko Wilhelm
  */
 public class PipeDrawer implements Drawer {
-
     private Point2D[] wayPoints;
     private ValveDrawer valve;
     private double relPipeWidth;
 
     /**
-     * Create a new pipe along the wayPoints 1 to n.
-     * @param wayPoints The points that the pipe goes along
-     * @param pipe The pipe that is drawn
-     * @param rows The number of rows in which the Tanks are ordered
+     * Creates a new pipe along the wayPoints 1 to n.
+     * 
+     * @param wayPoints The points that the pipe goes along.
+     * @param pipe The pipe that is drawn.
+     * @param rows The number of rows in which the Tanks are ordered.
      */
     public PipeDrawer(Point2D[] wayPoints, Pipe pipe, int rows) {
         // There need to be at least two wayPoints
