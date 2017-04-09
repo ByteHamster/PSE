@@ -2,21 +2,19 @@ package edu.kit.pse.osip.core.io.files;
 
 import static org.junit.Assert.assertEquals;
 
+import edu.kit.pse.osip.core.model.base.TankSelector;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.kit.pse.osip.core.model.base.TankSelector;
-
 /**
- * Test class for ServerSettingsWrapper
+ * Test class for ServerSettingsWrapper.
+ * 
  * @author Maximilian Schwarzmann
  * @version 1.0
- *
  */
 public class ServerSettingsWrapperTest {
 
@@ -24,8 +22,9 @@ public class ServerSettingsWrapperTest {
     private File tempTestFile;
     
     /**
-     * Set up 
-     * @throws Exception Exception in file loading or IO errors
+     * Sets up.
+     * 
+     * @throws Exception Exception in file loading or IO errors.
      */
     @Before
     public void setUp() throws Exception {
@@ -38,7 +37,7 @@ public class ServerSettingsWrapperTest {
     }
 
     /**
-     * Test setting server ports
+     * Tests setting server ports.
      */
     @Test
     public void testSetServerPort() {
@@ -47,7 +46,7 @@ public class ServerSettingsWrapperTest {
     }
 
     /**
-     * Test getting server ports
+     * Tests getting server ports.
      */
     @Test
     public void testGetServerPort() {
@@ -56,8 +55,9 @@ public class ServerSettingsWrapperTest {
     }
 
     /**
-     * Test writing to file
-     * @throws IOException Exception in IO streams
+     * Tests writing to file.
+     * 
+     * @throws IOException Exception in IO streams.
      */
     @Test
     public void testSaveSettings() throws IOException {
@@ -68,7 +68,7 @@ public class ServerSettingsWrapperTest {
     }
 
     /**
-     * Test getting tank that is not in properties file
+     * Tests getting tank that is not in properties file.
      */
     @Test
     public void testGetServerPortNull() {
@@ -77,7 +77,7 @@ public class ServerSettingsWrapperTest {
     }
     
     /**
-     * Test null argument in constructor
+     * Tests null argument in constructor.
      */
     @Test(expected = NullPointerException.class)
     public void testNullArgConstructor() {
@@ -85,8 +85,9 @@ public class ServerSettingsWrapperTest {
     }
     
     /**
-     * Reset file
-     * @throws IOException Exception in IO streams
+     * Resets file.
+     * 
+     * @throws IOException Exception in IO streams.
      */
     @After
     public void tearDown() throws IOException {

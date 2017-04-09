@@ -5,14 +5,14 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 /**
- * Test class for RemoteMachine
+ * Test class for RemoteMachine.
+ * 
  * @author Maximilian Schwarzmann
  * @version 1.0
  */
 public class RemoteMachineTest {
-
     /**
-     * Tests getter of hostname
+     * Tests getter of host name.
      */
     @Test
     public void testHostnameGetter() {
@@ -21,7 +21,7 @@ public class RemoteMachineTest {
     }
 
     /**
-     * Tests getter of port
+     * Tests getter of port.
      */
     @Test
     public void testPortGetter() {

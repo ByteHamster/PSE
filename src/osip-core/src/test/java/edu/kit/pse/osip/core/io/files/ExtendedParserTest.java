@@ -6,15 +6,16 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 
 /**
- * Tests the extended parser class
+ * Tests the extended parser class.
  *
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
 public class ExtendedParserTest {
     /**
-     * Tests numbers can be read
-     * @throws ParserException If something goes wrong
+     * Tests if numbers can be read.
+     * 
+     * @throws ParserException If something goes wrong.
      */
     @Test
     public void testNumber() throws ParserException {
@@ -32,8 +33,9 @@ public class ExtendedParserTest {
     }
     
     /**
-     * Tests factors can be read
-     * @throws ParserException If something goes wrong
+     * Tests if factors can be read.
+     * 
+     * @throws ParserException If something goes wrong.
      */
     @Test
     public void testFactor() throws ParserException {
@@ -56,7 +58,7 @@ public class ExtendedParserTest {
     }
     
     /**
-     * Test invalid numbers
+     * Tests invalid numbers.
      */
     @Test
     public void testInvalidNumbers() {        
@@ -90,8 +92,9 @@ public class ExtendedParserTest {
     }
     
     /**
-     * Tests terms can be read
-     * @throws ParserException If something goes wrong
+     * Tests if terms can be read.
+     * 
+     * @throws ParserException If something goes wrong.
      */
     @Test
     public void testTerm() throws ParserException {
@@ -119,8 +122,9 @@ public class ExtendedParserTest {
     
     
     /**
-     * Tests expressions can be read
-     * @throws ParserException If something goes wrong
+     * Tests if expressions can be read.
+     * 
+     * @throws ParserException If something goes wrong.
      */
     @Test
     public void testExpression() throws ParserException {
@@ -135,7 +139,7 @@ public class ExtendedParserTest {
     }
     
     /**
-     * Test invalid terms
+     * Tests invalid terms.
      */
     @Test
     public void testInvalidTerms() {        

@@ -1,14 +1,13 @@
 package edu.kit.pse.osip.core.io.files;
 
+import edu.kit.pse.osip.core.model.behavior.Scenario;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import edu.kit.pse.osip.core.model.behavior.Scenario;
-
 /**
- * Tests the extended parser class
+ * Tests the extended parser class.
  *
  * @author Hans-Peter Lehmann
  * @version 1.0
@@ -16,8 +15,9 @@ import edu.kit.pse.osip.core.model.behavior.Scenario;
 @RunWith(MockitoJUnitRunner.class)
 public class ScenarioParserCommandsTest { 
     /**
-     * Tests if example commands are called correctly
-     * @throws ParserException If something goes wrong
+     * Tests if example commands are called correctly.
+     * 
+     * @throws ParserException If something goes wrong.
      */
     @Test
     public void testMockCommands() throws ParserException {

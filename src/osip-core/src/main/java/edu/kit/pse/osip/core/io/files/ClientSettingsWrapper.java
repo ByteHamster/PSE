@@ -1,27 +1,33 @@
 package edu.kit.pse.osip.core.io.files;
 
+import edu.kit.pse.osip.core.model.base.TankSelector;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import edu.kit.pse.osip.core.model.base.TankSelector;
-
 /**
- * Wrapper for client settings file where settings of networking and monitoring are stored
- * Keys consist of parameterType_TankSelector
+ * Wrapper for client settings file where settings of networking and monitoring are stored.
+ * Keys consist of parameterType_TankSelector.
+ * 
  * @author Maximlian Schwarzmann
  * @version 1.0
  */
 public class ClientSettingsWrapper {
-    
+    /**
+     * The file in which the settings are saved.
+     */
     private File settingsFile;
+    /**
+     * Properties for actual reading and writing the settings.
+     */
     private Properties properties;
     
     /**
-     * Constructor of ClientSettingsWrapper
-     * @param settingsFile Where to save the settings
+     * Constructor of ClientSettingsWrapper.
+     * 
+     * @param settingsFile Where to save the settings or from where to load them.
      */        
     public ClientSettingsWrapper(File settingsFile) {
         if (settingsFile == null) {
@@ -43,18 +49,20 @@ public class ClientSettingsWrapper {
         }
     }
     /**
-     * Setter method of the server hostname
-     * @param tank The tank to save the hostname for
-     * @param hostname The server hostname
+     * Setter method of the server hostname.
+     * 
+     * @param tank The tank to save the hostname for.
+     * @param hostname The server hostname.
      */
     public final void setServerHostname(TankSelector tank, String hostname) {
         String tankString = tank.name();
         properties.setProperty("serverHostname_" + tankString, hostname);
     }
     /**
-     * Setter method of server port
-     * @param tank The tank to save the port for
-     * @param portServer The port
+     * Setter method of server port.
+     * 
+     * @param tank The tank to save the port for.
+     * @param portServer The port.
      */
     public final void setServerPort(TankSelector tank, int portServer) {
         String tankString = tank.name();
@@ -62,17 +70,19 @@ public class ClientSettingsWrapper {
         properties.setProperty("serverPort_" + tankString, portString);
     }
     /**
-     * Setter method of fetch interval
-     * @param intervalMs fetch interval
+     * Setter method of fetch interval.
+     * 
+     * @param intervalMs fetch interval in milliseconds.
      */
     public final void setFetchInterval(int intervalMs) {
         String intervalString = String.valueOf(intervalMs);
         properties.setProperty("fetchInterval", intervalString);
     }
     /**
-     * Setter method of overflow alarm
-     * @param tank The tank to save the value for
-     * @param enabled true if alarm is enabled
+     * Setter method of overflow alarm.
+     * 
+     * @param tank The tank to save the value for.
+     * @param enabled true if alarm is enabled.
      */
     public final void setOverflowAlarm(TankSelector tank, boolean enabled) {
         String tankString = tank.name();
@@ -80,9 +90,10 @@ public class ClientSettingsWrapper {
         properties.setProperty("overflowAlarm_" + tankString, enabledString);
     }
     /**
-     * Setter method of underflow alarm
-     * @param tank The tank to save the value for
-     * @param enabled true if alarm is enabled
+     * Setter method of underflow alarm.
+     * 
+     * @param tank The tank to save the value for.
+     * @param enabled true if alarm is enabled.
      */
     public final void setUnderflowAlarm(TankSelector tank, boolean enabled) {
         String tankString = tank.name();
@@ -91,9 +102,10 @@ public class ClientSettingsWrapper {
     }
     
     /**
-     * Setter method of overheating alarm
-     * @param tank The tank to save the value for
-     * @param enabled true if alarm is enabled
+     * Setter method of overheating alarm.
+     * 
+     * @param tank The tank to save the value for.
+     * @param enabled true if alarm is enabled.
      */
     public final void setOverheatingAlarm(TankSelector tank, boolean enabled) {
         String tankString = tank.name();
@@ -102,9 +114,10 @@ public class ClientSettingsWrapper {
     }
     
     /**
-     * Setter method of undercooling alarm
-     * @param tank The tank to save the value for
-     * @param enabled true if alarm is enabled
+     * Setter method of undercooling alarm.
+     * 
+     * @param tank The tank to save the value for.
+     * @param enabled true if alarm is enabled.
      */
     public final void setUndercoolingAlarm(TankSelector tank, boolean enabled) {
         String tankString = tank.name();
@@ -113,9 +126,10 @@ public class ClientSettingsWrapper {
     }
     
     /**
-     * Setter method of temperature diagram
-     * @param tank The tank to save the value for
-     * @param enabled true if diagram is enabled
+     * Setter method of temperature diagram.
+     * 
+     * @param tank The tank to save the value for.
+     * @param enabled true if diagram is enabled.
      */
     public final void setTempDiagram(TankSelector tank, boolean enabled) {
         String tankString = tank.name();
@@ -123,9 +137,10 @@ public class ClientSettingsWrapper {
         properties.setProperty("tempDiagram_" + tankString, enabledString);
     }
     /**
-     * Setter method of fill level diagram
-     * @param tank The tank to save the value for
-     * @param enabled true if diagram is enabled
+     * Setter method of fill level diagram.
+     * 
+     * @param tank The tank to save the value for.
+     * @param enabled true if diagram is enabled.
      */
     public final void setFillLevelDiagram(TankSelector tank, boolean enabled) {
         String tankString = tank.name();
@@ -133,9 +148,10 @@ public class ClientSettingsWrapper {
         properties.setProperty("fillLevelDiagram_" + tankString, enabledString);
     }
     /**
-     * Getter method of fetch interval
-     * @return fetch interval in ms or or default on error
-     * @param defaultValue value on error
+     * Getter method of fetch interval.
+     * 
+     * @param defaultValue value on error.
+     * @return fetch interval in ms or defaultValue on error.
      */
     public final int getFetchInterval(int defaultValue) {
         String entry = properties.getProperty("fetchInterval");
@@ -150,10 +166,11 @@ public class ClientSettingsWrapper {
     }
     
     /**
-     * Getter method of overheating alarm
-     * @return true if alarm is enabled or default on error
-     * @param tank The tank to get the value for
-     * @param defaultValue value on error
+     * Getter method of overheating alarm.
+     * 
+     * @param tank The tank to get the value for.
+     * @param defaultValue value on error.
+     * @return true if alarm is enabled or defaultValue on error.
      */
     public final boolean getOverheatingAlarm(TankSelector tank, boolean defaultValue) {
         String tankString = tank.name();
@@ -165,10 +182,11 @@ public class ClientSettingsWrapper {
     }
     
     /**
-     * Getter method of undercooling alarm
-     * @return true if alarm is enabled or default on error
-     * @param tank The tank to get the value for
-     * @param defaultValue value on error
+     * Getter method of undercooling alarm.
+     * 
+     * @param tank The tank to get the value for.
+     * @param defaultValue value on error.
+     * @return true if alarm is enabled or defaultValue on error.
      */
     public final boolean getUndercoolingAlarm(TankSelector tank, boolean defaultValue) {
         String tankString = tank.name();
@@ -180,10 +198,11 @@ public class ClientSettingsWrapper {
     }
     
     /**
-     * Getter method of overflow alarm
-     * @return true if alarm is enabled or default on error
-     * @param tank The tank to get the value for
-     * @param defaultValue value on error
+     * Getter method of overflow alarm.
+     * 
+     * @param tank The tank to get the value for.
+     * @param defaultValue value on error.
+     * @return true if alarm is enabled or defaultValue on error.
      */
     public final boolean getOverflowAlarm(TankSelector tank, boolean defaultValue) {
         String tankString = tank.name();
@@ -194,10 +213,11 @@ public class ClientSettingsWrapper {
         return Boolean.parseBoolean(entry);        
     }
     /**
-     * Getter method of underflow alarm
-     * @return true if alarm is enabled or default on error
-     * @param tank The tank to get the value for
-     * @param defaultValue value on error
+     * Getter method of underflow alarm.
+     * 
+     * @param tank The tank to get the value for.
+     * @param defaultValue value on error.
+     * @return true if alarm is enabled or defaultValue on error.
      */
     public final boolean getUnderflowAlarm(TankSelector tank, boolean defaultValue) {
         String tankString = tank.name();
@@ -208,10 +228,11 @@ public class ClientSettingsWrapper {
         return Boolean.parseBoolean(entry);     
     }
     /**
-     * Getter method of temperature diagram
-     * @return true if diagram is enabled or default on error
-     * @param tank The tank to get the value for
-     * @param defaultValue value on error
+     * Getter method of temperature diagram.
+     * 
+     * @param tank The tank to get the value for.
+     * @param defaultValue value on error.
+     * @return true if diagram is enabled or defaultValue on error.
      */
     public final boolean getTempDiagram(TankSelector tank, boolean defaultValue) {
         String tankString = tank.name();
@@ -222,10 +243,11 @@ public class ClientSettingsWrapper {
         return Boolean.parseBoolean(entry); 
     }
     /**
-     * Getter method of fill level diagram
-     * @return true if diagram is enabled or default on error
-     * @param tank The tank to get the value for
-     * @param defaultValue value on error
+     * Getter method of fill level diagram.
+     * 
+     * @param tank The tank to get the value for.
+     * @param defaultValue value on error.
+     * @return true if diagram is enabled or defaultValue on error.
      */
     public final boolean getFillLevelDiagram(TankSelector tank, boolean defaultValue) {
         String tankString = tank.name();
@@ -236,10 +258,11 @@ public class ClientSettingsWrapper {
         return Boolean.parseBoolean(entry); 
     }
     /**
-     * Get the hostname or IP address
-     * @return the hostname of IP address or default on error
-     * @param tank The tank to get the hostname
-     * @param defaultValue value on error
+     * Gets the hostname or IP address.
+     * 
+     * @param tank The tank to get the hostname for.
+     * @param defaultValue value on error.
+     * @return the hostname or IP address or defaultValue on error.
      */
     public final String getHostname(TankSelector tank, String defaultValue) {
         String tankString = tank.name();
@@ -250,10 +273,11 @@ public class ClientSettingsWrapper {
         return entry;         
     }
     /**
-     * get the port
-     * @return the port number or default on error
-     * @param tank The tank to get the port of
-     * @param defaultValue value on error
+     * Gets a port.
+     * 
+     * @param tank The tank to get the port for.
+     * @param defaultValue value on error.
+     * @return the port number or defaultValue on error.
      */
     public final int getPort(TankSelector tank, int defaultValue) {
         String tankString = tank.name();
@@ -268,7 +292,7 @@ public class ClientSettingsWrapper {
         }
     }
     /**
-     * Saves settings in file
+     * Saves settings in file.
      */
     public final void saveSettings() {
         try {

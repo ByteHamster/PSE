@@ -1,26 +1,33 @@
 package edu.kit.pse.osip.core.io.files;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.function.Consumer;
-
 import edu.kit.pse.osip.core.SimulationConstants;
 import edu.kit.pse.osip.core.model.base.ProductionSite;
 import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.model.behavior.Scenario;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.function.Consumer;
 
 /**
- * Parser for OSIP scenarios: LL(1) parser
+ * Parser for OSIP scenarios: LL(1) parser.
+ * 
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
 public class ScenarioParser extends ExtendedParser {
-    private HashMap<String, CommandAction> commands = new HashMap<>();    
+    /**
+     * Saves the available commands.
+     */
+    private HashMap<String, CommandAction> commands = new HashMap<>();
+    /**
+     * Saves the parsed scenario.
+     */
     protected Scenario scenario = new Scenario();
     
     /**
-     * Constructor of ScenarioParser
-     * @param toParse String to parse
+     * Constructor of ScenarioParser.
+     * 
+     * @param toParse String to parse.
      */
     public ScenarioParser(String toParse) {
         super(toParse);
@@ -30,9 +37,10 @@ public class ScenarioParser extends ExtendedParser {
     }
     
     /**
-     * Parse scenario
-     * @return parsed scenario
-     * @throws ParserException If something goes wrong
+     * Parses scenario.
+     * 
+     * @return parsed scenario.
+     * @throws ParserException If something goes wrong.
      */
     public final Scenario readScenario() throws ParserException {
         while (available()) {
@@ -50,8 +58,9 @@ public class ScenarioParser extends ExtendedParser {
     }
     
     /**
-     * Reads a statement in the input file
-     * @throws ParserException If something goes wrong
+     * Reads a statement in the input file.
+     * 
+     * @throws ParserException If something goes wrong.
      */
     public final void readStatement() throws ParserException {
         String command = readAlphabetic();
@@ -102,9 +111,10 @@ public class ScenarioParser extends ExtendedParser {
     }
     
     /**
-     * Reads an alphabetic string, must not be empty
-     * @return The read string
-     * @throws ParserException If something goes wrong
+     * Reads an alphabetic string, must not be empty.
+     * 
+     * @return The read string.
+     * @throws ParserException If something goes wrong.
      */
     private String readAlphabetic() throws ParserException {
         StringBuilder builder = new StringBuilder();
@@ -119,10 +129,11 @@ public class ScenarioParser extends ExtendedParser {
     }
     
     /**
-     * Requires a specific number of arguments to be available
-     * @param parameters Parameters given
-     * @param required Expected parameter count
-     * @throws ParserException If something goes wrong
+     * Requires a specific number of arguments to be available.
+     * 
+     * @param parameters Parameters given.
+     * @param required Expected parameter count.
+     * @throws ParserException If something goes wrong.
      */
     private void checkArgumentCount(ArrayList<Float> parameters, int required) throws ParserException {
         if (parameters.size() != required) {
@@ -131,7 +142,7 @@ public class ScenarioParser extends ExtendedParser {
     }
     
     /**
-     * Create and add all supported commands
+     * Creates and adds all supported commands.
      */
     private void addCommands() {
         commands.put("setMotorRpm", (parameters) -> {
@@ -185,10 +196,11 @@ public class ScenarioParser extends ExtendedParser {
     @FunctionalInterface
     interface CommandAction {
         /**
-         * Creates the Consumer that is needed by ProductionSite
-         * @param parameters Parameters of this function call
-         * @return The consumer
-         * @throws ParserException If the argument count does not match
+         * Creates the Consumer that is needed by ProductionSite.
+         * 
+         * @param parameters Parameters of this function call.
+         * @return The consumer.
+         * @throws ParserException If the argument count does not match.
          */
         Consumer<ProductionSite> create(ArrayList<Float> parameters) throws ParserException;
     }

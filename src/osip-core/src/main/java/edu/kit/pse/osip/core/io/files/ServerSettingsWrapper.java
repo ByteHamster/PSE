@@ -1,27 +1,33 @@
 package edu.kit.pse.osip.core.io.files;
 
+import edu.kit.pse.osip.core.model.base.TankSelector;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import edu.kit.pse.osip.core.model.base.TankSelector;
-
 /**
- * Wrapper for server settings file where ports of tanks are stored
- * Key consists of parameterType_TankSelector
+ * Wrapper for server settings file where ports of tanks are stored.
+ * Key consists of parameterType_TankSelector.
+ * 
  * @author Maximilian Schwarzmann
  * @version 1.0
  */
 public class ServerSettingsWrapper {
-    
+    /**
+     * The file saving the settings.
+     */
     private File propFile;
+    /**
+     * Properties for actual reading and writing the settings.
+     */
     private Properties properties;
     
     /**
-     * Constructor of ServerSettingsWrapper
-     * @param propFile The file to save the settings to
+     * Constructor of ServerSettingsWrapper.
+     * 
+     * @param propFile The file to save the settings to or to load from.
      */
     public ServerSettingsWrapper(File propFile) {
         if (propFile == null) {
@@ -43,9 +49,10 @@ public class ServerSettingsWrapper {
         }
     }
     /**
-     * Setter method of server port
-     * @param tank The tank to save the value for
-     * @param port The port to save
+     * Setter method of server port.
+     * 
+     * @param tank The tank to save the value for.
+     * @param port The port to save.
      */
     public final void setServerPort(TankSelector tank, int port) {
         String tankString = tank.name();
@@ -53,10 +60,11 @@ public class ServerSettingsWrapper {
         properties.setProperty("serverPort_" + tankString, portString);
     }
     /**
-     * Getter method of server port 
-     * @return The saved port or defaultPort if the tank does not exist
-     * @param tank The tank to get the value for
-     * @param defaultPort default output on error
+     * Getter method of server port .
+     * 
+     * @param tank The tank to get the value for.
+     * @param defaultPort default output on error.
+     * @return The saved port or defaultPort if the tank does not exist.
      */
     public final int getServerPort(TankSelector tank, int defaultPort) {
         String port = properties.getProperty("serverPort_" + tank.name());
@@ -70,7 +78,7 @@ public class ServerSettingsWrapper {
         }
     }
     /**
-     * Saves settings in file
+     * Saves settings in file.
      */
     public final void saveSettings() {
         try {

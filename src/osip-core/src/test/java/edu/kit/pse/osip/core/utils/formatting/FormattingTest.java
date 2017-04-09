@@ -6,14 +6,14 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 /**
- * JUnit test class for FormatChecker.java
+ * JUnit test class for FormatChecker.java.
  * 
  * @author Maximilian Schwarzmann
  * @version 1.1
  */
 public class FormattingTest {
     /**
-     * Test normal ports
+     * Tests normal port.
      */
     @Test
     public void testPortNormal() {
@@ -21,7 +21,7 @@ public class FormattingTest {
     }
 
     /**
-     * Test big that are too big
+     * Tests port that is too big.
      */
     @Test
     public void testPortOverflow() {
@@ -29,7 +29,7 @@ public class FormattingTest {
     }
 
     /**
-     * Test ports with non-digits
+     * Tests port with non-digits.
      */
     @Test
     public void testPortFormat() {
@@ -37,7 +37,7 @@ public class FormattingTest {
     }
     
     /**
-     * Test port that is too small.
+     * Tests port that is too small.
      */
     @Test
     public void testPortUnderflow() {
@@ -103,5 +103,4 @@ public class FormattingTest {
     public void testNullPercentage() {
         assertFalse(FormatChecker.checkPercentage(null));       
     }
-    
 }

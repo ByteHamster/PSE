@@ -3,24 +3,30 @@ package edu.kit.pse.osip.core.io.files;
 import java.util.HashMap;
 
 /**
- * Extended parser for more complex expressions: LL(1) parser
+ * Extended parser for more complex expressions: LL(1) parser.
+ * 
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
 public class ExtendedParser extends BaseParser {
+    /**
+     * Saves the variables.
+     */
     protected HashMap<String, Float> variables = new HashMap<>();
     
     /**
-     * Constructor of ExtendedParser
-     * @param toParse The string that should be parsed
+     * Constructor of ExtendedParser.
+     * 
+     * @param toParse The string that should be parsed.
      */
     public ExtendedParser(String toParse) {
         super(toParse);
     }
     /**
-     * Reads expression
-     * @return the expression
-     * @throws ParserException If something goes wrong
+     * Reads expression.
+     * 
+     * @return the expression.
+     * @throws ParserException If something goes wrong.
      */
     protected final float readExpression() throws ParserException {
         skipWhitespaces();
@@ -37,9 +43,10 @@ public class ExtendedParser extends BaseParser {
         return result;
     }
     /**
-     * Reads number
-     * @return the number
-     * @throws ParserException If something goes wrong
+     * Reads number.
+     * 
+     * @return the number.
+     * @throws ParserException If something goes wrong.
      */
     protected final float readNumber() throws ParserException {
         float number = 0;
@@ -68,9 +75,10 @@ public class ExtendedParser extends BaseParser {
         return number;
     }
     /**
-     * Reads term
-     * @return the term
-     * @throws ParserException If something goes wrong
+     * Reads term.
+     * 
+     * @return the term.
+     * @throws ParserException If something goes wrong.
      */
     protected final float readTerm() throws ParserException {
         skipWhitespaces();
@@ -89,9 +97,10 @@ public class ExtendedParser extends BaseParser {
         return result;
     }
     /**
-     * Reads factor
-     * @return the factor
-     * @throws ParserException If something goes wrong
+     * Reads factor.
+     * 
+     * @return the factor.
+     * @throws ParserException If something goes wrong.
      */
     protected final float readFactor() throws ParserException {
         if (Character.isDigit(peek())) {

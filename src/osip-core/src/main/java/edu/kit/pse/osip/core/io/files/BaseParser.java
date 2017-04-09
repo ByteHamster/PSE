@@ -1,31 +1,45 @@
 package edu.kit.pse.osip.core.io.files;
 
 /**
- * Basic parser class: LL(1) parser
+ * Basic parser class: LL(1) parser.
+ * 
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
 public class BaseParser {
+    /**
+     * Saves the current position within the string being parsed.
+     */
     protected int currentPosition = 0;
+    /**
+     * Saves the current parsed string.
+     */
     private final String toParse;
+    /**
+     * Saves the current line within the string being parsed.
+     */
     private int currentLine = 0;
     
     /**
-     * Constructor of BaseParser
-     * @param toParse The string that should be parsed
+     * Constructor of BaseParser.
+     * 
+     * @param toParse The string that should be parsed.
      */
     public BaseParser(String toParse) {
         this.toParse = toParse;
     }
     /**
-     * Check if there are more signs to read @return true if there are more
+     * Checks if there are more signs to read.
+     * 
+     * @return true if there are more.
      */
     public final boolean available() {
         return currentPosition < toParse.length();
     }
     /**
-     * Generate and throw exception (initialize with line number etc)
-     * @param message The message of the exception
+     * Generates and throws exception (initializes with line number etc.).
+     * 
+     * @param message The message of the exception.
      * @throws ParserException Always.
      */
     protected final void die(String message) throws ParserException {
@@ -33,9 +47,10 @@ public class BaseParser {
         throw new ParserException(message + " - " + line, currentLine + 1, currentPosition);
     }
     /**
-     * Look at next char and remove it
-     * @return read char 
-     * @throws ParserException If something goes wrong
+     * Looks at next char and removes it.
+     * 
+     * @return read char.
+     * @throws ParserException If something goes wrong.
      */
     protected final char pop() throws ParserException {
         if (available()) {
@@ -49,9 +64,10 @@ public class BaseParser {
         }
     }
     /**
-     * Look at next char
-     * @return peeked char
-     * @throws ParserException If something goes wrong
+     * Looks at next char.
+     * 
+     * @return peeked char.
+     * @throws ParserException If something goes wrong.
      */
     protected final char peek() throws ParserException {
         if (available()) {
@@ -62,9 +78,10 @@ public class BaseParser {
         }
     }
     /**
-     * Read multiple symbols
-     * @throws ParserException If something goes wrong
-     * @param n n times read
+     * Reads multiple symbols.
+     * 
+     * @param n times to read.
+     * @throws ParserException If something goes wrong.
      */
     protected final void consume(int n) throws ParserException {
         for (int i = 0; i < n; i++) {
@@ -72,9 +89,10 @@ public class BaseParser {
         }
     }
     /**
-     * If peek != char then die
-     * @throws ParserException If something goes wrong
-     * @param c c char to check
+     * If peek != char then die.
+     * 
+     * @param c char to check.
+     * @throws ParserException If something goes wrong.
      */
     protected final void check(char c) throws ParserException {
         if (peek() != c) {
@@ -83,8 +101,9 @@ public class BaseParser {
         pop();
     }
     /**
-     * Skip whitespaces
-     * @throws ParserException If something goes wrong
+     * Skips white spaces.
+     * 
+     * @throws ParserException If something goes wrong.
      */
     public final void skipWhitespaces() throws ParserException {
         while (available() && Character.isWhitespace(peek())) {
@@ -92,8 +111,9 @@ public class BaseParser {
         }
     }
     /**
-     * Skip comments
-     * @throws ParserException If something goes wrong
+     * Skips comments.
+     * 
+     * @throws ParserException If something goes wrong.
      */
     public final void skipComments() throws ParserException {
         if (available() && peek() == '#') {

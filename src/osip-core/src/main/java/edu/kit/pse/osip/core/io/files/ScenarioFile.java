@@ -1,13 +1,12 @@
 package edu.kit.pse.osip.core.io.files;
 
+import edu.kit.pse.osip.core.model.behavior.Scenario;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import edu.kit.pse.osip.core.model.behavior.Scenario;
-
 /**
- * ScenarioFile saves scenario settings and creates scenarios from the settings
+ * ScenarioFile saves scenario settings and creates scenarios from the settings.
  *
  * @author Hans-Peter Lehmann
  * @version 1.0
@@ -18,8 +17,9 @@ public class ScenarioFile {
 
     /**
      * Constructor of ScenarioFile.
+     * 
      * @param file The scenario definition file.
-     * @throws ParserException If the scenario file has syntax errors.
+     * @throws ParserException if the scenario file has syntax errors.
      * @throws IOException if the file can't be opened for reading.
      */
     public ScenarioFile(String file) throws ParserException, IOException {
@@ -29,8 +29,9 @@ public class ScenarioFile {
     }
 
     /**
-     * Getter method of scenario
-     * @return parsed scenario
+     * Getter method of scenario.
+     * 
+     * @return parsed scenario.
      */
     public final Scenario getScenario() {
         return scenario;
