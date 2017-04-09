@@ -4,9 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
-
+import edu.kit.pse.osip.core.opcua.client.IntReceivedListener;
+import edu.kit.pse.osip.core.opcua.client.UAClientException;
 import edu.kit.pse.osip.core.opcua.client.UAClientWrapper;
 import org.eclipse.milo.opcua.stack.core.Identifiers;
 import org.eclipse.milo.opcua.stack.core.types.builtin.DataValue;
@@ -14,24 +13,33 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
 import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
-
-import edu.kit.pse.osip.core.opcua.client.IntReceivedListener;
-import edu.kit.pse.osip.core.opcua.client.UAClientException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
- * Tests opc ua server and client wrapper
+ * Tests OPC UA server and client wrapper.
  *
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
 public class ServerClientTest {
+    /**
+     * The server wrapper instance used for testing. 
+     */
     private TestUaServerWrapper server;
+    /**
+     * The client wrapper instance used for testing.
+     */
     private TestUaClientWrapper client;
+    /**
+     * The used port for testing.
+     */
     private static final int PORT = 12686;
 
     /**
-     * Sets up test environment
-     * @throws Exception If test fails
+     * Sets up test environment.
+     * 
+     * @throws Exception If setup fails.
      */
     @Before
     public void startup() throws Exception {
@@ -43,8 +51,9 @@ public class ServerClientTest {
     }
 
     /**
-     * Close server and client
-     * @throws Exception If test fails
+     * Closes server and client.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @After
     public void shutdown() throws Exception {
@@ -58,8 +67,9 @@ public class ServerClientTest {
     }
 
     /**
-     * Tests if connecting to wrong server gives connection errors
-     * @throws UAClientException Expected
+     * Tests if connecting to wrong server gives connection errors.
+     * 
+     * @throws UAClientException Expected.
      */
     @Test(timeout = 20000, expected = UAClientException.class)
     public void testWrongNamespace() throws UAClientException {
@@ -69,8 +79,9 @@ public class ServerClientTest {
     }
 
     /**
-     * Tests if getting values form not running client gives connection errors
-     * @throws UAClientException Expected
+     * Tests if getting values form not running client gives connection errors.
+     * 
+     * @throws UAClientException Expected.
      */
     @Test(timeout = 20000, expected = UAClientException.class)
     public void testNotRunning() throws UAClientException {
@@ -80,8 +91,9 @@ public class ServerClientTest {
     }
 
     /**
-     * Tests if passing a null listener throws the right exception
-     * @throws UAClientException Expected
+     * Tests if passing a null listener throws the right exception.
+     * 
+     * @throws UAClientException Expected.
      */
     @Test(timeout = 20000, expected = IllegalArgumentException.class)
     public void testNullListener() throws UAClientException {
@@ -89,8 +101,9 @@ public class ServerClientTest {
     }
 
     /**
-     * Tests if client can subscribe to values on the server
-     * @throws Exception If something goes wrong
+     * Tests if client can subscribe to values on the server.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @Test(timeout = 20000)
     public void testSubscribeValue() throws Exception  {
@@ -105,8 +118,9 @@ public class ServerClientTest {
     }
 
     /**
-     * Tests if client can read values from the server
-     * @throws Exception If something goes wrong
+     * Tests if client can read values from the server.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @Test(timeout = 20000)
     public void testReadValue() throws Exception  {
@@ -121,8 +135,9 @@ public class ServerClientTest {
     }
 
     /**
-     * Tests if negative subscription intervals lead to an IllegalArgumentException
-     * @throws Exception If something goes wrong
+     * Tests if negative subscription intervals lead to an IllegalArgumentException.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testSubscribeNegativeInterval() throws Exception  {
@@ -131,8 +146,9 @@ public class ServerClientTest {
     }
 
     /**
-     * Tests if multiple servers can be handled
-     * @throws Exception If something goes wrong
+     * Tests if multiple servers can be handled.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @Test(timeout = 20000)
     public void testMultipleServers() throws Exception  {
@@ -164,8 +180,9 @@ public class ServerClientTest {
     }
 
     /**
-     * Tests if client can receive multiple different values from the server
-     * @throws Exception If something goes wrong
+     * Tests if client can receive multiple different values from the server.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @Test(timeout = 20000)
     public void testReceiveDifferentValues() throws Exception  {
@@ -190,8 +207,9 @@ public class ServerClientTest {
     }
 
     /**
-     * Tests if client notices stopped server
-     * @throws Exception If something goes wrong
+     * Tests if client notices stopped server.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @Test(timeout = 20000)
     public void testConnectionLost() throws Exception  {
@@ -210,8 +228,9 @@ public class ServerClientTest {
     }
 
     /**
-     * Tests if client removes subscription
-     * @throws Exception If something goes wrong
+     * Tests if client removes subscription.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @Test(timeout = 20000)
     public void testUnsubscribe() throws Exception  {
@@ -226,8 +245,9 @@ public class ServerClientTest {
     }
 
     /**
-     * Tests if a long connection without changes generates a timeout
-     * @throws Exception If something goes wrong
+     * Tests if a long connection without changes generates a timeout.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @Test(timeout = TestUaClientWrapper.CONNECTION_TIMEOUT_TEST * 3)
     public void testLongConnection() throws Exception  {
