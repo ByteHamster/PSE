@@ -1,8 +1,10 @@
 package edu.kit.pse.osip.core.opcua.server;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.io.Files;
 import java.util.EnumSet;
 import java.util.concurrent.ExecutionException;
-
 import org.eclipse.milo.opcua.sdk.server.OpcUaServer;
 import org.eclipse.milo.opcua.sdk.server.api.config.OpcUaServerConfig;
 import org.eclipse.milo.opcua.sdk.server.identity.AnonymousIdentityValidator;
@@ -17,10 +19,6 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.LocalizedText;
 import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 import org.eclipse.milo.opcua.stack.core.types.structured.BuildInfo;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.io.Files;
-
 /**
  * Simplifies the interface of Milo. Automatically adds a namespace and provides methods
  * to directly manage the namespace, because multiple namespaces are not needed in our case.
@@ -30,13 +28,20 @@ import com.google.common.io.Files;
  * @version 1.0
  */
 public abstract class UAServerWrapper {
+    /**
+     * The used namespace of the OPC UA server.
+     */
     private UANamespaceWrapper namespace;
+    /**
+     * The actual used OPC UA server.
+     */
     private final OpcUaServer server;
 
     /**
-     * Wraps a milo server to simplify handling
-     * @param namespaceName The name of the namespace that is automatically generated
-     * @param port The port to listen to
+     * Wraps a milo server to simplify handling.
+     * 
+     * @param namespaceName The name of the namespace that is automatically generated.
+     * @param port The port to listen to.
      */
     public UAServerWrapper(String namespaceName, int port) {
         server = createServer(namespaceName, port);
@@ -52,11 +57,11 @@ public abstract class UAServerWrapper {
     }
 
     /**
-     * Creates a new server that can be used to publish data over OPC UA
+     * Creates a new server that can be used to publish data over OPC UA.
      *
      * @return a server that can directly be started.
-     * @param namespaceName The name of the default namespace
-     * @param port The port to listen to
+     * @param namespaceName The name of the default namespace.
+     * @param port The port to listen to.
      */
     private OpcUaServer createServer(String namespaceName, int port) {
         String productUri = "urn:edu:kit:pse:osip:product:" + namespaceName;
@@ -89,9 +94,10 @@ public abstract class UAServerWrapper {
     }
 
     /**
-     * Starts the server
-     * @throws ExecutionException If Milo has problems connecting to the remote machine
-     * @throws InterruptedException If Milo has problems connecting to the remote machine
+     * Starts the server.
+     * 
+     * @throws ExecutionException If Milo has problems connecting to the remote machine.
+     * @throws InterruptedException If Milo has problems connecting to the remote machine.
      */
     public void start() throws InterruptedException, ExecutionException {
         server.startup().get();
@@ -99,38 +105,42 @@ public abstract class UAServerWrapper {
 
     /**
      * Stops the server. Can not be restarted afterwards.
-     * @throws ExecutionException If Milo has problems stopping the server
-     * @throws InterruptedException If Milo has problems stopping the server
+     * 
+     * @throws ExecutionException If Milo has problems stopping the server.
+     * @throws InterruptedException If Milo has problems stopping the server.
      */
     public void stop() throws InterruptedException, ExecutionException {
         server.shutdown().get();
     }
 
     /**
-     * Adds a folder to the default namespace
-     * @param path Slash separated path of the folder
-     * @param displayName Name of the folder that is displayed to users
-     * @throws UaException If the folder can not be added
+     * Adds a folder to the default namespace.
+     * 
+     * @param path Slash separated path of the folder.
+     * @param displayName Name of the folder that is displayed to users.
+     * @throws UaException If the folder can not be added.
      */
     protected void addFolder(String path, String displayName) throws UaException {
         namespace.addFolder(path, displayName);
     }
 
     /**
-     * Adds a variable to the default namespace
-     * @param path Slash separated path of the folder
-     * @param displayName Name of the variable that is displayed to users
-     * @param type The variable type, for example Identifiers.Float
-     * @throws UaException If the variable can not be added
+     * Adds a variable to the default namespace.
+     * 
+     * @param path Slash separated path of the folder.
+     * @param displayName Name of the variable that is displayed to users.
+     * @param type The variable type, for example Identifiers.Float.
+     * @throws UaException If the variable can not be added.
      */
     protected void addVariable(String path, String displayName, NodeId type) throws UaException {
         namespace.addVariable(path, displayName, type);
     }
 
     /**
-     * Sets the value of a variable in the default namespace
-     * @param path Slash separated path of the folder
-     * @param value Value of the variable
+     * Sets the value of a variable in the default namespace.
+     * 
+     * @param path Slash separated path of the folder.
+     * @param value Value of the variable.
      */
     protected void setVariable(String path, DataValue value) {
         namespace.updateValue(path, value);

@@ -9,8 +9,9 @@ package edu.kit.pse.osip.core.opcua.client;
 @FunctionalInterface
 public interface IntReceivedListener extends ReceivedListener {
     /**
-     * An int was received from the server
-     * @param value The received value
+     * An int was received from the server.
+     * 
+     * @param value The received value.
      */
     void onReceived(int value);
 }
