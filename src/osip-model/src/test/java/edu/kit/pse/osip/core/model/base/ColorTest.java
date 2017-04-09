@@ -18,7 +18,7 @@ public class ColorTest {
     private final double epsilon = 0.0001;
 
     /**
-     * Check whether the cmy constructor works correctly.
+     * Checks whether the CMY constructor works correctly.
      */
     @Test
     public void testCMYConstructor() {
@@ -33,7 +33,7 @@ public class ColorTest {
     }
 
     /**
-     * Check whether the rgb constructor works correctly.
+     * Checks whether the RGB constructor works correctly.
      */
     @Test
     public void testRGBConstructor() {
@@ -51,7 +51,7 @@ public class ColorTest {
     }
 
     /**
-     * Check whether the constructor rejects illegal arguments.
+     * Checks whether the constructor rejects illegal arguments.
      */
     @Test
     public void testWrongArgumentsConstructor() {
@@ -94,7 +94,7 @@ public class ColorTest {
     }
 
     /**
-     * Check whether the equals method works as expected.
+     * Checks whether the equals method works as expected.
      */
     @Test
     public void testEquals() {
@@ -110,7 +110,7 @@ public class ColorTest {
     }
 
     /**
-     * Check whether the hashCode method works as expected.
+     * Checks whether the hashCode method works as expected.
      */
     @Test
     public void testHashcode() {
@@ -122,7 +122,7 @@ public class ColorTest {
     }
 
     /**
-     * Check whether the RGB conversion works, by using an arbitrary example.
+     * Checks whether the RGB conversion works, by using an arbitrary example.
      * The RGB values were calculated by a web converter.
      */
     @Test

@@ -1,9 +1,9 @@
 package edu.kit.pse.osip.core.model.behavior;
 
 import edu.kit.pse.osip.core.model.base.ProductionSite;
-
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Observable;
 import java.util.function.Consumer;
 
 import static java.lang.Thread.sleep;
@@ -16,12 +16,30 @@ import static java.lang.Thread.sleep;
  * @author David Kahles
  * @version 1.0
  */
-public class Scenario extends java.util.Observable implements Runnable {
+public class Scenario extends Observable implements Runnable {
+    /**
+     * List of all commands forming the scenario.
+     */
     private List<ThrowingConsumer<ProductionSite>> commands = new LinkedList<>();
+    /**
+     * The thread on which the scenario is executed.
+     */
     private Thread thread;
+    /**
+     * The production site on which the scenario operates.
+     */
     private ProductionSite productionSite;
+    /**
+     * Indicates whether the scenario is running.
+     */
     private boolean stop = false;
+    /**
+     * Contains actions for after the scenario has finished.
+     */
     private Runnable finishedListener;
+    /**
+     * Indicates if the scenario should repeat. 
+     */
     private boolean repeat;
 
     @Override
@@ -52,7 +70,8 @@ public class Scenario extends java.util.Observable implements Runnable {
     }
 
     /**
-     * Add a command to the Scenario. It gets executed after the last command or pause.
+     * Adds a command to the Scenario. It gets executed after the last command or pause.
+     * 
      * @param runnable The command to run.
      */
     public void appendRunnable(Consumer<ProductionSite> runnable) {
@@ -60,7 +79,8 @@ public class Scenario extends java.util.Observable implements Runnable {
     }
 
     /**
-     * Add a pause after the last command or last pause.
+     * Adds a pause after the last command or last pause.
+     * 
      * @param length The length of the pause in ms.
      */
     public void addPause(int length) {
@@ -69,6 +89,7 @@ public class Scenario extends java.util.Observable implements Runnable {
 
     /**
      * Start the Scenario.
+     * 
      * @throws IllegalStateException if the production site isn't set (@see setProductionSite).
      */
     public void startScenario() {
@@ -82,7 +103,7 @@ public class Scenario extends java.util.Observable implements Runnable {
     }
 
     /**
-     * Stop the Scenario.
+     * Stops the Scenario.
      */
     public void cancelScenario() {
         stop = true;
@@ -92,7 +113,8 @@ public class Scenario extends java.util.Observable implements Runnable {
     }
 
     /**
-     * Report whether the Scenario is currently running.
+     * Reports whether the Scenario is currently running.
+     * 
      * @return true if the Scenario is running, false otherwise.
      */
     public boolean isRunning() {
@@ -100,8 +122,9 @@ public class Scenario extends java.util.Observable implements Runnable {
     }
 
     /**
-     * Set a production site which is needed to execute the runnables.
+     * Sets a production site which is needed to execute the runnables.
      * This needs to be done before starting the scenario.
+     * 
      * @param productionSite The production site which gets set.
      */
     public void setProductionSite(ProductionSite productionSite) {
@@ -109,7 +132,8 @@ public class Scenario extends java.util.Observable implements Runnable {
     }
 
     /**
-     * Set the listener which gets called if the scenario is finished
+     * Sets the listener which gets called when the scenario has finished.
+     * 
      * @param listener The listener.
      */
     public void setScenarioFinishedListener(Runnable listener) {
@@ -117,7 +141,8 @@ public class Scenario extends java.util.Observable implements Runnable {
     }
 
     /**
-     * Set whether the scenario should run in an endless loop.
+     * Sets whether the scenario should run in an endless loop.
+     * 
      * @param repeat Whether it should run in an endless loop.
      */
     public void setRepeat(boolean repeat) {

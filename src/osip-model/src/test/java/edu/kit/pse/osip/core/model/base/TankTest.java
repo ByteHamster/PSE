@@ -11,19 +11,31 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
- * A class to test the TankSelector class.
+ * A class to test the Tank class.
  *
  * @author David Kahles
  * @version 1.0
  */
 public class TankTest implements Observer {
+    /**
+     * Liquid used for testing.
+     */
     private Liquid liquid = new Liquid(1, SimulationConstants.MIN_TEMPERATURE, new Color(0));
+    /**
+     * Pipe for testing the incoming pipe.
+     */
     private Pipe inPipe = new Pipe(5, 5, (byte) 100);
+    /**
+     * Pipe for testing the outgoing pipe.
+     */
     private Pipe outPipe = new Pipe(5, 5, (byte) 100);
+    /**
+     * Indicates whether the observer works.
+     */
     private boolean changed;
 
     /**
-     * Reset changed
+     * Resets changed.
      */
     @Before
     public void init() {
@@ -31,7 +43,7 @@ public class TankTest implements Observer {
     }
 
     /**
-     * Test whether a too small capacity throws an exception.
+     * Tests whether a too small capacity throws an exception.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testWrongCapacity() {
@@ -39,7 +51,7 @@ public class TankTest implements Observer {
     }
 
     /**
-     * Test whether a null tankselector throws an exception.
+     * Tests whether a null TankSelector throws an exception.
      */
     @Test(expected = NullPointerException.class)
     public void testNullSelector() {
@@ -47,7 +59,7 @@ public class TankTest implements Observer {
     }
 
     /**
-     * Test whether a null liquid throws an exception.
+     * Tests whether a null liquid throws an exception.
      */
     @Test(expected = NullPointerException.class)
     public void testNullLiquid() {
@@ -55,7 +67,7 @@ public class TankTest implements Observer {
     }
 
     /**
-     * Test whether a null outPipe throws an exception.
+     * Tests whether a null outPipe throws an exception.
      */
     @Test(expected = NullPointerException.class)
     public void testNullInpipe() {
@@ -63,7 +75,7 @@ public class TankTest implements Observer {
     }
 
     /**
-     * Test whether the same in- and outPipe throws an exception.
+     * Tests whether the same in- and outPipe throws an exception.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testSamePipes() {
@@ -71,7 +83,7 @@ public class TankTest implements Observer {
     }
 
     /**
-     * Test whether a null inPipe throws an exception.
+     * Tests whether a null inPipe throws an exception.
      */
     @Test(expected = NullPointerException.class)
     public void testNullOutpipe() {
@@ -79,7 +91,7 @@ public class TankTest implements Observer {
     }
 
     /**
-     * Test whether getInPipe() and getOutPipe() work correctly
+     * Tests whether getInPipe() and getOutPipe() work correctly.
      */
     @Test
     public void testPipes() {
@@ -89,7 +101,7 @@ public class TankTest implements Observer {
     }
 
     /**
-     * Test whether getting and settings the liquid and getFillLevel() works correctly.
+     * Tests whether getting and setting the liquid and getFillLevel() works correctly.
      */
     @Test
     public void testLiquid() {
@@ -104,7 +116,7 @@ public class TankTest implements Observer {
     }
 
     /**
-     * Test whether setting a null liquid works correctly.
+     * Tests whether setting a null liquid works correctly.
      */
     @Test(expected = NullPointerException.class)
     public void testSetNullLiquid() {
@@ -113,7 +125,7 @@ public class TankTest implements Observer {
     }
 
     /**
-     * Test whether getting the TankSelector works.
+     * Tests whether getting the TankSelector works.
      */
     @Test
     public void testTankSelector() {
@@ -128,7 +140,7 @@ public class TankTest implements Observer {
     }
 
     /**
-     * Test whether observing works correctly.
+     * Tests whether observing works correctly.
      */
     @Test
     public void testObserver() {

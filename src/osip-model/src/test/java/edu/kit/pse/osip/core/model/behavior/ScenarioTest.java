@@ -23,12 +23,21 @@ import static org.junit.Assert.fail;
  * @version 1.0
  */
 public class ScenarioTest {
+    /**
+     * The test scenario.
+     */
     private Scenario scenario;
+    /**
+     * Counter for testing the progress of a scenario.
+     */
     private AtomicInteger counter;
+    /**
+     * ProductionSite used for testing.
+     */
     private ProductionSite fakeSite;
 
     /**
-     * Initialize scenario and counter.
+     * Initializes scenario and counter.
      */
     @Before
     public void init() {
@@ -38,7 +47,7 @@ public class ScenarioTest {
     }
 
     /**
-     * Check that starting the scenario without setting the production site first throws an exception.
+     * Checks that starting the scenario without setting the production site first throws an exception.
      */
     @Test(expected = IllegalStateException.class)
     public void testState1() {
@@ -47,7 +56,7 @@ public class ScenarioTest {
     }
 
     /**
-     * Check that canceling the scenario without starting it before throws an exception.
+     * Checks that canceling the scenario without starting it before throws an exception.
      */
     @Test(expected = IllegalStateException.class)
     public void testState2() {
@@ -56,7 +65,7 @@ public class ScenarioTest {
     }
 
     /**
-     * Check that appendRunnable works fine
+     * Checks that appendRunnable works fine.
      */
     @Test
     public void testAddCommand() {
@@ -80,7 +89,7 @@ public class ScenarioTest {
     }
 
     /**
-     * Check that the finished listener gets called.
+     * Checks that the finished listener gets called.
      */
     @Test
     public void testNoListener() {
@@ -106,7 +115,7 @@ public class ScenarioTest {
     }
 
     /**
-     * Check that addPause works.
+     * Checks that addPause works.
      */
     @Test
     public void testAddPause() {
@@ -145,7 +154,7 @@ public class ScenarioTest {
     }
 
     /**
-     * Check whether canceling the scenario during a pause works fine.
+     * Checks whether canceling the scenario during a pause works fine.
      */
     @Test
     public void testStop() {
@@ -173,7 +182,7 @@ public class ScenarioTest {
     }
 
     /**
-     * Check setRepeat works fine
+     * Checks setRepeat works fine.
      */
     @Test
     public void testSetRepeat() {

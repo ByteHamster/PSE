@@ -4,27 +4,30 @@ import java.util.Arrays;
 
 /**
  * This enumeration defines all tanks including their default color value.
+ * 
+ * @author David Kahles
+ * @version 1.0
  */
 public enum TankSelector {
     /**
-     * the mixtank
+     * The mixtank.
      */
     MIX,
     /**
-     * The yellow tank
+     * The yellow colored tank.
      */
     YELLOW,
     /**
-     * The cyan colored tank
+     * The cyan colored tank.
      */
     CYAN,
     /**
-     * The magenta colored tank
+     * The magenta colored tank.
      */
     MAGENTA;
 
     /**
-     * Key prefix to use when retrieving a tank name from the translator
+     * Key prefix to use when retrieving a tank name from the translator.
      */
     public static final String TRANSLATOR_LABEL_PREFIX = "label.tank.";
 
@@ -49,7 +52,8 @@ public enum TankSelector {
     };
 
     /**
-     * Get the initial color of a tank.
+     * Gets the initial color of a tank.
+     * 
      * @return The initial color of a tank.
      */
     public Color getInitialColor() {
@@ -57,7 +61,8 @@ public enum TankSelector {
     }
 
     /**
-     * Get the initial temperature of a tank.
+     * Gets the initial temperature of a tank.
+     * 
      * @return The initial temperature of a tank.
      */
     public float getInitialTemperature() {
@@ -65,7 +70,8 @@ public enum TankSelector {
     }
     
     /**
-     * Return an array of all tanks, except for the mixtank.
+     * Returns an array of all tanks, except for the mixtank.
+     * 
      * @return Array of all tanks, except for the mixtank.
      */
     public static TankSelector[] valuesWithoutMix() {
@@ -75,8 +81,9 @@ public enum TankSelector {
     }
     
     /**
-     * Get the number of upper (non-mix) tanks in the production site. So the total number of tanks is
-     * getUpperTankCount()+1 because of the mixtank.
+     * Gets the number of upper (non-mix) tanks in the production site. So the total number of tanks is
+     * getUpperTankCount() + 1 because of the mixtank.
+     * 
      * @return the number of upper tanks.
      */
     public static int getUpperTankCount() {

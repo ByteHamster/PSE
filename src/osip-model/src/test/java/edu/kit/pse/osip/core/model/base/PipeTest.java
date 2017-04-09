@@ -17,11 +17,17 @@ import static org.junit.Assert.assertTrue;
  * @version 1.0
  */
 public class PipeTest implements Observer {
+    /**
+     * Pipe used for testing.
+     */
     private Pipe pipe = null;
+    /**
+     * Indicates if the observer works.
+     */
     private boolean changed;
 
     /**
-     * Initialize the pipe and the changed boolean.
+     * Initializes the pipe and the changed boolean.
      */
     @Before
     public void init() {
@@ -30,7 +36,7 @@ public class PipeTest implements Observer {
     }
 
     /**
-     * Test whether a zero crosssection triggers an exception.
+     * Tests whether a zero crosssection triggers an exception.
      */
     @Test(expected = IllegalArgumentException.class)
     public void wrongCrosssection() {
@@ -38,7 +44,7 @@ public class PipeTest implements Observer {
     }
 
     /**
-     * Check whether a zero length triggers an exception.
+     * Checks whether a zero length triggers an exception.
      */
     @Test(expected = IllegalArgumentException.class)
     public void wrongLength() {
@@ -46,7 +52,7 @@ public class PipeTest implements Observer {
     }
 
     /**
-     * Check whether the valve works as expected
+     * Checks whether the valve works as expected.
      */
     @Test
     public void testValve() {
@@ -63,7 +69,7 @@ public class PipeTest implements Observer {
     }
 
     /**
-     * Test whether the pipe rejects to high valve settings.
+     * Tests whether the pipe rejects to high valve settings.
      */
     @Test(expected = IllegalArgumentException.class)
     public void tooHighThreshold() {
@@ -71,7 +77,7 @@ public class PipeTest implements Observer {
     }
 
     /**
-     * Check whether the pipe rejects to low valve settings
+     * Checks whether the pipe rejects to low valve settings.
      */
     @Test(expected = IllegalArgumentException.class)
     public void tooLowThreshold() {
@@ -79,7 +85,7 @@ public class PipeTest implements Observer {
     }
 
     /**
-     * Check whether the pipe rejects to much liquid.
+     * Checks whether the pipe rejects to much liquid.
      */
     @Test(expected = OverfullLiquidContainerException.class)
     public void putTooMuchIn() {
@@ -89,7 +95,7 @@ public class PipeTest implements Observer {
     }
 
     /**
-     * Check whether put in return the correct liquids after some time-
+     * Checks whether put in return the correct liquids after some time.
      */
     @Test
     public void testPutIn() {
@@ -108,7 +114,7 @@ public class PipeTest implements Observer {
     }
 
     /**
-     * Check whether putIn() also works for a pipe with a length of one.
+     * Checks whether putIn() also works for a pipe with a length of one.
      */
     @Test
     public void testPutInSmallPipe() {
@@ -124,7 +130,7 @@ public class PipeTest implements Observer {
     }
 
     /**
-     * Check whether a null-liquid gets rejected
+     * Checks whether a null-liquid gets rejected.
      */
     @Test(expected = NullPointerException.class)
     public void testNull() {
@@ -132,7 +138,7 @@ public class PipeTest implements Observer {
     }
 
     /**
-     * Check that every change to the pipe triggers the observers.
+     * Checks that every change to the pipe triggers the observers.
      */
     @Test
     public void testObserver() {
@@ -145,7 +151,7 @@ public class PipeTest implements Observer {
     }
 
     /**
-     * Check if isLiquidEntering works correctly.
+     * Checks if isLiquidEntering works correctly.
      */
     @Test
     public void testIsLiquidEntering() {
