@@ -1,6 +1,5 @@
 package edu.kit.pse.osip.core.model.simulation;
 
-
 import edu.kit.pse.osip.core.model.base.Liquid;
 import edu.kit.pse.osip.core.model.base.Pipe;
 import edu.kit.pse.osip.core.model.base.ProductionSite;
@@ -16,9 +15,8 @@ import edu.kit.pse.osip.core.model.base.MixTank;
  * @version 1.0
  */
 public class ProductionSiteSimulation extends ProductionSite {
-
     /**
-     * Creates a production site that allows simulating the contained tanks
+     * Creates a production site that allows simulating the contained tanks.
      */
     public ProductionSiteSimulation() {
         super();
@@ -27,6 +25,7 @@ public class ProductionSiteSimulation extends ProductionSite {
     /**
      * Template method to allow subclasses to create objects of subclasses of Tank. The parameters are the same
      * parameters as in the Tank constructor.
+     * 
      * @param capacity @see Tank
      * @param tankSelector @see Tank
      * @param liquid @see Tank
@@ -43,6 +42,7 @@ public class ProductionSiteSimulation extends ProductionSite {
     /**
      * Template method to allow subclasses to create objects of subclasses of MixTank. The parameters are the same
      * parameters as in the MixTank constructor.
+     * 
      * @param capacity @see MixTank
      * @param liquid @see MixTank
      * @param outPipe @see MixTank
@@ -54,7 +54,8 @@ public class ProductionSiteSimulation extends ProductionSite {
     }
 
     /**
-     * Get a tank which is extended to be simulatable.
+     * Gets a tank which is extended to be simulatable.
+     * 
      * @return the requested tank that is simulatable.
      * @param tank Specifies the tank.
      */
@@ -65,6 +66,7 @@ public class ProductionSiteSimulation extends ProductionSite {
 
     /**
      * Get the mixtank which is extended to be simulatable.
+     * 
      * @return the requested mixtank that is simulatable.
      */
     @Override

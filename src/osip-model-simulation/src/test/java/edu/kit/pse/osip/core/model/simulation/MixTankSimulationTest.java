@@ -2,26 +2,27 @@ package edu.kit.pse.osip.core.model.simulation;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.LinkedList;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import edu.kit.pse.osip.core.model.base.Color;
 import edu.kit.pse.osip.core.model.base.Liquid;
 import edu.kit.pse.osip.core.model.base.Pipe;
+import java.util.LinkedList;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
- * Tests if the mix tank of the simulation works
+ * Tests if the mix tank of the simulation works.
  *
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
 public class MixTankSimulationTest {
+    /**
+     * Pipe for testing.
+     */
     private Pipe pipe;
 
     /**
-     * Initialize the pipes.
+     * Initializes the pipes.
      */
     @Before
     public void init() {
@@ -29,7 +30,7 @@ public class MixTankSimulationTest {
     }
 
     /**
-     * Test putting in some liquid
+     * Tests putting in some liquid.
      */
     @Test
     public void testPutIn() {
@@ -45,7 +46,7 @@ public class MixTankSimulationTest {
     }
 
     /**
-     * Test taking out some liquid
+     * Tests taking out some liquid.
      */
     @Test
     public void testTakeOut() {

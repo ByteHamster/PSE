@@ -2,26 +2,31 @@ package edu.kit.pse.osip.core.model.simulation;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Before;
-import org.junit.Test;
-
 import edu.kit.pse.osip.core.model.base.Color;
 import edu.kit.pse.osip.core.model.base.Liquid;
 import edu.kit.pse.osip.core.model.base.Pipe;
 import edu.kit.pse.osip.core.model.base.TankSelector;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
- * Tests if the tanks of the simulation work
+ * Tests if the tanks of the simulation work.
  *
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
 public class TankSimulationTest {
+    /**
+     * Outgoing pipe for testing.
+     */
     private Pipe pipe1;
+    /**
+     * Incoming pipe for testing.
+     */
     private Pipe pipe2;
 
     /**
-     * Initialize the pipes.
+     * Initializes the pipes.
      */
     @Before
     public void init() {
@@ -30,7 +35,7 @@ public class TankSimulationTest {
     }
 
     /**
-     * Test putting in some liquid
+     * Tests putting in some liquid.
      */
     @Test
     public void testPutIn() {
@@ -43,7 +48,7 @@ public class TankSimulationTest {
     }
 
     /**
-     * Test taking out some liquid
+     * Tests taking out some liquid.
      */
     @Test
     public void testTakeOut() {

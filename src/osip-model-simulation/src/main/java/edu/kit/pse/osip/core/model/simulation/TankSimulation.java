@@ -1,11 +1,10 @@
 package edu.kit.pse.osip.core.model.simulation;
 
-import java.util.LinkedList;
-
 import edu.kit.pse.osip.core.model.base.Liquid;
 import edu.kit.pse.osip.core.model.base.Pipe;
 import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
+import java.util.LinkedList;
 
 /**
  * The model of a tank, allowing to put in and take out liquid. Besides this addition, it is a normal tank.
@@ -14,10 +13,14 @@ import edu.kit.pse.osip.core.model.base.TankSelector;
  * @version 1.0
  */
 public class TankSimulation extends Tank {
+    /**
+     * The strategy to mix the current liquid with the put-in liquid.
+     */
     private MixingStrategy mixingStrategy;
 
     /**
-     * Create a new tank.
+     * Creates a new tank.
+     * 
      * @param capacity The size of the tank in cm³.
      * @param tankSelector Specifies which tank it is. This is useful if you have access
      *                     to the tank and need to get a unique identifier.
@@ -31,7 +34,8 @@ public class TankSimulation extends Tank {
     }
 
     /**
-     * Add new liquid to the tank. The tank mixes the input with its current content and sets its values.
+     * Adds new liquid to the tank. The tank mixes the input with its current content and sets its values.
+     * 
      * @param input The liquid to put in.
      */
     public void putIn(Liquid input) {
@@ -43,6 +47,7 @@ public class TankSimulation extends Tank {
 
     /**
      * Takes liquid out of the tank.
+     * 
      * @return the liquid that was taken out.
      * @param amount The amount of liquid to take out.
      */

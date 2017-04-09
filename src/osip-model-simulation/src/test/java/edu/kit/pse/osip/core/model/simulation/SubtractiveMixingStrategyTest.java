@@ -2,22 +2,20 @@ package edu.kit.pse.osip.core.model.simulation;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.LinkedList;
-
-import org.junit.Test;
-
 import edu.kit.pse.osip.core.model.base.Color;
 import edu.kit.pse.osip.core.model.base.Liquid;
+import java.util.LinkedList;
+import org.junit.Test;
 
 /**
- * Tests the subtractive mixing strategy
+ * Tests the subtractive mixing strategy.
  *
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
 public class SubtractiveMixingStrategyTest {
     /**
-     * Verify that one liquid stays the same
+     * Verifies that one liquid stays the same.
      */
     @Test
     public void testSingleLiquid() {
@@ -29,7 +27,7 @@ public class SubtractiveMixingStrategyTest {
     }
 
     /**
-     * Tests colors, amounts and temperatures of two liquids
+     * Tests colors, amounts and temperatures of two liquids.
      */
     @Test
     public void testMixingTwoLiquids() {
@@ -42,7 +40,7 @@ public class SubtractiveMixingStrategyTest {
     }
 
     /**
-     * Tests colors, amounts and temperatures of two liquids which have different amounts
+     * Tests colors, amounts and temperatures of two liquids which have different amounts.
      */
     @Test
     public void testMixingTwoLiquidsDifferentAmounts() {
@@ -55,7 +53,7 @@ public class SubtractiveMixingStrategyTest {
     }
 
     /**
-     * Tests colors, amounts and temperatures of multiple liquids
+     * Tests colors, amounts and temperatures of multiple liquids.
      */
     @Test
     public void testMixingMultipleLiquids() {
@@ -71,7 +69,7 @@ public class SubtractiveMixingStrategyTest {
     }
 
     /**
-     * Tests mixing a list that contains no liquids
+     * Tests mixing a list that contains no liquids.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testMixingEmptyListOfLiquids() {
@@ -80,7 +78,7 @@ public class SubtractiveMixingStrategyTest {
     }
 
     /**
-     * Tests mixing a null list of liquids
+     * Tests mixing a null list of liquids.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testMixingNullListOfLiquids() {
@@ -88,7 +86,7 @@ public class SubtractiveMixingStrategyTest {
     }
 
     /**
-     * Tests mixing liquids which have no amount
+     * Tests mixing liquids which have no amount.
      */
     @Test
     public void testNoAmount() {
