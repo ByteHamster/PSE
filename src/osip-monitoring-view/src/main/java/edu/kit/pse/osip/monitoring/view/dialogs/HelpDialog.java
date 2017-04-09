@@ -23,13 +23,25 @@ import javafx.stage.Stage;
  * @version 1.0
  */
 public class HelpDialog extends Stage {
+    /**
+     * Font for headings.
+     */
     private Font sectionFont = new Font(20);
+    /**
+     * The preferred height for the window.
+     */
     private static final double WINDOW_HEIGHT = 400;
+    /**
+     * The preferred width for the window.
+     */
     private static final double WINDOW_WIDTH = 600;
+    /**
+     * The minimum window size.
+     */
     private static final double MIN_WINDOW_SIZE = 300;
 
     /**
-     * Creates a new HelpDialog
+     * Creates a new HelpDialog.
      */
     public HelpDialog() {
         setTitle(Translator.getInstance().getString("monitoring.helpdialog.title"));
@@ -38,6 +50,9 @@ public class HelpDialog extends Stage {
         setupView();
     }
 
+    /**
+     * Sets up the view.
+     */
     private void setupView() {
         TabPane tabPane = new TabPane();
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
@@ -64,6 +79,11 @@ public class HelpDialog extends Stage {
         setMinHeight(MIN_WINDOW_SIZE);
     }
 
+    /**
+     * Creates a tab containing the main help.
+     * 
+     * @return the tab.
+     */
     private Tab createMainTab() {
         Tab tab = new Tab();
         tab.setText(Translator.getInstance().getString("monitoring.helpdialog.mainTab.header"));
@@ -89,10 +109,22 @@ public class HelpDialog extends Stage {
         return tab;
     }
 
+    /**
+     * Generates a Text instance containing a new line.
+     * 
+     * @return the Text instance.
+     */
     private Text newLine() {
         return new Text("\n");
     }
 
+    /**
+     * Generates a Text instance with a specified font and a text from the Translator.
+     * 
+     * @param id the id for the text out of the Translator.
+     * @param font the font of the Text.
+     * @return the generated Text instance.
+     */
     private Text getText(String id, Font font) {
         Text text = new Text();
         text.setText(Translator.getInstance().getString(id) + "\n");
@@ -102,6 +134,12 @@ public class HelpDialog extends Stage {
         return text;
     }
 
+    /**
+     * Setups a ScrollPane for a TextFlow.
+     * 
+     * @param textFlow the TextFlow the ScrollPane is set up for.
+     * @return the generated ScrollPane.
+     */
     private ScrollPane setupScrollPane(TextFlow textFlow) {
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setFitToWidth(true);
@@ -112,6 +150,11 @@ public class HelpDialog extends Stage {
         return scrollPane;
     }
 
+    /**
+     * Creates a tab containing information about the settings.
+     * 
+     * @return the generated tab.
+     */
     private Tab createSettingsTab() {
         Tab tab = new Tab();
         tab.setText(Translator.getInstance().getString("monitoring.helpdialog.settingsTab.header"));

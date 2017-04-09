@@ -25,9 +25,9 @@ class MixTankVisualization extends AbstractTankVisualization {
     /**
      * Creates a new visualization.
      * 
-     * @param tank The tank to display
-     * @param alarms The alarms of the tank
-     * @throws NullPointerException when the tank is null.
+     * @param tank The tank to display.
+     * @param alarms The alarms of the tank.
+     * @throws NullPointerException when the tank or the alarms are null.
      */
     protected MixTankVisualization(MixTank tank, AlarmGroup<ObservableBoolean, ObservableBoolean> alarms) {
         super(tank, alarms);

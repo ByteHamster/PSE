@@ -31,22 +31,18 @@ class MonitoringMainWindow {
      * The menu bar for the monitoring.
      */
     private MonitoringMenu menu;
-    
     /**
      * The visualizations for the tanks.
      */
     private EnumMap<TankSelector, TankVisualization> tankVisualizations;
-    
     /**
      * The visualization for the mixtank.
      */
     private MixTankVisualization mixTank;
-    
     /**
      * The logging console.
      */
     private LoggingConsole log;
-    
     /**
      * The traffic light to show the over all status of the alarms.
      */
@@ -56,18 +52,34 @@ class MonitoringMainWindow {
      * Width for the window.
      */
     private static final int WIDTH = 1000;
-    
     /**
      * Height for the window.
      */
     private static final int HEIGHT = 700;
-
+    /**
+     * Minimum width of the window.
+     */
     private static final int MIN_WIDTH = 500;
+    /**
+     * Minimum height of the window.
+     */
     private static final int MIN_HEIGHT = 400;
+    /**
+     * Size for the progress indicator.
+     */
     private static final double PROGRESS_INDICATOR_SIZE = 100;
 
+    /**
+     * The primary window of JavaFX.
+     */
     private Stage stage;
+    /**
+     * The main scene with all sensor datas.
+     */
     private Scene mainScene;
+    /**
+     * Scene showing the progress indicator.
+     */
     private Scene progressScene;
     
     /**
@@ -75,7 +87,7 @@ class MonitoringMainWindow {
      * 
      * @param primaryStage The primary window.
      * @param currentModel The current model used to initialize all observable objects and initial values.
-     * @param alarms The alarms of all tanks
+     * @param alarms The alarms of all tanks.
      */
     protected MonitoringMainWindow(Stage primaryStage, ProductionSite currentModel,
         EnumMap<TankSelector, AlarmGroup<ObservableBoolean, ObservableBoolean>> alarms) {
@@ -168,7 +180,7 @@ class MonitoringMainWindow {
     }
     
     /**
-     * Registers all alarms to the light.
+     * Registers all alarms to the light and LoggingConsole.
      */
     private void registerAlarms() {
         for (TankVisualization tank : tankVisualizations.values()) {
@@ -194,8 +206,8 @@ class MonitoringMainWindow {
     /**
      * Returns the current used visualization for a specified tank.
      * 
-     * @return The current used visualization of a specified tank.
      * @param tank The tank whose current used visualization should be returned.
+     * @return The current used visualization of a specified tank.
      */
     protected AbstractTankVisualization getTank(TankSelector tank) {
         if (tank == TankSelector.MIX) {
@@ -214,8 +226,9 @@ class MonitoringMainWindow {
     }
 
     /**
-     * Shows and hides the progress indicator
-     * @param visible If the indicator should be visible
+     * Shows and hides the progress indicator.
+     * 
+     * @param visible If the indicator should be visible.
      */
     public void setProgressIndicatorVisible(boolean visible) {
         Platform.runLater(() -> stage.setScene(visible ? progressScene : mainScene));

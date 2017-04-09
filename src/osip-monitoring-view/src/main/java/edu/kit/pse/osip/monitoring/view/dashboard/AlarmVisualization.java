@@ -142,12 +142,7 @@ class AlarmVisualization extends Observable implements Observer {
         super.notifyObservers(null);
     }
     
-    /**
-     * Called when the observed object is updated.
-     * 
-     * @param observable The observed object.
-     * @param object The new value.
-     */
+    @Override
     public void update(Observable observable, Object object) {
         super.setChanged();
         super.notifyObservers(selector);

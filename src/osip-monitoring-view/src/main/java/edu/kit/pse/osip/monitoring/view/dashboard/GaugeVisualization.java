@@ -30,12 +30,7 @@ class GaugeVisualization extends BarLayout implements Observer {
         this.getChildren().add(0, gauge);
     }
     
-    /**
-     * Called when the observed object has changed.
-     * 
-     * @param observable The observed object.
-     * @param object The new value.
-     */
+    @Override
     public void update(Observable observable, Object object) {
         Pipe pipe = (Pipe) observable;
         Platform.runLater(() -> gauge.setValue(pipe.getValveThreshold()));

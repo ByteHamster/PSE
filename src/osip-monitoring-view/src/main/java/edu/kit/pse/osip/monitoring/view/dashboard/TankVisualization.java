@@ -21,9 +21,9 @@ class TankVisualization extends AbstractTankVisualization {
     /**
      * Creates a new visualization.
      * 
-     * @param tank The tank to display
-     * @param alarms The alarms of the tank
-     * @throws NullPointerException when the tank is null.
+     * @param tank The tank to display.
+     * @param alarms The alarms of the tank.
+     * @throws NullPointerException when the tank or the alarms are null.
      */
     protected TankVisualization(Tank tank, AlarmGroup<ObservableBoolean, ObservableBoolean> alarms) {
         super(tank, alarms);

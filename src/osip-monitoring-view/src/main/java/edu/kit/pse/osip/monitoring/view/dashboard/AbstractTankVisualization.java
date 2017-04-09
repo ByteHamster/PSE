@@ -77,7 +77,6 @@ abstract class AbstractTankVisualization extends GridPane {
         if (tank == null) {
             throw new NullPointerException("Tank is null.");
         }
-
         if (alarmGroup == null) {
             throw new NullPointerException("AlarmGroup is null.");
         }

@@ -22,7 +22,13 @@ public class SettingsViewFacade implements SettingsViewInterface {
      * The current settings view containing the user-set settings.
      */
     private SettingsMainWindow currentSettingsWindow;
+    /**
+     * Buffered alert to inform the user about a disconnect.
+     */
     private Alert disconnectAlert;
+    /**
+     * Buffered alert to inform the user about a non-possible connection.
+     */
     private Alert cannotConnectAlert;
     
     /**

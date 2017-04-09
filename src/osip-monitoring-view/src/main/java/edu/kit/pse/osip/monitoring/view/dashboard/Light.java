@@ -75,12 +75,7 @@ class Light extends VBox implements Observer {
         numberAlarms = count;
     }
     
-    /**
-     * Called when the observed object updates.
-     * 
-     * @param observable The observed object.
-     * @param object The new value.
-     */
+    @Override
     public void update(Observable observable, Object object) {
         AlarmVisualization alarm = (AlarmVisualization) observable;       
         triggeredAlarms.remove(alarm);
