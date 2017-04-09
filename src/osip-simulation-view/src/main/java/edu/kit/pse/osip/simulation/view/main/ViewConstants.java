@@ -12,7 +12,6 @@ import javafx.stage.Screen;
  * @author Niko Wilhelm
  */
 public final class ViewConstants {
-
     /**
      * Private constructor to avoid instantiation.
      */
@@ -26,17 +25,17 @@ public final class ViewConstants {
     public static final Insets CONTROL_PADDING = new Insets(10, 5, 10, 5);
 
     /**
-     * The width of the SimulationControlWindow
+     * The width of the SimulationControlWindow.
      */
     public static final double CONTROL_WIDTH = Screen.getPrimary().getBounds().getWidth() * 0.3;
 
     /**
-     * The width of a slider in the Simulation control window
+     * The width of a slider in the Simulation control window.
      */
     public static final double CONTROL_SLIDER_WIDTH = CONTROL_WIDTH * 0.3;
 
     /**
-     * The number of labels on a Slider
+     * The number of labels on a Slider.
      */
     public static final int SLIDER_LABEL_COUNT = 10;
 
@@ -104,7 +103,7 @@ public final class ViewConstants {
 
     /**
      * The height of the TemperatureSensor relative to the height of the box containing a tank and its
-     * sensors
+     * sensors.
      */
     protected static final double TEMP_HEIGHT = 0.2;
 
@@ -115,7 +114,7 @@ public final class ViewConstants {
 
     /**
      * The width of a valve relative to the width of a tank compartment.
-     * This constant should always be chosen lower than VALVE_HEIGHT
+     * This constant should always be chosen lower than VALVE_HEIGHT.
      */
     protected static final double VALVE_WIDTH = 0.1;
 
@@ -147,7 +146,7 @@ public final class ViewConstants {
 
     /**
      * Percentage of the valve width that is free between the outer line and the rotating part
-     * on each side
+     * on each side.
      */
     protected static final double VALVE_CIRCLE_DIST = 0.15;
 }

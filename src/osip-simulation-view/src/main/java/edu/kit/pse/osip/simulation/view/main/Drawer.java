@@ -12,7 +12,8 @@ import javafx.scene.canvas.GraphicsContext;
 public interface Drawer {
     /**
      * The Drawer draws itself onto the GraphicsContext at its position.
-     * @param context The context that the object draws itself onto
+     * 
+     * @param context The context that the object draws itself onto.
      * @param timeDiff The difference in time in minutes since the last call of draw.
      */
     void draw(GraphicsContext context, double timeDiff);

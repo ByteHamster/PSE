@@ -13,17 +13,17 @@ import javafx.scene.text.Font;
  * @author Niko Wilhelm
  */
 public class ValveDrawer extends RotatingControlDrawer {
-
     private Pipe pipe;
     private double radius;
     private double relValveWidth;
     private double relValveHeight;
 
     /**
-     * Generates a new drawer object for valves
-     * @param pos The center of the drawer
-     * @param pipe The pipe to which the valve is attached
-     * @param rows The number of rows in which the Tanks are ordered
+     * Generates a new drawer object for valves.
+     * 
+     * @param pos The center of the drawer.
+     * @param pipe The pipe to which the valve is attached.
+     * @param rows The number of rows in which the Tanks are ordered.
      */
     public ValveDrawer(Point2D pos, Pipe pipe, int rows) {
         super(pos, pipe.getValveThreshold());

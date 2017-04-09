@@ -8,14 +8,20 @@ package edu.kit.pse.osip.simulation.view.main;
  * @author Niko Wilhelm
  */
 public class Point2D {
-
+    /**
+     * Saves the x coordinate.
+     */
     private double x;
+    /**
+     * Saves the y coordinate.
+     */
     private double y;
 
     /**
-     * Creates a new point on a 2D surface
-     * @param x The x coordinate of the point
-     * @param y The y coordinate of the point
+     * Creates a new point on a 2D surface.
+     * 
+     * @param x The x coordinate of the point.
+     * @param y The y coordinate of the point.
      */
     public Point2D(double x, double y) {
         this.x = x;
@@ -24,6 +30,7 @@ public class Point2D {
 
     /**
      * Gets the value of x.
+     * 
      * @return The value of x.
      */
     public final double getX() {
@@ -32,10 +39,10 @@ public class Point2D {
 
     /**
      * Gets the value of y.
+     * 
      * @return The value of y.
      */
     public final double getY() {
         return y;
     }
-
 }

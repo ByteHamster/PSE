@@ -8,6 +8,9 @@ import edu.kit.pse.osip.core.model.base.TankSelector;
 import edu.kit.pse.osip.core.utils.language.Translator;
 import edu.kit.pse.osip.simulation.controller.SimulationViewInterface;
 import edu.kit.pse.osip.simulation.view.dialogs.OverflowDialog;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.function.Consumer;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
@@ -29,9 +32,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import java.util.Collection;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * The main window for visualizing the OSIP simulation.
@@ -42,9 +42,21 @@ import java.util.List;
  * @author Niko Wilhelm
  */
 public class SimulationMainWindow implements SimulationViewInterface {
-    private static final double WINDOW_HEIGHT = 800;
-    private static final double WINDOW_WIDTH = 700;
+    /**
+     * The minimum window size.
+     */
     private static final double MIN_WINDOW_SIZE = 300;
+    /**
+     * The preferred width for the window.
+     */
+    private static final double WINDOW_WIDTH = 700;
+    /**
+     * The preferred height for the window.
+     */
+    private static final double WINDOW_HEIGHT = 800;
+    /**
+     * The size of the progress indicator.
+     */
     private static final double PROGRESS_INDICATOR_SIZE = 100;
 
     /**
@@ -52,18 +64,43 @@ public class SimulationMainWindow implements SimulationViewInterface {
      */
     private static final int ROWS = 2;
 
+    /**
+     * The menubar.
+     */
     private SimulationMenu menu;
+    /**
+     * Collection of all drawers of the simulation.
+     */
     private Collection<Drawer> element;
+    /**
+     * The canvas in which the simulation is drawn.
+     */
     private Canvas canvas;
+    /**
+     * Handler for the reset button.
+     */
     private EventHandler<ActionEvent> resetHandler;
+    /**
+     * Label for indicating if a scenario is running.
+     */
     private Label scenarioLabel;
+    /**
+     * The stage on which everything is shown.
+     */
     private Stage stage;
+    /**
+     * The main scene showing the simulation.
+     */
     private Scene mainScene;
+    /**
+     * Scene that shows the progress indicator.
+     */
     private Scene progressScene;
 
     /**
      * Creates a new SimulationMainWindow. It is assumed that there will only ever be two rows of tanks.
-     * @param productionSite The ProductionSite object, so that the view can access the model
+     * 
+     * @param productionSite The ProductionSite object, so that the view can access the model.
      */
     public SimulationMainWindow(ProductionSite productionSite) {
         element = new ArrayList<>();
@@ -107,7 +144,7 @@ public class SimulationMainWindow implements SimulationViewInterface {
     }
 
     /**
-     * Creates a PipeDrawer entering the simulation and leading to the TanKDrawer
+     * Creates a PipeDrawer entering the simulation and leading to the TanKDrawer.
      */
     private PipeDrawer createTopPipe(Tank tank, TankDrawer tankDrawer) {
         Point2D topEnd = tankDrawer.getPipeEndPoint(1, 1);
@@ -117,7 +154,7 @@ public class SimulationMainWindow implements SimulationViewInterface {
     }
 
     /**
-     * Creates a PipeDrawer leading from the TankDrawer to the MixTankDrawer
+     * Creates a PipeDrawer leading from the TankDrawer to the MixTankDrawer.
      */
     private PipeDrawer createMixPipe(Tank tank, TankDrawer tankDrawer, MixTankDrawer mixTankDrawer, int pipeNum) {
         Point2D botStart = tankDrawer.getPipeStartPoint();
@@ -129,7 +166,7 @@ public class SimulationMainWindow implements SimulationViewInterface {
     }
 
     /**
-     * Creates a PipeDrawer leaving the MixTankDrawer and exiting the simulation
+     * Creates a PipeDrawer leaving the MixTankDrawer and exiting the simulation.
      */
     private PipeDrawer createMixTankOutPipe(MixTank mixTank, MixTankDrawer mixTankDrawer) {
         Point2D mtStart = mixTankDrawer.getPipeStartPoint();
@@ -138,10 +175,7 @@ public class SimulationMainWindow implements SimulationViewInterface {
         return new PipeDrawer(mtWayPoints, mixTank.getOutPipe(), ROWS);
     }
 
-    /**
-     * The stage that is provided by JavaFx
-     * @param primaryStage The stage to draw the window on
-     */
+    @Override
     public final void start(Stage primaryStage) {
         stage = primaryStage;
         primaryStage.setTitle(Translator.getInstance().getString("simulation.title"));
@@ -158,6 +192,11 @@ public class SimulationMainWindow implements SimulationViewInterface {
         primaryStage.show();
     }
 
+    /**
+     * Makes the layout.
+     * 
+     * @param primaryStage the stage on which the layout is shown.
+     */
     private void makeLayout(Stage primaryStage) {
         BorderPane mainPane = new BorderPane();
 
@@ -191,6 +230,11 @@ public class SimulationMainWindow implements SimulationViewInterface {
         primaryStage.setScene(progressScene);
     }
 
+    /**
+     * Creates the canvas on which the simulation is drawn.
+     * 
+     * @return the generated canvas.
+     */
     private Canvas createCanvas() {
         canvas = new ResizableCanvas();
 
@@ -220,10 +264,7 @@ public class SimulationMainWindow implements SimulationViewInterface {
         return canvas;
     }
 
-    /**
-     * The simulation is replaced by the OverflowOverlay.
-     * @param tank The overflowing tank.
-     */
+    @Override
     public void showOverflow(AbstractTank tank) {
         OverflowDialog dialog = new OverflowDialog(tank);
         dialog.initModality(Modality.APPLICATION_MODAL);
@@ -237,10 +278,7 @@ public class SimulationMainWindow implements SimulationViewInterface {
         dialog.show();
     }
 
-    /**
-     * Sets the handler for pressing the control entry in the menu
-     * @param controlButtonHandler The handler to execute
-     */
+    @Override
     public final void setControlButtonHandler(EventHandler<ActionEvent> controlButtonHandler) {
         menu.setControlButtonHandler(controlButtonHandler);
     }
@@ -306,26 +344,17 @@ public class SimulationMainWindow implements SimulationViewInterface {
         Platform.runLater(() -> stage.setScene(visible ? progressScene : mainScene));
     }
 
-    /**
-     * Sets the handler for pressing the settings entry in the menu
-     * @param settingsButtonHandler The handler to be called when the settings button is pressed
-     */
+    @Override
     public final void setSettingsButtonHandler(EventHandler<ActionEvent> settingsButtonHandler) {
         menu.setSettingsButtonHandler(settingsButtonHandler);
     }
 
-    /**
-     * Sets the handler for pressing the about entry in the menu
-     * @param aboutButtonHandler The handler to be called when the about button is pressed
-     */
+    @Override
     public final void setAboutButtonHandler(EventHandler<ActionEvent> aboutButtonHandler) {
         menu.setAboutButtonHandler(aboutButtonHandler);
     }
 
-    /**
-     * Sets the handler for pressing the help entry in the menu
-     * @param helpButtonHandler The handler to be called when the help button is pressed
-     */
+    @Override
     public final void setHelpButtonHandler(EventHandler<ActionEvent> helpButtonHandler) {
         menu.setHelpButtonHandler(helpButtonHandler);
     }
@@ -337,7 +366,8 @@ public class SimulationMainWindow implements SimulationViewInterface {
     }
 
     /**
-     * Canvas that adapts width and height of the parent
+     * Canvas that adapts width and height of the parent.
+     * 
      * Source: http://stackoverflow.com/a/34264033/
      */
     private class ResizableCanvas extends Canvas {

@@ -12,16 +12,22 @@ import javafx.scene.paint.Color;
  * @author Niko Wilhelm
  */
 public class MotorDrawer extends RotatingControlDrawer {
-
+    /**
+     * The center of the drawer.
+     */
     private Point2D position;
+    /**
+     * The actual, represented motor.
+     */
     private Motor motor;
     private double relRadius;
 
     /**
-     * Generates a new drawer object for motors
-     * @param pos The center of the drawer
-     * @param motor The motor to draw
-     * @param cols The number of colons in which the tanks are ordered
+     * Generates a new drawer object for motors.
+     * 
+     * @param pos The center of the drawer.
+     * @param motor The motor to draw.
+     * @param cols The number of columns in which the tanks are ordered.
      */
     public MotorDrawer(Point2D pos, Motor motor, int cols) {
         super(pos, motor.getRPM());
@@ -89,7 +95,5 @@ public class MotorDrawer extends RotatingControlDrawer {
 
         // There would be not much sense in rotating a circle.
         context.strokeOval(point1xPos, point2yPos, relRadius * 2 * totalWidth, relRadius * 2 * totalWidth);
-
     }
-
 }
