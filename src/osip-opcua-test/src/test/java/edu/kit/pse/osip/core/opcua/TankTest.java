@@ -6,7 +6,6 @@ import edu.kit.pse.osip.simulation.controller.TankServer;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.concurrent.CompletableFuture;
 
 import static org.junit.Assert.assertEquals;
@@ -14,19 +13,33 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Tests the tank servers and clients
+ * Tests the tank servers and clients.
+ * 
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
 public class TankTest {
+    /**
+     * The used port for testing.
+     */
     private static final int PORT = 12686;
+    /**
+     * The used interval for testing.
+     */
     private static final int INTERVAL = 500;
+    /**
+     * The TankServer instance used for testing.
+     */
     private TankServer server;
+    /**
+     * The TankClient instance used for testing.
+     */
     private TankClient client;
 
     /**
-     * Initializes server and client
-     * @throws Exception If something goes wrong
+     * Initializes server and client.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @Before
     public void setup() throws Exception {
@@ -37,8 +50,9 @@ public class TankTest {
     }
 
     /**
-     * Closes server and client
-     * @throws Exception If something goes wrong
+     * Closes server and client.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @After
     public void cleanup() throws Exception {
@@ -47,8 +61,9 @@ public class TankTest {
     }
 
     /**
-     * Tests if the color can be read correctly
-     * @throws Exception If something goes wrong
+     * Tests if the color can be read correctly.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @Test
     public void testColor() throws Exception {
@@ -60,8 +75,9 @@ public class TankTest {
     }
 
     /**
-     * Tests if the fill level can be read correctly
-     * @throws Exception If something goes wrong
+     * Tests if the fill level can be read correctly.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @Test
     public void testFillLevel() throws Exception {
@@ -73,8 +89,9 @@ public class TankTest {
     }
 
     /**
-     * Tests if the input flow rate can be read correctly
-     * @throws Exception If something goes wrong
+     * Tests if the input flow rate can be read correctly.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @Test
     public void testInFlowRate() throws Exception {
@@ -86,8 +103,9 @@ public class TankTest {
     }
 
     /**
-     * Tests if the output flow rate can be read correctly
-     * @throws Exception If something goes wrong
+     * Tests if the output flow rate can be read correctly.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @Test
     public void testOutFlowRate() throws Exception {
@@ -99,8 +117,9 @@ public class TankTest {
     }
 
     /**
-     * Tests if the temperature can be read correctly
-     * @throws Exception If something goes wrong
+     * Tests if the temperature can be read correctly.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @Test
     public void testTemperature() throws Exception {
@@ -112,8 +131,9 @@ public class TankTest {
     }
 
     /**
-     * Tests if the undercool alarm can be read correctly
-     * @throws Exception If something goes wrong
+     * Tests if the undercooling alarm can be read correctly.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @Test
     public void testAlarmUndercool() throws Exception {
@@ -124,8 +144,9 @@ public class TankTest {
     }
 
     /**
-     * Tests if the overheat alarm can be read correctly
-     * @throws Exception If something goes wrong
+     * Tests if the overheating alarm can be read correctly.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @Test
     public void testAlarmOverheat() throws Exception {
@@ -136,8 +157,9 @@ public class TankTest {
     }
 
     /**
-     * Tests if the overflow alarm can be read correctly
-     * @throws Exception If something goes wrong
+     * Tests if the overflow alarm can be read correctly.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @Test
     public void testAlarmOverflow() throws Exception {
@@ -148,8 +170,9 @@ public class TankTest {
     }
 
     /**
-     * Tests if the underflow alarm can be read correctly
-     * @throws Exception If something goes wrong
+     * Tests if the underflow alarm can be read correctly.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @Test
     public void testAlarmUnderflow() throws Exception {

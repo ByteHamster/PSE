@@ -24,7 +24,13 @@ import static org.junit.Assert.assertTrue;
  * @version 1.0
  */
 public class SimulationControllerTest extends ApplicationTest {
+    /**
+     * Indicates that the SimulationController instance has stopped successfully or not.
+     */
     private static CompletableFuture<Boolean> closed = new CompletableFuture<>();
+    /**
+     * The SimulationController instance used for testing.
+     */
     private static SimulationController simCont;
 
     @Override
@@ -32,13 +38,19 @@ public class SimulationControllerTest extends ApplicationTest {
         simCont = new SimulationController();
         simCont.start(primaryStage);
     }
+    
+    @Override
+    public void stop() {
+        simCont.stop();
+        closed.complete(true);
+    }
 
     /**
-     * Start the SimulationController and check whether we can connect OPC UA Clients to it. Don't test
-     * the GUI any further. Just make sure it doesn't throw an exception.
+     * Starts the SimulationController and checks whether we can connect OPC UA Clients to it. Doesn't test
+     * the GUI any further. Just makes sure it doesn't throw an exception.
      *
      * @throws UAClientException    If connecting to the OPC UA servers fails.
-     * @throws InterruptedException If sleep fails
+     * @throws InterruptedException If sleep fails.
      */
     @Test(timeout = 60000)
     public void testLaunch() throws UAClientException, InterruptedException {
@@ -68,16 +80,10 @@ public class SimulationControllerTest extends ApplicationTest {
     }
 
     /**
-     * Check whether the application got stopped
+     * Checks whether the application got stopped.
      */
     @AfterClass
     public static void testClosed() {
         assertTrue(closed.getNow(false));
-    }
-
-    @Override
-    public void stop() {
-        simCont.stop();
-        closed.complete(true);
     }
 }
