@@ -5,79 +5,36 @@ import java.util.EnumMap;
 import java.util.Observable;
 
 /**
- * Group all tanks in the production site together. This is the entrance point of the model, because you can get every
+ * Groups all tanks in the production site together. This is the entrance point of the model because you can get every
  * tank and, through the tanks, every pipe in the production site.
+ * 
  * @author David Kahles
- * @version
- * 1.0
+ * @version 1.0
  */
 public class ProductionSite extends Observable {
+    /**
+     * Stores the mixtank.
+     */
     private MixTank mixTank;
+    /**
+     * Stores all tanks.
+     */
     private final EnumMap<TankSelector, Tank> tanks = new EnumMap<>(TankSelector.class);
+    /**
+     * Saves the input temperatures of all tanks.
+     */
     private final EnumMap<TankSelector, Float> inputTemperature = new EnumMap<>(TankSelector.class);
 
     /**
-     * Template method to allow subclasses to create objects of subclasses of Tank. The parameters are the same
-     * parameters as in the Tank constructor.
-     * @param capacity @see Tank
-     * @param tankSelector @see Tank
-     * @param liquid @see Tank
-     * @param outPipe @see Tank
-     * @param inPipe @see Tank
-     * @return The created Tank
-     */
-    protected Tank instantiateTank(float capacity, TankSelector tankSelector, Liquid liquid, Pipe outPipe,
-        Pipe inPipe) {
-        return new Tank(capacity, tankSelector, liquid, outPipe, inPipe);
-    }
-
-    /**
-     * Template method to allow subclasses to create objects of subclasses of MixTank. The parameters are the same
-     * parameters as in the MixTank constructor.
-     * @param capacity @see MixTank
-     * @param liquid @see MixTank
-     * @param outPipe @see MixTank
-     * @return The creates MixTank
-     */
-    protected MixTank instantiateMixTank(float capacity, Liquid liquid, Pipe outPipe) {
-        return new MixTank(capacity, liquid, outPipe);
-    }
-
-    /**
-     * Construct a new ProductionSite
+     * Constructs a new ProductionSite.
      */
     public ProductionSite() {
         initTanks();
     }
-
+    
     /**
-     * Get the input temperature of an upper tank.
-     * @param tank Specifies the tank.
-     * @return The input temperature.
+     * Initializes all tanks.
      */
-    public float getInputTemperature(TankSelector tank) {
-        return inputTemperature.get(tank);
-    }
-
-    /** Set the input temperature for an upper tank.
-      * @param tank Specifies the tank.
-      * @param temperature Temperature to set.
-      */
-    public void setInputTemperature(TankSelector tank, float temperature) {
-        if (temperature > SimulationConstants.MAX_TEMPERATURE) {
-            throw new IllegalArgumentException("Tank input temperature must not be grater than "
-                + SimulationConstants.MAX_TEMPERATURE);
-        }
-        if (temperature < SimulationConstants.MIN_TEMPERATURE) {
-            throw new IllegalArgumentException("Tank input temperature must not be smaller than "
-                    + SimulationConstants.MIN_TEMPERATURE);
-        }
-
-        inputTemperature.put(tank, temperature);
-        setChanged();
-        notifyObservers();
-    }
-
     private void initTanks() {
         int halfFull = SimulationConstants.TANK_SIZE / 2;
 
@@ -104,18 +61,80 @@ public class ProductionSite extends Observable {
         /* Make sure we're in the correct state */
         reset();
     }
+    
+    /**
+     * Template method to allow subclasses to create objects of subclasses of Tank. The parameters are the same
+     * parameters as in the Tank constructor.
+     * 
+     * @param capacity @see Tank
+     * @param tankSelector @see Tank
+     * @param liquid @see Tank
+     * @param outPipe @see Tank
+     * @param inPipe @see Tank
+     * @return The created Tank.
+     */
+    protected Tank instantiateTank(float capacity, TankSelector tankSelector, Liquid liquid, Pipe outPipe,
+        Pipe inPipe) {
+        return new Tank(capacity, tankSelector, liquid, outPipe, inPipe);
+    }
 
     /**
-     * Get one of the upper tanks.
-     * @return the requested tank.
+     * Template method to allow subclasses to create objects of subclasses of MixTank. The parameters are the same
+     * parameters as in the MixTank constructor.
+     * 
+     * @param capacity @see MixTank
+     * @param liquid @see MixTank
+     * @param outPipe @see MixTank
+     * @return The created MixTank.
+     */
+    protected MixTank instantiateMixTank(float capacity, Liquid liquid, Pipe outPipe) {
+        return new MixTank(capacity, liquid, outPipe);
+    }
+
+    /**
+     * Gets the input temperature of an upper tank.
+     * 
      * @param tank Specifies the tank.
+     * @return The input temperature.
+     */
+    public float getInputTemperature(TankSelector tank) {
+        return inputTemperature.get(tank);
+    }
+
+    /**
+      * Sets the input temperature for an upper tank.
+      * 
+      * @param tank Specifies the tank.
+      * @param temperature Temperature to set.
+      */
+    public void setInputTemperature(TankSelector tank, float temperature) {
+        if (temperature > SimulationConstants.MAX_TEMPERATURE) {
+            throw new IllegalArgumentException("Tank input temperature must not be grater than "
+                + SimulationConstants.MAX_TEMPERATURE);
+        }
+        if (temperature < SimulationConstants.MIN_TEMPERATURE) {
+            throw new IllegalArgumentException("Tank input temperature must not be smaller than "
+                    + SimulationConstants.MIN_TEMPERATURE);
+        }
+
+        inputTemperature.put(tank, temperature);
+        setChanged();
+        notifyObservers();
+    }
+
+    /**
+     * Gets one of the upper tanks.
+     * 
+     * @param tank Specifies the tank.
+     * @return the requested tank.
      */
     public Tank getUpperTank(TankSelector tank) {
         return tanks.get(tank);
     }
 
     /**
-     * Get the mixtank.
+     * Gets the mixtank.
+     * 
      * @return the mixtank of the production site.
      */
     public MixTank getMixTank() {
@@ -123,7 +142,7 @@ public class ProductionSite extends Observable {
     }
 
     /**
-     * Reset the whole production site to its default values: Every tank with 50% infill, valves putting the site to
+     * Resets the whole production site to its default values: Every tank with 50% infill, valves putting the site to
      * a stable state.
      */
     public synchronized void reset() {

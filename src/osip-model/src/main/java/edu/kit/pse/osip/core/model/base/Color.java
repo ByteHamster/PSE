@@ -2,16 +2,26 @@ package edu.kit.pse.osip.core.model.base;
 
 /**
  * A color in the CMY (cyan, magenta, yellow) color space.
+ * 
  * @author David Kahles
  * @version 1.0
  */
 public class Color {
+    /**
+     * Saves the proportion of cyan.
+     */
     private double cyan;
+    /**
+     * Saves the proportion of yellow.
+     */
     private double yellow;
+    /**
+     * Saves the proportion of magenta.
+     */
     private double magenta;
 
     /**
-     * Construct a new Color object.
+     * Constructs a new Color object.
      *
      * @param cyan    The portion of the cyan color. It needs to be between 0 and 1.
      * @param yellow  The portion of the yellow color. It needs to be between 0 and 1.
@@ -29,7 +39,8 @@ public class Color {
     }
 
     /**
-     * Construct a new Color object.
+     * Constructs a new Color object.
+     * 
      * @param rgb an integer containing the red component in bits 16-23, the green component in bits 8-15
      *            and the blue component in bits 0-7. Bits 24-32 need to be zero.
      * @throws IllegalArgumentException if the fourth byte is not zero.
@@ -46,7 +57,7 @@ public class Color {
     }
 
     /**
-     * Get the cyan percentage.
+     * Gets the cyan percentage.
      *
      * @return the percentage of the cyan color.
      */
@@ -55,7 +66,7 @@ public class Color {
     }
 
     /**
-     * Get the magenta percentage.
+     * Gets the magenta percentage.
      *
      * @return the percentage of the magenta color.
      */
@@ -64,7 +75,7 @@ public class Color {
     }
 
     /**
-     * Get the yellow percentage.
+     * Gets the yellow percentage.
      *
      * @return the percentage of the yellow color.
      */
@@ -100,7 +111,8 @@ public class Color {
     }
 
     /**
-     * Get the rgb color in one integer.
+     * Gets the rgb color in one integer.
+     * 
      * @return an integer containing the red component in bits 16-23, the green component in bits 8-15
      *            and the blue component in bits 0-7. Bits 24-32 are zero.
      */

@@ -2,6 +2,7 @@ package edu.kit.pse.osip.core.model.behavior;
 
 /**
  * This specifies whether an alarm is triggered if the value is below or greater than the threshold.
+ * 
  * @author Maximilian Schwarzmann
  * @version 1.0
  */

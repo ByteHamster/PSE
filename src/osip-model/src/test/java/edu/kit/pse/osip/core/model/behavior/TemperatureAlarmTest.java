@@ -3,31 +3,44 @@ package edu.kit.pse.osip.core.model.behavior;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.Before;
-import org.junit.Test;
-
 import edu.kit.pse.osip.core.model.base.Color;
 import edu.kit.pse.osip.core.model.base.Liquid;
 import edu.kit.pse.osip.core.model.base.Pipe;
 import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
- * Test class for TemperatureAlarm
+ * Test class for TemperatureAlarm.
+ * 
  * @author Maximilian Schwarzmann
  * @version 1.0
- *
  */
 public class TemperatureAlarmTest {
-
+    /**
+     * Liquid used for testing.
+     */
     private Liquid testLiquid;
+    /**
+     * The tank used for testing the alarms.
+     */
     private Tank tank;
+    /**
+     * Tested alarms.
+     */
     private TemperatureAlarm alarm;
+    /**
+     * Outgoing pipe for testing.
+     */
     private Pipe pipe1;
+    /**
+     * Incoming pipe for testing.
+     */
     private Pipe pipe2;
 
     /**
-     * Initialize pipes
+     * Initializes pipes.
      */
     @Before
     public void init() {
@@ -36,7 +49,7 @@ public class TemperatureAlarmTest {
     }
     
     /**
-     * Test configuration where alarm is not triggered
+     * Tests configuration where alarm is not triggered.
      */
     @Test
     public void testAlarmIsNotTriggered() {
@@ -47,7 +60,7 @@ public class TemperatureAlarmTest {
     }
 
     /**
-     * Test configuration where alarm is triggered
+     * Tests configuration where alarm is triggered.
      */
     @Test
     public void testAlarmIsTriggered() {
@@ -56,5 +69,4 @@ public class TemperatureAlarmTest {
         alarm = new TemperatureAlarm(tank, 200f, AlarmBehavior.GREATER_THAN);
         assertTrue(alarm.isAlarmTriggered());
     }
-    
 }

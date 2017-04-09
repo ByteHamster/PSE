@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class TankSelectorTest {
     /**
-     * Check whether valuesWithoutMix() returns all enum values except the mix tank.
+     * Checks whether valuesWithoutMix() returns all enum values except the mix tank.
      */
     @Test
     public void testValuesWithoutMix() {
@@ -27,7 +27,7 @@ public class TankSelectorTest {
     }
 
     /**
-     * Check whether getUpperTankCount() returns one less than the length of values().
+     * Checks whether getUpperTankCount() returns one less than the length of values().
      */
     @Test
     public void testGetUpperTankCount() {
@@ -35,7 +35,7 @@ public class TankSelectorTest {
     }
 
     /**
-     * Check whether there are at least two tanks defined, one of them being the mix tank.
+     * Checks whether there are at least two tanks defined, one of them being the mix tank.
      */
     @Test
     public void testGEnoughTanks() {
@@ -46,7 +46,7 @@ public class TankSelectorTest {
     }
 
     /**
-     * Check whether getInitialColor() and getInitialTemperature() returns a value for every tank. Should not throw an
+     * Checks whether getInitialColor() and getInitialTemperature() returns a value for every tank. Should not throw an
      * ArrayIndexOutOfBoundsException.
      */
     @Test

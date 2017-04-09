@@ -3,34 +3,51 @@ package edu.kit.pse.osip.core.model.behavior;
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.Observable;
-import java.util.Observer;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import edu.kit.pse.osip.core.model.base.Color;
 import edu.kit.pse.osip.core.model.base.Liquid;
 import edu.kit.pse.osip.core.model.base.Pipe;
 import edu.kit.pse.osip.core.model.base.Tank;
 import edu.kit.pse.osip.core.model.base.TankSelector;
+import java.util.Observable;
+import java.util.Observer;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
- * Test class for observable ability of TankAlarm
+ * Test class for observable ability of TankAlarm.
+ * 
  * @author Maximilian Schwarzmann
  * @version 1.0
  */
 public class TankAlarmObservableTest {
-
+    /**
+     * Liquid for testing.
+     */
     private Liquid testLiquid;
+    /**
+     * The tank used for testing the alarms.
+     */
     private Tank tank;
+    /**
+     * The tested FillAlarm.
+     */
     private FillAlarm alarm;
+    /**
+     * Outgoing pipe for testing.
+     */
     private Pipe pipe1;
+    /**
+     * Incoming pipe for testing.
+     */
     private Pipe pipe2;
+    /**
+     * Default color of the liquid.
+     */
     private Color defaultColor = new Color(0.5, 0.5, 0.5);
     
    /**
-    * Helper observer for tests
+    * Helper observer for tests.
+    * 
     * @author Maximilian Schwarzmann
     * @version 1.0
     */
@@ -43,15 +60,16 @@ public class TankAlarmObservableTest {
         }
     
         /**
-         * Getter for notified 
-         * @return true if notified
+         * Getter for notified.
+         * 
+         * @return true if notified.
          */
         public boolean wasNotified() {
             return wasNotified;
         }
     
         /**
-         * resetNotified
+         * Reset notified.
          */
         public void resetNotified() {
             wasNotified = false;
@@ -59,7 +77,7 @@ public class TankAlarmObservableTest {
     }
 
     /**
-     * Initialize pipes
+     * Initializes pipes.
      */
     @Before
     public void init() {
@@ -68,7 +86,7 @@ public class TankAlarmObservableTest {
     }
     
     /**
-     * Test if alarm gives notification on changes
+     * Tests if alarm gives notification on changes.
      */
     @Test
     public void testObservableGreatherNotify() {
@@ -85,7 +103,7 @@ public class TankAlarmObservableTest {
     }
 
     /**
-     * Test if alarm gives notification on changes
+     * Tests if alarm gives notification on changes.
      */
     @Test
     public void testObservableSmallerNotify() {
@@ -109,7 +127,7 @@ public class TankAlarmObservableTest {
     }
 
     /**
-     * Test if the alarm gives no notification on no changes
+     * Tests if the alarm gives no notification on no changes.
      */
     @Test
     public void testObservableNoNotify() {
@@ -126,7 +144,7 @@ public class TankAlarmObservableTest {
     }
     
     /**
-     * Test if alarm gives notification on changes 
+     * Tests if alarm gives notification on changes.
      */
     @Test
     public void testObservableNotifyMultiple() {       
@@ -150,8 +168,8 @@ public class TankAlarmObservableTest {
     }
 
     /**
-     * Test if alarm gives no notification on multiple new liquid inputs, which all trigger alarms
-     * Use GREATER_THAN behavior
+     * Tests if alarm gives no notification on multiple new liquid inputs, which all trigger alarms.
+     * Use GREATER_THAN behavior.
      */
     @Test
     public void testObservableNotifyMultipleConstantGreaterThan() {
@@ -175,8 +193,8 @@ public class TankAlarmObservableTest {
     }
     
     /**
-     * Test if alarm gives no notification on multiple new liquid inputs, which all trigger alarms.
-     * Use SMALLER_THAN behavior
+     * Tests if alarm gives no notification on multiple new liquid inputs, which all trigger alarms.
+     * Use SMALLER_THAN behavior.
      */
     @Test
     public void testObservableNotifyMultipleConstantSmallerThan() {
@@ -200,7 +218,7 @@ public class TankAlarmObservableTest {
     }
 
     /**
-     * Test update method with argument which is not a liquid
+     * Tests update method with argument which is not a liquid.
      */
     @Test(expected = AssertionError.class)
     public void testNotInstanceOfLiquidArg() {

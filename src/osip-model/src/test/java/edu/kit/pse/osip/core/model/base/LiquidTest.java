@@ -16,14 +16,15 @@ import static org.junit.Assert.assertTrue;
  */
 public class LiquidTest {
     /**
-     * Test whether the constructor accepts too low temperatures
+     * Tests whether the constructor accepts too low temperatures.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testTooLowTemperature() {
         new Liquid(1, SimulationConstants.MIN_TEMPERATURE - 0.01f, new Color(0, 0, 0));
     }
+    
     /**
-     * Test whether the constructor accepts too high temperatures
+     * Tests whether the constructor accepts too high temperatures.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testTooHighTemperature() {
@@ -32,7 +33,7 @@ public class LiquidTest {
 
 
     /**
-     * Test whether the constructor accepts a negative amount.
+     * Tests whether the constructor accepts a negative amount.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testNegativeAmount() {
@@ -40,7 +41,7 @@ public class LiquidTest {
     }
 
     /**
-     * Test whether the constructor accepts a null color.
+     * Tests whether the constructor accepts a null color.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testNullColor() {
@@ -48,7 +49,7 @@ public class LiquidTest {
     }
 
     /**
-     * Test the getter.
+     * Tests the getter.
      */
     @Test
     public void testGetter() {
@@ -59,7 +60,7 @@ public class LiquidTest {
     }
 
     /**
-     * Check whether the hashCode method works as expected.
+     * Checks whether the hashCode method works as expected.
      */
     @Test
     public void testHashcode() {
@@ -75,7 +76,7 @@ public class LiquidTest {
     }
 
     /**
-     * Check whether the equals method works as expected.
+     * Checks whether the equals method works as expected.
      */
     @Test
     public void testEquals() {

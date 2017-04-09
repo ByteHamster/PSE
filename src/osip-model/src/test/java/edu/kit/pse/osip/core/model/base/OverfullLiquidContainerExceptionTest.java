@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class OverfullLiquidContainerExceptionTest {
     /**
-     * Check whether the getters work as expected.
+     * Checks whether the getters work as expected.
      */
     @Test
     public void testGetter() {

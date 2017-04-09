@@ -1,26 +1,36 @@
 package edu.kit.pse.osip.core.model.base;
 
 import edu.kit.pse.osip.core.SimulationConstants;
+import java.util.Observable;
 
 /**
  * This is the motor which is installed in the mixtank.
+ * 
  * @author David Kahles
  * @version 1.0
  */
-public class Motor extends java.util.Observable {
+public class Motor extends Observable {
+    /**
+     * The current rpm.
+     */
     private int rpm;
+    /**
+     * The initial rpm.
+     */
     private int initialRpm;
 
     /**
-     * Constructs a new Motor
-     * @param initialRpm The initial motor speed, which is also set when the motor gets reset.
+     * Constructs a new Motor.
+     * 
+     * @param initialRpm The initial motor speed which is also set when the motor gets reset.
      */
     public Motor(int initialRpm) {
         this.initialRpm = initialRpm;
     }
 
     /**
-     * Set the RPM of the motor.
+     * Sets the RPM of the motor.
+     * 
      * @throws IllegalArgumentException if rpm is negative or greater than SimulationConstants.MAX_MOTOR_SPEED.
      * @param rpm The target RPM.
      */
@@ -33,7 +43,8 @@ public class Motor extends java.util.Observable {
         notifyObservers();
     }
     /**
-     * Get the RPM.
+     * Gets the RPM.
+     * 
      * @return the RPM.
      */
     public int getRPM() {

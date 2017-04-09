@@ -2,10 +2,14 @@ package edu.kit.pse.osip.core;
 
 /**
  * Defines some constants.
+ * 
  * @author David Kahles
  * @version 1.0
  */
 public final class SimulationConstants {
+    /**
+     * Private constructor to avoid instantiation.
+     */
     private SimulationConstants() {
         throw new RuntimeException("SimulationConstants should not be instanced");
     }
@@ -16,7 +20,7 @@ public final class SimulationConstants {
     public static final int TANK_SIZE = 10000;
 
     /**
-     * The maximum motor speed
+     * The maximum motor speed.
      */
     public static final int MAX_MOTOR_SPEED = 3000;
 
@@ -26,27 +30,27 @@ public final class SimulationConstants {
     public static final int SIMULATION_STEP = 1;
 
     /**
-     * The minimum temperature in kelvin one can set as tank input temperature
+     * The minimum temperature in Kelvin one can set as tank input temperature.
      */
     public static final float MIN_TEMPERATURE = 273.15f;
 
     /**
-     * The maximum temperature in kelvin one can set as tank input temperature
+     * The maximum temperature in Kelvin one can set as tank input temperature.
      */
     public static final float MAX_TEMPERATURE = 503.15f;
 
     /**
-     * The offset needed to get from the current temperature to Celsius
+     * The offset needed to get from the current temperature to Celsius.
      */
     public static final float CELSIUS_OFFSET = 273.15f;
 
     /**
-     * The default pipe crosssection
+     * The default pipe crosssection.
      */
     public static final float PIPE_CROSSSECTION = 25;
 
     /**
-     * The default pipe length
+     * The default pipe length.
      */
     public static final int PIPE_LENGTH = 1;
 }

@@ -18,12 +18,21 @@ import static org.junit.Assert.assertTrue;
  * @version 1.0
  */
 public class MixTankTest implements Observer {
+    /**
+     * Liquid used for testing.
+     */
     private Liquid liquid = new Liquid(1, SimulationConstants.MIN_TEMPERATURE, new Color(0));
+    /**
+     * Pipe used for testing.
+     */
     private Pipe outPipe = new Pipe(5, 5, (byte) 100);
+    /**
+     * Tracks the working of the observer.
+     */
     private boolean changed;
 
     /**
-     * Reset changed
+     * Reset changed.
      */
     @Before
     public void init() {
@@ -31,7 +40,7 @@ public class MixTankTest implements Observer {
     }
 
     /**
-     * Test whether a too small capacity throws an exception.
+     * Tests whether a too small capacity throws an exception.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testWrongCapacity() {
@@ -39,7 +48,7 @@ public class MixTankTest implements Observer {
     }
 
     /**
-     * Test whether a null liquid throws an exception.
+     * Tests whether a null liquid throws an exception.
      */
     @Test(expected = NullPointerException.class)
     public void testNullLiquid() {
@@ -47,7 +56,7 @@ public class MixTankTest implements Observer {
     }
 
     /**
-     * Test whether a null outPipe throws an exception.
+     * Tests whether a null outPipe throws an exception.
      */
     @Test(expected = NullPointerException.class)
     public void testNullInpipe() {
@@ -55,7 +64,7 @@ public class MixTankTest implements Observer {
     }
 
     /**
-     * Test whether getOutPipe() works correctly
+     * Tests whether getOutPipe() works correctly.
      */
     @Test
     public void testPipes() {
@@ -64,7 +73,7 @@ public class MixTankTest implements Observer {
     }
 
     /**
-     * Test whether getMotor() works correctly
+     * Tests whether getMotor() works correctly.
      */
     @Test
     public void testMotor() {
@@ -73,7 +82,7 @@ public class MixTankTest implements Observer {
     }
 
     /**
-     * Test whether getting and settings the liquid and getFillLevel() works correctly.
+     * Tests whether getting and setting the liquid and getFillLevel() works correctly.
      */
     @Test
     public void testLiquid() {
@@ -88,7 +97,7 @@ public class MixTankTest implements Observer {
     }
 
     /**
-     * Test whether setting a null liquid works correctly.
+     * Tests whether setting a null liquid works correctly.
      */
     @Test(expected = NullPointerException.class)
     public void testSetNullLiquid() {
@@ -103,7 +112,7 @@ public class MixTankTest implements Observer {
     }
 
     /**
-     * Test whether observing works correctly.
+     * Tests whether observing works correctly.
      */
     @Test
     public void testObserver() {

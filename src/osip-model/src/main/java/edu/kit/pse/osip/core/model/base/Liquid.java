@@ -5,22 +5,32 @@ import edu.kit.pse.osip.core.SimulationConstants;
 /**
  * A readonly data type for liquids. This is the liquid which flows through the tanks and pipes. It has attributes
  * for the color, the temperature and the amount.
+ * 
  * @author David Kahles
  * @version 1.0
  */
 public class Liquid {
+    /**
+     * Saves the amount.
+     */
     private float amount;
+    /**
+     * Saves the temperature.
+     */
     private float temperature;
+    /**
+     * Saves the color.
+     */
     private Color color;
 
     /**
-     * Construct a new Liquid object.
+     * Constructs a new Liquid object.
      *
-     * @throws IllegalArgumentException if the amount is smaller than zero, the temperature is smaller than
-     * SimulationConstants.MIN_TEMPERATURE or greater than SimulationConstants.MAX_TEMPERATURE or the color is null.
      * @param amount      The amount in cm³.
      * @param temperature The temperature in °K.
      * @param color       The color of the liquid.
+     * @throws IllegalArgumentException if the amount is smaller than zero, the temperature is smaller than
+     * SimulationConstants.MIN_TEMPERATURE or greater than SimulationConstants.MAX_TEMPERATURE or the color is null.
      */
     public Liquid(float amount, float temperature, Color color) {
         if (amount < 0) {
@@ -44,7 +54,7 @@ public class Liquid {
     }
 
     /**
-     * Get the color of the Liquid.
+     * Gets the color of the Liquid.
      *
      * @return the color.
      */
@@ -53,7 +63,7 @@ public class Liquid {
     }
 
     /**
-     * Get the temperature of the liquid.
+     * Gets the temperature of the liquid.
      *
      * @return the temperature.
      */
@@ -62,7 +72,7 @@ public class Liquid {
     }
 
     /**
-     * Get the amount of the liquid.
+     * Gets the amount of the liquid.
      *
      * @return the amount.
      */

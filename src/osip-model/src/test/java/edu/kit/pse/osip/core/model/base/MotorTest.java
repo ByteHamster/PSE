@@ -16,11 +16,17 @@ import static org.junit.Assert.assertTrue;
  * @version 1.0
  */
 public class MotorTest implements Observer {
+    /**
+     * Motor used for testing.
+     */
     private Motor motor = null;
+    /**
+     * Indicates if the observer works.
+     */
     private boolean observed;
 
     /**
-     * Create a new Motor for tests.
+     * Creates a new Motor for tests.
      */
     @Before
     public void initMotor() {
@@ -29,7 +35,7 @@ public class MotorTest implements Observer {
     }
 
     /**
-     * Check whether setRPM() rejects too big integers.
+     * Checks whether setRPM() rejects too big integers.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testTooBig() {
@@ -37,7 +43,7 @@ public class MotorTest implements Observer {
     }
 
     /**
-     * Check whether setRPM() rejects negative integers.
+     * Checks whether setRPM() rejects negative integers.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testNegative() {
@@ -45,7 +51,7 @@ public class MotorTest implements Observer {
     }
 
     /**
-     * Check whether setRPM() works for correct integers.
+     * Checks whether setRPM() works for correct integers.
      */
     @Test
     public void testSet() {
@@ -59,7 +65,7 @@ public class MotorTest implements Observer {
     }
 
     /**
-     * Test whether observing the motor works fine.
+     * Tests whether observing the motor works fine.
      */
     @Test
     public void testObserver() {

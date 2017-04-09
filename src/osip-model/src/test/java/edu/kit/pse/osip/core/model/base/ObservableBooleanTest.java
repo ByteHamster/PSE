@@ -2,7 +2,6 @@ package edu.kit.pse.osip.core.model.base;
 
 import edu.kit.pse.osip.core.model.behavior.ObservableBoolean;
 import org.junit.Test;
-
 import java.util.Observable;
 import java.util.Observer;
 
@@ -16,10 +15,13 @@ import static org.junit.Assert.assertTrue;
  * @version 1.0
  */
 public class ObservableBooleanTest implements Observer {
+    /**
+     * Indicates if the observer works.
+     */
     private boolean updated = false;
 
     /**
-     * Test whether the ObservableBoolean works when initializing it to true
+     * Tests whether the ObservableBoolean works when initializing it to true.
      */
     @Test
     public void testTrue() {
@@ -35,7 +37,7 @@ public class ObservableBooleanTest implements Observer {
     }
 
     /**
-     * Test whether the ObservableBoolean works when initializing it to false
+     * Tests whether the ObservableBoolean works when initializing it to false.
      */
     @Test
     public void testFalse() {

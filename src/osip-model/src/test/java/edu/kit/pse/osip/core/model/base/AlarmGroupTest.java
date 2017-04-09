@@ -2,7 +2,6 @@ package edu.kit.pse.osip.core.model.base;
 
 import edu.kit.pse.osip.core.model.behavior.AlarmGroup;
 import org.junit.Test;
-
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static junit.framework.TestCase.assertFalse;
@@ -16,7 +15,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class AlarmGroupTest {
     /**
-     * Test whether the AlarmGroup works
+     * Tests whether the AlarmGroup works.
      */
     @Test
     public void test() {

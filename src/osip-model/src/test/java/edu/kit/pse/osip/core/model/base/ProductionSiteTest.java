@@ -3,7 +3,6 @@ package edu.kit.pse.osip.core.model.base;
 import edu.kit.pse.osip.core.SimulationConstants;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.Observable;
 import java.util.Observer;
 
@@ -19,11 +18,17 @@ import static org.junit.Assert.assertTrue;
  * @version 1.0
  */
 public class ProductionSiteTest implements Observer {
+    /**
+     * ProductionSite used for testing.
+     */
     private ProductionSite prodSite;
+    /**
+     * Indicates if the observer works.
+     */
     private boolean updated;
 
     /**
-     * Initialize prodSite
+     * Initializes prodSite.
      * */
     @Before
     public void init() {
@@ -32,7 +37,7 @@ public class ProductionSiteTest implements Observer {
     }
 
     /**
-     * Check that all tanks are not null
+     * Checks that all tanks are not null.
      */
     @Test
     public void notNull() {
@@ -52,7 +57,7 @@ public class ProductionSiteTest implements Observer {
     }
 
     /**
-     * Check that all tanks have the correct TankSelector assigned
+     * Checks that all tanks have the correct TankSelector assigned.
      */
     @Test
     public void correctSelector() {
@@ -71,7 +76,7 @@ public class ProductionSiteTest implements Observer {
     }
 
     /**
-     * Check that all tanks have the correct initial color, also after reset()
+     * Checks that all tanks have the correct initial color, also after reset().
      */
     @Test
     public void correctColor() {
@@ -91,7 +96,7 @@ public class ProductionSiteTest implements Observer {
     }
 
     /**
-     * Check that all tanks have the correct initial color, also after reset()
+     * Checks that all tanks have the correct initial color, also after reset().
      */
     @Test
     public void correctFillLevel() {
@@ -109,6 +114,9 @@ public class ProductionSiteTest implements Observer {
         }
     }
 
+    /**
+     * Modifies the ProductionSite to test reset().
+     */
     private void modifyEverything() {
         Liquid l = prodSite.getMixTank().getLiquid();
         prodSite.getMixTank().setLiquid(modifyLiquid(l));
@@ -121,9 +129,21 @@ public class ProductionSiteTest implements Observer {
             prodSite.getUpperTank(selector).getOutPipe().setValveThreshold((byte) 0);
         }
     }
+    
+    /**
+     * Modifies a liquid to test reset(). 
+     * 
+     * @param l the liquid for modifying.
+     * @return the modified liquid.
+     */
+    private Liquid modifyLiquid(Liquid l) {
+        Color c = l.getColor();
+        return new Liquid(l.getAmount() + 1, l.getTemperature() + 2, new Color(c.getCyan(),
+            c.getMagenta(), c.getYellow()));
+    }
 
     /**
-     * Check that the production site is in a stable state, also after reset()
+     * Checks that the production site is in a stable state, also after reset().
      */
     @Test
     public void correctState() {
@@ -153,14 +173,8 @@ public class ProductionSiteTest implements Observer {
         assertEquals(0, equality);
     }
 
-    private Liquid modifyLiquid(Liquid l) {
-        Color c = l.getColor();
-        return new Liquid(l.getAmount() + 1, l.getTemperature() + 2, new Color(c.getCyan(),
-            c.getMagenta(), c.getYellow()));
-    }
-
     /**
-     * Test that the ProductionSite remembers temperatures
+     * Tests that the ProductionSite remembers temperatures.
      */
     @Test
     public void testInputTemperature() {
@@ -175,7 +189,7 @@ public class ProductionSiteTest implements Observer {
     }
 
     /**
-     * Test that the ProductionSite rejects too low temperatures
+     * Tests that the ProductionSite rejects too low temperatures.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testTooLowInputTemperature() {
@@ -183,7 +197,7 @@ public class ProductionSiteTest implements Observer {
     }
 
     /**
-     * Test that the ProductionSite rejects too high temperatures
+     * Tests that the ProductionSite rejects too high temperatures.
      */
     @Test(expected = IllegalArgumentException.class)
     public void testTooHighInputTemperature() {
