@@ -8,15 +8,16 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 
 /**
- * Tests the basic parser class
+ * Tests the basic parser class.
  *
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
 public class BaseParserTest {
     /**
-     * Tests if the parser throws an exception when calling die()
-     * @throws ParserException expected
+     * Tests if the parser throws an exception when calling die().
+     * 
+     * @throws ParserException expected.
      */
     @Test(expected = ParserException.class)
     public void testDie() throws ParserException {
@@ -24,8 +25,9 @@ public class BaseParserTest {
     }
 
     /**
-     * Tests if peek and pop work as expected
-     * @throws ParserException If something goes wrong
+     * Tests if peek and pop work as expected.
+     * 
+     * @throws ParserException If something goes wrong.
      */
     @Test
     public void testPeekPop() throws ParserException {
@@ -41,8 +43,9 @@ public class BaseParserTest {
     }
 
     /**
-     * Pop without data being available
-     * @throws ParserException Expected
+     * Pop without data being available.
+     * 
+     * @throws ParserException Expected.
      */
     @Test(expected = ParserException.class)
     public void testPopException() throws ParserException {
@@ -52,8 +55,9 @@ public class BaseParserTest {
     }
 
     /**
-     * Test consuming and checking
-     * @throws ParserException If something goes wrong
+     * Tests consuming and checking.
+     * 
+     * @throws ParserException If something goes wrong.
      */
     @Test
     public void testConsumeAndCheck() throws ParserException {
@@ -64,8 +68,9 @@ public class BaseParserTest {
     }
 
     /**
-     * Test failed check()
-     * @throws ParserException If something goes wrong
+     * Tests failed check().
+     * 
+     * @throws ParserException If something goes wrong.
      */
     @Test(expected = ParserException.class)
     public void testCheckFailed() throws ParserException {
@@ -75,8 +80,9 @@ public class BaseParserTest {
     }
 
     /**
-     * Test whitespaces and comments
-     * @throws ParserException If something goes wrong
+     * Tests white spaces and comments.
+     * 
+     * @throws ParserException If something goes wrong.
      */
     @Test
     public void testWhitespaceComments() throws ParserException {
@@ -90,7 +96,7 @@ public class BaseParserTest {
     }
 
     /**
-     * Test if commands create EOF errors
+     * Tests if commands create EOF errors.
      */
     @Test
     public void testEOF() {

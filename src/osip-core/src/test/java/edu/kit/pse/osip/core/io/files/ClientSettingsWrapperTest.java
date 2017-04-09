@@ -4,35 +4,54 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import edu.kit.pse.osip.core.model.base.TankSelector;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.kit.pse.osip.core.model.base.TankSelector;
-
 /**
- * Test class for ClientSettingsWrapper
+ * Test class for ClientSettingsWrapper.
+ * 
  * @author Maximilian Schwarzmann
  * @version 1.0
- *
  */
 public class ClientSettingsWrapperTest {
-
+    /**
+     * Test wrapper with valid settings.
+     */
     private ClientSettingsWrapper wrapper;
+    /**
+     * Test wrapper for testing null entries.
+     */
     private ClientSettingsWrapper wrapperNullEntry;
+    /**
+     * Test wrapper with invalid settings.
+     */
     private ClientSettingsWrapper wrapperInvalidEntry;
+    /**
+     * Temporary file for wrapper.
+     */
     private File tempTestFile;
+    /**
+     * Temporary file for wrapperNullEntry.
+     */
     private File tempTestFileNullEntry;
+    /**
+     * Temporary file for wrapperInvalidEntry.
+     */
     private File tempTestFileInvalidEntry;
+    /**
+     * Tank used for testing.
+     */
     private TankSelector testTank;
     
     /**
-     * Set up for tests
-     * @throws IOException Exceptions in set up
+     * Setup for tests.
+     * 
+     * @throws IOException Exceptions in setup.
      */
     @Before
     public void setUp() throws IOException {
@@ -42,6 +61,11 @@ public class ClientSettingsWrapperTest {
         initInvalidWrapper();
     }
     
+    /**
+     * Initializes a wrapper with valid settings.
+     * 
+     * @throws IOException when an IO error happens.
+     */
     private void initWrapper() throws IOException {
         tempTestFile = File.createTempFile("testClientSettingsTemp", ".properties");        
         PrintWriter outStream = new PrintWriter(tempTestFile);        
@@ -58,6 +82,11 @@ public class ClientSettingsWrapperTest {
         wrapper = new ClientSettingsWrapper(tempTestFile);
     }
     
+    /**
+     * Initializes a wrapper for testing null values.
+     * 
+     * @throws IOException when an IO error happens.
+     */
     private void initNullWrapper() throws IOException {
         tempTestFileNullEntry = File.createTempFile("testClientSettingsTempNullEntry", ".properties");        
         PrintWriter outStreamNullEntry = new PrintWriter(tempTestFileNullEntry);        
@@ -73,7 +102,12 @@ public class ClientSettingsWrapperTest {
         outStreamNullEntry.close();
         wrapperNullEntry = new ClientSettingsWrapper(tempTestFileNullEntry);
     }
-       
+
+    /**
+     * Initializes a wrapper with invalid settings.
+     *  
+     * @throws IOException when an IO error happens.
+     */
     private void initInvalidWrapper() throws IOException {
         tempTestFileInvalidEntry = File.createTempFile("testClientSettingsTempInvalidEntry", ".properties");        
         PrintWriter outStreamInvalidEntry = new PrintWriter(tempTestFileInvalidEntry);        
@@ -89,16 +123,19 @@ public class ClientSettingsWrapperTest {
         outStreamInvalidEntry.close();
         wrapperInvalidEntry = new ClientSettingsWrapper(tempTestFileInvalidEntry);       
     }
+    
     /**
-     * Delete used test temp file
+     * Deletes used test temp files.
      */
     @After
     public void tearDown() {
         tempTestFile.delete();
+        tempTestFileNullEntry.delete();
+        tempTestFileInvalidEntry.delete();
     }
     
     /**
-     * Test setting ports
+     * Tests setting ports.
      */
     @Test
     public void testSetServerPort() {
@@ -107,7 +144,7 @@ public class ClientSettingsWrapperTest {
     }
 
     /**
-     * Test setting fetchinterval
+     * Tests setting fetch interval.
      */
     @Test
     public void testSetFetchInterval() {
@@ -116,7 +153,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test setting overflow alarm status
+     * Tests setting overflow alarm status.
      */
     @Test
     public void testSetOverflowAlarm() {
@@ -125,7 +162,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test setting temp diagram status
+     * Tests setting temp diagram status.
      */
     @Test
     public void testSetTempDiagram() {
@@ -134,7 +171,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * test setting server hostname
+     * Tests setting server host name.
      */
     @Test
     public void testSetServerHostname() {
@@ -143,7 +180,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test setting underflow alarm status
+     * Tests setting underflow alarm status.
      */
     @Test
     public void testSetUnderflowAlarm() {
@@ -152,7 +189,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test setting fill level diagram status
+     * Tests setting fill level diagram status.
      */
     @Test
     public void testSetFillLevelDiagram() {
@@ -161,7 +198,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test setting overheating alarm status
+     * Tests setting overheating alarm status.
      */
     @Test
     public void testSetOverheatingAlarm() {
@@ -170,7 +207,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test setting undercooling alarm status
+     * Tests setting undercooling alarm status.
      */
     @Test
     public void testSetTempLowAlarm() {
@@ -179,7 +216,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting fetchinterval
+     * Tests getting fetch interval.
      */
     @Test
     public void testGetFetchInterval() {
@@ -188,7 +225,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting overflow alarm status
+     * Tests getting overflow alarm status.
      */
     @Test
     public void testGetOverflowAlarm() {
@@ -197,7 +234,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting underflow alarm status
+     * Tests getting underflow alarm status.
      */
     @Test
     public void testGetUnderflowAlarm() {
@@ -206,7 +243,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting temp diagram status
+     * Tests getting temp diagram status.
      */
     @Test
     public void testGetTempDiagram() {
@@ -215,7 +252,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting fill level diagram status
+     * Tests getting fill level diagram status.
      */
     @Test
     public void testGetFillLevelDiagram() {
@@ -224,7 +261,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting hostname
+     * Tests getting host name.
      */
     @Test
     public void testGetHostname() {
@@ -233,7 +270,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting port
+     * Tests getting port.
      */
     @Test
     public void testGetPort() {
@@ -242,7 +279,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting overheating alarm
+     * Tests getting overheating alarm.
      */
     @Test
     public void testGetOverheatingAlarm() {
@@ -251,7 +288,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting undercooling alarm
+     * Tests getting undercooling alarm.
      */
     @Test
     public void testGetTempLowAlarm() {
@@ -260,7 +297,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getter for non existent entry
+     * Tests getter for non existent entry.
      */
     @Test
     public void testNonExistentTankPort() {
@@ -269,8 +306,9 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test saving to file
-     * @throws IOException Exception in IO stream
+     * Tests saving to file.
+     * 
+     * @throws IOException Exception in IO stream.
      */
     @Test
     public void testSaveSettings() throws IOException {
@@ -282,7 +320,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test constructor with null argument.
+     * Tests constructor with null argument.
      */
     @Test(expected = NullPointerException.class) 
     public void testNullArgConstructor() {
@@ -290,7 +328,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting null fetchInterval
+     * Tests getting null fetchInterval.
      */
     @Test
     public void testNullFetchInterval() {
@@ -299,7 +337,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting invalid fetchInterval
+     * Tests getting invalid fetchInterval.
      */
     @Test
     public void testInvalidFetchInterval() {
@@ -308,7 +346,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting null overheating alarm
+     * Tests getting null overheating alarm.
      */
     @Test
     public void testNullOverheatingAlarm() {
@@ -317,7 +355,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting null overheating alarm
+     * Tests getting null overheating alarm.
      */
     @Test
     public void testNullOverheatingAlarmAlternativeDefault() {
@@ -326,7 +364,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting invalid overheating alarm
+     * Tests getting invalid overheating alarm.
      */
     @Test
     public void testInvalidOverheatingAlarm() {
@@ -335,7 +373,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting invalid overheating alarm
+     * Tests getting invalid overheating alarm.
      */
     @Test
     public void testInvalidOverheatingAlarmAlternativeDefault() {
@@ -344,7 +382,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting null undercooling alarm
+     * Tests getting null undercooling alarm.
      */
     @Test
     public void testNullUnderCoolingAlarm() {
@@ -353,7 +391,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting null undercooling alarm
+     * Tests getting null undercooling alarm.
      */
     @Test
     public void testNullUnderCoolingAlarmAlternativeDefault() {
@@ -362,7 +400,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting invalid undercooling alarm
+     * Tests getting invalid undercooling alarm.
      */
     @Test
     public void testInvalidUnderCoolingAlarm() {
@@ -371,7 +409,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting invalid undercooling alarm
+     * Tests getting invalid undercooling alarm.
      */
     @Test
     public void testInvalidUnderCoolingAlarmAlternativeDefault() {
@@ -380,7 +418,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting null overflow alarm
+     * Tests getting null overflow alarm.
      */
     @Test
     public void testNullOverflowAlarm() {
@@ -389,7 +427,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting null overflow alarm
+     * Tests getting null overflow alarm.
      */
     @Test
     public void testNullOverflowAlarmAlternativeDefault() {
@@ -398,7 +436,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting invalid overflow alarm
+     * Tests getting invalid overflow alarm.
      */
     @Test
     public void testInvalidOverflowAlarm() {
@@ -407,7 +445,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting invalid overflow alarm
+     * Tests getting invalid overflow alarm.
      */
     @Test
     public void testInvalidOverflowAlarmAlternativeDefault() {
@@ -416,7 +454,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting null underflow alarm
+     * Tests getting null underflow alarm.
      */
     @Test
     public void testNullUnderflowAlarm() {
@@ -425,7 +463,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting null underflow alarm
+     * Tests getting null underflow alarm.
      */
     @Test
     public void testNullUnderflowAlarmAlternativeDefault() {
@@ -434,7 +472,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting invalid underflow alarm
+     * Tests getting invalid underflow alarm.
      */
     @Test
     public void testInvalidUnderflowAlarm() {
@@ -443,7 +481,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting invalid underflow alarm
+     * Tests getting invalid underflow alarm.
      */
     @Test
     public void testInvalidUnderflowAlarmAlternativeDefault() {
@@ -452,7 +490,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting null temperature diagramm
+     * Tests getting null temperature diagram.
      */
     @Test
     public void testNullTempDiagramm() {
@@ -461,7 +499,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting null temperature diagramm
+     * Tests getting null temperature diagram.
      */
     @Test
     public void testNullTempDiagrammAlternativeDefault() {
@@ -470,7 +508,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting invalid temperature diagramm
+     * Tests getting invalid temperature diagram.
      */
     @Test
     public void testInvalidTempDiagramm() {
@@ -479,7 +517,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting invalid temperature diagramm
+     * Tests getting invalid temperature diagram.
      */
     @Test
     public void testInvalidTempDiagrammAlternativeDefault() {
@@ -488,7 +526,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting null fill level diagramm
+     * Tests getting null fill level diagram.
      */
     @Test
     public void testNullFillLevelDiagramm() {
@@ -497,7 +535,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting null fill level diagramm
+     * Tests getting null fill level diagram.
      */
     @Test
     public void testNullFillLevelDiagrammAlternativeDefault() {
@@ -506,7 +544,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting invalid fill level diagramm
+     * Tests getting invalid fill level diagram.
      */
     @Test
     public void testInvalidFillLevelDiagramm() {
@@ -515,7 +553,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting invalid fill level diagramm
+     * Tests getting invalid fill level diagram.
      */
     @Test
     public void testInvalidFillLevelDiagrammAlternativeDefault() {
@@ -524,7 +562,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting null hostname
+     * Tests getting null host name.
      */
     @Test
     public void testNullHostname() {
@@ -533,7 +571,7 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting null port
+     * Tests getting null port.
      */
     @Test
     public void testNullPort() {
@@ -542,12 +580,11 @@ public class ClientSettingsWrapperTest {
     }
     
     /**
-     * Test getting invalid port
+     * Tests getting invalid port.
      */
     @Test
     public void testInvalidPort() {
         int value = wrapperInvalidEntry.getPort(testTank, 4243);
         assertEquals(4243, value);
     }
-    
 }

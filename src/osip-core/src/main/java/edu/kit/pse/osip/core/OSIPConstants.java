@@ -1,12 +1,15 @@
 package edu.kit.pse.osip.core;
 
 /**
- * Some constants which are used in multiple places but don't belong into the model.
+ * Some constants which are used in multiple places, but don't belong to the model.
  * 
  * @version 1.1
  * @author David Kahles
  */
 public final class OSIPConstants {
+    /**
+     * Private constructor to avoid instantiation.
+     */
     private OSIPConstants() {
     }
     
@@ -21,7 +24,7 @@ public final class OSIPConstants {
      */
     public static final int DEFAULT_PORT_MIX = 12868;
     
-        /**
+    /**
      * The maximum server port.
      */
     public static final int MAX_PORT = 61000;

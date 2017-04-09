@@ -6,24 +6,34 @@ import java.util.ResourceBundle;
 
 /**
  * This class is the interface to load menu texts in different languages.
+ * 
  * @author Maximilian Schwarzmann 
  * @version 1.0
  */
 public final class Translator {
-    
+    /**
+     * ResourceBundle saving the translations.
+     */
     private ResourceBundle bundle;
+    /**
+     * Saves the sole accessible instance.
+     */
     private static Translator singleton;
+    /**
+     * true when the keys shall always be returned and false otherwise.
+     */
     private boolean localizationDisabled = false;
     
     /**
-     * Creates a new translator. Private because it is a singleton
+     * Creates a new translator. Private because it is a singleton.
      */
     private Translator() {
         setLocale(new Locale("en", "US"));
     }
     /**
-     * Gets the single Instance of the Translator. It is newly created at the first call of the method.
-     * @return The single Instance of Translator.
+     * Gets the single instance of the Translator. It is newly created at the first call of the method.
+     * 
+     * @return The single instance of Translator.
      */
     public static Translator getInstance() {
         if (singleton == null) {
@@ -33,9 +43,10 @@ public final class Translator {
     }
     /**
      * Gets the word that is associated with key in the current locale.
+     * 
+     * @param key The key to use for translation lookup.
      * @return The translation for key or key if there is no such entry.
      * Also returns key if bundle is null.
-     * @param key The key to use for translation lookup
      */
     public String getString(String key) {
         if (key == null) {
@@ -54,8 +65,9 @@ public final class Translator {
         }
     }
     /**
-     * Sets the locale to be used when translating
-     * @param locale The locale to set
+     * Sets the locale to be used when translating.
+     * 
+     * @param locale The locale to be set.
      */
     public void setLocale(Locale locale) {
         if (locale == null) {
@@ -70,8 +82,9 @@ public final class Translator {
     }
 
     /**
-     * Disables localization: Always shows IDs
-     * @param localizationDisabled true if localization should be disabled
+     * Disables localization: Always shows IDs.
+     * 
+     * @param localizationDisabled true if localization should be disabled.
      */
     public void setLocalizationDisabled(boolean localizationDisabled) {
         this.localizationDisabled = localizationDisabled;

@@ -4,7 +4,7 @@ import java.nio.file.Paths;
 import org.junit.Test;
 
 /**
- * Tests the basic parser class
+ * Tests the basic parser class.
  *
  * @author Hans-Peter Lehmann
  * @version 1.0
@@ -12,8 +12,9 @@ import org.junit.Test;
 public class ScenarioFileTest {
     
     /**
-     * Tests if real files can be parsed without ParserExceptions
-     * @throws Exception If something goes wrong
+     * Tests if real files can be parsed without ParserExceptions.
+     * 
+     * @throws Exception If something goes wrong.
      */
     @Test
     public void testReadingFile() throws Exception {

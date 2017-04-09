@@ -5,15 +5,16 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 /**
- * Tests the extended parser class
+ * Tests the extended parser class.
  *
  * @author Hans-Peter Lehmann
  * @version 1.0
  */
 public class ScenarioParserTest {
     /**
-     * Tests if variables can be assigned
-     * @throws ParserException If something goes wrong
+     * Tests if variables can be assigned.
+     * 
+     * @throws ParserException If something goes wrong.
      */
     @Test
     public void testVariableAssignments() throws ParserException {
@@ -32,8 +33,9 @@ public class ScenarioParserTest {
     }
     
     /**
-     * Tests if an undefined variable can be read
-     * @throws ParserException If something goes wrong
+     * Tests if an undefined variable can be read.
+     * 
+     * @throws ParserException If something goes wrong.
      */
     @Test(expected = ParserException.class)
     public void testUnknownVariableAssignment() throws ParserException {
@@ -42,8 +44,9 @@ public class ScenarioParserTest {
     }
     
     /**
-     * Tests if invalid assignments results in errors
-     * @throws ParserException If something goes wrong
+     * Tests if invalid assignments results in errors.
+     * 
+     * @throws ParserException If something goes wrong.
      */
     @Test(expected = ParserException.class)
     public void testInvalidAssignmentSyntax() throws ParserException {
@@ -52,8 +55,9 @@ public class ScenarioParserTest {
     }
 
     /**
-     * Tests if invalid assignments results in errors
-     * @throws ParserException If something goes wrong
+     * Tests if invalid assignments results in errors.
+     * 
+     * @throws ParserException If something goes wrong.
      */
     @Test(expected = ParserException.class)
     public void testInvalidAssignmentNumber() throws ParserException {
@@ -62,8 +66,9 @@ public class ScenarioParserTest {
     }
 
     /**
-     * Tests if multiple variables can be assigned
-     * @throws ParserException If something goes wrong
+     * Tests if multiple variables can be assigned.
+     * 
+     * @throws ParserException If something goes wrong.
      */
     @Test
     public void testMultipleVariableAssignments() throws ParserException {
@@ -79,8 +84,9 @@ public class ScenarioParserTest {
     }
     
     /**
-     * Tests if comments and assignments can be mixed
-     * @throws ParserException If something goes wrong
+     * Tests if comments and assignments can be mixed.
+     * 
+     * @throws ParserException If something goes wrong.
      */
     @Test
     public void testComments() throws ParserException {
@@ -97,8 +103,9 @@ public class ScenarioParserTest {
     }
     
     /**
-     * Tests if wrong argument count leads to errors
-     * @throws ParserException If something goes wrong
+     * Tests if wrong argument count leads to errors.
+     * 
+     * @throws ParserException If something goes wrong.
      */
     @Test(expected = ParserException.class)
     public void testCommandArgumentCount() throws ParserException {

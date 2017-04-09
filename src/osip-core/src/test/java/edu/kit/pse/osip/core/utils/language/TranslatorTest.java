@@ -2,22 +2,24 @@ package edu.kit.pse.osip.core.utils.language;
 
 import static org.junit.Assert.assertEquals;
 
-
+import java.util.Locale;
 import org.junit.Before;
 import org.junit.Test;
-import java.util.Locale;
 
 /**
- * Test class for Translator
+ * Test class for Translator.
+ * 
  * @author Maximilian Schwarzmann
  * @version 1.0
  */
 public class TranslatorTest {
-
+    /**
+     * The used Translator instance.
+     */
     private Translator translator;
     
     /**
-     * Create a new translator instance
+     * Create a new translator instance.
      */
     @Before
     public void setUp() {
@@ -25,7 +27,7 @@ public class TranslatorTest {
     }
 
     /**
-     * Get an English translation
+     * Get an English translation.
      */
     @Test
     public void testStd() {
@@ -34,7 +36,7 @@ public class TranslatorTest {
     }
 
     /**
-     * Get a German translation
+     * Get a German translation.
      */
     @Test
     public void testGerman() {
@@ -47,7 +49,7 @@ public class TranslatorTest {
     }
 
     /**
-     * Test null as input
+     * Tests null as input.
      */
     @Test
     public void testMissingKey() {
@@ -56,7 +58,7 @@ public class TranslatorTest {
     }
      
     /**
-     * Test null key
+     * Tests null key.
      */
     @Test(expected = NullPointerException.class)
     public void testNullKey() {
@@ -64,7 +66,7 @@ public class TranslatorTest {
     }
         
     /**
-     * Test null as input
+     * Tests null as input.
      */
     @Test(expected = NullPointerException.class)
     public void testNullException() {
