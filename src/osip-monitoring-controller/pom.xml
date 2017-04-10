@@ -69,4 +69,10 @@
 			</plugin>
 		</plugins>
 	</build>
+    <reporting>
+        <outputDirectory>../target/site/osip-monitoring-controller</outputDirectory>
+    </reporting>
+	<url>https://github.com/ByteHamster/PSE</url>
+	<name>Monitoring controller</name>
+	<description>This module includes the actual controller for the monitoring view and for interacting with the model when receiving values via OPC UA.</description>
 </project>

@@ -33,4 +33,10 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+    <reporting>
+        <outputDirectory>../target/site/osip-opcua-test</outputDirectory>
+    </reporting>
+	<url>https://github.com/ByteHamster/PSE</url>
+	<name>OPC UA test</name>
+	<description>This module contains integration tests for the OPC UA server and clients.</description>
 </project>

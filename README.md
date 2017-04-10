@@ -26,6 +26,12 @@ cd PSE/src
 mvn package
 ```
 
+Zusätzlich kann die komplette Dokumentation mit generiert werden.
+
+```bash
+mvn package site
+```
+
 Ein häufiges Problem ist, dass die Abhängigkeit `org.eclipse.milo` nicht gefunden werden kann. Dies liegt daran, dass alte Versionen von Milo aus dem Repository genommen werden. Das Problem kann behoben werden, indem die verwendete Version angepasst wird:
 
 ```xml
