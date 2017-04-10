@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<name>PSE</name>
+	<name>OPC UA Simulator for Industrial Plants (OSIP)</name>
 	<version>1.0</version>
 	<groupId>edu.kit.pse</groupId>
 	<artifactId>pse</artifactId>
@@ -111,4 +111,31 @@
 			</plugin>
 		</plugins>
 	</build>
+	<reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.4</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>aggregate</report>
+                            <report>test-aggregate</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+                <configuration>
+                    <show>package</show>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+	<url>https://github.com/ByteHamster/PSE</url>
+	<description>OSIP gives the possibility to demonstrate interactively the advantages of connecting machines via OPC UA.
+This project was developed during a software development experience project at the Karlsruher Institute of Technology (KIT) within the theme &quot;Implementing an OPC UA system adapter for the Industrial Data Space&quot;. Carried out at the Fraunhofer IOSB.</description>
+	<organization>
+		<name>M. Armbruster, D. Kahles, H. Lehmann, M. Schwarzmann, N. Wilhelm</name>
+		<url>https://github.com/ByteHamster/PSE</url>
+	</organization>
 </project>

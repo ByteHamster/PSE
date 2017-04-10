@@ -22,4 +22,10 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+    <reporting>
+        <outputDirectory>../target/site/osip-integration-test</outputDirectory>
+    </reporting>
+    <url>https://github.com/ByteHamster/PSE</url>
+    <name>Integration test</name>
+    <description>This module includes an integration test for the simulation and monitoring view.</description>
 </project>

@@ -30,4 +30,10 @@
 			<version>8.0-r6-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
+    <reporting>
+        <outputDirectory>../target/site/osip-monitoring-view</outputDirectory>
+    </reporting>
+	<url>https://github.com/ByteHamster/PSE</url>
+	<name>Monitoring view</name>
+	<description>This module contains all classes for the default monitoring view of OSIP.</description>
 </project>

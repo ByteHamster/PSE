@@ -5,8 +5,8 @@ package edu.kit.pse.osip.core.model.behavior;
  * 
  * @author David Kahles
  * @version 1.0
- * @param <F></F> The type of the fill alarms.
- * @param <T></T> the type of the temperature alarms.
+ * @param <F> The type of the fill alarms.
+ * @param <T> the type of the temperature alarms.
  */
 public class AlarmGroup<F, T> {
     /**

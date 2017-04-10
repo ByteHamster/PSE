@@ -25,4 +25,10 @@
 			<version>1.0</version>
 		</dependency>
 	</dependencies>
+    <reporting>
+        <outputDirectory>../target/site/osip-simulation-view</outputDirectory>
+    </reporting>
+	<url>https://github.com/ByteHamster/PSE</url>
+	<name>Simulation view</name>
+	<description>This module includes all classes for the default simulation view of OSIP. </description>
 </project>

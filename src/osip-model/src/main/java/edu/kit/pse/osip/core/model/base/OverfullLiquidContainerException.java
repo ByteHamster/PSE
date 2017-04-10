@@ -20,7 +20,7 @@ public class OverfullLiquidContainerException extends IllegalArgumentException {
     /**
      * Creates a new OverfullLiquidContainerException.
      * 
-     * @throws IllegalArgumentException if maximumAmount or triedAmount is < 0.
+     * @throws IllegalArgumentException if maximumAmount or triedAmount is less than 0.
      * @param message The error message.
      * @param maximumAmount How much one can insert at maximum.
      * @param triedAmount How much was tried to be inserted. This should be more than maximumAmount.

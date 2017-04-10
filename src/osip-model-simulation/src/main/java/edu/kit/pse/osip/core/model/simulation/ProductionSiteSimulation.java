@@ -26,12 +26,12 @@ public class ProductionSiteSimulation extends ProductionSite {
      * Template method to allow subclasses to create objects of subclasses of Tank. The parameters are the same
      * parameters as in the Tank constructor.
      * 
-     * @param capacity @see Tank
-     * @param tankSelector @see Tank
-     * @param liquid @see Tank
-     * @param outPipe @see Tank
-     * @param inPipe @see Tank
-     * @return The created Tank
+     * @param capacity see Tank.
+     * @param tankSelector see Tank.
+     * @param liquid see Tank.
+     * @param outPipe see Tank.
+     * @param inPipe see Tank.
+     * @return The created Tank.
      */
     @Override
     protected Tank instantiateTank(float capacity, TankSelector tankSelector, Liquid liquid, Pipe outPipe,
@@ -43,10 +43,10 @@ public class ProductionSiteSimulation extends ProductionSite {
      * Template method to allow subclasses to create objects of subclasses of MixTank. The parameters are the same
      * parameters as in the MixTank constructor.
      * 
-     * @param capacity @see MixTank
-     * @param liquid @see MixTank
-     * @param outPipe @see MixTank
-     * @return The creates MixTank
+     * @param capacity see MixTank.
+     * @param liquid see MixTank.
+     * @param outPipe see MixTank.
+     * @return The creates MixTank.
      */
     @Override
     protected MixTank instantiateMixTank(float capacity, Liquid liquid, Pipe outPipe) {

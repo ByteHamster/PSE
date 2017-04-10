@@ -74,4 +74,10 @@
 			</plugin>
 		</plugins>
 	</build>
+    <reporting>
+        <outputDirectory>../target/site/osip-simulation-controller</outputDirectory>
+    </reporting>
+	<url>https://github.com/ByteHamster/PSE</url>
+	<name>Simulation controller</name>
+	<description>This module contains the actual controller for the simulation taking inputs from the view and directing it to the model.</description>
 </project>

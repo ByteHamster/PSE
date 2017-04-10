@@ -129,7 +129,7 @@ public class Pipe extends Observable {
      * Checks whether there is currently any amount of liquid at the beginning and thus
      * entering the pipe.
      * 
-     * @return True if the last Liquid put in has an amount > 0, false if the amount is 0 or there
+     * @return True if the last Liquid put in has an amount greater than 0, false if the amount is 0 or there
      *      is not a Liquid object.
      */
     public boolean isLiquidEntering() {
