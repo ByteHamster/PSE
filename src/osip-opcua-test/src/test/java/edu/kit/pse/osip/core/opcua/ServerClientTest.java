@@ -7,14 +7,14 @@ import static org.junit.Assert.assertTrue;
 import edu.kit.pse.osip.core.opcua.client.IntReceivedListener;
 import edu.kit.pse.osip.core.opcua.client.UAClientException;
 import edu.kit.pse.osip.core.opcua.client.UAClientWrapper;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
 import org.eclipse.milo.opcua.stack.core.Identifiers;
 import org.eclipse.milo.opcua.stack.core.types.builtin.DataValue;
 import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
 import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Tests OPC UA server and client wrapper.
