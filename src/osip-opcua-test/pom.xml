@@ -7,7 +7,11 @@
 		<version>1.0</version>
 	</parent>
 	<artifactId>osip-opcua-test</artifactId>
-	
+
+	<url>https://github.com/ByteHamster/PSE</url>
+	<name>OPC UA test</name>
+	<description>This module contains integration tests for the OPC UA server and clients.</description>
+
 	<dependencies>
 		<dependency>
 			<groupId>edu.kit.pse</groupId>
@@ -33,10 +37,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-    <reporting>
-        <outputDirectory>../target/site/osip-opcua-test</outputDirectory>
-    </reporting>
-	<url>https://github.com/ByteHamster/PSE</url>
-	<name>OPC UA test</name>
-	<description>This module contains integration tests for the OPC UA server and clients.</description>
+	<reporting>
+		<outputDirectory>../target/site/osip-opcua-test</outputDirectory>
+	</reporting>
 </project>

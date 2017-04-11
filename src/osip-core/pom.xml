@@ -8,6 +8,10 @@
 	</parent>
 	<artifactId>osip-core</artifactId>
 
+	<url>https://github.com/ByteHamster/PSE</url>
+	<name>Core</name>
+	<description>This module contains all core classes for common tasks and resources. It is shared and accessible over all other modules.</description>
+
 	<dependencies>
 		<dependency>
 			<groupId>edu.kit.pse</groupId>
@@ -16,9 +20,6 @@
 		</dependency>
 	</dependencies>
 	<reporting>
-        <outputDirectory>../target/site/osip-core</outputDirectory>
-    </reporting>
-	   <url>https://github.com/ByteHamster/PSE</url>
-	   <name>Core</name>
-	   <description>This module contains all core classes for common tasks and resources. It is shared and accessible over all other modules.</description>
+		<outputDirectory>../target/site/osip-core</outputDirectory>
+	</reporting>
 </project>
