@@ -68,6 +68,29 @@ ungewöhnliche Eingaben ausgelöst werden konnten. Die wichtigsten Änderungen s
 \end{itemize}
 
 \section{Unittests}
+Die Phase der Qualitätssicherung haben wir damit begonnen, die Unittests aus der Implementierungsphase weiter auszubauen und so die Testabdeckung zu maximieren.
+Innerhalb des Models war die Testabdeckung bereits sehr gut. Für die Controller und die graphischen Benutzeroberflächen waren noch keine Unittests vorhanden.
+
+Für die Controller blieben wir bei der Entscheidung, keine Unittests einzuführen, da diese hier kaum anwendbar waren. Stattdessen schrieben wir für die Controller
+Integrationstests. Für die beiden graphischen Benutzeroberflächen haben wir jedoch noch Testklassen
+erstellt. Hier konnte nur eine geringere Abdeckung erreicht werden, als es im Model der Fall ist, dennoch liegt in beiden Oberflächen die Zeilenabdeckung bei
+über 50\%.
+
+Die endgültige Zeilenabdeckung der Module, für die Unittests verwendet wurden, ist in der folgenden Tabelle nochmals dargestellt. Dabei werden sowohl die
+Werte vor als auch die Werte nach der Testphase gelistet.
+
+\begin{tabular} {| l || r | r |}
+  \hline
+  Modul				& Vorher	& Nachher	\\
+  \hline \hline
+  osip-core			& 82.6\%	& 86.1\%	\\
+  osip-model			& 91.8\%	& 96.6\%	\\
+  osip-model-Simulation		& 100.0\%	& 100.0\%	\\
+  osip-monitoring-view		& 0.0\%		& 82.3\%	\\
+  osip-simulation-controller	& 0.0\%		& 6.3\%		\\
+  osip-simulation-view		& 0.0\%		& 50.2\%	\\
+  \hline
+\end{tabular}
 
 \section{Anforderungen und Tests}
 In Folge unterschiedlicher Umsetzungen von Anforderungen im Vergleich zum Pflichtenheft erfolgt zunächst die Anpassung der Anforderungen und Tests durch die vorhandene Rückkoppelung.
