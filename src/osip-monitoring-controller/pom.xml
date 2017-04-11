@@ -7,7 +7,11 @@
 		<version>1.0</version>
 	</parent>
 	<artifactId>osip-monitoring-controller</artifactId>
-	
+
+	<url>https://github.com/ByteHamster/PSE</url>
+	<name>Monitoring controller</name>
+	<description>This module includes the actual controller for the monitoring view and for interacting with the model when receiving values via OPC UA.</description>
+
 	<dependencies>
 		<dependency>
 			<groupId>edu.kit.pse</groupId>
@@ -47,7 +51,7 @@
 							<shadedClassifierName>with-dependencies</shadedClassifierName>
 							<transformers>
 								<transformer
-										implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
 									<resource>Bundle.properties</resource>
 								</transformer>
 							</transformers>
@@ -69,10 +73,7 @@
 			</plugin>
 		</plugins>
 	</build>
-    <reporting>
-        <outputDirectory>../target/site/osip-monitoring-controller</outputDirectory>
-    </reporting>
-	<url>https://github.com/ByteHamster/PSE</url>
-	<name>Monitoring controller</name>
-	<description>This module includes the actual controller for the monitoring view and for interacting with the model when receiving values via OPC UA.</description>
+	<reporting>
+		<outputDirectory>../target/site/osip-monitoring-controller</outputDirectory>
+	</reporting>
 </project>

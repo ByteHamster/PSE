@@ -8,6 +8,10 @@
 	</parent>
 	<artifactId>osip-opcua-server</artifactId>
 
+	<url>https://github.com/ByteHamster/PSE</url>
+	<name>OPC UA server</name>
+	<description>This module capsules the Milo's OPC UA server implementation with an easier interface.</description>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.eclipse.milo</groupId>
@@ -18,10 +22,7 @@
 			<artifactId>stack-server</artifactId>
 		</dependency>
 	</dependencies>
-    <reporting>
-        <outputDirectory>../target/site/osip-opcua-server</outputDirectory>
-    </reporting>
-	<url>https://github.com/ByteHamster/PSE</url>
-	<name>OPC UA server</name>
-	<description>This module capsules the Milo's OPC UA server implementation with an easier interface.</description>
+	<reporting>
+		<outputDirectory>../target/site/osip-opcua-server</outputDirectory>
+	</reporting>
 </project>

@@ -8,6 +8,10 @@
 	</parent>
 	<artifactId>osip-model-simulation</artifactId>
 
+	<url>https://github.com/ByteHamster/PSE</url>
+	<name>Model simulation</name>
+	<description>This module extends the model and gives it the ability to be simulated.</description>
+
 	<dependencies>
 		<dependency>
 			<groupId>edu.kit.pse</groupId>
@@ -15,10 +19,7 @@
 			<version>1.0</version>
 		</dependency>
 	</dependencies>
-    <reporting>
-        <outputDirectory>../target/site/osip-model-simulation</outputDirectory>
-    </reporting>
-	<url>https://github.com/ByteHamster/PSE</url>
-	<name>Model simulation</name>
-	<description>This module extends the model and gives it the ability to be simulated.</description>
+	<reporting>
+		<outputDirectory>../target/site/osip-model-simulation</outputDirectory>
+	</reporting>
 </project>

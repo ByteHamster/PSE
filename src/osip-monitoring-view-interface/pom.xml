@@ -8,6 +8,10 @@
 	</parent>
 	<artifactId>osip-monitoring-view-interface</artifactId>
 
+	<url>https://github.com/ByteHamster/PSE</url>
+	<name>monitoring-view-interface</name>
+	<description>This module defines interfaces a monitoring view for OSIP needs to implement. The interfaces are used for an abstract and uniform access to the view by the controller and therefore provide separation between these two units.</description>
+
 	<dependencies>
 		<dependency>
 			<groupId>edu.kit.pse</groupId>
@@ -15,10 +19,7 @@
 			<version>1.0</version>
 		</dependency>
 	</dependencies>
-    <reporting>
-        <outputDirectory>../target/site/osip-monitoring-view-interface</outputDirectory>
-    </reporting>
-	<url>https://github.com/ByteHamster/PSE</url>
-	<name>monitoring-view-interface</name>
-	<description>This module defines interfaces a monitoring view for OSIP needs to implement. The interfaces are used for an abstract and uniform access to the view by the controller and therefore provide separation between these two units.</description>
+	<reporting>
+		<outputDirectory>../target/site/osip-monitoring-view-interface</outputDirectory>
+	</reporting>
 </project>
