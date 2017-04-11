@@ -1,4 +1,4 @@
-# OPC UA Simulator for Industrial Plants (OSIP)
+﻿# OPC UA Simulator for Industrial Plants (OSIP)
 
 <img src="./icon.png" width="100">
 
@@ -26,10 +26,17 @@ cd PSE/src
 mvn package
 ```
 
-Zusätzlich kann die komplette Dokumentation mit generiert werden.
+Zusätzlich kann die Dokumentation mit generiert werden. Zu finden ist sie unter src/target/site/apidocs.
 
 ```bash
-mvn package site
+mvn package javadoc:aggregate
+```
+
+Mit folgender Befehlsfolge wird zusätzlich zur Dokumentation ein Maven-Report generiert, der unter src/target/site zu finden ist.
+
+```
+mvn install
+mvn site
 ```
 
 Ein häufiges Problem ist, dass die Abhängigkeit `org.eclipse.milo` nicht gefunden werden kann. Dies liegt daran, dass alte Versionen von Milo aus dem Repository genommen werden. Das Problem kann behoben werden, indem die verwendete Version angepasst wird:

@@ -331,11 +331,7 @@ public class SimulationController extends Application {
         }
     }
 
-    /**
-     * Called bx JavaFX to start drawing the UI.
-     * 
-     * @param primaryStage The stage to draw the main window on.
-     */
+    @Override
     public void start(Stage primaryStage) {
         controlInterface = new SimulationControlWindow(productionSite);
 
@@ -452,9 +448,7 @@ public class SimulationController extends Application {
         currentScenario.startScenario();
     }
 
-    /**
-     * Called when the last window is closed.
-     */
+    @Override
     public void stop() {
         stepTimer.cancel();
         System.out.println("Stopped simulation thread");
