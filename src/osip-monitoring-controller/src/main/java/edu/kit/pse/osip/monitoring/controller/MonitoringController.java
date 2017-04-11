@@ -56,7 +56,7 @@ public final class MonitoringController extends Application {
      */
     private SettingsViewInterface currentSettingsView;
     /**
-     * Contains every mixtank related objects. 
+     * Contains all mixtank related objects. 
      */
     private final MixTankContainer mixCont = new MixTankContainer();
     /**
@@ -84,11 +84,6 @@ public final class MonitoringController extends Application {
         currentSettingsView = new SettingsViewFacade(currentSettings);
     }
 
-    /**
-     * Called when JavaFX creates and starts the application.
-     * 
-     * @param primaryStage The stage used for displaying all controls.
-     */
     @Override
     public void start(Stage primaryStage) {
         for (TankSelector selector: TankSelector.valuesWithoutMix()) {
@@ -151,9 +146,6 @@ public final class MonitoringController extends Application {
         });     
     }
 
-    /**
-     * Called when the last window is closed.
-     */
     @Override
     public void stop() {
         System.out.println("Stopped monitoring thread");

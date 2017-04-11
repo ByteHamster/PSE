@@ -176,11 +176,6 @@ public class TankTab extends AbstractTankTab {
         row++;
     }
 
-    /**
-     * Disables or enables all control elements in the TankTab to block or allow inputs.
-     * 
-     * @param isDisable true if inputs shall be blocked, false if they shall be enabled.
-     */
     @Override
     public void setControlsDisabled(boolean isDisable) {
         super.setControlsDisabled(isDisable);

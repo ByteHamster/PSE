@@ -88,7 +88,7 @@ public class Scenario extends Observable implements Runnable {
     }
 
     /**
-     * Start the Scenario.
+     * Starts the Scenario.
      * 
      * @throws IllegalStateException if the production site isn't set (@see setProductionSite).
      */

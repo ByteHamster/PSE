@@ -9,7 +9,7 @@
 	<artifactId>osip-simulation-view-interface</artifactId>
 
 	<url>https://github.com/ByteHamster/PSE</url>
-	<name>simulation-view-interface</name>
+	<name>Simulation view interface</name>
 	<description>This module defines interfaces a simulation view for OSIP needs to implement. The interfaces are used for an abstract and uniform access to the view by the controller and therefore provide separation between these two units.</description>
 
 	<dependencies>
