@@ -16,13 +16,11 @@
 		<dependency>
 			<groupId>edu.kit.pse</groupId>
 			<artifactId>osip-monitoring-controller</artifactId>
-			<version>1.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>edu.kit.pse</groupId>
 			<artifactId>osip-simulation-controller</artifactId>
-			<version>1.0</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

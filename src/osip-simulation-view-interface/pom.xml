@@ -16,12 +16,10 @@
 		<dependency>
 			<groupId>edu.kit.pse</groupId>
 			<artifactId>osip-model</artifactId>
-			<version>1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>edu.kit.pse</groupId>
 			<artifactId>osip-core</artifactId>
-			<version>1.0</version>
 		</dependency>
 	</dependencies>
 	<reporting>

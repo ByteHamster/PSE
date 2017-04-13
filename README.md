@@ -26,13 +26,13 @@ cd PSE/src
 mvn package
 ```
 
-Zusätzlich kann die Dokumentation mit generiert werden. Zu finden ist sie unter src/target/site/apidocs.
+Zusätzlich kann die Dokumentation mit generiert werden. Zu finden ist sie unter `src/target/site/apidocs`.
 
 ```bash
 mvn package javadoc:aggregate
 ```
 
-Mit folgender Befehlsfolge wird zusätzlich zur Dokumentation ein Maven-Report generiert, der unter src/target/site zu finden ist.
+Mit folgender Befehlsfolge wird zusätzlich zur Dokumentation ein Maven-Report generiert, der unter `src/target/site` zu finden ist.
 
 ```
 mvn install

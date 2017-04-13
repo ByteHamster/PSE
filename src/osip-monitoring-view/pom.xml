@@ -16,17 +16,14 @@
 		<dependency>
 			<groupId>edu.kit.pse</groupId>
 			<artifactId>osip-model</artifactId>
-			<version>1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>edu.kit.pse</groupId>
 			<artifactId>osip-core</artifactId>
-			<version>1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>edu.kit.pse</groupId>
 			<artifactId>osip-monitoring-view-interface</artifactId>
-			<version>1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jfxtras</groupId>
@@ -34,7 +31,17 @@
 			<version>8.0-r6-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
+
 	<reporting>
 		<outputDirectory>../target/site/osip-monitoring-view</outputDirectory>
 	</reporting>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+	</build>
 </project>

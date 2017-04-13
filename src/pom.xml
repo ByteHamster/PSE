@@ -3,7 +3,6 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<name>OPC UA Simulator for Industrial Plants (OSIP)</name>
-	<version>1.0</version>
 	<groupId>edu.kit.pse</groupId>
 	<artifactId>pse</artifactId>
 	<packaging>pom</packaging>
@@ -14,6 +13,12 @@ This project was developed during a software development experience project at t
 		<name>M. Armbruster, D. Kahles, H. Lehmann, M. Schwarzmann, N. Wilhelm</name>
 		<url>https://github.com/ByteHamster/PSE</url>
 	</organization>
+
+	<!--
+		To update the version of this project (and automatically update the parent of all modules), use:
+		$ mvn versions:set -DgenerateBackupPoms=false
+	-->
+	<version>1.0</version>
 
 	<modules>
 		<module>osip-model</module>
@@ -67,6 +72,61 @@ This project was developed during a software development experience project at t
 				<groupId>org.eclipse.milo</groupId>
 				<artifactId>stack-client</artifactId>
 				<version>${milo-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>edu.kit.pse</groupId>
+				<artifactId>osip-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>edu.kit.pse</groupId>
+				<artifactId>osip-model-simulation</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>edu.kit.pse</groupId>
+				<artifactId>osip-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>edu.kit.pse</groupId>
+				<artifactId>osip-simulation-view-interface</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>edu.kit.pse</groupId>
+				<artifactId>osip-simulation-view</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>edu.kit.pse</groupId>
+				<artifactId>osip-monitoring-view-interface</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>edu.kit.pse</groupId>
+				<artifactId>osip-monitoring-view</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>edu.kit.pse</groupId>
+				<artifactId>osip-opcua-server</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>edu.kit.pse</groupId>
+				<artifactId>osip-opcua-client</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>edu.kit.pse</groupId>
+				<artifactId>osip-monitoring-controller</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>edu.kit.pse</groupId>
+				<artifactId>osip-simulation-controller</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
