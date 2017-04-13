@@ -16,7 +16,6 @@
 		<dependency>
 			<groupId>edu.kit.pse</groupId>
 			<artifactId>osip-model</artifactId>
-			<version>1.0</version>
 		</dependency>
 	</dependencies>
 	<reporting>

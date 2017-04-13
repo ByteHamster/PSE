@@ -16,20 +16,27 @@
 		<dependency>
 			<groupId>edu.kit.pse</groupId>
 			<artifactId>osip-model</artifactId>
-			<version>1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>edu.kit.pse</groupId>
 			<artifactId>osip-core</artifactId>
-			<version>1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>edu.kit.pse</groupId>
 			<artifactId>osip-simulation-view-interface</artifactId>
-			<version>1.0</version>
 		</dependency>
 	</dependencies>
+
 	<reporting>
 		<outputDirectory>../target/site/osip-simulation-view</outputDirectory>
 	</reporting>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+	</build>
 </project>
