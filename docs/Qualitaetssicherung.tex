@@ -252,6 +252,13 @@ Im Nachfolgenden werden eventuelle Änderungen der Testszenarien sowie das Ergeb
 	\item[Behebung] Vor dem Anzeigen des Fensters werden die Werte zurückgesetzt.
 \end{description}
 
+\subsection{HL-004}
+\begin{description}
+	\item[Beschreibung] Einige Szenarien-Dateien können nicht gelesen werden.
+	\item[Ursache] Die Dateien enthalten eine UTF-8 ByteOrderMark, die der Parser nicht erwartet.
+	\item[Behebung] Beginnt eine Datei mit einer ByteOrderMark, so werden die Zeichen beim Parsen übersprungen.
+\end{description}
+
 \pagebreak
 \phantomsection
 \addcontentsline{toc}{section}{\listfigurename}

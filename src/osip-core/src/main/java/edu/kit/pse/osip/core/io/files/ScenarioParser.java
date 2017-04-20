@@ -43,6 +43,7 @@ public class ScenarioParser extends ExtendedParser {
      * @throws ParserException If something goes wrong.
      */
     public final Scenario readScenario() throws ParserException {
+        skipUtf8Bom();
         while (available()) {
             int lastPosition = -1;
             while (available() && lastPosition != currentPosition) {
@@ -55,6 +56,17 @@ public class ScenarioParser extends ExtendedParser {
             }
         }
         return scenario;
+    }
+
+    /**
+     * Skips the UTF-8 ByteOrderMark that is sometimes added to the beginning of a file.
+     *
+     * @throws ParserException If something goes wrong.
+     */
+    private void skipUtf8Bom() throws ParserException {
+        if (available() && peek() == 0xFEFF) {
+            pop();
+        }
     }
     
     /**
