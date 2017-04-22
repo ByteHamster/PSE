@@ -259,6 +259,16 @@ Im Nachfolgenden werden eventuelle Änderungen der Testszenarien sowie das Ergeb
 	\item[Behebung] Beginnt eine Datei mit einer ByteOrderMark, so werden die Zeichen beim Parsen übersprungen.
 \end{description}
 
+\section{Zusammenfassung}
+Während der Testphase wurden insbesondere die im Pflichtenheft definierten Testfälle auf den unterstützten Betriebssystemen durchgeführt.
+Dabei wurden einige kleinere Fehler gefunden und behoben, die unter gewissen Umständen (z.B. auf bestimmten Betriebssystemen oder bei bestimmten Zeichencodierungen)
+aufgetreten sind. Besonders die Performanceverbesserungen im Umgang mit OPC UA (DK-001 und HL-001) fallen bei der regelmäßigen Benutzung von OSIP positiv auf.
+
+Unittests waren aus der Implementierungsphase schon größtenteils vorhanden; während der Testphase wurden diese noch minimal ausgebaut. Neue Tests wurden für das UI
+und für die Integration von Model, View und Controller hinzugefügt, wodurch während dieser Phase eine deutlich gesteigerte Testüberdeckung erreicht werden konnte.
+
+Wir sind nun zuversichtlich, dass OSIP auf Microsoft Windows 10 sowie auf Canonical Ubuntu 16.04 weitestgehend stabil und fehlerfrei ausgeführt werden kann.
+
 \pagebreak
 \phantomsection
 \addcontentsline{toc}{section}{\listfigurename}
