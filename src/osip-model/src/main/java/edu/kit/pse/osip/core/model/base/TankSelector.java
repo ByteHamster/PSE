@@ -24,7 +24,11 @@ public enum TankSelector {
     /**
      * The magenta colored tank.
      */
-    MAGENTA;
+    MAGENTA,
+    /**
+     * RED.
+     */
+    RED;
 
     /**
      * Key prefix to use when retrieving a tank name from the translator.
@@ -39,6 +43,7 @@ public enum TankSelector {
         new Color(0, 0, 1),
         new Color(1, 0, 0),
         new Color(0, 1, 0),
+        new Color(0, 1, 1),
     };
 
     /**
@@ -46,9 +51,10 @@ public enum TankSelector {
      */
     private static float[] initialTemperatures = {
         300,
-        333,
-        312,
-        290,
+        300,
+        300,
+        300,
+        300,
     };
 
     /**

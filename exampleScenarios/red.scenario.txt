@@ -1,0 +1,69 @@
+﻿#
+# Scenario definition that can be used to showcase OSIP.
+# It uses four upper tanks where the fourth tank is red.
+# @author Martin Armbruster
+# @version 1.0
+#
+
+setRepeat(true);
+
+var CELSIUS      = 273.15; # Needed to convert °C to K
+var TANK_YELLOW  = 0;
+var TANK_CYAN    = 1;
+var TANK_MAGENTA = 2;
+var TANK_RED = 3;
+var delayTime    = 3000;
+
+setUpperInThreshold(TANK_YELLOW, 33);
+setUpperOutThreshold(TANK_YELLOW, 33);
+setUpperInThreshold(TANK_CYAN, 33);
+setUpperOutThreshold(TANK_CYAN, 33);
+setUpperInThreshold(TANK_MAGENTA, 33);
+setUpperOutThreshold(TANK_MAGENTA, 33);
+setMixOutThreshold(99);
+setMotorRpm(500);
+
+delay(delayTime);
+
+setMixOutThreshold(0);
+delay(2 * delayTime);
+
+setMixOutThreshold(99);
+setUpperOutThreshold(TANK_MAGENTA, 0);
+delay(delayTime);
+
+setUpperInThreshold(TANK_MAGENTA, 0);
+setUpperOutThreshold(TANK_CYAN, 0);
+delay(delayTime);
+
+setUpperInThreshold(TANK_CYAN, 0);
+setUpperOutThreshold(TANK_YELLOW, 0);
+delay(delayTime);
+
+setUpperInThreshold(TANK_YELLOW, 0);
+delay(delayTime);
+
+setUpperInThreshold(TANK_RED, 100);
+setUpperOutThreshold(TANK_RED, 100);
+setMixOutThreshold(100);
+setMotorRpm(2500);
+delay(8 * delayTime);
+
+setUpperInThreshold(TANK_RED, 0);
+setUpperOutThreshold(TANK_RED, 0);
+setUpperOutThreshold(TANK_CYAN, 33);
+setUpperOutThreshold(TANK_MAGENTA, 33);
+setUpperOutThreshold(TANK_YELLOW, 33);
+setMotorRpm(0);
+delay(delayTime);
+
+setUpperOutThreshold(TANK_MAGENTA, 0);
+setUpperInThreshold(TANK_CYAN, 50);
+setUpperOutThreshold(TANK_CYAN, 50);
+setUpperInThreshold(TANK_YELLOW, 50);
+setUpperOutThreshold(TANK_YELLOW, 50);
+setMixOutThreshold(0);
+delay(delayTime);
+
+setMixOutThreshold(100);
+delay(10 * delayTime);
