@@ -66,17 +66,22 @@ java -jar src/osip-monitoring-controller/target/osip-monitoring-controller-1.0-w
 ## Docker
 Um OSIP mittels Docker zu starten, muss Docker und Docker Compose installiert sein. Dann muss im Hauptverzeichnis
 ```bash
-./startup.sh
+docker-compose up
 ```
-ausgeführt werden. Sollen die Docker Container neu erstellt werden (etwa weil es eine neue Version gibt), dann muss zuerst
+ausgeführt werden. Sollen die Docker Container neu erstellt werden, dann muss zuerst
 ```bash
 docker-compose build
 ```
 und danach wie gewohnt
 ```bash
+docker-compose up
+```
+ausgeführt werden. **Achtung**: Die Docker Container werden mit den lokalen Quelldateien gebaut, d.h. wenn es lokale Änderungen an den Quelldateien gab, werden diese Änderungen erst nach dem erneuten Erstellen der Container übernommen.
+Kommt beim Starten der Container die Fehlermeldung, dass der Container sich nicht mit Xorg verbinden kann (`Unable to open DISPLAY`), so sollte das mitgelieferte Skript
+```bash
 ./startup.sh
 ```
-ausgeführt werden. Achtung: Die Docker Container werden mit den lokalen Quelldateien gebaut, d.h. wenn es lokale Änderungen an den Quellen gab, werden diese Änderungen auch im Container vorhanden sein.
+ausgeführt werden.
 
 ## Beitragende
 
