@@ -259,6 +259,13 @@ Im Nachfolgenden werden eventuelle Änderungen der Testszenarien sowie das Ergeb
 	\item[Behebung] Beginnt eine Datei mit einer ByteOrderMark, so werden die Zeichen beim Parsen übersprungen.
 \end{description}
 
+\subsection{HL-005}
+\begin{description}
+	\item[Beschreibung] Das Trennen der Serververbindung dauert in einigen Situationen sehr lange.
+	\item[Ursache] Wenn der Server beendet wird, während der Client noch die Registrierung der Subscriptions beendet, wird bei jeder nachfolgenden Subscription bis zum Timeout gewartet.
+	\item[Behebung] Schlägt beim Beenden des Clients die Beendingung einer Subscription fehl, werden die weiteren Subscriptions auf diesem Client ohne explizite Beendigung fallengelassen.
+\end{description}
+
 \section{Zusammenfassung}
 Während der Testphase wurden insbesondere die im Pflichtenheft definierten Testfälle auf den unterstützten Betriebssystemen durchgeführt.
 Dabei wurden einige kleinere Fehler gefunden und behoben, die unter gewissen Umständen (z.B. auf bestimmten Betriebssystemen oder bei bestimmten Zeichencodierungen)

@@ -231,6 +231,7 @@ public abstract class UAClientWrapper {
             } catch (UAClientException e) {
                 System.err.println("Unsubscribing OPC UA Listener failed. Continuing.");
                 // We want to disconnect the client. It unsubscribing fails, just ignore it.
+                return;
             }
             it.remove();
         }

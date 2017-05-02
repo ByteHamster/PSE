@@ -149,6 +149,14 @@ public final class MonitoringController extends Application {
     @Override
     public void stop() {
         System.out.println("Stopped monitoring thread");
+
+        // So the second tank does not receive a disconnect
+        // while the first is currently disconnecting
+        for (TankContainer cont : tanks) {
+            cont.client.setErrorListener(null);
+        }
+        mixCont.client.setErrorListener(null);
+
         for (TankContainer cont : tanks) {
             try {
                 cont.client.disconnectClient();
