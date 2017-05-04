@@ -109,35 +109,35 @@ public class SimulationMainWindow implements SimulationViewInterface {
         // of the element list, as they need to draw over other Drawers
         List<Drawer> pipes = new ArrayList<>();
 
-        int tankCount = TankSelector.getUpperTankCount();
-
         // get all the tanks from the productionSite
-        MixTank mix = productionSite.getMixTank();
-        double mixXPos = ((double) (tankCount - 1)) / (tankCount * 2);
+        double mixXPos = ((double) (TankSelector.getUpperTankCount() - 1)) / (TankSelector.getUpperTankCount() * 2);
         //Assuming there are only ever two rows of tanks
         double mixYPos = 0.5;
         Point2D mixPos = new Point2D(mixXPos, mixYPos);
-        MixTankDrawer mtDrawer = new MixTankDrawer(mixPos, mix, ROWS, tankCount);
+        MixTankDrawer mtDrawer = new MixTankDrawer(mixPos, productionSite.getMixTank(),
+                ROWS, TankSelector.getUpperTankCount());
         element.add(mtDrawer);
 
         //Add a pipe leading out of the mixTank.
-        pipes.add(createMixTankOutPipe(mix, mtDrawer));
+        pipes.add(createMixTankOutPipe(productionSite.getMixTank(), mtDrawer));
 
         TankSelector[] topTanks = TankSelector.valuesWithoutMix();
 
-        for (int i = 0; i < tankCount; i++) {
+        for (int i = 0; i < TankSelector.getUpperTankCount(); i++) {
             //Add a new TankDrawer
-            double xPos = i * (1.0 / tankCount);
+            double xPos = i * (1.0 / TankSelector.getUpperTankCount());
             Point2D position = new Point2D(xPos, 0.0);
             Tank tank = productionSite.getUpperTank(topTanks[i]);
-            TankDrawer tankDrawer = new TankDrawer(position, tank, ROWS, tankCount);
+            TankDrawer tankDrawer = new TankDrawer(position, tank, ROWS, TankSelector.getUpperTankCount());
             element.add(tankDrawer);
 
             //Create a pipe leading from the top to the tank
             pipes.add(createTopPipe(tank, tankDrawer));
 
             //Create a pipe leading from the tank to the mixTank
-            pipes.add(createMixPipe(tank, tankDrawer, mtDrawer, i + 1));
+            double middleI = (double) (TankSelector.getUpperTankCount() - 1) / 2;
+            int offset = (int) Math.ceil(Math.abs((middleI - i)));
+            pipes.add(createMixPipe(tank, tankDrawer, mtDrawer, i + 1, offset));
         }
 
         element.addAll(pipes);
@@ -156,11 +156,15 @@ public class SimulationMainWindow implements SimulationViewInterface {
     /**
      * Creates a PipeDrawer leading from the TankDrawer to the MixTankDrawer.
      */
-    private PipeDrawer createMixPipe(Tank tank, TankDrawer tankDrawer, MixTankDrawer mixTankDrawer, int pipeNum) {
+    private PipeDrawer createMixPipe(Tank tank, TankDrawer tankDrawer, MixTankDrawer mixTankDrawer,
+                                     int pipeNum, int offset) {
         Point2D botStart = tankDrawer.getPipeStartPoint();
         Point2D botEnd = mixTankDrawer.getPipeEndPoint(pipeNum, TankSelector.getUpperTankCount());
-        Point2D botMid1 = new Point2D(botStart.getX(), 0.5);
-        Point2D botMid2 = new Point2D(botEnd.getX(), 0.5);
+        double midY = botStart.getY()
+                + (ViewConstants.OUTBOX_PERCENT - ViewConstants.INBOX_HEIGHT - ViewConstants.OVAL_PERCENT)
+                / ROWS / 2 + 2.5 * offset * ViewConstants.PIPE_WIDTH;
+        Point2D botMid1 = new Point2D(botStart.getX(), midY);
+        Point2D botMid2 = new Point2D(botEnd.getX(), midY);
         Point2D[] botWayPoints = {botStart, botMid1, botMid2, botEnd};
         return new PipeDrawer(botWayPoints, tank.getOutPipe(),  ROWS);
     }

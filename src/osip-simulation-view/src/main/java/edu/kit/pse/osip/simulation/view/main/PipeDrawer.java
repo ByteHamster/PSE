@@ -15,7 +15,6 @@ import javafx.scene.paint.Color;
 public class PipeDrawer implements Drawer {
     private Point2D[] wayPoints;
     private ValveDrawer valve;
-    private double relPipeWidth;
 
     /**
      * Creates a new pipe along the wayPoints 1 to n.
@@ -39,7 +38,6 @@ public class PipeDrawer implements Drawer {
         }
 
         this.wayPoints = wayPoints;
-        relPipeWidth = ViewConstants.PIPE_WIDTH / rows;
 
         //Set the valve p*100 % of the way along the way connecting the first two wayPoints
         double p = 0.15;
@@ -58,7 +56,7 @@ public class PipeDrawer implements Drawer {
 
         // length - 1 as we always draw from the current to the next point.
         for (int i = 0; i < wayPoints.length - 1; i++) {
-            double rectWidth = relPipeWidth * totalWidth;
+            double rectWidth = ViewConstants.PIPE_WIDTH * totalWidth;
             context.setLineWidth(rectWidth);
 
             double x1 = wayPoints[i].getX() * totalWidth;
