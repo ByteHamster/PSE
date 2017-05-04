@@ -1,6 +1,7 @@
 package edu.kit.pse.osip.simulation.view.main;
 
 import edu.kit.pse.osip.core.SimulationConstants;
+import edu.kit.pse.osip.core.model.base.TankSelector;
 import javafx.geometry.Insets;
 import javafx.stage.Screen;
 
@@ -110,7 +111,10 @@ public final class ViewConstants {
     /**
      * The width of a pipe relative to the width of a tank compartment.
      */
-    protected static final double PIPE_WIDTH = 0.017;
+    protected static final double PIPE_WIDTH = ((((1 - OUTBOX_PERCENT) / 2)
+            < (INBOX_WIDTH / TankSelector.getUpperTankCount()))
+            ? (1 - OUTBOX_PERCENT) : INBOX_WIDTH / TankSelector.getUpperTankCount())
+            / 3 / TankSelector.getUpperTankCount();
 
     /**
      * The width of a valve relative to the width of a tank compartment.
