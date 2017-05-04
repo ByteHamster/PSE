@@ -39,6 +39,12 @@ mvn install
 mvn site
 ```
 
+Folgendes Kommando erstellt unter `src/target/´ eine Zip-Datei mit den Quellcodedateien und den ausführbaren Jar-Dateien:
+
+```
+mvn package assembly:single
+```
+
 Ein häufiges Problem ist, dass die Abhängigkeit `org.eclipse.milo` nicht gefunden werden kann. Dies liegt daran, dass alte Versionen von Milo aus dem Repository genommen werden. Das Problem kann behoben werden, indem die verwendete Version angepasst wird:
 
 ```xml

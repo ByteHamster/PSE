@@ -13,6 +13,11 @@ This project was developed during a software development experience project at t
 		<name>M. Armbruster, D. Kahles, H. Lehmann, M. Schwarzmann, N. Wilhelm</name>
 		<url>https://github.com/ByteHamster/PSE</url>
 	</organization>
+	<scm>
+		<url>scm:git:https://github.com/ByteHamster/PSE</url>
+		<connection>scm:git:https://github.com/ByteHamster/PSE</connection>
+		<developerConnection>scm:git:https://github.com/ByteHamster/PSE</developerConnection>
+	</scm>
 
 	<!--
 		To update the version of this project (and automatically update the parent of all modules), use:
@@ -176,6 +181,15 @@ This project was developed during a software development experience project at t
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<descriptor>src/assembly/assembly.xml</descriptor>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 	<reporting>
@@ -201,6 +215,15 @@ This project was developed during a software development experience project at t
 					<show>package</show>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-changelog-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<basedir>..</basedir>
+				</configuration>
+			</plugin>
 		</plugins>
+
 	</reporting>
 </project>
