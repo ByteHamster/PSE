@@ -23,7 +23,7 @@ This project was developed during a software development experience project at t
 		To update the version of this project (and automatically update the parent of all modules), use:
 		$ mvn versions:set -DgenerateBackupPoms=false
 	-->
-	<version>1.0</version>
+	<version>1.1</version>
 
 	<modules>
 		<module>osip-model</module>
